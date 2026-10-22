@@ -1,221 +1,2101 @@
 {
-  "_comment": "სამუშაო ვერსია v0. მაჩვენებლები: move (დუიმი), shoot/melee (d10-ზე წარმატება, თუ ≤ მაჩვენებელს), armor (0-7), wounds, nerve (d10 ≤ nerve). იარაღი: power — დაზიანების ძალა, damage — ჭრილობები ერთ წარმატებაზე. ability_points — სპეციალური ძალების ფასი მარჩილში (ხელით შეფასებული, ბალანსერი ამოწმებს). ფასს ბალანსერი ითვლის.",
-  "factions": {
-    "colchis": "კოლხეთი",
-    "iberia": "იბერია",
-    "hell": "ჯოჯოხეთის ლეგიონები",
-    "harness": "დიდი უღლის ლაშქარი"
+ "_comment": "სამუშაო ვერსია v0. მაჩვენებლები: move (დუიმი), shoot/melee (d10-ზე წარმატება, თუ ≤ მაჩვენებელს), armor (0-7), wounds, nerve (d10 ≤ nerve). იარაღი: power — დაზიანების ძალა, damage — ჭრილობები ერთ წარმატებაზე. ability_points — სპეციალური ძალების ფასი მარჩილში (ხელით შეფასებული, ბალანსერი ამოწმებს). ფასს ბალანსერი ითვლის.",
+ "factions": {
+  "colchis": "კოლხეთი",
+  "iberia": "იბერია",
+  "hell": "ჯოჯოხეთის ლეგიონები",
+  "harness": "დიდი უღლის ლაშქარი"
+ },
+ "units": [
+  {
+   "id": "lashkari",
+   "faction": "colchis",
+   "name": "ლაშქარი",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 5,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line"
+   ],
+   "ability_points": 1
   },
-  "units": [
-    {"id": "lashkari", "faction": "colchis", "name": "ლაშქარი", "tier": "I", "size": 1, "move": 6, "shoot": 5, "melee": 4, "armor": 1, "wounds": 1, "nerve": 5,
-     "weapons": [{"name": "შაშხანა", "mode": "ranged", "range": 24, "attacks": 1, "power": 2, "damage": 1, "tags": []},
-                 {"name": "ხიშტი", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": []}],
-     "tags": ["line"], "ability_points": 1},
-    {"id": "dali_hunters", "faction": "colchis", "name": "დალის მონადირეები", "tier": "I", "size": 1, "move": 6, "shoot": 7, "melee": 3, "armor": 0, "wounds": 1, "nerve": 6,
-     "weapons": [{"name": "სანადირო შაშხანა", "mode": "ranged", "range": 36, "attacks": 1, "power": 3, "damage": 1, "tags": ["anti_giant"]},
-                 {"name": "დანა", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": []}],
-     "tags": ["infiltrate", "giant_hunter"], "ability_points": 4},
-    {"id": "eristavi", "faction": "colchis", "name": "ერისთავი", "tier": "II", "size": 1, "move": 6, "shoot": 6, "melee": 7, "armor": 3, "wounds": 3, "nerve": 8,
-     "weapons": [{"name": "ხმალი", "mode": "melee", "range": 1, "attacks": 2, "power": 2, "damage": 1, "tags": []},
-                 {"name": "რევოლვერი", "mode": "ranged", "range": 10, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["leader", "shield"], "ability_points": 10},
-    {"id": "aznauri", "faction": "colchis", "name": "აზნაური რაინდები", "tier": "II", "size": 1, "move": 5, "shoot": 5, "melee": 7, "armor": 3, "wounds": 2, "nerve": 7,
-     "weapons": [{"name": "ხმალი", "mode": "melee", "range": 1, "attacks": 2, "power": 2, "damage": 1, "tags": []},
-                 {"name": "პისტოლეტი", "mode": "ranged", "range": 8, "attacks": 1, "power": 1, "damage": 1, "tags": []}],
-     "tags": ["shield"], "ability_points": 3},
-    {"id": "kolkhi_riders", "faction": "colchis", "name": "კოლხი მხედრები", "tier": "II", "size": 2, "move": 10, "shoot": 5, "melee": 6, "armor": 2, "wounds": 2, "nerve": 6,
-     "weapons": [{"name": "შუბი", "mode": "melee", "range": 1, "attacks": 1, "power": 3, "damage": 1, "tags": ["charge"]},
-                 {"name": "კარაბინი", "mode": "ranged", "range": 18, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["cavalry", "trench_breaker"], "ability_points": 3},
-    {"id": "medea_sisters", "faction": "colchis", "name": "მედეას დები", "tier": "II", "size": 1, "move": 6, "shoot": 4, "melee": 3, "armor": 0, "wounds": 1, "nerve": 7,
-     "weapons": [{"name": "მოწამლული დანა", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": ["poison"]}],
-     "tags": ["healer", "alchemist"], "ability_points": 18},
-    {"id": "shavkhan_smiths", "faction": "colchis", "name": "შავხანის მჭედლები", "tier": "II", "size": 1, "move": 5, "shoot": 4, "melee": 5, "armor": 2, "wounds": 2, "nerve": 6,
-     "weapons": [{"name": "მჭედლის ჩაქუჩი", "mode": "melee", "range": 1, "attacks": 1, "power": 3, "damage": 1, "tags": []},
-                 {"name": "ასაფეთქებელი", "mode": "ranged", "range": 6, "attacks": 1, "power": 3, "damage": 2, "tags": ["blast", "demolition"]}],
-     "tags": ["engineer", "digger"], "ability_points": 8},
-    {"id": "monaspa", "faction": "colchis", "name": "მონასპა", "tier": "III", "size": 1, "move": 4, "shoot": 4, "melee": 7, "armor": 4, "wounds": 3, "nerve": 8,
-     "weapons": [{"name": "საომარი ჩაქუჩი", "mode": "melee", "range": 1, "attacks": 1, "power": 4, "damage": 1, "tags": ["armor_break"]}],
-     "tags": ["shield", "shield_wall"], "ability_points": 4},
-    {"id": "iron_arm_veterans", "faction": "colchis", "name": "რკინახელა ვეტერანები", "tier": "III", "size": 1, "move": 5, "shoot": 3, "melee": 7, "armor": 3, "wounds": 3, "nerve": 7,
-     "weapons": [{"name": "ორთქლის მკლავი", "mode": "melee", "range": 1, "attacks": 1, "power": 4, "damage": 2, "tags": ["steam"]}],
-     "tags": ["steam"], "ability_points": 3},
-    {"id": "khalkotavri", "faction": "colchis", "name": "ხალკოტავრი", "tier": "IV", "size": 3, "move": 6, "shoot": 5, "melee": 6, "armor": 5, "wounds": 8, "nerve": 9,
-     "weapons": [{"name": "ბრინჯაოს ცეცხლი", "mode": "ranged", "range": 8, "attacks": 3, "power": 3, "damage": 1, "tags": ["fire", "blast"]},
-                 {"name": "რქები", "mode": "melee", "range": 1, "attacks": 1, "power": 4, "damage": 2, "tags": []}],
-     "tags": ["vehicle", "steam"], "ability_points": 6},
-    {"id": "ambri_ox", "faction": "colchis", "name": "ამბრის ხარი", "tier": "IV", "size": 3, "move": 4, "shoot": 0, "melee": 6, "armor": 6, "wounds": 10, "nerve": 10,
-     "weapons": [{"name": "რქები", "mode": "melee", "range": 1, "attacks": 2, "power": 4, "damage": 2, "tags": []}],
-     "tags": ["vehicle", "relic", "steam"], "ability_points": 15},
-    {"id": "golden_ram", "faction": "colchis", "name": "ოქროს ვერძი", "tier": "IV+", "size": 3, "move": 5, "shoot": 5, "melee": 7, "armor": 5, "wounds": 12, "nerve": 10,
-     "weapons": [{"name": "ზურგის ქვემეხები", "mode": "ranged", "range": 24, "attacks": 2, "power": 3, "damage": 1, "tags": ["blast"]},
-                 {"name": "ბრინჯაოს რქები", "mode": "melee", "range": 1, "attacks": 1, "power": 5, "damage": 3, "tags": ["demolition", "charge"]}],
-     "tags": ["vehicle", "steam", "huge"], "ability_points": 12},
-    {"id": "fleece_dragon", "faction": "colchis", "name": "საწმისის დრაკონი", "tier": "V", "size": 4, "move": 8, "shoot": 6, "melee": 8, "armor": 6, "wounds": 20, "nerve": 10,
-     "weapons": [{"name": "ცეცხლოვანი სუნთქვა", "mode": "ranged", "range": 12, "attacks": 5, "power": 4, "damage": 1, "tags": ["fire", "blast"]},
-                 {"name": "ყელში კბენა", "mode": "melee", "range": 2, "attacks": 1, "power": 6, "damage": 3, "tags": ["grab"]}],
-     "tags": ["giant", "fly", "never_sleeps"], "ability_points": 25},
-    {"id": "hero_zurab", "faction": "colchis", "name": "ერისთავი ზურაბ ბრინჯაოსმკლავა", "tier": "hero", "size": 1, "move": 6, "shoot": 6, "melee": 8, "armor": 4, "wounds": 4, "nerve": 9,
-     "weapons": [{"name": "ბრინჯაოს მკლავი", "mode": "melee", "range": 1, "attacks": 2, "power": 5, "damage": 2, "tags": ["steam"]},
-                 {"name": "რევოლვერი", "mode": "ranged", "range": 10, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["leader", "hero"], "ability_points": 15},
-
-    {"id": "khevsur", "faction": "iberia", "name": "ხევსური მოლაშქრეები", "tier": "I", "size": 1, "move": 6, "shoot": 4, "melee": 6, "armor": 2, "wounds": 1, "nerve": 6,
-     "weapons": [{"name": "ხმალი", "mode": "melee", "range": 1, "attacks": 1, "power": 2, "damage": 1, "tags": []},
-                 {"name": "კარაბინი", "mode": "ranged", "range": 18, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["mountain", "shield"], "ability_points": 1},
-    {"id": "tush_shepherds", "faction": "iberia", "name": "თუში მწყემსები ნაგაზებით", "tier": "I", "size": 1, "move": 7, "shoot": 5, "melee": 5, "armor": 0, "wounds": 1, "nerve": 6,
-     "weapons": [{"name": "კარაბინი", "mode": "ranged", "range": 18, "attacks": 1, "power": 2, "damage": 1, "tags": []},
-                 {"name": "ნაგაზები", "mode": "melee", "range": 1, "attacks": 2, "power": 1, "damage": 1, "tags": ["pin"]}],
-     "tags": ["scout", "detect_heretic"], "ability_points": 5},
-    {"id": "mountain_sappers", "faction": "iberia", "name": "მთის მესანგრეები", "tier": "I", "size": 1, "move": 5, "shoot": 4, "melee": 4, "armor": 1, "wounds": 1, "nerve": 5,
-     "weapons": [{"name": "კარაბინი", "mode": "ranged", "range": 18, "attacks": 1, "power": 2, "damage": 1, "tags": []},
-                 {"name": "დინამიტი", "mode": "ranged", "range": 6, "attacks": 1, "power": 3, "damage": 1, "tags": ["blast", "demolition"]}],
-     "tags": ["engineer", "digger"], "ability_points": 5},
-    {"id": "spasalari", "faction": "iberia", "name": "სპასალარი", "tier": "II", "size": 1, "move": 6, "shoot": 6, "melee": 7, "armor": 3, "wounds": 3, "nerve": 8,
-     "weapons": [{"name": "ხმალი", "mode": "melee", "range": 1, "attacks": 2, "power": 2, "damage": 1, "tags": []},
-                 {"name": "რევოლვერი", "mode": "ranged", "range": 10, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["leader"], "ability_points": 10},
-    {"id": "natsiliani", "faction": "iberia", "name": "ნაცილიანები", "tier": "II", "size": 1, "move": 6, "shoot": 3, "melee": 8, "armor": 2, "wounds": 2, "nerve": 8,
-     "weapons": [{"name": "ორი ხმალი", "mode": "melee", "range": 1, "attacks": 2, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["marked"], "ability_points": 6},
-    {"id": "lightning_gunners", "faction": "iberia", "name": "მეხის მსროლელები", "tier": "II", "size": 1, "move": 5, "shoot": 6, "melee": 3, "armor": 1, "wounds": 2, "nerve": 6,
-     "weapons": [{"name": "მეხის შაშხანა", "mode": "ranged", "range": 18, "attacks": 1, "power": 4, "damage": 2, "tags": ["lightning", "anti_giant", "reload"]}],
-     "tags": ["giant_hunter", "burn_gas"], "ability_points": 4},
-    {"id": "tush_riders", "faction": "iberia", "name": "თუში მხედრები", "tier": "II", "size": 2, "move": 12, "shoot": 5, "melee": 6, "armor": 1, "wounds": 2, "nerve": 6,
-     "weapons": [{"name": "ხმალი", "mode": "melee", "range": 1, "attacks": 1, "power": 2, "damage": 1, "tags": ["charge"]},
-                 {"name": "კარაბინი", "mode": "ranged", "range": 18, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["cavalry", "mountain", "trench_breaker"], "ability_points": 3},
-    {"id": "ekimbashi", "faction": "iberia", "name": "ექიმბაშები", "tier": "II", "size": 1, "move": 6, "shoot": 3, "melee": 3, "armor": 0, "wounds": 1, "nerve": 7,
-     "weapons": [{"name": "დანა", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": []}],
-     "tags": ["healer", "alchemist"], "ability_points": 16},
-    {"id": "fortress_guards", "faction": "iberia", "name": "ციხის მცველები", "tier": "III", "size": 1, "move": 4, "shoot": 3, "melee": 6, "armor": 4, "wounds": 3, "nerve": 8,
-     "weapons": [{"name": "ცული", "mode": "melee", "range": 1, "attacks": 1, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["shield", "shield_wall", "steam"], "ability_points": 5},
-    {"id": "iakhsar_shields", "faction": "iberia", "name": "იახსრის ფარისნები", "tier": "III", "size": 1, "move": 5, "shoot": 3, "melee": 7, "armor": 4, "wounds": 3, "nerve": 8,
-     "weapons": [{"name": "საომარი ჩაქუჩი", "mode": "melee", "range": 1, "attacks": 1, "power": 4, "damage": 1, "tags": ["anti_devi"]},
-                 {"name": "მოკლე თოფი", "mode": "ranged", "range": 8, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": [], "ability_points": 3},
-    {"id": "steam_ibex", "faction": "iberia", "name": "ორთქლის ჯიხვი", "tier": "IV", "size": 3, "move": 8, "shoot": 6, "melee": 5, "armor": 4, "wounds": 8, "nerve": 9,
-     "weapons": [{"name": "ქვემეხი", "mode": "ranged", "range": 30, "attacks": 1, "power": 4, "damage": 2, "tags": ["blast", "indirect"]},
-                 {"name": "რქები", "mode": "melee", "range": 1, "attacks": 1, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["vehicle", "steam", "climber"], "ability_points": 6},
-    {"id": "lightning_castle", "faction": "iberia", "name": "მეხის ციხე", "tier": "IV+", "size": 3, "move": 3, "shoot": 5, "melee": 4, "armor": 6, "wounds": 14, "nerve": 10,
-     "weapons": [{"name": "გარნიზონის თოფები", "mode": "ranged", "range": 24, "attacks": 4, "power": 2, "damage": 1, "tags": []},
-                 {"name": "ელვის ხვია", "mode": "ranged", "range": 6, "attacks": 3, "power": 3, "damage": 1, "tags": ["lightning", "aura"]}],
-     "tags": ["vehicle", "steam", "huge", "fortress"], "ability_points": 12},
-    {"id": "armazi_colossus", "faction": "iberia", "name": "არმაზის კოლოსი", "tier": "V", "size": 4, "move": 6, "shoot": 5, "melee": 8, "armor": 6, "wounds": 24, "nerve": 10,
-     "weapons": [{"name": "ტიტანის ხმალი", "mode": "melee", "range": 2, "attacks": 3, "power": 6, "damage": 3, "tags": ["sweep"]},
-                 {"name": "ზღვის ტალღა", "mode": "ranged", "range": 12, "attacks": 4, "power": 2, "damage": 1, "tags": ["blast", "once"]}],
-     "tags": ["giant", "steam"], "ability_points": 25},
-    {"id": "hero_amirani", "faction": "iberia", "name": "ამირანი და ყურშა", "tier": "hero", "size": 3, "move": 7, "shoot": 0, "melee": 9, "armor": 5, "wounds": 12, "nerve": 10,
-     "weapons": [{"name": "რკინის მუშტი", "mode": "melee", "range": 1, "attacks": 3, "power": 5, "damage": 2, "tags": ["armor_break", "chain_breaker"]},
-                 {"name": "ყურშა", "mode": "melee", "range": 1, "attacks": 2, "power": 3, "damage": 1, "tags": ["pin"]}],
-     "tags": ["hero", "titan"], "ability_points": 20},
-
-    {"id": "recruits", "faction": "hell", "name": "ახალწვეულები", "tier": "I", "size": 1, "move": 5, "shoot": 4, "melee": 3, "armor": 1, "wounds": 1, "nerve": 10,
-     "weapons": [{"name": "შაშხანა", "mode": "ranged", "range": 24, "attacks": 1, "power": 2, "damage": 1, "tags": []},
-                 {"name": "ხიშტი", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": []}],
-     "tags": ["needs_orders", "fearless"], "ability_points": -2},
-    {"id": "legion_shooters", "faction": "hell", "name": "ლეგიონის მსროლელები", "tier": "I", "size": 1, "move": 5, "shoot": 5, "melee": 4, "armor": 2, "wounds": 1, "nerve": 9,
-     "weapons": [{"name": "შაშხანა", "mode": "ranged", "range": 24, "attacks": 1, "power": 2, "damage": 1, "tags": ["volley"]}],
-     "tags": ["line"], "ability_points": 2},
-    {"id": "marquis", "faction": "hell", "name": "ლეგიონის მარკიზი", "tier": "II", "size": 1, "move": 6, "shoot": 6, "melee": 7, "armor": 4, "wounds": 3, "nerve": 9,
-     "weapons": [{"name": "ხმალი", "mode": "melee", "range": 1, "attacks": 2, "power": 2, "damage": 1, "tags": []},
-                 {"name": "ორთქლის პისტოლეტი", "mode": "ranged", "range": 10, "attacks": 1, "power": 3, "damage": 1, "tags": ["steam"]}],
-     "tags": ["leader", "orders"], "ability_points": 12},
-    {"id": "halphas_fortifiers", "faction": "hell", "name": "ჰალფასის მეციხოვნეები", "tier": "II", "size": 1, "move": 5, "shoot": 4, "melee": 4, "armor": 2, "wounds": 2, "nerve": 8,
-     "weapons": [{"name": "ნიჩაბი", "mode": "melee", "range": 1, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["engineer", "digger", "supply"], "ability_points": 9},
-    {"id": "malphas_wreckers", "faction": "hell", "name": "მალფასის დამნგრევები", "tier": "II", "size": 1, "move": 5, "shoot": 4, "melee": 5, "armor": 2, "wounds": 2, "nerve": 8,
-     "weapons": [{"name": "ფეთქებადი შუბი", "mode": "melee", "range": 1, "attacks": 1, "power": 5, "damage": 2, "tags": ["anti_giant", "demolition", "once"]},
-                 {"name": "ნაღმი", "mode": "ranged", "range": 6, "attacks": 1, "power": 3, "damage": 2, "tags": ["blast", "demolition"]}],
-     "tags": ["giant_hunter"], "ability_points": 3},
-    {"id": "andras_whisperers", "faction": "hell", "name": "ანდრასის ჩურჩულები", "tier": "II", "size": 1, "move": 7, "shoot": 3, "melee": 4, "armor": 1, "wounds": 1, "nerve": 8,
-     "weapons": [{"name": "დანა", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": []}],
-     "tags": ["discord"], "ability_points": 14},
-    {"id": "glasya_killers", "faction": "hell", "name": "გლასია-ლაბოლასის მკვლელები", "tier": "II", "size": 1, "move": 7, "shoot": 6, "melee": 7, "armor": 1, "wounds": 2, "nerve": 8,
-     "weapons": [{"name": "დუმილიანი პისტოლეტი", "mode": "ranged", "range": 10, "attacks": 1, "power": 2, "damage": 1, "tags": ["vs_leader"]},
-                 {"name": "მოკლე ხმლები", "mode": "melee", "range": 1, "attacks": 2, "power": 2, "damage": 1, "tags": ["vs_leader"]}],
-     "tags": ["infiltrate", "assassin"], "ability_points": 6},
-    {"id": "legionnaires", "faction": "hell", "name": "ლეგიონერები", "tier": "III", "size": 1, "move": 4, "shoot": 4, "melee": 7, "armor": 5, "wounds": 3, "nerve": 10,
-     "weapons": [{"name": "ცული", "mode": "melee", "range": 1, "attacks": 1, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["shield", "shield_wall", "steam"], "ability_points": 3},
-    {"id": "furcas_riders", "faction": "hell", "name": "ფურკასის მხედრები", "tier": "III", "size": 2, "move": 10, "shoot": 3, "melee": 7, "armor": 4, "wounds": 3, "nerve": 9,
-     "weapons": [{"name": "შუბი", "mode": "melee", "range": 1, "attacks": 1, "power": 4, "damage": 1, "tags": ["charge"]}],
-     "tags": ["cavalry", "trench_breaker"], "ability_points": 3},
-    {"id": "marchosias_wolves", "faction": "hell", "name": "მარქოსიასის მგლები", "tier": "III", "size": 2, "move": 10, "shoot": 0, "melee": 7, "armor": 2, "wounds": 3, "nerve": 8,
-     "weapons": [{"name": "კბილები", "mode": "melee", "range": 1, "attacks": 2, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["fly", "hunter"], "ability_points": 5},
-    {"id": "behemoth_spawn", "faction": "hell", "name": "ბეჰემოთის ნაშიერი", "tier": "IV", "size": 3, "move": 5, "shoot": 5, "melee": 7, "armor": 5, "wounds": 10, "nerve": 7,
-     "weapons": [{"name": "ზურგის ქვემეხი", "mode": "ranged", "range": 24, "attacks": 1, "power": 4, "damage": 2, "tags": ["blast"]},
-                 {"name": "გათელვა", "mode": "melee", "range": 1, "attacks": 3, "power": 4, "damage": 1, "tags": []}],
-     "tags": ["monster", "rage"], "ability_points": 2},
-    {"id": "mulciber_forge", "faction": "hell", "name": "მულციბერის სამჭედლო", "tier": "IV", "size": 3, "move": 3, "shoot": 0, "melee": 6, "armor": 5, "wounds": 10, "nerve": 10,
-     "weapons": [{"name": "გავარვარებული ჩაქუჩები", "mode": "melee", "range": 1, "attacks": 2, "power": 5, "damage": 2, "tags": []}],
-     "tags": ["vehicle", "repair"], "ability_points": 14},
-    {"id": "standard_fortress", "faction": "hell", "name": "სადროშო ციხე", "tier": "IV+", "size": 3, "move": 3, "shoot": 5, "melee": 4, "armor": 6, "wounds": 14, "nerve": 10,
-     "weapons": [{"name": "სათოფურები", "mode": "ranged", "range": 24, "attacks": 3, "power": 2, "damage": 1, "tags": ["volley"]},
-                 {"name": "ლეგიონის დროშა", "mode": "ranged", "range": 0, "attacks": 0, "power": 0, "damage": 0, "tags": ["aura"]}],
-     "tags": ["vehicle", "huge", "fortress", "orders"], "ability_points": 18},
-    {"id": "behemoth", "faction": "hell", "name": "ბეჰემოთი", "tier": "V", "size": 4, "move": 5, "shoot": 5, "melee": 9, "armor": 7, "wounds": 26, "nerve": 8,
-     "weapons": [{"name": "რქები", "mode": "melee", "range": 2, "attacks": 2, "power": 6, "damage": 3, "tags": []},
-                 {"name": "ზურგის გარნიზონი", "mode": "ranged", "range": 24, "attacks": 4, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["giant", "rage"], "ability_points": 18},
-    {"id": "hero_sabnock", "faction": "hell", "name": "მარკიზი საბნოკი", "tier": "hero", "size": 2, "move": 6, "shoot": 5, "melee": 8, "armor": 5, "wounds": 5, "nerve": 10,
-     "weapons": [{"name": "ლომისთავიანი ცული", "mode": "melee", "range": 1, "attacks": 2, "power": 4, "damage": 2, "tags": ["festering"]}],
-     "tags": ["leader", "hero", "orders"], "ability_points": 18},
-
-    {"id": "rebels", "faction": "harness", "name": "ამბოხებულები", "tier": "I", "size": 1, "move": 6, "shoot": 3, "melee": 5, "armor": 0, "wounds": 1, "nerve": 4,
-     "weapons": [{"name": "მოპარული შაშხანა", "mode": "ranged", "range": 24, "attacks": 1, "power": 2, "damage": 1, "tags": []},
-                 {"name": "დანა და ჯაჭვი", "mode": "melee", "range": 1, "attacks": 2, "power": 1, "damage": 1, "tags": ["frenzy"]}],
-     "tags": ["madness"], "ability_points": 1},
-    {"id": "heretic_sappers", "faction": "harness", "name": "ერეტიკოსი მესანგრეები", "tier": "I", "size": 1, "move": 5, "shoot": 3, "melee": 4, "armor": 0, "wounds": 1, "nerve": 5,
-     "weapons": [{"name": "წერაქვი", "mode": "melee", "range": 1, "attacks": 1, "power": 2, "damage": 1, "tags": []},
-                 {"name": "ხელნაკეთი ყუმბარა", "mode": "ranged", "range": 6, "attacks": 1, "power": 2, "damage": 1, "tags": ["blast"]}],
-     "tags": ["engineer", "digger", "tunnel"], "ability_points": 6},
-    {"id": "yoke_slaves", "faction": "harness", "name": "უღლის მონები", "tier": "I", "size": 1, "move": 4, "shoot": 0, "melee": 3, "armor": 0, "wounds": 1, "nerve": 3,
-     "weapons": [{"name": "ჯაჭვები", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": ["entangle"]}],
-     "tags": ["chain_gang", "cover_for_others", "can_be_freed"], "ability_points": 2},
-    {"id": "rebel_chief", "faction": "harness", "name": "ამბოხის ბელადი", "tier": "II", "size": 1, "move": 6, "shoot": 5, "melee": 7, "armor": 2, "wounds": 3, "nerve": 8,
-     "weapons": [{"name": "მოპარული ოფიცრის ხმალი", "mode": "melee", "range": 1, "attacks": 2, "power": 2, "damage": 1, "tags": []},
-                 {"name": "რევოლვერი", "mode": "ranged", "range": 10, "attacks": 1, "power": 2, "damage": 1, "tags": []}],
-     "tags": ["leader", "nameless"], "ability_points": 9},
-    {"id": "blood_priests", "faction": "harness", "name": "სისხლის ქურუმები", "tier": "II", "size": 1, "move": 6, "shoot": 2, "melee": 5, "armor": 0, "wounds": 2, "nerve": 8,
-     "weapons": [{"name": "რიტუალური დანა", "mode": "melee", "range": 1, "attacks": 1, "power": 2, "damage": 1, "tags": ["capture"]}],
-     "tags": ["ritual"], "ability_points": 14},
-    {"id": "kudiani", "faction": "harness", "name": "კუდიანები", "tier": "II", "size": 1, "move": 6, "shoot": 5, "melee": 3, "armor": 0, "wounds": 2, "nerve": 7,
-     "weapons": [{"name": "წყევლა", "mode": "ranged", "range": 12, "attacks": 1, "power": 0, "damage": 0, "tags": ["curse"]},
-                 {"name": "მოწამლული დანა", "mode": "melee", "range": 1, "attacks": 1, "power": 1, "damage": 1, "tags": ["poison"]}],
-     "tags": ["witch", "fog"], "ability_points": 16},
-    {"id": "chain_shooters", "faction": "harness", "name": "ჯაჭვის მსროლელები", "tier": "II", "size": 1, "move": 5, "shoot": 5, "melee": 4, "armor": 1, "wounds": 2, "nerve": 6,
-     "weapons": [{"name": "ჰარპუნ-ქვემეხი", "mode": "ranged", "range": 18, "attacks": 1, "power": 3, "damage": 2, "tags": ["anti_giant", "chain", "reload"]}],
-     "tags": ["giant_hunter", "anti_air"], "ability_points": 4},
-    {"id": "kaji_smith", "faction": "harness", "name": "ქაჯ-მჭედელი", "tier": "II", "size": 1, "move": 5, "shoot": 2, "melee": 5, "armor": 2, "wounds": 2, "nerve": 7,
-     "weapons": [{"name": "ჩაქუჩი", "mode": "melee", "range": 1, "attacks": 1, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["alchemist", "stitcher"], "ability_points": 16},
-    {"id": "chained_ones", "faction": "harness", "name": "ჯაჭვაბმულები", "tier": "III", "size": 1, "move": 5, "shoot": 0, "melee": 8, "armor": 3, "wounds": 3, "nerve": 6,
-     "weapons": [{"name": "მძიმე ჯაჭვები", "mode": "melee", "range": 2, "attacks": 2, "power": 3, "damage": 1, "tags": ["unleash"]}],
-     "tags": ["madness"], "ability_points": 2},
-    {"id": "kaji_stitched", "faction": "harness", "name": "ქაჯების ნაკერები", "tier": "III", "size": 1, "move": 4, "shoot": 0, "melee": 6, "armor": 2, "wounds": 4, "nerve": 10,
-     "weapons": [{"name": "დგუშიანი მუშტები", "mode": "melee", "range": 1, "attacks": 1, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["undead", "split", "fire_weak"], "ability_points": 3},
-    {"id": "devi_spawn", "faction": "harness", "name": "დევის ნაშიერი", "tier": "IV", "size": 3, "move": 6, "shoot": 0, "melee": 7, "armor": 3, "wounds": 9, "nerve": 8,
-     "weapons": [{"name": "ბევრი თავი", "mode": "melee", "range": 1, "attacks": 3, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["monster", "regen", "fire_weak", "lightning_weak"], "ability_points": 4},
-    {"id": "gveleshapi", "faction": "harness", "name": "გველეშაპი", "tier": "IV", "size": 3, "move": 6, "shoot": 0, "melee": 7, "armor": 4, "wounds": 9, "nerve": 8,
-     "weapons": [{"name": "კბენა", "mode": "melee", "range": 2, "attacks": 1, "power": 4, "damage": 2, "tags": ["swallow"]}],
-     "tags": ["monster", "flood"], "ability_points": 8},
-    {"id": "chain_wagon", "faction": "harness", "name": "ჯაჭვის ურემი", "tier": "IV+", "size": 3, "move": 5, "shoot": 5, "melee": 6, "armor": 5, "wounds": 13, "nerve": 8,
-     "weapons": [{"name": "ერეტიკოსი მსროლელები", "mode": "ranged", "range": 18, "attacks": 4, "power": 2, "damage": 1, "tags": []},
-                 {"name": "შებმული დევები", "mode": "melee", "range": 1, "attacks": 2, "power": 4, "damage": 1, "tags": []}],
-     "tags": ["vehicle", "huge", "devi_pulled"], "ability_points": 10},
-    {"id": "bakbak_devi", "faction": "harness", "name": "ბაყბაყ-დევი", "tier": "V", "size": 4, "move": 7, "shoot": 0, "melee": 9, "armor": 6, "wounds": 24, "nerve": 9,
-     "weapons": [{"name": "მუშტები", "mode": "melee", "range": 2, "attacks": 3, "power": 6, "damage": 3, "tags": []}],
-     "tags": ["giant", "regen", "captive", "fire_weak", "lightning_weak"], "ability_points": 12},
-    {"id": "hero_nameless", "faction": "harness", "name": "უსახელო", "tier": "hero", "size": 1, "move": 6, "shoot": 6, "melee": 7, "armor": 3, "wounds": 5, "nerve": 10,
-     "weapons": [{"name": "რევოლვერი", "mode": "ranged", "range": 10, "attacks": 2, "power": 2, "damage": 1, "tags": []},
-                 {"name": "ხმალი", "mode": "melee", "range": 1, "attacks": 2, "power": 3, "damage": 1, "tags": []}],
-     "tags": ["leader", "hero", "convert"], "ability_points": 22}
-  ]
+  {
+   "id": "dali_hunters",
+   "faction": "colchis",
+   "name": "დალის მონადირეები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 7,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "სანადირო შაშხანა",
+     "mode": "ranged",
+     "range": 36,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "anti_giant"
+     ]
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "giant_hunter"
+   ],
+   "ability_points": 4
+  },
+  {
+   "id": "eristavi",
+   "faction": "colchis",
+   "name": "ერისთავი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader",
+    "shield"
+   ],
+   "ability_points": 10
+  },
+  {
+   "id": "aznauri",
+   "faction": "colchis",
+   "name": "აზნაური რაინდები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "kolkhi_riders",
+   "faction": "colchis",
+   "name": "კოლხი მხედრები",
+   "tier": "II",
+   "size": 2,
+   "move": 10,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შუბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "medea_sisters",
+   "faction": "colchis",
+   "name": "მედეას დები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "მოწამლული დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": [
+      "poison"
+     ]
+    }
+   ],
+   "tags": [
+    "healer",
+    "alchemist"
+   ],
+   "ability_points": 18
+  },
+  {
+   "id": "shavkhan_smiths",
+   "faction": "colchis",
+   "name": "შავხანის მჭედლები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "მჭედლის ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ასაფეთქებელი",
+     "mode": "ranged",
+     "range": 6,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "blast",
+      "demolition"
+     ]
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger"
+   ],
+   "ability_points": 8
+  },
+  {
+   "id": "monaspa",
+   "faction": "colchis",
+   "name": "მონასპა",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 4,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "საომარი ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "armor_break"
+     ]
+    }
+   ],
+   "tags": [
+    "shield",
+    "shield_wall"
+   ],
+   "ability_points": 4
+  },
+  {
+   "id": "iron_arm_veterans",
+   "faction": "colchis",
+   "name": "რკინახელა ვეტერანები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ორთქლის მკლავი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "steam"
+     ]
+    }
+   ],
+   "tags": [
+    "steam"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "khalkotavri",
+   "faction": "colchis",
+   "name": "ხალკოტავრი",
+   "tier": "IV",
+   "size": 3,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 5,
+   "wounds": 8,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ბრინჯაოს ცეცხლი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 3,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "fire",
+      "blast"
+     ]
+    },
+    {
+     "name": "რქები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam"
+   ],
+   "ability_points": 6
+  },
+  {
+   "id": "ambri_ox",
+   "faction": "colchis",
+   "name": "ამბრის ხარი",
+   "tier": "IV",
+   "size": 3,
+   "move": 4,
+   "shoot": 0,
+   "melee": 6,
+   "armor": 6,
+   "wounds": 10,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "რქები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "relic",
+    "steam"
+   ],
+   "ability_points": 15
+  },
+  {
+   "id": "golden_ram",
+   "faction": "colchis",
+   "name": "ოქროს ვერძი",
+   "tier": "IV+",
+   "size": 3,
+   "move": 5,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 18,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ზურგის ქვემეხები",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 3,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ბრინჯაოს რქები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "demolition",
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam",
+    "huge"
+   ],
+   "ability_points": 12
+  },
+  {
+   "id": "fleece_dragon",
+   "faction": "colchis",
+   "name": "საწმისის დრაკონი",
+   "tier": "V",
+   "size": 4,
+   "move": 8,
+   "shoot": 6,
+   "melee": 8,
+   "armor": 6,
+   "wounds": 20,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ცეცხლოვანი სუნთქვა",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 5,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "fire",
+      "blast"
+     ]
+    },
+    {
+     "name": "ყელში კბენა",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 1,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "grab"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "fly",
+    "never_sleeps"
+   ],
+   "ability_points": 25
+  },
+  {
+   "id": "hero_zurab",
+   "faction": "colchis",
+   "name": "ერისთავი ზურაბ ბრინჯაოსმკლავა",
+   "tier": "hero",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 8,
+   "armor": 4,
+   "wounds": 4,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ბრინჯაოს მკლავი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 5,
+     "damage": 2,
+     "tags": [
+      "steam"
+     ]
+    },
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader",
+    "hero"
+   ],
+   "ability_points": 15
+  },
+  {
+   "id": "khevsur",
+   "faction": "iberia",
+   "name": "ხევსური მოლაშქრეები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "mountain",
+    "shield"
+   ],
+   "ability_points": 1
+  },
+  {
+   "id": "tush_shepherds",
+   "faction": "iberia",
+   "name": "თუში მწყემსები ნაგაზებით",
+   "tier": "I",
+   "size": 1,
+   "move": 7,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ნაგაზები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 1,
+     "damage": 1,
+     "tags": [
+      "pin"
+     ]
+    }
+   ],
+   "tags": [
+    "scout",
+    "detect_heretic"
+   ],
+   "ability_points": 5
+  },
+  {
+   "id": "mountain_sappers",
+   "faction": "iberia",
+   "name": "მთის მესანგრეები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 5,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დინამიტი",
+     "mode": "ranged",
+     "range": 6,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "blast",
+      "demolition"
+     ]
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger"
+   ],
+   "ability_points": 5
+  },
+  {
+   "id": "spasalari",
+   "faction": "iberia",
+   "name": "სპასალარი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 10
+  },
+  {
+   "id": "natsiliani",
+   "faction": "iberia",
+   "name": "ნაცილიანები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 8,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ორი ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "marked"
+   ],
+   "ability_points": 6
+  },
+  {
+   "id": "lightning_gunners",
+   "faction": "iberia",
+   "name": "მეხის მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "მეხის შაშხანა",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "lightning",
+      "anti_giant",
+      "reload"
+     ]
+    }
+   ],
+   "tags": [
+    "giant_hunter",
+    "burn_gas"
+   ],
+   "ability_points": 4
+  },
+  {
+   "id": "tush_riders",
+   "faction": "iberia",
+   "name": "თუში მხედრები",
+   "tier": "II",
+   "size": 2,
+   "move": 12,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "mountain",
+    "trench_breaker"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "ekimbashi",
+   "faction": "iberia",
+   "name": "ექიმბაშები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "healer",
+    "alchemist"
+   ],
+   "ability_points": 16
+  },
+  {
+   "id": "fortress_guards",
+   "faction": "iberia",
+   "name": "ციხის მცველები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield",
+    "shield_wall",
+    "steam"
+   ],
+   "ability_points": 5
+  },
+  {
+   "id": "iakhsar_shields",
+   "faction": "iberia",
+   "name": "იახსრის ფარისნები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "საომარი ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "anti_devi"
+     ]
+    },
+    {
+     "name": "მოკლე თოფი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [],
+   "ability_points": 3
+  },
+  {
+   "id": "steam_ibex",
+   "faction": "iberia",
+   "name": "ორთქლის ჯიხვი",
+   "tier": "IV",
+   "size": 3,
+   "move": 8,
+   "shoot": 6,
+   "melee": 5,
+   "armor": 4,
+   "wounds": 8,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ქვემეხი",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast",
+      "indirect"
+     ]
+    },
+    {
+     "name": "რქები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam",
+    "climber"
+   ],
+   "ability_points": 6
+  },
+  {
+   "id": "lightning_castle",
+   "faction": "iberia",
+   "name": "მეხის ციხე",
+   "tier": "IV+",
+   "size": 3,
+   "move": 3,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 7,
+   "wounds": 20,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "გარნიზონის თოფები",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 5,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ელვის ხვია",
+     "mode": "ranged",
+     "range": 6,
+     "attacks": 4,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "lightning",
+      "aura"
+     ]
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam",
+    "huge",
+    "fortress"
+   ],
+   "ability_points": 12
+  },
+  {
+   "id": "armazi_colossus",
+   "faction": "iberia",
+   "name": "არმაზის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 8,
+   "armor": 6,
+   "wounds": 24,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ტიტანის ხმალი",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "ზღვის ტალღა",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 4,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "blast",
+      "once"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "steam"
+   ],
+   "ability_points": 25
+  },
+  {
+   "id": "hero_amirani",
+   "faction": "iberia",
+   "name": "ამირანი და ყურშა",
+   "tier": "hero",
+   "size": 3,
+   "move": 7,
+   "shoot": 0,
+   "melee": 9,
+   "armor": 5,
+   "wounds": 12,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "რკინის მუშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 5,
+     "damage": 2,
+     "tags": [
+      "armor_break",
+      "chain_breaker"
+     ]
+    },
+    {
+     "name": "ყურშა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "pin"
+     ]
+    }
+   ],
+   "tags": [
+    "hero",
+    "titan"
+   ],
+   "ability_points": 20
+  },
+  {
+   "id": "recruits",
+   "faction": "hell",
+   "name": "ახალწვეულები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "needs_orders",
+    "fearless"
+   ],
+   "ability_points": -2
+  },
+  {
+   "id": "legion_shooters",
+   "faction": "hell",
+   "name": "ლეგიონის მსროლელები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 2,
+   "wounds": 1,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "volley"
+     ]
+    }
+   ],
+   "tags": [
+    "line"
+   ],
+   "ability_points": 2
+  },
+  {
+   "id": "marquis",
+   "faction": "hell",
+   "name": "ლეგიონის მარკიზი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ორთქლის პისტოლეტი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "steam"
+     ]
+    }
+   ],
+   "tags": [
+    "leader",
+    "orders"
+   ],
+   "ability_points": 12
+  },
+  {
+   "id": "halphas_fortifiers",
+   "faction": "hell",
+   "name": "ჰალფასის მეციხოვნეები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "supply"
+   ],
+   "ability_points": 9
+  },
+  {
+   "id": "malphas_wreckers",
+   "faction": "hell",
+   "name": "მალფასის დამნგრევები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ფეთქებადი შუბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 5,
+     "damage": 2,
+     "tags": [
+      "anti_giant",
+      "demolition",
+      "once"
+     ]
+    },
+    {
+     "name": "ნაღმი",
+     "mode": "ranged",
+     "range": 6,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "blast",
+      "demolition"
+     ]
+    }
+   ],
+   "tags": [
+    "giant_hunter"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "andras_whisperers",
+   "faction": "hell",
+   "name": "ანდრასის ჩურჩულები",
+   "tier": "II",
+   "size": 1,
+   "move": 7,
+   "shoot": 3,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "discord"
+   ],
+   "ability_points": 14
+  },
+  {
+   "id": "glasya_killers",
+   "faction": "hell",
+   "name": "გლასია-ლაბოლასის მკვლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 7,
+   "shoot": 6,
+   "melee": 7,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "დუმილიანი პისტოლეტი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "vs_leader"
+     ]
+    },
+    {
+     "name": "მოკლე ხმლები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "vs_leader"
+     ]
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "assassin"
+   ],
+   "ability_points": 6
+  },
+  {
+   "id": "legionnaires",
+   "faction": "hell",
+   "name": "ლეგიონერები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 4,
+   "melee": 7,
+   "armor": 5,
+   "wounds": 3,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield",
+    "shield_wall",
+    "steam"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "furcas_riders",
+   "faction": "hell",
+   "name": "ფურკასის მხედრები",
+   "tier": "III",
+   "size": 2,
+   "move": 10,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შუბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "marchosias_wolves",
+   "faction": "hell",
+   "name": "მარქოსიასის მგლები",
+   "tier": "III",
+   "size": 2,
+   "move": 10,
+   "shoot": 0,
+   "melee": 7,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კბილები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "fly",
+    "hunter"
+   ],
+   "ability_points": 5
+  },
+  {
+   "id": "behemoth_spawn",
+   "faction": "hell",
+   "name": "ბეჰემოთის ნაშიერი",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 5,
+   "wounds": 10,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ზურგის ქვემეხი",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "გათელვა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "monster",
+    "rage"
+   ],
+   "ability_points": 2
+  },
+  {
+   "id": "mulciber_forge",
+   "faction": "hell",
+   "name": "მულციბერის სამჭედლო",
+   "tier": "IV",
+   "size": 3,
+   "move": 3,
+   "shoot": 0,
+   "melee": 6,
+   "armor": 5,
+   "wounds": 10,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "გავარვარებული ჩაქუჩები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 5,
+     "damage": 2,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "repair"
+   ],
+   "ability_points": 14
+  },
+  {
+   "id": "standard_fortress",
+   "faction": "hell",
+   "name": "სადროშო ციხე",
+   "tier": "IV+",
+   "size": 3,
+   "move": 3,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 7,
+   "wounds": 20,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "სათოფურები",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 4,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "volley"
+     ]
+    },
+    {
+     "name": "ლეგიონის დროშა",
+     "mode": "ranged",
+     "range": 0,
+     "attacks": 0,
+     "power": 0,
+     "damage": 0,
+     "tags": [
+      "aura"
+     ]
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "huge",
+    "fortress",
+    "orders"
+   ],
+   "ability_points": 18
+  },
+  {
+   "id": "behemoth",
+   "faction": "hell",
+   "name": "ბეჰემოთი",
+   "tier": "V",
+   "size": 4,
+   "move": 5,
+   "shoot": 5,
+   "melee": 9,
+   "armor": 7,
+   "wounds": 26,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "რქები",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 2,
+     "power": 6,
+     "damage": 3,
+     "tags": []
+    },
+    {
+     "name": "ზურგის გარნიზონი",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 4,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "giant",
+    "rage"
+   ],
+   "ability_points": 18
+  },
+  {
+   "id": "hero_sabnock",
+   "faction": "hell",
+   "name": "მარკიზი საბნოკი",
+   "tier": "hero",
+   "size": 2,
+   "move": 6,
+   "shoot": 5,
+   "melee": 8,
+   "armor": 5,
+   "wounds": 5,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ლომისთავიანი ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "festering"
+     ]
+    }
+   ],
+   "tags": [
+    "leader",
+    "hero",
+    "orders"
+   ],
+   "ability_points": 18
+  },
+  {
+   "id": "rebels",
+   "faction": "harness",
+   "name": "ამბოხებულები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 4,
+   "weapons": [
+    {
+     "name": "მოპარული შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დანა და ჯაჭვი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 1,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "madness"
+   ],
+   "ability_points": 1
+  },
+  {
+   "id": "heretic_sappers",
+   "faction": "harness",
+   "name": "ერეტიკოსი მესანგრეები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 4,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 5,
+   "weapons": [
+    {
+     "name": "წერაქვი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხელნაკეთი ყუმბარა",
+     "mode": "ranged",
+     "range": 6,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "tunnel"
+   ],
+   "ability_points": 6
+  },
+  {
+   "id": "yoke_slaves",
+   "faction": "harness",
+   "name": "უღლის მონები",
+   "tier": "I",
+   "size": 1,
+   "move": 4,
+   "shoot": 0,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 3,
+   "weapons": [
+    {
+     "name": "ჯაჭვები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": [
+      "entangle"
+     ]
+    }
+   ],
+   "tags": [
+    "chain_gang",
+    "cover_for_others",
+    "can_be_freed"
+   ],
+   "ability_points": 2
+  },
+  {
+   "id": "rebel_chief",
+   "faction": "harness",
+   "name": "ამბოხის ბელადი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მოპარული ოფიცრის ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader",
+    "nameless"
+   ],
+   "ability_points": 9
+  },
+  {
+   "id": "blood_priests",
+   "faction": "harness",
+   "name": "სისხლის ქურუმები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 2,
+   "melee": 5,
+   "armor": 0,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "რიტუალური დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "capture"
+     ]
+    }
+   ],
+   "tags": [
+    "ritual"
+   ],
+   "ability_points": 14
+  },
+  {
+   "id": "kudiani",
+   "faction": "harness",
+   "name": "კუდიანები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "წყევლა",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 1,
+     "power": 0,
+     "damage": 0,
+     "tags": [
+      "curse"
+     ]
+    },
+    {
+     "name": "მოწამლული დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": [
+      "poison"
+     ]
+    }
+   ],
+   "tags": [
+    "witch",
+    "fog"
+   ],
+   "ability_points": 16
+  },
+  {
+   "id": "chain_shooters",
+   "faction": "harness",
+   "name": "ჯაჭვის მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "ჰარპუნ-ქვემეხი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant",
+      "chain",
+      "reload"
+     ]
+    }
+   ],
+   "tags": [
+    "giant_hunter",
+    "anti_air"
+   ],
+   "ability_points": 4
+  },
+  {
+   "id": "kaji_smith",
+   "faction": "harness",
+   "name": "ქაჯ-მჭედელი",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 2,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "alchemist",
+    "stitcher"
+   ],
+   "ability_points": 16
+  },
+  {
+   "id": "chained_ones",
+   "faction": "harness",
+   "name": "ჯაჭვაბმულები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 0,
+   "melee": 8,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "მძიმე ჯაჭვები",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "unleash"
+     ]
+    }
+   ],
+   "tags": [
+    "madness"
+   ],
+   "ability_points": 2
+  },
+  {
+   "id": "kaji_stitched",
+   "faction": "harness",
+   "name": "ქაჯების ნაკერები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 0,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 4,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "დგუშიანი მუშტები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "undead",
+    "split",
+    "fire_weak"
+   ],
+   "ability_points": 3
+  },
+  {
+   "id": "devi_spawn",
+   "faction": "harness",
+   "name": "დევის ნაშიერი",
+   "tier": "IV",
+   "size": 3,
+   "move": 6,
+   "shoot": 0,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 9,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ბევრი თავი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "monster",
+    "regen",
+    "fire_weak",
+    "lightning_weak"
+   ],
+   "ability_points": 4
+  },
+  {
+   "id": "gveleshapi",
+   "faction": "harness",
+   "name": "გველეშაპი",
+   "tier": "IV",
+   "size": 3,
+   "move": 6,
+   "shoot": 0,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 9,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კბენა",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "swallow"
+     ]
+    }
+   ],
+   "tags": [
+    "monster",
+    "flood"
+   ],
+   "ability_points": 8
+  },
+  {
+   "id": "chain_wagon",
+   "faction": "harness",
+   "name": "ჯაჭვის ურემი",
+   "tier": "IV+",
+   "size": 3,
+   "move": 5,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 6,
+   "wounds": 19,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ერეტიკოსი მსროლელები",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 5,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "შებმული დევები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 5,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "huge",
+    "devi_pulled"
+   ],
+   "ability_points": 10
+  },
+  {
+   "id": "bakbak_devi",
+   "faction": "harness",
+   "name": "ბაყბაყ-დევი",
+   "tier": "V",
+   "size": 4,
+   "move": 7,
+   "shoot": 0,
+   "melee": 9,
+   "armor": 6,
+   "wounds": 24,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "მუშტები",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "giant",
+    "regen",
+    "captive",
+    "fire_weak",
+    "lightning_weak"
+   ],
+   "ability_points": 12
+  },
+  {
+   "id": "hero_nameless",
+   "faction": "harness",
+   "name": "უსახელო",
+   "tier": "hero",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 5,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader",
+    "hero",
+    "convert"
+   ],
+   "ability_points": 22
+  }
+ ]
 }
