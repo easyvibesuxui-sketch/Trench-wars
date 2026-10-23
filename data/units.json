@@ -7757,6 +7757,230 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "sea_islands_leader",
+   "faction": "sea_islands",
+   "name": "მეგონგეების ბელადი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "gong_warriors",
+   "faction": "sea_islands",
+   "name": "გონგის მეომრები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "გონგის ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "gong"
+   ],
+   "ability_points": 8,
+   "allied": true
+  },
+  {
+   "id": "bangka_raiders",
+   "faction": "sea_islands",
+   "name": "ბანკას მოიერიშეები",
+   "tier": "II",
+   "size": 1,
+   "move": 8,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    },
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "landing",
+    "river"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "lantaka_gunners",
+   "faction": "sea_islands",
+   "name": "ლანტაკას მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 4,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ლანტაკა",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "artillery"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "sea_islands_grotesque",
+   "faction": "sea_islands",
+   "name": "ლანტაკას საბრძოლო ნავი",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ლანტაკების ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ტარანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "landing"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "sea_islands_giant",
+   "faction": "sea_islands",
+   "name": "გონგის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ბრინჯაოს მუშტები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "გოლიათის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "gong"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -7786,6 +8010,7 @@
   "great_lakes": "დიდი ტბების მიწები",
   "north_african": "ატლასისა და საჰარის მიწები",
   "central_asian": "ცენტრალური აზიის მთები და სტეპები",
-  "gulf": "ყურისა და წითელი ზღვის სანაპიროები"
+  "gulf": "ყურისა და წითელი ზღვის სანაპიროები",
+  "sea_islands": "სამხრეთ-აღმოსავლეთ აზიის კუნძულები და ნაპირები"
  }
 }
