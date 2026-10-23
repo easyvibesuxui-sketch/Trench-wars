@@ -7981,6 +7981,228 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "korea_leader",
+   "faction": "korea",
+   "name": "მთის სოფლების მეთაური",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "haetae_firewardens",
+   "faction": "korea",
+   "name": "ჰეთეს მეხანძრეები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 3,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ორთქლის წყალსასხმელი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ნაჯახი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "fire_guard"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "tiger_hunters",
+   "faction": "korea",
+   "name": "ვეფხვზე მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 7,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მთის შაშხანა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    }
+   ],
+   "tags": [
+    "monster_hunter",
+    "climber"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "dokkaebi_bargainers",
+   "faction": "korea",
+   "name": "დოკების მოლაპარაკეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "discord"
+   ],
+   "ability_points": 10,
+   "allied": true
+  },
+  {
+   "id": "korea_grotesque",
+   "faction": "korea",
+   "name": "მთის ბატარეა-ურემი",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "მთის ქვემეხები",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ტარანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "korea_giant",
+   "faction": "korea",
+   "name": "ჰეთეს კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ქვის კბილები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "გოლიათის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "fire_guard"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -8011,6 +8233,7 @@
   "north_african": "ატლასისა და საჰარის მიწები",
   "central_asian": "ცენტრალური აზიის მთები და სტეპები",
   "gulf": "ყურისა და წითელი ზღვის სანაპიროები",
-  "sea_islands": "სამხრეთ-აღმოსავლეთ აზიის კუნძულები და ნაპირები"
+  "sea_islands": "სამხრეთ-აღმოსავლეთ აზიის კუნძულები და ნაპირები",
+  "korea": "კორეის ნახევარკუნძული"
  }
 }
