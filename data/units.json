@@ -4292,6 +4292,108 @@
    ],
    "ability_points": 2,
    "allied": true
+  },
+  {
+   "id": "rostam_heirs",
+   "faction": "central_asian",
+   "name": "როსტომის მემკვიდრეები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ხარისთავიანი ლახტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    }
+   ],
+   "tags": [
+    "monster_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "tulpar_riders",
+   "faction": "central_asian",
+   "name": "თულპარის მხედრები",
+   "tier": "II",
+   "size": 2,
+   "move": 10,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "mountain_guides",
+   "faction": "central_asian",
+   "name": "მთის მეგზურები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "climber",
+    "clear_sight"
+   ],
+   "ability_points": 3,
+   "allied": true
   }
  ],
  "allies": {
@@ -4319,6 +4421,7 @@
   "central_african": "ცენტრალური აფრიკის ტყეები",
   "southern_african": "სამხრეთ აფრიკის მთები",
   "great_lakes": "დიდი ტბების მიწები",
-  "north_african": "ატლასისა და საჰარის მიწები"
+  "north_african": "ატლასისა და საჰარის მიწები",
+  "central_asian": "ცენტრალური აზიის მთები და სტეპები"
  }
 }
