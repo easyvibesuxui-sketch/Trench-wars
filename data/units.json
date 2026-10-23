@@ -3211,6 +3211,107 @@
    ],
    "ability_points": 2,
    "allied": true
+  },
+  {
+   "id": "net_weavers",
+   "faction": "west_african",
+   "name": "ქსელის მქსოველები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ფოლადის ბადე",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": [
+      "pin"
+     ]
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "monster_hunter"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "mirror_marksmen",
+   "faction": "west_african",
+   "name": "სარკის მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 7,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "პერისკოპის შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    }
+   ],
+   "tags": [
+    "giant_hunter",
+    "fearless"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "storytellers",
+   "faction": "west_african",
+   "name": "მთხრობელები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "song"
+   ],
+   "ability_points": 14,
+   "allied": true
   }
  ],
  "allies": {
@@ -3227,6 +3328,7 @@
   "nile": "ნილოსის მიწები",
   "yellow_river": "ყვითელი მდინარის მიწები",
   "japan_isles": "იაპონიის კუნძულები",
-  "indian": "ინდოეთის ნახევარკუნძული"
+  "indian": "ინდოეთის ნახევარკუნძული",
+  "west_african": "დასავლეთ აფრიკის მიწები"
  }
 }
