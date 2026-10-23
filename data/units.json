@@ -2899,6 +2899,216 @@
    ],
    "ability_points": 3,
    "allied": true
+  },
+  {
+   "id": "yu_canal_diggers",
+   "faction": "yellow_river",
+   "name": "იუს არხის მთხრელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "flood"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "tripod_scholars",
+   "faction": "yellow_river",
+   "name": "სამფეხის მცოდნეები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "weakness"
+   ],
+   "ability_points": 10,
+   "allied": true
+  },
+  {
+   "id": "xiangliu_hunters",
+   "faction": "yellow_river",
+   "name": "სიანგლიუს მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მრავალლულიანი თოფი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 3,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხანჯალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "monster_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "hidesato_archers",
+   "faction": "japan_isles",
+   "name": "ჰიდესატოს მშვილდოსნები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 7,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მშვილდ-ქვემეხი",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    },
+    {
+     "name": "მოკლე ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "giant_hunter",
+    "third_arrow"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "three_companions",
+   "faction": "japan_isles",
+   "name": "სამი თანამგზავრი",
+   "tier": "I",
+   "size": 1,
+   "move": 7,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 0,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ძაღლის კბილები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "climber",
+    "infiltrate"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "karakuri_soldiers",
+   "faction": "japan_isles",
+   "name": "კარაკურის მეომრები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ზამბარიანი ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "automaton",
+    "construct",
+    "fearless"
+   ],
+   "ability_points": 2,
+   "allied": true
   }
  ],
  "allies": {
@@ -2912,6 +3122,8 @@
   "polianitsy": "ჩრდილოეთის სლავური მიწები",
   "armenian": "სომხეთის მთიანეთი",
   "oghuz": "ოღუზთა მიწები",
-  "nile": "ნილოსის მიწები"
+  "nile": "ნილოსის მიწები",
+  "yellow_river": "ყვითელი მდინარის მიწები",
+  "japan_isles": "იაპონიის კუნძულები"
  }
 }
