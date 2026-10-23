@@ -3603,6 +3603,105 @@
    ],
    "ability_points": 3,
    "allied": true
+  },
+  {
+   "id": "bridge_weavers",
+   "faction": "andes",
+   "name": "ხიდის მწნელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "rope_bridge"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "chaski_runners",
+   "faction": "andes",
+   "name": "მაცნეები",
+   "tier": "I",
+   "size": 1,
+   "move": 8,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "messenger"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "andean_slingers",
+   "faction": "andes",
+   "name": "შურდულოსნები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შურდული",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "climber",
+    "high_ground"
+   ],
+   "ability_points": 2,
+   "allied": true
   }
  ],
  "allies": {
@@ -3623,6 +3722,7 @@
   "west_african": "დასავლეთ აფრიკის მიწები",
   "north_american": "ჩრდილოეთ ამერიკის ტყეები",
   "mexica": "მექსიკის ველის ხალხი",
-  "amazon": "ამაზონის ტყეები და მდინარეები"
+  "amazon": "ამაზონის ტყეები და მდინარეები",
+  "andes": "ანდების მთიანეთი"
  }
 }
