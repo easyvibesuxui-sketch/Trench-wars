@@ -9077,6 +9077,231 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "pyrenean_leader",
+   "faction": "pyrenean",
+   "name": "მთის ფარების მეთაური",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "basajaun_shepherds",
+   "faction": "pyrenean",
+   "name": "ბასახაუნის მწყემსები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "night_sight"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "miner_sappers",
+   "faction": "pyrenean",
+   "name": "მაღაროელი მესანგრეები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ასაფეთქებელი",
+     "mode": "ranged",
+     "range": 6,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast",
+      "once"
+     ]
+    },
+    {
+     "name": "ნაჯახი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "digger",
+    "engineer"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "cyclops_hunters",
+   "faction": "pyrenean",
+   "name": "ცალთვალაზე მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 7,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მთის შაშხანა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    }
+   ],
+   "tags": [
+    "giant_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "pyrenean_grotesque",
+   "faction": "pyrenean",
+   "name": "მაღაროს ჯავშნიანი ურემი",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "მაღაროს ქვემეხები",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ტარანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "pyrenean_giant",
+   "faction": "pyrenean",
+   "name": "ბასახაუნის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ხის მუშტები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "გოლიათის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -9112,6 +9337,7 @@
   "mongolia": "მონღოლური სტეპი და გობი",
   "arctic": "არქტიკის ყინულები და ტუნდრა",
   "siberia": "ციმბირის ტაიგა",
-  "balkans": "ბალკანეთის მთები"
+  "balkans": "ბალკანეთის მთები",
+  "pyrenean": "პირენეის ნახევარკუნძულის მთები"
  }
 }
