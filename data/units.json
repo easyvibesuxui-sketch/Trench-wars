@@ -8425,6 +8425,231 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "arctic_leader",
+   "faction": "arctic",
+   "name": "ყინულის ბანაკის უფროსი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "sled_riders",
+   "faction": "arctic",
+   "name": "ძაღლის მარხილის მხედრები",
+   "tier": "II",
+   "size": 2,
+   "move": 11,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "ice_runner"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "ice_readers",
+   "faction": "arctic",
+   "name": "ყინულის მკითხველები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "ice_reader"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "kayak_hunters",
+   "faction": "arctic",
+   "name": "კაიაკის მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 7,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ჰარპუნი",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant",
+      "pin"
+     ]
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "monster_hunter",
+    "river"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "arctic_grotesque",
+   "faction": "arctic",
+   "name": "ციხე-მარხილი",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "მარხილის ქვემეხები",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ტარანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam",
+    "ice_runner"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "arctic_giant",
+   "faction": "arctic",
+   "name": "ირმის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ფოლადის რქები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "გოლიათის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "ice_runner"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -8457,6 +8682,7 @@
   "gulf": "ყურისა და წითელი ზღვის სანაპიროები",
   "sea_islands": "სამხრეთ-აღმოსავლეთ აზიის კუნძულები და ნაპირები",
   "korea": "კორეის ნახევარკუნძული",
-  "mongolia": "მონღოლური სტეპი და გობი"
+  "mongolia": "მონღოლური სტეპი და გობი",
+  "arctic": "არქტიკის ყინულები და ტუნდრა"
  }
 }
