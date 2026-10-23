@@ -8650,6 +8650,211 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "siberia_leader",
+   "faction": "siberia",
+   "name": "ტაიგის უხუცესი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "olonkho_singers",
+   "faction": "siberia",
+   "name": "ოლონხოს მომღერლები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "song"
+   ],
+   "ability_points": 14,
+   "allied": true
+  },
+  {
+   "id": "taiga_hunters",
+   "faction": "siberia",
+   "name": "ტაიგის მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 8,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "გრძელლულიანი შაშხანა",
+     "mode": "ranged",
+     "range": 36,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "anti_giant"
+     ]
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "giant_hunter"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "reindeer_riders",
+   "faction": "siberia",
+   "name": "ირმის მხედრები",
+   "tier": "I",
+   "size": 2,
+   "move": 9,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "siberia_grotesque",
+   "faction": "siberia",
+   "name": "ორთქლის დათვი",
+   "tier": "IV",
+   "size": 3,
+   "move": 6,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 5,
+   "wounds": 10,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ფოლადის ბრჭყალები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "construct",
+    "steam"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "siberia_giant",
+   "faction": "siberia",
+   "name": "მამონტის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ფოლადის ეშვები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "გოლიათის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "tunnel"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -8683,6 +8888,7 @@
   "sea_islands": "სამხრეთ-აღმოსავლეთ აზიის კუნძულები და ნაპირები",
   "korea": "კორეის ნახევარკუნძული",
   "mongolia": "მონღოლური სტეპი და გობი",
-  "arctic": "არქტიკის ყინულები და ტუნდრა"
+  "arctic": "არქტიკის ყინულები და ტუნდრა",
+  "siberia": "ციმბირის ტაიგა"
  }
 }
