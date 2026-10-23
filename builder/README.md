@@ -10,6 +10,7 @@
 python3 tools/validate.py        # მონაცემების შემოწმება (ყველა ფრაქცია)
 python3 tools/balancer.py        # ფასების გადათვლა (~15 წუთი, ყველა CPU ბირთვზე)
 python3 tools/build_builder.py   # builder/data.js-ის განახლება
+NODE_PATH=$(npm root -g) node tools/test_builder.js   # ყველა ფრაქციის ავტომატური ტესტი ბრაუზერში
 ```
 
 ## წესები, რომლებსაც ბილდერი ამოწმებს
