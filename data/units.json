@@ -200,6 +200,54 @@
    "ability_points": 3
   },
   {
+   "id": "gurian_riders",
+   "faction": "colchis",
+   "name": "გურული მხედარ-მსროლელები",
+   "tier": "II",
+   "size": 2,
+   "move": 12,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ორი რევოლვერი",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხანჯალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "skirmisher",
+    "trick_rider"
+   ],
+   "ability_points": 6
+  },
+  {
    "id": "medea_sisters",
    "faction": "colchis",
    "name": "მედეას დები",
