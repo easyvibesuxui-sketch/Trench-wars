@@ -4,7 +4,7 @@
 კითხულობს data/units.json-ს და:
 1. ფორმულით ითვლის თითოეული იუნიტის ფასს მარჩილში (შეტევა × გამძლეობა + ძალების ფასი);
 2. Monte Carlo-თი ათამაშებს თანაბარი ფასის რაზმებს ერთმანეთის წინააღმდეგ;
-3. წერს ანგარიშს docs/balance-report.md-ში და აჩვენებს ზედმეტად ძლიერ/სუსტ იუნიტებს.
+3. წერს ანგარიშს docs/balance-report.md-ში და ფასებს data/costs.json-ში და აჩვენებს ზედმეტად ძლიერ/სუსტ იუნიტებს.
 
 გაშვება:  python3 tools/balancer.py [--sims 400] [--seed 1]
 """
@@ -17,6 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "units.json"
 REPORT = ROOT / "docs" / "balance-report.md"
+COSTS = ROOT / "data" / "costs.json"  # ფასები ბილდერისთვის
 
 BASE_UNIT = "lashkari"   # ამ იუნიტის ფასი = BASE_COST
 BASE_COST = 20           # მარჩილი
@@ -351,6 +352,7 @@ def main():
         lines.append("")
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text("\n".join(lines), encoding="utf-8")
+    COSTS.write_text(json.dumps({u["id"]: u["_cost"] for u in units}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     flagged = [(u["name"], win[u["id"]]) for u in units if win.get(u["id"]) is not None and not 0.4 <= win[u["id"]] <= 0.6]
     print(f"ანგარიში: {REPORT.relative_to(ROOT)}")
     print(f"სიმულირებული იუნიტები: {sum(1 for v in win.values() if v is not None)}; დროშით მონიშნული: {len(flagged)}")

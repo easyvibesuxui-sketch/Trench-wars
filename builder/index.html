@@ -1,0 +1,340 @@
+<title>Trench Wars რაზმის ამწყობი</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;700&family=Noto+Serif+Georgian:wght@600;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* განლაგება: ზემოთ საველე შტაბის ზოლი (ფრაქცია + ბიუჯეტი), ქვემოთ ორი სვეტი — იუნიტების კატალოგი და რაზმის ფურცელი (ტელეფონზე ერთ სვეტად). */
+:root {
+  --bg: #e9ece5;          /* სანგრის რუკის ქაღალდი */
+  --panel: #f6f7f2;
+  --ink: #1d221e;
+  --muted: #5f675f;
+  --line: #c9cec4;
+  --bronze: #8f531a;      /* კოლხური ბრინჯაო */
+  --patina: #2b6a63;      /* ბრინჯაოს ჟანგი */
+  --danger: #9e2f27;
+  --ok: #3d6b2f;
+  --chip: #dfe3d8;
+  --font-display: "Noto Serif Georgian", Georgia, serif;
+  --font-body: "Noto Sans Georgian", "Segoe UI", system-ui, sans-serif;
+  --font-num: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141816; --panel: #1c211e; --ink: #e5e8e1; --muted: #9aa39a; --line: #333b35;
+    --bronze: #d4904c; --patina: #62b3a8; --danger: #e0685e; --ok: #8cc277; --chip: #262d28;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141816; --panel: #1c211e; --ink: #e5e8e1; --muted: #9aa39a; --line: #333b35;
+  --bronze: #d4904c; --patina: #62b3a8; --danger: #e0685e; --ok: #8cc277; --chip: #262d28;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 20px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; letter-spacing: .01em; }
+h2 { font-size: 1.15rem; font-weight: 800; }
+h3 { font-size: 1rem; font-weight: 600; }
+.sub { color: var(--muted); margin: 4px 0 0; max-width: 65ch; }
+button, select, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--patina); outline-offset: 2px; }
+
+/* შტაბის ზოლი */
+.hq { display: grid; gap: 14px; }
+.factions { display: flex; flex-wrap: wrap; gap: 8px; }
+.faction-btn {
+  border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 8px 14px;
+  display: grid; text-align: left; gap: 2px; min-width: 0;
+}
+.faction-btn small { color: var(--muted); font-size: .78rem; }
+@media (max-width: 520px) { .factions { display: grid; grid-template-columns: 1fr 1fr; } }
+.faction-btn[aria-pressed="true"] { border-color: var(--bronze); box-shadow: inset 0 -3px 0 var(--bronze); }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.controls label { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: .9rem; }
+select, input[type="text"] { background: var(--panel); border: 1px solid var(--line); border-radius: 5px; padding: 6px 8px; }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 20px; align-items: start; }
+@media (max-width: 880px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* კატალოგი */
+.tier { display: grid; gap: 10px; }
+.tier + .tier { margin-top: 18px; }
+.tier-head { display: flex; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.tier-head .tier-note { color: var(--muted); font-size: .82rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 12px; display: grid; gap: 8px; min-width: 0; }
+.card.locked { opacity: .55; }
+.card-top { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+.card-top h3 { min-width: 0; }
+.cost { font-family: var(--font-num); font-weight: 700; color: var(--bronze); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; font-variant-numeric: tabular-nums; }
+.stats div { background: var(--chip); border-radius: 3px; text-align: center; padding: 2px 0; }
+.stats b { display: block; font-family: var(--font-num); font-size: .95rem; }
+.stats span { font-size: .66rem; color: var(--muted); letter-spacing: .02em; }
+.weapons { font-size: .82rem; color: var(--muted); display: grid; gap: 2px; }
+.weapons b { color: var(--ink); font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag { font-size: .72rem; border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; color: var(--muted); }
+.tag.key { border-color: var(--patina); color: var(--patina); }
+.add { justify-self: start; border: 1px solid var(--bronze); color: var(--bronze); background: transparent; border-radius: 5px; padding: 4px 12px; font-weight: 500; }
+.add:disabled { border-color: var(--line); color: var(--muted); cursor: not-allowed; }
+.lock-note { font-size: .78rem; color: var(--muted); }
+
+/* რაზმის ფურცელი */
+.sheet { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: grid; gap: 12px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+@media (max-width: 880px) { .sheet { position: static; } }
+.total { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+.total b { font-size: 1.5rem; }
+.bar { height: 8px; background: var(--chip); border-radius: 4px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--patina); width: 0; transition: width .2s; }
+.bar.over i { background: var(--danger); }
+.checks { display: grid; gap: 4px; font-size: .85rem; margin: 0; padding: 0; list-style: none; }
+.checks li { display: flex; gap: 6px; }
+.checks .bad { color: var(--danger); }
+.checks .good { color: var(--ok); }
+.roster { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.roster li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; border-bottom: 1px dashed var(--line); padding-bottom: 6px; }
+.roster .nm { min-width: 0; }
+.roster .nm small { display: block; color: var(--muted); font-size: .75rem; }
+.qty { display: flex; align-items: center; gap: 4px; font-family: var(--font-num); }
+.qty button { width: 26px; height: 26px; border: 1px solid var(--line); background: transparent; border-radius: 4px; }
+.line-cost { font-family: var(--font-num); color: var(--bronze); font-variant-numeric: tabular-nums; min-width: 3ch; text-align: right; }
+.empty { color: var(--muted); font-size: .9rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.actions button { border: 1px solid var(--line); background: transparent; border-radius: 5px; padding: 5px 10px; font-size: .85rem; }
+.actions .primary { border-color: var(--patina); color: var(--patina); }
+.status { font-size: .8rem; color: var(--muted); min-height: 1.2em; }
+.example { font-size: .75rem; color: var(--bronze); border: 1px solid var(--bronze); border-radius: 999px; padding: 0 8px; justify-self: start; }
+textarea.export { width: 100%; min-height: 160px; font-family: var(--font-num); font-size: .78rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; padding: 8px; }
+footer { color: var(--muted); font-size: .8rem; }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="hq">
+    <div>
+      <h1>რაზმის ამწყობი</h1>
+      <p class="sub">აირჩიე მხარე, დაამატე იუნიტები და შეამოწმე, აკმაყოფილებს თუ არა რაზმი წესებს. ფასები მარჩილშია, ბალანსერის ბოლო გაშვებიდან.</p>
+    </div>
+    <div class="factions" id="factions" role="group" aria-label="ფრაქცია"></div>
+    <div class="controls">
+      <label for="budget">ბიუჯეტი
+        <select id="budget">
+          <option value="500">500 მარჩილი — სტანდარტული</option>
+          <option value="750">750 მარჩილი — დიდი ბრძოლა</option>
+          <option value="1000">1000 მარჩილი — ომი</option>
+        </select>
+      </label>
+      <label for="scenario"><input type="checkbox" id="scenario"> სცენარი: გოლიათები და გმირები დაშვებულია</label>
+      <label for="wbname">რაზმის სახელი <input type="text" id="wbname" maxlength="60" placeholder="მაგ. ამბრის ღარის მცველები"></label>
+    </div>
+  </header>
+
+  <div class="grid">
+    <main id="catalog" aria-label="იუნიტები"></main>
+    <aside class="sheet" aria-label="რაზმი">
+      <div class="total"><span>რაზმი</span><span><b id="spent">0</b> / <span id="cap">500</span></span></div>
+      <div class="bar" id="bar"><i></i></div>
+      <span class="example" id="exampleTag" hidden>მაგალითი — შეცვალე ან გაასუფთავე</span>
+      <ul class="checks" id="checks"></ul>
+      <ul class="roster" id="roster"></ul>
+      <div class="actions">
+        <button type="button" class="primary" id="copyBtn">ტექსტად კოპირება</button>
+        <button type="button" id="saveBtn">შენახვა</button>
+        <button type="button" id="clearBtn">გასუფთავება</button>
+      </div>
+      <div class="status" id="status" role="status"></div>
+      <textarea class="export" id="exportBox" readonly hidden aria-label="რაზმი ტექსტად"></textarea>
+    </aside>
+  </div>
+  <footer>Trench Wars · სამუშაო ვერსია. წესები: rules/core-rules.md · ფასები: docs/balance-report.md</footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const D = window.TW_DATA;
+  const TIERS = [
+    ["I", "I. ქვეითი", "იაფი სანგრის ჯარი"],
+    ["II", "II. ელიტა", "ლიდერები, სპეციალისტები, რაინდები"],
+    ["III", "III. ჯავშნიანი", "მძიმე ჯავშანი და პროთეზები"],
+    ["IV", "IV. გროტესკული", "მაქს. 1 IV ან IV+ რაზმში"],
+    ["IV+", "IV+. დიდი გროტესკული", "მხოლოდ 750+ მარჩილი; იკავებს IV-ის ადგილს"],
+    ["V", "V. გოლიათი", "მხოლოდ სცენარით"],
+    ["hero", "გმირი", "მხოლოდ სცენარით, მაქს. 1"],
+  ];
+  const FACTION_NOTE = {
+    colchis: "ბრინჯაო, ცეცხლი, ხარები",
+    iberia: "რკინა, ელვა, მთა, ძაღლები",
+    hell: "წესრიგი, ბრძანებები, ზალპები",
+    harness: "სიგიჟე, სისხლი, დევები",
+  };
+  const TAG = {
+    leader: "ლიდერი", hero: "გმირი", giant: "გოლიათი", giant_hunter: "გოლიათზე მონადირე", healer: "მკურნალი",
+    alchemist: "ალქიმია", engineer: "ინჟინერი", digger: "თხრის თხრილს", cavalry: "ცხენოსანი", trench_breaker: "თხრილს არღვევს",
+    shield: "ფარი", shield_wall: "ფარის კედელი", steam: "ორთქლი", vehicle: "მანქანა", relic: "რელიქვია", huge: "უზარმაზარი",
+    fly: "ფრენა", infiltrate: "ჩასაფრება", scout: "მზვერავი", detect_heretic: "ერეტიკოსს ცნობს", mountain: "მთის ხალხი",
+    marked: "ნიშნიანი", burn_gas: "გაზს წვავს", climber: "კლდეზე ადის", fortress: "მავალი სიმაგრე", titan: "ტიტანი",
+    needs_orders: "ბრძანებას საჭიროებს", fearless: "შიში არ აქვს", line: "მწკრივი", orders: "ბრძანებები", supply: "მარაგი",
+    discord: "უთანხმოება", assassin: "მკვლელი", hunter: "მონადირე", monster: "ურჩხული", rage: "მრისხანება", repair: "აღდგენა",
+    madness: "სიგიჟე", tunnel: "გვირაბი", chain_gang: "ჯაჭვის ჯგუფი", cover_for_others: "ცოცხალი კედელი",
+    can_be_freed: "შეიძლება გათავისუფლდეს", nameless: "უსახელო", ritual: "რიტუალი", witch: "ჯადოქარი", fog: "ბურუსი",
+    anti_air: "ცის ჩამოგდება", stitcher: "ნაკერი", undead: "ნაკერი სხეული", split: "იშლება", fire_weak: "ცეცხლს ვერ უძლებს",
+    lightning_weak: "ელვას ვერ უძლებს", regen: "ამოზრდა", flood: "წყალდიდობა", devi_pulled: "დევები მიათრევენ",
+    captive: "ტყვე", convert: "გადაბირება", never_sleeps: "არასოდეს სძინავს",
+  };
+  const KEY_TAGS = new Set(["leader", "giant_hunter", "healer", "alchemist", "engineer", "regen", "orders", "hero", "giant"]);
+  const WTAG = { fire: "ცეცხლი", lightning: "ელვა", blast: "აფეთქება", anti_giant: "გოლიათზე", charge: "იერიში", reload: "დატენვა",
+    once: "ერთჯერადი", steam: "ორთქლი", poison: "შხამი", demolition: "ნგრევა", chain: "ჯაჭვი", grab: "ჩაჭიდება", sweep: "ქნევა",
+    indirect: "ზემოდან", aura: "ავრა", volley: "ზალპი", pin: "აჩერებს", armor_break: "ჯავშანს ამსხვრევს", anti_devi: "დევზე",
+    vs_leader: "ლიდერზე", festering: "ახრწნის", capture: "ტყვე", curse: "წყევლა", entangle: "ხლართავს", frenzy: "ბრაზი",
+    unleash: "გაშვება", swallow: "ყლაპავს", chain_breaker: "ჯაჭვს წყვეტს" };
+
+  const byId = Object.fromEntries(D.units.map(u => [u.id, u]));
+  const STORE = "tw-warband-v1";
+  const EXAMPLE = { faction: "colchis", budget: 500, scenario: false, name: "ამბრის ღარის მცველები",
+    picks: { eristavi: 1, lashkari: 6, dali_hunters: 2, aznauri: 2, medea_sisters: 1, shavkhan_smiths: 1 }, example: true };
+
+  let state = load() || structuredClone(EXAMPLE);
+
+  function load() {
+    try { const s = JSON.parse(localStorage.getItem(STORE)); return s && byId && s.faction ? s : null; } catch (e) { return null; }
+  }
+  function save(msg) {
+    try { localStorage.setItem(STORE, JSON.stringify(state)); setStatus(msg || "შენახულია ამ ბრაუზერში."); }
+    catch (e) { setStatus("შენახვა ვერ მოხერხდა: ბრაუზერი მეხსიერებას ბლოკავს. გამოიყენე „ტექსტად კოპირება“."); }
+  }
+  function setStatus(t) { document.getElementById("status").textContent = t; }
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function factionUnits() { return D.units.filter(u => u.faction === state.faction); }
+  function picks() { return Object.entries(state.picks).filter(([id, n]) => n > 0 && byId[id] && byId[id].faction === state.faction); }
+  function spent() { return picks().reduce((s, [id, n]) => s + byId[id].cost * n, 0); }
+  function count(pred) { return picks().reduce((s, [id, n]) => s + (pred(byId[id]) ? n : 0), 0); }
+
+  function lockReason(u) {
+    if ((u.tier === "V" || u.tier === "hero") && !state.scenario) return "საჭიროა სცენარის რეჟიმი";
+    if (u.tier === "IV+" && state.budget < 750) return "მხოლოდ 750+ მარჩილის თამაშში";
+    const n = state.picks[u.id] || 0;
+    if ((u.tier === "IV" || u.tier === "IV+") && count(x => x.tier === "IV" || x.tier === "IV+") >= 1 && n === 0) return "IV დონე უკვე არჩეულია";
+    if (u.tier === "V" && count(x => x.tier === "V") >= 1 && n === 0) return "გოლიათი უკვე არჩეულია";
+    if (u.tier === "hero" && count(x => x.tier === "hero") >= 1 && n === 0) return "გმირი უკვე არჩეულია";
+    if ((u.tier === "IV" || u.tier === "IV+" || u.tier === "V" || u.tier === "hero") && n >= 1) return "მაქს. 1";
+    return "";
+  }
+
+  function checks() {
+    const out = [];
+    const total = spent();
+    const leaders = count(u => u.tags.includes("leader"));
+    out.push(total <= state.budget ? ["good", `ბიუჯეტი: ${total} / ${state.budget}`] : ["bad", `ბიუჯეტი გადაჭარბებულია ${total - state.budget} მარჩილით`]);
+    out.push(leaders === 1 ? ["good", "1 ლიდერი"] : ["bad", leaders === 0 ? "საჭიროა 1 ლიდერი" : `მხოლოდ 1 ლიდერი შეიძლება (ახლა ${leaders})`]);
+    const iv = count(u => u.tier === "IV" || u.tier === "IV+");
+    if (iv > 1) out.push(["bad", "IV დონე: მაქს. 1"]);
+    if (count(u => u.tier === "IV+") && state.budget < 750) out.push(["bad", "IV+ მხოლოდ 750+ მარჩილის თამაშში"]);
+    if (count(u => u.tier === "V" || u.tier === "hero") && !state.scenario) out.push(["bad", "გოლიათი/გმირი მხოლოდ სცენარით"]);
+    const models = picks().reduce((s, [, n]) => s + n, 0);
+    out.push(["", `მოდელები: ${models}`]);
+    return out;
+  }
+
+  function stats(u) {
+    const cells = [["მოძ", u.move + '"'], ["სრ", u.shoot || "—"], ["ხჩ", u.melee], ["ჯავ", u.armor], ["სიც", u.wounds], ["ნებ", u.nerve]];
+    return `<div class="stats" aria-label="მაჩვენებლები">${cells.map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join("")}</div>`;
+  }
+  function weapons(u) {
+    return `<div class="weapons">${u.weapons.filter(w => w.attacks > 0 || w.tags.includes("aura")).map(w => {
+      const t = w.tags.map(x => WTAG[x] || x).join(", ");
+      const rng = w.mode === "melee" ? "ხელჩართ." : `${w.range}"`;
+      return `<div><b>${esc(w.name)}</b> · ${rng} · ${w.attacks}× ძ${w.power} ზ${w.damage}${t ? " · " + esc(t) : ""}</div>`;
+    }).join("")}</div>`;
+  }
+
+  function renderFactions() {
+    $("factions").innerHTML = Object.entries(D.factions).map(([id, nm]) =>
+      `<button type="button" class="faction-btn" data-f="${id}" aria-pressed="${id === state.faction}"><span>${esc(nm)}</span><small>${FACTION_NOTE[id] || ""}</small></button>`).join("");
+  }
+
+  function renderCatalog() {
+    const units = factionUnits();
+    $("catalog").innerHTML = TIERS.map(([t, label, note]) => {
+      const list = units.filter(u => u.tier === t);
+      if (!list.length) return "";
+      return `<section class="tier"><div class="tier-head"><h2>${label}</h2><span class="tier-note">${note}</span></div><div class="cards">${list.map(u => {
+        const why = lockReason(u);
+        const hardLock = why && why !== "მაქს. 1";
+        return `<article class="card${hardLock && !(state.picks[u.id] > 0) ? " locked" : ""}">
+          <div class="card-top"><h3>${esc(u.name)}</h3><span class="cost">${u.cost}</span></div>
+          ${stats(u)}${weapons(u)}
+          <div class="tags">${u.tags.filter(x => TAG[x]).map(x => `<span class="tag${KEY_TAGS.has(x) ? " key" : ""}">${TAG[x]}</span>`).join("")}</div>
+          <button type="button" class="add" data-add="${u.id}" ${why ? "disabled" : ""}>დამატება</button>
+          ${why ? `<span class="lock-note">${why}</span>` : ""}
+        </article>`;
+      }).join("")}</div></section>`;
+    }).join("");
+  }
+
+  function renderSheet() {
+    const total = spent();
+    $("spent").textContent = total; $("cap").textContent = state.budget;
+    $("bar").classList.toggle("over", total > state.budget);
+    $("bar").firstElementChild.style.width = Math.min(100, total / state.budget * 100) + "%";
+    $("checks").innerHTML = checks().map(([c, t]) => `<li class="${c}">${c === "good" ? "✓" : c === "bad" ? "✕" : "·"} ${esc(t)}</li>`).join("");
+    const rows = picks();
+    $("roster").innerHTML = rows.length ? rows.map(([id, n]) => {
+      const u = byId[id];
+      return `<li><span class="nm">${esc(u.name)}<small>${u.tier} · ${u.cost} თითო</small></span>
+        <span class="qty"><button type="button" data-dec="${id}" aria-label="ერთით ნაკლები">−</button>${n}<button type="button" data-add="${id}" aria-label="ერთით მეტი" ${lockReason(u) ? "disabled" : ""}>+</button></span>
+        <span class="line-cost">${u.cost * n}</span></li>`;
+    }).join("") : `<li class="empty">რაზმი ცარიელია. დაამატე ლიდერი და იუნიტები მარცხენა სიიდან.</li>`;
+    $("exampleTag").hidden = !state.example;
+    $("budget").value = String(state.budget); $("scenario").checked = state.scenario; $("wbname").value = state.name || "";
+  }
+
+  function render() { renderFactions(); renderCatalog(); renderSheet(); }
+
+  function touch() { state.example = false; render(); }
+
+  document.addEventListener("click", e => {
+    const f = e.target.closest("[data-f]");
+    if (f) { if (f.dataset.f !== state.faction) { state.faction = f.dataset.f; state.picks = {}; touch(); setStatus(""); } return; }
+    const a = e.target.closest("[data-add]");
+    if (a && !a.disabled) { const id = a.dataset.add; state.picks[id] = (state.picks[id] || 0) + 1; touch(); return; }
+    const d = e.target.closest("[data-dec]");
+    if (d) { const id = d.dataset.dec; state.picks[id] = Math.max(0, (state.picks[id] || 0) - 1); touch(); }
+  });
+  $("budget").addEventListener("change", e => { state.budget = Number(e.target.value); touch(); });
+  $("scenario").addEventListener("change", e => { state.scenario = e.target.checked; touch(); });
+  $("wbname").addEventListener("input", e => { state.name = e.target.value; state.example = false; $("exampleTag").hidden = true; });
+  $("saveBtn").addEventListener("click", () => save());
+  $("clearBtn").addEventListener("click", () => { state.picks = {}; state.name = ""; touch(); setStatus("რაზმი გასუფთავდა."); });
+
+  function asText() {
+    const lines = [`${state.name || "უსახელო რაზმი"} — ${D.factions[state.faction]}`, `${spent()} / ${state.budget} მარჩილი${state.scenario ? " · სცენარი" : ""}`, ""];
+    for (const [id, n] of picks()) { const u = byId[id]; lines.push(`${n}× ${u.name} (${u.tier}) — ${u.cost * n}`); }
+    const bad = checks().filter(([c]) => c === "bad").map(([, t]) => t);
+    if (bad.length) lines.push("", "⚠ " + bad.join("; "));
+    return lines.join("\n");
+  }
+  $("copyBtn").addEventListener("click", () => {
+    const text = asText(); const box = $("exportBox");
+    box.value = text; box.hidden = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => setStatus("კოპირებულია."), () => { box.select(); setStatus("მონიშნულია — დააკოპირე ხელით."); });
+    } else { box.select(); setStatus("მონიშნულია — დააკოპირე ხელით."); }
+  });
+
+  render();
+})();
+</script>
