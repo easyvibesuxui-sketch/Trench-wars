@@ -191,13 +191,14 @@ def attack(m, w, enemies, rng, cover=0):
         if "blast" in w["tags"] and t.u["size"] == 1 and len(alive) > 1 and rng.random() < 0.5:
             targets.append(rng.choice(alive))
         for tt in targets:
-            if rng.random() < hit_p(skill, tt.u["size"]) and \
-               rng.random() < wound_p(power, tt.u["armor"], w["tags"], tt.u["size"]):
+            if rng.random() >= hit_p(skill, tt.u["size"]):
+                continue
+            if "pin" in w["tags"]:
+                tt.pinned = True  # ბადე/ჯაჭვი: მოხვედრაც საკმარისია — შემდეგ აქტივაციაზე ვერ მოძრაობს
+            if rng.random() < wound_p(power, tt.u["armor"], w["tags"], tt.u["size"]):
                 tt.w -= w["damage"]
                 if "fire" in w["tags"] or "lightning" in w["tags"]:
                     tt.regen_block = True
-                if "pin" in w["tags"]:
-                    tt.pinned = True  # ბადე/ჯაჭვი: შემდეგ აქტივაციაზე ვერ მოძრაობს
                 if "fire" in w["tags"] and tt.w > 0 and rng.random() < 0.5:
                     tt.w -= 1  # წვა
 
