@@ -770,7 +770,7 @@
   {
    "id": "natsiliani",
    "faction": "iberia",
-   "name": "ნაცილიანები",
+   "name": "ნიშნიანები",
    "tier": "II",
    "size": 1,
    "move": 6,
@@ -2528,7 +2528,7 @@
   {
    "id": "vulcan_gunners",
    "faction": "italy",
-   "name": "ვულკანის მეკვემეხეები",
+   "name": "ვულკანის მექვემეხეები",
    "tier": "II",
    "size": 1,
    "move": 4,
@@ -2646,6 +2646,157 @@
    ],
    "ability_points": 3,
    "allied": true
+  },
+  {
+   "id": "vahagn_slayers",
+   "faction": "armenian",
+   "name": "ვაჰაგნის ვიშაპმკვლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ცეცხლის შუბი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "fire",
+      "anti_giant"
+     ]
+    },
+    {
+     "name": "შუბის წვერი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "monster_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "aralez_keepers",
+   "faction": "armenian",
+   "name": "არალეზების მცველები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "არალეზის კბილები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "healer"
+   ],
+   "ability_points": 18,
+   "allied": true
+  },
+  {
+   "id": "basat_hunters",
+   "faction": "oghuz",
+   "name": "ბასატის მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "გავარვარებული ტყვიის შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    },
+    {
+     "name": "ხანჯალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "giant_hunter"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "koroglu_riders",
+   "faction": "oghuz",
+   "name": "ქოროღლის მხედრები",
+   "tier": "II",
+   "size": 2,
+   "move": 10,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 3,
+   "allied": true
   }
  ],
  "allies": {
@@ -2656,6 +2807,8 @@
   "britain": "ბრიტანეთის კუნძული",
   "gaul": "გალია",
   "italy": "იტალიის ნახევარკუნძული",
-  "polianitsy": "ჩრდილოეთის სლავური მიწები"
+  "polianitsy": "ჩრდილოეთის სლავური მიწები",
+  "armenian": "სომხეთის მთიანეთი",
+  "oghuz": "ოღუზთა მიწები"
  }
 }

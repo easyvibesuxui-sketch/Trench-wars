@@ -288,6 +288,7 @@ footer { color: var(--muted); font-size: .8rem; }
     celtic: "გოიბნიუს მჭედლები და ლუგის სნაიპერები", finnish: "ილმარინენის ნაჭედები და მომღერლები",
     britain: "ბეოვულფის მემკვიდრეები, ურჩხულებზე მონადირეები", gaul: "ელვის ტექნოლოგია, იბერიის ძველი პარტნიორი",
     italy: "ვულკანის საველე არტილერია", polianitsy: "ძალიან ცოტანი არიან — რაზმში მაქს. 1",
+    armenian: "ვიშაპმკვლელები და არალეზები — რგოლის სამხრეთი", oghuz: "ბასატის მონადირეები და ქოროღლის მხედრები — რგოლის აღმოსავლეთი",
   };
   function canHire() { return LIGHT.has(state.faction); }
   function isMine(u) { return u.faction === state.faction || (u.allied && canHire()); }
@@ -395,7 +396,7 @@ footer { color: var(--muted); font-size: .8rem; }
       return `<div class="ally"><h3 class="ally-name">${esc(nm)} <span>${ALLY_NOTE[aid] || ""}</span></h3><div class="cards">${list.map(card).join("")}</div></div>`;
     }).join("");
     return `<section class="tier allies"><div class="tier-head"><h2>მოკავშირეების დაქირავება</h2>
-      <span class="tier-note">ბიუჯეტის მაქს. 20% (${hireCap()} მარჩილი), ფასი +20%. ჭრილობაზე „რგოლის ხარკით“ ჩამოსული რაზმები.</span></div>${groups}</section>`;
+      <span class="tier-note">ბიუჯეტის მაქს. 20% (${hireCap()} მარჩილი), ფასი +20%. ჭრილობაზე „რგოლის ხარკით“ ჩამოსული რაზმები და რგოლის მეზობელი ერები.</span></div>${groups}</section>`;
   }
 
   function renderGear() {
