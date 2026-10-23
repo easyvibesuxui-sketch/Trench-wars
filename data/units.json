@@ -3702,6 +3702,110 @@
    ],
    "ability_points": 2,
    "allied": true
+  },
+  {
+   "id": "lighthouse_keepers",
+   "faction": "caribbean",
+   "name": "შუქურის მცველები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "სასიგნალო პისტოლეტი",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": [
+      "fire"
+     ]
+    }
+   ],
+   "tags": [
+    "night_sight",
+    "beacon"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "harpoon_fishers",
+   "faction": "caribbean",
+   "name": "ჰარპუნიანი მეთევზეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ჰარპუნი",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 1,
+     "power": 3,
+     "damage": 2,
+     "tags": [
+      "anti_giant",
+      "pin"
+     ]
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "monster_hunter",
+    "river"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "papa_bois_scouts",
+   "faction": "caribbean",
+   "name": "პაპა ბუას მზვერავები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
   }
  ],
  "allies": {
@@ -3723,6 +3827,7 @@
   "north_american": "ჩრდილოეთ ამერიკის ტყეები",
   "mexica": "მექსიკის ველის ხალხი",
   "amazon": "ამაზონის ტყეები და მდინარეები",
-  "andes": "ანდების მთიანეთი"
+  "andes": "ანდების მთიანეთი",
+  "caribbean": "კარიბის კუნძულები"
  }
 }
