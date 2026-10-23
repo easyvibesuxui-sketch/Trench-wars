@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""მონაცემების შემოწმება: data/units.json, data/costs.json, data/equipment.json, builder/index.html, units/*.md
+
+გაშვება:  python3 tools/validate.py   (შეცდომაზე exit code 1)
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+TIERS = {"I", "II", "III", "IV", "IV+", "V", "hero"}
+COMBAT_TIERS = {"I", "II", "III", "IV", "IV+"}
+
+
+def main():
+    data = json.loads((ROOT / "data" / "units.json").read_text(encoding="utf-8"))
+    costs = json.loads((ROOT / "data" / "costs.json").read_text(encoding="utf-8"))
+    equipment = json.loads((ROOT / "data" / "equipment.json").read_text(encoding="utf-8"))
+    html = (ROOT / "builder" / "index.html").read_text(encoding="utf-8")
+    docs = "\n".join(p.read_text(encoding="utf-8") for p in (ROOT / "units").glob("*.md"))
+    factions, allies, units = data["factions"], data.get("allies", {}), data["units"]
+    errors, warnings = [], []
+
+    ids = [u["id"] for u in units]
+    for i in sorted({i for i in ids if ids.count(i) > 1}):
+        errors.append(f"გამეორებული id: {i}")
+    by_id = {u["id"]: u for u in units}
+
+    labels = set(re.findall(r"\b([a-z_]+): \"", html))
+    m = re.search(r"const ALLY_NOTE = \{(.*?)\};", html, re.S)
+    ally_notes = set(re.findall(r"\b([a-z_]+): \"", m.group(1))) if m else set()
+
+    for u in units:
+        uid = u["id"]
+        if u["faction"] not in factions and u["faction"] not in allies:
+            errors.append(f"{uid}: უცნობი ფრაქცია {u['faction']}")
+        if bool(u.get("allied")) != (u["faction"] in allies):
+            errors.append(f"{uid}: allied დროშა არ ემთხვევა ფრაქციას")
+        if u["tier"] not in TIERS:
+            errors.append(f"{uid}: უცნობი დონე {u['tier']}")
+        checks = [("size", 1, 4), ("move", 0, 16), ("shoot", 0, 10), ("melee", 0, 10),
+                  ("armor", 0, 7), ("wounds", 1, 40), ("nerve", 1, 10)]
+        for key, lo, hi in checks:
+            if not lo <= u[key] <= hi:
+                errors.append(f"{uid}: {key}={u[key]} დიაპაზონს გარეთაა ({lo}–{hi})")
+        if not u["weapons"]:
+            errors.append(f"{uid}: იარაღი არ აქვს")
+        for w in u["weapons"]:
+            if w["mode"] not in ("ranged", "melee"):
+                errors.append(f"{uid}/{w['name']}: უცნობი mode {w['mode']}")
+            if w["attacks"] == 0 and "aura" in w["tags"]:
+                continue  # ძალის ჩანაწერი იარაღის სახით (მაგ. დროშის ავრა)
+            if w["mode"] == "ranged" and w["range"] < 3:
+                errors.append(f"{uid}/{w['name']}: სასროლს მანძილი {w['range']}")
+            if w["mode"] == "ranged" and u["shoot"] == 0:
+                errors.append(f"{uid}/{w['name']}: სასროლი აქვს, მაგრამ სროლა 0")
+            if w["mode"] == "melee" and w["range"] > 3:
+                errors.append(f"{uid}/{w['name']}: ხელჩართულის მანძილი {w['range']}")
+            for k in ("attacks", "power", "damage"):
+                if w[k] < 0:
+                    errors.append(f"{uid}/{w['name']}: {k} < 0")
+            for t in w["tags"]:
+                if t not in labels:
+                    errors.append(f"{uid}/{w['name']}: იარაღის ნიშანს '{t}' ბილდერში სახელი არ აქვს")
+        for t in u["tags"]:
+            if t not in labels:
+                errors.append(f"{uid}: ნიშანს '{t}' ბილდერში სახელი არ აქვს")
+        if uid not in costs:
+            errors.append(f"{uid}: ფასი არ აქვს (data/costs.json)")
+        if u["name"] not in docs:
+            warnings.append(f"{uid}: სახელი „{u['name']}“ units/*.md-ში არ ჩანს")
+        if u.get("allied"):
+            if "leader" in u["tags"]:
+                errors.append(f"{uid}: მოკავშირეს ლიდერი არ უნდა ჰყავდეს")
+            if u["tier"] not in {"I", "II", "III"}:
+                errors.append(f"{uid}: მოკავშირე მხოლოდ I–III დონისაა")
+
+    for k in costs:
+        if k not in by_id:
+            warnings.append(f"costs.json: ზედმეტი ჩანაწერი {k}")
+
+    for fid, fname in factions.items():
+        fu = [u for u in units if u["faction"] == fid]
+        if not any("leader" in u["tags"] and u["tier"] in COMBAT_TIERS for u in fu):
+            errors.append(f"{fname}: სტანდარტულ თამაშში ლიდერი არ ჰყავს")
+        if not any(u["tier"] == "I" for u in fu):
+            errors.append(f"{fname}: I დონის იუნიტი არ ჰყავს")
+        # დონე/ფასი: დაბალი დონის საბრძოლო იუნიტი არ უნდა იყოს ძვირი შემდეგი დონის ყველაზე იაფზე ორჯერ მეტად
+        order = ["I", "II", "III", "IV", "IV+"]
+        for a, b in zip(order, order[1:]):
+            ca = [costs.get(u["id"], 0) for u in fu if u["tier"] == a]
+            cb = [costs.get(u["id"], 0) for u in fu if u["tier"] == b]
+            if ca and cb and max(ca) > 2 * min(cb):
+                warnings.append(f"{fname}: {a} დონის უძვირესი ({max(ca)}) {b} დონის უიაფესზე ({min(cb)}) ორჯერ ძვირია")
+
+    for aid in allies:
+        if not any(u["faction"] == aid for u in units):
+            errors.append(f"მოკავშირე {aid}: იუნიტები არ აქვს")
+        if aid not in ally_notes:
+            warnings.append(f"მოკავშირე {aid}: ბილდერში ALLY_NOTE არ აქვს")
+
+    sides = {"all", "light", "dark", *factions}
+    for it in equipment["items"]:
+        for s in it["sides"]:
+            if s not in sides:
+                errors.append(f"აღჭურვილობა {it['id']}: უცნობი მხარე {s}")
+        for r in it.get("requires_units", []):
+            if r not in by_id:
+                errors.append(f"აღჭურვილობა {it['id']}: უცნობი იუნიტი {r}")
+        if it["category"] not in equipment["categories"]:
+            errors.append(f"აღჭურვილობა {it['id']}: უცნობი კატეგორია")
+
+    for w in warnings:
+        print("⚠️ ", w)
+    for e in errors:
+        print("❌", e)
+    print(f"იუნიტები: {len(units)} · ფრაქციები: {len(factions)} · მოკავშირეები: {len(allies)} · შეცდომები: {len(errors)} · გაფრთხილებები: {len(warnings)}")
+    sys.exit(1 if errors else 0)
+
+
+if __name__ == "__main__":
+    main()

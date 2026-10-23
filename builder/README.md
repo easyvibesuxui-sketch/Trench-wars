@@ -7,7 +7,8 @@
 
 ## განახლება
 ```bash
-python3 tools/balancer.py        # ფასების გადათვლა (რამდენიმე წუთი)
+python3 tools/validate.py        # მონაცემების შემოწმება (ყველა ფრაქცია)
+python3 tools/balancer.py        # ფასების გადათვლა (~15 წუთი, ყველა CPU ბირთვზე)
 python3 tools/build_builder.py   # builder/data.js-ის განახლება
 ```
 
