@@ -4186,6 +4186,112 @@
    ],
    "ability_points": 3,
    "allied": true
+  },
+  {
+   "id": "khettara_diggers",
+   "faction": "north_african",
+   "name": "ხეტარის მთხრელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "digger",
+    "tunnel"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "caravan_guards",
+   "faction": "north_african",
+   "name": "ქარავნის მცველები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხანჯალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "clear_sight"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "agadir_guards",
+   "faction": "north_african",
+   "name": "აგადირის მცველები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შუბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield_wall"
+   ],
+   "ability_points": 2,
+   "allied": true
   }
  ],
  "allies": {
@@ -4212,6 +4318,7 @@
   "oceania": "ოკეანეთის კუნძულები",
   "central_african": "ცენტრალური აფრიკის ტყეები",
   "southern_african": "სამხრეთ აფრიკის მთები",
-  "great_lakes": "დიდი ტბების მიწები"
+  "great_lakes": "დიდი ტბების მიწები",
+  "north_african": "ატლასისა და საჰარის მიწები"
  }
 }
