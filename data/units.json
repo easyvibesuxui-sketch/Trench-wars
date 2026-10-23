@@ -580,6 +580,38 @@
    "ability_points": 15
   },
   {
+   "id": "hero_eliso",
+   "faction": "colchis",
+   "name": "დედა-მკურნალი ელისო",
+   "tier": "hero",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 3,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "მოწამლული დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "poison"
+     ]
+    }
+   ],
+   "tags": [
+    "hero",
+    "healer",
+    "alchemist"
+   ],
+   "ability_points": 40
+  },
+  {
    "id": "khevsur",
    "faction": "iberia",
    "name": "ხევსური მოლაშქრეები",
