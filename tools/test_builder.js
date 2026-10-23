@@ -22,6 +22,11 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
     const own = D.units.filter(u => u.faction === f);
     const heads = await p.$$eval('#catalog > section.tier:not(.allies):not(.gear) h2', h => h.map(x => x.textContent));
     for (const t of ['II', 'IV', 'V']) if (!heads.some(h => h.startsWith(t + '.'))) fails.push(`${f}: კატალოგში ${t} დონე არ ჩანს`);
+    // რეგულარული ჯარი: აირწინაღიანი რიგითები და სანგრის მოჩხუბრები ყველას ჰყავს და კატალოგში ჩანს
+    for (const [tag, what] of [['gas_mask', 'რიგითები/აირწინაღი'], ['brawler', 'მოჩხუბრები']]) {
+      const u = own.find(x => x.tier === 'I' && x.tags.includes(tag));
+      if (!u || !await p.$(`#catalog > section.tier [data-add="${u.id}"]`)) fails.push(`${f}: ${what} კატალოგში არ ჩანს`);
+    }
     // ლიდერი + იაფი იუნიტები 500-ში
     const leader = own.find(u => u.tags.includes('leader') && ['I', 'II', 'III'].includes(u.tier));
     if (!leader || !await clickAdd(leader.id)) { fails.push(`${f}: ლიდერი ვერ დაემატა`); continue; }

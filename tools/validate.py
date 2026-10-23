@@ -90,6 +90,11 @@ def main():
             errors.append(f"{fname}: გროტესკი (IV) არ ჰყავს")
         if not any(u["tier"] == "V" for u in fu):
             errors.append(f"{fname}: გოლიათი (V) არ ჰყავს")
+        # რეგულარული ჯარი: აირწინაღიანი რიგითები და სანგრის მოჩხუბრები (thugs)
+        if not any(u["tier"] == "I" and {"line", "gas_mask"} <= set(u["tags"]) for u in fu):
+            errors.append(f"{fname}: აირწინაღიანი რიგითები (I, მწკრივი + აირწინაღი) არ ჰყავს")
+        if not any(u["tier"] == "I" and "brawler" in u["tags"] for u in fu):
+            errors.append(f"{fname}: სანგრის მოჩხუბრები (I, სანგრის ჩხუბი) არ ჰყავს")
         # დონე/ფასი: დაბალი დონის საბრძოლო იუნიტი არ უნდა იყოს ძვირი შემდეგი დონის ყველაზე იაფზე ორჯერ მეტად
         order = ["I", "II", "III", "IV", "IV+"]
         for a, b in zip(order, order[1:]):

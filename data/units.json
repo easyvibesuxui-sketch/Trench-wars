@@ -40,7 +40,48 @@
     }
    ],
    "tags": [
-    "line"
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1
+  },
+  {
+   "id": "port_brawlers",
+   "faction": "colchis",
+   "name": "ნავსადგურის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ნავის კაკვი და დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
    ],
    "ability_points": 1
   },
@@ -650,6 +691,84 @@
    "ability_points": 1
   },
   {
+   "id": "lowland_levy",
+   "faction": "iberia",
+   "name": "ბარის ლაშქარი",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1
+  },
+  {
+   "id": "qochebi",
+   "faction": "iberia",
+   "name": "ყოჩები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხანჯალი და კომბალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1
+  },
+  {
    "id": "tush_shepherds",
    "faction": "iberia",
    "name": "თუში მწყემსები ნაგაზებით",
@@ -1200,9 +1319,50 @@
     }
    ],
    "tags": [
-    "line"
+    "line",
+    "gas_mask"
    ],
    "ability_points": 2
+  },
+  {
+   "id": "penal_squad",
+   "faction": "hell",
+   "name": "სასჯელის რაზმი",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ჯაჭვიანი სატეხი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1
   },
   {
    "id": "marquis",
@@ -1696,7 +1856,46 @@
     }
    ],
    "tags": [
-    "madness"
+    "madness",
+    "brawler"
+   ],
+   "ability_points": 1
+  },
+  {
+   "id": "deserter_regulars",
+   "faction": "harness",
+   "name": "განდგომილი რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 5,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
    ],
    "ability_points": 1
   },
@@ -2209,6 +2408,86 @@
    "allied": true
   },
   {
+   "id": "hellenic_regulars",
+   "faction": "hellenic",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "hellenic_thugs",
+   "faction": "hellenic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "cyclops_gunners",
    "faction": "hellenic",
    "name": "ციკლოპების არტილერისტები",
@@ -2281,6 +2560,86 @@
    "allied": true
   },
   {
+   "id": "northern_regulars",
+   "faction": "northern",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "northern_thugs",
+   "faction": "northern",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "tyr_onehands",
    "faction": "northern",
    "name": "ტიუს ცალხელები",
@@ -2345,6 +2704,86 @@
    "allied": true
   },
   {
+   "id": "celtic_regulars",
+   "faction": "celtic",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "celtic_thugs",
+   "faction": "celtic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "goibniu_smiths",
    "faction": "celtic",
    "name": "გოიბნიუს მჭედლები",
@@ -2405,6 +2844,86 @@
    "allied": true
   },
   {
+   "id": "finnish_regulars",
+   "faction": "finnish",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "finnish_thugs",
+   "faction": "finnish",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "vainamoinen_singers",
    "faction": "finnish",
    "name": "ვიაინამოინენის მომღერლები",
@@ -2462,6 +2981,86 @@
     "monster_hunter"
    ],
    "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "britain_regulars",
+   "faction": "britain",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "britain_thugs",
+   "faction": "britain",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -2526,6 +3125,86 @@
    "allied": true
   },
   {
+   "id": "gaul_regulars",
+   "faction": "gaul",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "gaul_thugs",
+   "faction": "gaul",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "vulcan_gunners",
    "faction": "italy",
    "name": "ვულკანის მექვემეხეები",
@@ -2555,6 +3234,86 @@
     "artillery"
    ],
    "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "italy_regulars",
+   "faction": "italy",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "italy_thugs",
+   "faction": "italy",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -2615,6 +3374,86 @@
     "rare"
    ],
    "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "polianitsy_regulars",
+   "faction": "polianitsy",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "polianitsy_thugs",
+   "faction": "polianitsy",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -2689,6 +3528,86 @@
    "allied": true
   },
   {
+   "id": "armenian_regulars",
+   "faction": "armenian",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "armenian_thugs",
+   "faction": "armenian",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "aralez_keepers",
    "faction": "armenian",
    "name": "არალეზების მცველები",
@@ -2755,6 +3674,86 @@
     "giant_hunter"
    ],
    "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "oghuz_regulars",
+   "faction": "oghuz",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "oghuz_thugs",
+   "faction": "oghuz",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -2826,6 +3825,86 @@
     "night_sight"
    ],
    "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "nile_regulars",
+   "faction": "nile",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "nile_thugs",
+   "faction": "nile",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -2941,6 +4020,86 @@
    "allied": true
   },
   {
+   "id": "yellow_river_regulars",
+   "faction": "yellow_river",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "yellow_river_thugs",
+   "faction": "yellow_river",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "tripod_scholars",
    "faction": "yellow_river",
    "name": "სამფეხის მცოდნეები",
@@ -3049,6 +4208,86 @@
    "allied": true
   },
   {
+   "id": "japan_isles_regulars",
+   "faction": "japan_isles",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "japan_isles_thugs",
+   "faction": "japan_isles",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "three_companions",
    "faction": "japan_isles",
    "name": "სამი თანამგზავრი",
@@ -3149,6 +4388,86 @@
     "night_sight"
    ],
    "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "indian_regulars",
+   "faction": "indian",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "indian_thugs",
+   "faction": "indian",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -3253,6 +4572,86 @@
    "allied": true
   },
   {
+   "id": "west_african_regulars",
+   "faction": "west_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "west_african_thugs",
+   "faction": "west_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "mirror_marksmen",
    "faction": "west_african",
    "name": "სარკის მსროლელები",
@@ -3341,6 +4740,86 @@
     "tunnel"
    ],
    "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "north_american_regulars",
+   "faction": "north_american",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "north_american_thugs",
+   "faction": "north_american",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -3443,6 +4922,86 @@
    "allied": true
   },
   {
+   "id": "mexica_regulars",
+   "faction": "mexica",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "mexica_thugs",
+   "faction": "mexica",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "xiuhcoatl_gunners",
    "faction": "mexica",
    "name": "შიუჰკოატლის მსროლელები",
@@ -3532,6 +5091,86 @@
     "river"
    ],
    "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "amazon_regulars",
+   "faction": "amazon",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "amazon_thugs",
+   "faction": "amazon",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -3644,6 +5283,86 @@
    "allied": true
   },
   {
+   "id": "andes_regulars",
+   "faction": "andes",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "andes_thugs",
+   "faction": "andes",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "chaski_runners",
    "faction": "andes",
    "name": "მაცნეები",
@@ -3733,6 +5452,86 @@
     "beacon"
    ],
    "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "caribbean_regulars",
+   "faction": "caribbean",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "caribbean_thugs",
+   "faction": "caribbean",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -3835,6 +5634,86 @@
     "wayfinder"
    ],
    "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "oceania_regulars",
+   "faction": "oceania",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "oceania_thugs",
+   "faction": "oceania",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -3948,6 +5827,86 @@
    "allied": true
   },
   {
+   "id": "central_african_regulars",
+   "faction": "central_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "central_african_thugs",
+   "faction": "central_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "forest_trackers",
    "faction": "central_african",
    "name": "ტყის მეკვალეები",
@@ -4034,6 +5993,86 @@
     "high_ground"
    ],
    "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "southern_african_regulars",
+   "faction": "southern_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "southern_african_thugs",
+   "faction": "southern_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -4128,6 +6167,86 @@
    "allied": true
   },
   {
+   "id": "great_lakes_regulars",
+   "faction": "great_lakes",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "great_lakes_thugs",
+   "faction": "great_lakes",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "silent_warriors",
    "faction": "great_lakes",
    "name": "ჩუმი მეომრები",
@@ -4215,6 +6334,86 @@
     "tunnel"
    ],
    "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "north_african_regulars",
+   "faction": "north_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "north_african_thugs",
+   "faction": "north_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -4325,6 +6524,86 @@
    "allied": true
   },
   {
+   "id": "central_asian_regulars",
+   "faction": "central_asian",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "central_asian_thugs",
+   "faction": "central_asian",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "tulpar_riders",
    "faction": "central_asian",
    "name": "თულპარის მხედრები",
@@ -4432,6 +6711,86 @@
     "river"
    ],
    "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "gulf_regulars",
+   "faction": "gulf",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "gulf_thugs",
+   "faction": "gulf",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -7797,6 +10156,86 @@
    "allied": true
   },
   {
+   "id": "sea_islands_regulars",
+   "faction": "sea_islands",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "sea_islands_thugs",
+   "faction": "sea_islands",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "gong_warriors",
    "faction": "sea_islands",
    "name": "გონგის მეომრები",
@@ -8018,6 +10457,86 @@
     "leader"
    ],
    "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "korea_regulars",
+   "faction": "korea",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "korea_thugs",
+   "faction": "korea",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -8243,6 +10762,86 @@
    "allied": true
   },
   {
+   "id": "mongolia_regulars",
+   "faction": "mongolia",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "mongolia_thugs",
+   "faction": "mongolia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "urtuu_riders",
    "faction": "mongolia",
    "name": "ურტუს მხედრები",
@@ -8462,6 +11061,86 @@
     "leader"
    ],
    "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "arctic_regulars",
+   "faction": "arctic",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "arctic_thugs",
+   "faction": "arctic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -8690,6 +11369,86 @@
    "allied": true
   },
   {
+   "id": "siberia_regulars",
+   "faction": "siberia",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "siberia_thugs",
+   "faction": "siberia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "olonkho_singers",
    "faction": "siberia",
    "name": "ოლონხოს მომღერლები",
@@ -8892,6 +11651,86 @@
     "leader"
    ],
    "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "balkans_regulars",
+   "faction": "balkans",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "balkans_thugs",
+   "faction": "balkans",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -9114,6 +11953,86 @@
     "leader"
    ],
    "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "pyrenean_regulars",
+   "faction": "pyrenean",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "pyrenean_thugs",
+   "faction": "pyrenean",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
    "allied": true
   },
   {
@@ -9342,6 +12261,86 @@
    "allied": true
   },
   {
+   "id": "alps_regulars",
+   "faction": "alps",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "alps_thugs",
+   "faction": "alps",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "ice_climbers",
    "faction": "alps",
    "name": "ყინულის მცოცავები",
@@ -9560,6 +12559,86 @@
    "allied": true
   },
   {
+   "id": "baltic_regulars",
+   "faction": "baltic",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "baltic_thugs",
+   "faction": "baltic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
    "id": "gate_wardens",
    "faction": "baltic",
    "name": "კარის მცველები",
@@ -9740,6 +12819,330 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "australia_leader",
+   "faction": "australia",
+   "name": "ხანძრის ხაზის უფროსი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "australia_regulars",
+   "faction": "australia",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "australia_thugs",
+   "faction": "australia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "drovers",
+   "faction": "australia",
+   "name": "მერეკეები",
+   "tier": "II",
+   "size": 2,
+   "move": 12,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "მათრახი და დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "firebreak_crews",
+   "faction": "australia",
+   "name": "ხანძრის ხაზის მთხრელები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "fire_guard"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "plains_riflemen",
+   "faction": "australia",
+   "name": "ველის მსროლელები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "გრძელი შაშხანა",
+     "mode": "ranged",
+     "range": 36,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "australia_grotesque",
+   "faction": "australia",
+   "name": "ორთქლის წყლის ურემი",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ურმის ქვემეხები",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ტარანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam",
+    "fire_guard"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "australia_giant",
+   "faction": "australia",
+   "name": "გუთნის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "გუთნის სახნისი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "გოლიათის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "fearless",
+    "fire_guard"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -9778,6 +13181,7 @@
   "balkans": "ბალკანეთის მთები",
   "pyrenean": "პირენეის ნახევარკუნძულის მთები",
   "alps": "ალპების მთები",
-  "baltic": "ბალტიისპირეთის ტყეები და სანაპირო"
+  "baltic": "ბალტიისპირეთის ტყეები და სანაპირო",
+  "australia": "ავსტრალიის შიდა მიწები"
  }
 }
