@@ -3409,6 +3409,200 @@
    ],
    "ability_points": 2,
    "allied": true
+  },
+  {
+   "id": "fire_runners",
+   "faction": "mexica",
+   "name": "ცეცხლის მორბენლები",
+   "tier": "I",
+   "size": 1,
+   "move": 8,
+   "shoot": 3,
+   "melee": 4,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ჩირაღდანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "fire"
+     ]
+    }
+   ],
+   "tags": [
+    "scout",
+    "torch"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "xiuhcoatl_gunners",
+   "faction": "mexica",
+   "name": "შიუჰკოატლის მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შიუჰკოატლის ქვემეხი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "fire"
+     ]
+    }
+   ],
+   "tags": [
+    "anti_air",
+    "monster_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "sky_watchers",
+   "faction": "mexica",
+   "name": "ცის მეთვალყურეები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "night_sight"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "river_pilots",
+   "faction": "amazon",
+   "name": "მდინარის პილოტები",
+   "tier": "I",
+   "size": 1,
+   "move": 7,
+   "shoot": 5,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "river"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "curupira_scouts",
+   "faction": "amazon",
+   "name": "კურუპირას მზვერავები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "false_tracks"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "mapinguari_hunters",
+   "faction": "amazon",
+   "name": "მაპინგუარის მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ჰარპუნ-თოფი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    },
+    {
+     "name": "მაჩეტე",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "giant_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
   }
  ],
  "allies": {
@@ -3427,6 +3621,8 @@
   "japan_isles": "იაპონიის კუნძულები",
   "indian": "ინდოეთის ნახევარკუნძული",
   "west_african": "დასავლეთ აფრიკის მიწები",
-  "north_american": "ჩრდილოეთ ამერიკის ტყეები"
+  "north_american": "ჩრდილოეთ ამერიკის ტყეები",
+  "mexica": "მექსიკის ველის ხალხი",
+  "amazon": "ამაზონის ტყეები და მდინარეები"
  }
 }
