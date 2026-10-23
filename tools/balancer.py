@@ -24,7 +24,7 @@ BASE_COST = 20           # მარჩილი
 SIM_BUDGET = 400         # თანაბარი რაზმის ბიუჯეტი სიმულაციაში
 SIM_TIERS = {"I", "II", "III", "IV", "IV+"}
 # იუნიტები, რომელთა მთავარი ღირებულება სპეციალურ ძალებშია — სიმულაცია მათ ვერ აფასებს
-ABILITY_TAGS = {"leader", "healer", "alchemist", "ritual", "witch", "discord", "stitcher", "supply", "repair", "orders", "song"}
+ABILITY_TAGS = {"leader", "healer", "alchemist", "ritual", "witch", "discord", "stitcher", "supply", "repair", "orders", "song", "weakness"}
 
 # საცნობარო სამიზნეები (წონით): armor, wounds, size, tags
 REF_TARGETS = [
@@ -137,7 +137,7 @@ def compute_costs(units):
 # ---------------- Monte Carlo ----------------
 
 class Model:
-    __slots__ = ("u", "w", "used_once", "reload", "regen_block", "charged")
+    __slots__ = ("u", "w", "used_once", "reload", "regen_block", "charged", "pinned")
 
     def __init__(self, u):
         self.u = u
@@ -146,6 +146,7 @@ class Model:
         self.reload = False
         self.regen_block = False
         self.charged = False
+        self.pinned = False
 
 
 def build_army(u, budget, rng):
@@ -195,6 +196,8 @@ def attack(m, w, enemies, rng, cover=0):
                 tt.w -= w["damage"]
                 if "fire" in w["tags"] or "lightning" in w["tags"]:
                     tt.regen_block = True
+                if "pin" in w["tags"]:
+                    tt.pinned = True  # ბადე/ჯაჭვი: შემდეგ აქტივაციაზე ვერ მოძრაობს
                 if "fire" in w["tags"] and tt.w > 0 and rng.random() < 0.5:
                     tt.w -= 1  # წვა
 
@@ -214,6 +217,9 @@ def activate(m, enemies, state, side, rng):
         attack(m, ranged, enemies, rng, cover=1 if gap > 6 else 0)
         return
     # მიახლოება: რაზმი ერთად მოძრაობს — მანძილი რაუნდში ერთხელ მცირდება (უსწრაფესი მოდელის სვლით)
+    if m.pinned:
+        m.pinned = False
+        return
     if not state["moved"][side]:
         state["moved"][side] = True
         state["gap"] = max(0, gap - m.u["move"])

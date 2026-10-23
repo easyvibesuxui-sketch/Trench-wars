@@ -3312,6 +3312,103 @@
    ],
    "ability_points": 14,
    "allied": true
+  },
+  {
+   "id": "hammer_crew",
+   "faction": "north_american",
+   "name": "ჩაქუჩის ბრიგადა",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ორთქლის ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "digger",
+    "tunnel"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "lumberjacks",
+   "faction": "north_american",
+   "name": "მეტყევეები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "fell_trees"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "armored_train_gunners",
+   "faction": "north_american",
+   "name": "ჯავშნიანი მატარებლის მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 4,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 3,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ტყვიამფრქვევი",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 3,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "rail"
+   ],
+   "ability_points": 2,
+   "allied": true
   }
  ],
  "allies": {
@@ -3329,6 +3426,7 @@
   "yellow_river": "ყვითელი მდინარის მიწები",
   "japan_isles": "იაპონიის კუნძულები",
   "indian": "ინდოეთის ნახევარკუნძული",
-  "west_african": "დასავლეთ აფრიკის მიწები"
+  "west_african": "დასავლეთ აფრიკის მიწები",
+  "north_american": "ჩრდილოეთ ამერიკის ტყეები"
  }
 }
