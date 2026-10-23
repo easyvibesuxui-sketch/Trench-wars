@@ -243,7 +243,7 @@ footer { color: var(--muted); font-size: .8rem; }
     alchemist: "ალქიმია", engineer: "ინჟინერი", digger: "თხრის თხრილს", cavalry: "ცხენოსანი", trench_breaker: "თხრილს არღვევს",
     shield: "ფარი", shield_wall: "ფარის კედელი", steam: "ორთქლი", vehicle: "მანქანა", relic: "რელიქვია", huge: "უზარმაზარი",
     fly: "ფრენა", infiltrate: "ჩასაფრება", scout: "მზვერავი", detect_heretic: "ერეტიკოსს ცნობს", mountain: "მთის ხალხი",
-    marked: "ნიშნიანი", burn_gas: "გაზს წვავს", climber: "კლდეზე ადის", fortress: "მავალი სიმაგრე", titan: "ტიტანი",
+    marked: "ნიშნიანი", night_sight: "ღამის თვალი", burn_gas: "გაზს წვავს", climber: "კლდეზე ადის", fortress: "მავალი სიმაგრე", titan: "ტიტანი",
     needs_orders: "ბრძანებას საჭიროებს", fearless: "შიში არ აქვს", line: "მწკრივი", orders: "ბრძანებები", supply: "მარაგი",
     discord: "უთანხმოება", automaton: "ავტომატი", artillery: "არტილერია", oathbound: "ფიცით შეკრული", construct: "ნაჭედი",
     song: "სიმღერა", monster_hunter: "ურჩხულებზე მონადირე", winter_born: "ზამთრის შვილი", rare: "იშვიათი", assassin: "მკვლელი", hunter: "მონადირე", monster: "ურჩხული", rage: "მრისხანება", repair: "აღდგენა",
@@ -289,6 +289,7 @@ footer { color: var(--muted); font-size: .8rem; }
     britain: "ბეოვულფის მემკვიდრეები, ურჩხულებზე მონადირეები", gaul: "ელვის ტექნოლოგია, იბერიის ძველი პარტნიორი",
     italy: "ვულკანის საველე არტილერია", polianitsy: "ძალიან ცოტანი არიან — რაზმში მაქს. 1",
     armenian: "ვიშაპმკვლელები და არალეზები — რგოლის სამხრეთი", oghuz: "ბასატის მონადირეები და ქოროღლის მხედრები — რგოლის აღმოსავლეთი",
+    nile: "ღამის ომი აპეპის წინააღმდეგ — მესაათეები, შუბოსნები, სეხმეტის მეომრები",
   };
   function canHire() { return LIGHT.has(state.faction); }
   function isMine(u) { return u.faction === state.faction || (u.allied && canHire()); }
