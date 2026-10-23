@@ -24,7 +24,7 @@ BASE_COST = 20           # მარჩილი
 SIM_BUDGET = 400         # თანაბარი რაზმის ბიუჯეტი სიმულაციაში
 SIM_TIERS = {"I", "II", "III", "IV", "IV+"}
 # იუნიტები, რომელთა მთავარი ღირებულება სპეციალურ ძალებშია — სიმულაცია მათ ვერ აფასებს
-ABILITY_TAGS = {"leader", "healer", "alchemist", "ritual", "witch", "discord", "stitcher", "supply", "repair", "orders"}
+ABILITY_TAGS = {"leader", "healer", "alchemist", "ritual", "witch", "discord", "stitcher", "supply", "repair", "orders", "song"}
 
 # საცნობარო სამიზნეები (წონით): armor, wounds, size, tags
 REF_TARGETS = [
@@ -336,7 +336,8 @@ def main():
         "> ლიდერები, მკურნალები, ალქიმიკოსები და რიტუალისტები სიმულაციაში არ შედიან — მათი ღირებულება ძალებშია და **სატესტო თამაში** სჭირდება.",
         "",
     ]
-    for fid, fname in factions.items():
+    allies = data.get("allies", {})
+    for fid, fname in list(factions.items()) + [(k, v + " (მოკავშირე)") for k, v in allies.items()]:
         lines += [f"## {fname}", "", "| იუნიტი | დონე | ფორმულის ფასი | მოგება % (ფორმულით) | **ფასი** | მოგება % | შენიშვნა |", "|---|---|---|---|---|---|---|"]
         for u in [x for x in units if x["faction"] == fid]:
             wr = win.get(u["id"])

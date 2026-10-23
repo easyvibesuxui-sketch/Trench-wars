@@ -18,8 +18,8 @@ def main():
     units = []
     for u in data["units"]:
         units.append({k: u[k] for k in ("id", "faction", "name", "tier", "size", "move", "shoot", "melee",
-                                        "armor", "wounds", "nerve", "weapons", "tags")} | {"cost": costs[u["id"]]})
-    out = {"factions": data["factions"], "units": units}
+                                        "armor", "wounds", "nerve", "weapons", "tags")} | {"cost": costs[u["id"]], "allied": bool(u.get("allied"))})
+    out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units}
     js = "// ავტომატურად გენერირებული: tools/build_builder.py — ხელით ნუ შეცვლი\n"
     js += "window.TW_DATA = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n"
     target = ROOT / "builder" / "data.js"

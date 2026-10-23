@@ -2144,6 +2144,486 @@
     "convert"
    ],
    "ability_points": 22
+  },
+  {
+   "id": "automaton_phalanx",
+   "faction": "hellenic",
+   "name": "ავტომატ-ფალანგა",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 5,
+   "wounds": 3,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ბრინჯაოს შუბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield_wall",
+    "steam",
+    "automaton"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "cyclops_gunners",
+   "faction": "hellenic",
+   "name": "კიკლოპის არტილერისტები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 7,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ლინზიანი ქვემეხი",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast",
+      "reload"
+     ]
+    }
+   ],
+   "tags": [
+    "artillery"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "jotun_hunters",
+   "faction": "northern",
+   "name": "იოტუნის მონადირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ჰარპუნ-თოფი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "anti_giant"
+     ]
+    },
+    {
+     "name": "ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "giant_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "tyr_onehands",
+   "faction": "northern",
+   "name": "ტიუს ცალხელები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ორთქლის მკლავი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "steam"
+     ]
+    }
+   ],
+   "tags": [
+    "steam",
+    "oathbound"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "lugh_marksmen",
+   "faction": "celtic",
+   "name": "ლუგის მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 8,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "გრძელლულიანი შაშხანა",
+     "mode": "ranged",
+     "range": 42,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "anti_giant"
+     ]
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "giant_hunter"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "goibniu_smiths",
+   "faction": "celtic",
+   "name": "გოიბნიუს მჭედლები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 3,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "სამჭედლო ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "repair"
+   ],
+   "ability_points": 10,
+   "allied": true
+  },
+  {
+   "id": "ilmarinen_forged",
+   "faction": "finnish",
+   "name": "ილმარინენის ნაჭედი",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 0,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 4,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ოქროს მუშტები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "construct",
+    "fearless"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "vainamoinen_singers",
+   "faction": "finnish",
+   "name": "ვიაინამოინენის მომღერლები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "song"
+   ],
+   "ability_points": 16,
+   "allied": true
+  },
+  {
+   "id": "beowulf_heirs",
+   "faction": "britain",
+   "name": "ბეოვულფის მემკვიდრეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 8,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "დიდი ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "anti_giant"
+     ]
+    }
+   ],
+   "tags": [
+    "monster_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "fen_scouts",
+   "faction": "britain",
+   "name": "ჭაობის მზვერავები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "taranis_signallers",
+   "faction": "gaul",
+   "name": "ტარანისის ელვის მეკავშირეები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "ელვის კარაბინი",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "lightning"
+     ]
+    }
+   ],
+   "tags": [
+    "burn_gas"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "vulcan_gunners",
+   "faction": "italy",
+   "name": "ვულკანის მეკვემეხეები",
+   "tier": "II",
+   "size": 1,
+   "move": 4,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "საველე ქვემეხი",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast",
+      "reload"
+     ]
+    }
+   ],
+   "tags": [
+    "artillery"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "hercules_hammers",
+   "faction": "italy",
+   "name": "ჰერკულესის ჩაქუჩოსნები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კომბალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": []
+    }
+   ],
+   "tags": [],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "polianitsa",
+   "faction": "polianitsy",
+   "name": "პოლიანიცა",
+   "tier": "III",
+   "size": 2,
+   "move": 10,
+   "shoot": 4,
+   "melee": 8,
+   "armor": 4,
+   "wounds": 4,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ბოგატირის ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "winter_born",
+    "rare"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "winter_scouts",
+   "faction": "polianitsy",
+   "name": "ზამთრის მზვერავები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "winter_born"
+   ],
+   "ability_points": 3,
+   "allied": true
   }
- ]
+ ],
+ "allies": {
+  "hellenic": "ელინური ლიგა",
+  "northern": "ჩრდილოეთის კავშირი",
+  "celtic": "კელტური კუნძულები",
+  "finnish": "ფინეთის ტყეები",
+  "britain": "ბრიტანეთის კუნძული",
+  "gaul": "გალია",
+  "italy": "იტალიის ნახევარკუნძული",
+  "polianitsy": "ჩრდილოეთის სლავური მიწები"
+ }
 }
