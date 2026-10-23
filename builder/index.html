@@ -57,6 +57,8 @@ button { cursor: pointer; }
 }
 .faction-btn small { color: var(--muted); font-size: .78rem; }
 @media (max-width: 520px) { .factions { display: grid; grid-template-columns: 1fr 1fr; } }
+.ally-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: .9rem; }
+.ally-pick select { max-width: 100%; }
 .faction-btn[aria-pressed="true"] { border-color: var(--bronze); box-shadow: inset 0 -3px 0 var(--bronze); }
 .controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
 .controls label { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: .9rem; }
@@ -179,6 +181,9 @@ footer { color: var(--muted); font-size: .8rem; }
       <p class="sub">აირჩიე მხარე, დაამატე იუნიტები და შეამოწმე, აკმაყოფილებს თუ არა რაზმი წესებს. ფასები მარჩილშია, ბალანსერის ბოლო გაშვებიდან.</p>
     </div>
     <div class="factions" id="factions" role="group" aria-label="ფრაქცია"></div>
+    <label class="ally-pick" for="allySel">ან მოკავშირე ფრაქციად თამაში
+      <select id="allySel"></select>
+    </label>
     <div class="controls">
       <label for="budget">ბიუჯეტი
         <select id="budget">
@@ -303,16 +308,20 @@ footer { color: var(--muted); font-size: .8rem; }
     great_lakes: "მთხრელები და ჩუმი მეომრები — ვალუმბეს წინააღმდეგ",
     north_african: "ხეტარები, ქარავნები და აგადირები — კროცელის ლეგიონების წინააღმდეგ",
     central_asian: "როსტომის ლახტი და თულპარის მხედრები — თეთრი დივის წინააღმდეგ",
+    gulf: "დაუები, მყვინთავები და სანაპიროს ქვემეხები — მძინარე კუნძულების წინააღმდეგ",
   };
   function canHire() { return LIGHT.has(state.faction); }
+  function factionName(f) { return D.factions[f] || (D.allies || {})[f] || f; }
+  function isHired(u) { return u.allied && u.faction !== state.faction; }
   function isMine(u) { return u.faction === state.faction || (u.allied && canHire()); }
-  function unitCost(u) { return u.allied ? Math.round(u.cost * HIRE_MARKUP) : u.cost; }
+  function unitCost(u) { return isHired(u) ? Math.round(u.cost * HIRE_MARKUP) : u.cost; }
   function factionUnits() { return D.units.filter(u => u.faction === state.faction); }
   function picks() { return Object.entries(state.picks).filter(([id, n]) => n > 0 && byId[id] && isMine(byId[id])); }
   const EQ = D.equipment || { categories: {}, items: [] };
   const itemById = Object.fromEntries(EQ.items.map(it => [it.id, it]));
   const SIDE = { colchis: "light", iberia: "light", hell: "dark", harness: "dark" };
-  function itemAllowed(it) { return it.sides.includes("all") || it.sides.includes(SIDE[state.faction]) || it.sides.includes(state.faction); }
+  function sideOf(f) { return SIDE[f] || "light"; }  // მოკავშირე ფრაქციები ნათელი მხარეა
+  function itemAllowed(it) { return it.sides.includes("all") || it.sides.includes(sideOf(state.faction)) || it.sides.includes(state.faction); }
   function reqText(it) {
     const names = [...(it.requires_units || []).map(id => byId[id] && byId[id].name).filter(Boolean),
                    ...(it.requires_tags || []).map(t => TAG[t] || t)];
@@ -330,16 +339,16 @@ footer { color: var(--muted); font-size: .8rem; }
     return "";
   }
   function spent() { return picks().reduce((s, [id, n]) => s + unitCost(byId[id]) * n, 0) + gearSpent(); }
-  function hiredSpent() { return picks().reduce((s, [id, n]) => s + (byId[id].allied ? unitCost(byId[id]) * n : 0), 0); }
+  function hiredSpent() { return picks().reduce((s, [id, n]) => s + (isHired(byId[id]) ? unitCost(byId[id]) * n : 0), 0); }
   function hireCap() { return Math.floor(state.budget * HIRE_SHARE); }
   function count(pred) { return picks().reduce((s, [id, n]) => s + (pred(byId[id]) ? n : 0), 0); }
 
   function lockReason(u) {
-    if (u.allied) {
+    if (isHired(u)) {
       if (!canHire()) return "მხოლოდ ნათელ მხარეს";
+      if (u.tags.includes("leader")) return "ლიდერს ვერ დაიქირავებ";
       if (u.faction === "polianitsy" && count(x => x.faction === "polianitsy") >= 1) return "პოლიანიცები: მაქს. 1 მოდელი";
       if (hiredSpent() + unitCost(u) > hireCap()) return `დაქირავების ლიმიტი: ${hireCap()} მარჩილი (20%)`;
-      return "";
     }
     if ((u.tier === "V" || u.tier === "hero") && !state.scenario) return "საჭიროა სცენარის რეჟიმი";
     if (u.tier === "IV+" && state.budget < 750) return "მხოლოდ 750+ მარჩილის თამაშში";
@@ -387,17 +396,19 @@ footer { color: var(--muted); font-size: .8rem; }
   function renderFactions() {
     $("factions").innerHTML = Object.entries(D.factions).map(([id, nm]) =>
       `<button type="button" class="faction-btn" data-f="${id}" aria-pressed="${id === state.faction}"><span>${esc(nm)}</span><small>${FACTION_NOTE[id] || ""}</small></button>`).join("");
+    $("allySel").innerHTML = `<option value="">— აირჩიე —</option>` + Object.entries(D.allies || {}).map(([id, nm]) =>
+      `<option value="${id}"${id === state.faction ? " selected" : ""}>${esc(nm)}</option>`).join("");
   }
 
   function card(u) {
     const why = lockReason(u);
     const hardLock = why && why !== "მაქს. 1";
-    const price = u.allied ? `${unitCost(u)}<small class="markup"> (${u.cost} +20%)</small>` : u.cost;
+    const price = isHired(u) ? `${unitCost(u)}<small class="markup"> (${u.cost} +20%)</small>` : u.cost;
     return `<article class="card${hardLock && !(state.picks[u.id] > 0) ? " locked" : ""}">
       <div class="card-top"><h3>${esc(u.name)}</h3><span class="cost">${price}</span></div>
       ${stats(u)}${weapons(u)}
-      <div class="tags">${u.allied ? `<span class="tag">${u.tier}</span>` : ""}${u.tags.filter(x => TAG[x]).map(x => `<span class="tag${KEY_TAGS.has(x) ? " key" : ""}">${TAG[x]}</span>`).join("")}</div>
-      <button type="button" class="add" data-add="${u.id}" ${why ? "disabled" : ""}>${u.allied ? "დაქირავება" : "დამატება"}</button>
+      <div class="tags">${isHired(u) ? `<span class="tag">${u.tier}</span>` : ""}${u.tags.filter(x => TAG[x]).map(x => `<span class="tag${KEY_TAGS.has(x) ? " key" : ""}">${TAG[x]}</span>`).join("")}</div>
+      <button type="button" class="add" data-add="${u.id}" ${why ? "disabled" : ""}>${isHired(u) ? "დაქირავება" : "დამატება"}</button>
       ${why ? `<span class="lock-note">${why}</span>` : ""}
     </article>`;
   }
@@ -405,12 +416,12 @@ footer { color: var(--muted); font-size: .8rem; }
   function renderAllies() {
     if (!canHire()) return "";
     const groups = Object.entries(D.allies || {}).map(([aid, nm]) => {
-      const list = D.units.filter(u => u.allied && u.faction === aid);
+      const list = D.units.filter(u => u.allied && u.faction === aid && !u.tags.includes("leader"));
       if (!list.length) return "";
       return `<div class="ally"><h3 class="ally-name">${esc(nm)} <span>${ALLY_NOTE[aid] || ""}</span></h3><div class="cards">${list.map(card).join("")}</div></div>`;
     }).join("");
     return `<section class="tier allies"><div class="tier-head"><h2>მოკავშირეების დაქირავება</h2>
-      <span class="tier-note">ბიუჯეტის მაქს. 20% (${hireCap()} მარჩილი), ფასი +20%. ჭრილობაზე „რგოლის ხარკით“ ჩამოსული რაზმები და რგოლის მეზობელი ერები.</span></div>${groups}</section>`;
+      <span class="tier-note">ბიუჯეტის მაქს. 20% (${hireCap()} მარჩილი), ფასი +20%. ლიდერს ვერ დაიქირავებ; გროტესკი და გოლიათი იგივე წესებით (IV — მაქს. 1, გოლიათი — სცენარით).</span></div>${groups}</section>`;
   }
 
   function renderGear() {
@@ -448,7 +459,7 @@ footer { color: var(--muted); font-size: .8rem; }
     const rows = picks();
     $("roster").innerHTML = rows.length ? rows.map(([id, n]) => {
       const u = byId[id];
-      return `<li><span class="nm">${esc(u.name)}<small>${u.allied ? "დაქირავებული · " + esc(D.allies[u.faction]) + " · " : ""}${u.tier} · ${unitCost(u)} თითო</small></span>
+      return `<li><span class="nm">${esc(u.name)}<small>${isHired(u) ? "დაქირავებული · " + esc(D.allies[u.faction]) + " · " : ""}${u.tier} · ${unitCost(u)} თითო</small></span>
         <span class="qty"><button type="button" data-dec="${id}" aria-label="ერთით ნაკლები">−</button>${n}<button type="button" data-add="${id}" aria-label="ერთით მეტი" ${lockReason(u) ? "disabled" : ""}>+</button></span>
         <span class="line-cost">${unitCost(u) * n}</span></li>`;
     }).join("") : `<li class="empty">რაზმი ცარიელია. დაამატე ლიდერი და იუნიტები მარცხენა სიიდან.</li>`;
@@ -481,14 +492,18 @@ footer { color: var(--muted); font-size: .8rem; }
     if (gd && !gd.disabled) { const id = gd.dataset.gdec; state.gear[id] = Math.max(0, (state.gear[id] || 0) - 1); touch(); }
   });
   $("budget").addEventListener("change", e => { state.budget = Number(e.target.value); touch(); });
+  $("allySel").addEventListener("change", e => {
+    const f = e.target.value;
+    if (f && f !== state.faction) { state.faction = f; state.picks = {}; state.gear = {}; touch(); setStatus(`მოკავშირე ფრაქცია: ${factionName(f)}`); }
+  });
   $("scenario").addEventListener("change", e => { state.scenario = e.target.checked; touch(); });
   $("wbname").addEventListener("input", e => { state.name = e.target.value; state.example = false; $("exampleTag").hidden = true; });
   $("saveBtn").addEventListener("click", () => save());
   $("clearBtn").addEventListener("click", () => { state.picks = {}; state.gear = {}; state.name = ""; touch(); setStatus("რაზმი გასუფთავდა."); });
 
   function asText() {
-    const lines = [`${state.name || "უსახელო რაზმი"} — ${D.factions[state.faction]}`, `${spent()} / ${state.budget} მარჩილი${state.scenario ? " · სცენარი" : ""}`, ""];
-    for (const [id, n] of picks()) { const u = byId[id]; lines.push(`${n}× ${u.name} (${u.tier}${u.allied ? ", დაქირავებული: " + D.allies[u.faction] : ""}) — ${unitCost(u) * n}`); }
+    const lines = [`${state.name || "უსახელო რაზმი"} — ${factionName(state.faction)}`, `${spent()} / ${state.budget} მარჩილი${state.scenario ? " · სცენარი" : ""}`, ""];
+    for (const [id, n] of picks()) { const u = byId[id]; lines.push(`${n}× ${u.name} (${u.tier}${isHired(u) ? ", დაქირავებული: " + D.allies[u.faction] : ""}) — ${unitCost(u) * n}`); }
     const gp = gearPicks();
     if (gp.length) { lines.push("", "აღჭურვილობა:"); for (const [id, n] of gp) { const it = itemById[id]; lines.push(`${n}× ${it.name} — ${it.cost * n}`); } }
     const bad = checks().filter(([c]) => c === "bad").map(([, t]) => t);
@@ -505,7 +520,7 @@ footer { color: var(--muted); font-size: .8rem; }
 
   render();
   // საერთო API კამპანიის მოდულისთვის (campaign.js)
-  window.TWB = { D, byId, TAG, esc, unitCost, picks, gearPicks, itemById, checks, spent,
+  window.TWB = { D, byId, TAG, esc, unitCost, picks, gearPicks, itemById, checks, spent, factionName,
     getState: () => state, setStatus };
 })();
 </script>

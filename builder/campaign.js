@@ -23,7 +23,10 @@
     hell: [["rank", "წოდების ამაღლება: მოდელს +1 ხელჩართული", 2], ["flask", "ახალი კოლბა: 2 ახალწვეული უფასოდ", 3]],
     harness: [["devi_blood", "დევის სისხლი: მოდელს +1 ხელჩართული (სიგიჟის რისკი)", 1], ["stitch", "ქაჯის ნაკერი: 1 ქაჯების ნაკერი უფასოდ", 5]],
   };
-  const SIDE = { colchis: "light", iberia: "light", hell: "hell", harness: "harness" };
+  const SIDE_OF = { colchis: "light", iberia: "light", hell: "hell", harness: "harness" };
+  const SIDE = new Proxy(SIDE_OF, { get: (o, f) => o[f] || "light" });  // მოკავშირე ფრაქციები ნათელი მხარეა
+  const CURRENCY_OF = (f) => CURRENCY[f] || "სახელი";
+  const fname = (f) => D.factions[f] || (D.allies || {})[f] || f;
 
   let camp = load();
   let mode = "build";
@@ -99,12 +102,13 @@
         <span class="status" id="campStatus" role="status"></span></div></div>`;
       return;
     }
-    const cur = CURRENCY[camp.faction];
+    const cur = CURRENCY_OF(camp.faction);
     const active = camp.models.filter(m => m.status !== "dead");
     const side = SIDE[camp.faction];
-    const recruitable = D.units.filter(u => (u.faction === camp.faction || (u.allied && side === "light")) && !["V", "hero"].includes(u.tier));
+    const recruitable = D.units.filter(u => (u.faction === camp.faction || (u.allied && side === "light" && !u.tags.includes("leader")))
+      && !["V", "hero"].includes(u.tier));
     view.innerHTML = `<div class="camp">
-      <div class="camp-head"><h2>${esc(camp.name)} · ${esc(D.factions[camp.faction])}</h2>
+      <div class="camp-head"><h2>${esc(camp.name)} · ${esc(fname(camp.faction))}</h2>
         <div class="camp-stats">
           <div class="stat-pill"><b>${camp.treasury}</b><span>ხაზინა (მარჩილი)</span></div>
           <div class="stat-pill"><b>${camp.currency}</b><span>${cur}</span></div>
@@ -190,7 +194,7 @@
     }
     camp.treasury += income; camp.currency += gain;
     camp.battles.push({ n: camp.battles.length + 1, result, scenario: $("bScenario").value.trim(), income, gain, notes });
-    save(); render(); status(`ჩაიწერა: +${income} მარჩილი, +${gain} ${CURRENCY[camp.faction]}.`);
+    save(); render(); status(`ჩაიწერა: +${income} მარჩილი, +${gain} ${CURRENCY_OF(camp.faction)}.`);
   }
 
   function buy(kind, price) {

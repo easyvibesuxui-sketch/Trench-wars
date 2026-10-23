@@ -70,22 +70,26 @@ def main():
             errors.append(f"{uid}: ფასი არ აქვს (data/costs.json)")
         if u["name"] not in docs:
             warnings.append(f"{uid}: სახელი „{u['name']}“ units/*.md-ში არ ჩანს")
-        if u.get("allied"):
-            if "leader" in u["tags"]:
-                errors.append(f"{uid}: მოკავშირეს ლიდერი არ უნდა ჰყავდეს")
-            if u["tier"] not in {"I", "II", "III"}:
-                errors.append(f"{uid}: მოკავშირე მხოლოდ I–III დონისაა")
+        if u.get("allied") and u["tier"] in {"IV+", "hero"}:
+            errors.append(f"{uid}: მოკავშირეს IV+ და გმირი არ ჰყავს")
 
     for k in costs:
         if k not in by_id:
             warnings.append(f"costs.json: ზედმეტი ჩანაწერი {k}")
 
-    for fid, fname in factions.items():
+    # ყველა ფრაქციას (ძირითადს და მოკავშირეს) სჭირდება: ლიდერი, ელიტა, გროტესკი და გოლიათი
+    for fid, fname in list(factions.items()) + list(allies.items()):
         fu = [u for u in units if u["faction"] == fid]
         if not any("leader" in u["tags"] and u["tier"] in COMBAT_TIERS for u in fu):
             errors.append(f"{fname}: სტანდარტულ თამაშში ლიდერი არ ჰყავს")
-        if not any(u["tier"] == "I" for u in fu):
-            errors.append(f"{fname}: I დონის იუნიტი არ ჰყავს")
+        if not any(u["tier"] in {"I", "II"} and "leader" not in u["tags"] for u in fu):
+            errors.append(f"{fname}: ქვეითი ან ელიტა (I–II) არ ჰყავს")
+        if not any(u["tier"] in {"II", "III"} and "leader" not in u["tags"] for u in fu):
+            errors.append(f"{fname}: ელიტა ან ჯავშნიანი (II–III) არ ჰყავს")
+        if not any(u["tier"] in {"IV", "IV+"} for u in fu):
+            errors.append(f"{fname}: გროტესკი (IV) არ ჰყავს")
+        if not any(u["tier"] == "V" for u in fu):
+            errors.append(f"{fname}: გოლიათი (V) არ ჰყავს")
         # დონე/ფასი: დაბალი დონის საბრძოლო იუნიტი არ უნდა იყოს ძვირი შემდეგი დონის ყველაზე იაფზე ორჯერ მეტად
         order = ["I", "II", "III", "IV", "IV+"]
         for a, b in zip(order, order[1:]):
