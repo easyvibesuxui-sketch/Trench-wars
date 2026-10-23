@@ -3914,6 +3914,278 @@
    ],
    "ability_points": 4,
    "allied": true
+  },
+  {
+   "id": "nkuba_gunners",
+   "faction": "central_african",
+   "name": "ნკუბას მეხის მსროლელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მეხის შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "lightning",
+      "reload"
+     ]
+    }
+   ],
+   "tags": [
+    "giant_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "forest_trackers",
+   "faction": "central_african",
+   "name": "ტყის მეკვალეები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "storyteller_telegraphers",
+   "faction": "central_african",
+   "name": "მთხრობელი-მეტელეგრაფეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "messenger"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "mountain_riflemen",
+   "faction": "southern_african",
+   "name": "მთის მსროლელები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "climber",
+    "high_ground"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "saw_blades",
+   "faction": "southern_african",
+   "name": "ხერხოსნები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ხერხ-დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "armor_break"
+     ]
+    }
+   ],
+   "tags": [
+    "monster_hunter"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "mounted_scouts",
+   "faction": "southern_african",
+   "name": "ცხენოსანი მზვერავები",
+   "tier": "II",
+   "size": 2,
+   "move": 10,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "lake_diggers",
+   "faction": "great_lakes",
+   "name": "მთხრელები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "digger",
+    "tunnel"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "silent_warriors",
+   "faction": "great_lakes",
+   "name": "ჩუმი მეომრები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ხანჯალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "infiltrate",
+    "silent"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "lake_boatmen",
+   "faction": "great_lakes",
+   "name": "ტბის მენავეები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "river",
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
   }
  ],
  "allies": {
@@ -3937,6 +4209,9 @@
   "amazon": "ამაზონის ტყეები და მდინარეები",
   "andes": "ანდების მთიანეთი",
   "caribbean": "კარიბის კუნძულები",
-  "oceania": "ოკეანეთის კუნძულები"
+  "oceania": "ოკეანეთის კუნძულები",
+  "central_african": "ცენტრალური აფრიკის ტყეები",
+  "southern_african": "სამხრეთ აფრიკის მთები",
+  "great_lakes": "დიდი ტბების მიწები"
  }
 }
