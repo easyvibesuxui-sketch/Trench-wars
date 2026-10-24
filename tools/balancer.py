@@ -6,7 +6,7 @@
 2. Monte Carlo-თი ათამაშებს თანაბარი ფასის რაზმებს ერთმანეთის წინააღმდეგ;
 3. წერს ანგარიშს docs/balance-report.md-ში და ფასებს data/costs.json-ში და აჩვენებს ზედმეტად ძლიერ/სუსტ იუნიტებს.
 
-გაშვება:  python3 tools/balancer.py [--sims 160] [--calibrate 16] [--faction-sims 300] [--seed 1]
+გაშვება:  python3 tools/balancer.py [--sims 160] [--calibrate 16] [--mixed-sims 100] [--faction-sims 300] [--warm] [--seed 1]
 
 v1: საწყისი მანძილი შემთხვევითია (12/24/36"), ერთნაირი პროფილები ერთად ითვლება, და ბოლოს ფრაქციები ერთმანეთს
 შერეული რაზმებით ებრძვიან (ფრაქციის დონის ბალანსი).
@@ -474,17 +474,15 @@ def calibrate(units, sims, rng, iterations, fids=(), fsims=0):
             wr, mx = win.get(u["id"]), mixed.get(u["id"])
             if wr is None and mx is None:
                 continue
-            if wr is not None and mx is not None:
+            # დაცვა: თუ იუნიტი ცალკე 45–55%-ს გარეთაა, მხოლოდ ცალკე შედეგი ითვლება — შერეულმა სიგნალმა
+            # (რომელშიც თანაგუნდელების ძალაც ერევა) იუნიტი ცალკე ბალანსიდან არ უნდა გამოიყვანოს
+            if wr is not None and (mx is None or not 0.45 <= wr <= 0.55):
+                score = max(wr, 0.02)
+            elif wr is not None:
                 score = max(wr, 0.02) ** MIX_WEIGHT[0] * max(mx, 0.02) ** MIX_WEIGHT[1]
             else:
-                score = max(wr if wr is not None else mx, 0.02)
+                score = max(mx, 0.02)
             factor = clamp((score / 0.5) ** 0.35, 0.85, 1.15)
-            # დაცვა: შერეულმა სიგნალმა იუნიტი ცალკე ბალანსიდან არ უნდა გამოიყვანოს
-            # (ცალკე ძლიერი იუნიტი არ იაფდება, ცალკე სუსტი — არ ძვირდება)
-            if wr is not None and wr > 0.55:
-                factor = max(factor, 1.0)
-            elif wr is not None and wr < 0.45:
-                factor = min(factor, 1.0)
             u["_combat"] *= factor
             u["_calibrated"] = True
         # ნორმალიზაცია: საბაზისო იუნიტი (საბრძოლო ნაწილი + ძალები) ყოველთვის BASE_COST-ია
@@ -503,6 +501,7 @@ def main():
     ap.add_argument("--faction-sims", type=int, default=300, help="ფრაქციების შერეული რაზმების ბრძოლები თითო წყვილზე (0 = გამორთული)")
     ap.add_argument("--mixed-sims", type=int, default=100, help="შერეული რაზმების ბრძოლები კალიბრაციის ყოველ იტერაციაზე (0 = მხოლოდ ერთი იუნიტის რაზმები)")
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--warm", action="store_true", help="კალიბრაცია data/costs.json-ის ფასებიდან დაიწყოს (ახალი იუნიტები — ფორმულით)")
     ap.add_argument("--calibrate", type=int, default=8, help="ფასების კორექციის იტერაციები (0 = გამორთული)")
     args = ap.parse_args()
     data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -513,6 +512,13 @@ def main():
         u["_formula_cost"] = u["_cost"]
     rng = random.Random(args.seed)
     raw_win = simulate(units, args.sims, rng)
+    if args.warm and COSTS.exists():
+        # თბილი სტარტი: კალიბრაცია წინა ფასებიდან იწყება (ცვლილებების შემდეგ ნაკლები იტერაცია სჭირდება)
+        prev = json.loads(COSTS.read_text(encoding="utf-8"))
+        for u in units:
+            if u["id"] in prev and u["tier"] in SIM_TIERS:
+                u["_combat"] = max(3.0, prev[u["id"]] - u["ability_points"])
+                u["_cost"] = prev[u["id"]]
     allies = data.get("allies", {})
     names = {**factions, **allies}
     fids = list(factions) + list(allies)
