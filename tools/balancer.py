@@ -479,6 +479,12 @@ def calibrate(units, sims, rng, iterations, fids=(), fsims=0):
             else:
                 score = max(wr if wr is not None else mx, 0.02)
             factor = clamp((score / 0.5) ** 0.35, 0.85, 1.15)
+            # დაცვა: შერეულმა სიგნალმა იუნიტი ცალკე ბალანსიდან არ უნდა გამოიყვანოს
+            # (ცალკე ძლიერი იუნიტი არ იაფდება, ცალკე სუსტი — არ ძვირდება)
+            if wr is not None and wr > 0.55:
+                factor = max(factor, 1.0)
+            elif wr is not None and wr < 0.45:
+                factor = min(factor, 1.0)
             u["_combat"] *= factor
             u["_calibrated"] = True
         # ნორმალიზაცია: საბაზისო იუნიტი (საბრძოლო ნაწილი + ძალები) ყოველთვის BASE_COST-ია
