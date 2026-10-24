@@ -329,7 +329,9 @@ def fight(A, B, rng, max_rounds=8):
 
 
 def simulate(units, sims, rng):
-    pool = [u for u in units if u["tier"] in SIM_TIERS and not (set(u["tags"]) & ABILITY_TAGS)]
+    # გროტესკები (IV) სიმულაციაში შედიან ძალებითაც (მაგ. აღდგენა) — ისინი ძირითადად მებრძოლები არიან
+    pool = [u for u in units if u["tier"] in SIM_TIERS and "leader" not in u["tags"]
+            and (u["tier"] in ("IV", "IV+") or not (set(u["tags"]) & ABILITY_TAGS))]
     for u in pool:
         set_pref(u)
     # იდენტური პროფილები (მაგ. მოკავშირეების რიგითები) ერთხელ ითვლება: ერთნაირი მაჩვენებლების იუნიტს ერთი შედეგი აქვს,
@@ -472,16 +474,14 @@ def calibrate(units, sims, rng, iterations, fids=(), fsims=0):
         mixed = faction_matrix(units, list(fids), fsims, rng)[1] if fsims else {}
         for u in units:
             wr, mx = win.get(u["id"]), mixed.get(u["id"])
-            if wr is None and mx is None:
-                continue
+            if wr is None:
+                continue  # მხოლოდ შერეული სიგნალით ფასი არ იცვლება (მასში თანაგუნდელების ძალაც ერევა)
             # დაცვა: თუ იუნიტი ცალკე 45–55%-ს გარეთაა, მხოლოდ ცალკე შედეგი ითვლება — შერეულმა სიგნალმა
             # (რომელშიც თანაგუნდელების ძალაც ერევა) იუნიტი ცალკე ბალანსიდან არ უნდა გამოიყვანოს
             if wr is not None and (mx is None or not 0.45 <= wr <= 0.55):
                 score = max(wr, 0.02)
-            elif wr is not None:
-                score = max(wr, 0.02) ** MIX_WEIGHT[0] * max(mx, 0.02) ** MIX_WEIGHT[1]
             else:
-                score = max(mx, 0.02)
+                score = max(wr, 0.02) ** MIX_WEIGHT[0] * max(mx, 0.02) ** MIX_WEIGHT[1]
             factor = clamp((score / 0.5) ** 0.35, 0.85, 1.15)
             u["_combat"] *= factor
             u["_calibrated"] = True
@@ -537,7 +537,7 @@ def main():
         "> **მოგების %** — საშუალო შედეგი სხვა ფრაქციების ყველა საბრძოლო იუნიტის წინააღმდეგ, თანაბარი ფასით. იდეალი ≈ 50%.",
         "> **შერეულ რაზმში %** — იუნიტის წვლილი ფრაქციების შერეულ რაზმებში (რაზმის შედეგი, აწონილი იუნიტის წილით ბიუჯეტში). კალიბრაცია ორივე სიგნალს ითვალისწინებს.",
         "> ⚠️ = 60%-ზე მეტი (ზედმეტად ძლიერი ფასთან შედარებით) ან 40%-ზე ნაკლები (ზედმეტად სუსტი).",
-        "> ლიდერები, მკურნალები, ალქიმიკოსები და რიტუალისტები სიმულაციაში არ შედიან — მათი ღირებულება ძალებშია და **სატესტო თამაში** სჭირდება.",
+        "> ლიდერები, მკურნალები, ალქიმიკოსები და რიტუალისტები სიმულაციაში არ შედიან — მათი ღირებულება ძალებშია და **სატესტო თამაში** სჭირდება. გროტესკები (IV) შედიან ძალებითაც.",
         "",
     ]
     if fm:

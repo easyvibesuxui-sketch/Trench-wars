@@ -7140,6 +7140,83 @@
    "allied": true
   },
   {
+   "id": "nuada_silverhands",
+   "faction": "celtic",
+   "name": "ნუადას ვერცხლისხელები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ვერცხლის ხელი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "steam",
+    "shield"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "curragh_raiders",
+   "faction": "celtic",
+   "name": "კურაღის მეზღვაურები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "აბორდაჟის ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "landing"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
    "id": "celtic_grotesque",
    "faction": "celtic",
    "name": "გოიბნიუს მავალი სამჭედლო",
@@ -7496,6 +7573,87 @@
     "leader"
    ],
    "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "belenos_shields",
+   "faction": "gaul",
+   "name": "ბელენოსის ფარისნები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შუბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield_wall"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "tarasque_breakers",
+   "faction": "gaul",
+   "name": "ტარასკის ჯავშნის მსხვრეველები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ორთქლის ჩაქუჩი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "armor_break"
+     ]
+    },
+    {
+     "name": "ხიდის მუხტი",
+     "mode": "ranged",
+     "range": 6,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "blast",
+      "once"
+     ]
+    }
+   ],
+   "tags": [
+    "monster_hunter"
+   ],
+   "ability_points": 2,
    "allied": true
   },
   {
