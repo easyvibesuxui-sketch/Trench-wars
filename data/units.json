@@ -8994,6 +8994,82 @@
    "allied": true
   },
   {
+   "id": "tlaloc_shields",
+   "faction": "mexica",
+   "name": "ტლალოკის ფარისნები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "მაკუაუიტლი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield_wall"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
+   "id": "mictlan_stormers",
+   "faction": "mexica",
+   "name": "მიქტლანის კიბის მოიერიშეები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მაკუაუიტლი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ატლატლი",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "climber"
+   ],
+   "ability_points": 2,
+   "allied": true
+  },
+  {
    "id": "mexica_grotesque",
    "faction": "mexica",
    "name": "ახალი ცეცხლის ურემი",
