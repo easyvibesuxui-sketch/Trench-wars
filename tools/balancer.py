@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ბალანსერი (v2).
+"""ბალანსერი (v3).
 
 კითხულობს data/units.json-ს და:
 1. ფორმულით ითვლის თითოეული იუნიტის ფასს მარჩილში (შეტევა × გამძლეობა + ძალების ფასი);
@@ -12,6 +12,8 @@ v1: საწყისი მანძილი შემთხვევით�
 შერეული რაზმებით ებრძვიან (ფრაქციის დონის ბალანსი).
 v2: ყოველ მოდელს თავისი პოზიცია აქვს ხაზზე — მსროლელები ადგილზე რჩებიან, ხელჩართულის მოყვარულები წინ მიდიან და
 უახლოეს მოწინააღმდეგესთან ჩერდებიან (წინა რიგი ზურგს ფარავს); ბადე/ჯაჭვი ცალკე მოდელს აჩერებს.
+v3: მხარდაჭერის ძალები სიმულირდება (ლიდერი, ბრძანებები, მკურნალი, აღდგენა, უთანხმოება, სუსტი ადგილი, სიმღერა, მარაგი,
+რიტუალი, წყევლა); მხარდაჭერის იუნიტების ფასს მხარდაჭერის ტესტი ადგენს; შერეულ რაზმებს ყოველთვის ჰყავს ლიდერი.
 """
 import argparse
 import json
@@ -34,6 +36,11 @@ SIM_TIERS = {"I", "II", "III", "IV", "IV+"}
 ABILITY_TAGS = {"leader", "healer", "alchemist", "ritual", "witch", "discord", "stitcher", "supply", "repair", "orders", "song", "weakness"}
 
 GAPS = (12, 24, 36)       # საწყისი მანძილის ვარიანტები სიმულაციაში
+# v3: მხარდაჭერის ძალები, რომლებსაც სიმულაცია თამაშობს (ავრები და მოქმედებები)
+SUPPORT = {"leader", "orders", "healer", "repair", "discord", "weakness", "song", "supply", "ritual", "witch"}
+UNSIM_AP = {"alchemist": 6, "stitcher": 6}   # მხოლოდ კამპანიის ძალები — ფასს ხელით ემატება
+MECH = {"construct", "vehicle", "automaton", "steam", "fortress"}
+SUP_BASE = 300            # მხარდაჭერის ტესტის საბაზისო რაზმი (საბრძოლო ღირებულებით)
 FACTION_BUDGET = 500      # ფრაქციების შერეული რაზმების ბიუჯეტი
 MIX_WEIGHT = (0.7, 0.3)   # კალიბრაცია: ერთი იუნიტის რაზმის და შერეული რაზმის სიგნალების წონები
 PIN_TAGS = {"pin", "entangle", "grab"}          # მოხვედრილს შემდეგ აქტივაციაზე მოძრაობა არ შეუძლია
@@ -160,13 +167,17 @@ def compute_costs(units):
         u["_ehp"] = durability(u)
         u["_combat"] = k * raw_value(u)  # საბრძოლო ღირებულება — მხოლოდ ამას ამოწმებს სიმულაცია
         u["_cost"] = max(5, round(u["_combat"] + u["ability_points"]))
+        u["_sup"] = frozenset(set(u["tags"]) & SUPPORT)
+        u["_unsim"] = sum(UNSIM_AP.get(t, 0) for t in u["tags"])
+        u["_sup_price"] = max(5.0, u["_cost"] - u["_unsim"]) if is_support(u) else None
     return k
 
 
 # ---------------- Monte Carlo ----------------
 
 class Model:
-    __slots__ = ("u", "w", "used_once", "reload", "regen_block", "charged", "pinned", "steam_used", "army", "x")
+    __slots__ = ("u", "w", "used_once", "reload", "regen_block", "charged", "pinned", "steam_used", "army", "x",
+                 "sup", "stunned", "exposed", "cursed")
 
     def __init__(self, u):
         self.u = u
@@ -178,6 +189,8 @@ class Model:
         self.pinned = False
         self.steam_used = False
         self.x = 0.0  # პოზიცია ხაზზე (ინჩებში)
+        self.sup = u.get("_sup", frozenset())
+        self.stunned = self.exposed = self.cursed = False
 
 
 def build_army(u, budget, rng):
@@ -207,9 +220,24 @@ def best_weapon(m, mode, gap):
     return best
 
 
+def aura(army, tag, x, r=6):
+    """არის თუ არა ამ რაზმში ცოცხალი მოდელი ამ ძალით r ინჩში."""
+    return any(a.w > 0 and tag in a.sup and abs(a.x - x) <= r for a in army)
+
+
+def sim_price(u):
+    """სიმულაციის ფასი: მხარდაჭერის იუნიტს — მთელი (ძალებით), დანარჩენს — საბრძოლო ღირებულება."""
+    return u.get("_sup_price") or u["_combat"]
+
+
 def attack(m, w, targets, rng, pool):
     """targets — ვისაც ეს იარაღი სწვდება; pool — ყველა ცოცხალი მოწინააღმდეგე (აფეთქების მეორე სამიზნისთვის)."""
     power = w["power"] + (1 if ("charge" in w["tags"] and not m.charged) else 0)
+    if w["mode"] == "melee" and aura(m.army, "ritual", m.x):
+        power += 1  # სისხლის რიტუალი: 6"-ში მოკავშირეები +1 ძალა ხელჩართულში
+    skill_mod = -1 if m.cursed else 0  # წყევლა
+    if w["mode"] == "melee" and aura(pool, "song", m.x):
+        skill_mod -= 1  # მოწინააღმდეგის სიმღერა 6"-ში: −1 ხელჩართული
     if "steam" in m.u["tags"] or "steam" in w["tags"]:
         power += 1  # ორთქლის წნევა (1 ჟეტონი); რაუნდის ბოლოს გადატვირთვის რისკი
         m.steam_used = True
@@ -238,14 +266,18 @@ def attack(m, w, targets, rng, pool):
             if w["mode"] == "ranged":
                 # სანგრების ომი: 6"-ზე შორს სამიზნე საფარშია (-1 სროლაზე); „ზემოდან“ საფარს უგულებელყოფს
                 cover = 1 if abs(tt.x - m.x) > 6 and "indirect" not in w["tags"] else 0
-                skill = m.u["shoot"] - cover
+                skill = m.u["shoot"] - cover + skill_mod
             else:
-                skill = m.u["melee"]
+                skill = m.u["melee"] + skill_mod
             if rng.random() >= hit_p(skill, tt.u["size"]):
                 continue
             if set(w["tags"]) & PIN_TAGS:
                 tt.pinned = True  # ბადე/ჯაჭვი: მოხვედრაც საკმარისია — შემდეგ სვლაზე ვერ მოძრაობს
             armor = tt.u["armor"]
+            if aura(tt.army, "orders", tt.x):
+                armor += 1  # ბრძანება „წყობა“: 6"-ში მოკავშირეებს +1 ჯავშანი
+            if tt.exposed:
+                armor = max(0, armor - 1)  # სუსტი ადგილი ნაჩვენებია
             if "armor_break" in w["tags"]:
                 armor = max(0, armor - 1)
             if w["mode"] == "ranged" and "shield" in tt.u["tags"]:
@@ -265,12 +297,17 @@ def attack(m, w, targets, rng, pool):
 def activate(m, enemies, rng):
     """v2: ყოველ მოდელს თავისი პოზიცია აქვს ხაზზე. ხელჩართულის მოყვარული წინ მიდის, მსროლელი ადგილზე რჩება და ისვრის,
     თუ სამიზნე მანძილშია; მოძრავი მოდელი უახლოეს მოწინააღმდეგესთან ჩერდება — ასე წინა რიგი ზურგს ფარავს."""
-    m.reload = False if m.reload and rng.random() < 0.5 else m.reload
+    if m.stunned:  # უთანხმოება: ეს აქტივაცია დაკარგულია
+        m.stunned = False
+        return
+    m.reload = False if m.reload and (rng.random() < 0.5 or aura(m.army, "supply", m.x)) else m.reload
     alive = [e for e in enemies if e.w > 0]
     if not alive:
         return
     near = min(alive, key=lambda e: abs(e.x - m.x))
     dn = abs(near.x - m.x)
+    if dn > 1.0 and m.sup and support_action(m, alive, rng):
+        return
     if dn <= 1.0:  # ხელჩართულში ჩაბმული
         w = best_weapon(m, "melee", 0)
         if w:
@@ -286,12 +323,43 @@ def activate(m, enemies, rng):
     if m.pinned:  # ბადე/ჯაჭვი: ამ სვლაზე ვერ მოძრაობს
         m.pinned = False
         return
-    step = min(m.u["move"], dn - 1.0)
+    hold = 8.0 if (m.sup - {"leader", "orders", "ritual", "supply"}) and m.u["tier"] not in ("IV", "IV+") else 1.0
+    step = max(0.0, min(m.u["move"], dn - hold))  # მხარდაჭერა უკან რჩება (8")
     m.x += step if near.x > m.x else -step
     if dn - step <= 1.0:  # იერიში: მივიდა და იმავე სვლაზე ურტყამს
         w = best_weapon(m, "melee", 0)
         if w:
             attack(m, w, [e for e in alive if abs(e.x - m.x) <= 1.0], rng, alive)
+
+
+def support_action(m, alive, rng):
+    """მხარდაჭერის მოქმედება შეტევის ნაცვლად. True — თუ მოქმედება შესრულდა."""
+    sup = m.sup
+    if sup & {"healer", "repair"}:
+        need = 2 if m.u["tier"] in ("IV", "IV+") else 1
+        hurt = [a for a in m.army if a.w > 0 and a is not m and a.u["wounds"] - a.w >= need and abs(a.x - m.x) <= 6
+                and ("healer" in sup or set(a.u["tags"]) & MECH)]
+        if hurt:
+            max(hurt, key=lambda a: a.u["wounds"] - a.w).w += 1  # მკურნალობა / აღდგენა: +1 სიცოცხლე
+            return True
+    in12 = [e for e in alive if abs(e.x - m.x) <= 12]
+    if "discord" in sup and in12 and not ("leader" in sup and best_weapon(m, "ranged", abs(min(in12, key=lambda e: abs(e.x - m.x)).x - m.x))):
+        t = min((e for e in in12 if not e.stunned), key=lambda e: abs(e.x - m.x), default=None)
+        if t:
+            if "fearless" not in t.u["tags"] and rng.randint(1, 10) > t.u["nerve"]:
+                t.stunned = True  # უთანხმოება: შემდეგი აქტივაცია დაკარგულია
+            return True
+    if "weakness" in sup and in12:
+        t = max((e for e in in12 if not e.exposed), key=lambda e: (e.u["size"], -abs(e.x - m.x)), default=None)
+        if t:
+            t.exposed = True  # სუსტი ადგილი: ამ რაუნდში ჯავშანი −1
+            return True
+    if "witch" in sup and in12:
+        t = min((e for e in in12 if not e.cursed), key=lambda e: abs(e.x - m.x), default=None)
+        if t:
+            t.cursed = True  # წყევლა: −1 სროლა და ხელჩართული
+            return True
+    return False
 
 
 def battle(ua, ub, budget, rng, max_rounds=8):
@@ -310,6 +378,7 @@ def fight(A, B, rng, max_rounds=8):
     for _ in range(max_rounds):
         for army in (A, B):
             for m in army:
+                m.exposed = False
                 if m.w > 0 and "regen" in m.u["tags"] and not m.regen_block and m.w < m.u["wounds"]:
                     m.w += 1
                 m.regen_block = False
@@ -331,7 +400,8 @@ def fight(A, B, rng, max_rounds=8):
             if not tested[key] and sum(1 for m in army if m.w > 0) * 2 < n:
                 tested[key] = True
                 for m in army:
-                    if m.w > 0 and "fearless" not in m.u["tags"] and rng.randint(1, 10) > m.u["nerve"]:
+                    bonus = 1 if (aura(army, "leader", m.x) or aura(army, "song", m.x)) else 0  # ლიდერი / სიმღერა 6"-ში
+                    if m.w > 0 and "fearless" not in m.u["tags"] and rng.randint(1, 10) > m.u["nerve"] + bonus:
                         m.w = 0
         if not any(m.w > 0 for m in A) or not any(m.w > 0 for m in B):
             break
@@ -400,23 +470,35 @@ def profile_key(u):
 
 # ---------------- ფრაქციები ერთმანეთის წინააღმდეგ ----------------
 
-def faction_army(roster, budget, rng):
-    """შემთხვევითი, მაგრამ კანონიერი რაზმი: IV მაქს. 1, ერთ იუნიტზე მაქს. 4 მოდელი.
-    ბიუჯეტი საბრძოლო ღირებულებით ითვლება (ძალების ფასის გარეშე), როგორც ერთი იუნიტის სიმულაციაში —
-    თორემ ფრაქცია, რომლის იუნიტებიც ძალებში იხდიან (ჩირაღდანი, მაცნე...), სიმულაციაში უსამართლოდ სუსტდება."""
-    army, left, counts, big = [], budget, {}, False
+def faction_units(roster, budget, rng, leaders=()):
+    """შემთხვევითი, მაგრამ კანონიერი რაზმის შემადგენლობა: 1 ლიდერი (თუ არის), IV მაქს. 1, ერთ იუნიტზე მაქს. 4 მოდელი.
+    ბიუჯეტი სიმულაციის ფასით ითვლება (მებრძოლებს — საბრძოლო ღირებულება, მხარდაჭერას — ძალებით)."""
+    out, left, counts, big = [], budget, {}, False
+    if leaders:
+        ld = rng.choice(leaders)
+        out.append(ld)
+        left -= sim_price(ld)
     while True:
-        opts = [u for u in roster if u["_combat"] <= left and counts.get(u["id"], 0) < 4 and not (big and u["tier"] in ("IV", "IV+"))]
+        opts = [u for u in roster if sim_price(u) <= left and counts.get(u["id"], 0) < 4 and not (big and u["tier"] in ("IV", "IV+"))]
         if not opts:
             break
         u = rng.choice(opts)
         counts[u["id"]] = counts.get(u["id"], 0) + 1
         big = big or u["tier"] in ("IV", "IV+")
-        left -= u["_combat"]
-        army.append(Model(u))
+        left -= sim_price(u)
+        out.append(u)
+    return out
+
+
+def make_army(units):
+    army = [Model(u) for u in units]
     for m in army:
         m.army = army
     return army
+
+
+def faction_army(roster, budget, rng, leaders=()):
+    return make_army(faction_units(roster, budget, rng, leaders))
 
 
 def _faction_score(job):
@@ -425,30 +507,82 @@ def _faction_score(job):
     r = random.Random(seed)
     total, contrib = 0.0, {}
     for _ in range(_SIMS):
-        A, B = faction_army(_ROSTERS[a], FACTION_BUDGET, r), faction_army(_ROSTERS[b], FACTION_BUDGET, r)
+        A = faction_army(_ROSTERS[a], FACTION_BUDGET, r, _LEADERS[a])
+        B = faction_army(_ROSTERS[b], FACTION_BUDGET, r, _LEADERS[b])
         res = fight(A, B, r) if A and B else 0.5
         total += res
         for army, sc in ((A, res), (B, 1 - res)):
-            spent = sum(m.u["_combat"] for m in army) or 1
+            spent = sum(sim_price(m.u) for m in army) or 1
             for m in army:
                 k = stat_key(m.u)
                 c = contrib.setdefault(k, [0.0, 0.0])
-                c[0] += sc * m.u["_combat"] / spent
-                c[1] += m.u["_combat"] / spent
+                c[0] += sc * sim_price(m.u) / spent
+                c[1] += sim_price(m.u) / spent
     return total / _SIMS, contrib
 
 
-_ROSTERS = {}
+_ROSTERS, _LEADERS = {}, {}
+
+
+def is_support(u):
+    """მხარდაჭერის იუნიტი (I–III): ფასდება მხარდაჭერის ტესტით და არა ერთი იუნიტის რაზმით."""
+    return bool(u.get("_sup")) and u["tier"] in ("I", "II", "III")
+
+
+def combat_roster(units, f):
+    return [u for u in units if u["faction"] == f and not is_support(u)
+            and (u["tier"] == "IV" or (u["tier"] in {"I", "II", "III"} and not (set(u["tags"]) & ABILITY_TAGS)))]
+
+
+# ---------------- მხარდაჭერის ტესტი ----------------
+# ორი იდენტური რაზმი (ფრაქციის მებრძოლები, SUP_BASE): A-ს ემატება მხარდაჭერის იუნიტი, B-ს — იმავე ფასის რიგითები.
+# მოგება ≈ 50% ნიშნავს, რომ მხარდაჭერა თავის ფასს ზუსტად ამართლებს.
+_SUP, _BASE, _REG = [], {}, {}
+
+
+def _support_score(job):
+    i, seed = job
+    u = _SUP[i]
+    r = random.Random(seed)
+    reg = _REG[u["faction"]]
+    total = 0.0
+    for _ in range(_SIMS):
+        comp = faction_units(_BASE[u["faction"]], SUP_BASE, r)
+        x = sim_price(u) / max(3.0, reg["_cost"])
+        n = int(x) + (1 if r.random() < x - int(x) else 0)
+        total += fight(make_army(comp + [u]), make_army(comp + [reg] * n), r)
+    return total / _SIMS
+
+
+def support_test(units, sims, rng):
+    global _SUP, _BASE, _REG, _SIMS
+    _SUP = [u for u in units if is_support(u)]
+    fs = {u["faction"] for u in _SUP}
+    _BASE = {f: [u for u in combat_roster(units, f) if u["tier"] != "IV"] for f in fs}
+    _REG = {f: next(u for u in units if u["faction"] == f and u["tier"] == "I" and {"line", "gas_mask"} <= set(u["tags"])) for f in fs}
+    for u in units:
+        if u["tier"] in SIM_TIERS:
+            set_pref(u)
+    _SIMS = sims
+    jobs = [(i, rng.randrange(2**31)) for i in range(len(_SUP))]
+    workers = os.cpu_count() or 1
+    if workers > 1:
+        with multiprocessing.get_context("fork").Pool(workers) as mp:
+            scores = mp.map(_support_score, jobs, chunksize=2)
+    else:
+        scores = [_support_score(j) for j in jobs]
+    return {u["id"]: sc for u, sc in zip(_SUP, scores)}
 
 
 def faction_matrix(units, fids, sims, rng):
     """ფრაქცია ფრაქციის წინააღმდეგ შერეული რაზმებით.
     ლიდერები და ძალების იუნიტები არ შედიან (მათ სიმულაცია ვერ აფასებს); გროტესკები (IV) შედიან ძალებითაც, რადგან ისინი ძირითადად მებრძოლები არიან."""
-    global _ROSTERS, _SIMS
-    _ROSTERS = {f: [u for u in units if u["faction"] == f and "leader" not in u["tags"]
-                    and (u["tier"] == "IV" or (u["tier"] in {"I", "II", "III"} and not (set(u["tags"]) & ABILITY_TAGS)))] for f in fids}
-    for r in _ROSTERS.values():
-        for u in r:
+    global _ROSTERS, _LEADERS, _SIMS
+    # v3: რაზმს ყოველთვის ჰყავს ლიდერი, და მხარდაჭერის იუნიტებიც შედის (მათი ძალები ახლა სიმულირდება)
+    _ROSTERS = {f: combat_roster(units, f) + [u for u in units if u["faction"] == f and is_support(u) and "leader" not in u["tags"]] for f in fids}
+    _LEADERS = {f: [u for u in units if u["faction"] == f and is_support(u) and "leader" in u["tags"]] for f in fids}
+    for u in units:
+        if u["tier"] in SIM_TIERS:
             set_pref(u)
     _SIMS = sims
     jobs = [(a, b, rng.randrange(2**31)) for i, a in enumerate(fids) for b in fids[i + 1:]]
@@ -481,12 +615,26 @@ def _pair_score(job):
     return sum(battle(_POOL[i], _POOL[j], SIM_BUDGET, r) for _ in range(_SIMS)) / _SIMS
 
 
-def calibrate(units, sims, rng, iterations, fids=(), fsims=0):
+def calibrate_support(units, sims, rng):
+    sw = support_test(units, sims, rng)
+    for u in units:
+        wr = sw.get(u["id"])
+        if wr is None:
+            continue
+        u["_sup_price"] *= clamp((max(wr, 0.02) / 0.5) ** 0.5, 0.85, 1.15)
+        u["_cost"] = max(5, round(u["_sup_price"] + u["_unsim"]))
+    return sw
+
+
+def calibrate(units, sims, rng, iterations, fids=(), fsims=0, ssims=0):
     """ფასების ავტომატური კორექცია: ძლიერი იუნიტი ძვირდება, სუსტი — იაფდება.
     ორი სიგნალი: (1) ერთი იუნიტის რაზმი ყველა სხვის წინააღმდეგ; (2) წვლილი ფრაქციების შერეულ რაზმებში.
     ორივეს აწონილი გეომეტრიული საშუალო (MIX_WEIGHT) — ასე იუნიტი ცალკეც დაბალანსებულია და ფრაქციის შემადგენლობაშიც.
     შერეულ სიგნალს ნაკლები წონა აქვს: მასში თანაგუნდელების ძალაც ერევა (ცუდი შემადგენლობის ფრაქციაში კარგი იუნიტიც „სუსტად“ ჩანს)."""
+    sup_win = {}
     for _ in range(iterations):
+        if ssims:
+            sup_win = calibrate_support(units, ssims, rng)
         win = simulate(units, sims, rng)
         mixed = faction_matrix(units, list(fids), fsims, rng)[1] if fsims else {}
         for u in units:
@@ -509,7 +657,7 @@ def calibrate(units, sims, rng, iterations, fids=(), fsims=0):
             if u.get("_calibrated"):
                 u["_combat"] *= norm
                 u["_cost"] = max(5, round(u["_combat"] + u["ability_points"]))
-    return simulate(units, sims, rng)
+    return simulate(units, sims, rng), (support_test(units, ssims, rng) if ssims else sup_win)
 
 
 def main():
@@ -518,6 +666,7 @@ def main():
     ap.add_argument("--faction-sims", type=int, default=300, help="ფრაქციების შერეული რაზმების ბრძოლები თითო წყვილზე (0 = გამორთული)")
     ap.add_argument("--mixed-sims", type=int, default=100, help="შერეული რაზმების ბრძოლები კალიბრაციის ყოველ იტერაციაზე (0 = მხოლოდ ერთი იუნიტის რაზმები)")
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--support-sims", type=int, default=400, help="მხარდაჭერის ტესტის ბრძოლები თითო იუნიტზე (0 = ძალები ხელით)")
     ap.add_argument("--warm", action="store_true", help="კალიბრაცია data/costs.json-ის ფასებიდან დაიწყოს (ახალი იუნიტები — ფორმულით)")
     ap.add_argument("--calibrate", type=int, default=8, help="ფასების კორექციის იტერაციები (0 = გამორთული)")
     args = ap.parse_args()
@@ -534,12 +683,18 @@ def main():
         prev = json.loads(COSTS.read_text(encoding="utf-8"))
         for u in units:
             if u["id"] in prev and u["tier"] in SIM_TIERS:
-                u["_combat"] = max(3.0, prev[u["id"]] - u["ability_points"])
+                if is_support(u):
+                    u["_sup_price"] = max(5.0, prev[u["id"]] - u["_unsim"])
+                else:
+                    u["_combat"] = max(3.0, prev[u["id"]] - u["ability_points"])
                 u["_cost"] = prev[u["id"]]
     allies = data.get("allies", {})
     names = {**factions, **allies}
     fids = list(factions) + list(allies)
-    win = calibrate(units, args.sims, rng, args.calibrate, fids, args.mixed_sims) if args.calibrate else raw_win
+    if args.calibrate:
+        win, sup_win = calibrate(units, args.sims, rng, args.calibrate, fids, args.mixed_sims, args.support_sims)
+    else:
+        win, sup_win = raw_win, (support_test(units, args.support_sims, rng) if args.support_sims else {})
     fm, mixed = faction_matrix(units, fids, args.faction_sims, rng) if args.faction_sims else (None, {})
 
     lines = [
@@ -557,7 +712,10 @@ def main():
         "> **მოგების %** — საშუალო შედეგი სხვა ფრაქციების ყველა საბრძოლო იუნიტის წინააღმდეგ, თანაბარი ფასით. იდეალი ≈ 50%.",
         "> **შერეულ რაზმში %** — იუნიტის წვლილი ფრაქციების შერეულ რაზმებში (რაზმის შედეგი, აწონილი იუნიტის წილით ბიუჯეტში). კალიბრაცია ორივე სიგნალს ითვალისწინებს.",
         "> ⚠️ = 60%-ზე მეტი (ზედმეტად ძლიერი ფასთან შედარებით) ან 40%-ზე ნაკლები (ზედმეტად სუსტი).",
-        "> ლიდერები, მკურნალები, ალქიმიკოსები და რიტუალისტები სიმულაციაში არ შედიან — მათი ღირებულება ძალებშია და **სატესტო თამაში** სჭირდება. გროტესკები (IV) შედიან ძალებითაც.",
+        "> **v3 — მხარდაჭერა:** ლიდერი (6\"-ში +1 ნებისყოფა), ბრძანებები (+1 ჯავშანი), მკურნალი და აღდგენა (+1 სიცოცხლე), უთანხმოება (აქტივაციის დაკარგვა),",
+        "> სუსტი ადგილი (−1 ჯავშანი), სიმღერა (მტერს −1 ხელჩართული, მოკავშირეებს +1 ნებისყოფა), მარაგი (დატენვა), რიტუალი (+1 ძალა), წყევლა (−1 სროლა/ხელჩართული) — სიმულირდება.",
+        "> მხარდაჭერის იუნიტის ფასს **მხარდაჭერის ტესტი** ადგენს: ორი იდენტური რაზმი, ერთს ემატება ეს იუნიტი, მეორეს — იმავე ფასის რიგითები; იდეალი ≈ 50%.",
+        "> მხოლოდ კამპანიის ძალები (ალქიმია, ნაკერი სხეულები) არ სიმულირდება — მათ ფასს +6 ემატება თითოზე. შერეულ რაზმებს ყოველთვის ჰყავს ლიდერი.",
         "",
     ]
     if fm:
@@ -579,8 +737,12 @@ def main():
         lines += [f"## {fname}", "", "| იუნიტი | დონე | ფორმულის ფასი | მოგება % (ფორმულით) | ძალები | **ფასი** | მოგება % | შერეულ რაზმში % | შენიშვნა |", "|---|---|---|---|---|---|---|---|---|"]
         for u in [x for x in units if x["faction"] == fid]:
             wr = win.get(u["id"])
-            if wr is None:
-                note = "სიმულაციის გარეშე (ძალები / სუპერიუნიტი)"
+            if wr is None and u["id"] in sup_win:
+                sw = sup_win[u["id"]]
+                wrs = f"{sw * 100:.0f}% (მხარდაჭერა)"
+                note = "⚠️ ძლიერი" if sw > 0.6 else ("⚠️ სუსტი" if sw < 0.4 else "✓")
+            elif wr is None:
+                note = "სიმულაციის გარეშე (კამპანიის ძალები / სუპერიუნიტი)"
                 wrs = "—"
             else:
                 wrs = f"{wr * 100:.0f}%"
@@ -597,8 +759,9 @@ def main():
     REPORT.write_text("\n".join(lines), encoding="utf-8")
     COSTS.write_text(json.dumps({u["id"]: u["_cost"] for u in units}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     flagged = [(u["name"], win[u["id"]]) for u in units if win.get(u["id"]) is not None and not 0.4 <= win[u["id"]] <= 0.6]
+    flagged += [(u["name"] + " (მხარდაჭერა)", sup_win[u["id"]]) for u in units if u["id"] in sup_win and not 0.4 <= sup_win[u["id"]] <= 0.6]
     print(f"ანგარიში: {REPORT.relative_to(ROOT)}")
-    print(f"სიმულირებული იუნიტები: {sum(1 for v in win.values() if v is not None)}; დროშით მონიშნული: {len(flagged)}")
+    print(f"სიმულირებული იუნიტები: {sum(1 for v in win.values() if v is not None)} + მხარდაჭერა {len(sup_win)}; დროშით მონიშნული: {len(flagged)}")
     for name, wr in sorted(flagged, key=lambda x: -x[1]):
         print(f"  {wr * 100:5.1f}%  {name}")
     if fm:

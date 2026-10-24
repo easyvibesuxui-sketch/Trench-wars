@@ -8,7 +8,7 @@
 ## განახლება
 ```bash
 python3 tools/validate.py        # მონაცემების შემოწმება (ყველა ფრაქცია)
-python3 tools/balancer.py --sims 160 --calibrate 12 --warm   # ფასების გადათვლა + ფრაქციების ბალანსი (~1 საათი, ყველა CPU ბირთვზე)
+python3 tools/balancer.py --sims 160 --calibrate 8 --support-sims 400 --warm   # ფასები: ერთი იუნიტის რაზმები, მხარდაჭერის ტესტი, ფრაქციების ბალანსი (~45 წთ)
 python3 tools/build_campaigns.py # ომის კამპანიების დოკუმენტები (campaigns/*.md, lore/11-sacrifices.md)
 python3 tools/build_builder.py   # builder/data.js-ის განახლება
 NODE_PATH=$(npm root -g) node tools/test_builder.js   # ყველა ფრაქციის ავტომატური ტესტი ბრაუზერში
