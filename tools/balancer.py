@@ -41,6 +41,7 @@ SUPPORT = {"leader", "orders", "healer", "repair", "discord", "weakness", "song"
 UNSIM_AP = {"alchemist": 6, "stitcher": 6}   # მხოლოდ კამპანიის ძალები — ფასს ხელით ემატება
 MECH = {"construct", "vehicle", "automaton", "steam", "fortress"}
 SUP_BASE = 300            # მხარდაჭერის ტესტის საბაზისო რაზმი (საბრძოლო ღირებულებით)
+LEADER_FLOOR = 40         # ლიდერის მინიმალური ფასი: სავალდებულოა და ბრძანება/კამპანიის ღირებულებაც აქვს, რასაც სიმულაცია ვერ ხედავს
 FACTION_BUDGET = 500      # ფრაქციების შერეული რაზმების ბიუჯეტი
 MIX_WEIGHT = (0.7, 0.3)   # კალიბრაცია: ერთი იუნიტის რაზმის და შერეული რაზმის სიგნალების წონები
 PIN_TAGS = {"pin", "entangle", "grab"}          # მოხვედრილს შემდეგ აქტივაციაზე მოძრაობა არ შეუძლია
@@ -622,6 +623,8 @@ def calibrate_support(units, sims, rng):
         if wr is None:
             continue
         u["_sup_price"] *= clamp((max(wr, 0.02) / 0.5) ** 0.5, 0.85, 1.15)
+        if "leader" in u["tags"]:
+            u["_sup_price"] = max(u["_sup_price"], LEADER_FLOOR - u["_unsim"])
         u["_cost"] = max(5, round(u["_sup_price"] + u["_unsim"]))
     return sw
 
@@ -716,6 +719,7 @@ def main():
         "> სუსტი ადგილი (−1 ჯავშანი), სიმღერა (მტერს −1 ხელჩართული, მოკავშირეებს +1 ნებისყოფა), მარაგი (დატენვა), რიტუალი (+1 ძალა), წყევლა (−1 სროლა/ხელჩართული) — სიმულირდება.",
         "> მხარდაჭერის იუნიტის ფასს **მხარდაჭერის ტესტი** ადგენს: ორი იდენტური რაზმი, ერთს ემატება ეს იუნიტი, მეორეს — იმავე ფასის რიგითები; იდეალი ≈ 50%.",
         "> მხოლოდ კამპანიის ძალები (ალქიმია, ნაკერი სხეულები) არ სიმულირდება — მათ ფასს +6 ემატება თითოზე. შერეულ რაზმებს ყოველთვის ჰყავს ლიდერი.",
+        f"> ლიდერის ფასის ქვედა ზღვარი — {LEADER_FLOOR} მარჩილი (სავალდებულოა; ბრძანებების და კამპანიის ღირებულება სიმულაციის მიღმაა). ასეთ ლიდერს მხარდაჭერის ტესტი 40%-ზე დაბლა შეიძლება აჩვენებდეს.",
         "",
     ]
     if fm:
@@ -759,7 +763,8 @@ def main():
     REPORT.write_text("\n".join(lines), encoding="utf-8")
     COSTS.write_text(json.dumps({u["id"]: u["_cost"] for u in units}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     flagged = [(u["name"], win[u["id"]]) for u in units if win.get(u["id"]) is not None and not 0.4 <= win[u["id"]] <= 0.6]
-    flagged += [(u["name"] + " (მხარდაჭერა)", sup_win[u["id"]]) for u in units if u["id"] in sup_win and not 0.4 <= sup_win[u["id"]] <= 0.6]
+    flagged += [(u["name"] + " (მხარდაჭერა)", sup_win[u["id"]]) for u in units if u["id"] in sup_win and not 0.4 <= sup_win[u["id"]] <= 0.6
+                and not ("leader" in u["tags"] and u["_cost"] <= LEADER_FLOOR and sup_win[u["id"]] < 0.4)]
     print(f"ანგარიში: {REPORT.relative_to(ROOT)}")
     print(f"სიმულირებული იუნიტები: {sum(1 for v in win.values() if v is not None)} + მხარდაჭერა {len(sup_win)}; დროშით მონიშნული: {len(flagged)}")
     for name, wr in sorted(flagged, key=lambda x: -x[1]):
