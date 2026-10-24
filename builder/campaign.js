@@ -90,6 +90,24 @@
     </li>`;
   }
 
+  // ომის კამპანია (data/campaigns): სცენარები, მსხვერპლი, დასასრული
+  const STORY = (f) => (D.campaigns || {})[f];
+  function storyPanel(f, done) {
+    const c = STORY(f);
+    if (!c) return "";
+    done = done || [];
+    const next = c.scenarios.findIndex((_, i) => !done.includes(i));
+    const s = c.sacrifice;
+    return `<div class="panel story"><h3>ომის კამპანია: ${esc(c.title)}</h3>
+      <p class="sub"><b>მტერი:</b> ${esc(c.enemy)} · <b>გმირი:</b> ${esc(c.hero)}</p>
+      <p>${esc(c.intro)}</p>
+      <details><summary>მსხვერპლი: ${esc(s.name)} (${s.year}) — „${esc(s.title)}“</summary><p>${esc(s.text)}</p></details>
+      <ol class="scenarios">${c.scenarios.map((sc, i) => `<li class="${done.includes(i) ? "done" : (i === next ? "next" : "")}">
+        <details ${i === next ? "open" : ""}><summary><b>${esc(sc.name)}</b> ${done.includes(i) ? "✓" : (i === next ? "— შემდეგი" : "")}</summary>
+        <p>${esc(sc.story)}</p><p><b>მიზანი:</b> ${esc(sc.objective)}</p><p><b>სპეციალური წესი:</b> ${esc(sc.special)}</p><p><b>ჯილდო:</b> ${esc(sc.reward)}</p></details></li>`).join("")}</ol>
+      ${next === -1 ? `<p class="ending"><b>დასასრული.</b> ${esc(c.ending)}</p>` : ""}</div>`;
+  }
+
   function render() {
     const view = $("campaignView");
     if (!camp) {
@@ -99,9 +117,11 @@
         <div class="form-row"><button type="button" class="primary" id="startCamp">კამპანიის დაწყება მიმდინარე რაზმით</button>
         <button type="button" id="importBtn">კამპანიის ჩატვირთვა ტექსტიდან</button></div>
         <textarea class="export" id="importBox" hidden aria-label="კამპანიის ტექსტი" placeholder="ჩასვი ადრე ექსპორტირებული კამპანია"></textarea>
-        <span class="status" id="campStatus" role="status"></span></div></div>`;
+        <span class="status" id="campStatus" role="status"></span></div>
+        ${storyPanel(B.getState().faction, [])}</div>`;
       return;
     }
+    camp.storyDone = camp.storyDone || [];
     const cur = CURRENCY_OF(camp.faction);
     const active = camp.models.filter(m => m.status !== "dead");
     const side = SIDE[camp.faction];
@@ -116,13 +136,15 @@
           <div class="stat-pill"><b>${camp.battles.length}</b><span>ბრძოლა</span></div>
         </div></div>
       ${hasLeader() ? "" : `<p class="checks"><span class="bad">✕ რაზმს ლიდერი არ ჰყავს — დაიქირავე ახალი ლიდერი ხაზინიდან.</span></p>`}
+      ${storyPanel(camp.faction, camp.storyDone)}
       <div class="camp-grid">
         <div class="panel"><h3>მეომრები (${active.length})</h3><ul class="models">${camp.models.map(modelCard).join("")}</ul></div>
         <div class="camp" style="gap:16px">
           <form class="panel" id="battleForm"><h3>ბრძოლის ჩაწერა</h3>
             <div class="form-row"><label for="bResult">შედეგი</label>
               <select id="bResult"><option value="win">გამარჯვება</option><option value="draw">ფრე</option><option value="loss">მარცხი</option></select>
-              <label for="bScenario">სცენარი</label><input type="text" id="bScenario" maxlength="60" placeholder="მაგ. ესკორტი"></div>
+              <label for="bStory">სცენარი</label><select id="bStory">${(STORY(camp.faction) ? STORY(camp.faction).scenarios : []).map((sc, i) => `<option value="${i}" ${i === (STORY(camp.faction).scenarios.findIndex((_, j) => !camp.storyDone.includes(j))) ? "selected" : ""}>${i + 1}. ${esc(sc.name)}${camp.storyDone.includes(i) ? " ✓" : ""}</option>`).join("")}<option value="-1" ${STORY(camp.faction) && camp.storyDone.length >= STORY(camp.faction).scenarios.length ? "selected" : ""}>სხვა სცენარი</option></select>
+              <input type="text" id="bScenario" maxlength="60" placeholder="სხვა სცენარის სახელი" aria-label="სხვა სცენარის სახელი"></div>
             <div class="form-row"><label for="bPrisoners">აყვანილი ტყვეები</label><input type="number" id="bPrisoners" min="0" max="10" value="0" style="width:4em">
               <select id="bPrisonerUse" aria-label="ტყვეების ბედი">${(PRISONER[side] || []).map(([k, t]) => `<option value="${k}">${t}</option>`).join("")}</select></div>
             <fieldset><legend>ვინ დაეცა ბრძოლაში / ვინ გამოიჩინა გმირობა</legend>
@@ -193,7 +215,13 @@
       lastRolls.push(`${m.name}: d10 = ${r} — ${txt}`);
     }
     camp.treasury += income; camp.currency += gain;
-    camp.battles.push({ n: camp.battles.length + 1, result, scenario: $("bScenario").value.trim(), income, gain, notes });
+    const story = STORY(camp.faction), si = $("bStory") ? Number($("bStory").value) : -1;
+    const scName = si >= 0 && story ? story.scenarios[si].name : $("bScenario").value.trim();
+    if (si >= 0 && result === "win" && !camp.storyDone.includes(si)) {
+      camp.storyDone.push(si);
+      notes.push("სცენარის ჯილდო: " + story.scenarios[si].reward);
+    }
+    camp.battles.push({ n: camp.battles.length + 1, result, scenario: scName, income, gain, notes });
     save(); render(); status(`ჩაიწერა: +${income} მარჩილი, +${gain} ${CURRENCY_OF(camp.faction)}.`);
   }
 

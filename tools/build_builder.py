@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ბილდერის მონაცემების აწყობა: data/units.json + data/costs.json → builder/data.js
+"""ბილდერის მონაცემების აწყობა: data/units.json + data/costs.json + data/campaigns/*.json → builder/data.js
 
 გაშვება (ბალანსერის შემდეგ):  python3 tools/build_builder.py
 """
@@ -21,7 +21,8 @@ def main():
                                         "armor", "wounds", "nerve", "weapons", "tags")} | {"cost": costs[u["id"]], "allied": bool(u.get("allied"))})
     equipment = json.loads((ROOT / "data" / "equipment.json").read_text(encoding="utf-8"))
     equipment.pop("_comment", None)
-    out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment}
+    campaigns = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data" / "campaigns").glob("*.json"))}
+    out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment, "campaigns": campaigns}
     js = "// ავტომატურად გენერირებული: tools/build_builder.py — ხელით ნუ შეცვლი\n"
     js += "window.TW_DATA = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n"
     target = ROOT / "builder" / "data.js"

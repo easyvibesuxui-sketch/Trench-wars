@@ -172,6 +172,12 @@ legend { color: var(--muted); font-size: .8rem; padding: 0 4px; }
 textarea.export { width: 100%; min-height: 160px; font-family: var(--font-num); font-size: .78rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; padding: 8px; }
 footer { color: var(--muted); font-size: .8rem; }
 @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+.story .scenarios { padding-left: 1.4em; display: grid; gap: 6px; }
+.story .scenarios li.done summary { color: var(--muted); }
+.story .scenarios li.next summary b { color: var(--patina); }
+.story details p { margin: .4em 0; }
+.story .ending { border-left: 3px solid var(--patina); padding-left: 10px; }
+[hidden] { display: none !important; }
 </style>
 
 <div class="wrap">

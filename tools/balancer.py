@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ბალანსერი (v1).
+"""ბალანსერი (v2).
 
 კითხულობს data/units.json-ს და:
 1. ფორმულით ითვლის თითოეული იუნიტის ფასს მარჩილში (შეტევა × გამძლეობა + ძალების ფასი);
@@ -10,6 +10,8 @@
 
 v1: საწყისი მანძილი შემთხვევითია (12/24/36"), ერთნაირი პროფილები ერთად ითვლება, და ბოლოს ფრაქციები ერთმანეთს
 შერეული რაზმებით ებრძვიან (ფრაქციის დონის ბალანსი).
+v2: ყოველ მოდელს თავისი პოზიცია აქვს ხაზზე — მსროლელები ადგილზე რჩებიან, ხელჩართულის მოყვარულები წინ მიდიან და
+უახლოეს მოწინააღმდეგესთან ჩერდებიან (წინა რიგი ზურგს ფარავს); ბადე/ჯაჭვი ცალკე მოდელს აჩერებს.
 """
 import argparse
 import json
@@ -164,7 +166,7 @@ def compute_costs(units):
 # ---------------- Monte Carlo ----------------
 
 class Model:
-    __slots__ = ("u", "w", "used_once", "reload", "regen_block", "charged", "pinned", "steam_used", "army")
+    __slots__ = ("u", "w", "used_once", "reload", "regen_block", "charged", "pinned", "steam_used", "army", "x")
 
     def __init__(self, u):
         self.u = u
@@ -175,6 +177,7 @@ class Model:
         self.charged = False
         self.pinned = False
         self.steam_used = False
+        self.x = 0.0  # პოზიცია ხაზზე (ინჩებში)
 
 
 def build_army(u, budget, rng):
@@ -204,10 +207,8 @@ def best_weapon(m, mode, gap):
     return best
 
 
-def attack(m, w, enemies, rng, cover=0):
-    if "indirect" in w["tags"]:
-        cover = 0
-    skill = (m.u["shoot"] - cover) if w["mode"] == "ranged" else m.u["melee"]
+def attack(m, w, targets, rng, pool):
+    """targets — ვისაც ეს იარაღი სწვდება; pool — ყველა ცოცხალი მოწინააღმდეგე (აფეთქების მეორე სამიზნისთვის)."""
     power = w["power"] + (1 if ("charge" in w["tags"] and not m.charged) else 0)
     if "steam" in m.u["tags"] or "steam" in w["tags"]:
         power += 1  # ორთქლის წნევა (1 ჟეტონი); რაუნდის ბოლოს გადატვირთვის რისკი
@@ -222,16 +223,24 @@ def attack(m, w, enemies, rng, cover=0):
     if "reload" in w["tags"]:
         m.reload = True
     for _ in range(attacks):
-        alive = [e for e in enemies if e.w > 0]
+        alive = [e for e in targets if e.w > 0]
         if not alive:
             return
         t = rng.choice(alive)
-        targets = [t]
-        if "blast" in w["tags"] and t.u["size"] == 1 and len(alive) > 1 and rng.random() < 0.5:
-            targets.append(rng.choice(alive))
+        tl = [t]
+        if "blast" in w["tags"] and t.u["size"] == 1 and rng.random() < 0.5:
+            near = [e for e in pool if e.w > 0 and e is not t and abs(e.x - t.x) <= 2]
+            if near:
+                tl.append(rng.choice(near))
         if "sweep" in w["tags"] and w["mode"] == "melee" and len(alive) > 1 and rng.random() < 0.5:
-            targets.append(rng.choice(alive))
-        for tt in targets:
+            tl.append(rng.choice([e for e in alive if e is not t]))
+        for tt in tl:
+            if w["mode"] == "ranged":
+                # სანგრების ომი: 6"-ზე შორს სამიზნე საფარშია (-1 სროლაზე); „ზემოდან“ საფარს უგულებელყოფს
+                cover = 1 if abs(tt.x - m.x) > 6 and "indirect" not in w["tags"] else 0
+                skill = m.u["shoot"] - cover
+            else:
+                skill = m.u["melee"]
             if rng.random() >= hit_p(skill, tt.u["size"]):
                 continue
             if set(w["tags"]) & PIN_TAGS:
@@ -253,31 +262,36 @@ def attack(m, w, enemies, rng, cover=0):
                     tt.w -= 1  # წვა
 
 
-def activate(m, enemies, state, side, rng):
+def activate(m, enemies, rng):
+    """v2: ყოველ მოდელს თავისი პოზიცია აქვს ხაზზე. ხელჩართულის მოყვარული წინ მიდის, მსროლელი ადგილზე რჩება და ისვრის,
+    თუ სამიზნე მანძილშია; მოძრავი მოდელი უახლოეს მოწინააღმდეგესთან ჩერდება — ასე წინა რიგი ზურგს ფარავს."""
     m.reload = False if m.reload and rng.random() < 0.5 else m.reload
-    gap = state["gap"]
-    if gap <= 1:
+    alive = [e for e in enemies if e.w > 0]
+    if not alive:
+        return
+    near = min(alive, key=lambda e: abs(e.x - m.x))
+    dn = abs(near.x - m.x)
+    if dn <= 1.0:  # ხელჩართულში ჩაბმული
         w = best_weapon(m, "melee", 0)
         if w:
-            attack(m, w, enemies, rng)
+            attack(m, w, [e for e in alive if abs(e.x - m.x) <= 1.0], rng, alive)
+        m.pinned = False
         return
-    ranged = best_weapon(m, "ranged", gap)
-    prefers_melee = m.u["_melee_pref"]
-    if ranged and not prefers_melee:
-        # სანგრების ომი: შორ მანძილზე სამიზნე საფარშია (-1 სროლაზე)
-        attack(m, ranged, enemies, rng, cover=1 if gap > 6 else 0)
+    if not m.u["_melee_pref"]:
+        w = best_weapon(m, "ranged", dn)
+        if w:
+            attack(m, w, [e for e in alive if abs(e.x - m.x) <= w["range"]], rng, alive)
+            m.pinned = False
+            return
+    if m.pinned:  # ბადე/ჯაჭვი: ამ სვლაზე ვერ მოძრაობს
+        m.pinned = False
         return
-    # მიახლოება: რაზმი ერთად მოძრაობს — მანძილი რაუნდში ერთხელ მცირდება (უსწრაფესი მოდელის სვლით)
-    if not state["moved"][side]:
-        state["moved"][side] = True
-        alive = [x for x in m.army if x.w > 0]
-        pinned = sum(1 for x in alive if x.pinned)
-        for x in alive:
-            x.pinned = False
-        # რაზმი ერთად მოძრაობს: ბადით/ჯაჭვით მიბმული მოდელები მთელ რაზმს აჩერებენ (წილობრივად)
-        state["gap"] = max(0, gap - m.u["move"] * (1 - pinned / max(1, len(alive))))
-    if state["gap"] <= 1 and best_weapon(m, "melee", 0):
-        attack(m, best_weapon(m, "melee", 0), enemies, rng)
+    step = min(m.u["move"], dn - 1.0)
+    m.x += step if near.x > m.x else -step
+    if dn - step <= 1.0:  # იერიში: მივიდა და იმავე სვლაზე ურტყამს
+        w = best_weapon(m, "melee", 0)
+        if w:
+            attack(m, w, [e for e in alive if abs(e.x - m.x) <= 1.0], rng, alive)
 
 
 def battle(ua, ub, budget, rng, max_rounds=8):
@@ -287,7 +301,11 @@ def battle(ua, ub, budget, rng, max_rounds=8):
 def fight(A, B, rng, max_rounds=8):
     nA, nB = len(A), len(B)
     # საწყისი მანძილი შემთხვევითია: ახლო (12"), საშუალო (24") ან შორი (36") — სხვადასხვა რუკა და განლაგება
-    state = {"gap": rng.choice(GAPS), "moved": {"A": False, "B": False}}
+    gap = rng.choice(GAPS)
+    for m in A:
+        m.x = 0.0
+    for m in B:
+        m.x = float(gap)
     tested = {"A": False, "B": False}
     for _ in range(max_rounds):
         for army in (A, B):
@@ -295,7 +313,6 @@ def fight(A, B, rng, max_rounds=8):
                 if m.w > 0 and "regen" in m.u["tags"] and not m.regen_block and m.w < m.u["wounds"]:
                     m.w += 1
                 m.regen_block = False
-        state["moved"] = {"A": False, "B": False}
         order = [("A", m) for m in A] + [("B", m) for m in B]
         rng.shuffle(order)
         for side, m in order:
@@ -304,7 +321,7 @@ def fight(A, B, rng, max_rounds=8):
             enemies = B if side == "A" else A
             if not any(e.w > 0 for e in enemies):
                 break
-            activate(m, enemies, state, side, rng)
+            activate(m, enemies, rng)
         for army in (A, B):
             for m in army:
                 if m.w > 0 and m.steam_used and rng.randint(1, 10) <= 1:
@@ -529,10 +546,13 @@ def main():
         "# ბალანსის ანგარიში (ავტომატური)",
         "",
         f"> გენერირებულია `tools/balancer.py`-ით. სიმულაციები: {args.sims} თითო წყვილზე, რაზმის ბიუჯეტი {SIM_BUDGET} მარჩილი; საწყისი მანძილი შემთხვევითია ({'/'.join(map(str, GAPS))}\").",
+        "> **v2 — პოზიციები:** ყოველ მოდელს თავისი ადგილი აქვს ხაზზე. მსროლელი ადგილზე რჩება და ისვრის, თუ სამიზნე მანძილშია (6\"-ზე შორს — საფარი, −1);",
+        "> ხელჩართულის მოყვარული უახლოეს მოწინააღმდეგესთან მიდის და მიღწევისას იმავე სვლაზე ურტყამს; ჩაბმული მოდელი მხოლოდ ხელჩართულში იბრძვის.",
+        "> ასე წინა რიგი ზურგს ფარავს: მსროლელამდე მისასვლელად ჯერ მის წინ მდგომი უნდა დაამარცხო.",
         "> ერთნაირი საბრძოლო პროფილის იუნიტები (მაგ. მოკავშირეების რიგითები) ერთად ითვლება და მოწინააღმდეგეთა სიაში ერთხელ შედის.",
         "> **ფასი** = საბრძოლო ღირებულება (ფორმულა, შემდეგ სიმულაციით კორექტირებული) + **ძალების ფასი** (ability_points, ხელით შეფასებული). საბაზისო: ლაშქარი = 20 მარჩილი.",
         "> სიმულაცია ამოწმებს მხოლოდ ბრძოლას: სიმულაციაში რაზმის ზომა საბრძოლო ღირებულებით ითვლება, რომ სპეციალური ძალების ფასი სიმულაციამ არ „წაშალოს“.",
-        "> სიმულაციაში ითვლება: ორთქლის წნევა (1 ჟეტონი), ფარი, ფარის კედელი, ზალპი, ბადე/ჯაჭვი (რაზმს ანელებს), შხამი, ჯავშნის მსხვრევა, ქნევა, ბრაზი, ზემოდან სროლა, ცეცხლი, ელვა, ამოზრდა, შიშის არქონა.",
+        "> სიმულაციაში ითვლება: ორთქლის წნევა (1 ჟეტონი), ფარი, ფარის კედელი, ზალპი, ბადე/ჯაჭვი (მოდელს აჩერებს), შხამი, ჯავშნის მსხვრევა, ქნევა, ბრაზი, ზემოდან სროლა, ცეცხლი, ელვა, ამოზრდა, შიშის არქონა.",
         "> **ფორმულის ფასი** — პირველადი შეფასება; **ფასი** — სიმულაციით კორექტირებული (რეკომენდებული). **მოგება % (ფორმულით)** აჩვენებს, რამდენად ცდებოდა ფორმულა.",
         "> **მოგების %** — საშუალო შედეგი სხვა ფრაქციების ყველა საბრძოლო იუნიტის წინააღმდეგ, თანაბარი ფასით. იდეალი ≈ 50%.",
         "> **შერეულ რაზმში %** — იუნიტის წვლილი ფრაქციების შერეულ რაზმებში (რაზმის შედეგი, აწონილი იუნიტის წილით ბიუჯეტში). კალიბრაცია ორივე სიგნალს ითვალისწინებს.",
@@ -545,8 +565,7 @@ def main():
                   f"> ყოველ წყვილზე {args.faction_sims} ბრძოლა; რაზმები შემთხვევით იკრიბება ფრაქციის საბრძოლო იუნიტებიდან საბრძოლო ღირებულებით (ძალების ფასის გარეშე)",
                   "> (IV მაქს. 1, ერთ იუნიტზე მაქს. 4 მოდელი; ლიდერები და ძალების იუნიტები არ შედიან, გროტესკები — შედიან). იდეალი ≈ 50%; ⚠️ = 40–60%-ს გარეთ.",
                   "> ფრაქცია, რომლის ძალა მკურნალებში, რიტუალებსა და ლიდერშია, აქ სუსტად გამოჩნდება — მისი ცხრილი სატესტო თამაშით უნდა შემოწმდეს.",
-                  "> ⚠️ სიმულაციაში რელიეფი არ არის და მთელ რაზმს ერთი მანძილი აქვს: ხელჩართულის რაზმი ყველა მსროლელს ერთდროულად ეხება.",
-                  "> ამიტომ მსროლელებზე და ქვემეხიან გროტესკებზე აგებული ფრაქციები აქ უფრო სუსტად ჩანს, ვიდრე მაგიდაზე იქნება. ეს ცხრილი",
+                  "> სიმულაციაში ყოველ მოდელს თავისი პოზიცია აქვს (წინა რიგი ზურგს ფარავს), მაგრამ რელიეფი და მიზნები არ არის. ეს ცხრილი",
                   "> ფრაქციის **შემადგენლობის** სიგნალია (რა აკლია რაზმს), და არა ფასების — ფასები ზედა სვეტებით ფასდება.", "",
                   "| ფრაქცია | საშუალო მოგება % | ყველაზე ძნელი მოწინააღმდეგე | ყველაზე ადვილი | შენიშვნა |", "|---|---|---|---|---|"]
         for f in sorted(fids, key=lambda f: -sum(fm[f].values()) / len(fm[f])):

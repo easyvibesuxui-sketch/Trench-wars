@@ -103,6 +103,27 @@ def main():
             if ca and cb and max(ca) > 2 * min(cb):
                 warnings.append(f"{fname}: {a} დონის უძვირესი ({max(ca)}) {b} დონის უიაფესზე ({min(cb)}) ორჯერ ძვირია")
 
+    # ომის კამპანია: ყველა ფრაქციას — შესავალი, მსხვერპლი (გამოგონილი გმირი ≤ 1914), 5+ სცენარი, დასასრული
+    for fid, fname in list(factions.items()) + list(allies.items()):
+        cp = ROOT / "data" / "campaigns" / f"{fid}.json"
+        if not cp.exists():
+            errors.append(f"{fname}: ომის კამპანია არ აქვს (data/campaigns/{fid}.json)")
+            continue
+        c = json.loads(cp.read_text(encoding="utf-8"))
+        for k in ("title", "enemy", "hero", "intro", "ending"):
+            if not c.get(k):
+                errors.append(f"{fname}: კამპანიას '{k}' აკლია")
+        sac = c.get("sacrifice") or {}
+        if not all(sac.get(k) for k in ("name", "year", "title", "text")) or not 1800 <= int(sac.get("year") or 0) <= 1914:
+            errors.append(f"{fname}: კამპანიას მსხვერპლი (სახელი, წელი ≤ 1914, ამბავი) აკლია")
+        scen = c.get("scenarios") or []
+        if len(scen) < 5:
+            errors.append(f"{fname}: კამპანიას 5 სცენარი სჭირდება ({len(scen)})")
+        for i, sc in enumerate(scen, 1):
+            for k in ("name", "year", "story", "objective", "special", "reward"):
+                if not sc.get(k):
+                    errors.append(f"{fname}: სცენარ {i}-ს '{k}' აკლია")
+
     for aid in allies:
         if not any(u["faction"] == aid for u in units):
             errors.append(f"მოკავშირე {aid}: იუნიტები არ აქვს")

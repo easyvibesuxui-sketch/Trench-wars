@@ -10,6 +10,11 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   await p.goto(PAGE); await p.waitForTimeout(400);
   const D = await p.evaluate(() => ({ factions: window.TW_DATA.factions, allies: window.TW_DATA.allies, units: window.TW_DATA.units }));
   const fails = [];
+  const D2 = await p.evaluate(() => ({ campaigns: window.TW_DATA.campaigns || {} }));
+  for (const f of [...Object.keys(D.factions), ...Object.keys(D.allies)]) {
+    const c = D2.campaigns[f];
+    if (!c || c.scenarios.length < 5 || !c.sacrifice || !c.ending) fails.push(`${f}: ომის კამპანია არასრულია`);
+  }
   const checks = () => p.$$eval('#checks li', l => l.map(x => x.className + '|' + x.textContent.trim()));
   const clickAdd = async id => { const btn = await p.$(`#catalog [data-add="${id}"]`); if (!btn || await btn.isDisabled()) return false; await btn.click(); return true; };
   const all = [...Object.keys(D.factions).map(f => [f, false]), ...Object.keys(D.allies).map(f => [f, true])];
@@ -77,10 +82,20 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   await p.selectOption('#allySel', 'gulf'); await p.click('#clearBtn');
   await clickAdd('gulf_leader'); await clickAdd('pearl_divers');
   await p.click('#tabCampaign'); await p.waitForTimeout(200);
+  if (await p.$eval('#buildView', v => getComputedStyle(v).display !== 'none')) fails.push('კამპანიის ჩანართზე აწყობის ხედი ისევ ჩანს');
+  const brief = await p.$eval('#campaignView', v => v.textContent);
+  if (!brief.includes(D2.campaigns.gulf.title)) fails.push('კამპანიამდე ფრაქციის ომის კამპანია არ ჩანს');
   const startBtn = await p.$('#campaignView button');
   if (startBtn) { await startBtn.click(); await p.waitForTimeout(200); }
   const campHead = await p.$eval('#campaignView', v => v.textContent.slice(0, 200));
   if (!campHead.includes('ყურისა')) fails.push('კამპანიაში მოკავშირე ფრაქციის სახელი არ ჩანს: ' + campHead.slice(0, 80));
+  // ომის კამპანია: პირველი სცენარის მოგება მას აღნიშნავს
+  await p.selectOption('#bResult', 'win');
+  await p.click('#battleForm button[type="submit"]'); await p.waitForTimeout(200);
+  const doneCount = await p.$$eval('#campaignView .scenarios li.done', l => l.length);
+  if (doneCount !== 1) fails.push(`მოგებული სცენარი არ აღინიშნა (${doneCount})`);
+  const log = await p.$eval('#campaignView', v => v.textContent);
+  if (!log.includes(D2.campaigns.gulf.scenarios[0].name)) fails.push('ჟურნალში სცენარის სახელი არ ჩაიწერა');
   // ტელეფონის სიგანე
   const m = await b.newPage({ viewport: { width: 390, height: 800 } });
   await m.goto(PAGE); await m.waitForTimeout(300);
