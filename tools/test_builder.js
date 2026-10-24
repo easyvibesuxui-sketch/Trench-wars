@@ -56,7 +56,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
     if (bad.length) fails.push(`${f}: სცენარის რაზმი: ${bad.join('; ')}`);
     // დაქირავების სექცია: მხოლოდ კოლხეთსა და იბერიაში
     const hasAllies = !!(await p.$('#catalog section.allies'));
-    if (hasAllies !== ['colchis', 'iberia'].includes(f)) fails.push(`${f}: დაქირავების სექცია ${hasAllies ? 'ჩანს' : 'არ ჩანს'}`);
+    if (hasAllies !== ['colchis', 'iberia', 'ring'].includes(f)) fails.push(`${f}: დაქირავების სექცია ${hasAllies ? 'ჩანს' : 'არ ჩანს'}`);
     // მოკავშირედ თამაშისას საკუთარი იუნიტები არ ძვირდება
     if (ally) {
       const price = await p.$eval(`#catalog [data-add="${cheap.id}"]`, b => b.closest('.card').querySelector('.cost').textContent);
@@ -67,6 +67,14 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
     const txt = await p.$eval('#exportBox', x => x.value);
     if (!txt.includes(ally ? D.allies[f] : D.factions[f])) fails.push(`${f}: ექსპორტში ფრაქციის სახელი არ არის`);
   }
+  // რგოლის ბატალიონი: ხარკი — 50%, ფასნამატის გარეშე
+  await p.click('[data-f="ring"]'); await p.click('#clearBtn'); await p.selectOption('#budget', '500');
+  if (await p.isChecked('#scenario')) await p.click('#scenario');
+  const hel = D.units.find(u => u.id === 'automaton_phalanx');
+  const rp = await p.$eval('#catalog section.allies [data-add="automaton_phalanx"]', b => b.closest('.card').querySelector('.cost').textContent.trim());
+  if (rp !== String(hel.cost)) fails.push(`რგოლის ბატალიონი: მოკავშირის ფასი ${rp} ≠ ${hel.cost}`);
+  const capTxt = await p.$eval('#catalog section.allies .tier-note', x => x.textContent);
+  if (!capTxt.includes('50%') || !capTxt.includes('250')) fails.push('რგოლის ბატალიონი: დაქირავების ლიმიტი 50% (250) არ ჩანს');
   // დაქირავება კოლხეთში: ლიდერი დაბლოკილია, IV/V წესები
   await p.click('[data-f="colchis"]'); await p.click('#clearBtn'); await p.selectOption('#budget', '1000');
   if (await p.isChecked('#scenario')) await p.click('#scenario');

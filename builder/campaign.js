@@ -5,7 +5,7 @@
   const { D, byId, esc } = B;
   const STORE = "tw-campaign-v1";
 
-  const CURRENCY = { colchis: "სახელი", iberia: "სახელი", hell: "წოდება", harness: "სისხლი" };
+  const CURRENCY = { colchis: "სახელი", iberia: "სახელი", hell: "წოდება", harness: "სისხლი", listeners: "საკეტი", kajeti: "ვერცხლი" };
   const INCOME = { win: [60, 3], draw: [40, 2], loss: [30, 1] };
   const RESULT = { win: "გამარჯვება", draw: "ფრე", loss: "მარცხი" };
   const XP_STEPS = [3, 6, 10, 15, 21];
@@ -17,13 +17,17 @@
     light: [["ransom", "გამოსასყიდი: +15 მარჩილი"], ["interrogate", "დაკითხვა: +1 სახელი"]],
     hell: [["labor", "ციხის მშენებლობა: +10 მარჩილი და +1 წოდება"]],
     harness: [["sacrifice", "სამსხვერპლო: +2 სისხლი"]],
+    listeners: [["turn", "გადაბირება: +1 საკეტი და +10 მარჩილი"]],
+    kajeti: [["forge", "სამჭედლო: +2 ვერცხლი"]],
   };
   const SHOP = {
     light: [["living_water", "ცოცხალი წყალი (ერთი სიკვდილის გაუქმება)", 3], ["renown", "სახელოვანი: მოდელს +1 ნებისყოფა", 2]],
     hell: [["rank", "წოდების ამაღლება: მოდელს +1 ხელჩართული", 2], ["flask", "ახალი კოლბა: 2 ახალწვეული უფასოდ", 3]],
     harness: [["devi_blood", "დევის სისხლი: მოდელს +1 ხელჩართული (სიგიჟის რისკი)", 1], ["stitch", "ქაჯის ნაკერი: 1 ქაჯების ნაკერი უფასოდ", 5]],
+    listeners: [["new_lock", "ახალი საკეტი: მოდელს +1 ნებისყოფა", 2], ["plant", "ჩანერგვა: 1 ყალბი რიგითი უფასოდ", 2]],
+    kajeti: [["plate", "ვერცხლის ფირფიტა: მოდელს +1 ჯავშანი", 3], ["cast", "ჩამოსხმა: 2 თუჯის რიგითი უფასოდ", 3]],
   };
-  const SIDE_OF = { colchis: "light", iberia: "light", hell: "hell", harness: "harness" };
+  const SIDE_OF = { colchis: "light", iberia: "light", hell: "hell", harness: "harness", listeners: "listeners", kajeti: "kajeti" };
   const SIDE = new Proxy(SIDE_OF, { get: (o, f) => o[f] || "light" });  // მოკავშირე ფრაქციები ნათელი მხარეა
   const CURRENCY_OF = (f) => CURRENCY[f] || "სახელი";
   const fname = (f) => D.factions[f] || (D.allies || {})[f] || f;
@@ -74,7 +78,7 @@
     const u = eff(m), base = byId[m.unit];
     const status = { ok: "მზადაა", injured: "დაჭრილი — გამოტოვებს შემდეგ ბრძოლას", dead: "დაიღუპა", captured: "ტყვედაა" }[m.status];
     const pending = advEarned(m) - m.adv.length;
-    const adv = m.adv.map(a => ADV[a][0]).concat(m.inj.map(i => `−1 ${{ shoot: "სროლა", melee: "ხელჩართული", nerve: "ნებისყოფა", move: "მოძრაობა" }[i] || i}`));
+    const adv = m.adv.map(a => ADV[a] ? ADV[a][0] : (a === "armor" ? "+1 ჯავშანი" : a)).concat(m.inj.map(i => `−1 ${{ shoot: "სროლა", melee: "ხელჩართული", nerve: "ნებისყოფა", move: "მოძრაობა" }[i] || i}`));
     return `<li class="model ${m.status === "dead" ? "dead" : ""}">
       <div class="model-top"><input type="text" id="mname-${m.uid}" data-mname="${m.uid}" value="${esc(m.name)}" aria-label="მოდელის სახელი" ${m.status === "dead" ? "disabled" : ""}>
         <span class="status-chip ${m.status}">${status}</span></div>
@@ -159,7 +163,7 @@
             <button type="button" class="primary" id="recruitBtn">დაქირავება</button></div></div>
           <div class="panel"><h3>${cur}ს დახარჯვა</h3>
             ${(SHOP[side] || []).map(([k, t, c]) => `<div class="form-row"><span>${t} — <b>${c}</b> ${cur}</span>
-              ${["renown", "rank", "devi_blood"].includes(k) ? `<select id="shop-${k}" aria-label="მოდელი">${active.filter(m => m.status !== "captured").map(m => `<option value="${m.uid}">${esc(m.name)}</option>`).join("")}</select>` : ""}
+              ${["renown", "rank", "devi_blood", "new_lock", "plate"].includes(k) ? `<select id="shop-${k}" aria-label="მოდელი">${active.filter(m => m.status !== "captured").map(m => `<option value="${m.uid}">${esc(m.name)}</option>`).join("")}</select>` : ""}
               <button type="button" data-shop="${k}" data-price="${c}" ${camp.currency < c ? "disabled" : ""}>ყიდვა</button></div>`).join("")}
             ${Object.keys(camp.stash).length ? `<p class="sub">მარაგი: ${Object.entries(camp.stash).filter(([, n]) => n > 0).map(([id, n]) => `${n}× ${esc((B.itemById[id] || {}).name || (id === "living_water" ? "ცოცხალი წყალი" : id))}`).join(", ")}</p>` : ""}</div>
           <div class="panel"><h3>ბრძოლების ჟურნალი</h3>
@@ -192,6 +196,8 @@
       if (use === "interrogate") gain += pris;
       if (use === "labor") { income += 10 * pris; gain += pris; }
       if (use === "sacrifice") gain += 2 * pris;
+      if (use === "turn") { gain += pris; income += 10 * pris; }
+      if (use === "forge") gain += 2 * pris;
       notes.push(`${pris} ტყვე`);
     }
     // ვინც ამ ბრძოლას გამოტოვებდა, ახლა ჯანმრთელდება
@@ -229,13 +235,17 @@
     if (camp.currency < price) return;
     const sel = $("shop-" + kind);
     const m = sel ? model(sel.value) : null;
-    if (["renown", "rank", "devi_blood"].includes(kind) && !m) { status("აირჩიე მოდელი."); return; }
+    if (["renown", "rank", "devi_blood", "new_lock", "plate"].includes(kind) && !m) { status("აირჩიე მოდელი."); return; }
     camp.currency -= price;
     if (kind === "living_water") camp.stash.living_water = (camp.stash.living_water || 0) + 1;
     if (kind === "renown") m.adv.push("nerve");
     if (kind === "rank" || kind === "devi_blood") m.adv.push("melee");
     if (kind === "flask") for (let i = 0; i < 2; i++) addModel("recruits");
     if (kind === "stitch") addModel("kaji_stitched");
+    if (kind === "new_lock") m.adv.push("nerve");
+    if (kind === "plate") m.adv.push("armor");
+    if (kind === "plant") addModel("false_regulars");
+    if (kind === "cast") for (let i = 0; i < 2; i++) addModel("cast_regulars");
     save(); render(); status("შეძენილია.");
   }
 

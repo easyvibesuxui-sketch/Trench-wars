@@ -248,13 +248,16 @@ footer { color: var(--muted); font-size: .8rem; }
     iberia: "რკინა, ელვა, მთა, ძაღლები",
     hell: "წესრიგი, ბრძანებები, ზალპები",
     harness: "სიგიჟე, სისხლი, დევები",
+    listeners: "ჩანერგვა, საბოტაჟი, საკეტები",
+    kajeti: "ნაჭედი სხეულები, ვერცხლი, ღუმელები",
+    ring: "ხარკი, ყველა ერი, თარჯიმნები",
   };
   const TAG = {
     leader: "ლიდერი", hero: "გმირი", giant: "გოლიათი", giant_hunter: "გოლიათზე მონადირე", healer: "მკურნალი",
     alchemist: "ალქიმია", engineer: "ინჟინერი", digger: "თხრის თხრილს", cavalry: "ცხენოსანი", trench_breaker: "თხრილს არღვევს",
     shield: "ფარი", shield_wall: "ფარის კედელი", steam: "ორთქლი", vehicle: "მანქანა", relic: "რელიქვია", huge: "უზარმაზარი",
     fly: "ფრენა", infiltrate: "ჩასაფრება", scout: "მზვერავი", detect_heretic: "ერეტიკოსს ცნობს", mountain: "მთის ხალხი",
-    marked: "ნიშნიანი", night_sight: "ღამის თვალი", weakness: "სუსტ ადგილს აჩვენებს", third_arrow: "მესამე ისარი", fell_trees: "ხეს ჭრის (საფარი)", rail: "რელსებზე", torch: "ჩირაღდანი", river: "მდინარეზე სწრაფი", false_tracks: "ყალბი კვალი", rope_bridge: "თოკის ხიდი", messenger: "მაცნე", high_ground: "სიმაღლიდან", beacon: "შუქი", wayfinder: "მნავიგატორი", landing: "გადმოსხმა", reef: "მეჩხერი", silent: "ჩუმი", clear_sight: "მირაჟს არ ენდობა", gong: "გონგი", fire_guard: "ცეცხლისგან დაცული", ice_runner: "ყინულზე სწრაფი", ice_reader: "ყინულს კითხულობს", gas_mask: "აირწინაღი", brawler: "სანგრის ჩხუბი", burn_gas: "გაზს წვავს", climber: "კლდეზე ადის", fortress: "მავალი სიმაგრე", titan: "ტიტანი",
+    marked: "ნიშნიანი", night_sight: "ღამის თვალი", weakness: "სუსტ ადგილს აჩვენებს", third_arrow: "მესამე ისარი", fell_trees: "ხეს ჭრის (საფარი)", rail: "რელსებზე", torch: "ჩირაღდანი", river: "მდინარეზე სწრაფი", false_tracks: "ყალბი კვალი", rope_bridge: "თოკის ხიდი", messenger: "მაცნე", high_ground: "სიმაღლიდან", beacon: "შუქი", wayfinder: "მნავიგატორი", landing: "გადმოსხმა", reef: "მეჩხერი", silent: "ჩუმი", clear_sight: "მირაჟს არ ენდობა", gong: "გონგი", fire_guard: "ცეცხლისგან დაცული", ice_runner: "ყინულზე სწრაფი", ice_reader: "ყინულს კითხულობს", planted: "ჩანერგილი", interpreter: "თარჯიმანი", gas_mask: "აირწინაღი", brawler: "სანგრის ჩხუბი", burn_gas: "გაზს წვავს", climber: "კლდეზე ადის", fortress: "მავალი სიმაგრე", titan: "ტიტანი",
     needs_orders: "ბრძანებას საჭიროებს", fearless: "შიში არ აქვს", line: "მწკრივი", orders: "ბრძანებები", supply: "მარაგი",
     discord: "უთანხმოება", automaton: "ავტომატი", artillery: "არტილერია", oathbound: "ფიცით შეკრული", construct: "ნაჭედი",
     song: "სიმღერა", monster_hunter: "ურჩხულებზე მონადირე", winter_born: "ზამთრის შვილი", rare: "იშვიათი", assassin: "მკვლელი", hunter: "მონადირე", monster: "ურჩხული", rage: "მრისხანება", repair: "აღდგენა",
@@ -292,8 +295,11 @@ footer { color: var(--muted); font-size: .8rem; }
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  const LIGHT = new Set(["colchis", "iberia"]);
-  const HIRE_SHARE = 0.2, HIRE_MARKUP = 1.2;
+  const LIGHT = new Set(["colchis", "iberia", "ring"]);
+  // რგოლის ბატალიონი („ხარკი“): ბიუჯეტის 50%, ფასნამატის გარეშე; სხვები — 20%, +20%
+  const HIRE = { ring: [0.5, 1] };
+  const hireRule = () => HIRE[state.faction] || [0.2, 1.2];
+  const pct = x => Math.round(x * 100) + "%";
   const ALLY_NOTE = {
     hellenic: "ჰეფესტოს ავტომატები და ციკლოპების ქვემეხები", northern: "იოტუნებზე მონადირეები და ტიუს ვეტერანები",
     celtic: "გოიბნიუს მჭედლები, ლუგის სნაიპერები, ნუადას ვერცხლისხელები და კურაღის მეზღვაურები", finnish: "ილმარინენის ნაჭედები და მომღერლები",
@@ -330,12 +336,12 @@ footer { color: var(--muted); font-size: .8rem; }
   function factionName(f) { return D.factions[f] || (D.allies || {})[f] || f; }
   function isHired(u) { return u.allied && u.faction !== state.faction; }
   function isMine(u) { return u.faction === state.faction || (u.allied && canHire()); }
-  function unitCost(u) { return isHired(u) ? Math.round(u.cost * HIRE_MARKUP) : u.cost; }
+  function unitCost(u) { return isHired(u) ? Math.round(u.cost * hireRule()[1]) : u.cost; }
   function factionUnits() { return D.units.filter(u => u.faction === state.faction); }
   function picks() { return Object.entries(state.picks).filter(([id, n]) => n > 0 && byId[id] && isMine(byId[id])); }
   const EQ = D.equipment || { categories: {}, items: [] };
   const itemById = Object.fromEntries(EQ.items.map(it => [it.id, it]));
-  const SIDE = { colchis: "light", iberia: "light", hell: "dark", harness: "dark" };
+  const SIDE = { colchis: "light", iberia: "light", hell: "dark", harness: "dark", listeners: "dark", kajeti: "dark", ring: "light" };
   function sideOf(f) { return SIDE[f] || "light"; }  // მოკავშირე ფრაქციები ნათელი მხარეა
   function itemAllowed(it) { return it.sides.includes("all") || it.sides.includes(sideOf(state.faction)) || it.sides.includes(state.faction); }
   function reqText(it) {
@@ -356,7 +362,7 @@ footer { color: var(--muted); font-size: .8rem; }
   }
   function spent() { return picks().reduce((s, [id, n]) => s + unitCost(byId[id]) * n, 0) + gearSpent(); }
   function hiredSpent() { return picks().reduce((s, [id, n]) => s + (isHired(byId[id]) ? unitCost(byId[id]) * n : 0), 0); }
-  function hireCap() { return Math.floor(state.budget * HIRE_SHARE); }
+  function hireCap() { return Math.floor(state.budget * hireRule()[0]); }
   function count(pred) { return picks().reduce((s, [id, n]) => s + (pred(byId[id]) ? n : 0), 0); }
 
   function lockReason(u) {
@@ -364,7 +370,7 @@ footer { color: var(--muted); font-size: .8rem; }
       if (!canHire()) return "მხოლოდ ნათელ მხარეს";
       if (u.tags.includes("leader")) return "ლიდერს ვერ დაიქირავებ";
       if (u.faction === "polianitsy" && count(x => x.faction === "polianitsy") >= 1) return "პოლიანიცები: მაქს. 1 მოდელი";
-      if (hiredSpent() + unitCost(u) > hireCap()) return `დაქირავების ლიმიტი: ${hireCap()} მარჩილი (20%)`;
+      if (hiredSpent() + unitCost(u) > hireCap()) return `დაქირავების ლიმიტი: ${hireCap()} მარჩილი (${pct(hireRule()[0])})`;
     }
     if ((u.tier === "V" || u.tier === "hero") && !state.scenario) return "საჭიროა სცენარის რეჟიმი";
     if (u.tier === "IV+" && state.budget < 750) return "მხოლოდ 750+ მარჩილის თამაშში";
@@ -419,7 +425,7 @@ footer { color: var(--muted); font-size: .8rem; }
   function card(u) {
     const why = lockReason(u);
     const hardLock = why && why !== "მაქს. 1";
-    const price = isHired(u) ? `${unitCost(u)}<small class="markup"> (${u.cost} +20%)</small>` : u.cost;
+    const price = isHired(u) && hireRule()[1] !== 1 ? `${unitCost(u)}<small class="markup"> (${u.cost} +${pct(hireRule()[1] - 1)})</small>` : unitCost(u);
     return `<article class="card${hardLock && !(state.picks[u.id] > 0) ? " locked" : ""}">
       <div class="card-top"><h3>${esc(u.name)}</h3><span class="cost">${price}</span></div>
       ${stats(u)}${weapons(u)}
@@ -437,7 +443,7 @@ footer { color: var(--muted); font-size: .8rem; }
       return `<div class="ally"><h3 class="ally-name">${esc(nm)} <span>${ALLY_NOTE[aid] || ""}</span></h3><div class="cards">${list.map(card).join("")}</div></div>`;
     }).join("");
     return `<section class="tier allies"><div class="tier-head"><h2>მოკავშირეების დაქირავება</h2>
-      <span class="tier-note">ბიუჯეტის მაქს. 20% (${hireCap()} მარჩილი), ფასი +20%. ლიდერს ვერ დაიქირავებ; გროტესკი და გოლიათი იგივე წესებით (IV — მაქს. 1, გოლიათი — სცენარით).</span></div>${groups}</section>`;
+      <span class="tier-note">ბიუჯეტის მაქს. ${pct(hireRule()[0])} (${hireCap()} მარჩილი), ${hireRule()[1] === 1 ? "ფასნამატის გარეშე (ხარკი)" : "ფასი +" + pct(hireRule()[1] - 1)}. ლიდერს ვერ დაიქირავებ; გროტესკი და გოლიათი იგივე წესებით (IV — მაქს. 1, გოლიათი — სცენარით).</span></div>${groups}</section>`;
   }
 
   function renderGear() {

@@ -33,4 +33,7 @@
 - [`iberia.md`](iberia.md) — იბერია
 - [`hell-legions.md`](hell-legions.md) — ჯოჯოხეთის ლეგიონები
 - [`grand-harness.md`](grand-harness.md) — დიდი უღლის ლაშქარი
+- [`listeners.md`](listeners.md) — მსმენელების საძმო
+- [`kajeti.md`](kajeti.md) — ქაჯეთი
+- [`ring.md`](ring.md) — რგოლის ბატალიონი
 - [`allies.md`](allies.md) — მოკავშირეები (დასაქირავებელი)
