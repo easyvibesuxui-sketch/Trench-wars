@@ -358,7 +358,7 @@ def main():
         rost.append(r)
         cards += [card(units[uid], costs[uid], names[fid], tags, docs) for uid, _ in picks]
     cover = f"""<section class="page cover">
-<p class="muted">სათამაშო ნაკრები · სატესტო ვერსია</p>
+<p class="muted">ამბრის ღარი · სათამაშო ნაკრები · სატესტო ვერსია</p>
 <h1>ამბრის ღარი — პირველი ღამე</h1>
 <p class="lead">სკირმიში d10-ით: ორი მზა რაზმი ({BUDGET} მარჩილი) — <b>კოლხეთი</b> და <b>დიდი უღელი</b> — ერთი სცენარი ნეიტრალურ ზოლში,
 მოკლე წესები, იუნიტების ბარათები, ნეიტრალური ზოლის ცხრილები და ჟეტონები. პირველი თამაში ~60–90 წუთი.</p>
@@ -369,7 +369,7 @@ def main():
     body = cover + QUICK_RULES + scenario("".join(rost)) + \
         f'<section class="page"><h2>იუნიტების ბარათები</h2><div class="cards">{"".join(cards)}</div></section>' + \
         nml_sheet(nml) + TOKENS
-    (OUT / "kit.html").write_text(doc("სათამაშო ნაკრები", body), encoding="utf-8")
+    (OUT / "kit.html").write_text(doc("ამბრის ღარის სათამაშო ნაკრები", body), encoding="utf-8")
     # ყველა ფრაქციის ბარათი: ფრაქცია — ახალი გვერდიდან
     secs = []
     for fid, fname in names.items():
@@ -379,7 +379,7 @@ def main():
     ab = json.loads((ROOT / "data/abilities.json").read_text(encoding="utf-8"))
     gl = "".join(f"<p><b>{e(tags.get(k, k))}:</b> {e(v)}</p>" for k, v in sorted(ab["tags"].items(), key=lambda kv: tags.get(kv[0], kv[0])))
     secs.append(f'<section class="page small"><h2>ნიშნების ლექსიკონი</h2><div class="cols">{gl}</div></section>')
-    (OUT / "cards-all.html").write_text(doc("იუნიტების ბარათები", "".join(secs)), encoding="utf-8")
+    (OUT / "cards-all.html").write_text(doc("ამბრის ღარის იუნიტების ბარათები", "".join(secs)), encoding="utf-8")
     print(f"playtest/kit.html · playtest/cards-all.html ({len(data['units'])} ბარათი, {len(names)} ფრაქცია)")
 
 
