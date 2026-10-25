@@ -15935,6 +15935,329 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "ottoman_leader",
+   "faction": "ottoman",
+   "name": "ფაშა",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "ottoman_regulars",
+   "faction": "ottoman",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "ottoman_thugs",
+   "faction": "ottoman",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "mehter_drummers",
+   "faction": "ottoman",
+   "name": "მეჰთერის დოლჩები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "song"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "tulumbaci",
+   "faction": "ottoman",
+   "name": "თულუმბაჯები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ტუმბოს ბერკეტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "fire_guard"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "shadow_players",
+   "faction": "ottoman",
+   "name": "ქარაგოზის ჩრდილოსნები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხანჯალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "infiltrate",
+    "false_tracks"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "ottoman_grotesque",
+   "faction": "ottoman",
+   "name": "დიდი დოლის ორთქლის ურემი",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "დოლის ქვემეხები",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ტარანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam",
+    "song"
+   ],
+   "ability_points": 7,
+   "allied": true
+  },
+  {
+   "id": "ottoman_giant",
+   "faction": "ottoman",
+   "name": "ქარაგოზის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ჩრდილის ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "ფარნის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast",
+      "fire"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "fearless"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -15978,6 +16301,7 @@
   "prussia": "პრუსია",
   "batavi": "ბატავები",
   "lechia": "ლეხია",
-  "byzantium": "ბიზანტია"
+  "byzantium": "ბიზანტია",
+  "ottoman": "ოსმალები"
  }
 }
