@@ -131,6 +131,9 @@ def main():
 
     # ძალების ზუსტი წესები: ყოველი ჩანაწერი არსებულ იუნიტს ეკუთვნის
     ab = json.loads((ROOT / "data" / "abilities.json").read_text(encoding="utf-8"))
+    used = {t for u in units for t in u["tags"]} | {t for u in units for w in u["weapons"] for t in w["tags"]}
+    for t in sorted(used - set(ab.get("tags", {}))):
+        errors.append(f"abilities.json: ნიშანს '{t}' ზუსტი წესი (tags) არ აქვს")
     for uid, rules in ab["units"].items():
         if uid not in by_id:
             errors.append(f"abilities.json: უცნობი იუნიტი {uid}")

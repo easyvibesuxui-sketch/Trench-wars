@@ -19,6 +19,14 @@ def main():
            "> აღწერილი. ფასში ძალები `ability_points`-ით შედის (`../data/units.json`). მოკავშირეების ძალები — `../units/allies.md`.", "",
            "## საერთო ტერმინები", ""]
     out += [f"- **{k}:** {v}" for k, v in ab["common"].items()]
+    page = (ROOT / "builder" / "index.html").read_text(encoding="utf-8")
+    import re
+    labels = {}
+    for block in ("const TAG = {", "const WTAG = {"):
+        i = page.index(block)
+        labels.update(re.findall(r'\b([a-z_]+): "([^"]+)"', page[i:page.index("};", i)]))
+    out += ["", "## ნიშნების ლექსიკონი", "", "ბარათზე ჩარჩოში ჩასმული ყოველი ნიშნის ზუსტი წესი (ანბანით).", ""]
+    out += [f"- **{labels.get(k, k)}** (`{k}`): {v}" for k, v in sorted(ab["tags"].items(), key=lambda kv: labels.get(kv[0], kv[0]))]
     for fid, fname in names.items():
         fu = [u for u in data["units"] if u["faction"] == fid and u["id"] in ab["units"]]
         if not fu:
@@ -29,7 +37,7 @@ def main():
             out += [f"- **{n}:** {r}" for n, r in ab["units"][u["id"]]]
             out.append("")
     (ROOT / "rules" / "abilities.md").write_text("\n".join(out), encoding="utf-8")
-    print(f"rules/abilities.md: {len(ab['units'])} იუნიტი")
+    print(f"rules/abilities.md: {len(ab['units'])} იუნიტი, {len(ab['tags'])} ნიშანი")
 
 
 if __name__ == "__main__":

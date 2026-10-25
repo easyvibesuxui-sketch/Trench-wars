@@ -483,7 +483,7 @@ footer { color: var(--muted); font-size: .8rem; }
       <div class="card-top"><h3>${esc(u.name)}</h3><span class="cost">${price}</span></div>
       ${ROLES[u.role] ? `<div class="role" title="${esc(ROLES[u.role].does)}">${ROLES[u.role].icon} ${esc(ROLES[u.role].name)}</div>` : ""}
       ${stats(u)}${weapons(u)}
-      <div class="tags">${isHired(u) ? `<span class="tag">${u.tier}</span>` : ""}${u.tags.filter(x => TAG[x]).map(x => `<span class="tag${KEY_TAGS.has(x) ? " key" : ""}">${TAG[x]}</span>`).join("")}</div>
+      <div class="tags">${isHired(u) ? `<span class="tag">${u.tier}</span>` : ""}${u.tags.filter(x => TAG[x]).map(x => `<span class="tag${KEY_TAGS.has(x) ? " key" : ""}" title="${esc((D.tag_rules || {})[x] || "")}">${TAG[x]}</span>`).join("")}</div>
       ${u.abilities ? `<details class="abil"><summary>ძალები (${u.abilities.length})</summary><ul>${u.abilities.map(([n, r]) => `<li><b>${esc(n)}:</b> ${esc(r)}</li>`).join("")}</ul></details>` : ""}
       <button type="button" class="add" data-add="${u.id}" ${why ? "disabled" : ""}>${isHired(u) ? "დაქირავება" : isAllied(u) ? "ალიანსიდან" : "დამატება"}</button>
       ${why ? `<span class="lock-note">${why}</span>` : ""}

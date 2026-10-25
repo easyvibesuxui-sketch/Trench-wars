@@ -376,6 +376,9 @@ def main():
         fu = [u for u in data["units"] if u["faction"] == fid]
         secs.append(f'<section class="page"><h2>{e(fname)}</h2><div class="cards">'
                     + "".join(card(u, costs.get(u["id"], "—"), fname, tags, docs) for u in fu) + "</div></section>")
+    ab = json.loads((ROOT / "data/abilities.json").read_text(encoding="utf-8"))
+    gl = "".join(f"<p><b>{e(tags.get(k, k))}:</b> {e(v)}</p>" for k, v in sorted(ab["tags"].items(), key=lambda kv: tags.get(kv[0], kv[0])))
+    secs.append(f'<section class="page small"><h2>ნიშნების ლექსიკონი</h2><div class="cols">{gl}</div></section>')
     (OUT / "cards-all.html").write_text(doc("იუნიტების ბარათები", "".join(secs)), encoding="utf-8")
     print(f"playtest/kit.html · playtest/cards-all.html ({len(data['units'])} ბარათი, {len(names)} ფრაქცია)")
 
