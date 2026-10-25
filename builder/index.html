@@ -132,13 +132,23 @@ legend { color: var(--muted); font-size: .8rem; padding: 0 4px; }
 .allies { border-top: 2px solid var(--patina); padding-top: 10px; }
 .abil { font-size: .78rem; color: var(--muted); }
 .print-row { margin-top: 6px; } .print-row select { min-width: 0; max-width: 100%; flex: 1; }
-#printView { display: none; }
+#printView { background: #fff; color: #111; padding: 14px; border-radius: 8px; display: grid; gap: 8px; }
+#printView[hidden] { display: none !important; }
+#printView .pcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+#printView .pcard { border: 1px solid #111; border-radius: 6px; padding: 8px; font-size: .8rem; display: grid; gap: 4px; align-content: start; min-width: 0; }
+#printView .pcard h3 { display: flex; justify-content: space-between; gap: 6px; margin: 0; font-size: .95rem; }
+#printView table { border-collapse: collapse; width: 100%; } #printView td, #printView th { border: 1px solid #999; padding: 1px 3px; text-align: left; font-size: .75rem; }
+#printView p { margin: 0; } #printView .gl { column-width: 260px; font-size: .8rem; } #printView .gl p { margin-bottom: 4px; break-inside: avoid; }
+#printView .wb { display: inline-block; width: 9px; height: 9px; border: 1px solid #111; margin-right: 2px; }
+#printView .print-top { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+#printView button { border: 1px solid #111; background: #fff; color: #111; border-radius: 5px; padding: 4px 10px; }
 @media print {
   @page { size: A4; margin: 8mm; }
   body { background: #fff !important; color: #000 !important; }
   body * { visibility: hidden; }
   #printView, #printView * { visibility: visible; }
-  #printView { display: block !important; position: absolute; left: 0; top: 0; width: 100%; color: #000; font-size: 9pt; }
+  #printView { display: block !important; position: absolute; left: 0; top: 0; width: 100%; color: #000; font-size: 9pt; padding: 0; }
+  #printView .print-top button { display: none; }
   #printView h1 { font-size: 15pt; margin: 0 0 2mm; } #printView h2 { font-size: 12pt; margin: 4mm 0 2mm; border-bottom: 1px solid #000; }
   #printView .pcards { display: grid; grid-template-columns: repeat(3, 63mm); gap: 2mm; }
   #printView .pcard { border: 1px solid #000; border-radius: 2mm; padding: 2mm; min-height: 88mm; break-inside: avoid; font-size: 7pt; line-height: 1.25; }
@@ -262,7 +272,7 @@ footer { color: var(--muted); font-size: .8rem; }
     </aside>
   </div>
   <section id="campaignView" hidden aria-label="კამპანია"></section>
-  <section id="printView" aria-hidden="true"></section>
+  <section id="printView" hidden aria-label="დასაბეჭდი რაზმი"></section>
   <footer>Trench Wars · სამუშაო ვერსია. წესები: rules/core-rules.md · ფასები: docs/balance-report.md</footer>
 </div>
 
@@ -659,15 +669,19 @@ footer { color: var(--muted); font-size: .8rem; }
     const sc = (D.scenarios || [])[Number($("printScenario").value)];
     const li = xs => "<ul>" + xs.map(x => "<li>" + esc(x).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>") + "</li>").join("") + "</ul>";
     const pa = partners();
-    $("printView").innerHTML = `<h1>${esc(state.name || "უსახელო რაზმი")} — ${esc(factionName(state.faction))}</h1>
+    $("printView").innerHTML = `<div class="print-top"><span>ბეჭდვის ხედი — ფაილიდან გახსნისას ბრაუზერის ბეჭდვით (Ctrl+P) A4-ზე იბეჭდება.</span>
+      <button type="button" id="printClose">დახურვა</button></div><h1>${esc(state.name || "უსახელო რაზმი")} — ${esc(factionName(state.faction))}</h1>
       <div>${spent()} / ${state.budget} მარჩილი${pa.length ? " · ალიანსი: " + esc(pa.map(factionName).join(" + ")) : ""}${state.scenario ? " · სცენარი" : ""}</div>
       <div class="pcards">${cards}</div>${gear ? `<h2>აღჭურვილობა</h2>${gear}` : ""}
       <h2>ნიშნების წესები (ამ რაზმისთვის)</h2><div class="gl">${gl}</div>
       ${sc ? `<div class="sc"><h2>სცენარი: ${esc(sc.name)}</h2><p><i>${esc(sc.story)}</i></p>
         <p><b>მოთამაშეები:</b> ${esc(sc.players)} · <b>ბიუჯეტი:</b> ${esc(sc.budget)} · <b>მაგიდა:</b> ${esc(sc.table)} · <b>რაუნდები:</b> ${sc.rounds} · <b>ზონა:</b> ${esc(sc.zone)}</p>
         <h3>მომზადება</h3>${li(sc.setup)}<h3>გამარჯვება</h3>${li(sc.victory)}<h3>სპეციალური წესები</h3>${li(sc.special)}</div>` : ""}`;
-    window.print();
+    $("printView").hidden = false;
+    $("printView").scrollIntoView({ behavior: "smooth" });
+    try { window.print(); } catch (e) { /* ჩაშენებულ ხედში ბეჭდვა დაბლოკილია — ხედი მაინც ჩანს */ }
   }
+  document.addEventListener("click", e => { if (e.target.id === "printClose") $("printView").hidden = true; });
   $("printScenario").innerHTML = `<option value="">სცენარის გარეშე</option>` + (D.scenarios || []).map((s, i) => `<option value="${i}">${esc(s.name)}</option>`).join("");
   $("printBtn").addEventListener("click", printSheet);
 

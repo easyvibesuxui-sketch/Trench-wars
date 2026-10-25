@@ -1,0 +1,503 @@
+<title>სოფლის ფრონტი</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Serif+Georgian:wght@700;800&display=swap">
+<style>
+/* განლაგება: ზევით რესურსების ზოლი, შუაში ბრძოლის ველი (კანვასი), ქვევით ბრძანებების პანელი — ტრანშეის რუკის პალიტრით */
+:root {
+  --mud: #2a241d; --mud-2: #362e25; --paper: #e9dfc8; --ink: #f1e8d6; --muted: #b7a98f;
+  --bronze: #c8913e; --rust: #b4462f; --moss: #7d8b52; --line: #4d4234;
+  --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { margin: 0; background: var(--mud); color: var(--ink); font-family: var(--body); font-size: 14px; }
+.app { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px;
+  padding-block: 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); box-sizing: border-box; }
+header { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; justify-content: space-between; }
+h1 { font-family: var(--display); font-size: 1.15rem; margin: 0; letter-spacing: .02em; text-wrap: balance; }
+h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-left: 6px; }
+.res { display: flex; flex-wrap: wrap; gap: 6px; font-variant-numeric: tabular-nums; }
+.res span { background: var(--mud-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; white-space: nowrap; }
+.res b { color: var(--bronze); }
+.field { position: relative; min-height: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #3a3226; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+.banner { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(20, 16, 12, .72); text-align: center; padding: 16px; }
+.banner[hidden] { display: none; }
+.banner div { max-width: 46ch; display: grid; gap: 10px; }
+.banner h2 { font-family: var(--display); margin: 0; font-size: 1.6rem; color: var(--bronze); }
+.panel { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.panel .group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding-right: 8px; border-right: 1px solid var(--line); }
+.panel .group:last-child { border-right: 0; }
+.label { color: var(--muted); font-size: .75rem; letter-spacing: .04em; }
+button { font: inherit; font-size: .82rem; background: var(--mud-2); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 5px 9px; cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--bronze); }
+button:focus-visible { outline: 2px solid var(--bronze); outline-offset: 1px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.on { border-color: var(--bronze); color: var(--bronze); }
+button.primary { border-color: var(--bronze); color: var(--bronze); }
+.cost { color: var(--muted); font-size: .72rem; }
+.msg { color: var(--muted); font-size: .8rem; min-height: 1.2em; flex-basis: 100%; }
+@media (max-width: 640px) { .panel .group { border-right: 0; padding-right: 0; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<div class="app">
+  <header>
+    <h1>სოფლის ფრონტი <small>კოლხეთი დიდი უღლის წინააღმდეგ · პროტოტიპი</small></h1>
+    <div class="res" id="res" aria-live="polite"></div>
+  </header>
+  <div class="field" id="field">
+    <canvas id="cv" aria-label="ბრძოლის ველი"></canvas>
+    <div class="banner" id="banner">
+      <div>
+        <h2 id="bTitle">სოფლის ფრონტი</h2>
+        <p id="bText">ამბრის ღარის ორივე მხარეს სოფელია. შენი — მარცხნივ: შტაბი, მზიდავები, მინდორი, ტყე, მაღარო და კარიერი.
+          დიდი უღლის ბანაკი — მარჯვნივ. მოაგროვე რესურსი, ააშენე ყაზარმა, მესერი და კოშკი, გადადი ორთქლის ეპოქაში და დაანგრიე მათი შტაბი.</p>
+        <p class="label">მონიშვნა: დააწექი ან მონიშნე ჩარჩოთი · სვლა: დააწექი ველს · ტყვიამფრქვევი აწვენს ქვეითს (დათრგუნვა)</p>
+        <div><button type="button" class="primary" id="startBtn">ომის დაწყება</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="panel">
+    <div class="group" id="gEco"></div>
+    <div class="group" id="gBuild"></div>
+    <div class="group" id="gArmy"></div>
+    <div class="msg" id="msg" role="status"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  "use strict";
+  const D = window.TW_DATA || { units: [] };
+  const byId = Object.fromEntries(D.units.map(u => [u.id, u]));
+  const W = 1600, H = 900, INCH = 10;              // სამყარო: 160″ × 90″
+  const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
+  const $ = id => document.getElementById(id);
+  const d10 = () => 1 + Math.floor(Math.random() * 10);
+  const POP = { I: 1, II: 2, III: 3, IV: 5, "IV+": 5 };
+
+  // ფრაქციები: იუნიტები და არქიტექტურა
+  const SIDES = {
+    p: { name: "კოლხეთი", color: "#c8913e", hq: "ბოძებზე დგმული დარბაზი",
+         units: { I: ["lashkari", "port_brawlers", "dali_hunters"], II: ["aznauri", "monaspa", "khalkotavri"] } },
+    e: { name: "დიდი უღელი", color: "#b4462f", hq: "უღლის ურემი",
+         units: { I: ["rebels", "deserter_regulars", "heretic_sappers"], II: ["chain_shooters", "chained_ones", "devi_spawn"] } },
+  };
+  // შენობები (ფასი: ს — საკვები, ქ — ქვანახშირი/შეშა, ქვ — ქვა, რ — რკინა)
+  const BUILD = {
+    dugout:  { name: "ბლინდაჟი", cost: { coal: 40 }, hp: 120, w: 34, h: 22, pop: 10, epoch: 1 },
+    barracks:{ name: "ყაზარმა", cost: { coal: 150 }, hp: 260, w: 54, h: 34, epoch: 1 },
+    palisade:{ name: "ხის მესერი", cost: { coal: 6 }, hp: 60, armor: 3, w: 30, h: 8, wall: true, epoch: 1 },
+    trench:  { name: "თხრილი", cost: {}, hp: 9999, w: 40, h: 8, trench: true, epoch: 1, time: 3 },
+    tower:   { name: "საგუშაგო კოშკი", cost: { coal: 60, stone: 40 }, hp: 160, armor: 4, w: 18, h: 18, gun: { range: 26, attacks: 1, power: 2, skill: 6, rate: 2.2 }, epoch: 1 },
+    nest:    { name: "ტყვიამფრქვევის ბუდე", cost: { coal: 60, iron: 80 }, hp: 140, armor: 5, w: 20, h: 16, gun: { range: 24, attacks: 3, power: 3, skill: 5, rate: 2.4, suppress: true }, epoch: 2 },
+    workshop:{ name: "ორთქლის სახელოსნო", cost: { coal: 200, iron: 150 }, hp: 260, w: 54, h: 36, epoch: 2 },
+  };
+  const UNIT_COST = u => {
+    const t = u.tier, c = u.cost;
+    return { food: Math.round(c * 2), iron: t === "I" ? 0 : Math.round(c * 1.2), coal: u.tags.includes("vehicle") ? Math.round(c) : 0 };
+  };
+  const RES_NAME = { food: "საკვები", coal: "ქვანახშირი", stone: "ქვა", iron: "რკინა" };
+
+  let S;  // თამაშის მდგომარეობა
+  function newGame() {
+    S = { t: 0, running: false, over: false, sel: new Set(), placing: null, vertical: false, ents: [], fx: [], nextId: 1, msgT: 0,
+      side: { p: mkSide("p"), e: mkSide("e") }, aiT: 0, waveT: 75 };
+    // სოფლები: შტაბი, რამდენიმე სახლი, რესურსის წყაროები
+    const base = (side, x) => {
+      const hq = addB(side, "hq", x, 450, { name: SIDES[side].hq, hp: 900, w: 70, h: 48, pop: 15, armor: 5 });
+      for (let i = 0; i < 3; i++) addB(side, "house", x + (side === "p" ? -40 : 40), 330 + i * 120, { name: "სოფლის სახლი", hp: 100, w: 26, h: 20, pop: 5 });
+      const dx = side === "p" ? 1 : -1;
+      for (const [k, yy, xx] of [["food", 200, 120], ["coal", 700, 140], ["iron", 300, 230], ["stone", 620, 240]])
+        S.ents.push({ kind: "node", res: k, side, x: x + dx * xx, y: yy, id: S.nextId++ });
+      for (let i = 0; i < 5; i++) addPorter(side, hq);
+      return hq;
+    };
+    S.side.p.hq = base("p", 150);
+    S.side.e.hq = base("e", W - 150);
+    // ნეიტრალური ზოლი: ამბრის ღარი (თხრილი) და ნანგრევები (საფარი)
+    for (let y = 60; y < H - 40; y += 44) S.ents.push({ kind: "furrow", x: W / 2 + Math.sin(y / 90) * 18, y, id: S.nextId++ });
+    for (const [x, y] of [[640, 220], [960, 680], [700, 560], [900, 300], [800, 120], [800, 790]]) S.ents.push({ kind: "ruin", x, y, w: 46, h: 30, id: S.nextId++ });
+    // AI საწყისი თავდაცვა: ურმების წრე
+    for (let i = 0; i < 6; i++) addB("e", "palisade", W - 330, 330 + i * 40, { ...BUILD.palisade, name: "ჯაჭვით შეკრული ურემი", w: 8, h: 30 });
+    addB("e", "barracks", W - 260, 640, BUILD.barracks);
+    renderPanel(); resize();
+  }
+  function mkSide(k) { return { k, food: 200, coal: 200, stone: 100, iron: 100, epoch: 1, hq: null }; }
+  function addB(side, type, x, y, spec) {
+    const b = { kind: "b", type, side, x, y, w: spec.w, h: spec.h, hp: spec.hp, maxhp: spec.hp, armor: spec.armor || 3, pop: spec.pop || 0,
+      name: spec.name, gun: spec.gun, wall: !!spec.wall, trench: !!spec.trench, cd: 0, queue: [], qt: 0, id: S.nextId++ };
+    S.ents.push(b); return b;
+  }
+  function addPorter(side, hq) {
+    S.ents.push({ kind: "porter", side, x: hq.x, y: hq.y + 30, target: null, carry: 0, res: null, id: S.nextId++ });
+  }
+  function addUnit(side, id, x, y) {
+    const u = byId[id]; if (!u) return null;
+    const m = { kind: "u", side, u, x, y, hp: u.wounds, tx: null, ty: null, cd: Math.random(), target: null, supT: 0, burnT: 0, reload: 0,
+      size: u.size || 1, id: S.nextId++, unleashed: false };
+    S.ents.push(m); return m;
+  }
+
+  // რესურსი და მოსახლეობა
+  const popCap = s => Math.min(200, S.ents.filter(e => e.kind === "b" && e.side === s && e.hp > 0).reduce((a, b) => a + b.pop, 0));
+  const popUsed = s => S.ents.filter(e => e.side === s && ((e.kind === "u" && e.hp > 0) || e.kind === "porter"))
+    .reduce((a, e) => a + (e.kind === "porter" ? 1 : POP[e.u.tier] || 1), 0) + S.ents.filter(e => e.kind === "b" && e.side === s).reduce((a, b) => a + b.queue.reduce((q, id) => q + (POP[byId[id].tier] || 1), 0), 0);
+  const can = (s, cost) => Object.entries(cost).every(([k, v]) => S.side[s][k] >= v);
+  const pay = (s, cost) => Object.entries(cost).forEach(([k, v]) => { S.side[s][k] -= v; });
+  const costText = cost => Object.entries(cost).filter(([, v]) => v).map(([k, v]) => `${v} ${RES_NAME[k].slice(0, 3)}.`).join(" ") || "უფასო";
+
+  // ბრძოლა — სამაგიდო წესების d10 მექანიკით
+  function inCover(t) {
+    if (t.kind !== "u") return 0;
+    let c = 0;
+    for (const e of S.ents) {
+      if (e.kind === "furrow" && Math.hypot(e.x - t.x, e.y - t.y) < 24) c = Math.max(c, 2);
+      if (e.kind === "ruin" && Math.abs(e.x - t.x) < e.w / 2 + 6 && Math.abs(e.y - t.y) < e.h / 2 + 6) c = Math.max(c, 2);
+      if (e.kind === "b" && e.side === t.side && e.hp > 0 && (e.wall || e.trench) && Math.abs(e.x - t.x) < e.w / 2 + 12 && Math.abs(e.y - t.y) < e.h / 2 + 12) c = Math.max(c, 2);
+    }
+    return c;
+  }
+  function shoot(src, w, t, skill, ranged) {
+    let mod = 0;
+    if (ranged) {
+      mod -= inCover(t);
+      if (t.supT > 0) mod -= 1;
+      if (Math.hypot(t.x - src.x, t.y - src.y) > (w.range * INCH) / 2) mod -= 1;
+    }
+    if ((t.size || 1) >= 3) mod += 1;
+    const atk = w.attacks + (w.tags && w.tags.includes("frenzy") && !ranged ? 1 : 0);
+    for (let i = 0; i < atk; i++) {
+      if (ranged && w.suppress && t.kind === "u" && t.size === 1 && !t.u.tags.includes("fearless")) {
+        const nearLeader = S.ents.some(a => a.kind === "u" && a.side === t.side && a.hp > 0 && a.u.tags.includes("leader") && Math.hypot(a.x - t.x, a.y - t.y) < 60);
+        if (d10() > t.u.nerve + (nearLeader ? 1 : 0)) t.supT = 2.5;   // დათრგუნვა: დაბლა წევს
+      }
+      const r = d10();
+      if (r === 10 || (r !== 1 && r > skill + mod)) continue;
+      const armor = Math.max(0, (t.kind === "u" ? t.u.armor : t.armor) - (w.tags && w.tags.includes("armor_break") ? 1 : 0));
+      const power = w.power + (w.tags && w.tags.includes("charge") && !src.charged ? 1 : 0) + (src.unleashed ? w.power : 0);
+      const need = Math.max(2, Math.min(10, 5 + armor - power - (w.tags && w.tags.includes("anti_giant") && (t.size || 1) >= 3 ? 2 : 0)));
+      if (d10() >= need || r === 1) {
+        let dmg = w.damage + (r === 1 ? 1 : 0);
+        if (t.kind === "b" && w.tags && (w.tags.includes("blast") || w.tags.includes("demolition"))) dmg *= 2;
+        t.hp -= dmg;
+        if (w.tags && w.tags.includes("fire")) t.burnT = 3;
+        S.fx.push({ x: t.x, y: t.y, t: .35, c: ranged ? "#f3d27a" : "#e2604a" });
+      }
+    }
+    if (!ranged) src.charged = true;
+  }
+  const weapon = (m, ranged) => m.u.weapons.filter(w => (w.mode === "ranged") === ranged && w.attacks > 0 && w.damage > 0)
+    .sort((a, b) => b.attacks * b.power * b.damage - a.attacks * a.power * a.damage)[0];
+  const meleePref = m => { const r = weapon(m, true); return !r || r.range <= 10 || m.u.melee >= m.u.shoot + 2; };
+
+  function enemiesOf(side) { return S.ents.filter(e => e.side && e.side !== side && e.hp > 0 && (e.kind === "u" || e.kind === "b")); }
+  function nearest(m, list) { let best = null, bd = 1e9; for (const e of list) { const d = Math.hypot(e.x - m.x, e.y - m.y); if (d < bd) { bd = d; best = e; } } return [best, bd]; }
+  function blockingWall(m, nx, ny) {
+    return S.ents.find(b => b.kind === "b" && b.wall && b.hp > 0 && b.side !== m.side && Math.abs(b.x - nx) < b.w / 2 + 5 && Math.abs(b.y - ny) < b.h / 2 + 5);
+  }
+
+  function stepUnit(m, dt) {
+    if (m.burnT > 0) { m.burnT -= dt; if (Math.random() < dt * .5 && d10() >= Math.max(2, 5 + m.u.armor - 2)) m.hp -= 1; }
+    if (m.supT > 0) m.supT -= dt;
+    if (m.u.tags.includes("regen") && m.burnT <= 0 && m.hp < m.u.wounds && Math.random() < dt * .15) m.hp += 1;
+    m.cd -= dt; if (m.reload > 0) m.reload -= dt;
+    const foes = enemiesOf(m.side);
+    const sight = Math.max(160, (weapon(m, true) || { range: 0 }).range * INCH + 60);
+    let [t, d] = nearest(m, foes.filter(f => f.kind === "u"));
+    if (!t || d > sight) [t, d] = nearest(m, foes);
+    const ordered = m.tx !== null;
+    if (t && d <= sight && !(ordered && m.forced)) {
+      const r = weapon(m, true), mw = weapon(m, false);
+      const reach = (t.w ? Math.max(t.w, t.h) / 2 : 6) + 12;
+      if (d <= reach && mw) { if (m.cd <= 0) { shoot(m, mw, t, m.u.melee, false); m.cd = 1.2; } return; }
+      if (r && !meleePref(m) && d <= r.range * INCH + (t.w ? t.w / 2 : 0)) {
+        if (m.cd <= 0 && m.reload <= 0) { shoot(m, r, t, m.u.shoot, true); m.cd = 2; if (r.tags.includes("reload")) m.reload = 4; }
+        return;
+      }
+      if (m.supT <= 0) moveTo(m, t.x, t.y, dt);
+      return;
+    }
+    if (ordered && m.supT <= 0) {
+      if (Math.hypot(m.tx - m.x, m.ty - m.y) < 6) { m.tx = m.ty = null; m.forced = false; } else moveTo(m, m.tx, m.ty, dt);
+    }
+  }
+  function moveTo(m, x, y, dt) {
+    const sp = m.u.move * 3.2, dx = x - m.x, dy = y - m.y, L = Math.hypot(dx, dy) || 1;
+    const nx = m.x + dx / L * Math.min(L, sp * dt), ny = m.y + dy / L * Math.min(L, sp * dt);
+    const wall = blockingWall(m, nx, ny);
+    if (wall) { const mw = weapon(m, false); if (mw && m.cd <= 0) { shoot(m, mw, wall, m.u.melee, false); m.cd = 1.2; } return; }
+    m.x = Math.max(8, Math.min(W - 8, nx)); m.y = Math.max(8, Math.min(H - 8, ny));
+  }
+  function stepPorter(p, dt) {
+    const s = S.side[p.side], hq = s.hq;
+    if (!hq || hq.hp <= 0) return;
+    if (!p.res) { const order = ["food", "coal", "food", "iron", "stone"]; p.res = order[p.id % order.length]; }
+    const node = S.ents.find(e => e.kind === "node" && e.side === p.side && e.res === p.res);
+    const goal = p.carry ? hq : node, sp = 46;
+    const dx = goal.x - p.x, dy = goal.y - p.y, L = Math.hypot(dx, dy);
+    if (L < 14) { if (p.carry) { s[p.res] += p.carry; p.carry = 0; } else p.carry = 10; return; }
+    p.x += dx / L * sp * dt; p.y += dy / L * sp * dt;
+  }
+  function stepBuilding(b, dt) {
+    if (b.gun) {
+      b.cd -= dt;
+      const [t, d] = nearest(b, enemiesOf(b.side).filter(e => e.kind === "u"));
+      if (t && d <= b.gun.range * INCH && b.cd <= 0) {
+        shoot(b, { range: b.gun.range, attacks: b.gun.attacks, power: b.gun.power, damage: 1, tags: [], suppress: b.gun.suppress }, t, b.gun.skill, true);
+        b.cd = b.gun.rate;
+      }
+    }
+    if (b.queue.length) {
+      b.qt -= dt;
+      if (b.qt <= 0) {
+        const id = b.queue.shift(); const dir = b.side === "p" ? 1 : -1;
+        const m = addUnit(b.side, id, b.x + dir * (b.w / 2 + 14), b.y + (Math.random() - .5) * 30);
+        if (m && b.side === "p" && S.rally) { m.tx = S.rally.x; m.ty = S.rally.y; }
+        b.qt = b.queue.length ? trainTime(b.queue[0]) : 0;
+      }
+    }
+  }
+  const trainTime = id => 4 + (POP[byId[id].tier] || 1) * 2.5;
+
+  // AI: ეკონომიკა, ჯარი, ტალღები
+  function stepAI(dt) {
+    const s = S.side.e; S.aiT -= dt; S.waveT -= dt;
+    if (S.aiT > 0) return; S.aiT = 1.2;
+    const porters = S.ents.filter(e => e.kind === "porter" && e.side === "e").length;
+    if (porters < 10 && can("e", { food: 50 }) && popUsed("e") < popCap("e")) { pay("e", { food: 50 }); addPorter("e", s.hq); }
+    if (popUsed("e") >= popCap("e") - 2 && can("e", BUILD.dugout.cost)) {
+      pay("e", BUILD.dugout.cost); addB("e", "dugout", W - 90 - Math.random() * 120, 120 + Math.random() * 660, { ...BUILD.dugout, name: "ტყვეების გალია" });
+    }
+    if (s.epoch === 1 && S.t > 150 && can("e", { food: 300, iron: 200 })) { pay("e", { food: 300, iron: 200 }); s.epoch = 2; }
+    if (s.epoch === 2 && !S.ents.some(b => b.kind === "b" && b.side === "e" && b.type === "nest") && can("e", BUILD.nest.cost)) {
+      pay("e", BUILD.nest.cost); addB("e", "nest", W - 360, 450, { ...BUILD.nest, name: "ერეტიკოსების ტყვიამფრქვევი" });
+    }
+    const bar = S.ents.find(b => b.kind === "b" && b.side === "e" && b.type === "barracks" && b.hp > 0);
+    if (bar && bar.queue.length < 2) {
+      const pool = SIDES.e.units.I.concat(s.epoch >= 2 ? SIDES.e.units.II : []);
+      const id = pool[Math.floor(Math.random() * pool.length)];
+      const c = UNIT_COST(byId[id]);
+      if (can("e", c) && popUsed("e") + (POP[byId[id].tier] || 1) <= popCap("e")) { pay("e", c); bar.queue.push(id); if (bar.queue.length === 1) bar.qt = trainTime(id); }
+    }
+    const army = S.ents.filter(e => e.kind === "u" && e.side === "e" && e.hp > 0);
+    if (S.waveT <= 0 && army.length >= 5) {
+      S.waveT = 60; const hq = S.side.p.hq;
+      army.forEach(m => { m.tx = hq.x + 60 + Math.random() * 60; m.ty = hq.y + (Math.random() - .5) * 200; m.forced = false; });
+      say("დიდი უღლის ტალღა მოდის ღარის გავლით!");
+    }
+  }
+
+  // მთავარი ციკლი
+  let last = 0;
+  function frame(ts) {
+    const dt = Math.min(.05, (ts - last) / 1000 || 0); last = ts;
+    if (S.running && !S.over) {
+      S.t += dt;
+      for (const e of S.ents) {
+        if (e.kind === "u" && e.hp > 0) stepUnit(e, dt);
+        else if (e.kind === "porter") stepPorter(e, dt);
+        else if (e.kind === "b" && e.hp > 0) stepBuilding(e, dt);
+      }
+      stepAI(dt);
+      for (const e of S.ents) if (e.kind === "u" && e.hp <= 0) S.sel.delete(e.id);
+      S.ents = S.ents.filter(e => !((e.kind === "u" || e.kind === "b") && e.hp <= 0 && e !== S.side.p.hq && e !== S.side.e.hq));
+      S.fx.forEach(f => { f.t -= dt; }); S.fx = S.fx.filter(f => f.t > 0);
+      if (S.side.e.hq.hp <= 0) end(true); else if (S.side.p.hq.hp <= 0) end(false);
+      if ((S.tick = (S.tick || 0) + dt) > .25) { S.tick = 0; renderTop(); renderPanel(); }
+    }
+    draw();
+    requestAnimationFrame(frame);
+  }
+  function end(win) {
+    S.over = true;
+    $("bTitle").textContent = win ? "უღლის ბანაკი დაეცა" : "სოფელი დაიკარგა";
+    $("bText").textContent = win ? `კოლხეთის შტაბი დგას. ომი ${Math.round(S.t)} წამი გაგრძელდა. ღარი ისევ ჩვენია.`
+      : "დიდი უღლის ტალღამ შტაბი აიღო. სცადე ადრე ააშენო მესერი და ტყვიამფრქვევის ბუდე.";
+    $("startBtn").textContent = "ახალი ომი"; $("banner").hidden = false;
+  }
+
+  // ხატვა: კოლხეთი — ბოძებზე დგმული სახლები და სვანური კოშკები; დიდი უღელი — ურმები და ბორბლები
+  let scale = 1, offX = 0, offY = 0;
+  function resize() {
+    const r = $("field").getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    cv.width = Math.max(1, r.width * dpr); cv.height = Math.max(1, r.height * dpr);
+    scale = Math.min(cv.width / W, cv.height / H); offX = (cv.width - W * scale) / 2; offY = (cv.height - H * scale) / 2;
+  }
+  window.addEventListener("resize", resize);
+  function draw() {
+    if (!S) return;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = "#2a241d"; ctx.fillRect(0, 0, cv.width, cv.height);
+    ctx.setTransform(scale, 0, 0, scale, offX, offY);
+    // მიწა: ორი სოფელი და ნეიტრალური ზოლი
+    ctx.fillStyle = "#4a5236"; ctx.fillRect(0, 0, 420, H); ctx.fillStyle = "#4f3b2c"; ctx.fillRect(W - 420, 0, 420, H);
+    ctx.fillStyle = "#3f3528"; ctx.fillRect(420, 0, W - 840, H);
+    for (let i = 0; i < 70; i++) { const x = 430 + (i * 137) % (W - 860), y = (i * 251) % H; ctx.fillStyle = "rgba(0,0,0,.18)"; ctx.beginPath(); ctx.arc(x, y, 5 + (i % 4) * 3, 0, 7); ctx.fill(); }
+    ctx.font = "12px Noto Sans Georgian, sans-serif"; ctx.fillStyle = "rgba(241,232,214,.35)"; ctx.textAlign = "center";
+    ctx.fillText("ნეიტრალური ზოლი · ამბრის ღარი", W / 2, 22);
+    for (const e of S.ents) {
+      if (e.kind === "furrow") { ctx.fillStyle = "#2b2218"; ctx.fillRect(e.x - 10, e.y - 22, 20, 44); }
+      if (e.kind === "ruin") { ctx.fillStyle = "#6b5c48"; ctx.fillRect(e.x - e.w / 2, e.y - e.h / 2, e.w, e.h); ctx.fillStyle = "#57493a"; ctx.fillRect(e.x - e.w / 2 + 6, e.y - e.h / 2 + 5, e.w / 2, e.h / 2); }
+      if (e.kind === "node") drawNode(e);
+    }
+    for (const e of S.ents) if (e.kind === "b") drawBuilding(e);
+    for (const e of S.ents) if (e.kind === "porter") { ctx.fillStyle = e.side === "p" ? "#e9dfc8" : "#c9b39a"; ctx.beginPath(); ctx.arc(e.x, e.y, 3, 0, 7); ctx.fill(); }
+    for (const e of S.ents) if (e.kind === "u") drawUnit(e);
+    for (const f of S.fx) { ctx.globalAlpha = Math.max(0, f.t / .35); ctx.fillStyle = f.c; ctx.beginPath(); ctx.arc(f.x, f.y, 5, 0, 7); ctx.fill(); ctx.globalAlpha = 1; }
+    if (S.drag) { ctx.strokeStyle = "#c8913e"; ctx.setLineDash([5, 4]); ctx.strokeRect(S.drag.x0, S.drag.y0, S.drag.x1 - S.drag.x0, S.drag.y1 - S.drag.y0); ctx.setLineDash([]); }
+    if (S.placing && S.ghost) {
+      const sp = BUILD[S.placing], w = S.vertical && (sp.wall || sp.trench) ? sp.h : sp.w, h = S.vertical && (sp.wall || sp.trench) ? sp.w : sp.h;
+      ctx.globalAlpha = .55; ctx.fillStyle = okPlace(S.ghost.x) ? "#c8913e" : "#b4462f"; ctx.fillRect(S.ghost.x - w / 2, S.ghost.y - h / 2, w, h); ctx.globalAlpha = 1;
+    }
+  }
+  function drawNode(n) {
+    const c = { food: "#9aa65b", coal: "#2c3a26", iron: "#6f7378", stone: "#a49d8f" }[n.res];
+    ctx.fillStyle = c;
+    if (n.res === "coal") { for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.arc(n.x + (i % 3) * 12 - 12, n.y + Math.floor(i / 3) * 12 - 6, 8, 0, 7); ctx.fill(); } }
+    else if (n.res === "food") { for (let i = 0; i < 4; i++) ctx.fillRect(n.x - 22, n.y - 14 + i * 8, 44, 4); }
+    else { ctx.beginPath(); ctx.moveTo(n.x - 16, n.y + 10); ctx.lineTo(n.x, n.y - 12); ctx.lineTo(n.x + 16, n.y + 10); ctx.fill(); }
+    ctx.fillStyle = "rgba(241,232,214,.7)"; ctx.font = "10px Noto Sans Georgian, sans-serif"; ctx.fillText({ food: "მინდორი", coal: "ტყე", iron: "მაღარო", stone: "კარიერი" }[n.res], n.x, n.y + 26);
+  }
+  function drawBuilding(b) {
+    const col = b.side === "p" ? "#c8913e" : "#b4462f";
+    const x = b.x - b.w / 2, y = b.y - b.h / 2;
+    if (b.trench) { ctx.fillStyle = "#231c14"; ctx.fillRect(x, y, b.w, b.h); return; }
+    if (b.side === "p") {
+      if (b.type === "tower") { ctx.fillStyle = "#cfc3a8"; ctx.fillRect(b.x - 6, b.y - 26, 12, 34); ctx.fillStyle = "#6b4f2f"; ctx.fillRect(b.x - 8, b.y - 30, 16, 6); }   // სვანური კოშკი
+      else if (b.wall) { ctx.fillStyle = b.stone ? "#9b958a" : "#8a6a3f"; ctx.fillRect(x, y, b.w, b.h); }
+      else { ctx.fillStyle = "#6b4f2f"; for (let i = 0; i < 4; i++) ctx.fillRect(x + 4 + i * (b.w - 10) / 3, y + b.h - 4, 3, 8);   // ბოძები ჭაობზე
+        ctx.fillStyle = "#a07a46"; ctx.fillRect(x, y, b.w, b.h - 4); ctx.fillStyle = "#5a3e22"; ctx.beginPath(); ctx.moveTo(x - 4, y); ctx.lineTo(b.x, y - 12); ctx.lineTo(x + b.w + 4, y); ctx.fill(); }
+    } else {
+      if (b.wall) { ctx.fillStyle = "#5b4636"; ctx.fillRect(x, y, b.w, b.h); ctx.fillStyle = "#2c2119"; ctx.beginPath(); ctx.arc(b.x, y + 4, 3, 0, 7); ctx.arc(b.x, y + b.h - 4, 3, 0, 7); ctx.fill(); }
+      else { ctx.fillStyle = "#6e4a36"; ctx.fillRect(x, y, b.w, b.h - 6); ctx.fillStyle = "#2c2119";   // ურემი ბორბლებით
+        ctx.beginPath(); ctx.arc(x + 8, y + b.h - 3, 6, 0, 7); ctx.arc(x + b.w - 8, y + b.h - 3, 6, 0, 7); ctx.fill();
+        ctx.strokeStyle = "#8f8a80"; ctx.beginPath(); ctx.moveTo(x, y + 4); ctx.lineTo(x + b.w, y + 4); ctx.stroke(); }
+    }
+    if (b.type === "nest") { ctx.fillStyle = "#3a3a32"; ctx.fillRect(x, y, b.w, b.h); ctx.fillStyle = col; ctx.fillRect(b.x - 2, y - 6, 4, 8); }
+    if (b.hp < b.maxhp) { ctx.fillStyle = "#000"; ctx.fillRect(x, y - 8, b.w, 3); ctx.fillStyle = col; ctx.fillRect(x, y - 8, b.w * Math.max(0, b.hp) / b.maxhp, 3); }
+    if (b.queue && b.queue.length) { ctx.fillStyle = "#f1e8d6"; ctx.font = "10px Noto Sans Georgian, sans-serif"; ctx.fillText(`+${b.queue.length}`, b.x, y - 12); }
+    if (S.selB === b) { ctx.strokeStyle = "#f1e8d6"; ctx.strokeRect(x - 2, y - 2, b.w + 4, b.h + 4); }
+  }
+  function drawUnit(m) {
+    const r = 4 + (m.size - 1) * 4, col = m.side === "p" ? "#e0a84e" : "#d0533a";
+    ctx.fillStyle = col; ctx.beginPath(); ctx.arc(m.x, m.y, r, 0, 7); ctx.fill();
+    if (m.supT > 0) { ctx.strokeStyle = "#f1e8d6"; ctx.beginPath(); ctx.moveTo(m.x - r - 2, m.y + r + 2); ctx.lineTo(m.x + r + 2, m.y + r + 2); ctx.stroke(); }
+    if (m.burnT > 0) { ctx.fillStyle = "#f08a2a"; ctx.fillRect(m.x - 1, m.y - r - 5, 2, 3); }
+    if (S.sel.has(m.id)) { ctx.strokeStyle = "#f1e8d6"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(m.x, m.y, r + 3, 0, 7); ctx.stroke(); ctx.lineWidth = 1; }
+    if (m.hp < m.u.wounds) { ctx.fillStyle = "#000"; ctx.fillRect(m.x - 7, m.y - r - 4, 14, 2); ctx.fillStyle = col; ctx.fillRect(m.x - 7, m.y - r - 4, 14 * m.hp / m.u.wounds, 2); }
+  }
+
+  // შეყვანა: მონიშვნა, სვლა, შენება
+  const toWorld = ev => { const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    return { x: ((ev.clientX - r.left) * dpr - offX) / scale, y: ((ev.clientY - r.top) * dpr - offY) / scale }; };
+  const okPlace = x => x < 470;
+  cv.addEventListener("pointerdown", ev => {
+    if (!S.running) return;
+    const p = toWorld(ev);
+    if (ev.button === 2) { orderMove(p); return; }
+    if (S.placing) { place(p); return; }
+    S.drag = { x0: p.x, y0: p.y, x1: p.x, y1: p.y }; cv.setPointerCapture(ev.pointerId);
+  });
+  cv.addEventListener("pointermove", ev => { const p = toWorld(ev); if (S.placing) S.ghost = p; if (S.drag) { S.drag.x1 = p.x; S.drag.y1 = p.y; } });
+  cv.addEventListener("pointerup", ev => {
+    if (!S.drag) return;
+    const d = S.drag; S.drag = null;
+    const box = Math.abs(d.x1 - d.x0) > 8 || Math.abs(d.y1 - d.y0) > 8;
+    if (box) {
+      S.sel = new Set(S.ents.filter(e => e.kind === "u" && e.side === "p" && e.x >= Math.min(d.x0, d.x1) && e.x <= Math.max(d.x0, d.x1) && e.y >= Math.min(d.y0, d.y1) && e.y <= Math.max(d.y0, d.y1)).map(e => e.id));
+      S.selB = null; renderPanel(); return;
+    }
+    const p = { x: d.x0, y: d.y0 };
+    const unit = S.ents.find(e => e.kind === "u" && e.side === "p" && Math.hypot(e.x - p.x, e.y - p.y) < 10);
+    if (unit) { S.sel = new Set([unit.id]); S.selB = null; renderPanel(); return; }
+    const b = S.ents.find(e => e.kind === "b" && e.side === "p" && Math.abs(e.x - p.x) < e.w / 2 + 4 && Math.abs(e.y - p.y) < e.h / 2 + 4);
+    if (b && !S.sel.size) { S.selB = b; renderPanel(); return; }
+    if (S.sel.size) orderMove(p); else { S.selB = null; renderPanel(); }
+  });
+  cv.addEventListener("contextmenu", ev => ev.preventDefault());
+  function orderMove(p) {
+    const ms = S.ents.filter(e => S.sel.has(e.id));
+    ms.forEach((m, i) => { m.tx = p.x + ((i % 5) - 2) * 12; m.ty = p.y + (Math.floor(i / 5) - 1) * 12; m.forced = false; });
+    if (!ms.length) { S.rally = p; say("ყაზარმის ახალი ჯარი აქ შეიკრიბება."); }
+    S.fx.push({ x: p.x, y: p.y, t: .4, c: "#f1e8d6" });
+  }
+  function place(p) {
+    const k = S.placing, sp = BUILD[k];
+    if (!okPlace(p.x)) { say("შენება მხოლოდ შენს სოფელში და ღარამდე შეიძლება."); return; }
+    if (!can("p", sp.cost)) { say("რესურსი არ კმარა."); return; }
+    pay("p", sp.cost);
+    const vert = S.vertical && (sp.wall || sp.trench);
+    addB("p", k, p.x, p.y, { ...sp, w: vert ? sp.h : sp.w, h: vert ? sp.w : sp.h });
+    if (!(sp.wall || sp.trench)) { S.placing = null; S.ghost = null; }
+    renderPanel(); renderTop();
+  }
+
+  // პანელები
+  function renderTop() {
+    const s = S.side.p;
+    $("res").innerHTML = ["food", "coal", "stone", "iron"].map(k => `<span>${RES_NAME[k]} <b>${Math.floor(s[k])}</b></span>`).join("") +
+      `<span>მოსახლეობა <b>${popUsed("p")}/${popCap("p")}</b></span><span>ეპოქა <b>${s.epoch === 1 ? "I ბეჭდების" : "II ორთქლის"}</b></span>`;
+  }
+  // პანელს თავიდან არ ვხატავთ: ღილაკები ადგილზე ახლდება, რომ დაჭერა არ დაიკარგოს
+  function patch(el, html) {
+    const tmp = document.createElement("div"); tmp.innerHTML = html;
+    const now = [...el.children], next = [...tmp.children];
+    const same = now.length === next.length && now.every((c, i) => c.tagName === next[i].tagName && c.id === next[i].id);
+    if (!same) { el.innerHTML = html; return; }
+    next.forEach((n, i) => { const c = now[i];
+      if (c.innerHTML !== n.innerHTML) c.innerHTML = n.innerHTML;
+      if (c.className !== n.className) c.className = n.className;
+      if (c.disabled !== n.disabled) c.disabled = n.disabled; });
+  }
+  function btn(id, label, cost, ok, on) { return `<button type="button" id="${id}" ${ok ? "" : "disabled"} class="${on ? "on" : ""}">${label} <span class="cost">${cost}</span></button>`; }
+  function renderPanel() {
+    if (!S) return;
+    const s = S.side.p, porterOk = can("p", { food: 50 }) && popUsed("p") < popCap("p");
+    patch($("gEco"), `<span class="label">სოფელი</span>` + btn("trainPorter", "მზიდავი", "50 საკ.", porterOk) +
+      (s.epoch === 1 ? btn("epoch2", "ორთქლის ეპოქა", "300 საკ. 200 რკ.", can("p", { food: 300, iron: 200 })) : ""));
+    patch($("gBuild"), `<span class="label">შენება</span>` + Object.entries(BUILD).filter(([, b]) => b.epoch <= s.epoch)
+      .map(([k, b]) => btn("b_" + k, b.name, costText(b.cost), can("p", b.cost), S.placing === k)).join("") +
+      `<button type="button" id="rot" class="${S.vertical ? "on" : ""}">კედელი ${S.vertical ? "↕" : "↔"}</button>` +
+      (S.selB && S.selB.wall && !S.selB.stone && s.epoch >= 2 ? btn("toStone", "ქვის კედელი", "30 ქვა", can("p", { stone: 30 })) : ""));
+    const bars = S.ents.filter(e => e.kind === "b" && e.side === "p" && (e.type === "barracks" || e.type === "workshop") && e.hp > 0);
+    const pool = SIDES.p.units.I.concat(s.epoch >= 2 ? SIDES.p.units.II : []);
+    patch($("gArmy"), `<span class="label">ჯარი${bars.length ? "" : " (ააშენე ყაზარმა)"}</span>` + pool.map(id => {
+      const u = byId[id], c = UNIT_COST(u), needWs = u.tags.includes("vehicle");
+      const ok = bars.some(b => (b.type === "workshop") === needWs) && can("p", c) && popUsed("p") + (POP[u.tier] || 1) <= popCap("p");
+      return btn("t_" + id, u.name, costText(c), ok);
+    }).join("") + `<button type="button" id="selAll">ყველა ჯარისკაცი</button><button type="button" id="attack" class="primary">შეტევა ღარის გავლით</button>` +
+      `<button type="button" id="pause">${S.running ? "პაუზა" : "გაგრძელება"}</button>`);
+  }
+  document.addEventListener("click", ev => {
+    const id = ev.target.closest("button") && ev.target.closest("button").id; if (!id || !S) return;
+    const s = S.side.p;
+    if (id === "startBtn") { if (S.over) newGame(); $("banner").hidden = true; S.running = true; renderTop(); renderPanel(); return; }
+    if (id === "trainPorter" && can("p", { food: 50 })) { pay("p", { food: 50 }); addPorter("p", s.hq); }
+    if (id === "epoch2" && can("p", { food: 300, iron: 200 })) { pay("p", { food: 300, iron: 200 }); s.epoch = 2; say("ორთქლის ეპოქა: ქვის კედელი, ტყვიამფრქვევი, აზნაურები, მონასპა და ხალკოტავრი."); }
+    if (id.startsWith("b_")) { const k = id.slice(2); S.placing = S.placing === k ? null : k; S.sel.clear();
+      if (S.placing) say(`${BUILD[k].name}: დააწექი შენს სოფელში. ${BUILD[k].wall || BUILD[k].trench ? "კედელი და თხრილი — რამდენიმე ზედიზედ." : ""}`); }
+    if (id === "rot") S.vertical = !S.vertical;
+    if (id === "toStone" && S.selB && can("p", { stone: 30 })) { pay("p", { stone: 30 }); Object.assign(S.selB, { stone: true, armor: 6, maxhp: 160, hp: 160, name: "ქვის კედელი" }); }
+    if (id.startsWith("t_")) {
+      const uid = id.slice(2), u = byId[uid], c = UNIT_COST(u), needWs = u.tags.includes("vehicle");
+      const b = S.ents.filter(e => e.kind === "b" && e.side === "p" && e.hp > 0 && (e.type === "workshop") === needWs && (e.type === "barracks" || e.type === "workshop"))
+        .sort((a, z) => a.queue.length - z.queue.length)[0];
+      if (b && can("p", c)) { pay("p", c); b.queue.push(uid); if (b.queue.length === 1) b.qt = trainTime(uid); }
+    }
+    if (id === "selAll") { S.sel = new Set(S.ents.filter(e => e.kind === "u" && e.side === "p").map(e => e.id)); S.selB = null; }
+    if (id === "attack") { const hq = S.side.e.hq; S.ents.filter(e => e.kind === "u" && e.side === "p").forEach(m => { m.tx = hq.x - 40 + Math.random() * 30; m.ty = hq.y + (Math.random() - .5) * 120; m.forced = false; }); say("შეტევა! ჯარი ღარს კვეთს."); }
+    if (id === "pause") S.running = !S.running;
+    renderTop(); renderPanel();
+  });
+  window.addEventListener("keydown", ev => { if (ev.key === "Escape" && S) { S.placing = null; S.sel.clear(); renderPanel(); } if ((ev.key === "r" || ev.key === "R") && S) { S.vertical = !S.vertical; renderPanel(); } });
+  function say(t) { $("msg").textContent = t; }
+
+  newGame(); renderTop(); requestAnimationFrame(frame);
+  if (!D.units.length) say("მონაცემები ვერ ჩაიტვირთა (data.js).");
+})();
+</script>
