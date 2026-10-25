@@ -91,6 +91,14 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   if (hiredIv && !await hiredIv.isDisabled()) fails.push('საკუთარი IV-ის შემდეგ დაქირავებული IV არ დაიბლოკა');
   const hiredV = await p.$('#catalog section.allies [data-add="armenian_giant"]');
   if (hiredV && !await hiredV.isDisabled()) fails.push('დაქირავებული გოლიათი სცენარის გარეშე ხელმისაწვდომია');
+  // ბეჭდვა: ბარათები, ნიშნების წესები და სცენარი
+  await p.evaluate(() => { window.print = () => { window.__printed = true; }; });
+  await p.click('[data-f="colchis"]'); await p.click('#clearBtn'); await p.selectOption('#budget', '500');
+  await clickAdd('eristavi'); await clickAdd('lashkari');
+  await p.selectOption('#printScenario', '0'); await p.click('#printBtn');
+  const pv = await p.$eval('#printView', v => v.textContent);
+  if (!await p.evaluate(() => window.__printed) || !pv.includes('ერისთავი') || !pv.includes('გარღვევა') || !pv.includes('მწკრივი'))
+    fails.push('ბეჭდვის გვერდი არასრულია');
   // ალიანსი: პრუსია + კოლხეთი + ოსმალები; კონტინგენტი 30%, ფასნამატის გარეშე, პარტნიორის ლიდერი არ ჩანს
   await p.selectOption('#allySel', 'prussia'); await p.click('#clearBtn'); await p.selectOption('#budget', '500');
   if (await p.isChecked('#scenario')) await p.click('#scenario');
@@ -147,6 +155,10 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   if (doneCount !== 1) fails.push(`მოგებული სცენარი არ აღინიშნა (${doneCount})`);
   const log = await p.$eval('#campaignView', v => v.textContent);
   if (!log.includes(D2.campaigns.gulf.scenarios[0].name)) fails.push('ჟურნალში სცენარის სახელი არ ჩაიწერა');
+  // უნივერსალური სცენარი კამპანიის ჟურნალში
+  await p.selectOption('#bStory', 'u4'); await p.selectOption('#bResult', 'draw');
+  await p.click('#battleForm button[type="submit"]'); await p.waitForTimeout(200);
+  if (!(await p.$eval('#campaignView', v => v.textContent)).includes('ურჩხულზე ნადირობა')) fails.push('უნივერსალური სცენარი ჟურნალში არ ჩაიწერა');
   // ნეიტრალური ზოლი: დაზვერვა ჩაიწერება და ლიმიტს ამცირებს
   const zones = await p.$$eval('#raidZone option', o => o.length);
   if (zones < 8) fails.push(`ნეიტრალური ზოლის ზონები არ ჩანს (${zones})`);

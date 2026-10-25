@@ -215,7 +215,7 @@
           <form class="panel" id="battleForm"><h3>ბრძოლის ჩაწერა</h3>
             <div class="form-row"><label for="bResult">შედეგი</label>
               <select id="bResult"><option value="win">გამარჯვება</option><option value="draw">ფრე</option><option value="loss">მარცხი</option></select>
-              <label for="bStory">სცენარი</label><select id="bStory">${(STORY(camp.faction) ? STORY(camp.faction).scenarios : []).map((sc, i) => `<option value="${i}" ${i === (STORY(camp.faction).scenarios.findIndex((_, j) => !camp.storyDone.includes(j))) ? "selected" : ""}>${i + 1}. ${esc(sc.name)}${camp.storyDone.includes(i) ? " ✓" : ""}</option>`).join("")}<option value="-1" ${STORY(camp.faction) && camp.storyDone.length >= STORY(camp.faction).scenarios.length ? "selected" : ""}>სხვა სცენარი</option></select>
+              <label for="bStory">სცენარი</label><select id="bStory">${(STORY(camp.faction) ? STORY(camp.faction).scenarios : []).map((sc, i) => `<option value="${i}" ${i === (STORY(camp.faction).scenarios.findIndex((_, j) => !camp.storyDone.includes(j))) ? "selected" : ""}>${i + 1}. ${esc(sc.name)}${camp.storyDone.includes(i) ? " ✓" : ""}</option>`).join("")}${(D.scenarios || []).length ? `<optgroup label="უნივერსალური სცენარები">${D.scenarios.map((s, i) => `<option value="u${i}">${esc(s.name)}</option>`).join("")}</optgroup>` : ""}<option value="-1" ${STORY(camp.faction) && camp.storyDone.length >= STORY(camp.faction).scenarios.length ? "selected" : ""}>სხვა სცენარი</option></select>
               <input type="text" id="bScenario" maxlength="60" placeholder="სხვა სცენარის სახელი" aria-label="სხვა სცენარის სახელი"></div>
             ${NML ? `<div class="form-row"><label for="bZone">ნეიტრალური ზოლის ზონა</label><select id="bZone"><option value="">—</option>${NML.zones.map(z => `<option value="${z.id}">${esc(z.name)}</option>`).join("")}</select></div>` : ""}
             <div class="form-row"><label for="bPrisoners">აყვანილი ტყვეები</label><input type="number" id="bPrisoners" min="0" max="10" value="0" style="width:4em">
@@ -312,8 +312,10 @@
       if (result === "loss" && camp.zones.includes(zid)) { camp.zones = camp.zones.filter(z => z !== zid); notes.push(`ზონა დაიკარგა: ${zn}`); }
     }
     camp.treasury += income; camp.currency += gain;
-    const story = STORY(camp.faction), si = $("bStory") ? Number($("bStory").value) : -1;
-    const scName = si >= 0 && story ? story.scenarios[si].name : $("bScenario").value.trim();
+    const sv = $("bStory") ? $("bStory").value : "-1";
+    const uni = sv.startsWith("u") ? (D.scenarios || [])[Number(sv.slice(1))] : null;  // უნივერსალური სცენარი
+    const story = STORY(camp.faction), si = uni ? -1 : Number(sv);
+    const scName = uni ? uni.name : si >= 0 && story ? story.scenarios[si].name : $("bScenario").value.trim();
     if (si >= 0 && result === "win" && !camp.storyDone.includes(si)) {
       camp.storyDone.push(si);
       notes.push("სცენარის ჯილდო: " + story.scenarios[si].reward);

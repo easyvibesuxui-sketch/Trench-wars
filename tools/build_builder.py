@@ -27,6 +27,7 @@ def main():
     nml = json.loads((ROOT / "data" / "no_mans_land.json").read_text(encoding="utf-8"))
     nml.pop("_comment", None)
     out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment, "campaigns": campaigns,
+           "scenarios": json.loads((ROOT / "data" / "scenarios.json").read_text(encoding="utf-8"))["scenarios"],
            "nml": nml, "tag_rules": json.loads((ROOT / "data" / "abilities.json").read_text(encoding="utf-8"))["tags"], "roles": json.loads((ROOT / "data" / "roles.json").read_text(encoding="utf-8"))["roles"]}
     js = "// ავტომატურად გენერირებული: tools/build_builder.py — ხელით ნუ შეცვლი\n"
     js += "window.TW_DATA = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n"

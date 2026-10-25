@@ -131,6 +131,23 @@ legend { color: var(--muted); font-size: .8rem; padding: 0 4px; }
 .cost .markup { font-size: .72rem; color: var(--muted); font-weight: 500; }
 .allies { border-top: 2px solid var(--patina); padding-top: 10px; }
 .abil { font-size: .78rem; color: var(--muted); }
+.print-row { margin-top: 6px; } .print-row select { min-width: 0; max-width: 100%; flex: 1; }
+#printView { display: none; }
+@media print {
+  @page { size: A4; margin: 8mm; }
+  body { background: #fff !important; color: #000 !important; }
+  body * { visibility: hidden; }
+  #printView, #printView * { visibility: visible; }
+  #printView { display: block !important; position: absolute; left: 0; top: 0; width: 100%; color: #000; font-size: 9pt; }
+  #printView h1 { font-size: 15pt; margin: 0 0 2mm; } #printView h2 { font-size: 12pt; margin: 4mm 0 2mm; border-bottom: 1px solid #000; }
+  #printView .pcards { display: grid; grid-template-columns: repeat(3, 63mm); gap: 2mm; }
+  #printView .pcard { border: 1px solid #000; border-radius: 2mm; padding: 2mm; min-height: 88mm; break-inside: avoid; font-size: 7pt; line-height: 1.25; }
+  #printView .pcard h3 { font-size: 9pt; margin: 0; display: flex; justify-content: space-between; }
+  #printView table { border-collapse: collapse; width: 100%; } #printView td, #printView th { border: 1px solid #999; padding: .3mm .8mm; text-align: left; }
+  #printView .pstats td { text-align: center; } #printView .box { border: 1px solid #000; padding: 2mm; margin: 2mm 0; break-inside: avoid; }
+  #printView .gl { column-count: 2; column-gap: 5mm; font-size: 7.5pt; } #printView .gl p { margin: 0 0 1mm; break-inside: avoid; }
+  #printView .sc { break-before: page; } #printView .wb { display: inline-block; width: 2.5mm; height: 2.5mm; border: 1px solid #000; margin-right: .5mm; }
+}
 .role { font-size: .74rem; color: var(--muted); margin-top: -4px; }
 .role-pick { display: flex; gap: 8px; align-items: center; font-size: .85rem; color: var(--muted); }
 .abil summary { cursor: pointer; color: var(--ink); }
@@ -236,11 +253,16 @@ footer { color: var(--muted); font-size: .8rem; }
         <button type="button" id="saveBtn">შენახვა</button>
         <button type="button" id="clearBtn">გასუფთავება</button>
       </div>
+      <div class="actions print-row">
+        <select id="printScenario" aria-label="სცენარი ბეჭდვისთვის"></select>
+        <button type="button" id="printBtn">ბეჭდვა: ბარათები + სცენარი</button>
+      </div>
       <div class="status" id="status" role="status"></div>
       <textarea class="export" id="exportBox" readonly hidden aria-label="რაზმი ტექსტად"></textarea>
     </aside>
   </div>
   <section id="campaignView" hidden aria-label="კამპანია"></section>
+  <section id="printView" aria-hidden="true"></section>
   <footer>Trench Wars · სამუშაო ვერსია. წესები: rules/core-rules.md · ფასები: docs/balance-report.md</footer>
 </div>
 
@@ -613,6 +635,42 @@ footer { color: var(--muted); font-size: .8rem; }
     if (bad.length) lines.push("", "⚠ " + bad.join("; "));
     return lines.join("\n");
   }
+  // ბეჭდვა: რაზმის ბარათები, გამოყენებული ნიშნების წესები და არჩეული სცენარი (A4)
+  function printSheet() {
+    const rows = picks();
+    if (!rows.length) { setStatus("რაზმი ცარიელია — ჯერ დაამატე იუნიტები."); return; }
+    const used = new Set();
+    const cards = rows.map(([id, n]) => {
+      const u = byId[id], role = ROLES[u.role];
+      u.tags.forEach(t => used.add(t)); u.weapons.forEach(w => w.tags.forEach(t => used.add(t)));
+      const st = [["მოძ", u.move + '"'], ["სრ", u.shoot || "—"], ["ხჩ", u.melee], ["ჯავ", u.armor], ["სიც", u.wounds], ["ნებ", u.nerve]];
+      return `<div class="pcard"><h3><span>${n}× ${esc(u.name)}</span><span>${unitCost(u)}</span></h3>
+        <div>${esc(factionName(u.faction))} · ${u.tier}${role ? " · " + role.icon + " " + esc(role.name) : ""}</div>
+        <table class="pstats"><tr>${st.map(([k]) => `<th>${k}</th>`).join("")}</tr><tr>${st.map(([, v]) => `<td>${v}</td>`).join("")}</tr></table>
+        <table><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th></tr>${u.weapons.filter(w => w.attacks > 0 || w.tags.includes("aura")).map(w =>
+          `<tr><td>${esc(w.name)}${w.tags.length ? " <i>(" + esc(w.tags.map(x => WTAG[x] || x).join(", ")) + ")</i>" : ""}</td><td>${w.mode === "melee" ? "ხჩ" : w.range + '"'}</td><td>${w.attacks}</td><td>${w.power}</td><td>${w.damage}</td></tr>`).join("")}</table>
+        <p>${u.tags.filter(x => TAG[x]).map(x => "<b>" + TAG[x] + "</b>").join(" · ")}</p>
+        ${u.abilities ? u.abilities.map(([a, r]) => `<p><b>${esc(a)}:</b> ${esc(r)}</p>`).join("") : ""}
+        <p>${Array.from({ length: n }, () => Array.from({ length: Math.min(u.wounds, 20) }, () => '<span class="wb"></span>').join("")).join(" &nbsp; ")}</p></div>`;
+    }).join("");
+    const gear = gearPicks().map(([id, n]) => `<p><b>${n}× ${esc(itemById[id].name)}:</b> ${esc(itemById[id].effect)}</p>`).join("");
+    const gl = [...used].filter(t => (D.tag_rules || {})[t]).sort((a, b) => (TAG[a] || WTAG[a] || a).localeCompare(TAG[b] || WTAG[b] || b))
+      .map(t => `<p><b>${esc(TAG[t] || WTAG[t] || t)}:</b> ${esc(D.tag_rules[t])}</p>`).join("");
+    const sc = (D.scenarios || [])[Number($("printScenario").value)];
+    const li = xs => "<ul>" + xs.map(x => "<li>" + esc(x).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>") + "</li>").join("") + "</ul>";
+    const pa = partners();
+    $("printView").innerHTML = `<h1>${esc(state.name || "უსახელო რაზმი")} — ${esc(factionName(state.faction))}</h1>
+      <div>${spent()} / ${state.budget} მარჩილი${pa.length ? " · ალიანსი: " + esc(pa.map(factionName).join(" + ")) : ""}${state.scenario ? " · სცენარი" : ""}</div>
+      <div class="pcards">${cards}</div>${gear ? `<h2>აღჭურვილობა</h2>${gear}` : ""}
+      <h2>ნიშნების წესები (ამ რაზმისთვის)</h2><div class="gl">${gl}</div>
+      ${sc ? `<div class="sc"><h2>სცენარი: ${esc(sc.name)}</h2><p><i>${esc(sc.story)}</i></p>
+        <p><b>მოთამაშეები:</b> ${esc(sc.players)} · <b>ბიუჯეტი:</b> ${esc(sc.budget)} · <b>მაგიდა:</b> ${esc(sc.table)} · <b>რაუნდები:</b> ${sc.rounds} · <b>ზონა:</b> ${esc(sc.zone)}</p>
+        <h3>მომზადება</h3>${li(sc.setup)}<h3>გამარჯვება</h3>${li(sc.victory)}<h3>სპეციალური წესები</h3>${li(sc.special)}</div>` : ""}`;
+    window.print();
+  }
+  $("printScenario").innerHTML = `<option value="">სცენარის გარეშე</option>` + (D.scenarios || []).map((s, i) => `<option value="${i}">${esc(s.name)}</option>`).join("");
+  $("printBtn").addEventListener("click", printSheet);
+
   $("copyBtn").addEventListener("click", () => {
     const text = asText(); const box = $("exportBox");
     box.value = text; box.hidden = false;
