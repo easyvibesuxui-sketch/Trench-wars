@@ -35,6 +35,7 @@ def main():
     target.parent.mkdir(exist_ok=True)
     target.write_text(js, encoding="utf-8")
     (ROOT / "digital" / "data.js").write_text(js, encoding="utf-8")  # ციფრული პროტოტიპიც იგივე მონაცემებს კითხულობს
+    (ROOT / "defense" / "data.js").write_text(js, encoding="utf-8")  # „ღარის დაცვაც“
     print(f"{target.relative_to(ROOT)}: {len(units)} იუნიტი")
 
 

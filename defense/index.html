@@ -1,0 +1,584 @@
+<title>ღარის დაცვა</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Serif+Georgian:wght@700;800&display=swap">
+<style>
+/* განლაგება: ზევით ბეჭედი, მარჩილი და ტალღა; შუაში დაფა (კანვასი); ქვევით რაზმი, ხაზები და ტალღის მართვა */
+:root {
+  --mud: #2a241d; --mud-2: #362e25; --ink: #f1e8d6; --muted: #b7a98f;
+  --bronze: #c8913e; --rust: #b4462f; --moss: #7d8b52; --line: #4d4234;
+  --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { margin: 0; background: var(--mud); color: var(--ink); font-family: var(--body); font-size: 14px; }
+.app { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px;
+  padding-block: 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); box-sizing: border-box; }
+header { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; justify-content: space-between; }
+h1 { font-family: var(--display); font-size: 1.15rem; margin: 0; letter-spacing: .02em; text-wrap: balance; }
+h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-left: 6px; }
+.hud { display: flex; flex-wrap: wrap; gap: 6px; font-variant-numeric: tabular-nums; }
+.hud span { background: var(--mud-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; white-space: nowrap; }
+.hud b { color: var(--bronze); }
+.hud .low b { color: var(--rust); }
+.field { position: relative; min-height: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #3a3226; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+.banner { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(20, 16, 12, .8); text-align: center; padding: 16px; overflow: auto; }
+.banner[hidden] { display: none; }
+.banner > div { max-width: 52ch; display: grid; gap: 10px; }
+.banner h2 { font-family: var(--display); margin: 0; font-size: 1.6rem; color: var(--bronze); }
+.banner p { margin: 0; }
+.opts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 10px; align-items: center; text-align: left; }
+select { font: inherit; background: var(--mud-2); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 4px 6px; min-width: 0; }
+.panel { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; max-height: 34vh; overflow: auto; }
+.panel .group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding-right: 8px; border-right: 1px solid var(--line); }
+.panel .group:last-of-type { border-right: 0; }
+.label { color: var(--muted); font-size: .75rem; letter-spacing: .04em; }
+button { font: inherit; font-size: .82rem; background: var(--mud-2); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 5px 9px; cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--bronze); }
+button:focus-visible, select:focus-visible { outline: 2px solid var(--bronze); outline-offset: 1px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.on { border-color: var(--bronze); color: var(--bronze); }
+button.primary { border-color: var(--bronze); color: var(--bronze); }
+.cost { color: var(--muted); font-size: .72rem; }
+.msg { color: var(--muted); font-size: .8rem; min-height: 1.2em; flex-basis: 100%; }
+@media (max-width: 640px) { .panel .group { border-right: 0; padding-right: 0; } }
+</style>
+
+<div class="app">
+  <header>
+    <h1>ღარის დაცვა <small>ამბრის ღარი · ბეჭდის დაცვა ნაპრალის ტალღებისგან · პროტოტიპი</small></h1>
+    <div class="hud" id="hud" aria-live="polite"></div>
+  </header>
+  <div class="field" id="field">
+    <canvas id="cv" aria-label="დაფა: ნაპრალი მარჯვნივ, ამბრის ბეჭედი მარცხნივ"></canvas>
+    <div class="banner" id="banner">
+      <div>
+        <h2 id="bTitle">ღარის დაცვა</h2>
+        <p id="bText">ნაპრალიდან (მარჯვნივ) ქვესკნელის ტალღები ამოდის და ამბრის ბეჭდისკენ (მარცხნივ) მიიწევს. დააყენე რაზმი, გაწელე
+          მესერი, მავთული და თხრილი, და ააგე ლაბირინთი. გზის ბოლომდე ჩაკეტვა არ შეიძლება. 20 ტალღა, ყოველ მეხუთეზე — ურჩხული.</p>
+        <div class="opts">
+          <label for="selF">შენი ფრაქცია</label><select id="selF"></select>
+          <label for="selE">მტერი</label><select id="selE"></select>
+          <label for="selM">რუკა</label><select id="selM"></select>
+        </div>
+        <p class="label">დაყენება: აირჩიე იუნიტი ან კოშკი და დააწექი უჯრას · ხაზი: გაწელე · ქვეითი ახლოს მოსულ მტერს აჩერებს (ჩიხი),
+          მსროლელი შორიდან ურტყამს, ტყვიამფრქვევი აწვენს · თხრილში მდგომს საფარი აქვს · ფრენადი ლაბირინთს ზემოდან უვლის, მესანგრე მესერს ქვემოდან,
+          გოლიათი მესერს ამტვრევს</p>
+        <p id="best" class="label"></p>
+        <div><button type="button" class="primary" id="startBtn">დაცვის დაწყება</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="panel">
+    <div class="group" id="gUnits"></div>
+    <div class="group" id="gBuild"></div>
+    <div class="group" id="gCtl"></div>
+    <div class="msg" id="msg" role="status"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  "use strict";
+  const D = window.TW_DATA || { units: [], factions: {}, allies: {} };
+  const byId = Object.fromEntries(D.units.map(u => [u.id, u]));
+  const $ = id => document.getElementById(id);
+  const cv = $("cv"), ctx = cv.getContext("2d");
+  const GW = 28, GH = 16, C = 32, W = GW * C, H = GH * C, INCH = C / 4;   // დაფა: 28 × 16 უჯრა, უჯრა = 4″
+  const d10 = () => 1 + Math.floor(Math.random() * 10);
+  const LIGHT = ["colchis", "iberia", "ring", ...Object.keys(D.allies || {})];
+  const DARK = ["harness", "hell", "kajeti", "listeners"];
+  const fname = k => (D.factions && D.factions[k]) || (D.allies && D.allies[k]) || k;
+  const SEAL_DMG = { I: 1, II: 2, III: 3, IV: 5, "IV+": 6, V: 10 };
+  const WAVES = 20;
+
+  // რუკები: ნაპრალი (spawn), ბეჭედი (goal), კლდეები და ამბრის ღარი (ბუნებრივი თხრილი — საფარი)
+  const MAPS = {
+    furrow: { name: "ღარის ფონი", spawn: [[27, 7], [27, 8]], goal: [[0, 6], [0, 7], [0, 8], [0, 9]],
+      rocks: [[8, 2], [8, 3], [9, 3], [17, 12], [17, 13], [18, 13], [21, 4], [22, 4], [5, 12], [12, 8]],
+      furrow: (() => { const f = []; for (let y = 0; y < GH; y++) f.push([14 + Math.round(Math.sin(y / 2.5)), y]); return f; })() },
+    ruins: { name: "ნანგრევები და ორი ნაპრალი", spawn: [[27, 2], [27, 13]], goal: [[0, 6], [0, 7], [0, 8], [0, 9]],
+      rocks: [[6, 6], [6, 7], [6, 8], [6, 9], [11, 0], [11, 1], [11, 2], [11, 13], [11, 14], [11, 15], [16, 5], [17, 5], [16, 10], [17, 10], [22, 7], [22, 8]],
+      furrow: [[19, 6], [19, 7], [19, 8], [19, 9], [20, 7], [20, 8]] },
+  };
+  // ნაგებობები (ფასი მარჩილში; ხაზი — თითო უჯრაზე)
+  const BUILD = {
+    palisade: { name: "მესერი", cost: 2, line: true, hp: 40, armor: 3, note: "კეტავს" },
+    wire:     { name: "მავთული", cost: 3, line: true, note: "ანელებს" },
+    trench:   { name: "თხრილი", cost: 1, line: true, note: "საფარი" },
+    tower:    { name: "საგუშაგო კოშკი", cost: 45, hp: 30, armor: 4, gun: { range: 24, attacks: 1, power: 2, skill: 6, rate: 2.2 } },
+    nest:     { name: "ტყვიამფრქვევის ბუდე", cost: 70, hp: 30, armor: 5, gun: { range: 20, attacks: 3, power: 3, skill: 5, rate: 2.4, suppress: true } },
+  };
+  const EMPTY = 0, ROCK = 1, PAL = 2, WIRE = 3, TRENCH = 4, FURROW = 5;
+  const idx = (x, y) => y * GW + x, cx = i => (i % GW) * C + C / 2, cy = i => Math.floor(i / GW) * C + C / 2;
+  const cellAt = (x, y) => { const gx = Math.floor(x / C), gy = Math.floor(y / C); return gx >= 0 && gy >= 0 && gx < GW && gy < GH ? idx(gx, gy) : -1; };
+
+  let S;
+  function newGame(fk, ek, mk) {
+    const m = MAPS[mk];
+    S = { fk, ek, map: m, t: 0, running: false, over: false, speed: 1, seal: 20, gold: 120, wave: 0, phase: "build", timer: 25,
+      grid: new Uint8Array(GW * GH), wallHp: new Map(), occ: new Map(), defs: [], foes: [], fx: [], spawnQ: [], spawnT: 0,
+      placing: null, sel: null, hover: -1, nextId: 1, kills: 0, spawnI: [], goalI: [] };
+    for (const [x, y] of m.rocks) S.grid[idx(x, y)] = ROCK;
+    for (const [x, y] of m.furrow) if (S.grid[idx(x, y)] === EMPTY) S.grid[idx(x, y)] = FURROW;
+    S.spawnI = m.spawn.map(([x, y]) => idx(x, y)); S.goalI = m.goal.map(([x, y]) => idx(x, y));
+    S.roster = D.units.filter(u => u.faction === fk && ["I", "II", "III", "IV"].includes(u.tier)).sort((a, b) => a.cost - b.cost);
+    S.pool = D.units.filter(u => u.faction === ek && u.tier !== "hero");
+    fields();
+    renderPanel(); renderHud(); resize();
+  }
+
+  // გზის ველები (დეიქსტრა ბეჭდიდან): ქვეითი — მესერს და დამცველებს ვერ გადის, მავთული ძვირია;
+  // მძიმე (გოლიათი, ზომა 3+) — მესერს ამტვრევს; მესანგრე (tunnel) — მესერს ქვემოდან უვლის; ფრენადი — პირდაპირ მიფრინავს
+  function blocked(i, mode) {
+    const g = S.grid[i];
+    if (g === ROCK || S.occ.has(i)) return true;
+    return g === PAL && mode === "foot";
+  }
+  function stepCost(i, mode) {
+    const g = S.grid[i];
+    if (g === PAL) return mode === "heavy" ? 8 : 1;
+    if (g === WIRE) return mode === "foot" ? 3 : 1.5;
+    return 1;
+  }
+  function field(mode) {
+    const d = new Float32Array(GW * GH).fill(Infinity), q = [];
+    for (const g of S.goalI) if (!blocked(g, mode)) { d[g] = 0; q.push(g); }
+    while (q.length) {   // დაფა პატარაა: მარტივი რიგი საკმარისია (ხელახლა ჩასმით)
+      let bi = 0; for (let k = 1; k < q.length; k++) if (d[q[k]] < d[q[bi]]) bi = k;
+      const i = q.splice(bi, 1)[0], x = i % GW, y = (i - x) / GW;
+      for (const [nx, ny] of [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]]) {
+        if (nx < 0 || ny < 0 || nx >= GW || ny >= GH) continue;
+        const n = idx(nx, ny); if (blocked(n, mode)) continue;
+        const nd = d[i] + stepCost(n, mode);
+        if (nd < d[n]) { if (d[n] === Infinity) q.push(n); d[n] = nd; }
+      }
+    }
+    return d;
+  }
+  function fields() { S.F = { foot: field("foot"), heavy: field("heavy"), tunnel: field("tunnel") }; }
+  const modeOf = u => u.tags.includes("fly") ? "fly" : (u.size || 1) >= 3 ? "heavy" : u.tags.includes("tunnel") ? "tunnel" : "foot";
+  // გზა ღიაა? ყოველი ნაპრალიდან და ყოველი მტრის უჯრიდან ბეჭედამდე ქვეითს უნდა შეეძლოს მისვლა
+  function pathOpen() {
+    const f = field("foot");
+    return S.spawnI.every(i => f[i] < Infinity) && S.foes.every(e => e.mode === "fly" || f[cellAt(e.x, e.y)] < Infinity);
+  }
+
+  // ბრძოლა — სამაგიდო d10 წესებით (მოხვედრა, დაჭრა, საფარი, დათრგუნვა, საჰაერო თავდაცვა)
+  const weapon = (u, ranged) => u.weapons.filter(w => (w.mode === "ranged") === ranged && w.attacks > 0 && w.damage > 0)
+    .sort((a, b) => b.attacks * b.power * b.damage - a.attacks * a.power * a.damage)[0];
+  const meleePref = u => { const r = weapon(u, true); return !r || r.range <= 10 || u.melee >= u.shoot + 2; };
+  function cover(t) { if (t.kind !== "def") return 0; const g = S.grid[t.cell]; return g === TRENCH || g === FURROW ? 2 : 0; }
+  function shoot(src, w, t, skill, ranged) {
+    let mod = 0;
+    if (ranged) { mod -= cover(t); if (t.supT > 0) mod -= 1; if (Math.hypot(t.x - src.x, t.y - src.y) > (w.range * INCH) / 2) mod -= 1; }
+    if ((t.size || 1) >= 3) mod += 1;
+    if (t.fly && w.tags && w.tags.includes("anti_air")) mod += 1;
+    for (let i = 0; i < w.attacks; i++) {
+      if (ranged && (w.suppress || (w.tags && w.tags.includes("suppress"))) && t.kind === "foe" && (t.size || 1) === 1 && !t.u.tags.includes("fearless") && d10() > t.u.nerve) t.supT = 2.5;
+      const r = d10();
+      if (r === 10 || (r !== 1 && r > skill + mod)) continue;
+      const armor = Math.max(0, (t.u ? t.u.armor : t.armor) - (w.tags && w.tags.includes("armor_break") ? 1 : 0));
+      const need = Math.max(2, Math.min(10, 5 + armor - w.power - (w.tags && w.tags.includes("anti_giant") && (t.size || 1) >= 3 ? 2 : 0)));
+      if (d10() >= need || r === 1) {
+        const dmg = (w.damage || 1) + (r === 1 ? 1 : 0); t.hp -= dmg;
+        if (w.tags && w.tags.includes("fire")) t.burnT = 3;
+        S.fx.push({ x0: src.x, y0: src.y, x: t.x, y: t.y, t: .25, c: ranged ? "#f3d27a" : "#e2604a" });
+      } else if (ranged) S.fx.push({ x0: src.x, y0: src.y, x: t.x, y: t.y, t: .12, c: "rgba(243,210,122,.35)" });
+    }
+  }
+
+  // დამცველები: იუნიტი ან კოშკი უჯრაში; ქვეითი ჩიხავს (აჩერებს) ახლოს მოსულ მტერს — ზომის რაოდენობას
+  function addDef(i, u, b) {
+    const d = { kind: "def", id: S.nextId++, cell: i, x: cx(i), y: cy(i), u: u || null, b: b || null, cd: Math.random(), reload: 0,
+      hp: u ? u.wounds : b.hp, maxhp: u ? u.wounds : b.hp, armor: u ? u.armor : b.armor, size: u ? (u.size || 1) : 2, cost: u ? u.cost : b.cost, supT: 0, burnT: 0 };
+    d.holder = !!(u && weapon(u, false) && meleePref(u)); d.cap = u ? Math.max(1, u.size || 1) : 0;
+    S.defs.push(d); S.occ.set(i, d); return d;
+  }
+  function stepDef(d, dt) {
+    if (d.down) return;
+    if (d.burnT > 0) { d.burnT -= dt; if (Math.random() < dt * .5 && d10() >= 5 + d.armor - 2) d.hp -= 1; }
+    if (d.supT > 0) d.supT -= dt;
+    d.cd -= dt; if (d.reload > 0) d.reload -= dt;
+    if (d.b) {   // კოშკი
+      const g = d.b.gun, t = target(d, g.range * INCH);
+      if (t && d.cd <= 0) { shoot(d, { range: g.range, attacks: g.attacks, power: g.power, damage: 1, tags: [], suppress: g.suppress }, t, g.skill, true); d.cd = g.rate; }
+      return;
+    }
+    if (d.holder) {
+      let held = S.foes.filter(e => e.heldBy === d && e.hp > 0);
+      for (const e of S.foes) {
+        if (held.length >= d.cap) break;
+        if (e.hp > 0 && !e.heldBy && e.mode !== "fly" && Math.hypot(e.x - d.x, e.y - d.y) < C * 1.2) { e.heldBy = d; held.push(e); S.holds = (S.holds || 0) + 1; }
+      }
+      if (held.length) { if (d.cd <= 0) { shoot(d, weapon(d.u, false), held[0], d.u.melee, false); d.cd = 1.2; } return; }
+    }
+    const r = weapon(d.u, true);
+    if (r && d.supT <= 0) {
+      const t = target(d, r.range * INCH);
+      if (t && d.cd <= 0 && d.reload <= 0) { shoot(d, r, t, d.u.shoot, true); d.cd = 2; if (r.tags.includes("reload")) d.reload = 4; }
+    }
+  }
+  // სამიზნე: რადიუსში ის მტერი, ვინც ბეჭედთან ყველაზე ახლოსაა
+  function target(d, range) {
+    let best = null, bp = Infinity;
+    for (const e of S.foes) { if (e.hp <= 0) continue; if (Math.hypot(e.x - d.x, e.y - d.y) > range) continue; if (e.prog < bp) { bp = e.prog; best = e; } }
+    return best;
+  }
+
+  // მტრები: ნაპრალიდან ამოდიან და ველის მიხედვით ბეჭედისკენ მიდიან
+  function spawnFoe(u) {
+    const s = S.spawnI[Math.floor(Math.random() * S.spawnI.length)];
+    S.foes.push({ kind: "foe", id: S.nextId++, u, x: cx(s), y: cy(s) + (Math.random() - .5) * 10, hp: u.wounds, size: u.size || 1, mode: modeOf(u),
+      fly: u.tags.includes("fly"), cd: Math.random(), reload: 0, supT: 0, burnT: 0, next: -1, heldBy: null, prog: 999, jit: (Math.random() - .5) * 12 });
+  }
+  function stepFoe(e, dt) {
+    if (e.burnT > 0) { e.burnT -= dt; if (Math.random() < dt * .5 && d10() >= 5 + e.u.armor - 2) e.hp -= 1; }
+    if (e.supT > 0) e.supT -= dt;
+    if (e.u.tags.includes("regen") && e.burnT <= 0 && e.hp < e.u.wounds && Math.random() < dt * .15) e.hp += 1;
+    e.cd -= dt; if (e.reload > 0) e.reload -= dt;
+    const here = cellAt(e.x, e.y);
+    const F = e.mode === "fly" ? null : S.F[e.mode][here] < Infinity ? S.F[e.mode] : S.F.foot;
+    e.prog = F ? F[here] : Math.hypot(e.x - cx(S.goalI[0]), e.y - cy(S.goalI[0])) / C;
+    if (e.heldBy && (e.heldBy.down || !S.defs.includes(e.heldBy))) e.heldBy = null;
+    if (e.heldBy) {   // ჩიხში: ებრძვის დამჭერს
+      const mw = weapon(e.u, false), rw = weapon(e.u, true), w = mw && meleePref(e.u) ? mw : rw || mw;
+      if (w && e.cd <= 0 && e.supT <= 0) { shoot(e, w, e.heldBy, w === mw ? e.u.melee : e.u.shoot, w !== mw); e.cd = w === mw ? 1.2 : 2; }
+      return;
+    }
+    const rw = weapon(e.u, true);
+    if (rw && !meleePref(e.u) && e.supT <= 0 && e.cd <= 0 && e.reload <= 0) {   // მსროლელი მტერი სიარულისას ისვრის
+      let t = null, bd = rw.range * INCH;
+      for (const d of S.defs) { if (d.down) continue; const dd = Math.hypot(d.x - e.x, d.y - e.y); if (dd <= bd) { bd = dd; t = d; } }
+      if (t) { shoot(e, rw, t, e.u.shoot, true); e.cd = 2; if (rw.tags.includes("reload")) e.reload = 4; }
+    }
+    let sp = e.u.move * .18 * C * dt;
+    if (S.grid[here] === WIRE && e.mode !== "fly") sp *= .5;
+    if (e.supT > 0) sp *= .4;
+    if (S.goalI.includes(here) && e.mode !== "fly") { reach(e); return; }
+    let tx, ty;
+    if (!F) { const g = S.goalI[Math.floor(S.goalI.length / 2)]; tx = cx(g) - C / 2; ty = cy(g); if (Math.hypot(tx - e.x, ty - e.y) < 6) { reach(e); return; } }
+    else {
+      if (e.next < 0 || here === e.next || !(F[e.next] < F[here])) e.next = bestNext(here, F, e.id);
+      if (e.next < 0) return;
+      if (S.grid[e.next] === PAL && e.mode === "heavy") {   // გოლიათი მესერს ამტვრევს
+        const w = S.wallHp.get(e.next), mw = weapon(e.u, false);
+        if (w && mw && e.cd <= 0) { shoot(e, mw, w, e.u.melee, false); e.cd = 1.2; if (w.hp <= 0) { removeCell(e.next); } }
+        if (S.grid[e.next] === PAL) return;
+      }
+      tx = cx(e.next); ty = cy(e.next);
+    }
+    const dx = tx - e.x, dy = ty - e.y, L = Math.hypot(dx, dy) || 1;
+    e.x += dx / L * Math.min(L, sp); e.y += dy / L * Math.min(L, sp);
+  }
+  function bestNext(i, F, salt) {
+    const x = i % GW, y = (i - x) / GW; let best = -1, bv = F[i];
+    const ns = [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]];
+    if (salt % 2) ns.reverse();
+    for (const [nx, ny] of ns) { if (nx < 0 || ny < 0 || nx >= GW || ny >= GH) continue; const n = idx(nx, ny); if (F[n] < bv) { bv = F[n]; best = n; } }
+    return best;
+  }
+  function reach(e) { S.seal -= SEAL_DMG[e.u.tier] || 1; e.hp = 0; e.reached = true; S.fx.push({ x0: e.x, y0: e.y, x: e.x, y: e.y, t: .6, c: "#b4462f", big: true });
+    say(`${e.u.name} ბეჭედს მიაღწია! ბეჭედი: ${Math.max(0, S.seal)}`); }
+
+  // ტალღები: ბიუჯეტი იზრდება ექსპონენციალურად, შემოსავალი — წრფივად; ყოველ მეხუთეზე ურჩხული
+  function waveList(w) {
+    let budget = Math.round(40 * Math.pow(1.2, w - 1) + 10 * w);
+    const tiers = ["I"].concat(w >= 4 ? ["II"] : [], w >= 9 ? ["III"] : [], w >= 13 ? ["IV"] : []);
+    const pool = S.pool.filter(u => tiers.includes(u.tier)), list = [];
+    let guard = 0;
+    while (budget > 0 && guard++ < 200) {
+      const fit = pool.filter(u => u.cost <= budget + 8); if (!fit.length) break;
+      const u = fit[Math.floor(Math.random() * fit.length)]; list.push(u); budget -= u.cost;
+    }
+    if (w % 5 === 0) {
+      const boss = w === WAVES ? S.pool.filter(u => u.tier === "V") : S.pool.filter(u => u.tier === (w >= 15 ? "IV+" : "IV"));
+      const pick = (boss.length ? boss : S.pool.filter(u => u.tier === "IV")).sort((a, b) => a.cost - b.cost)[w === 15 ? boss.length - 1 : 0];
+      if (pick) list.push(pick);
+    }
+    return list;
+  }
+  function startWave() {
+    if (S.phase !== "build") return;
+    const bonus = Math.ceil(S.timer); if (S.wave > 0 && bonus > 0) { S.gold += bonus; say(`ტალღა ადრე გამოიძახე: +${bonus} მარჩილი.`); }
+    S.wave++; S.phase = "wave"; S.spawnQ = waveList(S.wave); S.spawnT = 0;
+    const boss = S.wave % 5 === 0 ? S.spawnQ[S.spawnQ.length - 1] : null;
+    if (boss) say(`ტალღა ${S.wave}: ნაპრალიდან ${boss.name} ამოდის!`);
+    S.defs.forEach(d => { d.hp = d.maxhp; d.down = false; });   // ველის მკურნალები ტალღებს შორის
+  }
+  function endWave() {
+    const interest = Math.min(15, Math.floor(S.gold * .05)), clear = 10 + 2 * S.wave;
+    S.gold += clear + interest; S.phase = "build"; S.timer = 15;
+    S.defs.forEach(d => { d.hp = d.maxhp; d.down = false; });
+    say(`ტალღა ${S.wave} მოიგერიე: +${clear} მარჩილი, დანაზოგის სარგებელი +${interest}.`);
+    if (S.wave >= WAVES) end(true);
+  }
+
+  // მთავარი ციკლი
+  let last = 0;
+  function frame(ts) {
+    const real = Math.min(.05, (ts - last) / 1000 || 0); last = ts;
+    if (S) for (let k = 0; k < S.speed && S.running && !S.over; k++) step(real);
+    draw();
+    requestAnimationFrame(frame);
+  }
+  function step(dt) {
+    S.t += dt;
+    if (S.phase === "build") { S.timer -= dt; if (S.timer <= 0) { S.timer = 0; startWave(); } }
+    else {
+      S.spawnT -= dt;
+      if (S.spawnQ.length && S.spawnT <= 0) { spawnFoe(S.spawnQ.shift()); S.spawnT = .9; }
+    }
+    for (const d of S.defs) stepDef(d, dt);
+    for (const e of S.foes) if (e.hp > 0) stepFoe(e, dt);
+    for (const e of S.foes) if (e.hp <= 0 && !e.reached && !e.paid) { e.paid = true; S.gold += Math.max(2, Math.round(e.u.cost * .25)); S.kills++; }
+    S.foes = S.foes.filter(e => e.hp > 0);
+    for (const d of S.defs) if (d.hp <= 0 && !d.down) { d.down = true; S.foes.forEach(e => { if (e.heldBy === d) e.heldBy = null; }); }   // დაჭრილი — ტალღის ბოლომდე მწყობრიდან
+    S.fx.forEach(f => { f.t -= dt; }); S.fx = S.fx.filter(f => f.t > 0);
+    if (S.seal <= 0) end(false);
+    else if (S.phase === "wave" && !S.spawnQ.length && !S.foes.length) endWave();
+    if ((S.tick = (S.tick || 0) + dt) > .25) { S.tick = 0; renderHud(); renderPanel(); }
+  }
+  function end(win) {
+    S.over = true; S.running = false;
+    const key = `td-best-${S.fk}`; let best = 0;
+    try { best = +localStorage.getItem(key) || 0; if (S.wave - (win ? 0 : 1) > best) localStorage.setItem(key, String(S.wave - (win ? 0 : 1))); } catch (e) { /* საცავი შეიძლება მიუწვდომელი იყოს */ }
+    $("bTitle").textContent = win ? "ბეჭედი გადარჩა" : "ბეჭედი გატყდა";
+    $("bText").textContent = win ? `${fname(S.fk)}: ${WAVES} ტალღა მოიგერიე, მოკალი ${S.kills} მტერი. ბეჭედს დარჩა ${S.seal}.`
+      : `${fname(S.fk)}: ${S.wave - 1} ტალღა გაუძელი, მოკალი ${S.kills} მტერი. სცადე გრძელი ლაბირინთი და ტყვიამფრქვევი ვიწრო ადგილზე.`;
+    $("startBtn").textContent = "ახალი დაცვა"; $("banner").hidden = false; showBest(); renderHud(); renderPanel();
+  }
+
+  // ხატვა
+  let scale = 1, offX = 0, offY = 0;
+  function resize() {
+    const r = $("field").getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    cv.width = Math.max(1, r.width * dpr); cv.height = Math.max(1, r.height * dpr);
+    scale = Math.min(cv.width / W, cv.height / H); offX = (cv.width - W * scale) / 2; offY = (cv.height - H * scale) / 2;
+  }
+  window.addEventListener("resize", resize);
+  function draw() {
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = "#2a241d"; ctx.fillRect(0, 0, cv.width, cv.height);
+    if (!S) return;
+    ctx.setTransform(scale, 0, 0, scale, offX, offY);
+    ctx.fillStyle = "#3f3528"; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = "rgba(0,0,0,.18)"; ctx.lineWidth = 1;
+    for (let x = 0; x <= GW; x++) { ctx.beginPath(); ctx.moveTo(x * C, 0); ctx.lineTo(x * C, H); ctx.stroke(); }
+    for (let y = 0; y <= GH; y++) { ctx.beginPath(); ctx.moveTo(0, y * C); ctx.lineTo(W, y * C); ctx.stroke(); }
+    for (let i = 0; i < GW * GH; i++) drawCell(i);
+    // ნაპრალი და ბეჭედი
+    for (const s of S.spawnI) { ctx.fillStyle = "#1a0f0c"; ctx.fillRect(cx(s) - C / 2, cy(s) - C / 2, C, C); ctx.strokeStyle = "#b4462f"; ctx.beginPath();
+      ctx.moveTo(cx(s) - 4, cy(s) - 14); ctx.lineTo(cx(s) + 3, cy(s) - 2); ctx.lineTo(cx(s) - 3, cy(s) + 4); ctx.lineTo(cx(s) + 4, cy(s) + 14); ctx.stroke(); }
+    const g0 = S.goalI[0], g1 = S.goalI[S.goalI.length - 1];
+    ctx.fillStyle = "rgba(200,145,62,.22)"; ctx.fillRect(0, cy(g0) - C / 2, C, cy(g1) - cy(g0) + C);
+    ctx.strokeStyle = "#c8913e"; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(C / 2, (cy(g0) + cy(g1)) / 2, 12, 0, 7); ctx.stroke(); ctx.lineWidth = 1;
+    ctx.fillStyle = "#c8913e"; ctx.font = "10px Noto Sans Georgian, sans-serif"; ctx.textAlign = "left"; ctx.fillText("ბეჭედი", 4, cy(g0) - C / 2 - 4);
+    ctx.textAlign = "right"; ctx.fillStyle = "#d0533a"; ctx.fillText("ნაპრალი", W - 4, cy(S.spawnI[0]) - C / 2 - 4); ctx.textAlign = "center";
+    drawPaths();
+    for (const d of S.defs) drawDef(d);
+    for (const e of S.foes) drawFoe(e);
+    for (const f of S.fx) { ctx.globalAlpha = Math.min(1, f.t / .25);
+      if (f.big) { ctx.strokeStyle = f.c; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(f.x, f.y, 20 * (1 - f.t / .6) + 6, 0, 7); ctx.stroke(); ctx.lineWidth = 1; }
+      else { ctx.strokeStyle = f.c; ctx.beginPath(); ctx.moveTo(f.x0, f.y0); ctx.lineTo(f.x, f.y); ctx.stroke(); }
+      ctx.globalAlpha = 1; }
+    drawGhost();
+  }
+  function drawCell(i) {
+    const g = S.grid[i], x = cx(i) - C / 2, y = cy(i) - C / 2;
+    if (g === ROCK) { ctx.fillStyle = "#6b5c48"; ctx.fillRect(x + 2, y + 2, C - 4, C - 4); ctx.fillStyle = "#57493a"; ctx.fillRect(x + 6, y + 6, C / 2, C / 2); }
+    else if (g === FURROW) { ctx.fillStyle = "#2b2218"; ctx.fillRect(x + 3, y, C - 6, C); }
+    else if (g === TRENCH) { ctx.fillStyle = "#231c14"; ctx.fillRect(x + 4, y + 4, C - 8, C - 8); }
+    else if (g === WIRE) { ctx.strokeStyle = "#8f8a80"; ctx.beginPath(); for (let k = 0; k < 3; k++) { ctx.moveTo(x + 4 + k * 9, y + 6); ctx.lineTo(x + 12 + k * 9, y + C - 6); ctx.moveTo(x + 12 + k * 9, y + 6); ctx.lineTo(x + 4 + k * 9, y + C - 6); } ctx.stroke(); }
+    else if (g === PAL) { ctx.fillStyle = "#8a6a3f"; ctx.fillRect(x + 3, y + 10, C - 6, C - 20); ctx.fillStyle = "#5a3e22"; for (let k = 0; k < 4; k++) ctx.fillRect(x + 5 + k * 7, y + 5, 3, C - 10);
+      const w = S.wallHp.get(i); if (w && w.hp < w.maxhp) { ctx.fillStyle = "#000"; ctx.fillRect(x + 3, y + 2, C - 6, 2); ctx.fillStyle = "#c8913e"; ctx.fillRect(x + 3, y + 2, (C - 6) * w.hp / w.maxhp, 2); } }
+  }
+  // მტრის გზა: ყოველი ნაპრალიდან ბეჭედამდე (ლაბირინთი ჩანს)
+  function drawPaths() {
+    ctx.strokeStyle = "rgba(208,83,58,.45)"; ctx.setLineDash([4, 5]); ctx.lineWidth = 2;
+    for (const s of S.spawnI) {
+      let i = s, n = 0; ctx.beginPath(); ctx.moveTo(cx(i), cy(i));
+      while (n++ < GW * GH && !S.goalI.includes(i)) { const nx = bestNext(i, S.F.foot, 0); if (nx < 0) break; i = nx; ctx.lineTo(cx(i), cy(i)); }
+      ctx.stroke();
+    }
+    ctx.setLineDash([]); ctx.lineWidth = 1;
+  }
+  function drawDef(d) {
+    const col = d.down ? "#6f6658" : "#e0a84e";
+    if (d.b) { ctx.fillStyle = d.b.gun.suppress ? "#3a3a32" : "#cfc3a8"; ctx.fillRect(d.x - 10, d.y - 10, 20, 20); ctx.fillStyle = col; ctx.fillRect(d.x - 2, d.y - 14, 4, 8); }
+    else { const r = 6 + (d.size - 1) * 3; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(d.x, d.y, r, 0, 7); ctx.fill();
+      ctx.fillStyle = "#2a241d"; ctx.font = "bold 9px Noto Sans Georgian, sans-serif"; ctx.fillText(d.u.tier, d.x, d.y + 3);
+      if (d.holder) { ctx.strokeStyle = "#f1e8d6"; ctx.beginPath(); ctx.moveTo(d.x - r - 3, d.y - r - 3); ctx.lineTo(d.x - r + 2, d.y - r - 3); ctx.stroke(); } }
+    if (d.down) { ctx.strokeStyle = "#b4462f"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(d.x - 5, d.y - 5); ctx.lineTo(d.x + 5, d.y + 5); ctx.moveTo(d.x + 5, d.y - 5); ctx.lineTo(d.x - 5, d.y + 5); ctx.stroke(); ctx.lineWidth = 1; }
+    else if (d.hp < d.maxhp) { ctx.fillStyle = "#000"; ctx.fillRect(d.x - 10, d.y + 12, 20, 2); ctx.fillStyle = col; ctx.fillRect(d.x - 10, d.y + 12, 20 * Math.max(0, d.hp) / d.maxhp, 2); }
+    if (S.sel === d) { ctx.strokeStyle = "#f1e8d6"; ctx.strokeRect(d.x - C / 2 + 1, d.y - C / 2 + 1, C - 2, C - 2); rangeRing(d.x, d.y, d.b ? d.b.gun.range : (weapon(d.u, true) || { range: 0 }).range); }
+  }
+  function rangeRing(x, y, range) { if (!range) return; ctx.strokeStyle = "rgba(241,232,214,.35)"; ctx.setLineDash([3, 4]); ctx.beginPath(); ctx.arc(x, y, range * INCH, 0, 7); ctx.stroke(); ctx.setLineDash([]); }
+  function drawFoe(e) {
+    const r = 4 + (e.size - 1) * 4, x = e.x, y = e.y + e.jit;
+    ctx.fillStyle = "#d0533a"; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
+    if (e.fly) { ctx.strokeStyle = "#f1e8d6"; ctx.beginPath(); ctx.moveTo(x - r - 5, y - 2); ctx.lineTo(x - r, y); ctx.moveTo(x + r + 5, y - 2); ctx.lineTo(x + r, y); ctx.stroke(); }
+    if (e.supT > 0) { ctx.strokeStyle = "#f1e8d6"; ctx.beginPath(); ctx.moveTo(x - r - 2, y + r + 2); ctx.lineTo(x + r + 2, y + r + 2); ctx.stroke(); }
+    if (e.heldBy) { ctx.strokeStyle = "#e0a84e"; ctx.beginPath(); ctx.arc(x, y, r + 2, 0, 7); ctx.stroke(); }
+    if (e.hp < e.u.wounds) { ctx.fillStyle = "#000"; ctx.fillRect(x - 8, y - r - 5, 16, 2); ctx.fillStyle = "#d0533a"; ctx.fillRect(x - 8, y - r - 5, 16 * Math.max(0, e.hp) / e.u.wounds, 2); }
+  }
+  function drawGhost() {
+    if (!S.placing || S.over) return;
+    if (S.line) {
+      for (const q of S.linePrev || []) { ctx.globalAlpha = .55; ctx.fillStyle = q.ok ? "#c8913e" : "#b4462f"; ctx.fillRect(cx(q.i) - C / 2 + 2, cy(q.i) - C / 2 + 2, C - 4, C - 4); }
+      ctx.globalAlpha = 1;
+      const n = (S.linePrev || []).filter(q => q.ok).length, b = BUILD[S.placing];
+      if (S.hover >= 0) { ctx.fillStyle = "#f1e8d6"; ctx.font = "11px Noto Sans Georgian, sans-serif"; ctx.fillText(`${n} უჯრა · ${n * b.cost} მარჩ.`, cx(S.hover), cy(S.hover) - C / 2 - 4); }
+      return;
+    }
+    if (S.hover < 0) return;
+    const ok = canPlace(S.hover, S.placing).ok;
+    ctx.globalAlpha = .5; ctx.fillStyle = ok ? "#c8913e" : "#b4462f"; ctx.fillRect(cx(S.hover) - C / 2 + 2, cy(S.hover) - C / 2 + 2, C - 4, C - 4); ctx.globalAlpha = 1;
+    const u = byId[S.placing], b = BUILD[S.placing];
+    rangeRing(cx(S.hover), cy(S.hover), b ? (b.gun && b.gun.range) : (weapon(u, true) || { range: 0 }).range);
+  }
+
+  // დაყენება: უჯრა თავისუფალია, ფული ჰყოფნის და გზა ღია რჩება
+  function canPlace(i, k) {
+    if (i < 0) return { ok: false };
+    const b = BUILD[k], cost = b ? b.cost : byId[k].cost, g = S.grid[i];
+    if (S.spawnI.includes(i) || S.goalI.includes(i)) return { ok: false, why: "ნაპრალზე და ბეჭედზე ვერ ააშენებ." };
+    if (S.gold < cost) return { ok: false, why: "მარჩილი არ კმარა." };
+    if (S.occ.has(i)) return { ok: false, why: "უჯრა დაკავებულია." };
+    if (S.foes.some(e => cellAt(e.x, e.y) === i || e.next === i)) return { ok: false, why: "აქ მტერია." };
+    if (b && b.line) {
+      if (g !== EMPTY) return { ok: false, why: `${b.name} მხოლოდ ცარიელ უჯრაზე.` };
+    } else if (g !== EMPTY && g !== TRENCH && g !== FURROW) return { ok: false, why: "აქ ვერ დადგება." };
+    const blocks = (b && k === "palisade") || !b || !b.line;
+    if (blocks) {   // ლაბირინთის წესი: გზა ბოლომდე არ უნდა ჩაიკეტოს
+      const old = S.grid[i];
+      if (k === "palisade") S.grid[i] = PAL; else S.occ.set(i, true);
+      const open = pathOpen();
+      S.grid[i] = old; if (k !== "palisade") S.occ.delete(i);
+      if (!open) return { ok: false, why: "გზის ჩაკეტვა არ შეიძლება — მტერს ბეჭედამდე გზა უნდა დარჩეს." };
+    }
+    return { ok: true, cost };
+  }
+  function placeAt(i, k) {
+    const c = canPlace(i, k); if (!c.ok) { if (c.why) say(c.why); return false; }
+    const b = BUILD[k]; S.gold -= c.cost;
+    if (b && b.line) {
+      S.grid[i] = k === "palisade" ? PAL : k === "wire" ? WIRE : TRENCH;
+      if (k === "palisade") S.wallHp.set(i, { hp: b.hp, maxhp: b.hp, armor: b.armor, kind: "wall", x: cx(i), y: cy(i) });
+    } else if (b) addDef(i, null, b);
+    else addDef(i, byId[k], null);
+    fields(); return true;
+  }
+  function removeCell(i) { S.grid[i] = EMPTY; S.wallHp.delete(i); fields(); }
+  // ხაზის უჯრები (ბრეზენჰემი)
+  function lineCells(a, b) {
+    let x0 = a % GW, y0 = (a - x0) / GW; const x1 = b % GW, y1 = (b - x1) / GW, out = [];
+    const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let err = dx + dy;
+    for (let n = 0; n < 60; n++) { out.push(idx(x0, y0)); if (x0 === x1 && y0 === y1) break; const e2 = 2 * err; if (e2 >= dy) { err += dy; x0 += sx; } if (e2 <= dx) { err += dx; y0 += sy; } }
+    return out;
+  }
+  // აჩრდილი: რიგრიგობით ამოწმებს — ფასი, ადგილი და გზის ღიაობა წინა უჯრების გათვალისწინებით
+  function previewLine(a, b) {
+    const k = S.placing, cells = lineCells(a, b), saved = { gold: S.gold, grid: S.grid.slice() }, out = [];
+    for (const i of cells) { const c = canPlace(i, k); out.push({ i, ok: c.ok, why: c.why });
+      if (c.ok) { S.gold -= c.cost; S.grid[i] = k === "palisade" ? PAL : k === "wire" ? WIRE : TRENCH; } }
+    S.gold = saved.gold; S.grid = saved.grid;
+    return out;
+  }
+
+  // შეყვანა
+  const toCell = ev => { const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    return cellAt(((ev.clientX - r.left) * dpr - offX) / scale, ((ev.clientY - r.top) * dpr - offY) / scale); };
+  cv.addEventListener("pointerdown", ev => {
+    if (!S || S.over || !S.running) return;
+    const i = toCell(ev); if (i < 0) return;
+    if (ev.button === 2) { S.placing = null; S.sel = null; renderPanel(); return; }
+    if (S.placing) {
+      if (BUILD[S.placing] && BUILD[S.placing].line) { S.line = { a: i, b: i }; S.linePrev = previewLine(i, i); cv.setPointerCapture(ev.pointerId); }
+      else if (placeAt(i, S.placing)) { say(`${(BUILD[S.placing] || byId[S.placing]).name} დადგა.`); if (S.gold < (BUILD[S.placing] ? BUILD[S.placing].cost : byId[S.placing].cost)) S.placing = null; }
+      renderPanel(); renderHud(); return;
+    }
+    S.sel = S.occ.get(i) || null; renderPanel();
+  });
+  cv.addEventListener("pointermove", ev => {
+    if (!S) return; S.hover = toCell(ev);
+    if (S.line && S.hover >= 0 && S.hover !== S.line.b) { S.line.b = S.hover; S.linePrev = previewLine(S.line.a, S.line.b); }
+  });
+  cv.addEventListener("pointerleave", () => { if (S) S.hover = -1; });
+  cv.addEventListener("pointerup", () => {
+    if (!S || !S.line) return;
+    const prev = previewLine(S.line.a, S.line.b); S.line = null; S.linePrev = null;
+    let n = 0; const why = prev.find(q => !q.ok);
+    for (const q of prev) if (q.ok && placeAt(q.i, S.placing)) n++;
+    say(`${BUILD[S.placing].name}: ${n} უჯრა${why && why.why ? ` · ზოგი გამოტოვდა: ${why.why}` : ""}`);
+    renderPanel(); renderHud();
+  });
+  cv.addEventListener("contextmenu", ev => ev.preventDefault());
+
+  // პანელები
+  function renderHud() {
+    if (!S) return;
+    $("hud").innerHTML = `<span class="${S.seal <= 5 ? "low" : ""}">ბეჭედი <b>${Math.max(0, S.seal)}</b></span><span>მარჩილი <b>${S.gold}</b></span>` +
+      `<span>ტალღა <b>${S.wave}/${WAVES}</b></span>` +
+      (S.phase === "build" ? `<span>შემდეგი ტალღა <b>${Math.ceil(S.timer)} წმ</b></span>` : `<span>მტერი <b>${S.foes.length + S.spawnQ.length}</b></span>`) +
+      `<span>${fname(S.fk)} ⟷ ${fname(S.ek)}</span>`;
+  }
+  function patch(el, html) {   // ღილაკები ადგილზე ახლდება, რომ დაჭერა არ დაიკარგოს
+    const tmp = document.createElement("div"); tmp.innerHTML = html;
+    const now = [...el.children], next = [...tmp.children];
+    const same = now.length === next.length && now.every((c, i) => c.tagName === next[i].tagName && c.id === next[i].id);
+    if (!same) { el.innerHTML = html; return; }
+    next.forEach((n, i) => { const c = now[i];
+      if (c.innerHTML !== n.innerHTML) c.innerHTML = n.innerHTML;
+      if (c.className !== n.className) c.className = n.className;
+      if (c.disabled !== n.disabled) c.disabled = n.disabled;
+      if (c.title !== n.title) c.title = n.title; });
+  }
+  const roleOf = u => { const r = weapon(u, true); return u.tags.includes("fly") ? "ფრენადი" : meleePref(u) ? "აჩერებს" : r && r.range >= 24 ? "შორს ისვრის" : "ისვრის"; };
+  function btn(id, label, cost, ok, on, title) { return `<button type="button" id="${id}" ${ok ? "" : "disabled"} class="${on ? "on" : ""}" title="${title || ""}">${label} <span class="cost">${cost}</span></button>`; }
+  function renderPanel() {
+    if (!S) return;
+    patch($("gUnits"), `<span class="label">რაზმი</span>` + S.roster.map(u => btn("u_" + u.id, u.name, `${u.cost} · ${roleOf(u)}`, S.gold >= u.cost, S.placing === u.id,
+      `${u.tier} · სვლა ${u.move} · სროლა ${u.shoot} · ხელჩართ. ${u.melee} · ჯავშ. ${u.armor} · ჭრ. ${u.wounds}`)).join(""));
+    patch($("gBuild"), `<span class="label">ხაზები და კოშკები</span>` + Object.entries(BUILD).map(([k, b]) =>
+      btn("b_" + k, b.name + (b.line ? " ⟷" : ""), b.line ? `${b.cost}/უჯრა · ${b.note}` : `${b.cost}`, S.gold >= b.cost, S.placing === k)).join(""));
+    const sel = S.sel, refund = sel ? Math.floor(sel.cost * .7) : 0;
+    patch($("gCtl"), `<span class="label">ბრძოლა</span>` +
+      btn("next", S.phase === "build" ? (S.wave ? `ტალღა ახლავე (+${Math.ceil(S.timer)})` : "პირველი ტალღა") : "ტალღა მიდის", "", S.phase === "build" && S.running, false) +
+      `<button type="button" id="speed" class="${S.speed > 1 ? "on" : ""}">სიჩქარე ×${S.speed}</button>` +
+      `<button type="button" id="pause">${S.running ? "პაუზა" : "გაგრძელება"}</button>` +
+      (sel ? btn("sell", `გაყიდვა: ${sel.u ? sel.u.name : sel.b.name}`, `+${refund}`, S.phase === "build", false) : ""));
+  }
+  document.addEventListener("click", ev => {
+    const b = ev.target.closest("button"); if (!b || !S) return; const id = b.id;
+    if (id === "startBtn") { newGame($("selF").value, $("selE").value, $("selM").value); $("banner").hidden = true; S.running = true; renderPanel(); renderHud();
+      say("დააყენე რაზმი და ააგე ლაბირინთი. პირველი ტალღა 25 წამში."); return; }
+    if (id.startsWith("u_") || id.startsWith("b_")) { const k = id.slice(2); S.placing = S.placing === k ? null : k; S.sel = null;
+      if (S.placing) say(BUILD[k] ? (BUILD[k].line ? `${BUILD[k].name}: დააჭირე და გაწელე.` : `${BUILD[k].name}: დააწექი უჯრას.`)
+        : `${byId[k].name}: დააწექი უჯრას (თხრილში — საფარით). ${roleOf(byId[k])}.`); }
+    if (id === "next") startWave();
+    if (id === "speed") S.speed = S.speed === 1 ? 2 : S.speed === 2 ? 3 : 1;
+    if (id === "pause" && !S.over) S.running = !S.running;
+    if (id === "sell" && S.sel && S.phase === "build") { const d = S.sel; S.gold += Math.floor(d.cost * .7); S.occ.delete(d.cell); S.defs = S.defs.filter(x => x !== d); S.sel = null; fields(); }
+    renderPanel(); renderHud();
+  });
+  window.addEventListener("keydown", ev => { if (ev.key === "Escape" && S) { S.placing = null; S.line = null; S.sel = null; renderPanel(); } if (ev.key === " " && S && S.phase === "build" && S.running && !S.over) { ev.preventDefault(); startWave(); } });
+  function say(t) { $("msg").textContent = t; }
+  function showBest() { try { const v = localStorage.getItem(`td-best-${$("selF").value}`); $("best").textContent = v ? `შენი რეკორდი ამ ფრაქციით: ${v} ტალღა` : ""; } catch (e) { $("best").textContent = ""; } }
+
+  // საწყისი ეკრანი
+  const opt = (k, n) => `<option value="${k}">${n}</option>`;
+  $("selF").innerHTML = LIGHT.filter(k => D.units.some(u => u.faction === k)).map(k => opt(k, fname(k))).join("");
+  $("selE").innerHTML = DARK.filter(k => D.units.some(u => u.faction === k)).map(k => opt(k, fname(k))).join("");
+  $("selM").innerHTML = Object.entries(MAPS).map(([k, m]) => opt(k, m.name)).join("");
+  $("selF").addEventListener("change", showBest); showBest();
+  newGame($("selF").value || "colchis", $("selE").value || "harness", "furrow");
+  requestAnimationFrame(frame);
+  window.TD_GAME = () => S;   // ტესტებისთვის (tools/test_defense.js)
+  window.TD_API = { placeAt, startWave, lineCells, idx, pathOpen };
+  if (!D.units.length) say("მონაცემები ვერ ჩაიტვირთა (data.js).");
+})();
+</script>
