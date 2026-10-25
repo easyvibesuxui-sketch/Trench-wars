@@ -8240,6 +8240,45 @@
    "allied": true
   },
   {
+   "id": "hoplites",
+   "faction": "hellenic",
+   "name": "ჰოპლიტები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "შუბი",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield",
+    "shield_wall"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
    "id": "northern_leader",
    "faction": "northern",
    "name": "ჩრდილოეთის იარლი",
@@ -8359,6 +8398,47 @@
     "huge"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "varangians",
+   "faction": "northern",
+   "name": "ვარიაგები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ორხელა ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 5,
+     "damage": 2,
+     "tags": [
+      "armor_break"
+     ]
+    }
+   ],
+   "tags": [
+    "oathbound",
+    "fearless"
+   ],
+   "ability_points": 4,
    "allied": true
   },
   {
@@ -8562,6 +8642,46 @@
    "allied": true
   },
   {
+   "id": "gallowglass",
+   "faction": "celtic",
+   "name": "გალოგლასები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "გალოგლასის ცული",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 1,
+     "power": 5,
+     "damage": 2,
+     "tags": [
+      "armor_break"
+     ]
+    }
+   ],
+   "tags": [
+    "fearless"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
    "id": "finnish_leader",
    "faction": "finnish",
    "name": "ტყეების უხუცესი",
@@ -8673,6 +8793,47 @@
     "fly"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "hakkapeliitta",
+   "faction": "finnish",
+   "name": "ჰაკაპელიტები",
+   "tier": "II",
+   "size": 2,
+   "move": 12,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "ორი პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 2,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "საბრალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "winter_born"
+   ],
+   "ability_points": 4,
    "allied": true
   },
   {
@@ -8795,6 +8956,48 @@
     "huge"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "huscarls",
+   "faction": "britain",
+   "name": "ჰუსკარლები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 3,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "გრძელტარიანი ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "armor_break"
+     ]
+    }
+   ],
+   "tags": [
+    "shield",
+    "shield_wall",
+    "oathbound"
+   ],
+   "ability_points": 4,
    "allied": true
   },
   {
@@ -9001,6 +9204,47 @@
    "allied": true
   },
   {
+   "id": "cuirassiers",
+   "faction": "gaul",
+   "name": "კირასირები",
+   "tier": "III",
+   "size": 2,
+   "move": 10,
+   "shoot": 4,
+   "melee": 7,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "მძიმე საბრალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
    "id": "italy_leader",
    "faction": "italy",
    "name": "ვულკანის მეთაური",
@@ -9121,6 +9365,45 @@
     "huge"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "praetorians",
+   "faction": "italy",
+   "name": "პრეტორიანელები",
+   "tier": "III",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "გლადიუსი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield",
+    "fearless"
+   ],
+   "ability_points": 3,
    "allied": true
   },
   {
@@ -9605,6 +9888,44 @@
    "allied": true
   },
   {
+   "id": "medjay",
+   "faction": "nile",
+   "name": "მეჯაი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "საბრძოლო ჯოხი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
    "id": "yellow_river_leader",
    "faction": "yellow_river",
    "name": "არხების მთავარი ინჟინერი",
@@ -9846,6 +10167,44 @@
     "huge"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "samurai",
+   "faction": "japan_isles",
+   "name": "სამურაები",
+   "tier": "III",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "მშვილდი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "oathbound"
+   ],
+   "ability_points": 4,
    "allied": true
   },
   {
@@ -12218,6 +12577,44 @@
    "allied": true
   },
   {
+   "id": "hwarang",
+   "faction": "korea",
+   "name": "ჰვარანგები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "fearless"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
    "id": "mongolia_leader",
    "faction": "mongolia",
    "name": "სტეპის ბელადი",
@@ -12517,6 +12914,45 @@
     "fly"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "keshig",
+   "faction": "mongolia",
+   "name": "ქეშიგი",
+   "tier": "III",
+   "size": 2,
+   "move": 12,
+   "shoot": 6,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "ცხენის მშვილდი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "საბრალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "skirmisher"
+   ],
+   "ability_points": 4,
    "allied": true
   },
   {
@@ -13717,6 +14153,45 @@
    "allied": true
   },
   {
+   "id": "almogavars",
+   "faction": "pyrenean",
+   "name": "ალმოგავარები",
+   "tier": "II",
+   "size": 1,
+   "move": 7,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "სატყორცნი შუბები",
+     "mode": "ranged",
+     "range": 10,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "mountain",
+    "skirmisher"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
    "id": "alps_leader",
    "faction": "alps",
    "name": "ხეობის მეგზურთა უფროსი",
@@ -14012,6 +14487,47 @@
     "climber"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "reislaufer",
+   "faction": "alps",
+   "name": "რაისლოიფერები",
+   "tier": "III",
+   "size": 1,
+   "move": 4,
+   "shoot": 3,
+   "melee": 6,
+   "armor": 3,
+   "wounds": 2,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "გრძელი პიკი",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "pin"
+     ]
+    }
+   ],
+   "tags": [
+    "mountain",
+    "fearless"
+   ],
+   "ability_points": 3,
    "allied": true
   },
   {
@@ -14965,6 +15481,55 @@
    "allied": true
   },
   {
+   "id": "grenadiers",
+   "faction": "prussia",
+   "name": "გრენადერები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხელყუმბარები",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "gas_mask"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
    "id": "batavi_leader",
    "faction": "batavi",
    "name": "ჯებირის გრაფი",
@@ -15286,6 +15851,47 @@
     "flood"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "batavian_riders",
+   "faction": "batavi",
+   "name": "ბატავი მცურავი მხედრები",
+   "tier": "II",
+   "size": 2,
+   "move": 10,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "საბრალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "river"
+   ],
+   "ability_points": 4,
    "allied": true
   },
   {
@@ -16257,6 +16863,88 @@
     "fearless"
    ],
    "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "janissaries",
+   "faction": "ottoman",
+   "name": "იანიჩრები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 6,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "გრძელი თოფი",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "volley"
+     ]
+    },
+    {
+     "name": "იატაგანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "sipahis",
+   "faction": "ottoman",
+   "name": "სიფაჰები",
+   "tier": "III",
+   "size": 2,
+   "move": 10,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 3,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "შუბი და ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 4,
    "allied": true
   }
  ],

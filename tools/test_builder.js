@@ -25,7 +25,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
     if (ally) await p.selectOption('#allySel', f); else await p.click(`[data-f="${f}"]`);
     await p.click('#clearBtn');
     const own = D.units.filter(u => u.faction === f);
-    const heads = await p.$$eval('#catalog > section.tier:not(.allies):not(.gear) h2', h => h.map(x => x.textContent));
+    const heads = await p.$$eval('#catalog > section.tier:not(.allies):not(.alliance):not(.gear) h2', h => h.map(x => x.textContent));
     for (const t of ['II', 'IV', 'V']) if (!heads.some(h => h.startsWith(t + '.'))) fails.push(`${f}: კატალოგში ${t} დონე არ ჩანს`);
     // რეგულარული ჯარი: აირწინაღიანი რიგითები და სანგრის მოჩხუბრები ყველას ჰყავს და კატალოგში ჩანს
     for (const [tag, what] of [['gas_mask', 'რიგითები/აირწინაღი'], ['brawler', 'მოჩხუბრები']]) {
@@ -91,6 +91,35 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   if (hiredIv && !await hiredIv.isDisabled()) fails.push('საკუთარი IV-ის შემდეგ დაქირავებული IV არ დაიბლოკა');
   const hiredV = await p.$('#catalog section.allies [data-add="armenian_giant"]');
   if (hiredV && !await hiredV.isDisabled()) fails.push('დაქირავებული გოლიათი სცენარის გარეშე ხელმისაწვდომია');
+  // ალიანსი: პრუსია + კოლხეთი + ოსმალები; კონტინგენტი 30%, ფასნამატის გარეშე, პარტნიორის ლიდერი არ ჩანს
+  await p.selectOption('#allySel', 'prussia'); await p.click('#clearBtn'); await p.selectOption('#budget', '500');
+  if (await p.isChecked('#scenario')) await p.click('#scenario');
+  const darkOpts = await p.$$eval('#allianceA option', o => o.map(x => x.value));
+  if (darkOpts.includes('hell') || darkOpts.includes('harness')) fails.push('ალიანსი: ნათელ ფრაქციას ბნელი პარტნიორი სთავაზობს');
+  await p.selectOption('#allianceA', 'colchis'); await p.selectOption('#allianceB', 'ottoman');
+  if (!await p.$('#catalog section.alliance')) fails.push('ალიანსის კონტინგენტი არ ჩანს');
+  if (await p.$('#catalog section.alliance [data-add="eristavi"]')) fails.push('ალიანსში პარტნიორის ლიდერი ჩანს');
+  const jan = D.units.find(u => u.id === 'janissaries');
+  const jp = await p.$eval('#catalog section.alliance [data-add="janissaries"]', b => b.closest('.card').querySelector('.cost').textContent.trim());
+  if (jp !== String(jan.cost)) fails.push(`ალიანსი: იანიჩრების ფასი ${jp} ≠ ${jan.cost}`);
+  await clickAdd('prussia_leader');
+  let added = 0; while (await clickAdd('janissaries')) added++;
+  if (added * jan.cost > 150 || (added < 6 && (added + 1) * jan.cost <= 150)) fails.push(`ალიანსის ლიმიტი (150) არ მუშაობს: ${added} იანიჩარი`);
+  let ac = await checks();
+  if (!ac.some(x => x.startsWith('good') && x.includes('ალიანსი'))) fails.push('ალიანსის შემოწმება არ ჩანს');
+  await p.click('#copyBtn');
+  if (!(await p.$eval('#exportBox', x => x.value)).includes('ალიანსი: კოლხეთი')) fails.push('ექსპორტში ალიანსი არ ჩანს');
+  // ალიანსის დაშლა პარტნიორის იუნიტებს რაზმიდან აშორებს
+  await p.selectOption('#allianceB', '');
+  if ((await p.$$eval('#roster li', l => l.map(x => x.textContent).join('|'))).includes('იანიჩრები')) fails.push('ალიანსის დაშლის შემდეგ იანიჩრები რაზმში დარჩა');
+  // ბნელი ალიანსი: ლეგიონები + დიდი უღელი
+  await p.click('[data-f="hell"]'); await p.click('#clearBtn');
+  const hellOpts = await p.$$eval('#allianceA option', o => o.map(x => x.value));
+  if (!hellOpts.includes('harness') || hellOpts.includes('colchis')) fails.push('ბნელი ალიანსის პარტნიორები არასწორია');
+  await p.selectOption('#allianceA', 'harness');
+  if (!await p.$('#catalog section.alliance')) fails.push('ბნელი ალიანსის კონტინგენტი არ ჩანს');
+  ac = await checks();
+  if (!ac.some(x => x.includes('შიდა ომი'))) fails.push('ბნელ ალიანსს შიდა ომის წესი არ აქვს');
   // კამპანია მოკავშირე ფრაქციით
   await p.selectOption('#allySel', 'gulf'); await p.click('#clearBtn');
   await clickAdd('gulf_leader'); await clickAdd('pearl_divers');
