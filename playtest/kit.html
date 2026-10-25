@@ -33,7 +33,7 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
 .card .wp { font-size:6.4pt; margin:0; } .card .wp td, .card .wp th { padding:.3mm .6mm; } .card .wp .wt { font-size:5.8pt; }
 .card .chips { display:flex; flex-wrap:wrap; gap:.6mm; }
 .chip { border:1px solid var(--bronze); color:var(--bronze); border-radius:1mm; padding:0 .8mm; font-size:5.9pt; }
-.card .pw { margin:0; font-size:6.2pt; flex:1; overflow:hidden; font-style:italic; color:#3d362f; } .card .weak { margin:0; font-size:6.1pt; color:var(--blood); }
+.card .pw { margin:0; font-size:6.1pt; flex:1; overflow:hidden; } .card .weak { margin:0; font-size:6.1pt; color:var(--blood); }
 .card .wounds { display:flex; flex-wrap:wrap; gap:.6mm; } .card .wounds i { width:2.6mm; height:2.6mm; border:1px solid var(--ink); display:inline-block; }
 .tV, .tIVp { border-width:2px; } .thero { border-color:var(--bronze); border-width:2px; }
 .tokens { display:flex; flex-wrap:wrap; gap:3mm; align-items:center; }
@@ -122,8 +122,9 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
 <b>ბურუსი:</b> ერთხელ ბრძოლაში 12″-ში 3″ ბურუსი — მასში ვერავინ ხედავს და ვერ ისვრის.</li>
 <li><b>დატენვა</b> (ჯაჭვის მსროლელები): გასროლის შემდეგ ხელახლა სროლამდე ერთი მოქმედება — დატენვა. <b>ჯაჭვი:</b> მოხვედრილი ზომა 3+ ნახევარ
 მოძრაობას აკეთებს. <b>ცის ჩამოგდება:</b> მფრინავებზე +1 სრ.</li></ul>
-<div class="box"><b>ბარათზე:</b> ჩარჩოში ჩასმული <b>ნიშნები</b> — წესებია (ზემოთ). იტალიკით დაწერილი ტექსტი — იუნიტის ლორი და მომავალი ძალების
-იდეებია: <b>სატესტო თამაშში ის არ მოქმედებს</b> (ფასი მხოლოდ ნიშნებით ითვლება).</div>
+<div class="box"><b>ბარათზე:</b> ჩარჩოში ჩასმული <b>ნიშნები</b> — ზემოთ აღწერილი წესებია; ქვემოთ დაწერილი <b>ძალები</b> — იუნიტის საკუთარი
+ზუსტი წესები (სრულად: rules/abilities.md). <b>დათესილი მეომარი:</b> მოძ 5, ხჩ 5, ჯავ 1, სიც 1, ნებ 10, ხმალი (1 შეტევა, ძალა 2); ბრძოლის
+ბოლოს იშლება; თავის აქტივაციაზე d10 = 1 → უახლოესს უტევს. <b>წაქცეული:</b> შემდეგ აქტივაციაზე 1 მოქმედება.</div>
 <p class="muted">სრული წესები: rules/core-rules.md · ფასები: docs/balance-report.md · ბილდერი: builder/index.html</p>
 </div></section>
 
@@ -172,8 +173,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>6</b><span>სრ</span></div><div><b>7</b><span>ხჩ</span></div><div><b>3</b><span>ჯავ</span></div><div><b>3</b><span>სიც</span></div><div><b>8</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>ხმალი</td><td>ხჩ</td><td>2</td><td>2</td><td>1</td><td class="wt"></td></tr><tr><td>რევოლვერი</td><td>10"</td><td>1</td><td>2</td><td>1</td><td class="wt"></td></tr></table>
   <div class="chips"><span class="chip">ლიდერი</span><span class="chip">ფარი</span></div>
-  <p class="pw">მიყევით! — ერთხელ რაუნდში ახლომდებარე მოკავშირეს შეუძლია მასთან ერთად იმოქმედოს. · აიეტიდების სისხლი — სანამ ერისთავი ცოცხალია, ახლომდებარე კოლხები უკან არ იხევენ.</p>
-  <p class="weak">სისუსტე: თუ დაეცა, რაზმი მორალს კარგავს.</p>
+  <p class="pw">მიყევით!: ერთხელ რაუნდში, ერისთავის აქტივაციის ბოლოს, მის 3″-ში ერთი ჯერ არააქტივირებული კოლხი მაშინვე აქტივირდება. · აიეტიდების სისხლი: სანამ ერისთავი ცოცხალია, მის 6″-ში კოლხები მორალის ტესტს ავტომატურად გადიან.</p>
+  <p class="weak">სისუსტე: როცა ერისთავი ეცემა, ყოველი კოლხი მაშინვე მორალის ტესტს აგორებს — დანაკარგის მიუხედავად.</p>
   <div class="wounds"><i></i><i></i><i></i></div>
 </article><article class="card tI">
   <header><b>ლაშქარი</b><span class="cost">20</span></header>
@@ -181,8 +182,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>5</b><span>სრ</span></div><div><b>4</b><span>ხჩ</span></div><div><b>1</b><span>ჯავ</span></div><div><b>1</b><span>სიც</span></div><div><b>5</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>შაშხანა</td><td>24"</td><td>1</td><td>2</td><td>1</td><td class="wt"></td></tr><tr><td>ხიშტი</td><td>ხჩ</td><td>1</td><td>1</td><td>1</td><td class="wt"></td></tr></table>
   <div class="chips"><span class="chip">მწკრივი</span><span class="chip">აირწინაღი</span></div>
-  <p class="pw">მწკრივი — როცა ორი ან მეტი ლაშქარი ერთმანეთის გვერდით დგას, მათი სროლა უფრო ზუსტია. · სანგრის შვილები — თხრილში ან საფარში მყოფი ლაშქარი შიშს უკეთ უძლებს.</p>
-  <p class="weak">სისუსტე: სუსტი ხელჩართულ ბრძოლაში ელიტურ მოწინააღმდეგესთან.</p>
+  <p class="pw">სანგრის შვილები: თხრილში ან მძიმე საფარში მყოფი ლაშქარი მორალის და შიშის ტესტებზე +1.</p>
+  
   <div class="wounds"><i></i></div>
 </article><article class="card tI">
   <header><b>ნავსადგურის მოჩხუბრები</b><span class="cost">20</span></header>
@@ -199,8 +200,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>5"</b><span>მოძ</span></div><div><b>5</b><span>სრ</span></div><div><b>7</b><span>ხჩ</span></div><div><b>3</b><span>ჯავ</span></div><div><b>2</b><span>სიც</span></div><div><b>7</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>ხმალი</td><td>ხჩ</td><td>2</td><td>2</td><td>1</td><td class="wt"></td></tr><tr><td>პისტოლეტი</td><td>8"</td><td>1</td><td>1</td><td>1</td><td class="wt"></td></tr></table>
   <div class="chips"><span class="chip">ფარი</span></div>
-  <p class="pw">ფარი და ხმალი — ფარით შეუძლიათ სროლის მოგერიება; ხელჩართულ ბრძოლაში ძლიერები არიან. · რაინდის გამოწვევა — შეუძლიათ მოწინააღმდეგის ელიტური მოდელი დუელში გამოიწვიონ.</p>
-  <p class="weak">სისუსტე: მძიმე და ნელი; გაზი და ცეცხლი ჯავშნის მიუხედავად აზიანებს.</p>
+  <p class="pw">რაინდის გამოწვევა: ერთხელ ბრძოლაში, იერიშის შემდეგ: კონტაქტში მყოფი II+ დონის მოწინააღმდეგე დუელშია. სანამ ორივე ცოცხალია და კონტაქტშია, სხვები მათ ხელჩართულში ვერ ერევიან, ორივეს +1 ხჩ.</p>
+  
   <div class="wounds"><i></i><i></i></div>
 </article><article class="card tI">
   <header><b>დალის მონადირეები</b><span class="cost">35</span></header>
@@ -208,8 +209,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>7</b><span>სრ</span></div><div><b>3</b><span>ხჩ</span></div><div><b>0</b><span>ჯავ</span></div><div><b>1</b><span>სიც</span></div><div><b>6</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>სანადირო შაშხანა</td><td>36"</td><td>1</td><td>3</td><td>1</td><td class="wt">გოლიათზე</td></tr><tr><td>დანა</td><td>ხჩ</td><td>1</td><td>1</td><td>1</td><td class="wt"></td></tr></table>
   <div class="chips"><span class="chip">ჩასაფრება</span><span class="chip">გოლიათზე მონადირე</span></div>
-  <p class="pw">დიდი ნადირი — IV და V დონის მიზნებზე სროლისას ზიანი იზრდება. · ჩასაფრება — ბრძოლის დასაწყისში შეიძლება განლაგდეს მაგიდის ნებისმიერ ადგილას, მოწინააღმდეგის ხედვის გარეთ. · მომთმენი — თუ რაუნდში არ მოძრაობს, შემდეგი სროლა უფრო ზუსტია.</p>
-  <p class="weak">სისუსტე: მსუბუქი ჯავშანი; ხელჩართულ ბრძოლაში სუსტია.</p>
+  <p class="pw">მომთმენი: თუ ამ აქტივაციაში არ იმოძრავა, სროლა +1. · დიდი ნადირი: = გოლიათზე მონადირე: ზომა 3–4 სამიზნეზე დაჭრის რიცხვი −2.</p>
+  
   <div class="wounds"><i></i></div>
 </article><article class="card tII">
   <header><b>მედეას დები</b><span class="cost">27</span></header>
@@ -217,8 +218,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>4</b><span>სრ</span></div><div><b>3</b><span>ხჩ</span></div><div><b>0</b><span>ჯავ</span></div><div><b>1</b><span>სიც</span></div><div><b>7</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>მოწამლული დანა</td><td>ხჩ</td><td>1</td><td>1</td><td>1</td><td class="wt">შხამი</td></tr></table>
   <div class="chips"><span class="chip">მკურნალი</span><span class="chip">ალქიმია</span></div>
-  <p class="pw">მკვდარი წყალი — ახლომდებარე დაჭრილს ჭრილობას უხურავს. · შხამიანი ისარი/დანა — მოწამლული მოწინააღმდეგე ნელ-ნელა სუსტდება. · დრაკონის კბილების თესვა (ერთხელ ბრძოლაში) — მიწაში თესავს კბილებს და ამოიზრდება რამდენიმე დათესილი მეომარი.</p>
-  <p class="weak">სისუსტე: სუსტი ბრძოლაში; თუ დაიღუპა, რაზმი მკურნალობას კარგავს.</p>
+  <p class="pw">მკვდარი წყალი: = მკურნალი: მოქმედება — 6″-ში მოკავშირეს 1 სიცოცხლე უბრუნდება. · დრაკონის კბილების თესვა: ერთხელ ბრძოლაში, მოქმედება: 3″-ში დადე 2 დათესილი მეომარი.</p>
+  
   <div class="wounds"><i></i></div>
 </article><article class="card tII">
   <header><b>ამბოხის ბელადი</b><span class="cost">46</span></header>
@@ -226,8 +227,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>5</b><span>სრ</span></div><div><b>7</b><span>ხჩ</span></div><div><b>2</b><span>ჯავ</span></div><div><b>3</b><span>სიც</span></div><div><b>8</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>მოპარული ოფიცრის ხმალი</td><td>ხჩ</td><td>2</td><td>2</td><td>1</td><td class="wt"></td></tr><tr><td>რევოლვერი</td><td>10"</td><td>1</td><td>2</td><td>1</td><td class="wt"></td></tr></table>
   <div class="chips"><span class="chip">ლიდერი</span><span class="chip">უსახელო</span></div>
-  <p class="pw">სიტყვა — ახლომდებარე ამბოხებულები სიგიჟეს იღებენ და ძლიერდებიან. · სახელის გარეშე — ბელადს სახელი არ აქვს; მოწინააღმდეგის „ცნობის“ ეფექტები მასზე არ მოქმედებს.</p>
-  <p class="weak">სისუსტე: თუ დაეცა, ერეტიკოსები სიგიჟეში ვარდებიან (ძლიერები, მაგრამ უკონტროლოები).</p>
+  <p class="pw">სიტყვა: სანამ ბელადი ცოცხალია, მის 6″-ში ამბოხებულებს +1 ხჩ. · სახელის გარეშე: ლიდერზე მიმართული ძალები (ლიდერის მკვლელი და მსგავსი) მასზე არ მოქმედებს.</p>
+  
   <div class="wounds"><i></i><i></i><i></i></div>
 </article><article class="card tI">
   <header><b>ამბოხებულები</b><span class="cost">20</span></header>
@@ -235,8 +236,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>3</b><span>სრ</span></div><div><b>5</b><span>ხჩ</span></div><div><b>0</b><span>ჯავ</span></div><div><b>1</b><span>სიც</span></div><div><b>4</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>მოპარული შაშხანა</td><td>24"</td><td>1</td><td>2</td><td>1</td><td class="wt"></td></tr><tr><td>დანა და ჯაჭვი</td><td>ხჩ</td><td>2</td><td>1</td><td>1</td><td class="wt">ბრაზი</td></tr></table>
   <div class="chips"><span class="chip">სიგიჟე</span><span class="chip">სანგრის ჩხუბი</span></div>
-  <p class="pw">სიგიჟის იერიში — მოწინააღმდეგესთან მიახლოებისას ძალას იმატებენ. · სანგრის ჩხუბი — დიდი უღლის „მოჩხუბრები“ (thugs): თხრილში +1 ხელჩართული. · ნაცნობი სახე — თუ მოწინააღმდეგე იმავე ერისაა, ის შეიძლება ერთი წამით შეყოვნდეს (ძმა ძმის…</p>
-  <p class="weak">სისუსტე: მსუბუქი ჯავშანი; ცუდი მსროლელები.</p>
+  <p class="pw">ძმა ძმის წინააღმდეგ: ერთხელ ბრძოლაში: ნათელი მხარის მოდელი, რომელიც პირველად უტევს ამ იუნიტს ხელჩართულში, ამ შეტევაზე −1 ხჩ (ნაცნობი სახე).</p>
+  
   <div class="wounds"><i></i></div>
 </article><article class="card tI">
   <header><b>განდგომილი რიგითები</b><span class="cost">18</span></header>
@@ -271,8 +272,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>5</b><span>სრ</span></div><div><b>3</b><span>ხჩ</span></div><div><b>0</b><span>ჯავ</span></div><div><b>2</b><span>სიც</span></div><div><b>7</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>წყევლა</td><td>12"</td><td>1</td><td>0</td><td>0</td><td class="wt">წყევლა</td></tr><tr><td>მოწამლული დანა</td><td>ხჩ</td><td>1</td><td>1</td><td>1</td><td class="wt">შხამი</td></tr></table>
   <div class="chips"><span class="chip">ჯადოქარი</span><span class="chip">ბურუსი</span></div>
-  <p class="pw">წყევლა — მოწინააღმდეგის ერთი მოდელი სუსტდება (უარესად ისვრის და იბრძვის). · ღამის ბურუსი — ქმნიან ბურუსს, რომელიც ხედვას ზღუდავს. · გულის მოგროვება — ყოველი მოკლული მოწინააღმდეგე მათ ძალას მატებს.</p>
-  <p class="weak">სისუსტე: ცეცხლი და ელვა მათ წყევლას ხსნის.</p>
+  <p class="pw">გულის მოგროვება: ყოველი მოწინააღმდეგე, რომელიც მის 6″-ში ეცემა — +1 სიცოცხლე (მაქს. საწყისი +1).</p>
+  <p class="weak">სისუსტე: ცეცხლით ან ელვით დაჭრის შემდეგ მისი ყველა წყევლა ქრება.</p>
   <div class="wounds"><i></i><i></i></div>
 </article><article class="card tII">
   <header><b>სისხლის ქურუმები</b><span class="cost">21</span></header>
@@ -280,8 +281,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>6"</b><span>მოძ</span></div><div><b>2</b><span>სრ</span></div><div><b>5</b><span>ხჩ</span></div><div><b>0</b><span>ჯავ</span></div><div><b>2</b><span>სიც</span></div><div><b>8</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>რიტუალური დანა</td><td>ხჩ</td><td>1</td><td>2</td><td>1</td><td class="wt">ტყვე</td></tr></table>
   <div class="chips"><span class="chip">რიტუალი</span></div>
-  <p class="pw">სისხლის რიტუალი — ახლომდებარე ტყვის ან დაჭრილის სისხლით ახლომდებარე ერეტიკოსებს აძლიერებს. · ტყვის აყვანა — დაჭრილ მოწინააღმდეგეს ტყვედ იყვანს ხელჩართულ ბრძოლაში.</p>
-  <p class="weak">სისუსტე: სუსტები ბრძოლაში.</p>
+  <p class="pw">ტყვის აყვანა: = ტყვე: რიტუალური დანით დაცემული მოდელი ტყვეა (სცენარში ქულა, კამპანიაში — სამსხვერპლო).</p>
+  
   <div class="wounds"><i></i><i></i></div>
 </article><article class="card tII">
   <header><b>ჯაჭვის მსროლელები</b><span class="cost">29</span></header>
@@ -289,8 +290,8 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
   <div class="stats"><div><b>5"</b><span>მოძ</span></div><div><b>5</b><span>სრ</span></div><div><b>4</b><span>ხჩ</span></div><div><b>1</b><span>ჯავ</span></div><div><b>2</b><span>სიც</span></div><div><b>6</b><span>ნებ</span></div></div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr><tr><td>ჰარპუნ-ქვემეხი</td><td>18"</td><td>1</td><td>3</td><td>2</td><td class="wt">გოლიათზე, ჯაჭვი, დატენვა</td></tr></table>
   <div class="chips"><span class="chip">გოლიათზე მონადირე</span><span class="chip">ცის ჩამოგდება</span></div>
-  <p class="pw">ჯაჭვის ისარი — ჰარპუნით გოლიათს ან ურჩხულს აბამენ; ორი ან მეტი ჯაჭვი მას აჩერებს. · ცის ჩამოგდება — ცეპელინებს და ფრთოსნებს ჩამოაგდებენ.</p>
-  <p class="weak">სისუსტე: ჯაჭვის შემდეგ დიდხანს იტენებიან.</p>
+  <p class="pw">ორი ჯაჭვი: თუ ერთ რაუნდში ზომა 3+ სამიზნეს ორი ჯაჭვი მოხვდა, შემდეგ აქტივაციაზე ის ვერ მოძრაობს.</p>
+  
   <div class="wounds"><i></i><i></i></div>
 </article></div></section>
 <section class="page small"><h2>ნეიტრალური ზოლი — ძებნა და ღამე</h2>

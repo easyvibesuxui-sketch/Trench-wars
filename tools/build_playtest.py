@@ -33,6 +33,7 @@ def load():
         i = page.index(block)
         tags.update(re.findall(r'\b([a-z_]+): "([^"]+)"', page[i:page.index("};", i)]))
     docs = {p.name: p.read_text(encoding="utf-8") for p in (ROOT / "units").glob("*.md")}
+    docs["_abilities"] = json.loads((ROOT / "data/abilities.json").read_text(encoding="utf-8"))["units"]
     return data, costs, nml, tags, docs
 
 
@@ -44,7 +45,11 @@ def clean(s):
 def powers(u, docs):
     """ძალები და სისუსტე units/*.md-დან: ### სათაური (ძირითადი ფრაქციები) ან „- **სახელი** —“ (მოკავშირეები)."""
     name = u["name"]
-    for text in docs.values():
+    rules = docs.get("_abilities", {}).get(u["id"])
+    if rules:  # ზუსტი წესები (data/abilities.json)
+        weak = " ".join(r for n, r in rules if n.startswith("სისუსტე"))
+        return " · ".join(f"{n}: {r}" for n, r in rules if not n.startswith("სისუსტე")), weak
+    for text in (v for k, v in docs.items() if not k.startswith("_")):
         m = re.search(r"^### " + re.escape(name) + r"\b.*?$(.*?)(?=^#{2,3} |\Z)", text, re.S | re.M)
         if not m:
             continue
@@ -63,7 +68,7 @@ def powers(u, docs):
             elif s.startswith("- "):
                 mode = None
         return " · ".join(out), weak
-    for text in docs.values():
+    for text in (v for k, v in docs.items() if not k.startswith("_")):
         m = re.search(r"^- \*\*" + re.escape(name) + r"\*\*(?: \([^)]*\))? — (.*?)$((?:\n  .*$)*)", text, re.M)
         if m:
             full = clean(m.group(1) + " " + " ".join(x.strip() for x in m.group(2).splitlines()))
@@ -95,7 +100,7 @@ def card(u, cost, fname, tags, docs):
   <div class="stats">{"".join(f"<div><b>{v}</b><span>{k}</span></div>" for k, v in stats)}</div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr>{"".join(weapons)}</table>
   <div class="chips">{chips}</div>
-  <p class="pw">{e(short(pw, 240))}</p>
+  <p class="pw">{e(short(pw, 330))}</p>
   {f'<p class="weak">სისუსტე: {e(short(weak, 90))}</p>' if weak else ""}
   <div class="wounds">{boxes}</div>
 </article>'''
@@ -134,7 +139,7 @@ ul { margin:0 0 2mm; padding-left:5mm; } li { margin:0 0 .8mm; }
 .card .wp { font-size:6.4pt; margin:0; } .card .wp td, .card .wp th { padding:.3mm .6mm; } .card .wp .wt { font-size:5.8pt; }
 .card .chips { display:flex; flex-wrap:wrap; gap:.6mm; }
 .chip { border:1px solid var(--bronze); color:var(--bronze); border-radius:1mm; padding:0 .8mm; font-size:5.9pt; }
-.card .pw { margin:0; font-size:6.2pt; flex:1; overflow:hidden; font-style:italic; color:#3d362f; } .card .weak { margin:0; font-size:6.1pt; color:var(--blood); }
+.card .pw { margin:0; font-size:6.1pt; flex:1; overflow:hidden; } .card .weak { margin:0; font-size:6.1pt; color:var(--blood); }
 .card .wounds { display:flex; flex-wrap:wrap; gap:.6mm; } .card .wounds i { width:2.6mm; height:2.6mm; border:1px solid var(--ink); display:inline-block; }
 .tV, .tIVp { border-width:2px; } .thero { border-color:var(--bronze); border-width:2px; }
 .tokens { display:flex; flex-wrap:wrap; gap:3mm; align-items:center; }
@@ -228,8 +233,9 @@ QUICK_RULES = """
 <b>ბურუსი:</b> ერთხელ ბრძოლაში 12″-ში 3″ ბურუსი — მასში ვერავინ ხედავს და ვერ ისვრის.</li>
 <li><b>დატენვა</b> (ჯაჭვის მსროლელები): გასროლის შემდეგ ხელახლა სროლამდე ერთი მოქმედება — დატენვა. <b>ჯაჭვი:</b> მოხვედრილი ზომა 3+ ნახევარ
 მოძრაობას აკეთებს. <b>ცის ჩამოგდება:</b> მფრინავებზე +1 სრ.</li></ul>
-<div class="box"><b>ბარათზე:</b> ჩარჩოში ჩასმული <b>ნიშნები</b> — წესებია (ზემოთ). იტალიკით დაწერილი ტექსტი — იუნიტის ლორი და მომავალი ძალების
-იდეებია: <b>სატესტო თამაშში ის არ მოქმედებს</b> (ფასი მხოლოდ ნიშნებით ითვლება).</div>
+<div class="box"><b>ბარათზე:</b> ჩარჩოში ჩასმული <b>ნიშნები</b> — ზემოთ აღწერილი წესებია; ქვემოთ დაწერილი <b>ძალები</b> — იუნიტის საკუთარი
+ზუსტი წესები (სრულად: rules/abilities.md). <b>დათესილი მეომარი:</b> მოძ 5, ხჩ 5, ჯავ 1, სიც 1, ნებ 10, ხმალი (1 შეტევა, ძალა 2); ბრძოლის
+ბოლოს იშლება; თავის აქტივაციაზე d10 = 1 → უახლოესს უტევს. <b>წაქცეული:</b> შემდეგ აქტივაციაზე 1 მოქმედება.</div>
 <p class="muted">სრული წესები: rules/core-rules.md · ფასები: docs/balance-report.md · ბილდერი: builder/index.html</p>
 </div></section>
 """

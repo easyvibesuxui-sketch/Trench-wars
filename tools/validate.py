@@ -124,6 +124,14 @@ def main():
                 if not sc.get(k):
                     errors.append(f"{fname}: სცენარ {i}-ს '{k}' აკლია")
 
+    # ძალების ზუსტი წესები: ყოველი ჩანაწერი არსებულ იუნიტს ეკუთვნის
+    ab = json.loads((ROOT / "data" / "abilities.json").read_text(encoding="utf-8"))
+    for uid, rules in ab["units"].items():
+        if uid not in by_id:
+            errors.append(f"abilities.json: უცნობი იუნიტი {uid}")
+        if not rules or any(len(r) != 2 or not r[0] or not r[1] for r in rules):
+            errors.append(f"abilities.json: {uid} — ჩანაწერი [სახელი, წესი] უნდა იყოს")
+
     # ნეიტრალური ზოლი: ზონები, ცხრილები (d10 — 1-დან 10-მდე), ურჩხულები, აღჭურვილობა
     nml = json.loads((ROOT / "data" / "no_mans_land.json").read_text(encoding="utf-8"))
     beast_ids = {b["id"] for b in nml["beasts"]}
