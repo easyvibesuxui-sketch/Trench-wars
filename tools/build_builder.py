@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ბილდერის მონაცემების აწყობა: data/units.json + data/costs.json + data/campaigns/*.json → builder/data.js
+"""ბილდერის მონაცემების აწყობა: data/units.json + data/costs.json + data/campaigns/*.json + data/no_mans_land.json → builder/data.js
 
 გაშვება (ბალანსერის შემდეგ):  python3 tools/build_builder.py
 """
@@ -22,7 +22,10 @@ def main():
     equipment = json.loads((ROOT / "data" / "equipment.json").read_text(encoding="utf-8"))
     equipment.pop("_comment", None)
     campaigns = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data" / "campaigns").glob("*.json"))}
-    out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment, "campaigns": campaigns}
+    nml = json.loads((ROOT / "data" / "no_mans_land.json").read_text(encoding="utf-8"))
+    nml.pop("_comment", None)
+    out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment, "campaigns": campaigns,
+           "nml": nml}
     js = "// ავტომატურად გენერირებული: tools/build_builder.py — ხელით ნუ შეცვლი\n"
     js += "window.TW_DATA = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n"
     target = ROOT / "builder" / "data.js"

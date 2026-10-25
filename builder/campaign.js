@@ -49,6 +49,57 @@
   const modelCap = () => BASE_CAP + 3 * built("dugout");
   const liveModels = () => camp.models.filter(m => m.status !== "dead").length;
 
+  // ნეიტრალური ზოლი (rules/no-mans-land.md): დაზვერვა ბრძოლებს შორის, ზონის კონტროლი
+  const NML = D.nml || null;
+  const RAIDS = 2;
+  const raidsLeft = () => RAIDS - (camp.raid && camp.raid.at === camp.battles.length ? camp.raid.n : 0);
+  function applyEffect(eff, m, zone, notes, scout) {
+    if (!eff) return;
+    if (eff.treasury) { camp.treasury += eff.treasury; notes.push(`+${eff.treasury} მარჩილი`); }
+    if (eff.currency) { camp.currency += eff.currency; notes.push(`+${eff.currency} ${CURRENCY_OF(camp.faction)}`); }
+    if (eff.xp) { m.xp += eff.xp; notes.push(`+${eff.xp} გამოცდ.`); }
+    if (eff.gear) { camp.stash[eff.gear] = (camp.stash[eff.gear] || 0) + 1; notes.push(`მარაგში: ${(B.itemById[eff.gear] || {}).name || eff.gear}`); }
+    if (eff.recruit) {
+      const r = D.units.find(u => u.faction === camp.faction && u.tier === "I" && u.tags.includes("line"));
+      if (r && liveModels() < modelCap()) { addModel(r.id); notes.push(`უერთდება: ${r.name}`); } else notes.push("რაზმში ადგილი არ არის — ზურგში გაგზავნეს");
+    }
+    if (eff.wound) { m.status = "injured"; notes.push("დაიჭრა"); }
+    if (eff.lost) {
+      const r = d10();
+      if (r === 1) { m.status = "dead"; notes.push(`d10 = ${r}: დაიღუპა`); }
+      else if (r <= 5) { m.status = "captured"; notes.push(`d10 = ${r}: ტყვედაა`); }
+      else { m.status = "injured"; notes.push(`d10 = ${r}: დაიჭრა`); }
+    }
+    if (eff.zone_find) {
+      if (zone.find) { notes.push(zone.find.name); applyEffect(zone.find.effect, m, zone, notes, scout); }
+      else { m.xp += 1; notes.push("+1 გამოცდ."); }
+    }
+    if (eff.search) {
+      if (zone.search_mod === null) { notes.push("ღარში ძებნა არ შეიძლება — ეს ამბრის გზაა"); return; }
+      const sr = d10(), v = sr === 1 ? 1 : Math.min(10, sr + zone.search_mod + scout);
+      const s = NML.search.find(x => x.roll === v);
+      notes.push(`ძებნა ${v}: ${s.name}`);
+      if (v === 3) { if (d10() <= 3) { m.status = "injured"; notes.push("ჭურვი აფეთქდა — დაიჭრა"); } }
+      else applyEffect(s.effect, m, zone, notes, scout);
+    }
+  }
+  function raid() {
+    const m = model($("raidModel").value), zone = NML.zones.find(z => z.id === $("raidZone").value);
+    if (!m || !zone || raidsLeft() <= 0) return;
+    const u = byId[m.unit], mine = (camp.zones || []).includes(zone.id);
+    const scout = u.tags.includes("scout") ? 1 : 0;
+    const bonus = scout + (u.tags.includes("infiltrate") ? 1 : 0) + (mine ? 1 : 0);
+    const r = d10(), total = r + bonus - zone.danger + 2;
+    const row = NML.raid.find(x => total >= x.min && total <= x.max);
+    const notes = [];
+    applyEffect(row.effect, m, zone, notes, scout);
+    if (mine && row.effect.zone_find && zone.find) applyEffect(zone.find.effect, m, zone, notes, scout);  // ზონის კონტროლი: ნაპოვნი ორჯერ
+    camp.raid = { at: camp.battles.length, n: RAIDS - raidsLeft() + 1 };
+    camp.raidLog = camp.raidLog || [];
+    camp.raidLog.push(`${m.name} → ${zone.name}: d10 ${r} ${bonus ? "+" + bonus : ""} − ${zone.danger} + 2 = ${total} — ${row.name}${notes.length ? " (" + notes.join(", ") + ")" : ""}`);
+    save(); render(); status(`${m.name}: ${row.name}.`);
+  }
+
   let camp = load();
   let mode = "build";
   let lastRolls = [];
@@ -166,6 +217,7 @@
               <select id="bResult"><option value="win">გამარჯვება</option><option value="draw">ფრე</option><option value="loss">მარცხი</option></select>
               <label for="bStory">სცენარი</label><select id="bStory">${(STORY(camp.faction) ? STORY(camp.faction).scenarios : []).map((sc, i) => `<option value="${i}" ${i === (STORY(camp.faction).scenarios.findIndex((_, j) => !camp.storyDone.includes(j))) ? "selected" : ""}>${i + 1}. ${esc(sc.name)}${camp.storyDone.includes(i) ? " ✓" : ""}</option>`).join("")}<option value="-1" ${STORY(camp.faction) && camp.storyDone.length >= STORY(camp.faction).scenarios.length ? "selected" : ""}>სხვა სცენარი</option></select>
               <input type="text" id="bScenario" maxlength="60" placeholder="სხვა სცენარის სახელი" aria-label="სხვა სცენარის სახელი"></div>
+            ${NML ? `<div class="form-row"><label for="bZone">ნეიტრალური ზოლის ზონა</label><select id="bZone"><option value="">—</option>${NML.zones.map(z => `<option value="${z.id}">${esc(z.name)}</option>`).join("")}</select></div>` : ""}
             <div class="form-row"><label for="bPrisoners">აყვანილი ტყვეები</label><input type="number" id="bPrisoners" min="0" max="10" value="0" style="width:4em">
               <select id="bPrisonerUse" aria-label="ტყვეების ბედი">${(PRISONER[side] || []).map(([k, t]) => `<option value="${k}">${t}</option>`).join("")}</select></div>
             <fieldset><legend>ვინ დაეცა ბრძოლაში / ვინ გამოიჩინა გმირობა</legend>
@@ -179,6 +231,12 @@
             <p class="sub">მეომრები: <b>${liveModels()}</b> / ${modelCap()} (ბლინდაჟი ლიმიტს ზრდის)</p>
             ${Object.entries(BUILD).map(([k, [, cost, max, eff]]) => `<div class="form-row"><span><b>${esc(bname(k))}</b> — ${eff} · ${cost} მარჩილი · ${built(k)}/${max}</span>
               <button type="button" data-build="${k}" ${built(k) >= max || camp.treasury < cost ? "disabled" : ""}>აშენება</button></div>`).join("")}</div>
+          ${NML ? `<div class="panel nml"><h3>დაზვერვა ნეიტრალურ ზოლში</h3>
+            <p class="sub">ბრძოლებს შორის ${RAIDS}-მდე მზვერავი (დარჩა: <b>${raidsLeft()}</b>); d10 + მზვერავი + ჩასაფრება + შენი ზონა − საფრთხე + 2. წესები: rules/no-mans-land.md</p>
+            <div class="form-row"><select id="raidZone" aria-label="ზონა">${NML.zones.map(z => `<option value="${z.id}">${esc(z.name)} — საფრთხე ${z.danger}${(camp.zones || []).includes(z.id) ? " · შენი" : ""}</option>`).join("")}</select>
+              <select id="raidModel" aria-label="მზვერავი">${active.filter(m => m.status === "ok" && !byId[m.unit].tags.includes("leader")).map(m => `<option value="${m.uid}">${esc(m.name)}</option>`).join("")}</select>
+              <button type="button" class="primary" id="raidBtn" ${raidsLeft() > 0 ? "" : "disabled"}>დაზვერვა</button></div>
+            ${(camp.raidLog || []).length ? `<ul class="log raids">${camp.raidLog.slice(-5).reverse().map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}</div>` : ""}
           <div class="panel"><h3>დაქირავება ხაზინიდან</h3>
             <div class="form-row"><select id="recruitSel" aria-label="იუნიტი">${recruitable.map(u => `<option value="${u.id}">${esc(u.name)} — ${B.unitCost(u)}${u.allied ? " (მოკავშირე)" : ""}</option>`).join("")}</select>
             <button type="button" class="primary" id="recruitBtn">დაქირავება</button></div></div>
@@ -246,6 +304,13 @@
     }
     if (built("depot")) { income += 10 * built("depot"); notes.push(`საწყობი +${10 * built("depot")}`); }
     if (built("shrine")) { gain += 1; notes.push(`${bname("shrine")} +1`); }
+    const zid = $("bZone") ? $("bZone").value : "";
+    if (zid) {  // ზონის კონტროლი: მოგება იკავებს, მარცხი კარგავს
+      camp.zones = camp.zones || [];
+      const zn = NML.zones.find(z => z.id === zid).name;
+      if (result === "win" && !camp.zones.includes(zid)) { camp.zones.push(zid); notes.push(`ზონა შენია: ${zn}`); }
+      if (result === "loss" && camp.zones.includes(zid)) { camp.zones = camp.zones.filter(z => z !== zid); notes.push(`ზონა დაიკარგა: ${zn}`); }
+    }
     camp.treasury += income; camp.currency += gain;
     const story = STORY(camp.faction), si = $("bStory") ? Number($("bStory").value) : -1;
     const scName = si >= 0 && story ? story.scenarios[si].name : $("bScenario").value.trim();
@@ -299,6 +364,7 @@
     if (t.dataset.build) { const k = t.dataset.build, [, cost, max] = BUILD[k];
       if (built(k) >= max || camp.treasury < cost) return;
       camp.base = camp.base || {}; camp.base[k] = built(k) + 1; camp.treasury -= cost; save(); render(); status(`${bname(k)} აშენდა.`); return; }
+    if (t.id === "raidBtn") { raid(); return; }
     if (t.id === "recruitBtn") { const u = byId[$("recruitSel").value]; const c = B.unitCost(u);
       if (liveModels() >= modelCap()) { status(`მეომრების ლიმიტი ${modelCap()} — ააშენე ბლინდაჟი.`); return; }
       if (camp.treasury < c) { status(`ხაზინაში ${c} მარჩილი არ არის.`); return; }

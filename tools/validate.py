@@ -124,6 +124,25 @@ def main():
                 if not sc.get(k):
                     errors.append(f"{fname}: სცენარ {i}-ს '{k}' აკლია")
 
+    # ნეიტრალური ზოლი: ზონები, ცხრილები (d10 — 1-დან 10-მდე), ურჩხულები, აღჭურვილობა
+    nml = json.loads((ROOT / "data" / "no_mans_land.json").read_text(encoding="utf-8"))
+    beast_ids = {b["id"] for b in nml["beasts"]}
+    gear_ids = {it["id"] for it in equipment["items"]}
+    for z in nml["zones"]:
+        if z["monster"] not in beast_ids:
+            errors.append(f"ნეიტრალური ზოლი {z['id']}: უცნობი ურჩხული {z['monster']}")
+        if z["find"] and z["find"]["effect"].get("gear") and z["find"]["effect"]["gear"] not in gear_ids:
+            errors.append(f"ნეიტრალური ზოლი {z['id']}: უცნობი აღჭურვილობა {z['find']['effect']['gear']}")
+    for tbl in ("search", "night"):
+        if sorted(r["roll"] for r in nml[tbl]) != list(range(1, 11)):
+            errors.append(f"ნეიტრალური ზოლი: ცხრილი {tbl} 1–10 არ ფარავს")
+    for r in nml["search"]:
+        if r["effect"].get("gear") and r["effect"]["gear"] not in gear_ids:
+            errors.append(f"ნეიტრალური ზოლი: უცნობი აღჭურვილობა {r['effect']['gear']}")
+    raid = sorted(nml["raid"], key=lambda r: r["min"])
+    if any(a["max"] + 1 != b["min"] for a, b in zip(raid, raid[1:])):
+        errors.append("ნეიტრალური ზოლი: დაზვერვის ცხრილს ხვრელი აქვს")
+
     for aid in allies:
         if not any(u["faction"] == aid for u in units):
             errors.append(f"მოკავშირე {aid}: იუნიტები არ აქვს")

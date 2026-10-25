@@ -147,6 +147,18 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   if (doneCount !== 1) fails.push(`მოგებული სცენარი არ აღინიშნა (${doneCount})`);
   const log = await p.$eval('#campaignView', v => v.textContent);
   if (!log.includes(D2.campaigns.gulf.scenarios[0].name)) fails.push('ჟურნალში სცენარის სახელი არ ჩაიწერა');
+  // ნეიტრალური ზოლი: დაზვერვა ჩაიწერება და ლიმიტს ამცირებს
+  const zones = await p.$$eval('#raidZone option', o => o.length);
+  if (zones < 8) fails.push(`ნეიტრალური ზოლის ზონები არ ჩანს (${zones})`);
+  const scouts = await p.$$eval('#raidModel option', o => o.length);
+  if (!scouts) fails.push('დაზვერვისთვის მზვერავი არ ჩანს');
+  else {
+    await p.selectOption('#raidZone', 'burned_villages'); await p.click('#raidBtn'); await p.waitForTimeout(150);
+    const raids = await p.$$eval('#campaignView .raids li', l => l.map(x => x.textContent));
+    if (raids.length !== 1 || !raids[0].includes('დამწვარი სოფლები')) fails.push('დაზვერვა ჟურნალში არ ჩაიწერა');
+    const left = await p.$eval('#campaignView .nml .sub b', x => x.textContent);
+    if (left !== '1') fails.push(`დაზვერვის ლიმიტი არ შემცირდა (${left})`);
+  }
   // ტელეფონის სიგანე
   const m = await b.newPage({ viewport: { width: 390, height: 800 } });
   await m.goto(PAGE); await m.waitForTimeout(300);
