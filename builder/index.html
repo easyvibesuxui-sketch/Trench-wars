@@ -365,6 +365,8 @@ footer { color: var(--muted); font-size: .8rem; }
   function hireCap() { return Math.floor(state.budget * hireRule()[0]); }
   function count(pred) { return picks().reduce((s, [id, n]) => s + (pred(byId[id]) ? n : 0), 0); }
 
+  // რაოდენობის ლიმიტი (AoM-ის მოსახლეობის მსგავსად): 500 მარჩილზე ერთ იუნიტზე მაქს. 10 (I დონე) ან 6 მოდელი; ბიუჯეტთან ერთად იზრდება
+  function unitCap(u) { return Math.round((u.tier === "I" ? 10 : 6) * state.budget / 500); }
   function lockReason(u) {
     if (isHired(u)) {
       if (!canHire()) return "მხოლოდ ნათელ მხარეს";
@@ -379,6 +381,7 @@ footer { color: var(--muted); font-size: .8rem; }
     if (u.tier === "V" && count(x => x.tier === "V") >= 1 && n === 0) return "გოლიათი უკვე არჩეულია";
     if (u.tier === "hero" && count(x => x.tier === "hero") >= 1 && n === 0) return "გმირი უკვე არჩეულია";
     if ((u.tier === "IV" || u.tier === "IV+" || u.tier === "V" || u.tier === "hero") && n >= 1) return "მაქს. 1";
+    if (n >= unitCap(u)) return `მაქს. ${unitCap(u)} ამ იუნიტიდან`;
     return "";
   }
 
@@ -397,6 +400,7 @@ footer { color: var(--muted); font-size: .8rem; }
       out.push(hired <= hireCap() ? ["good", `დაქირავება: ${hired} / ${hireCap()}`] : ["bad", `დაქირავება ზღვარს აჭარბებს: ${hired} / ${hireCap()}`]);
       out.push(["", "უნდობლობა: ყოველი დაქირავებული იუნიტისთვის ბრძოლის დასაწყისში d10 — 1-ზე ის მსმენელია"]);
     }
+    for (const [id, n] of picks()) if (n > unitCap(byId[id])) out.push(["bad", `${byId[id].name}: მაქს. ${unitCap(byId[id])} მოდელი`]);
     for (const [id] of gearPicks()) { const it = itemById[id]; if (!reqMet(it)) out.push(["bad", `${it.name}: საჭიროა ${reqText(it)}`]); }
     const models = picks().reduce((s, [, n]) => s + n, 0);
     out.push(["", `მოდელები: ${models}`]);

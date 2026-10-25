@@ -32,6 +32,21 @@
   const CURRENCY_OF = (f) => CURRENCY[f] || "სახელი";
   const fname = (f) => D.factions[f] || (D.allies || {})[f] || f;
 
+  // კამპანიის ბაზა (AoM-ის სახლების და ეკონომიკის მსგავსად) — ხაზინით შენდება
+  const BASE_CAP = 15;
+  const BUILD = {
+    dugout: ["ბლინდაჟი", 40, 3, "რაზმის მოდელების ლიმიტი +3"],
+    hospital: ["საველე ჰოსპიტალი", 60, 1, "დაცემულის კამათელი +1 (ბუნებრივი 1 რჩება)"],
+    forge: ["სამჭედლო", 60, 1, "მანქანა/კონსტრუქცია d10 = 1-ზე ხელახლა აგორებს"],
+    depot: ["საწყობი", 50, 2, "ყოველი ბრძოლის შემდეგ +10 მარჩილი"],
+    shrine: [null, 80, 1, "ყოველი ბრძოლის შემდეგ ვალუტა +1"],
+  };
+  const SHRINE = { light: "დროშის კოშკი", hell: "ლეგიონის სიმაგრე", harness: "მცირე სამსხვერპლო", listeners: "საიდუმლო ბინა", kajeti: "ვერცხლის საჭედი" };
+  const bname = (k) => BUILD[k][0] || SHRINE[SIDE[camp.faction]] || SHRINE.light;
+  const built = (k) => (camp.base || {})[k] || 0;
+  const modelCap = () => BASE_CAP + 3 * built("dugout");
+  const liveModels = () => camp.models.filter(m => m.status !== "dead").length;
+
   let camp = load();
   let mode = "build";
   let lastRolls = [];
@@ -158,6 +173,10 @@
             <button type="submit" class="primary">ბრძოლის შედეგის ჩაწერა</button>
             ${lastRolls.length ? `<div><b>კამათლები:</b><ul class="log">${lastRolls.map(r => `<li>${esc(r)}</li>`).join("")}</ul></div>` : ""}
           </form>
+          <div class="panel base"><h3>ბაზა</h3>
+            <p class="sub">მეომრები: <b>${liveModels()}</b> / ${modelCap()} (ბლინდაჟი ლიმიტს ზრდის)</p>
+            ${Object.entries(BUILD).map(([k, [, cost, max, eff]]) => `<div class="form-row"><span><b>${esc(bname(k))}</b> — ${eff} · ${cost} მარჩილი · ${built(k)}/${max}</span>
+              <button type="button" data-build="${k}" ${built(k) >= max || camp.treasury < cost ? "disabled" : ""}>აშენება</button></div>`).join("")}</div>
           <div class="panel"><h3>დაქირავება ხაზინიდან</h3>
             <div class="form-row"><select id="recruitSel" aria-label="იუნიტი">${recruitable.map(u => `<option value="${u.id}">${esc(u.name)} — ${B.unitCost(u)}${u.allied ? " (მოკავშირე)" : ""}</option>`).join("")}</select>
             <button type="button" class="primary" id="recruitBtn">დაქირავება</button></div></div>
@@ -209,7 +228,10 @@
       if (heroes.has(m.uid)) m.xp += 1;
       if (result === "win" && byId[m.unit].tags.includes("leader")) m.xp += 1;
       if (!downs.has(m.uid)) { m.xp += 1; continue; }
-      const r = d10();
+      let r = d10();
+      if (r > 1) r = Math.min(10, r + built("hospital"));  // ჰოსპიტალი: +1, ბუნებრივი 1 რჩება
+      const mech = ["vehicle", "construct", "automaton", "steam"].some(t => byId[m.unit].tags.includes(t));
+      if (r === 1 && mech && built("forge")) r = d10();  // სამჭედლო: მანქანა ხელახლა აგორებს
       let txt;
       if (r === 1) { m.status = "dead"; txt = "დაიღუპა"; }
       else if (r === 2) { m.status = "captured"; txt = "ტყვედ ჩავარდა"; }
@@ -220,6 +242,8 @@
       else { m.xp += 1; txt = "გადარჩა და ისწავლა (+1 გამოცდილება)"; }
       lastRolls.push(`${m.name}: d10 = ${r} — ${txt}`);
     }
+    if (built("depot")) { income += 10 * built("depot"); notes.push(`საწყობი +${10 * built("depot")}`); }
+    if (built("shrine")) { gain += 1; notes.push(`${bname("shrine")} +1`); }
     camp.treasury += income; camp.currency += gain;
     const story = STORY(camp.faction), si = $("bStory") ? Number($("bStory").value) : -1;
     const scName = si >= 0 && story ? story.scenarios[si].name : $("bScenario").value.trim();
@@ -270,7 +294,11 @@
     if (t.dataset.rescue) { if (camp.treasury < 30) { status("ხაზინაში 30 მარჩილი არ არის."); return; } const m = model(t.dataset.rescue); camp.treasury -= 30; m.status = "ok"; save(); render(); return; }
     if (t.dataset.retire) { const m = model(t.dataset.retire); camp.models = camp.models.filter(x => x !== m); save(); render(); status(`${m.name} რაზმიდან წავიდა.`); return; }
     if (t.dataset.shop) { buy(t.dataset.shop, Number(t.dataset.price)); return; }
+    if (t.dataset.build) { const k = t.dataset.build, [, cost, max] = BUILD[k];
+      if (built(k) >= max || camp.treasury < cost) return;
+      camp.base = camp.base || {}; camp.base[k] = built(k) + 1; camp.treasury -= cost; save(); render(); status(`${bname(k)} აშენდა.`); return; }
     if (t.id === "recruitBtn") { const u = byId[$("recruitSel").value]; const c = B.unitCost(u);
+      if (liveModels() >= modelCap()) { status(`მეომრების ლიმიტი ${modelCap()} — ააშენე ბლინდაჟი.`); return; }
       if (camp.treasury < c) { status(`ხაზინაში ${c} მარჩილი არ არის.`); return; }
       if (u.tags.includes("leader") && hasLeader()) { status("რაზმს უკვე ჰყავს ლიდერი."); return; }
       camp.treasury -= c; addModel(u.id); save(); render(); status(`${u.name} დაქირავებულია.`); return; }

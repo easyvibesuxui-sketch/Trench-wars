@@ -67,6 +67,11 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
     const txt = await p.$eval('#exportBox', x => x.value);
     if (!txt.includes(ally ? D.allies[f] : D.factions[f])) fails.push(`${f}: ექსპორტში ფრაქციის სახელი არ არის`);
   }
+  // რაოდენობის ლიმიტი: 500-ზე I დონე მაქს. 10
+  await p.click('[data-f="colchis"]'); await p.click('#clearBtn'); await p.selectOption('#budget', '500');
+  for (let i = 0; i < 10; i++) await clickAdd('lashkari');
+  const lb = await p.$('#catalog [data-add="lashkari"]');
+  if (!lb || !await lb.isDisabled()) fails.push('რაოდენობის ლიმიტი: მე-11 ლაშქარი არ დაიბლოკა');
   // რგოლის ბატალიონი: ხარკი — 50%, ფასნამატის გარეშე
   await p.click('[data-f="ring"]'); await p.click('#clearBtn'); await p.selectOption('#budget', '500');
   if (await p.isChecked('#scenario')) await p.click('#scenario');
@@ -97,6 +102,15 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   if (startBtn) { await startBtn.click(); await p.waitForTimeout(200); }
   const campHead = await p.$eval('#campaignView', v => v.textContent.slice(0, 200));
   if (!campHead.includes('ყურისა')) fails.push('კამპანიაში მოკავშირე ფრაქციის სახელი არ ჩანს: ' + campHead.slice(0, 80));
+  // ბაზა: ბლინდაჟის აშენება ლიმიტს ზრდის და ხაზინას ამცირებს
+  const capBefore = await p.$eval('#campaignView .base .sub', x => x.textContent);
+  const dug = await p.$('#campaignView [data-build="dugout"]');
+  if (!dug) fails.push('ბაზის პანელი (ბლინდაჟი) არ ჩანს');
+  else if (!await dug.isDisabled()) {
+    await dug.click(); await p.waitForTimeout(150);
+    const capAfter = await p.$eval('#campaignView .base .sub', x => x.textContent);
+    if (capAfter === capBefore || !capAfter.includes('18')) fails.push(`ბლინდაჟმა ლიმიტი არ გაზარდა: ${capAfter}`);
+  }
   // ომის კამპანია: პირველი სცენარის მოგება მას აღნიშნავს
   await p.selectOption('#bResult', 'win');
   await p.click('#battleForm button[type="submit"]'); await p.waitForTimeout(200);
