@@ -14637,6 +14637,1304 @@
    ],
    "ability_points": 20,
    "allied": true
+  },
+  {
+   "id": "prussia_leader",
+   "faction": "prussia",
+   "name": "ლანდვერის პოლკოვნიკი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "prussia_regulars",
+   "faction": "prussia",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "prussia_thugs",
+   "faction": "prussia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "blue_dragoons",
+   "faction": "prussia",
+   "name": "ცისფერი დრაგუნები",
+   "tier": "II",
+   "size": 2,
+   "move": 10,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "საბრალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "harz_miners",
+   "faction": "prussia",
+   "name": "ჰარცის მაღაროელები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "მაღაროს წერაქვი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "tunnel"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "wieland_smiths",
+   "faction": "prussia",
+   "name": "ვილანდის მჭედლები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "მჭედლის ურო",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "armor_break"
+     ]
+    }
+   ],
+   "tags": [
+    "engineer",
+    "repair"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "prussia_grotesque",
+   "faction": "prussia",
+   "name": "ორთქლის ურო",
+   "tier": "IV",
+   "size": 3,
+   "move": 5,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ჯავშნის ტყვიამფრქვევი",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ორთქლის ურო",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 6,
+     "damage": 2,
+     "tags": [
+      "armor_break"
+     ]
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "prussia_giant",
+   "faction": "prussia",
+   "name": "ვილანდის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 7,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "გოლიათის ურო",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "ფრთის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "fearless",
+    "fly"
+   ],
+   "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "batavi_leader",
+   "faction": "batavi",
+   "name": "ჯებირის გრაფი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "batavi_regulars",
+   "faction": "batavi",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "batavi_thugs",
+   "faction": "batavi",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "dike_wardens",
+   "faction": "batavi",
+   "name": "ჯებირის მცველები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "flood"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "skate_riflemen",
+   "faction": "batavi",
+   "name": "ციგურიანი მსროლელები",
+   "tier": "I",
+   "size": 1,
+   "move": 8,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 0,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "scout",
+    "ice_runner"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "klabauter_crews",
+   "faction": "batavi",
+   "name": "კლაბაუტერის მეზღვაურები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "აბორდაჟის პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "აბორდაჟის ცული",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "supply",
+    "repair"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "batavi_grotesque",
+   "faction": "batavi",
+   "name": "მავალი წისქვილი",
+   "tier": "IV",
+   "size": 3,
+   "move": 4,
+   "shoot": 6,
+   "melee": 4,
+   "armor": 5,
+   "wounds": 10,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "წისქვილის ქვემეხები",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ფრთები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": [
+      "sweep"
+     ]
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "batavi_giant",
+   "faction": "batavi",
+   "name": "ტუმბოს კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 5,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 7,
+   "wounds": 24,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "დგუშის ხელები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "წყლის ქვემეხი",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "fearless",
+    "flood"
+   ],
+   "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "lechia_leader",
+   "faction": "lechia",
+   "name": "ხორუნჟი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "lechia_regulars",
+   "faction": "lechia",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "lechia_thugs",
+   "faction": "lechia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "winged_hussars",
+   "faction": "lechia",
+   "name": "ფრთოსანი ჰუსარები",
+   "tier": "III",
+   "size": 2,
+   "move": 10,
+   "shoot": 4,
+   "melee": 7,
+   "armor": 3,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "გრძელი შუბი",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "salt_miners",
+   "faction": "lechia",
+   "name": "მარილის მაღაროელები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 4,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "მარილის წერაქვი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "engineer",
+    "digger",
+    "tunnel"
+   ],
+   "ability_points": 5,
+   "allied": true
+  },
+  {
+   "id": "skuba_trappers",
+   "faction": "lechia",
+   "name": "სკუბას ხაფანგისტები",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "მარილის ყუმბარა",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast",
+      "anti_giant"
+     ]
+    },
+    {
+     "name": "მეწაღის დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "giant_hunter",
+    "monster_hunter"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "lechia_grotesque",
+   "faction": "lechia",
+   "name": "მარილის ჯავშან-ურემი",
+   "tier": "IV",
+   "size": 3,
+   "move": 6,
+   "shoot": 6,
+   "melee": 3,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ურმის ქვემეხები",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 4,
+     "damage": 2,
+     "tags": [
+      "blast"
+     ]
+    },
+    {
+     "name": "ტარანი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 4,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam"
+   ],
+   "ability_points": 6,
+   "allied": true
+  },
+  {
+   "id": "lechia_giant",
+   "faction": "lechia",
+   "name": "კრაკის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 8,
+   "armor": 6,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "გოლიათის შუბი",
+     "mode": "melee",
+     "range": 2,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "charge"
+     ]
+    },
+    {
+     "name": "მარილის ბატარეა",
+     "mode": "ranged",
+     "range": 30,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "fearless"
+   ],
+   "ability_points": 20,
+   "allied": true
+  },
+  {
+   "id": "byzantium_leader",
+   "faction": "byzantium",
+   "name": "სტრატეგოსი",
+   "tier": "II",
+   "size": 1,
+   "move": 6,
+   "shoot": 5,
+   "melee": 6,
+   "armor": 2,
+   "wounds": 3,
+   "nerve": 9,
+   "weapons": [
+    {
+     "name": "პისტოლეტი",
+     "mode": "ranged",
+     "range": 9,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "leader"
+   ],
+   "ability_points": 12,
+   "allied": true
+  },
+  {
+   "id": "byzantium_regulars",
+   "faction": "byzantium",
+   "name": "რიგითები",
+   "tier": "I",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხიშტი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "line",
+    "gas_mask"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "byzantium_thugs",
+   "faction": "byzantium",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "size": 1,
+   "move": 6,
+   "shoot": 3,
+   "melee": 5,
+   "armor": 1,
+   "wounds": 1,
+   "nerve": 6,
+   "weapons": [
+    {
+     "name": "რევოლვერი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "კეტი და სანგრის ნიჩაბი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": [
+      "frenzy"
+     ]
+    }
+   ],
+   "tags": [
+    "gas_mask",
+    "brawler"
+   ],
+   "ability_points": 1,
+   "allied": true
+  },
+  {
+   "id": "fire_siphoneers",
+   "faction": "byzantium",
+   "name": "ზღვის ცეცხლის სიფონისტები",
+   "tier": "II",
+   "size": 1,
+   "move": 5,
+   "shoot": 5,
+   "melee": 4,
+   "armor": 2,
+   "wounds": 2,
+   "nerve": 7,
+   "weapons": [
+    {
+     "name": "ცეცხლის სიფონი",
+     "mode": "ranged",
+     "range": 8,
+     "attacks": 2,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "fire"
+     ]
+    },
+    {
+     "name": "დანა",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 1,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "kataphraktoi",
+   "faction": "byzantium",
+   "name": "კატაფრაქტები",
+   "tier": "III",
+   "size": 2,
+   "move": 8,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 4,
+   "wounds": 3,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "კარაბინი",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "შუბი და ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 2,
+     "power": 4,
+     "damage": 1,
+     "tags": [
+      "charge"
+     ]
+    }
+   ],
+   "tags": [
+    "cavalry",
+    "trench_breaker"
+   ],
+   "ability_points": 4,
+   "allied": true
+  },
+  {
+   "id": "wall_guards",
+   "faction": "byzantium",
+   "name": "კედლის მცველები",
+   "tier": "II",
+   "size": 1,
+   "move": 4,
+   "shoot": 5,
+   "melee": 5,
+   "armor": 3,
+   "wounds": 2,
+   "nerve": 8,
+   "weapons": [
+    {
+     "name": "შაშხანა",
+     "mode": "ranged",
+     "range": 24,
+     "attacks": 1,
+     "power": 2,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ხმალი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "shield",
+    "shield_wall"
+   ],
+   "ability_points": 3,
+   "allied": true
+  },
+  {
+   "id": "byzantium_grotesque",
+   "faction": "byzantium",
+   "name": "მაგნაურას ორთქლის ლომი",
+   "tier": "IV",
+   "size": 3,
+   "move": 6,
+   "shoot": 4,
+   "melee": 6,
+   "armor": 5,
+   "wounds": 9,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ლომის ღრიალი",
+     "mode": "ranged",
+     "range": 12,
+     "attacks": 1,
+     "power": 3,
+     "damage": 1,
+     "tags": []
+    },
+    {
+     "name": "ბრინჯაოს ბრჭყალები",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 5,
+     "damage": 1,
+     "tags": []
+    }
+   ],
+   "tags": [
+    "vehicle",
+    "steam",
+    "automaton",
+    "discord"
+   ],
+   "ability_points": 7,
+   "allied": true
+  },
+  {
+   "id": "byzantium_giant",
+   "faction": "byzantium",
+   "name": "ბიზასის კოლოსი",
+   "tier": "V",
+   "size": 4,
+   "move": 6,
+   "shoot": 5,
+   "melee": 7,
+   "armor": 7,
+   "wounds": 22,
+   "nerve": 10,
+   "weapons": [
+    {
+     "name": "ჯაჭვის მჭრელი",
+     "mode": "melee",
+     "range": 1,
+     "attacks": 3,
+     "power": 6,
+     "damage": 3,
+     "tags": [
+      "sweep"
+     ]
+    },
+    {
+     "name": "ზღვის ცეცხლის ბატარეა",
+     "mode": "ranged",
+     "range": 18,
+     "attacks": 2,
+     "power": 5,
+     "damage": 3,
+     "tags": [
+      "fire",
+      "blast"
+     ]
+    }
+   ],
+   "tags": [
+    "giant",
+    "huge",
+    "fearless"
+   ],
+   "ability_points": 20,
+   "allied": true
   }
  ],
  "allies": {
@@ -14644,9 +15942,9 @@
   "northern": "ჩრდილოეთის კავშირი",
   "celtic": "კელტური კუნძულები",
   "finnish": "ფინეთის ტყეები",
-  "britain": "ბრიტანეთის კუნძული",
+  "britain": "საქსები",
   "gaul": "გალია",
-  "italy": "იტალიის ნახევარკუნძული",
+  "italy": "რომი",
   "polianitsy": "ჩრდილოეთის სლავური მიწები",
   "armenian": "სომხეთის მთიანეთი",
   "oghuz": "ოღუზთა მიწები",
@@ -14676,6 +15974,10 @@
   "pyrenean": "პირენეის ნახევარკუნძულის მთები",
   "alps": "ალპების მთები",
   "baltic": "ბალტიისპირეთის ტყეები და სანაპირო",
-  "australia": "ავსტრალიის შიდა მიწები"
+  "australia": "ავსტრალიის შიდა მიწები",
+  "prussia": "პრუსია",
+  "batavi": "ბატავები",
+  "lechia": "ლეხია",
+  "byzantium": "ბიზანტია"
  }
 }
