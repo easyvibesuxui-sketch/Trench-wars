@@ -19,6 +19,7 @@ WARBANDS = {
     "harness": ("ღამის რეიდი", [("rebel_chief", 1), ("rebels", 5), ("deserter_regulars", 2), ("heretic_sappers", 1), ("yoke_slaves", 2),
                                  ("kudiani", 1), ("blood_priests", 1), ("chain_shooters", 1)]),
 }
+ROLE_NAME = {r["id"]: f"{r['icon']} {r['name']}" for r in json.loads((ROOT / "data/roles.json").read_text(encoding="utf-8"))["roles"]}
 TIER_NAME = {"I": "ქვეითი", "II": "ელიტა", "III": "ჯავშნიანი", "IV": "გროტესკული", "IV+": "დიდი გროტესკული", "V": "გოლიათი", "hero": "გმირი"}
 e = html.escape
 
@@ -96,7 +97,7 @@ def card(u, cost, fname, tags, docs):
     boxes = "".join('<i></i>' for _ in range(min(u["wounds"], 24)))
     return f'''<article class="card t{u["tier"].replace("+", "p")}">
   <header><b>{e(u["name"])}</b><span class="cost">{cost}</span></header>
-  <div class="sub">{e(fname)} · {u["tier"]} {TIER_NAME[u["tier"]]}</div>
+  <div class="sub">{e(fname)} · {u["tier"]} {TIER_NAME[u["tier"]]}{" · " + e(ROLE_NAME.get(u.get("role"), "")) if u.get("role") else ""}</div>
   <div class="stats">{"".join(f"<div><b>{v}</b><span>{k}</span></div>" for k, v in stats)}</div>
   <table class="wp"><tr><th>იარაღი</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th></th></tr>{"".join(weapons)}</table>
   <div class="chips">{chips}</div>
@@ -216,6 +217,8 @@ QUICK_RULES = """
 <li><b>აფეთქება:</b> მოხვედრისას სამიზნის 2″-ში მყოფი ერთი სხვა მოდელი — d10 ≤ 5-ზე მასაც იგივე დაჭრის ტესტი.</li>
 <li><b>ჩასაფრება:</b> განლაგების შემდეგ დგება ნებისმიერ ადგილას, მოწინააღმდეგის 12″-ზე შორს და მისი ხედვის გარეთ.</li>
 <li><b>გოლიათზე მონადირე / გოლიათზე:</b> ზომა 3–4 სამიზნეზე დაჭრის რიცხვი −2.</li>
+<li><b>დათრგუნვა</b> (ტყვიამფრქვევი): ნასროლი ქვეითი — მოხვდა თუ არა — ჟეტონს იღებს: მასზე სროლა −1; თავის აქტივაციაზე ნებისყოფის
+ტესტი: ჩავარდნა → 1 მოქმედება, ვერ მოძრაობს და ვერ უტევს. <b>მფრინავზე</b> სროლა −1, <b>საზენიტოს</b> — +1 და +1 ძალა.</li>
 <li><b>ინჟინერი, თხრის თხრილს:</b> ერთი მოქმედება — 3″ თხრილი (მძიმე საფარი). <b>გვირაბი:</b> ერთხელ ბრძოლაში მოდელი იხსნება
 და მომდევნო აქტივაციაზე ნებისმიერ ნანგრევთან ან თხრილთან ჩნდება.</li></ul>
 <h3>კოლხეთი</h3>

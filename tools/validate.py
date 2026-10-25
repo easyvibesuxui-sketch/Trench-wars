@@ -73,6 +73,11 @@ def main():
         if u.get("allied") and u["tier"] in {"IV+", "hero"}:
             errors.append(f"{uid}: მოკავშირეს IV+ და გმირი არ ჰყავს")
 
+    roles = {r["id"] for r in json.loads((ROOT / "data" / "roles.json").read_text(encoding="utf-8"))["roles"]}
+    for u in units:
+        if u.get("role") not in roles:
+            errors.append(f"{u['id']}: როლი არ აქვს ან უცნობია ({u.get('role')}) — გაუშვი tools/assign_roles.py")
+
     for k in costs:
         if k not in by_id:
             warnings.append(f"costs.json: ზედმეტი ჩანაწერი {k}")

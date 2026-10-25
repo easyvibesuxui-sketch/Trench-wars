@@ -46,7 +46,8 @@
     "line",
     "gas_mask"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "line"
   },
   {
    "id": "port_brawlers",
@@ -86,7 +87,8 @@
     "gas_mask",
     "brawler"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "assault"
   },
   {
    "id": "dali_hunters",
@@ -124,9 +126,11 @@
    ],
    "tags": [
     "infiltrate",
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
-   "ability_points": 4
+   "ability_points": 4,
+   "role": "hunter"
   },
   {
    "id": "eristavi",
@@ -164,7 +168,8 @@
     "leader",
     "shield"
    ],
-   "ability_points": 10
+   "ability_points": 10,
+   "role": "command"
   },
   {
    "id": "aznauri",
@@ -201,7 +206,8 @@
    "tags": [
     "shield"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "assault"
   },
   {
    "id": "kolkhi_riders",
@@ -241,7 +247,8 @@
     "cavalry",
     "trench_breaker"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "cavalry"
   },
   {
    "id": "gurian_riders",
@@ -289,7 +296,8 @@
     "skirmisher",
     "trick_rider"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "cavalry"
   },
   {
    "id": "medea_sisters",
@@ -320,7 +328,8 @@
     "healer",
     "alchemist"
    ],
-   "ability_points": 18
+   "ability_points": 18,
+   "role": "support"
   },
   {
    "id": "shavkhan_smiths",
@@ -361,7 +370,8 @@
     "engineer",
     "digger"
    ],
-   "ability_points": 8
+   "ability_points": 8,
+   "role": "engineer"
   },
   {
    "id": "monaspa",
@@ -392,7 +402,8 @@
     "shield",
     "shield_wall"
    ],
-   "ability_points": 4
+   "ability_points": 4,
+   "role": "heavy_infantry"
   },
   {
    "id": "iron_arm_veterans",
@@ -422,7 +433,8 @@
    "tags": [
     "steam"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "heavy_infantry"
   },
   {
    "id": "khalkotavri",
@@ -463,7 +475,8 @@
     "vehicle",
     "steam"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "armor"
   },
   {
    "id": "ambri_ox",
@@ -493,7 +506,8 @@
     "relic",
     "steam"
    ],
-   "ability_points": 15
+   "ability_points": 15,
+   "role": "armor"
   },
   {
    "id": "golden_ram",
@@ -537,7 +551,8 @@
     "steam",
     "huge"
    ],
-   "ability_points": 12
+   "ability_points": 12,
+   "role": "armor"
   },
   {
    "id": "fleece_dragon",
@@ -581,7 +596,8 @@
     "fly",
     "never_sleeps"
    ],
-   "ability_points": 25
+   "ability_points": 25,
+   "role": "giant"
   },
   {
    "id": "hero_zurab",
@@ -621,7 +637,8 @@
     "leader",
     "hero"
    ],
-   "ability_points": 15
+   "ability_points": 15,
+   "role": "command"
   },
   {
    "id": "hero_eliso",
@@ -653,7 +670,8 @@
     "healer",
     "alchemist"
    ],
-   "ability_points": 40
+   "ability_points": 40,
+   "role": "support"
   },
   {
    "id": "khevsur",
@@ -691,7 +709,8 @@
     "mountain",
     "shield"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "assault"
   },
   {
    "id": "lowland_levy",
@@ -729,7 +748,8 @@
     "line",
     "gas_mask"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "line"
   },
   {
    "id": "qochebi",
@@ -769,7 +789,8 @@
     "gas_mask",
     "brawler"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "assault"
   },
   {
    "id": "tush_shepherds",
@@ -809,7 +830,8 @@
     "scout",
     "detect_heretic"
    ],
-   "ability_points": 5
+   "ability_points": 5,
+   "role": "scout"
   },
   {
    "id": "mountain_sappers",
@@ -850,7 +872,8 @@
     "engineer",
     "digger"
    ],
-   "ability_points": 5
+   "ability_points": 5,
+   "role": "engineer"
   },
   {
    "id": "spasalari",
@@ -887,7 +910,8 @@
    "tags": [
     "leader"
    ],
-   "ability_points": 10
+   "ability_points": 10,
+   "role": "command"
   },
   {
    "id": "natsiliani",
@@ -915,7 +939,8 @@
    "tags": [
     "marked"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "assault"
   },
   {
    "id": "lightning_gunners",
@@ -946,9 +971,11 @@
    ],
    "tags": [
     "giant_hunter",
-    "burn_gas"
+    "burn_gas",
+    "anti_air"
    ],
-   "ability_points": 4
+   "ability_points": 4,
+   "role": "hunter"
   },
   {
    "id": "tush_riders",
@@ -989,7 +1016,8 @@
     "mountain",
     "trench_breaker"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "cavalry"
   },
   {
    "id": "ekimbashi",
@@ -1018,7 +1046,8 @@
     "healer",
     "alchemist"
    ],
-   "ability_points": 16
+   "ability_points": 16,
+   "role": "support"
   },
   {
    "id": "fortress_guards",
@@ -1048,7 +1077,8 @@
     "shield_wall",
     "steam"
    ],
-   "ability_points": 5
+   "ability_points": 5,
+   "role": "heavy_infantry"
   },
   {
    "id": "iakhsar_shields",
@@ -1085,7 +1115,8 @@
     }
    ],
    "tags": [],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "heavy_infantry"
   },
   {
    "id": "steam_ibex",
@@ -1127,7 +1158,8 @@
     "steam",
     "climber"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "artillery"
   },
   {
    "id": "lightning_castle",
@@ -1149,7 +1181,9 @@
      "attacks": 5,
      "power": 2,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     },
     {
      "name": "ელვის ხვია",
@@ -1170,7 +1204,8 @@
     "huge",
     "fortress"
    ],
-   "ability_points": 12
+   "ability_points": 12,
+   "role": "armor"
   },
   {
    "id": "armazi_colossus",
@@ -1213,7 +1248,8 @@
     "giant",
     "steam"
    ],
-   "ability_points": 25
+   "ability_points": 25,
+   "role": "giant"
   },
   {
    "id": "hero_amirani",
@@ -1256,7 +1292,8 @@
     "hero",
     "titan"
    ],
-   "ability_points": 20
+   "ability_points": 20,
+   "role": "assault"
   },
   {
    "id": "recruits",
@@ -1294,7 +1331,8 @@
     "needs_orders",
     "fearless"
    ],
-   "ability_points": -2
+   "ability_points": -2,
+   "role": "line"
   },
   {
    "id": "legion_shooters",
@@ -1317,7 +1355,8 @@
      "power": 2,
      "damage": 1,
      "tags": [
-      "volley"
+      "volley",
+      "suppress"
      ]
     }
    ],
@@ -1325,7 +1364,8 @@
     "line",
     "gas_mask"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "heavy_weapons"
   },
   {
    "id": "penal_squad",
@@ -1365,7 +1405,8 @@
     "gas_mask",
     "brawler"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "assault"
   },
   {
    "id": "marquis",
@@ -1405,7 +1446,8 @@
     "leader",
     "orders"
    ],
-   "ability_points": 12
+   "ability_points": 12,
+   "role": "command"
   },
   {
    "id": "halphas_fortifiers",
@@ -1435,7 +1477,8 @@
     "digger",
     "supply"
    ],
-   "ability_points": 9
+   "ability_points": 9,
+   "role": "engineer"
   },
   {
    "id": "malphas_wreckers",
@@ -1479,7 +1522,8 @@
    "tags": [
     "giant_hunter"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "hunter"
   },
   {
    "id": "andras_whisperers",
@@ -1507,7 +1551,8 @@
    "tags": [
     "discord"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "disruptor"
   },
   {
    "id": "glasya_killers",
@@ -1549,7 +1594,8 @@
     "infiltrate",
     "assassin"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "disruptor"
   },
   {
    "id": "legionnaires",
@@ -1579,7 +1625,8 @@
     "shield_wall",
     "steam"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "heavy_infantry"
   },
   {
    "id": "furcas_riders",
@@ -1610,7 +1657,8 @@
     "cavalry",
     "trench_breaker"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "cavalry"
   },
   {
    "id": "marchosias_wolves",
@@ -1639,7 +1687,8 @@
     "fly",
     "hunter"
    ],
-   "ability_points": 5
+   "ability_points": 5,
+   "role": "flyer"
   },
   {
    "id": "behemoth_spawn",
@@ -1679,7 +1728,8 @@
     "monster",
     "rage"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "monster"
   },
   {
    "id": "mulciber_forge",
@@ -1708,7 +1758,8 @@
     "vehicle",
     "repair"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "armor"
   },
   {
    "id": "standard_fortress",
@@ -1731,7 +1782,8 @@
      "power": 2,
      "damage": 1,
      "tags": [
-      "volley"
+      "volley",
+      "suppress"
      ]
     },
     {
@@ -1752,7 +1804,8 @@
     "fortress",
     "orders"
    ],
-   "ability_points": 18
+   "ability_points": 18,
+   "role": "armor"
   },
   {
    "id": "behemoth",
@@ -1783,14 +1836,17 @@
      "attacks": 4,
      "power": 2,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     }
    ],
    "tags": [
     "giant",
     "rage"
    ],
-   "ability_points": 18
+   "ability_points": 18,
+   "role": "giant"
   },
   {
    "id": "hero_sabnock",
@@ -1822,7 +1878,8 @@
     "hero",
     "orders"
    ],
-   "ability_points": 18
+   "ability_points": 18,
+   "role": "command"
   },
   {
    "id": "rebels",
@@ -1862,7 +1919,8 @@
     "madness",
     "brawler"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "assault"
   },
   {
    "id": "deserter_regulars",
@@ -1900,7 +1958,8 @@
     "line",
     "gas_mask"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "line"
   },
   {
    "id": "heretic_sappers",
@@ -1941,7 +2000,8 @@
     "digger",
     "tunnel"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "engineer"
   },
   {
    "id": "yoke_slaves",
@@ -1973,7 +2033,8 @@
     "cover_for_others",
     "can_be_freed"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "line"
   },
   {
    "id": "rebel_chief",
@@ -2011,7 +2072,8 @@
     "leader",
     "nameless"
    ],
-   "ability_points": 9
+   "ability_points": 9,
+   "role": "command"
   },
   {
    "id": "blood_priests",
@@ -2041,7 +2103,8 @@
    "tags": [
     "ritual"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "support"
   },
   {
    "id": "kudiani",
@@ -2083,7 +2146,8 @@
     "witch",
     "fog"
    ],
-   "ability_points": 16
+   "ability_points": 16,
+   "role": "disruptor"
   },
   {
    "id": "chain_shooters",
@@ -2116,7 +2180,8 @@
     "giant_hunter",
     "anti_air"
    ],
-   "ability_points": 4
+   "ability_points": 4,
+   "role": "hunter"
   },
   {
    "id": "kaji_smith",
@@ -2145,7 +2210,8 @@
     "alchemist",
     "stitcher"
    ],
-   "ability_points": 16
+   "ability_points": 16,
+   "role": "support"
   },
   {
    "id": "chained_ones",
@@ -2175,7 +2241,8 @@
    "tags": [
     "madness"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "heavy_infantry"
   },
   {
    "id": "kaji_stitched",
@@ -2205,7 +2272,8 @@
     "split",
     "fire_weak"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "heavy_infantry"
   },
   {
    "id": "devi_spawn",
@@ -2236,7 +2304,8 @@
     "fire_weak",
     "lightning_weak"
    ],
-   "ability_points": 4
+   "ability_points": 4,
+   "role": "monster"
   },
   {
    "id": "gveleshapi",
@@ -2267,7 +2336,8 @@
     "monster",
     "flood"
    ],
-   "ability_points": 8
+   "ability_points": 8,
+   "role": "monster"
   },
   {
    "id": "chain_wagon",
@@ -2289,7 +2359,9 @@
      "attacks": 5,
      "power": 2,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     },
     {
      "name": "შებმული დევები",
@@ -2306,7 +2378,8 @@
     "huge",
     "devi_pulled"
    ],
-   "ability_points": 10
+   "ability_points": 10,
+   "role": "armor"
   },
   {
    "id": "bakbak_devi",
@@ -2338,7 +2411,8 @@
     "fire_weak",
     "lightning_weak"
    ],
-   "ability_points": 12
+   "ability_points": 12,
+   "role": "giant"
   },
   {
    "id": "hero_nameless",
@@ -2377,7 +2451,8 @@
     "hero",
     "convert"
    ],
-   "ability_points": 22
+   "ability_points": 22,
+   "role": "command"
   },
   {
    "id": "listeners_leader",
@@ -2417,7 +2492,8 @@
     "leader",
     "discord"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "command"
   },
   {
    "id": "false_regulars",
@@ -2456,7 +2532,8 @@
     "gas_mask",
     "planted"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "disruptor"
   },
   {
    "id": "silent_knives",
@@ -2497,7 +2574,8 @@
     "brawler",
     "infiltrate"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "scout"
   },
   {
    "id": "whisper_scouts",
@@ -2527,7 +2605,8 @@
     "infiltrate",
     "planted"
    ],
-   "ability_points": 4
+   "ability_points": 4,
+   "role": "disruptor"
   },
   {
    "id": "false_engineers",
@@ -2569,7 +2648,8 @@
     "engineer",
     "planted"
    ],
-   "ability_points": 5
+   "ability_points": 5,
+   "role": "disruptor"
   },
   {
    "id": "lock_smiths",
@@ -2597,7 +2677,8 @@
    "tags": [
     "weakness"
    ],
-   "ability_points": 12
+   "ability_points": 12,
+   "role": "disruptor"
   },
   {
    "id": "voice_mimics",
@@ -2626,7 +2707,8 @@
     "discord",
     "infiltrate"
    ],
-   "ability_points": 12
+   "ability_points": 12,
+   "role": "disruptor"
   },
   {
    "id": "masked_guard",
@@ -2648,7 +2730,9 @@
      "attacks": 2,
      "power": 3,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     },
     {
      "name": "ხიშტი",
@@ -2664,7 +2748,8 @@
     "shield",
     "gas_mask"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "heavy_weapons"
   },
   {
    "id": "lock_wagon",
@@ -2704,7 +2789,8 @@
     "vehicle",
     "steam"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "armor"
   },
   {
    "id": "listeners_giant",
@@ -2747,7 +2833,8 @@
     "huge",
     "fearless"
    ],
-   "ability_points": 20
+   "ability_points": 20,
+   "role": "giant"
   },
   {
    "id": "hero_kalistrate",
@@ -2789,7 +2876,8 @@
     "planted",
     "discord"
    ],
-   "ability_points": 20
+   "ability_points": 20,
+   "role": "command"
   },
   {
    "id": "kajeti_leader",
@@ -2827,7 +2915,8 @@
     "leader",
     "repair"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "command"
   },
   {
    "id": "cast_regulars",
@@ -2867,7 +2956,8 @@
     "construct",
     "fearless"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "line"
   },
   {
    "id": "kaji_hammers",
@@ -2907,7 +2997,8 @@
     "gas_mask",
     "brawler"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "assault"
   },
   {
    "id": "wind_kaji",
@@ -2935,7 +3026,8 @@
    "tags": [
     "fly"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "flyer"
   },
   {
    "id": "flask_smiths",
@@ -2964,7 +3056,8 @@
     "alchemist",
     "stitcher"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "support"
   },
   {
    "id": "forged_riders",
@@ -3004,7 +3097,8 @@
     "cavalry",
     "construct"
    ],
-   "ability_points": 3
+   "ability_points": 3,
+   "role": "cavalry"
   },
   {
    "id": "silver_shooters",
@@ -3032,7 +3126,8 @@
     }
    ],
    "tags": [],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "sniper"
   },
   {
    "id": "cast_wardens",
@@ -3062,7 +3157,8 @@
     "shield_wall",
     "fearless"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "heavy_infantry"
   },
   {
    "id": "stitched_brutes",
@@ -3091,7 +3187,8 @@
     "regen",
     "fearless"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "heavy_infantry"
   },
   {
    "id": "walking_furnace",
@@ -3132,7 +3229,8 @@
     "steam",
     "construct"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "armor"
   },
   {
    "id": "kajeti_giant",
@@ -3176,7 +3274,8 @@
     "fearless",
     "fortress"
    ],
-   "ability_points": 20
+   "ability_points": 20,
+   "role": "giant"
   },
   {
    "id": "hero_zarda",
@@ -3219,7 +3318,8 @@
     "hero",
     "repair"
    ],
-   "ability_points": 20
+   "ability_points": 20,
+   "role": "command"
   },
   {
    "id": "ring_leader",
@@ -3257,7 +3357,8 @@
     "leader",
     "orders"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "command"
   },
   {
    "id": "ring_regulars",
@@ -3295,7 +3396,8 @@
     "line",
     "gas_mask"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "line"
   },
   {
    "id": "ring_thugs",
@@ -3335,7 +3437,8 @@
     "gas_mask",
     "brawler"
    ],
-   "ability_points": 1
+   "ability_points": 1,
+   "role": "assault"
   },
   {
    "id": "interpreters",
@@ -3364,7 +3467,8 @@
     "interpreter",
     "messenger"
    ],
-   "ability_points": 5
+   "ability_points": 5,
+   "role": "support"
   },
   {
    "id": "tribute_veterans",
@@ -3387,7 +3491,8 @@
      "power": 2,
      "damage": 1,
      "tags": [
-      "volley"
+      "volley",
+      "suppress"
      ]
     },
     {
@@ -3404,7 +3509,8 @@
     "line",
     "gas_mask"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "heavy_weapons"
   },
   {
    "id": "furrow_sappers",
@@ -3444,7 +3550,8 @@
     "engineer",
     "digger"
    ],
-   "ability_points": 5
+   "ability_points": 5,
+   "role": "engineer"
   },
   {
    "id": "field_sisters",
@@ -3472,7 +3579,8 @@
    "tags": [
     "healer"
    ],
-   "ability_points": 14
+   "ability_points": 14,
+   "role": "support"
   },
   {
    "id": "tribute_heavies",
@@ -3494,7 +3602,9 @@
      "attacks": 2,
      "power": 3,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     },
     {
      "name": "ხიშტი",
@@ -3510,7 +3620,8 @@
     "shield",
     "gas_mask"
    ],
-   "ability_points": 2
+   "ability_points": 2,
+   "role": "heavy_weapons"
   },
   {
    "id": "ring_train",
@@ -3551,7 +3662,8 @@
     "steam",
     "rail"
    ],
-   "ability_points": 6
+   "ability_points": 6,
+   "role": "armor"
   },
   {
    "id": "ring_giant",
@@ -3594,7 +3706,8 @@
     "huge",
     "fearless"
    ],
-   "ability_points": 20
+   "ability_points": 20,
+   "role": "giant"
   },
   {
    "id": "hero_levan",
@@ -3634,7 +3747,8 @@
     "orders",
     "interpreter"
    ],
-   "ability_points": 20
+   "ability_points": 20,
+   "role": "command"
   },
   {
    "id": "automaton_phalanx",
@@ -3665,7 +3779,8 @@
     "automaton"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "hellenic_regulars",
@@ -3704,7 +3819,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "hellenic_thugs",
@@ -3745,7 +3861,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "cyclops_gunners",
@@ -3777,7 +3894,8 @@
     "artillery"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "artillery"
   },
   {
    "id": "jotun_hunters",
@@ -3814,10 +3932,12 @@
     }
    ],
    "tags": [
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "northern_regulars",
@@ -3856,7 +3976,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "northern_thugs",
@@ -3897,7 +4018,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "tyr_onehands",
@@ -3929,7 +4051,8 @@
     "oathbound"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "lugh_marksmen",
@@ -3958,10 +4081,12 @@
    ],
    "tags": [
     "infiltrate",
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "celtic_regulars",
@@ -4000,7 +4125,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "celtic_thugs",
@@ -4041,7 +4167,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "goibniu_smiths",
@@ -4071,7 +4198,8 @@
     "repair"
    ],
    "ability_points": 10,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "ilmarinen_forged",
@@ -4101,7 +4229,8 @@
     "fearless"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "finnish_regulars",
@@ -4140,7 +4269,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "finnish_thugs",
@@ -4181,7 +4311,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "vainamoinen_singers",
@@ -4210,7 +4341,8 @@
     "song"
    ],
    "ability_points": 16,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "beowulf_heirs",
@@ -4241,7 +4373,8 @@
     "monster_hunter"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "britain_regulars",
@@ -4280,7 +4413,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "britain_thugs",
@@ -4321,7 +4455,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "fen_scouts",
@@ -4351,7 +4486,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "taranis_signallers",
@@ -4382,7 +4518,8 @@
     "burn_gas"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "gaul_regulars",
@@ -4421,7 +4558,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "gaul_thugs",
@@ -4462,7 +4600,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "vulcan_gunners",
@@ -4494,7 +4633,8 @@
     "artillery"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "artillery"
   },
   {
    "id": "italy_regulars",
@@ -4533,7 +4673,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "italy_thugs",
@@ -4574,7 +4715,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "hercules_hammers",
@@ -4601,7 +4743,8 @@
    ],
    "tags": [],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "polianitsa",
@@ -4634,7 +4777,8 @@
     "rare"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "polianitsy_regulars",
@@ -4673,7 +4817,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "polianitsy_thugs",
@@ -4714,7 +4859,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "winter_scouts",
@@ -4744,7 +4890,8 @@
     "winter_born"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "vahagn_slayers",
@@ -4785,7 +4932,8 @@
     "monster_hunter"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "armenian_regulars",
@@ -4824,7 +4972,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "armenian_thugs",
@@ -4865,7 +5014,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "aralez_keepers",
@@ -4894,7 +5044,8 @@
     "healer"
    ],
    "ability_points": 18,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "basat_hunters",
@@ -4931,10 +5082,12 @@
     }
    ],
    "tags": [
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "oghuz_regulars",
@@ -4973,7 +5126,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "oghuz_thugs",
@@ -5014,7 +5168,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "koroglu_riders",
@@ -5055,7 +5210,8 @@
     "trench_breaker"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "nile_timekeepers",
@@ -5085,7 +5241,8 @@
     "night_sight"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "nile_regulars",
@@ -5124,7 +5281,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "nile_thugs",
@@ -5165,7 +5323,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "set_spearmen",
@@ -5206,7 +5365,8 @@
     "monster_hunter"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "sekhmet_warriors",
@@ -5237,7 +5397,8 @@
     "rage"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "yu_canal_diggers",
@@ -5277,7 +5438,8 @@
     "flood"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "yellow_river_regulars",
@@ -5316,7 +5478,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "yellow_river_thugs",
@@ -5357,7 +5520,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "tripod_scholars",
@@ -5386,7 +5550,8 @@
     "weakness"
    ],
    "ability_points": 10,
-   "allied": true
+   "allied": true,
+   "role": "disruptor"
   },
   {
    "id": "xiangliu_hunters",
@@ -5408,7 +5573,9 @@
      "attacks": 3,
      "power": 2,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     },
     {
      "name": "ხანჯალი",
@@ -5424,7 +5591,8 @@
     "monster_hunter"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_weapons"
   },
   {
    "id": "hidesato_archers",
@@ -5462,10 +5630,12 @@
    ],
    "tags": [
     "giant_hunter",
-    "third_arrow"
+    "third_arrow",
+    "anti_air"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "japan_isles_regulars",
@@ -5504,7 +5674,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "japan_isles_thugs",
@@ -5545,7 +5716,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "three_companions",
@@ -5576,7 +5748,8 @@
     "infiltrate"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "karakuri_soldiers",
@@ -5607,7 +5780,8 @@
     "fearless"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "lantern_bearers",
@@ -5648,7 +5822,8 @@
     "night_sight"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "indian_regulars",
@@ -5687,7 +5862,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "indian_thugs",
@@ -5728,7 +5904,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "vikram_blades",
@@ -5757,7 +5934,8 @@
     "fearless"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "elephant_gunners",
@@ -5789,7 +5967,8 @@
     "artillery"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "artillery"
   },
   {
    "id": "net_weavers",
@@ -5829,7 +6008,8 @@
     "monster_hunter"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "west_african_regulars",
@@ -5868,7 +6048,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "west_african_thugs",
@@ -5909,7 +6090,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "mirror_marksmen",
@@ -5938,10 +6120,12 @@
    ],
    "tags": [
     "giant_hunter",
-    "fearless"
+    "fearless",
+    "anti_air"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "storytellers",
@@ -5970,7 +6154,8 @@
     "song"
    ],
    "ability_points": 14,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "hammer_crew",
@@ -6000,7 +6185,8 @@
     "tunnel"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "north_american_regulars",
@@ -6039,7 +6225,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "north_american_thugs",
@@ -6080,7 +6267,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "lumberjacks",
@@ -6118,7 +6306,8 @@
     "fell_trees"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "armored_train_gunners",
@@ -6140,14 +6329,17 @@
      "attacks": 3,
      "power": 2,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     }
    ],
    "tags": [
     "rail"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_weapons"
   },
   {
    "id": "fire_runners",
@@ -6179,7 +6371,8 @@
     "torch"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "mexica_regulars",
@@ -6218,7 +6411,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "mexica_thugs",
@@ -6259,7 +6453,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "xiuhcoatl_gunners",
@@ -6291,7 +6486,8 @@
     "monster_hunter"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "sky_watchers",
@@ -6321,7 +6517,8 @@
     "night_sight"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "river_pilots",
@@ -6351,7 +6548,8 @@
     "river"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "amazon_regulars",
@@ -6390,7 +6588,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "amazon_thugs",
@@ -6431,7 +6630,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "curupira_scouts",
@@ -6461,7 +6661,8 @@
     "false_tracks"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "mapinguari_hunters",
@@ -6498,10 +6699,12 @@
     }
    ],
    "tags": [
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "bridge_weavers",
@@ -6540,7 +6743,8 @@
     "rope_bridge"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "andes_regulars",
@@ -6579,7 +6783,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "andes_thugs",
@@ -6620,7 +6825,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "chaski_runners",
@@ -6650,7 +6856,8 @@
     "messenger"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "andean_slingers",
@@ -6680,7 +6887,8 @@
     "high_ground"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "lighthouse_keepers",
@@ -6712,7 +6920,8 @@
     "beacon"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "caribbean_regulars",
@@ -6751,7 +6960,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "caribbean_thugs",
@@ -6792,7 +7002,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "harpoon_fishers",
@@ -6834,7 +7045,8 @@
     "river"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "papa_bois_scouts",
@@ -6864,7 +7076,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "wayfinders",
@@ -6894,7 +7107,8 @@
     "wayfinder"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "oceania_regulars",
@@ -6933,7 +7147,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "oceania_thugs",
@@ -6974,7 +7189,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "canoe_raiders",
@@ -7014,7 +7230,8 @@
     "landing"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "reef_wardens",
@@ -7052,7 +7269,8 @@
     "reef"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "nkuba_gunners",
@@ -7081,10 +7299,12 @@
     }
    ],
    "tags": [
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "central_african_regulars",
@@ -7123,7 +7343,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "central_african_thugs",
@@ -7164,7 +7385,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "forest_trackers",
@@ -7194,7 +7416,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "storyteller_telegraphers",
@@ -7223,7 +7446,8 @@
     "messenger"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "mountain_riflemen",
@@ -7253,7 +7477,8 @@
     "high_ground"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "sniper"
   },
   {
    "id": "southern_african_regulars",
@@ -7292,7 +7517,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "southern_african_thugs",
@@ -7333,7 +7559,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "saw_blades",
@@ -7364,7 +7591,8 @@
     "monster_hunter"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "mounted_scouts",
@@ -7394,7 +7622,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "lake_diggers",
@@ -7424,7 +7653,8 @@
     "tunnel"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "great_lakes_regulars",
@@ -7463,7 +7693,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "great_lakes_thugs",
@@ -7504,7 +7735,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "silent_warriors",
@@ -7534,7 +7766,8 @@
     "silent"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "lake_boatmen",
@@ -7564,7 +7797,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "khettara_diggers",
@@ -7594,7 +7828,8 @@
     "tunnel"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "north_african_regulars",
@@ -7633,7 +7868,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "north_african_thugs",
@@ -7674,7 +7910,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "caravan_guards",
@@ -7712,7 +7949,8 @@
     "clear_sight"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "agadir_guards",
@@ -7750,7 +7988,8 @@
     "shield_wall"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "rostam_heirs",
@@ -7781,7 +8020,8 @@
     "monster_hunter"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "central_asian_regulars",
@@ -7820,7 +8060,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "central_asian_thugs",
@@ -7861,7 +8102,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "tulpar_riders",
@@ -7902,7 +8144,8 @@
     "trench_breaker"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "mountain_guides",
@@ -7932,7 +8175,8 @@
     "clear_sight"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "pearl_divers",
@@ -7971,7 +8215,8 @@
     "river"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "gulf_regulars",
@@ -8010,7 +8255,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "gulf_thugs",
@@ -8051,7 +8297,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "dhow_sailors",
@@ -8091,7 +8338,8 @@
     "landing"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "coast_gunners",
@@ -8123,7 +8371,8 @@
     "artillery"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "artillery"
   },
   {
    "id": "hellenic_leader",
@@ -8161,7 +8410,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "hellenic_grotesque",
@@ -8194,7 +8444,8 @@
     "fearless"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "hellenic_giant",
@@ -8237,7 +8488,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "hoplites",
@@ -8276,7 +8528,8 @@
     "shield_wall"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "northern_leader",
@@ -8314,7 +8567,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "northern_grotesque",
@@ -8355,7 +8609,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "northern_giant",
@@ -8398,7 +8653,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "varangians",
@@ -8439,7 +8695,8 @@
     "fearless"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "celtic_leader",
@@ -8477,7 +8734,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "nuada_silverhands",
@@ -8516,7 +8774,8 @@
     "shield"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "curragh_raiders",
@@ -8554,7 +8813,8 @@
     "landing"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "celtic_grotesque",
@@ -8596,7 +8856,8 @@
     "repair"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "celtic_giant",
@@ -8639,7 +8900,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "gallowglass",
@@ -8679,7 +8941,8 @@
     "fearless"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "finnish_leader",
@@ -8717,7 +8980,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "finnish_grotesque",
@@ -8749,7 +9013,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "finnish_giant",
@@ -8793,7 +9058,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "hakkapeliitta",
@@ -8834,7 +9100,8 @@
     "winter_born"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "britain_leader",
@@ -8872,7 +9139,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "britain_grotesque",
@@ -8913,7 +9181,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "britain_giant",
@@ -8956,7 +9225,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "huscarls",
@@ -8998,7 +9268,8 @@
     "oathbound"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "gaul_leader",
@@ -9036,7 +9307,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "belenos_shields",
@@ -9074,7 +9346,8 @@
     "shield_wall"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "tarasque_breakers",
@@ -9117,7 +9390,8 @@
     "monster_hunter"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "gaul_grotesque",
@@ -9158,7 +9432,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "gaul_giant",
@@ -9201,7 +9476,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "cuirassiers",
@@ -9242,7 +9518,8 @@
     "trench_breaker"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "italy_leader",
@@ -9280,7 +9557,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "italy_grotesque",
@@ -9322,7 +9600,8 @@
     "artillery"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "italy_giant",
@@ -9365,7 +9644,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "praetorians",
@@ -9404,7 +9684,8 @@
     "fearless"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "polianitsy_leader",
@@ -9442,7 +9723,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "polianitsy_grotesque",
@@ -9483,7 +9765,8 @@
     "winter_born"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "polianitsy_giant",
@@ -9526,7 +9809,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "armenian_leader",
@@ -9564,7 +9848,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "armenian_grotesque",
@@ -9605,7 +9890,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "armenian_giant",
@@ -9648,7 +9934,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "oghuz_leader",
@@ -9686,7 +9973,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "oghuz_grotesque",
@@ -9719,7 +10007,8 @@
     "trench_breaker"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "oghuz_giant",
@@ -9763,7 +10052,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "nile_leader",
@@ -9801,7 +10091,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "nile_grotesque",
@@ -9842,7 +10133,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "nile_giant",
@@ -9885,7 +10177,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "medjay",
@@ -9923,7 +10216,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "yellow_river_leader",
@@ -9961,7 +10255,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "yellow_river_grotesque",
@@ -10002,7 +10297,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "yellow_river_giant",
@@ -10046,7 +10342,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "japan_isles_leader",
@@ -10084,7 +10381,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "japan_isles_grotesque",
@@ -10124,7 +10422,8 @@
     "vehicle"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "japan_isles_giant",
@@ -10167,7 +10466,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "samurai",
@@ -10205,7 +10505,8 @@
     "oathbound"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "indian_leader",
@@ -10243,7 +10544,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "indian_grotesque",
@@ -10284,7 +10586,8 @@
     "beacon"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "indian_giant",
@@ -10327,7 +10630,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "west_african_leader",
@@ -10365,7 +10669,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "west_african_grotesque",
@@ -10406,7 +10711,8 @@
     "clear_sight"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "west_african_giant",
@@ -10449,7 +10755,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "north_american_leader",
@@ -10487,7 +10794,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "north_american_grotesque",
@@ -10529,7 +10837,8 @@
     "rail"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "north_american_giant",
@@ -10572,7 +10881,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "mexica_leader",
@@ -10610,7 +10920,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "tlaloc_shields",
@@ -10648,7 +10959,8 @@
     "shield_wall"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "mictlan_stormers",
@@ -10686,7 +10998,8 @@
     "climber"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "mexica_grotesque",
@@ -10727,7 +11040,8 @@
     "torch"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "mexica_giant",
@@ -10770,7 +11084,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "amazon_leader",
@@ -10808,7 +11123,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "amazon_grotesque",
@@ -10850,7 +11166,8 @@
     "river"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "amazon_giant",
@@ -10893,7 +11210,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "andes_leader",
@@ -10931,7 +11249,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "andes_grotesque",
@@ -10971,7 +11290,8 @@
     "vehicle"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "andes_giant",
@@ -11015,7 +11335,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "caribbean_leader",
@@ -11053,7 +11374,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "caribbean_grotesque",
@@ -11094,7 +11416,8 @@
     "beacon"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "caribbean_giant",
@@ -11137,7 +11460,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "oceania_leader",
@@ -11175,7 +11499,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "oceania_grotesque",
@@ -11216,7 +11541,8 @@
     "landing"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "oceania_giant",
@@ -11259,7 +11585,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "central_african_leader",
@@ -11297,7 +11624,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "central_african_grotesque",
@@ -11338,7 +11666,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "central_african_giant",
@@ -11381,7 +11710,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "southern_african_leader",
@@ -11419,7 +11749,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "southern_african_grotesque",
@@ -11451,7 +11782,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "southern_african_giant",
@@ -11494,7 +11826,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "great_lakes_leader",
@@ -11532,7 +11865,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "great_lakes_grotesque",
@@ -11565,7 +11899,8 @@
     "tunnel"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "great_lakes_giant",
@@ -11608,7 +11943,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "north_african_leader",
@@ -11646,7 +11982,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "north_african_grotesque",
@@ -11687,7 +12024,8 @@
     "fortress"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "north_african_giant",
@@ -11730,7 +12068,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "central_asian_leader",
@@ -11768,7 +12107,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "central_asian_grotesque",
@@ -11801,7 +12141,8 @@
     "trench_breaker"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "central_asian_giant",
@@ -11845,7 +12186,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "gulf_leader",
@@ -11883,7 +12225,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "gulf_grotesque",
@@ -11924,7 +12267,8 @@
     "landing"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "gulf_giant",
@@ -11968,7 +12312,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "sea_islands_leader",
@@ -12006,7 +12351,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "sea_islands_regulars",
@@ -12045,7 +12391,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "sea_islands_thugs",
@@ -12086,7 +12433,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "gong_warriors",
@@ -12115,7 +12463,8 @@
     "gong"
    ],
    "ability_points": 8,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "bangka_raiders",
@@ -12156,7 +12505,8 @@
     "river"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "lantaka_gunners",
@@ -12187,7 +12537,8 @@
     "artillery"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "artillery"
   },
   {
    "id": "sea_islands_grotesque",
@@ -12228,7 +12579,8 @@
     "landing"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "sea_islands_giant",
@@ -12272,7 +12624,8 @@
     "gong"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "korea_leader",
@@ -12310,7 +12663,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "korea_regulars",
@@ -12349,7 +12703,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "korea_thugs",
@@ -12390,7 +12745,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "haetae_firewardens",
@@ -12428,7 +12784,8 @@
     "fire_guard"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "tiger_hunters",
@@ -12460,7 +12817,8 @@
     "climber"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "dokkaebi_bargainers",
@@ -12489,7 +12847,8 @@
     "discord"
    ],
    "ability_points": 10,
-   "allied": true
+   "allied": true,
+   "role": "disruptor"
   },
   {
    "id": "korea_grotesque",
@@ -12530,7 +12889,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "korea_giant",
@@ -12574,7 +12934,8 @@
     "fire_guard"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "hwarang",
@@ -12612,7 +12973,8 @@
     "fearless"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "mongolia_leader",
@@ -12650,7 +13012,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "mongolia_regulars",
@@ -12689,7 +13052,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "mongolia_thugs",
@@ -12730,7 +13094,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "urtuu_riders",
@@ -12760,7 +13125,8 @@
     "messenger"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "eagle_hunters",
@@ -12800,7 +13166,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "artillery"
   },
   {
    "id": "steppe_riflemen",
@@ -12829,7 +13196,8 @@
     "scout"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "mongolia_grotesque",
@@ -12870,7 +13238,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "mongolia_giant",
@@ -12914,7 +13283,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "keshig",
@@ -12953,7 +13323,8 @@
     "skirmisher"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "arctic_leader",
@@ -12991,7 +13362,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "arctic_regulars",
@@ -13030,7 +13402,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "arctic_thugs",
@@ -13071,7 +13444,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "sled_riders",
@@ -13100,7 +13474,8 @@
     "ice_runner"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "ice_readers",
@@ -13130,7 +13505,8 @@
     "ice_reader"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "kayak_hunters",
@@ -13172,7 +13548,8 @@
     "river"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "arctic_grotesque",
@@ -13214,7 +13591,8 @@
     "ice_runner"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "arctic_giant",
@@ -13258,7 +13636,8 @@
     "ice_runner"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "siberia_leader",
@@ -13296,7 +13675,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "siberia_regulars",
@@ -13335,7 +13715,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "siberia_thugs",
@@ -13376,7 +13757,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "olonkho_singers",
@@ -13405,7 +13787,8 @@
     "song"
    ],
    "ability_points": 14,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "taiga_hunters",
@@ -13434,10 +13817,12 @@
    ],
    "tags": [
     "infiltrate",
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "reindeer_riders",
@@ -13467,7 +13852,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "siberia_grotesque",
@@ -13499,7 +13885,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "siberia_giant",
@@ -13543,7 +13930,8 @@
     "tunnel"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "balkans_leader",
@@ -13581,7 +13969,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "balkans_regulars",
@@ -13620,7 +14009,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "balkans_thugs",
@@ -13661,7 +14051,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "dragon_born",
@@ -13701,7 +14092,8 @@
     "marked"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "flyer"
   },
   {
    "id": "wind_readers",
@@ -13731,7 +14123,8 @@
     "clear_sight"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "mountain_wardens",
@@ -13760,7 +14153,8 @@
     "climber"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "balkans_grotesque",
@@ -13801,7 +14195,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "balkans_giant",
@@ -13845,7 +14240,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "pyrenean_leader",
@@ -13883,7 +14279,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "pyrenean_regulars",
@@ -13922,7 +14319,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "pyrenean_thugs",
@@ -13963,7 +14361,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "basajaun_shepherds",
@@ -13993,7 +14392,8 @@
     "night_sight"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "miner_sappers",
@@ -14035,7 +14435,8 @@
     "engineer"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "cyclops_hunters",
@@ -14063,10 +14464,12 @@
     }
    ],
    "tags": [
-    "giant_hunter"
+    "giant_hunter",
+    "anti_air"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "pyrenean_grotesque",
@@ -14107,7 +14510,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "pyrenean_giant",
@@ -14150,7 +14554,8 @@
     "huge"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "almogavars",
@@ -14189,7 +14594,8 @@
     "skirmisher"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "alps_leader",
@@ -14227,7 +14633,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "alps_regulars",
@@ -14266,7 +14673,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "alps_thugs",
@@ -14307,7 +14715,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "ice_climbers",
@@ -14337,7 +14746,8 @@
     "mountain"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "avalanche_sappers",
@@ -14371,7 +14781,8 @@
     "climber"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "artillery"
   },
   {
    "id": "alpine_riflemen",
@@ -14400,7 +14811,8 @@
     "climber"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "sniper"
   },
   {
    "id": "alps_grotesque",
@@ -14442,7 +14854,8 @@
     "climber"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "alps_giant",
@@ -14487,7 +14900,8 @@
     "climber"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "reislaufer",
@@ -14528,7 +14942,8 @@
     "fearless"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "baltic_leader",
@@ -14566,7 +14981,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "baltic_regulars",
@@ -14605,7 +15021,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "baltic_thugs",
@@ -14646,7 +15063,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "gate_wardens",
@@ -14684,7 +15102,8 @@
     "shield_wall"
    ],
    "ability_points": 2,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "amber_alchemists",
@@ -14714,7 +15133,8 @@
     "alchemist"
    ],
    "ability_points": 16,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "marsh_riflemen",
@@ -14743,7 +15163,8 @@
     "infiltrate"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "baltic_grotesque",
@@ -14784,7 +15205,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "baltic_giant",
@@ -14828,7 +15250,8 @@
     "fearless"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "australia_leader",
@@ -14866,7 +15289,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "australia_regulars",
@@ -14905,7 +15329,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "australia_thugs",
@@ -14946,7 +15371,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "drovers",
@@ -14987,7 +15413,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "firebreak_crews",
@@ -15027,7 +15454,8 @@
     "fire_guard"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "plains_riflemen",
@@ -15065,7 +15493,8 @@
     "scout"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "sniper"
   },
   {
    "id": "australia_grotesque",
@@ -15107,7 +15536,8 @@
     "fire_guard"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "australia_giant",
@@ -15152,7 +15582,8 @@
     "fire_guard"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "prussia_leader",
@@ -15190,7 +15621,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "prussia_regulars",
@@ -15229,7 +15661,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "prussia_thugs",
@@ -15270,7 +15703,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "blue_dragoons",
@@ -15311,7 +15745,8 @@
     "trench_breaker"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "harz_miners",
@@ -15351,7 +15786,8 @@
     "tunnel"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "wieland_smiths",
@@ -15392,7 +15828,8 @@
     "repair"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "prussia_grotesque",
@@ -15414,7 +15851,9 @@
      "attacks": 2,
      "power": 3,
      "damage": 1,
-     "tags": []
+     "tags": [
+      "suppress"
+     ]
     },
     {
      "name": "ორთქლის ურო",
@@ -15433,7 +15872,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "prussia_giant",
@@ -15478,7 +15918,8 @@
     "fly"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "grenadiers",
@@ -15527,7 +15968,8 @@
     "gas_mask"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "batavi_leader",
@@ -15565,7 +16007,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "batavi_regulars",
@@ -15604,7 +16047,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "batavi_thugs",
@@ -15645,7 +16089,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "dike_wardens",
@@ -15685,7 +16130,8 @@
     "flood"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "skate_riflemen",
@@ -15724,7 +16170,8 @@
     "ice_runner"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "klabauter_crews",
@@ -15763,7 +16210,8 @@
     "repair"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "batavi_grotesque",
@@ -15806,7 +16254,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "batavi_giant",
@@ -15851,7 +16300,8 @@
     "flood"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "batavian_riders",
@@ -15892,7 +16342,8 @@
     "river"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "lechia_leader",
@@ -15930,7 +16381,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "lechia_regulars",
@@ -15969,7 +16421,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "lechia_thugs",
@@ -16010,7 +16463,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "winged_hussars",
@@ -16051,7 +16505,8 @@
     "trench_breaker"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "salt_miners",
@@ -16091,7 +16546,8 @@
     "tunnel"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "skuba_trappers",
@@ -16133,7 +16589,8 @@
     "monster_hunter"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "hunter"
   },
   {
    "id": "lechia_grotesque",
@@ -16174,7 +16631,8 @@
     "steam"
    ],
    "ability_points": 6,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "lechia_giant",
@@ -16218,7 +16676,8 @@
     "fearless"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "byzantium_leader",
@@ -16256,7 +16715,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "byzantium_regulars",
@@ -16295,7 +16755,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "byzantium_thugs",
@@ -16336,7 +16797,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "fire_siphoneers",
@@ -16374,7 +16836,8 @@
    ],
    "tags": [],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "kataphraktoi",
@@ -16415,7 +16878,8 @@
     "trench_breaker"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   },
   {
    "id": "wall_guards",
@@ -16454,7 +16918,8 @@
     "shield_wall"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "heavy_infantry"
   },
   {
    "id": "byzantium_grotesque",
@@ -16495,7 +16960,8 @@
     "discord"
    ],
    "ability_points": 7,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "byzantium_giant",
@@ -16540,7 +17006,8 @@
     "fearless"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "ottoman_leader",
@@ -16578,7 +17045,8 @@
     "leader"
    ],
    "ability_points": 12,
-   "allied": true
+   "allied": true,
+   "role": "command"
   },
   {
    "id": "ottoman_regulars",
@@ -16617,7 +17085,8 @@
     "gas_mask"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "line"
   },
   {
    "id": "ottoman_thugs",
@@ -16658,7 +17127,8 @@
     "brawler"
    ],
    "ability_points": 1,
-   "allied": true
+   "allied": true,
+   "role": "assault"
   },
   {
    "id": "mehter_drummers",
@@ -16696,7 +17166,8 @@
     "song"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "support"
   },
   {
    "id": "tulumbaci",
@@ -16736,7 +17207,8 @@
     "fire_guard"
    ],
    "ability_points": 5,
-   "allied": true
+   "allied": true,
+   "role": "engineer"
   },
   {
    "id": "shadow_players",
@@ -16776,7 +17248,8 @@
     "false_tracks"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "scout"
   },
   {
    "id": "ottoman_grotesque",
@@ -16818,7 +17291,8 @@
     "song"
    ],
    "ability_points": 7,
-   "allied": true
+   "allied": true,
+   "role": "armor"
   },
   {
    "id": "ottoman_giant",
@@ -16863,7 +17337,8 @@
     "fearless"
    ],
    "ability_points": 20,
-   "allied": true
+   "allied": true,
+   "role": "giant"
   },
   {
    "id": "janissaries",
@@ -16886,7 +17361,8 @@
      "power": 2,
      "damage": 1,
      "tags": [
-      "volley"
+      "volley",
+      "suppress"
      ]
     },
     {
@@ -16904,7 +17380,8 @@
     "gas_mask"
    ],
    "ability_points": 3,
-   "allied": true
+   "allied": true,
+   "role": "marksman"
   },
   {
    "id": "sipahis",
@@ -16945,7 +17422,8 @@
     "trench_breaker"
    ],
    "ability_points": 4,
-   "allied": true
+   "allied": true,
+   "role": "cavalry"
   }
  ],
  "allies": {

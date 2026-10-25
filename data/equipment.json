@@ -6,62 +6,299 @@
   "faction": "ფრაქციის აღჭურვილობა"
  },
  "items": [
-  {"id": "gas_mask", "category": "gear", "name": "აირწინაღი", "cost": 3, "sides": ["all"], "limit": 12,
-   "effect": "გაზის ღრუბელში ჭრილობა მხოლოდ d10 = 1-ზე. მოდელისთვის, რომელსაც აირწინაღი არ აქვს."},
-  {"id": "grenades", "category": "gear", "name": "ხელყუმბარები", "cost": 6, "sides": ["all"], "limit": 6,
-   "effect": "6\", 1 შეტევა, ძალა 3, აფეთქება. ერთჯერადი."},
-  {"id": "field_shovel", "category": "gear", "name": "საველე ნიჩაბი", "cost": 4, "sides": ["all"], "limit": 3,
-   "effect": "არაინჟინერ მოდელს შეუძლია ერთი თხრილის მონაკვეთის თხრა ბრძოლაში."},
-  {"id": "armor_plate", "category": "gear", "name": "ჯავშნის ფირფიტა", "cost": 10, "sides": ["all"], "limit": 4,
-   "effect": "ერთ მოდელს +1 ჯავშანი (მაქს. 5); −1\" მოძრაობა."},
-  {"id": "binoculars", "category": "gear", "name": "ბინოკლი", "cost": 5, "sides": ["all"], "limit": 2,
-   "effect": "ჩასაფრებული მოწინააღმდეგე 18\"-ში ჩანს; შორი მანძილის ჯარიმა −1-ის ნაცვლად 0."},
-  {"id": "barbed_wire", "category": "gear", "name": "მავთულხლართის ხვია", "cost": 8, "sides": ["all"], "limit": 2,
-   "effect": "ბრძოლის დაწყებამდე დადგი 6\" მავთულხლართი: გადასვლა მთელ მოძრაობას ჭამს (ცხენოსნების გარდა, რომლებიც თხრილს არღვევენ)."},
-  {"id": "flare", "category": "gear", "name": "სასიგნალო რაკეტა", "cost": 5, "sides": ["all"], "limit": 2,
-   "effect": "ღამის სცენარში: 12\" რადიუსი განათებულია ერთი რაუნდით."},
-
-  {"id": "dead_water", "category": "alchemy", "name": "მკვდარი წყალი", "cost": 12, "sides": ["light"], "limit": 3,
-   "effect": "ერთჯერადი: ერთ მოდელს 2 ჭრილობას უხურავს."},
-  {"id": "living_water", "category": "alchemy", "name": "ცოცხალი წყალი", "cost": 40, "sides": ["light"], "limit": 1,
-   "requires_tags": ["healer", "alchemist"],
-   "effect": "ერთჯერადი: ამ ბრძოლაში დაცემულ ერთ მოდელს სრული სიცოცხლით აბრუნებს. ძალიან იშვიათია."},
-  {"id": "dragon_teeth", "category": "alchemy", "name": "დრაკონის კბილები", "cost": 25, "sides": ["colchis"], "limit": 1,
-   "requires_units": ["medea_sisters", "hero_eliso"],
-   "effect": "ერთხელ ბრძოლაში დათესე 6\"-ში: ამოიზრდება 3 დათესილი მეომარი (როგორც ლაშქარი, ხელჩართული 6). 3 რაუნდის შემდეგ ფხვნიან; d10 = 1-ზე უახლოეს მოდელს ესხმიან."},
-  {"id": "devi_teeth", "category": "alchemy", "name": "დევის კბილები", "cost": 35, "sides": ["colchis"], "limit": 1,
-   "requires_units": ["hero_eliso"],
-   "effect": "როგორც დრაკონის კბილები, მაგრამ დათესილებს +1 ჯავშანი და +1 ძალა; d10 ≤ 3-ზე მოკავშირეებს ესხმიან."},
-  {"id": "lightning_raise", "category": "alchemy", "name": "ელვის ხვია (აყენება)", "cost": 20, "sides": ["iberia"], "limit": 2,
-   "requires_units": ["ekimbashi"],
-   "effect": "ერთხელ ბრძოლაში: ექიმბაშის 3\"-ში დაცემული მოდელი დგება 1 სიცოცხლით 2 რაუნდით, მერე ისევ ეცემა."},
-  {"id": "gold_silver_balm", "category": "alchemy", "name": "გაცისა და გაიმის მალამო", "cost": 15, "sides": ["light"], "limit": 2,
-   "effect": "ოქროსა და ვერცხლის ალქიმია: ერთ მოდელს შხამს, წყევლას ან მხრწნელ ჭრილობას (საბნოკი) აშორებს."},
-
-  {"id": "underworld_steam", "category": "alchemy", "name": "ქვესკნელის ორთქლის ბალონი", "cost": 15, "sides": ["dark"], "limit": 2,
-   "effect": "ერთჯერადი: 12\"-ში ქმნის გაზის ღრუბელს (3\" რადიუსი), რომელიც ქარით მოძრაობს."},
-  {"id": "devi_blood", "category": "alchemy", "name": "დევის სისხლი", "cost": 10, "sides": ["harness"], "limit": 3,
-   "effect": "ერთ მოდელს +1 ხელჩართული და +1 ძალა მთელი ბრძოლით; რაუნდის ბოლოს d10 = 1 → სიგიჟე (უახლოეს მოდელს უტევს)."},
-  {"id": "blood_vessel", "category": "alchemy", "name": "სისხლის ჭურჭელი", "cost": 8, "sides": ["harness"], "limit": 2,
-   "requires_units": ["blood_priests"],
-   "effect": "ინახავს ერთ სისხლის ხარკს: შეგიძლია მოგვიანებით გამოიყენო, ტყვის ან ჭრილობის გარეშე."},
-  {"id": "fresh_flask", "category": "alchemy", "name": "ახალი კოლბა", "cost": 18, "sides": ["hell"], "limit": 1,
-   "requires_units": ["halphas_fortifiers", "mulciber_forge"],
-   "effect": "მე-3 რაუნდის დასაწყისში 2 ახალწვეული ჩამოდის შენი მაგიდის კიდიდან."},
-
-  {"id": "bronze_shield", "category": "faction", "name": "ბრინჯაოს ფარი", "cost": 8, "sides": ["colchis"], "limit": 4,
-   "effect": "ერთ მოდელს სროლის წინააღმდეგ +1 ჯავშანი."},
-  {"id": "portable_flamer", "category": "faction", "name": "ზურგის ცეცხლსაფრქვევი", "cost": 18, "sides": ["colchis"], "limit": 2,
-   "effect": "ერთი მოდელის იარაღი: 6\", 2 შეტევა, ძალა 3, ცეცხლი, აფეთქება."},
-  {"id": "nagazi_collar", "category": "faction", "name": "ნაგაზის რკინის საყელო", "cost": 4, "sides": ["iberia"], "limit": 4,
-   "requires_units": ["tush_shepherds"],
-   "effect": "ნაგაზის შეტევას +1 ძალა; ნაგაზს ხელჩართულში ძნელად კლავენ (+1 ჯავშანი)."},
-  {"id": "lightning_battery", "category": "faction", "name": "სათადარიგო მეხის ბატარეა", "cost": 10, "sides": ["iberia"], "limit": 2,
-   "requires_units": ["lightning_gunners"],
-   "effect": "ერთ მეხის მსროლელს დატენვა აღარ სჭირდება."},
-  {"id": "legion_standard", "category": "faction", "name": "ლეგიონის დროშა", "cost": 15, "sides": ["hell"], "limit": 1,
-   "effect": "ბრძანებების მანძილი +3\"; დროშის მატარებლის 6\"-ში ლიდერის დაცემა დაბნეულობას არ იწვევს."},
-  {"id": "extra_chains", "category": "faction", "name": "მძიმე ჯაჭვები", "cost": 6, "sides": ["harness"], "limit": 4,
-   "effect": "ერთ მოდელს ხელჩართული იარაღი „ხლართავს“: დარტყმული მოდელი შემდეგ აქტივაციაზე ვერ მოძრაობს."}
+  {
+   "id": "gas_mask",
+   "category": "gear",
+   "name": "აირწინაღი",
+   "cost": 3,
+   "sides": [
+    "all"
+   ],
+   "limit": 12,
+   "effect": "გაზის ღრუბელში ჭრილობა მხოლოდ d10 = 1-ზე. მოდელისთვის, რომელსაც აირწინაღი არ აქვს."
+  },
+  {
+   "id": "grenades",
+   "category": "gear",
+   "name": "ხელყუმბარები",
+   "cost": 6,
+   "sides": [
+    "all"
+   ],
+   "limit": 6,
+   "effect": "6\", 1 შეტევა, ძალა 3, აფეთქება. ერთჯერადი."
+  },
+  {
+   "id": "light_mg",
+   "category": "gear",
+   "name": "მსუბუქი ტყვიამფრქვევი",
+   "cost": 15,
+   "sides": [
+    "all"
+   ],
+   "limit": 1,
+   "effect": "ერთი I–II დონის ქვეითი შაშხანის ნაცვლად ისვრის: 24\", 2 შეტევა, ძალა 3, ზიანი 1, დათრგუნვა. მოძრაობის შემდეგ სროლა −1. 750+ მარჩილზე — მაქს. 2 (თამაშის წესით).",
+   "requires_tags": [
+    "line"
+   ]
+  },
+  {
+   "id": "field_shovel",
+   "category": "gear",
+   "name": "საველე ნიჩაბი",
+   "cost": 4,
+   "sides": [
+    "all"
+   ],
+   "limit": 3,
+   "effect": "არაინჟინერ მოდელს შეუძლია ერთი თხრილის მონაკვეთის თხრა ბრძოლაში."
+  },
+  {
+   "id": "armor_plate",
+   "category": "gear",
+   "name": "ჯავშნის ფირფიტა",
+   "cost": 10,
+   "sides": [
+    "all"
+   ],
+   "limit": 4,
+   "effect": "ერთ მოდელს +1 ჯავშანი (მაქს. 5); −1\" მოძრაობა."
+  },
+  {
+   "id": "binoculars",
+   "category": "gear",
+   "name": "ბინოკლი",
+   "cost": 5,
+   "sides": [
+    "all"
+   ],
+   "limit": 2,
+   "effect": "ჩასაფრებული მოწინააღმდეგე 18\"-ში ჩანს; შორი მანძილის ჯარიმა −1-ის ნაცვლად 0."
+  },
+  {
+   "id": "barbed_wire",
+   "category": "gear",
+   "name": "მავთულხლართის ხვია",
+   "cost": 8,
+   "sides": [
+    "all"
+   ],
+   "limit": 2,
+   "effect": "ბრძოლის დაწყებამდე დადგი 6\" მავთულხლართი: გადასვლა მთელ მოძრაობას ჭამს (ცხენოსნების გარდა, რომლებიც თხრილს არღვევენ)."
+  },
+  {
+   "id": "flare",
+   "category": "gear",
+   "name": "სასიგნალო რაკეტა",
+   "cost": 5,
+   "sides": [
+    "all"
+   ],
+   "limit": 2,
+   "effect": "ღამის სცენარში: 12\" რადიუსი განათებულია ერთი რაუნდით."
+  },
+  {
+   "id": "dead_water",
+   "category": "alchemy",
+   "name": "მკვდარი წყალი",
+   "cost": 12,
+   "sides": [
+    "light"
+   ],
+   "limit": 3,
+   "effect": "ერთჯერადი: ერთ მოდელს 2 ჭრილობას უხურავს."
+  },
+  {
+   "id": "living_water",
+   "category": "alchemy",
+   "name": "ცოცხალი წყალი",
+   "cost": 40,
+   "sides": [
+    "light"
+   ],
+   "limit": 1,
+   "requires_tags": [
+    "healer",
+    "alchemist"
+   ],
+   "effect": "ერთჯერადი: ამ ბრძოლაში დაცემულ ერთ მოდელს სრული სიცოცხლით აბრუნებს. ძალიან იშვიათია."
+  },
+  {
+   "id": "dragon_teeth",
+   "category": "alchemy",
+   "name": "დრაკონის კბილები",
+   "cost": 25,
+   "sides": [
+    "colchis"
+   ],
+   "limit": 1,
+   "requires_units": [
+    "medea_sisters",
+    "hero_eliso"
+   ],
+   "effect": "ერთხელ ბრძოლაში დათესე 6\"-ში: ამოიზრდება 3 დათესილი მეომარი (როგორც ლაშქარი, ხელჩართული 6). 3 რაუნდის შემდეგ ფხვნიან; d10 = 1-ზე უახლოეს მოდელს ესხმიან."
+  },
+  {
+   "id": "devi_teeth",
+   "category": "alchemy",
+   "name": "დევის კბილები",
+   "cost": 35,
+   "sides": [
+    "colchis"
+   ],
+   "limit": 1,
+   "requires_units": [
+    "hero_eliso"
+   ],
+   "effect": "როგორც დრაკონის კბილები, მაგრამ დათესილებს +1 ჯავშანი და +1 ძალა; d10 ≤ 3-ზე მოკავშირეებს ესხმიან."
+  },
+  {
+   "id": "lightning_raise",
+   "category": "alchemy",
+   "name": "ელვის ხვია (აყენება)",
+   "cost": 20,
+   "sides": [
+    "iberia"
+   ],
+   "limit": 2,
+   "requires_units": [
+    "ekimbashi"
+   ],
+   "effect": "ერთხელ ბრძოლაში: ექიმბაშის 3\"-ში დაცემული მოდელი დგება 1 სიცოცხლით 2 რაუნდით, მერე ისევ ეცემა."
+  },
+  {
+   "id": "gold_silver_balm",
+   "category": "alchemy",
+   "name": "გაცისა და გაიმის მალამო",
+   "cost": 15,
+   "sides": [
+    "light"
+   ],
+   "limit": 2,
+   "effect": "ოქროსა და ვერცხლის ალქიმია: ერთ მოდელს შხამს, წყევლას ან მხრწნელ ჭრილობას (საბნოკი) აშორებს."
+  },
+  {
+   "id": "underworld_steam",
+   "category": "alchemy",
+   "name": "ქვესკნელის ორთქლის ბალონი",
+   "cost": 15,
+   "sides": [
+    "dark"
+   ],
+   "limit": 2,
+   "effect": "ერთჯერადი: 12\"-ში ქმნის გაზის ღრუბელს (3\" რადიუსი), რომელიც ქარით მოძრაობს."
+  },
+  {
+   "id": "devi_blood",
+   "category": "alchemy",
+   "name": "დევის სისხლი",
+   "cost": 10,
+   "sides": [
+    "harness"
+   ],
+   "limit": 3,
+   "effect": "ერთ მოდელს +1 ხელჩართული და +1 ძალა მთელი ბრძოლით; რაუნდის ბოლოს d10 = 1 → სიგიჟე (უახლოეს მოდელს უტევს)."
+  },
+  {
+   "id": "blood_vessel",
+   "category": "alchemy",
+   "name": "სისხლის ჭურჭელი",
+   "cost": 8,
+   "sides": [
+    "harness"
+   ],
+   "limit": 2,
+   "requires_units": [
+    "blood_priests"
+   ],
+   "effect": "ინახავს ერთ სისხლის ხარკს: შეგიძლია მოგვიანებით გამოიყენო, ტყვის ან ჭრილობის გარეშე."
+  },
+  {
+   "id": "fresh_flask",
+   "category": "alchemy",
+   "name": "ახალი კოლბა",
+   "cost": 18,
+   "sides": [
+    "hell"
+   ],
+   "limit": 1,
+   "requires_units": [
+    "halphas_fortifiers",
+    "mulciber_forge"
+   ],
+   "effect": "მე-3 რაუნდის დასაწყისში 2 ახალწვეული ჩამოდის შენი მაგიდის კიდიდან."
+  },
+  {
+   "id": "bronze_shield",
+   "category": "faction",
+   "name": "ბრინჯაოს ფარი",
+   "cost": 8,
+   "sides": [
+    "colchis"
+   ],
+   "limit": 4,
+   "effect": "ერთ მოდელს სროლის წინააღმდეგ +1 ჯავშანი."
+  },
+  {
+   "id": "portable_flamer",
+   "category": "faction",
+   "name": "ზურგის ცეცხლსაფრქვევი",
+   "cost": 18,
+   "sides": [
+    "colchis"
+   ],
+   "limit": 2,
+   "effect": "ერთი მოდელის იარაღი: 6\", 2 შეტევა, ძალა 3, ცეცხლი, აფეთქება."
+  },
+  {
+   "id": "nagazi_collar",
+   "category": "faction",
+   "name": "ნაგაზის რკინის საყელო",
+   "cost": 4,
+   "sides": [
+    "iberia"
+   ],
+   "limit": 4,
+   "requires_units": [
+    "tush_shepherds"
+   ],
+   "effect": "ნაგაზის შეტევას +1 ძალა; ნაგაზს ხელჩართულში ძნელად კლავენ (+1 ჯავშანი)."
+  },
+  {
+   "id": "lightning_battery",
+   "category": "faction",
+   "name": "სათადარიგო მეხის ბატარეა",
+   "cost": 10,
+   "sides": [
+    "iberia"
+   ],
+   "limit": 2,
+   "requires_units": [
+    "lightning_gunners"
+   ],
+   "effect": "ერთ მეხის მსროლელს დატენვა აღარ სჭირდება."
+  },
+  {
+   "id": "legion_standard",
+   "category": "faction",
+   "name": "ლეგიონის დროშა",
+   "cost": 15,
+   "sides": [
+    "hell"
+   ],
+   "limit": 1,
+   "effect": "ბრძანებების მანძილი +3\"; დროშის მატარებლის 6\"-ში ლიდერის დაცემა დაბნეულობას არ იწვევს."
+  },
+  {
+   "id": "extra_chains",
+   "category": "faction",
+   "name": "მძიმე ჯაჭვები",
+   "cost": 6,
+   "sides": [
+    "harness"
+   ],
+   "limit": 4,
+   "effect": "ერთ მოდელს ხელჩართული იარაღი „ხლართავს“: დარტყმული მოდელი შემდეგ აქტივაციაზე ვერ მოძრაობს."
+  }
  ]
 }

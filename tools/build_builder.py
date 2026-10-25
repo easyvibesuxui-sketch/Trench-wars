@@ -19,7 +19,7 @@ def main():
     units = []
     for u in data["units"]:
         units.append({k: u[k] for k in ("id", "faction", "name", "tier", "size", "move", "shoot", "melee",
-                                        "armor", "wounds", "nerve", "weapons", "tags")} | {"cost": costs[u["id"]], "allied": bool(u.get("allied"))}
+                                        "armor", "wounds", "nerve", "weapons", "tags", "role")} | {"cost": costs[u["id"]], "allied": bool(u.get("allied"))}
                      | ({"abilities": abilities[u["id"]]} if u["id"] in abilities else {}))
     equipment = json.loads((ROOT / "data" / "equipment.json").read_text(encoding="utf-8"))
     equipment.pop("_comment", None)
@@ -27,7 +27,7 @@ def main():
     nml = json.loads((ROOT / "data" / "no_mans_land.json").read_text(encoding="utf-8"))
     nml.pop("_comment", None)
     out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment, "campaigns": campaigns,
-           "nml": nml}
+           "nml": nml, "roles": json.loads((ROOT / "data" / "roles.json").read_text(encoding="utf-8"))["roles"]}
     js = "// ავტომატურად გენერირებული: tools/build_builder.py — ხელით ნუ შეცვლი\n"
     js += "window.TW_DATA = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n"
     target = ROOT / "builder" / "data.js"

@@ -1,0 +1,265 @@
+{
+ "_comment": "იუნიტების როლები (18). ყოველ იუნიტს units.json-ში აქვს ველი role. counters — ვის ჯობნის, countered_by — ვინ ჯობნის მას. წესები: rules/roles.md (tools/build_roles.py). ავტომატური მინიჭება ახალ იუნიტებზე — tools/assign_roles.py.",
+ "roles": [
+  {
+   "id": "command",
+   "name": "მეთაური",
+   "icon": "★",
+   "does": "ლიდერი: მორალი, ბრძანებები, აქტივაციების ჯაჭვი. რაზმში სავალდებულოა 1.",
+   "counters": [],
+   "countered_by": [
+    "sniper",
+    "disruptor"
+   ]
+  },
+  {
+   "id": "line",
+   "name": "რიგითი ქვეითი",
+   "icon": "▮",
+   "does": "იაფი, მრავალრიცხოვანი სანგრის ჯარი: ობიექტების დაკავება, შაშხანის ცეცხლი მწკრივში.",
+   "counters": [
+    "cavalry",
+    "scout"
+   ],
+   "countered_by": [
+    "heavy_weapons",
+    "artillery",
+    "assault"
+   ]
+  },
+  {
+   "id": "assault",
+   "name": "მოიერიშე",
+   "icon": "⚔",
+   "does": "თხრილის წმენდა ახლო მანძილზე: ბრაზი, სანგრის ჩხუბი, ღამის რეიდი.",
+   "counters": [
+    "line",
+    "heavy_weapons",
+    "artillery"
+   ],
+   "countered_by": [
+    "heavy_infantry",
+    "cavalry"
+   ]
+  },
+  {
+   "id": "marksman",
+   "name": "მსროლელი ელიტა",
+   "icon": "◎",
+   "does": "ზუსტი საშუალო მანძილის ცეცხლი, ზალპები.",
+   "counters": [
+    "line",
+    "support"
+   ],
+   "countered_by": [
+    "assault",
+    "artillery"
+   ]
+  },
+  {
+   "id": "sniper",
+   "name": "სნაიპერი",
+   "icon": "⌖",
+   "does": "შორი, ზუსტი სროლა; ლიდერებზე და სპეციალისტებზე ნადირობა.",
+   "counters": [
+    "command",
+    "support",
+    "heavy_weapons"
+   ],
+   "countered_by": [
+    "scout",
+    "cavalry"
+   ]
+  },
+  {
+   "id": "scout",
+   "name": "მზვერავი",
+   "icon": "◇",
+   "does": "ჩასაფრება, ხედვა, ძებნა ნეიტრალურ ზოლში, სნაიპერების პოვნა.",
+   "counters": [
+    "sniper",
+    "disruptor"
+   ],
+   "countered_by": [
+    "line",
+    "cavalry"
+   ]
+  },
+  {
+   "id": "heavy_weapons",
+   "name": "მძიმე იარაღი",
+   "icon": "≡",
+   "does": "ტყვიამფრქვევები და ზალპური ცეცხლი — **დათრგუნვა**: ქვეითს აწვენს და აჩერებს.",
+   "counters": [
+    "line",
+    "assault",
+    "cavalry"
+   ],
+   "countered_by": [
+    "artillery",
+    "sniper",
+    "armor"
+   ]
+  },
+  {
+   "id": "artillery",
+   "name": "არტილერია",
+   "icon": "✸",
+   "does": "აფეთქება და ზემოდან სროლა; სიმაგრეების და ჯგუფების ნგრევა.",
+   "counters": [
+    "heavy_weapons",
+    "heavy_infantry",
+    "line"
+   ],
+   "countered_by": [
+    "assault",
+    "cavalry",
+    "flyer"
+   ]
+  },
+  {
+   "id": "engineer",
+   "name": "ინჟინერი",
+   "icon": "⚒",
+   "does": "თხრილები, გვირაბები, ნგრევა, მანქანების აღდგენა.",
+   "counters": [
+    "armor"
+   ],
+   "countered_by": [
+    "assault",
+    "sniper"
+   ]
+  },
+  {
+   "id": "support",
+   "name": "მხარდაჭერა",
+   "icon": "✚",
+   "does": "მკურნალობა, ალქიმია, სიმღერა, რიტუალი, მარაგი — სხვებს აძლიერებს.",
+   "counters": [],
+   "countered_by": [
+    "sniper",
+    "cavalry",
+    "flyer"
+   ]
+  },
+  {
+   "id": "disruptor",
+   "name": "დივერსანტი",
+   "icon": "☍",
+   "does": "წყევლა, უთანხმოება, ჩანერგვა, მკვლელობა — მოწინააღმდეგის წესრიგის ნგრევა.",
+   "counters": [
+    "command",
+    "support"
+   ],
+   "countered_by": [
+    "scout",
+    "line"
+   ]
+  },
+  {
+   "id": "heavy_infantry",
+   "name": "მძიმე ქვეითი",
+   "icon": "▣",
+   "does": "ჯავშანი და ფარის კედელი; ხაზის დაჭერა და იერიში.",
+   "counters": [
+    "assault",
+    "line",
+    "cavalry"
+   ],
+   "countered_by": [
+    "artillery",
+    "hunter",
+    "monster"
+   ]
+  },
+  {
+   "id": "cavalry",
+   "name": "ცხენოსანი",
+   "icon": "♞",
+   "does": "სიჩქარე, იერიში, თხრილის გარღვევა, ფლანგი.",
+   "counters": [
+    "artillery",
+    "support",
+    "sniper"
+   ],
+   "countered_by": [
+    "heavy_weapons",
+    "heavy_infantry",
+    "line"
+   ]
+  },
+  {
+   "id": "flyer",
+   "name": "მფრინავი",
+   "icon": "⌃",
+   "does": "რელიეფს ზემოდან გადადის; ჩვეულებრივი სროლა მასზე −1.",
+   "counters": [
+    "artillery",
+    "support"
+   ],
+   "countered_by": [
+    "hunter"
+   ]
+  },
+  {
+   "id": "hunter",
+   "name": "მონადირე და საზენიტო",
+   "icon": "⊕",
+   "does": "გოლიათებზე, ურჩხულებზე და მფრინავებზე ნადირობა.",
+   "counters": [
+    "giant",
+    "monster",
+    "flyer",
+    "armor"
+   ],
+   "countered_by": [
+    "line",
+    "assault"
+   ]
+  },
+  {
+   "id": "armor",
+   "name": "ჯავშანტექნიკა",
+   "icon": "■",
+   "does": "ორთქლის მანქანები და მავალი სიმაგრეები: ცეცხლის ძალა და გამძლეობა.",
+   "counters": [
+    "line",
+    "heavy_weapons",
+    "assault"
+   ],
+   "countered_by": [
+    "hunter",
+    "engineer"
+   ]
+  },
+  {
+   "id": "monster",
+   "name": "ურჩხული",
+   "icon": "☠",
+   "does": "ცოცხალი ბოროტება: ამოზრდა, შიში, ხელჩართული ძალა.",
+   "counters": [
+    "line",
+    "heavy_infantry",
+    "support"
+   ],
+   "countered_by": [
+    "hunter",
+    "artillery"
+   ]
+  },
+  {
+   "id": "giant",
+   "name": "გოლიათი",
+   "icon": "▲",
+   "does": "V დონე — მხოლოდ სცენარით; ყველაფერს ანგრევს.",
+   "counters": [
+    "armor",
+    "heavy_infantry",
+    "monster"
+   ],
+   "countered_by": [
+    "hunter"
+   ]
+  }
+ ]
+}

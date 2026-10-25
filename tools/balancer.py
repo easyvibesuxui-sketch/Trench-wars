@@ -46,6 +46,7 @@ FACTION_BUDGET = 500      # ფრაქციების შერეული
 MIX_WEIGHT = (0.7, 0.3)   # კალიბრაცია: ერთი იუნიტის რაზმის და შერეული რაზმის სიგნალების წონები
 PIN_TAGS = {"pin", "entangle", "grab"}          # მოხვედრილს შემდეგ აქტივაციაზე მოძრაობა არ შეუძლია
 NO_POISON = {"construct", "automaton", "vehicle", "undead", "fortress"}  # შხამი მათზე არ მოქმედებს
+NO_SUPPRESS = {"fearless", "vehicle", "construct", "automaton", "fortress", "giant", "monster", "undead"}  # დათრგუნვა მათზე არ მოქმედებს
 
 # საცნობარო სამიზნეები (წონით): armor, wounds, size, tags
 REF_TARGETS = [
@@ -100,6 +101,8 @@ def weapon_vs(w, skill, target, steam=False):
         dmg *= 1.3
     if "volley" in tags:
         dmg *= 1.3
+    if "suppress" in tags:
+        dmg *= 1.15  # დათრგუნვა: ქვეითს აწვენს და აჩერებს
     if "indirect" in tags:
         dmg *= 1.1
     if "blast" in tags and target["size"] == 1:
@@ -178,7 +181,7 @@ def compute_costs(units):
 
 class Model:
     __slots__ = ("u", "w", "used_once", "reload", "regen_block", "charged", "pinned", "steam_used", "army", "x",
-                 "sup", "stunned", "exposed", "cursed")
+                 "sup", "stunned", "exposed", "cursed", "suppressed")
 
     def __init__(self, u):
         self.u = u
@@ -191,7 +194,7 @@ class Model:
         self.steam_used = False
         self.x = 0.0  # პოზიცია ხაზზე (ინჩებში)
         self.sup = u.get("_sup", frozenset())
-        self.stunned = self.exposed = self.cursed = False
+        self.stunned = self.exposed = self.cursed = self.suppressed = False
 
 
 def build_army(u, budget, rng):
@@ -267,6 +270,13 @@ def attack(m, w, targets, rng, pool):
             if w["mode"] == "ranged":
                 # სანგრების ომი: 6"-ზე შორს სამიზნე საფარშია (-1 სროლაზე); „ზემოდან“ საფარს უგულებელყოფს
                 cover = 1 if abs(tt.x - m.x) > 6 and "indirect" not in w["tags"] else 0
+                if tt.suppressed:
+                    cover += 1  # დაბლა წოლილი: კიდევ −1
+                aa = "anti_air" in m.u["tags"]
+                if "fly" in tt.u["tags"]:
+                    cover += -1 if aa else 1  # მფრინავზე: საზენიტოს +1, სხვას −1
+                if "suppress" in w["tags"] and tt.u["size"] == 1 and not (set(tt.u["tags"]) & NO_SUPPRESS):
+                    tt.suppressed = True  # დათრგუნვა: ცეცხლის ქვეშ — მოხვედრაც არ სჭირდება
                 skill = m.u["shoot"] - cover + skill_mod
             else:
                 skill = m.u["melee"] + skill_mod
@@ -285,7 +295,8 @@ def attack(m, w, targets, rng, pool):
                 armor += 1  # ფარი სროლისგან იცავს
             if "shield_wall" in tt.u["tags"] and sum(1 for x in tt.army if x.w > 0 and x.u is tt.u) >= 2:
                 armor += 1  # ფარის კედელი: ორი ან მეტი ერთად
-            if rng.random() < wound_p(power, armor, w["tags"], tt.u["size"]):
+            pw = power + (1 if w["mode"] == "ranged" and "fly" in tt.u["tags"] and "anti_air" in m.u["tags"] else 0)
+            if rng.random() < wound_p(pw, armor, w["tags"], tt.u["size"]):
                 tt.w -= w["damage"]
                 if "fire" in w["tags"] or "lightning" in w["tags"] or "festering" in w["tags"]:
                     tt.regen_block = True
@@ -301,6 +312,11 @@ def activate(m, enemies, rng):
     if m.stunned:  # უთანხმოება: ეს აქტივაცია დაკარგულია
         m.stunned = False
         return
+    down = False
+    if m.suppressed:  # დათრგუნვა: ნებისყოფის ტესტი (ლიდერი 6"-ში +1) — ჩავარდნა: დაბლა, მხოლოდ 1 მოქმედება
+        m.suppressed = False
+        bonus = 1 if aura(m.army, "leader", m.x) else 0
+        down = rng.randint(1, 10) > m.u["nerve"] + bonus
     m.reload = False if m.reload and (rng.random() < 0.5 or aura(m.army, "supply", m.x)) else m.reload
     alive = [e for e in enemies if e.w > 0]
     if not alive:
@@ -321,7 +337,7 @@ def activate(m, enemies, rng):
             attack(m, w, [e for e in alive if abs(e.x - m.x) <= w["range"]], rng, alive)
             m.pinned = False
             return
-    if m.pinned:  # ბადე/ჯაჭვი: ამ სვლაზე ვერ მოძრაობს
+    if m.pinned or down:  # ბადე/ჯაჭვი ან დათრგუნვა: ამ სვლაზე ვერ მოძრაობს და ვერ უტევს
         m.pinned = False
         return
     hold = 8.0 if (m.sup - {"leader", "orders", "ritual", "supply"}) and m.u["tier"] not in ("IV", "IV+") else 1.0
