@@ -39,6 +39,9 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 button.on { border-color: var(--bronze); color: var(--bronze); }
 button.primary { border-color: var(--bronze); color: var(--bronze); }
 .cost { color: var(--muted); font-size: .72rem; }
+.cnt { min-width: 1.4em; text-align: center; color: var(--bronze); font-variant-numeric: tabular-nums; }
+.camctl { position: absolute; top: 8px; right: 8px; display: flex; gap: 4px; }
+.camctl button { padding: 3px 8px; background: rgba(42, 36, 29, .85); }
 .msg { color: var(--muted); font-size: .8rem; min-height: 1.2em; flex-basis: 100%; }
 @media (max-width: 640px) { .panel .group { border-right: 0; padding-right: 0; } }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
@@ -51,12 +54,18 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
   </header>
   <div class="field" id="field">
     <canvas id="cv" aria-label="ბრძოლის ველი"></canvas>
+    <div class="camctl" aria-label="კამერა">
+      <button type="button" id="camIn" aria-label="მიახლოება">+</button><button type="button" id="camOut" aria-label="დაშორება">−</button>
+      <button type="button" id="camHome">სოფელი</button><button type="button" id="camAll">მთელი რუკა</button>
+    </div>
     <div class="banner" id="banner">
       <div>
         <h2 id="bTitle">სოფლის ფრონტი</h2>
         <p id="bText">ამბრის ღარის ორივე მხარეს სოფელია. შენი — მარცხნივ: შტაბი, მზიდავები, მინდორი, ტყე, მაღარო და კარიერი.
           დიდი უღლის ბანაკი — მარჯვნივ. მოაგროვე რესურსი, ააშენე ყაზარმა, მესერი და კოშკი, გადადი ორთქლის ეპოქაში და დაანგრიე მათი შტაბი.</p>
-        <p class="label">მონიშვნა: დააწექი ან მონიშნე ჩარჩოთი · სვლა: დააწექი ველს · ტყვიამფრქვევი აწვენს ქვეითს (დათრგუნვა)</p>
+        <p class="label">მონიშვნა: დააწექი ან ჩარჩო (ჯარისკაცები და მზიდავები) · ბრძანება: დააწექი ველს, რესურსს ან საძირკველს ·
+          კედელი და თხრილი: <b>გაწელე</b> (Shift — 45°) · შენებას დრო და მზიდავები სჭირდება ·
+          კამერა: ბორბალი/ორი თითი — მასშტაბი, WASD/ისრები/ეკრანის კიდე/შუა ღილაკი — გადაადგილება, მინირუკა, H — სოფელი</p>
         <div><button type="button" class="primary" id="startBtn">ომის დაწყება</button></div>
       </div>
     </div>
@@ -88,16 +97,19 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     e: { name: "დიდი უღელი", color: "#b4462f", hq: "უღლის ურემი",
          units: { I: ["rebels", "deserter_regulars", "heretic_sappers"], II: ["chain_shooters", "chained_ones", "devi_spawn"] } },
   };
-  // შენობები (ფასი: ს — საკვები, ქ — ქვანახშირი/შეშა, ქვ — ქვა, რ — რკინა)
+  // შენობები (ფასი: ს — საკვები, ქ — ქვანახშირი/შეშა, ქვ — ქვა, რ — რკინა; time — წამი ერთი მშენებლისთვის).
+  // line — ხაზოვანი ნაგებობა: იწელება მონაკვეთებად (ფასი და დრო — თითო მონაკვეთზე)
   const BUILD = {
-    dugout:  { name: "ბლინდაჟი", cost: { coal: 40 }, hp: 120, w: 34, h: 22, pop: 10, epoch: 1 },
-    barracks:{ name: "ყაზარმა", cost: { coal: 150 }, hp: 260, w: 54, h: 34, epoch: 1 },
-    palisade:{ name: "ხის მესერი", cost: { coal: 6 }, hp: 60, armor: 3, w: 30, h: 8, wall: true, epoch: 1 },
-    trench:  { name: "თხრილი", cost: {}, hp: 9999, w: 40, h: 8, trench: true, epoch: 1, time: 3 },
-    tower:   { name: "საგუშაგო კოშკი", cost: { coal: 60, stone: 40 }, hp: 160, armor: 4, w: 18, h: 18, gun: { range: 26, attacks: 1, power: 2, skill: 6, rate: 2.2 }, epoch: 1 },
-    nest:    { name: "ტყვიამფრქვევის ბუდე", cost: { coal: 60, iron: 80 }, hp: 140, armor: 5, w: 20, h: 16, gun: { range: 24, attacks: 3, power: 3, skill: 5, rate: 2.4, suppress: true }, epoch: 2 },
-    workshop:{ name: "ორთქლის სახელოსნო", cost: { coal: 200, iron: 150 }, hp: 260, w: 54, h: 36, epoch: 2 },
+    dugout:   { name: "ბლინდაჟი", cost: { coal: 40 }, hp: 120, w: 34, h: 22, pop: 10, epoch: 1, time: 15 },
+    barracks: { name: "ყაზარმა", cost: { coal: 150 }, hp: 260, w: 54, h: 34, epoch: 1, time: 30 },
+    palisade: { name: "ხის მესერი", cost: { coal: 3 }, hp: 60, armor: 3, w: 12, h: 12, wall: true, line: true, epoch: 1, time: 2.5 },
+    trench:   { name: "თხრილი", cost: {}, hp: 9999, w: 14, h: 14, trench: true, line: true, epoch: 1, time: 3 },
+    tower:    { name: "საგუშაგო კოშკი", cost: { coal: 60, stone: 40 }, hp: 160, armor: 4, w: 18, h: 18, gun: { range: 26, attacks: 1, power: 2, skill: 6, rate: 2.2 }, epoch: 1, time: 25 },
+    stonewall:{ name: "ქვის კედელი", cost: { stone: 6 }, hp: 160, armor: 6, w: 12, h: 12, wall: true, stone: true, line: true, epoch: 2, time: 5 },
+    nest:     { name: "ტყვიამფრქვევის ბუდე", cost: { coal: 60, iron: 80 }, hp: 140, armor: 5, w: 20, h: 16, gun: { range: 24, attacks: 3, power: 3, skill: 5, rate: 2.4, suppress: true }, epoch: 2, time: 20 },
+    workshop: { name: "ორთქლის სახელოსნო", cost: { coal: 200, iron: 150 }, hp: 260, w: 54, h: 36, epoch: 2, time: 40 },
   };
+  const STONE = { stone: true, armor: 6, maxhp: 160, hp: 160, name: "ქვის კედელი" };   // მესრის გამაგრება ქვით
   const UNIT_COST = u => {
     const t = u.tier, c = u.cost;
     return { food: Math.round(c * 2), iron: t === "I" ? 0 : Math.round(c * 1.2), coal: u.tags.includes("vehicle") ? Math.round(c) : 0 };
@@ -106,8 +118,8 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
 
   let S;  // თამაშის მდგომარეობა
   function newGame() {
-    S = { t: 0, running: false, over: false, sel: new Set(), placing: null, vertical: false, ents: [], fx: [], nextId: 1, msgT: 0,
-      side: { p: mkSide("p"), e: mkSide("e") }, aiT: 0, waveT: 75 };
+    S = { t: 0, running: false, over: false, sel: new Set(), placing: null, ents: [], fx: [], nextId: 1, nextGrp: 1, msgT: 0,
+      side: { p: mkSide("p"), e: mkSide("e") }, aiT: 0, waveT: 75, builders: 2, work: new Map() };
     // სოფლები: შტაბი, რამდენიმე სახლი, რესურსის წყაროები
     const base = (side, x) => {
       const hq = addB(side, "hq", x, 450, { name: SIDES[side].hq, hp: 900, w: 70, h: 48, pop: 15, armor: 5 });
@@ -126,16 +138,42 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     // AI საწყისი თავდაცვა: ურმების წრე
     for (let i = 0; i < 6; i++) addB("e", "palisade", W - 330, 330 + i * 40, { ...BUILD.palisade, name: "ჯაჭვით შეკრული ურემი", w: 8, h: 30 });
     addB("e", "barracks", W - 260, 640, BUILD.barracks);
-    renderPanel(); resize();
+    renderPanel(); resize(); camHome();
   }
   function mkSide(k) { return { k, food: 200, coal: 200, stone: 100, iron: 100, epoch: 1, hq: null }; }
   function addB(side, type, x, y, spec) {
     const b = { kind: "b", type, side, x, y, w: spec.w, h: spec.h, hp: spec.hp, maxhp: spec.hp, armor: spec.armor || 3, pop: spec.pop || 0,
-      name: spec.name, gun: spec.gun, wall: !!spec.wall, trench: !!spec.trench, cd: 0, queue: [], qt: 0, id: S.nextId++ };
+      name: spec.name, gun: spec.gun, wall: !!spec.wall, trench: !!spec.trench, stone: !!spec.stone, built: true, grp: 0, cd: 0, queue: [], qt: 0, id: S.nextId++ };
     S.ents.push(b); return b;
   }
+  // საძირკველი: შენობა მაშინვე არ დგება — მზიდავები აშენებენ. grp — ერთად გაწელილი ხაზის ნომერი
+  function foundation(side, k, x, y, grp, name) {
+    const sp = BUILD[k], b = addB(side, k, x, y, name ? { ...sp, name } : sp);
+    Object.assign(b, { built: false, need: sp.time, prog: 0, hp: Math.max(1, Math.round(sp.hp * .1)), grp: grp || 0 });
+    return b;
+  }
+  const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+  const needsWork = b => b.kind === "b" && b.hp > 0 && (!b.built || b.upg || b.hp < b.maxhp);
+  // მშენებლები: მონიშნული მზიდავები, თუ არადა n უახლოესი თავისუფალი (მერე — დაკავებულებიც)
+  function assign(side, b, n) {
+    const ps = S.ents.filter(e => e.kind === "porter" && e.side === side);
+    let chosen = side === "p" ? ps.filter(q => S.sel.has(q.id)) : [];
+    if (!chosen.length) chosen = ps.slice().sort((a, z) => (!!a.job - !!z.job) || dist(a, b) - dist(z, b)).slice(0, n);
+    chosen.forEach(q => { q.job = { grp: b.grp, id: b.id }; });
+    return chosen.length;
+  }
+  // შენების წინსვლა — AoE-ის ფორმულით: n მშენებელი აშენებს (n+2)/3-ჯერ სწრაფად (კლებადი უკუგება)
+  function work(b, n, dt) {
+    const d = dt * (n + 2) / 3;
+    if (!b.built) {
+      b.prog += d; b.hp = Math.min(b.maxhp, b.hp + b.maxhp * .9 * d / b.need);
+      if (b.prog >= b.need) { b.built = true; if (b.maxhp - b.hp < 1) b.hp = b.maxhp; if (b.side === "p" && !b.grp) say(`${b.name} აშენდა.`); }
+    } else if (b.upg) {
+      b.upg.prog += d; if (b.upg.prog >= b.upg.need) { Object.assign(b, STONE); b.upg = null; }
+    } else b.hp = Math.min(b.maxhp, b.hp + b.maxhp * d / (2 * ((BUILD[b.type] || {}).time || 30)));   // შეკეთება
+  }
   function addPorter(side, hq) {
-    S.ents.push({ kind: "porter", side, x: hq.x, y: hq.y + 30, target: null, carry: 0, res: null, id: S.nextId++ });
+    S.ents.push({ kind: "porter", side, x: hq.x, y: hq.y + 30, carry: 0, res: null, job: null, id: S.nextId++ });
   }
   function addUnit(side, id, x, y) {
     const u = byId[id]; if (!u) return null;
@@ -145,7 +183,7 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
   }
 
   // რესურსი და მოსახლეობა
-  const popCap = s => Math.min(200, S.ents.filter(e => e.kind === "b" && e.side === s && e.hp > 0).reduce((a, b) => a + b.pop, 0));
+  const popCap = s => Math.min(200, S.ents.filter(e => e.kind === "b" && e.side === s && e.hp > 0 && e.built).reduce((a, b) => a + b.pop, 0));
   const popUsed = s => S.ents.filter(e => e.side === s && ((e.kind === "u" && e.hp > 0) || e.kind === "porter"))
     .reduce((a, e) => a + (e.kind === "porter" ? 1 : POP[e.u.tier] || 1), 0) + S.ents.filter(e => e.kind === "b" && e.side === s).reduce((a, b) => a + b.queue.reduce((q, id) => q + (POP[byId[id].tier] || 1), 0), 0);
   const can = (s, cost) => Object.entries(cost).every(([k, v]) => S.side[s][k] >= v);
@@ -159,7 +197,7 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     for (const e of S.ents) {
       if (e.kind === "furrow" && Math.hypot(e.x - t.x, e.y - t.y) < 24) c = Math.max(c, 2);
       if (e.kind === "ruin" && Math.abs(e.x - t.x) < e.w / 2 + 6 && Math.abs(e.y - t.y) < e.h / 2 + 6) c = Math.max(c, 2);
-      if (e.kind === "b" && e.side === t.side && e.hp > 0 && (e.wall || e.trench) && Math.abs(e.x - t.x) < e.w / 2 + 12 && Math.abs(e.y - t.y) < e.h / 2 + 12) c = Math.max(c, 2);
+      if (e.kind === "b" && e.side === t.side && e.hp > 0 && e.built && (e.wall || e.trench) && Math.abs(e.x - t.x) < e.w / 2 + 12 && Math.abs(e.y - t.y) < e.h / 2 + 12) c = Math.max(c, 2);
     }
     return c;
   }
@@ -196,10 +234,10 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     .sort((a, b) => b.attacks * b.power * b.damage - a.attacks * a.power * a.damage)[0];
   const meleePref = m => { const r = weapon(m, true); return !r || r.range <= 10 || m.u.melee >= m.u.shoot + 2; };
 
-  function enemiesOf(side) { return S.ents.filter(e => e.side && e.side !== side && e.hp > 0 && (e.kind === "u" || e.kind === "b")); }
+  function enemiesOf(side) { return S.ents.filter(e => e.side && e.side !== side && e.hp > 0 && (e.kind === "u" || (e.kind === "b" && !e.trench))); }
   function nearest(m, list) { let best = null, bd = 1e9; for (const e of list) { const d = Math.hypot(e.x - m.x, e.y - m.y); if (d < bd) { bd = d; best = e; } } return [best, bd]; }
   function blockingWall(m, nx, ny) {
-    return S.ents.find(b => b.kind === "b" && b.wall && b.hp > 0 && b.side !== m.side && Math.abs(b.x - nx) < b.w / 2 + 5 && Math.abs(b.y - ny) < b.h / 2 + 5);
+    return S.ents.find(b => b.kind === "b" && b.wall && b.built && b.hp > 0 && b.side !== m.side && Math.abs(b.x - nx) < b.w / 2 + 5 && Math.abs(b.y - ny) < b.h / 2 + 5);
   }
 
   function stepUnit(m, dt) {
@@ -237,14 +275,25 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
   function stepPorter(p, dt) {
     const s = S.side[p.side], hq = s.hq;
     if (!hq || hq.hp <= 0) return;
+    if (p.job) {   // შენება: ჯერ ხაზის უახლოესი დაუმთავრებელი მონაკვეთი, მერე შემდეგი
+      const site = p.job.grp ? nearest(p, S.ents.filter(b => b.grp === p.job.grp && b.side === p.side && needsWork(b)))[0]
+        : S.ents.find(b => b.id === p.job.id && needsWork(b));
+      if (!site) p.job = null;
+      else {
+        if (dist(p, site) <= Math.max(site.w, site.h) / 2 + 6) S.work.set(site, (S.work.get(site) || 0) + 1);
+        else walk(p, site, dt);
+        return;
+      }
+    }
     if (!p.res) { const order = ["food", "coal", "food", "iron", "stone"]; p.res = order[p.id % order.length]; }
     const node = S.ents.find(e => e.kind === "node" && e.side === p.side && e.res === p.res);
-    const goal = p.carry ? hq : node, sp = 46;
-    const dx = goal.x - p.x, dy = goal.y - p.y, L = Math.hypot(dx, dy);
-    if (L < 14) { if (p.carry) { s[p.res] += p.carry; p.carry = 0; } else p.carry = 10; return; }
-    p.x += dx / L * sp * dt; p.y += dy / L * sp * dt;
+    const goal = p.carry ? hq : node;
+    if (dist(p, goal) < 14) { if (p.carry) { s[p.res] += p.carry; p.carry = 0; } else p.carry = 10; return; }
+    walk(p, goal, dt);
   }
+  function walk(p, g, dt) { const L = dist(p, g) || 1, sp = 46; p.x += (g.x - p.x) / L * Math.min(L, sp * dt); p.y += (g.y - p.y) / L * Math.min(L, sp * dt); }
   function stepBuilding(b, dt) {
+    if (!b.built) return;
     if (b.gun) {
       b.cd -= dt;
       const [t, d] = nearest(b, enemiesOf(b.side).filter(e => e.kind === "u"));
@@ -271,15 +320,23 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     if (S.aiT > 0) return; S.aiT = 1.2;
     const porters = S.ents.filter(e => e.kind === "porter" && e.side === "e").length;
     if (porters < 10 && can("e", { food: 50 }) && popUsed("e") < popCap("e")) { pay("e", { food: 50 }); addPorter("e", s.hq); }
-    if (popUsed("e") >= popCap("e") - 2 && can("e", BUILD.dugout.cost)) {
-      pay("e", BUILD.dugout.cost); addB("e", "dugout", W - 90 - Math.random() * 120, 120 + Math.random() * 660, { ...BUILD.dugout, name: "ტყვეების გალია" });
+    const building = S.ents.some(b => b.kind === "b" && b.side === "e" && !b.built);
+    if (!building && popUsed("e") >= popCap("e") - 2 && can("e", BUILD.dugout.cost)) {
+      const q = { x: W - 90 - Math.random() * 120, y: 120 + Math.random() * 660 };
+      if (free("e", q, BUILD.dugout)) { pay("e", BUILD.dugout.cost); assign("e", foundation("e", "dugout", q.x, q.y, 0, "ტყვეების გალია"), 2); }
+    }
+    if (!s.stakes && S.t > 30) {   // წვეტიანი ძელების ხაზი ბანაკის წინ — კომპიუტერიც წელავს
+      const sp = BUILD.palisade, pts = linePts({ x: W - 430, y: 290 }, { x: W - 430, y: 610 }, sp.w).filter(q => free("e", q, sp));
+      const cost = { coal: sp.cost.coal * pts.length };
+      if (pts.length && can("e", cost)) { pay("e", cost); const grp = S.nextGrp++;
+        const made = pts.map(q => foundation("e", "palisade", q.x, q.y, grp, "წვეტიანი ძელები")); assign("e", made[0], 3); s.stakes = true; }
     }
     if (s.epoch === 1 && S.t > 150 && can("e", { food: 300, iron: 200 })) { pay("e", { food: 300, iron: 200 }); s.epoch = 2; }
     if (s.epoch === 2 && !S.ents.some(b => b.kind === "b" && b.side === "e" && b.type === "nest") && can("e", BUILD.nest.cost)) {
-      pay("e", BUILD.nest.cost); addB("e", "nest", W - 360, 450, { ...BUILD.nest, name: "ერეტიკოსების ტყვიამფრქვევი" });
+      pay("e", BUILD.nest.cost); assign("e", foundation("e", "nest", W - 360, 450, 0, "ერეტიკოსების ტყვიამფრქვევი"), 2);
     }
     const bar = S.ents.find(b => b.kind === "b" && b.side === "e" && b.type === "barracks" && b.hp > 0);
-    if (bar && bar.queue.length < 2) {
+    if (bar && bar.built && bar.queue.length < 2) {
       const pool = SIDES.e.units.I.concat(s.epoch >= 2 ? SIDES.e.units.II : []);
       const id = pool[Math.floor(Math.random() * pool.length)];
       const c = UNIT_COST(byId[id]);
@@ -304,6 +361,8 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
         else if (e.kind === "porter") stepPorter(e, dt);
         else if (e.kind === "b" && e.hp > 0) stepBuilding(e, dt);
       }
+      for (const [b, n] of S.work) if (b.hp > 0) work(b, n, dt);
+      S.work.clear();
       stepAI(dt);
       for (const e of S.ents) if (e.kind === "u" && e.hp <= 0) S.sel.delete(e.id);
       S.ents = S.ents.filter(e => !((e.kind === "u" || e.kind === "b") && e.hp <= 0 && e !== S.side.p.hq && e !== S.side.e.hq));
@@ -311,6 +370,7 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
       if (S.side.e.hq.hp <= 0) end(true); else if (S.side.p.hq.hp <= 0) end(false);
       if ((S.tick = (S.tick || 0) + dt) > .25) { S.tick = 0; renderTop(); renderPanel(); }
     }
+    panCam(dt);
     draw();
     requestAnimationFrame(frame);
   }
@@ -322,38 +382,108 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     $("startBtn").textContent = "ახალი ომი"; $("banner").hidden = false;
   }
 
-  // ხატვა: კოლხეთი — ბოძებზე დგმული სახლები და სვანური კოშკები; დიდი უღელი — ურმები და ბორბლები
-  let scale = 1, offX = 0, offY = 0;
+  // კამერა: AoE/AoM-ის მსგავსად — მასშტაბი კურსორისკენ, გადაადგილება კლავიშებით, ეკრანის კიდით და შუა ღილაკით,
+  // მინირუკა; ყველაზე შორს (მთელი რუკა) — „სტრატეგიული ხედი“: იუნიტები დიდ ნიშნებად ჩანს
+  const cam = { x: W / 2, y: H / 2, z: 0 };
+  let fitZ = 1, ik = 1;
+  const keys = new Set();
   function resize() {
-    const r = $("field").getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    const r = $("field").getBoundingClientRect(), dpr = window.devicePixelRatio || 1, rel = cam.z ? cam.z / fitZ : 0;
     cv.width = Math.max(1, r.width * dpr); cv.height = Math.max(1, r.height * dpr);
-    scale = Math.min(cv.width / W, cv.height / H); offX = (cv.width - W * scale) / 2; offY = (cv.height - H * scale) / 2;
+    fitZ = Math.min(cv.width / W, cv.height / H);
+    if (rel) cam.z = rel * fitZ;
+    clampCam();
   }
   window.addEventListener("resize", resize);
+  function clampCam() {
+    cam.z = Math.max(fitZ, Math.min(fitZ * 4, cam.z || fitZ));
+    const hw = cv.width / 2 / cam.z, hh = cv.height / 2 / cam.z;
+    cam.x = hw * 2 >= W ? W / 2 : Math.max(hw, Math.min(W - hw, cam.x));
+    cam.y = hh * 2 >= H ? H / 2 : Math.max(hh, Math.min(H - hh, cam.y));
+  }
+  const screenPt = ev => { const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1; return { x: (ev.clientX - r.left) * dpr, y: (ev.clientY - r.top) * dpr }; };
+  const toWorld = s => ({ x: (s.x - cv.width / 2) / cam.z + cam.x, y: (s.y - cv.height / 2) / cam.z + cam.y });
+  function zoomAt(s, f) {
+    const w = toWorld(s); cam.z = Math.max(fitZ, Math.min(fitZ * 4, cam.z * f));
+    cam.x = w.x - (s.x - cv.width / 2) / cam.z; cam.y = w.y - (s.y - cv.height / 2) / cam.z; clampCam();
+  }
+  function camHome() { const hq = S.side.p.hq; cam.z = fitZ * 1.8; cam.x = hq.x + 170; cam.y = hq.y; clampCam(); }
+  function panCam(dt) {
+    const dpr = window.devicePixelRatio || 1, v = 900 * dpr * dt / cam.z, m = 18 * dpr;
+    let dx = (keys.has("d") || keys.has("arrowright") ? 1 : 0) - (keys.has("a") || keys.has("arrowleft") ? 1 : 0);
+    let dy = (keys.has("s") || keys.has("arrowdown") ? 1 : 0) - (keys.has("w") || keys.has("arrowup") ? 1 : 0);
+    if (S.mouse && S.running && !S.drag && !S.lineDrag && !onMini(S.mouse)) {   // ეკრანის კიდე
+      if (S.mouse.x < m) dx = -1; else if (S.mouse.x > cv.width - m) dx = 1;
+      if (S.mouse.y < m) dy = -1; else if (S.mouse.y > cv.height - m) dy = 1;
+    }
+    if (dx || dy) { cam.x += dx * v; cam.y += dy * v; clampCam(); }
+  }
+  function miniRect() { const dpr = window.devicePixelRatio || 1, w = Math.min(190 * dpr, cv.width * .32), h = w * H / W;
+    return { x: cv.width - w - 8 * dpr, y: cv.height - h - 8 * dpr, w, h }; }
+  const onMini = s => { const r = miniRect(); return s.x >= r.x && s.x <= r.x + r.w && s.y >= r.y && s.y <= r.y + r.h; };
+  function jumpMini(s) { const r = miniRect(); cam.x = (s.x - r.x) / r.w * W; cam.y = (s.y - r.y) / r.h * H; clampCam(); }
+
+  // ხატვა: კოლხეთი — ბოძებზე დგმული სახლები და სვანური კოშკები; დიდი უღელი — ურმები და ბორბლები
   function draw() {
     if (!S) return;
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = "#2a241d"; ctx.fillRect(0, 0, cv.width, cv.height);
-    ctx.setTransform(scale, 0, 0, scale, offX, offY);
+    ctx.setTransform(cam.z, 0, 0, cam.z, cv.width / 2 - cam.x * cam.z, cv.height / 2 - cam.y * cam.z);
+    ik = Math.max(1, fitZ * 1.5 / cam.z);
     // მიწა: ორი სოფელი და ნეიტრალური ზოლი
     ctx.fillStyle = "#4a5236"; ctx.fillRect(0, 0, 420, H); ctx.fillStyle = "#4f3b2c"; ctx.fillRect(W - 420, 0, 420, H);
     ctx.fillStyle = "#3f3528"; ctx.fillRect(420, 0, W - 840, H);
     for (let i = 0; i < 70; i++) { const x = 430 + (i * 137) % (W - 860), y = (i * 251) % H; ctx.fillStyle = "rgba(0,0,0,.18)"; ctx.beginPath(); ctx.arc(x, y, 5 + (i % 4) * 3, 0, 7); ctx.fill(); }
     ctx.font = "12px Noto Sans Georgian, sans-serif"; ctx.fillStyle = "rgba(241,232,214,.35)"; ctx.textAlign = "center";
     ctx.fillText("ნეიტრალური ზოლი · ამბრის ღარი", W / 2, 22);
+    if (S.placing) { ctx.strokeStyle = "rgba(200,145,62,.5)"; ctx.setLineDash([8, 6]); ctx.beginPath(); ctx.moveTo(470, 0); ctx.lineTo(470, H); ctx.stroke(); ctx.setLineDash([]); }
     for (const e of S.ents) {
       if (e.kind === "furrow") { ctx.fillStyle = "#2b2218"; ctx.fillRect(e.x - 10, e.y - 22, 20, 44); }
       if (e.kind === "ruin") { ctx.fillStyle = "#6b5c48"; ctx.fillRect(e.x - e.w / 2, e.y - e.h / 2, e.w, e.h); ctx.fillStyle = "#57493a"; ctx.fillRect(e.x - e.w / 2 + 6, e.y - e.h / 2 + 5, e.w / 2, e.h / 2); }
       if (e.kind === "node") drawNode(e);
     }
     for (const e of S.ents) if (e.kind === "b") drawBuilding(e);
-    for (const e of S.ents) if (e.kind === "porter") { ctx.fillStyle = e.side === "p" ? "#e9dfc8" : "#c9b39a"; ctx.beginPath(); ctx.arc(e.x, e.y, 3, 0, 7); ctx.fill(); }
+    for (const e of S.ents) if (e.kind === "porter") {
+      ctx.fillStyle = e.side === "p" ? "#e9dfc8" : "#c9b39a"; ctx.beginPath(); ctx.arc(e.x, e.y, 3 * ik, 0, 7); ctx.fill();
+      if (e.job) { ctx.fillStyle = "#c8913e"; ctx.fillRect(e.x - 1, e.y - 7, 2, 4); }   // ჩაქუჩი — აშენებს
+      if (S.sel.has(e.id)) { ctx.strokeStyle = "#f1e8d6"; ctx.beginPath(); ctx.arc(e.x, e.y, 3 * ik + 3, 0, 7); ctx.stroke(); }
+    }
     for (const e of S.ents) if (e.kind === "u") drawUnit(e);
     for (const f of S.fx) { ctx.globalAlpha = Math.max(0, f.t / .35); ctx.fillStyle = f.c; ctx.beginPath(); ctx.arc(f.x, f.y, 5, 0, 7); ctx.fill(); ctx.globalAlpha = 1; }
     if (S.drag) { ctx.strokeStyle = "#c8913e"; ctx.setLineDash([5, 4]); ctx.strokeRect(S.drag.x0, S.drag.y0, S.drag.x1 - S.drag.x0, S.drag.y1 - S.drag.y0); ctx.setLineDash([]); }
-    if (S.placing && S.ghost) {
-      const sp = BUILD[S.placing], w = S.vertical && (sp.wall || sp.trench) ? sp.h : sp.w, h = S.vertical && (sp.wall || sp.trench) ? sp.w : sp.h;
-      ctx.globalAlpha = .55; ctx.fillStyle = okPlace(S.ghost.x) ? "#c8913e" : "#b4462f"; ctx.fillRect(S.ghost.x - w / 2, S.ghost.y - h / 2, w, h); ctx.globalAlpha = 1;
+    if (S.placing && S.lineDrag) drawLineGhost();
+    else if (S.placing && S.ghost) {
+      const sp = BUILD[S.placing];
+      ctx.globalAlpha = .55; ctx.fillStyle = free("p", S.ghost, sp) ? "#c8913e" : "#b4462f"; ctx.fillRect(S.ghost.x - sp.w / 2, S.ghost.y - sp.h / 2, sp.w, sp.h); ctx.globalAlpha = 1;
     }
+    drawMini();
+  }
+  // გაწელვის აჩრდილი: მონაკვეთები, ფასი და რამდენს ეყოფა რესურსი
+  function drawLineGhost() {
+    const sp = BUILD[S.placing], l = S.lineDrag, pts = linePts(l.a, l.b, sp.w, l.snap), okN = afford("p", sp.cost);
+    let k = 0;
+    for (const q of pts) {
+      const ok = free("p", q, sp) && k < okN; if (free("p", q, sp)) k++;
+      ctx.globalAlpha = .6; ctx.fillStyle = ok ? "#c8913e" : "#b4462f"; ctx.fillRect(q.x - sp.w / 2, q.y - sp.h / 2, sp.w, sp.h);
+    }
+    ctx.globalAlpha = 1; ctx.fillStyle = "#f1e8d6"; ctx.font = "11px Noto Sans Georgian, sans-serif";
+    const n = Math.min(k, okN), tot = Object.fromEntries(Object.entries(sp.cost).map(([r, v]) => [r, v * n]));
+    ctx.fillText(`${n} მონ. · ${costText(tot)} · ${Math.round(n * sp.time)} წმ`, l.b.x, l.b.y - 14);
+  }
+  function drawMini() {
+    const r = miniRect();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = "rgba(20,16,12,.85)"; ctx.fillRect(r.x - 2, r.y - 2, r.w + 4, r.h + 4);
+    const k = r.w / W;
+    ctx.fillStyle = "#4a5236"; ctx.fillRect(r.x, r.y, 420 * k, r.h); ctx.fillStyle = "#4f3b2c"; ctx.fillRect(r.x + (W - 420) * k, r.y, 420 * k, r.h);
+    ctx.fillStyle = "#3f3528"; ctx.fillRect(r.x + 420 * k, r.y, (W - 840) * k, r.h);
+    for (const e of S.ents) {
+      if (e.kind !== "b" && e.kind !== "u") continue;
+      ctx.fillStyle = e.side === "p" ? "#e0a84e" : "#d0533a";
+      const s = e.kind === "b" ? Math.max(2, e.w * k) : 2;
+      ctx.fillRect(r.x + e.x * k - s / 2, r.y + e.y * k - s / 2, s, e.kind === "b" ? Math.max(2, e.h * k) : 2);
+    }
+    const hw = cv.width / 2 / cam.z, hh = cv.height / 2 / cam.z;
+    ctx.strokeStyle = "#f1e8d6"; ctx.lineWidth = 1; ctx.strokeRect(r.x + Math.max(0, cam.x - hw) * k, r.y + Math.max(0, cam.y - hh) * k, Math.min(W, hw * 2) * k, Math.min(H, hh * 2) * k);
   }
   function drawNode(n) {
     const c = { food: "#9aa65b", coal: "#2c3a26", iron: "#6f7378", stone: "#a49d8f" }[n.res];
@@ -366,25 +496,36 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
   function drawBuilding(b) {
     const col = b.side === "p" ? "#c8913e" : "#b4462f";
     const x = b.x - b.w / 2, y = b.y - b.h / 2;
+    if (!b.built) ctx.globalAlpha = .3 + .5 * b.prog / b.need;   // საძირკველი: რაც უფრო აშენებულია, მით უფრო მკვრივი
+    drawBody(b, x, y, col);
+    ctx.globalAlpha = 1;
+    if (!b.built || b.upg) {
+      ctx.strokeStyle = col; ctx.setLineDash([3, 3]); ctx.strokeRect(x, y, b.w, b.h); ctx.setLineDash([]);
+      const f = b.upg ? b.upg.prog / b.upg.need : b.prog / b.need;
+      ctx.fillStyle = "#000"; ctx.fillRect(x, y + b.h + 2, b.w, 2); ctx.fillStyle = b.upg ? "#9b958a" : "#f1e8d6"; ctx.fillRect(x, y + b.h + 2, b.w * f, 2);
+    } else if (b.hp < b.maxhp && !b.trench) { ctx.fillStyle = "#000"; ctx.fillRect(x, y - 8, b.w, 3); ctx.fillStyle = col; ctx.fillRect(x, y - 8, b.w * Math.max(0, b.hp) / b.maxhp, 3); }
+    if (b.queue && b.queue.length) { ctx.fillStyle = "#f1e8d6"; ctx.font = "10px Noto Sans Georgian, sans-serif"; ctx.fillText(`+${b.queue.length}`, b.x, y - 12); }
+    if (S.selB === b || (S.selB && b.grp && S.selB.grp === b.grp)) { ctx.strokeStyle = "#f1e8d6"; ctx.strokeRect(x - 2, y - 2, b.w + 4, b.h + 4); }
+  }
+  function drawBody(b, x, y, col) {
     if (b.trench) { ctx.fillStyle = "#231c14"; ctx.fillRect(x, y, b.w, b.h); return; }
     if (b.side === "p") {
       if (b.type === "tower") { ctx.fillStyle = "#cfc3a8"; ctx.fillRect(b.x - 6, b.y - 26, 12, 34); ctx.fillStyle = "#6b4f2f"; ctx.fillRect(b.x - 8, b.y - 30, 16, 6); }   // სვანური კოშკი
-      else if (b.wall) { ctx.fillStyle = b.stone ? "#9b958a" : "#8a6a3f"; ctx.fillRect(x, y, b.w, b.h); }
-      else { ctx.fillStyle = "#6b4f2f"; for (let i = 0; i < 4; i++) ctx.fillRect(x + 4 + i * (b.w - 10) / 3, y + b.h - 4, 3, 8);   // ბოძები ჭაობზე
+      else if (b.wall) { ctx.fillStyle = b.stone ? "#9b958a" : "#8a6a3f"; ctx.fillRect(x, y, b.w, b.h);
+        if (!b.stone) { ctx.fillStyle = "#5a3e22"; ctx.fillRect(b.x - 1, y, 2, b.h); } }
+      else if (b.type !== "nest") { ctx.fillStyle = "#6b4f2f"; for (let i = 0; i < 4; i++) ctx.fillRect(x + 4 + i * (b.w - 10) / 3, y + b.h - 4, 3, 8);   // ბოძები ჭაობზე
         ctx.fillStyle = "#a07a46"; ctx.fillRect(x, y, b.w, b.h - 4); ctx.fillStyle = "#5a3e22"; ctx.beginPath(); ctx.moveTo(x - 4, y); ctx.lineTo(b.x, y - 12); ctx.lineTo(x + b.w + 4, y); ctx.fill(); }
     } else {
       if (b.wall) { ctx.fillStyle = "#5b4636"; ctx.fillRect(x, y, b.w, b.h); ctx.fillStyle = "#2c2119"; ctx.beginPath(); ctx.arc(b.x, y + 4, 3, 0, 7); ctx.arc(b.x, y + b.h - 4, 3, 0, 7); ctx.fill(); }
-      else { ctx.fillStyle = "#6e4a36"; ctx.fillRect(x, y, b.w, b.h - 6); ctx.fillStyle = "#2c2119";   // ურემი ბორბლებით
+      else if (b.type !== "nest") { ctx.fillStyle = "#6e4a36"; ctx.fillRect(x, y, b.w, b.h - 6); ctx.fillStyle = "#2c2119";   // ურემი ბორბლებით
         ctx.beginPath(); ctx.arc(x + 8, y + b.h - 3, 6, 0, 7); ctx.arc(x + b.w - 8, y + b.h - 3, 6, 0, 7); ctx.fill();
         ctx.strokeStyle = "#8f8a80"; ctx.beginPath(); ctx.moveTo(x, y + 4); ctx.lineTo(x + b.w, y + 4); ctx.stroke(); }
     }
     if (b.type === "nest") { ctx.fillStyle = "#3a3a32"; ctx.fillRect(x, y, b.w, b.h); ctx.fillStyle = col; ctx.fillRect(b.x - 2, y - 6, 4, 8); }
-    if (b.hp < b.maxhp) { ctx.fillStyle = "#000"; ctx.fillRect(x, y - 8, b.w, 3); ctx.fillStyle = col; ctx.fillRect(x, y - 8, b.w * Math.max(0, b.hp) / b.maxhp, 3); }
-    if (b.queue && b.queue.length) { ctx.fillStyle = "#f1e8d6"; ctx.font = "10px Noto Sans Georgian, sans-serif"; ctx.fillText(`+${b.queue.length}`, b.x, y - 12); }
-    if (S.selB === b) { ctx.strokeStyle = "#f1e8d6"; ctx.strokeRect(x - 2, y - 2, b.w + 4, b.h + 4); }
+    if (b.upg) { ctx.fillStyle = "#9b958a"; const f = b.upg.prog / b.upg.need; ctx.fillRect(x, y + b.h * (1 - f), b.w, b.h * f); }
   }
   function drawUnit(m) {
-    const r = 4 + (m.size - 1) * 4, col = m.side === "p" ? "#e0a84e" : "#d0533a";
+    const r = (4 + (m.size - 1) * 4) * ik, col = m.side === "p" ? "#e0a84e" : "#d0533a";
     ctx.fillStyle = col; ctx.beginPath(); ctx.arc(m.x, m.y, r, 0, 7); ctx.fill();
     if (m.supT > 0) { ctx.strokeStyle = "#f1e8d6"; ctx.beginPath(); ctx.moveTo(m.x - r - 2, m.y + r + 2); ctx.lineTo(m.x + r + 2, m.y + r + 2); ctx.stroke(); }
     if (m.burnT > 0) { ctx.fillStyle = "#f08a2a"; ctx.fillRect(m.x - 1, m.y - r - 5, 2, 3); }
@@ -392,56 +533,124 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     if (m.hp < m.u.wounds) { ctx.fillStyle = "#000"; ctx.fillRect(m.x - 7, m.y - r - 4, 14, 2); ctx.fillStyle = col; ctx.fillRect(m.x - 7, m.y - r - 4, 14 * m.hp / m.u.wounds, 2); }
   }
 
-  // შეყვანა: მონიშვნა, სვლა, შენება
-  const toWorld = ev => { const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
-    return { x: ((ev.clientX - r.left) * dpr - offX) / scale, y: ((ev.clientY - r.top) * dpr - offY) / scale }; };
-  const okPlace = x => x < 470;
+  // შენება: ადგილი თავისუფალია? ხაზის მონაკვეთები; რამდენ მონაკვეთს ეყოფა რესურსი
+  const okPlace = (side, x) => side === "p" ? x < 470 : x > W - 470;
+  const free = (side, q, sp) => okPlace(side, q.x) && q.y > 10 && q.y < H - 10 && !S.ents.some(e =>
+    (e.kind === "b" && e.hp > 0 && Math.abs(e.x - q.x) * 2 < e.w + sp.w - 2 && Math.abs(e.y - q.y) * 2 < e.h + sp.h - 2) || (e.kind === "node" && dist(e, q) < 26));
+  function linePts(a, b, step, snap) {
+    let dx = b.x - a.x, dy = b.y - a.y; const L = Math.min(Math.hypot(dx, dy), step * 60);
+    const ang = snap ? Math.round(Math.atan2(dy, dx) / (Math.PI / 4)) * Math.PI / 4 : Math.atan2(dy, dx);
+    dx = Math.cos(ang) * L; dy = Math.sin(ang) * L;
+    const n = Math.max(1, Math.round(L / step) + 1), pts = [];
+    for (let i = 0; i < n; i++) pts.push({ x: a.x + (n > 1 ? dx * i / (n - 1) : 0), y: a.y + (n > 1 ? dy * i / (n - 1) : 0) });
+    return pts;
+  }
+  const afford = (s, cost) => Math.min(Infinity, ...Object.entries(cost).filter(([, v]) => v).map(([r, v]) => Math.floor(S.side[s][r] / v)));
+
+  // შეყვანა: მონიშვნა, ბრძანება, შენება (ერთი შენობა — დაჭერით, კედელი და თხრილი — გაწელვით), კამერა
+  const ptrs = new Map();   // სენსორული ეკრანი: ორი თითი = მასშტაბი და გადაადგილება
   cv.addEventListener("pointerdown", ev => {
+    const s = screenPt(ev);
+    if (onMini(s)) { jumpMini(s); S.miniDrag = true; cv.setPointerCapture(ev.pointerId); return; }
+    if (ev.pointerType === "touch") {
+      ptrs.set(ev.pointerId, s);
+      if (ptrs.size === 2) { S.drag = null; S.lineDrag = null; const [a, b] = [...ptrs.values()];
+        S.pinch = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, z: cam.z, w: toWorld({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }) }; return; }
+    }
+    if (ev.button === 1) { S.pan = { sx: s.x, sy: s.y, cx: cam.x, cy: cam.y }; cv.setPointerCapture(ev.pointerId); ev.preventDefault(); return; }
     if (!S.running) return;
-    const p = toWorld(ev);
-    if (ev.button === 2) { orderMove(p); return; }
-    if (S.placing) { place(p); return; }
+    const p = toWorld(s);
+    if (ev.button === 2) { command(p); return; }
+    if (S.placing) {
+      if (BUILD[S.placing].line) { S.lineDrag = { a: p, b: p, snap: ev.shiftKey }; cv.setPointerCapture(ev.pointerId); } else place(p);
+      return;
+    }
     S.drag = { x0: p.x, y0: p.y, x1: p.x, y1: p.y }; cv.setPointerCapture(ev.pointerId);
   });
-  cv.addEventListener("pointermove", ev => { const p = toWorld(ev); if (S.placing) S.ghost = p; if (S.drag) { S.drag.x1 = p.x; S.drag.y1 = p.y; } });
+  cv.addEventListener("pointermove", ev => {
+    const s = screenPt(ev); S.mouse = ev.pointerType === "mouse" ? s : null;
+    if (S.miniDrag) { jumpMini(s); return; }
+    if (ptrs.has(ev.pointerId)) {
+      ptrs.set(ev.pointerId, s);
+      if (ptrs.size === 2 && S.pinch) { const [a, b] = [...ptrs.values()], P = S.pinch;
+        cam.z = Math.max(fitZ, Math.min(fitZ * 4, P.z * Math.hypot(a.x - b.x, a.y - b.y) / P.d));
+        cam.x = P.w.x - ((a.x + b.x) / 2 - cv.width / 2) / cam.z; cam.y = P.w.y - ((a.y + b.y) / 2 - cv.height / 2) / cam.z; clampCam(); return; }
+    }
+    if (S.pan) { cam.x = S.pan.cx - (s.x - S.pan.sx) / cam.z; cam.y = S.pan.cy - (s.y - S.pan.sy) / cam.z; clampCam(); return; }
+    const p = toWorld(s);
+    if (S.placing) S.ghost = p;
+    if (S.lineDrag) { S.lineDrag.b = p; S.lineDrag.snap = ev.shiftKey; }
+    if (S.drag) { S.drag.x1 = p.x; S.drag.y1 = p.y; }
+  });
+  cv.addEventListener("pointerleave", () => { S.mouse = null; });
+  cv.addEventListener("pointercancel", ev => { ptrs.delete(ev.pointerId); S.pinch = null; S.drag = null; S.lineDrag = null; S.pan = null; S.miniDrag = false; });
+  cv.addEventListener("wheel", ev => { ev.preventDefault(); zoomAt(screenPt(ev), Math.exp(-ev.deltaY * .0015)); }, { passive: false });
   cv.addEventListener("pointerup", ev => {
+    ptrs.delete(ev.pointerId); if (ptrs.size < 2 && S.pinch) { S.pinch = null; return; }
+    if (S.miniDrag) { S.miniDrag = false; return; }
+    if (S.pan) { S.pan = null; return; }
+    if (S.lineDrag) { const l = S.lineDrag; S.lineDrag = null; placeLine(l.a, l.b, l.snap); return; }
     if (!S.drag) return;
     const d = S.drag; S.drag = null;
     const box = Math.abs(d.x1 - d.x0) > 8 || Math.abs(d.y1 - d.y0) > 8;
     if (box) {
-      S.sel = new Set(S.ents.filter(e => e.kind === "u" && e.side === "p" && e.x >= Math.min(d.x0, d.x1) && e.x <= Math.max(d.x0, d.x1) && e.y >= Math.min(d.y0, d.y1) && e.y <= Math.max(d.y0, d.y1)).map(e => e.id));
+      const inBox = e => e.x >= Math.min(d.x0, d.x1) && e.x <= Math.max(d.x0, d.x1) && e.y >= Math.min(d.y0, d.y1) && e.y <= Math.max(d.y0, d.y1);
+      S.sel = new Set(S.ents.filter(e => (e.kind === "u" || e.kind === "porter") && e.side === "p" && inBox(e)).map(e => e.id));
       S.selB = null; renderPanel(); return;
     }
     const p = { x: d.x0, y: d.y0 };
-    const unit = S.ents.find(e => e.kind === "u" && e.side === "p" && Math.hypot(e.x - p.x, e.y - p.y) < 10);
+    const unit = S.ents.find(e => (e.kind === "u" || e.kind === "porter") && e.side === "p" && dist(e, p) < 10);
     if (unit) { S.sel = new Set([unit.id]); S.selB = null; renderPanel(); return; }
     const b = S.ents.find(e => e.kind === "b" && e.side === "p" && Math.abs(e.x - p.x) < e.w / 2 + 4 && Math.abs(e.y - p.y) < e.h / 2 + 4);
     if (b && !S.sel.size) { S.selB = b; renderPanel(); return; }
-    if (S.sel.size) orderMove(p); else { S.selB = null; renderPanel(); }
+    if (S.sel.size) command(p); else { S.selB = null; renderPanel(); }
   });
   cv.addEventListener("contextmenu", ev => ev.preventDefault());
-  function orderMove(p) {
-    const ms = S.ents.filter(e => S.sel.has(e.id));
+  // ბრძანება: ჯარი მიდის; მზიდავები — საძირკველზე აშენებენ/აკეთებენ, რესურსზე — აგროვებენ
+  function command(p) {
+    const sel = S.ents.filter(e => S.sel.has(e.id)), ps = sel.filter(e => e.kind === "porter"), ms = sel.filter(e => e.kind === "u");
+    if (ps.length) {
+      const site = S.ents.find(b => b.side === "p" && needsWork(b) && Math.abs(b.x - p.x) < b.w / 2 + 6 && Math.abs(b.y - p.y) < b.h / 2 + 6);
+      const node = S.ents.find(n => n.kind === "node" && n.side === "p" && dist(n, p) < 30);
+      if (site) { ps.forEach(q => { q.job = { grp: site.grp, id: site.id }; }); say(`${ps.length} მზიდავი: ${site.built ? "აკეთებს" : "აშენებს"} — ${site.name}.`); }
+      else if (node) { ps.forEach(q => { q.job = null; if (q.res !== node.res) q.carry = 0; q.res = node.res; }); say(`${ps.length} მზიდავი აგროვებს: ${RES_NAME[node.res]}.`); }
+      else say("მზიდავს მიუთითე საძირკველი, დაზიანებული ნაგებობა ან რესურსი (მინდორი, ტყე, მაღარო, კარიერი).");
+    }
     ms.forEach((m, i) => { m.tx = p.x + ((i % 5) - 2) * 12; m.ty = p.y + (Math.floor(i / 5) - 1) * 12; m.forced = false; });
-    if (!ms.length) { S.rally = p; say("ყაზარმის ახალი ჯარი აქ შეიკრიბება."); }
+    if (!sel.length) { S.rally = p; say("ყაზარმის ახალი ჯარი აქ შეიკრიბება."); }
     S.fx.push({ x: p.x, y: p.y, t: .4, c: "#f1e8d6" });
   }
   function place(p) {
     const k = S.placing, sp = BUILD[k];
-    if (!okPlace(p.x)) { say("შენება მხოლოდ შენს სოფელში და ღარამდე შეიძლება."); return; }
+    if (!okPlace("p", p.x)) { say("შენება მხოლოდ შენს სოფელში და ღარამდე შეიძლება."); return; }
+    if (!free("p", p, sp)) { say("ადგილი დაკავებულია."); return; }
     if (!can("p", sp.cost)) { say("რესურსი არ კმარა."); return; }
     pay("p", sp.cost);
-    const vert = S.vertical && (sp.wall || sp.trench);
-    addB("p", k, p.x, p.y, { ...sp, w: vert ? sp.h : sp.w, h: vert ? sp.w : sp.h });
-    if (!(sp.wall || sp.trench)) { S.placing = null; S.ghost = null; }
+    const n = assign("p", foundation("p", k, p.x, p.y, 0), S.builders);
+    say(`${sp.name}: საძირკველი ჩაიყარა · მშენებელი: ${n} · ~${Math.round(sp.time * 3 / (n + 2))} წმ.`);
+    S.placing = null; S.ghost = null;
+    renderPanel(); renderTop();
+  }
+  // გაწელვა: დაჭერა — ხაზის დასაწყისი, გაშვება — ბოლო; ყოველი მონაკვეთი ცალკე საძირკველია, მშენებლები ბოლომდე მიუყვებიან
+  function placeLine(a, b, snap) {
+    const k = S.placing, sp = BUILD[k];
+    const pts = linePts(a, b, sp.w, snap).filter(q => free("p", q, sp));
+    if (!pts.length) { say("აქ ვერ ავაშენებთ: მხოლოდ შენს სოფელში, ღარამდე და თავისუფალ ადგილზე."); return; }
+    const n = Math.min(pts.length, afford("p", sp.cost));
+    if (!n) { say("რესურსი არ კმარა."); return; }
+    const grp = S.nextGrp++;
+    const made = pts.slice(0, n).map(q => { pay("p", sp.cost); return foundation("p", k, q.x, q.y, grp); });
+    const nb = assign("p", made[0], S.builders);
+    say(`${sp.name}: ${n} მონაკვეთი${n < pts.length ? ` (რესურსი ${pts.length}-ისთვის არ ეყო)` : ""} · მშენებელი: ${nb} · ~${Math.round(n * sp.time * 3 / (nb + 2))} წმ.`);
     renderPanel(); renderTop();
   }
 
   // პანელები
   function renderTop() {
-    const s = S.side.p;
+    const s = S.side.p, ps = S.ents.filter(e => e.kind === "porter" && e.side === "p");
     $("res").innerHTML = ["food", "coal", "stone", "iron"].map(k => `<span>${RES_NAME[k]} <b>${Math.floor(s[k])}</b></span>`).join("") +
-      `<span>მოსახლეობა <b>${popUsed("p")}/${popCap("p")}</b></span><span>ეპოქა <b>${s.epoch === 1 ? "I ბეჭდების" : "II ორთქლის"}</b></span>`;
+      `<span>მოსახლეობა <b>${popUsed("p")}/${popCap("p")}</b></span><span>მზიდავი <b>${ps.length}</b> (აშენებს ${ps.filter(q => q.job).length})</span>` +
+      `<span>ეპოქა <b>${s.epoch === 1 ? "I ბეჭდების" : "II ორთქლის"}</b></span>`;
   }
   // პანელს თავიდან არ ვხატავთ: ღილაკები ადგილზე ახლდება, რომ დაჭერა არ დაიკარგოს
   function patch(el, html) {
@@ -455,16 +664,18 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
       if (c.disabled !== n.disabled) c.disabled = n.disabled; });
   }
   function btn(id, label, cost, ok, on) { return `<button type="button" id="${id}" ${ok ? "" : "disabled"} class="${on ? "on" : ""}">${label} <span class="cost">${cost}</span></button>`; }
+  const wallRun = () => S.selB && S.selB.grp && S.selB.type === "palisade" ? S.ents.filter(b => b.grp === S.selB.grp && b.type === "palisade" && b.built && !b.stone && !b.upg) : [];
   function renderPanel() {
     if (!S) return;
-    const s = S.side.p, porterOk = can("p", { food: 50 }) && popUsed("p") < popCap("p");
+    const s = S.side.p, porterOk = can("p", { food: 50 }) && popUsed("p") < popCap("p"), run = wallRun();
     patch($("gEco"), `<span class="label">სოფელი</span>` + btn("trainPorter", "მზიდავი", "50 საკ.", porterOk) +
-      (s.epoch === 1 ? btn("epoch2", "ორთქლის ეპოქა", "300 საკ. 200 რკ.", can("p", { food: 300, iron: 200 })) : ""));
+      (s.epoch === 1 ? btn("epoch2", "ორთქლის ეპოქა", "300 საკ. 200 რკ.", can("p", { food: 300, iron: 200 })) : "") +
+      `<span class="label">მშენებელი</span><button type="button" id="bMinus" aria-label="ნაკლები მშენებელი">−</button><b class="cnt">${S.builders}</b>` +
+      `<button type="button" id="bPlus" aria-label="მეტი მშენებელი">+</button>`);
     patch($("gBuild"), `<span class="label">შენება</span>` + Object.entries(BUILD).filter(([, b]) => b.epoch <= s.epoch)
-      .map(([k, b]) => btn("b_" + k, b.name, costText(b.cost), can("p", b.cost), S.placing === k)).join("") +
-      `<button type="button" id="rot" class="${S.vertical ? "on" : ""}">კედელი ${S.vertical ? "↕" : "↔"}</button>` +
-      (S.selB && S.selB.wall && !S.selB.stone && s.epoch >= 2 ? btn("toStone", "ქვის კედელი", "30 ქვა", can("p", { stone: 30 })) : ""));
-    const bars = S.ents.filter(e => e.kind === "b" && e.side === "p" && (e.type === "barracks" || e.type === "workshop") && e.hp > 0);
+      .map(([k, b]) => btn("b_" + k, b.name + (b.line ? " ⟷" : ""), `${costText(b.cost)}${b.line ? "/მონ." : ""} · ${b.time} წმ`, can("p", b.cost), S.placing === k)).join("") +
+      (run.length && s.epoch >= 2 ? btn("toStone", `ხაზი ქვით (${run.length})`, `${run.length * 4} ქვა`, can("p", { stone: run.length * 4 })) : ""));
+    const bars = S.ents.filter(e => e.kind === "b" && e.side === "p" && e.built && (e.type === "barracks" || e.type === "workshop") && e.hp > 0);
     const pool = SIDES.p.units.I.concat(s.epoch >= 2 ? SIDES.p.units.II : []);
     patch($("gArmy"), `<span class="label">ჯარი${bars.length ? "" : " (ააშენე ყაზარმა)"}</span>` + pool.map(id => {
       const u = byId[id], c = UNIT_COST(u), needWs = u.tags.includes("vehicle");
@@ -475,17 +686,25 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
   }
   document.addEventListener("click", ev => {
     const id = ev.target.closest("button") && ev.target.closest("button").id; if (!id || !S) return;
-    const s = S.side.p;
+    const s = S.side.p, mid = { x: cv.width / 2, y: cv.height / 2 };
     if (id === "startBtn") { if (S.over) newGame(); $("banner").hidden = true; S.running = true; renderTop(); renderPanel(); return; }
+    if (id === "camIn") zoomAt(mid, 1.3);
+    if (id === "camOut") zoomAt(mid, 1 / 1.3);
+    if (id === "camHome") camHome();
+    if (id === "camAll") { cam.z = fitZ; clampCam(); }
     if (id === "trainPorter" && can("p", { food: 50 })) { pay("p", { food: 50 }); addPorter("p", s.hq); }
     if (id === "epoch2" && can("p", { food: 300, iron: 200 })) { pay("p", { food: 300, iron: 200 }); s.epoch = 2; say("ორთქლის ეპოქა: ქვის კედელი, ტყვიამფრქვევი, აზნაურები, მონასპა და ხალკოტავრი."); }
-    if (id.startsWith("b_")) { const k = id.slice(2); S.placing = S.placing === k ? null : k; S.sel.clear();
-      if (S.placing) say(`${BUILD[k].name}: დააწექი შენს სოფელში. ${BUILD[k].wall || BUILD[k].trench ? "კედელი და თხრილი — რამდენიმე ზედიზედ." : ""}`); }
-    if (id === "rot") S.vertical = !S.vertical;
-    if (id === "toStone" && S.selB && can("p", { stone: 30 })) { pay("p", { stone: 30 }); Object.assign(S.selB, { stone: true, armor: 6, maxhp: 160, hp: 160, name: "ქვის კედელი" }); }
+    if (id.startsWith("b_")) { const k = id.slice(2); S.placing = S.placing === k ? null : k;
+      if (S.placing) say(BUILD[k].line ? `${BUILD[k].name}: დააჭირე და გაწელე შენს სოფელში (Shift — 45°-იანი კუთხეები). შენებას მზიდავები იწყებენ ხაზის თავიდან.`
+        : `${BUILD[k].name}: დააწექი შენს სოფელში. ააშენებს ${S.sel.size ? "მონიშნული მზიდავები" : S.builders + " უახლოესი მზიდავი"}.`); }
+    if (id === "bMinus") S.builders = Math.max(1, S.builders - 1);
+    if (id === "bPlus") S.builders = Math.min(10, S.builders + 1);
+    if (id === "toStone") { const run = wallRun(), cost = { stone: run.length * 4 };
+      if (run.length && can("p", cost)) { pay("p", cost); run.forEach(b => { b.upg = { need: 4, prog: 0 }; });
+        const n = assign("p", run[0], S.builders); say(`მესერი ქვით მაგრდება: ${run.length} მონაკვეთი · მშენებელი: ${n}.`); } }
     if (id.startsWith("t_")) {
       const uid = id.slice(2), u = byId[uid], c = UNIT_COST(u), needWs = u.tags.includes("vehicle");
-      const b = S.ents.filter(e => e.kind === "b" && e.side === "p" && e.hp > 0 && (e.type === "workshop") === needWs && (e.type === "barracks" || e.type === "workshop"))
+      const b = S.ents.filter(e => e.kind === "b" && e.side === "p" && e.hp > 0 && e.built && (e.type === "workshop") === needWs && (e.type === "barracks" || e.type === "workshop"))
         .sort((a, z) => a.queue.length - z.queue.length)[0];
       if (b && can("p", c)) { pay("p", c); b.queue.push(uid); if (b.queue.length === 1) b.qt = trainTime(uid); }
     }
@@ -494,10 +713,18 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     if (id === "pause") S.running = !S.running;
     renderTop(); renderPanel();
   });
-  window.addEventListener("keydown", ev => { if (ev.key === "Escape" && S) { S.placing = null; S.sel.clear(); renderPanel(); } if ((ev.key === "r" || ev.key === "R") && S) { S.vertical = !S.vertical; renderPanel(); } });
+  window.addEventListener("keydown", ev => {
+    const k = ev.key.toLowerCase();
+    if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k)) { keys.add(k); if (k.startsWith("arrow")) ev.preventDefault(); }
+    if (k === "h" && S) camHome();
+    if (k === "escape" && S) { S.placing = null; S.lineDrag = null; S.sel.clear(); S.selB = null; renderPanel(); }
+  });
+  window.addEventListener("keyup", ev => keys.delete(ev.key.toLowerCase()));
+  window.addEventListener("blur", () => keys.clear());
   function say(t) { $("msg").textContent = t; }
 
   newGame(); renderTop(); requestAnimationFrame(frame);
+  window.TW_GAME = () => S; window.TW_CAM = cam;   // ტესტებისთვის (tools/test_digital.js)
   if (!D.units.length) say("მონაცემები ვერ ჩაიტვირთა (data.js).");
 })();
 </script>
