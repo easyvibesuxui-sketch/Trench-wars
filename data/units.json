@@ -1333,7 +1333,8 @@
     "leader",
     "hero",
     "burn_gas",
-    "orders"
+    "orders",
+    "night_sight"
    ],
    "ability_points": 15,
    "role": "command"
@@ -2500,7 +2501,7 @@
   {
    "id": "hero_nameless",
    "faction": "harness",
-   "name": "უსახელო",
+   "name": "უღლისმთავარი",
    "tier": "hero",
    "size": 1,
    "move": 6,
@@ -2576,7 +2577,7 @@
     "leader",
     "witch",
     "ritual",
-    "fire_weak"
+    "lightning_weak"
    ],
    "ability_points": 25,
    "role": "command"
