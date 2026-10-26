@@ -16,6 +16,9 @@ html, body { height: 100%; }
 body { margin: 0; background: var(--mud); color: var(--ink); font-family: var(--body); font-size: 14px; }
 .app { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px;
   padding-block: 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); box-sizing: border-box; }
+.lang { display: flex; border: 1px solid currentColor; border-radius: 6px; overflow: hidden; opacity: .85; }
+.lang button { font: inherit; font-size: .75rem; padding: 4px 8px; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.lang button[aria-pressed="true"] { font-weight: 700; text-decoration: underline; }
 header { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; justify-content: space-between; }
 h1 { font-family: var(--display); font-size: 1.15rem; margin: 0; letter-spacing: .02em; text-wrap: balance; }
 h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-left: 6px; }
@@ -51,6 +54,7 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
   <header>
     <h1>ბოლო ზღუდე <small>ქვესკნელის ფრონტი · ბეჭდის დაცვა ნაპრალის ტალღებისგან · პროტოტიპი</small></h1>
     <div class="hud" id="hud" aria-live="polite"></div>
+    <div class="lang" role="group" aria-label="სახელების ენა / Name language" title="ენის შეცვლა თამაშს თავიდან იწყებს"><button type="button" data-lang="ka">ქარ</button><button type="button" data-lang="en">EN</button></div>
   </header>
   <div class="field" id="field">
     <canvas id="cv" aria-label="დაფა: ნაპრალი მარჯვნივ, ამბრის ბეჭედი მარცხნივ"></canvas>
@@ -85,6 +89,17 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
 (function () {
   "use strict";
   const D = window.TW_DATA || { units: [], factions: {}, allies: {} };
+  // ქარ/EN: იუნიტებისა და ფრაქციების სახელები (ინტერფეისი — ქართულად). ენის შეცვლა თამაშს თავიდან იწყებს.
+  let LANG = "ka";
+  try { LANG = localStorage.getItem("tw-lang") === "en" ? "en" : "ka"; } catch (e) {}
+  if (LANG === "en" && D.en) {
+    D.units.forEach(u => { u.name = D.en.units[u.id] || u.name; (u.weapons || []).forEach(w => { w.name = D.en.weapons[w.name] || w.name; }); });
+    ["factions", "allies"].forEach(k => Object.keys(D[k] || {}).forEach(f => { D[k][f] = D.en.factions[f] || D[k][f]; }));
+  }
+  document.querySelectorAll(".lang button").forEach(b => {
+    b.setAttribute("aria-pressed", String(b.dataset.lang === LANG));
+    b.addEventListener("click", () => { if (b.dataset.lang === LANG) return; try { localStorage.setItem("tw-lang", b.dataset.lang); } catch (e) {} location.reload(); });
+  });
   const byId = Object.fromEntries(D.units.map(u => [u.id, u]));
   const $ = id => document.getElementById(id);
   const cv = $("cv"), ctx = cv.getContext("2d");
