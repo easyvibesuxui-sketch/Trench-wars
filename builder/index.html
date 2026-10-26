@@ -50,13 +50,15 @@ button { cursor: pointer; }
 
 /* შტაბის ზოლი */
 .hq { display: grid; gap: 14px; }
+.hq > * { min-width: 0; }
+.hq select { max-width: 100%; }
 .factions { display: flex; flex-wrap: wrap; gap: 8px; }
 .faction-btn {
   border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 8px 14px;
   display: grid; text-align: left; gap: 2px; min-width: 0;
 }
 .faction-btn small { color: var(--muted); font-size: .78rem; }
-@media (max-width: 520px) { .factions { display: grid; grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .factions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } .faction-btn { min-width: 0; overflow-wrap: anywhere; } }
 .ally-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: .9rem; min-width: 0; }
 .ally-pick select { flex: 1 1 220px; width: 100%; min-width: 0; max-width: 100%; }
 .faction-btn[aria-pressed="true"] { border-color: var(--bronze); box-shadow: inset 0 -3px 0 var(--bronze); }
