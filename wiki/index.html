@@ -1,0 +1,237 @@
+<title>ქვესკნელის ფრონტის ვიკი</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Serif+Georgian:wdth,wght@62.5..100,400..900&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* განლაგება: არქივის ბარათების კატალოგი — ზედა ზოლი ძიებით, ქვემოთ ერთი სვეტი; ფრაქციის გვერდი იხსნება ფერის ზოლით (მისი პალიტრა), იუნიტები — ბადე */
+:root {
+  --ground: #e7e9e1;      /* სამხედრო რუკის ქაღალდი */
+  --sheet: #f4f5ef;
+  --ink: #1d211d;
+  --muted: #5d645b;
+  --rule: #c5cabd;
+  --bronze: #8a5d1c;      /* ნათელი მხარე, ბმულები */
+  --rust: #8c2f22;        /* ბნელი მხარე */
+  --patina: #2f5d50;
+  --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: #161916; --sheet: #1e221e; --ink: #e6e4da; --muted: #a3a796; --rule: #343a33;
+  --bronze: #d29a48; --rust: #d36a52; --patina: #79b09d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --ground: #161916; --sheet: #1e221e; --ink: #e6e4da; --muted: #a3a796; --rule: #343a33;
+  --bronze: #d29a48; --rust: #d36a52; --patina: #79b09d; color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 15.5px/1.6 var(--body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--sheet); }
+a { color: var(--bronze); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--sheet); border-bottom: 1px solid var(--rule);
+  padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar .in { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+.brand { font: 800 1.15rem/1.1 var(--display); font-stretch: 75%; letter-spacing: .02em; color: var(--ink); text-decoration: none; }
+.brand small { display: block; font: 400 .72rem var(--body); color: var(--muted); letter-spacing: .06em; }
+.search { position: relative; flex: 1 1 260px; max-width: 420px; }
+.search input { width: 100%; font: inherit; padding: 7px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--ground); color: var(--ink); }
+.results { position: absolute; left: 0; right: 0; top: calc(100% + 4px); background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; max-height: 60vh; overflow: auto; }
+.results a { display: flex; justify-content: space-between; gap: 8px; padding: 7px 10px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.results a:hover, .results a:focus { background: var(--ground); }
+.results small { color: var(--muted); }
+main { max-width: 1120px; margin: 0 auto; padding-block: 24px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; line-height: 1.2; }
+h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); font-stretch: 70%; font-weight: 800; margin: 0 0 8px; }
+h2 { font-size: 1.45rem; font-stretch: 80%; font-weight: 700; margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+h3 { font-size: 1.1rem; margin: 22px 0 8px; }
+.eyebrow { font: 600 .74rem var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lede { max-width: 68ch; color: var(--muted); }
+.prose { max-width: 72ch; min-width: 0; }
+.prose table { border-collapse: collapse; font-size: .9rem; display: block; overflow-x: auto; max-width: 100%; }
+.prose th, .prose td { border: 1px solid var(--rule); padding: 5px 8px; text-align: left; vertical-align: top; }
+.prose blockquote { margin: 12px 0; padding: 4px 14px; border-left: 3px solid var(--rule); color: var(--muted); }
+.prose code { font-family: var(--mono); font-size: .85em; }
+/* მთავარი */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 28px; align-items: center; }
+.hero img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--rule); }
+@media (max-width: 720px) { .hero { grid-template-columns: 1fr; } .hero img { max-width: 220px; } }
+.ftiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.ftile { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px; background: var(--sheet);
+  border: 1px solid var(--rule); border-radius: 6px; color: var(--ink); text-decoration: none; }
+.ftile:hover { border-color: var(--bronze); }
+.ftile .thumb { width: 56px; height: 72px; border-radius: 3px; background-size: cover; background-position: center 20%; }
+.ftile b { font-family: var(--display); font-weight: 700; line-height: 1.25; display: block; }
+.ftile small { color: var(--muted); font-size: .78rem; }
+.sw { display: flex; height: 6px; border-radius: 2px; overflow: hidden; margin-top: 6px; }
+.sw i { flex: 1; }
+.lorelist { display: flex; flex-wrap: wrap; gap: 8px; }
+.lorelist a { padding: 6px 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); text-decoration: none; color: var(--ink); font-size: .92rem; }
+.lorelist a:hover { border-color: var(--bronze); }
+/* ფრაქციის გვერდი */
+.band { display: flex; height: 10px; border-radius: 3px; overflow: hidden; margin-bottom: 18px; }
+.band i { flex: 1; }
+.side { display: inline-block; font: 600 .74rem var(--body); letter-spacing: .08em; padding: 2px 8px; border-radius: 3px; border: 1px solid currentColor; }
+.side.light { color: var(--patina); } .side.dark { color: var(--rust); }
+.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 14px 0 0; font-size: .9rem; }
+.fhead { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 24px; align-items: start; }
+.fhead img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--rule); }
+@media (max-width: 720px) { .fhead { grid-template-columns: 1fr; } .fhead img { max-width: 200px; } }
+.kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 16px; max-width: 72ch; }
+.kv dt { color: var(--muted); font-size: .88rem; } .kv dd { margin: 0; min-width: 0; }
+.kv dd p { margin: 0; }
+.ugrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.ucard { display: flex; flex-direction: column; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; color: var(--ink); text-decoration: none; }
+.ucard:hover { border-color: var(--bronze); }
+.ucard .pic { aspect-ratio: 2 / 3; max-width: 100%; background-size: cover; background-position: center 20%; display: grid; place-items: end start; }
+.ucard .pic span { margin: 6px; font: 600 .7rem var(--mono); background: var(--sheet); color: var(--ink); padding: 1px 6px; border-radius: 3px; }
+.ucard b { font-family: var(--display); font-size: .95rem; line-height: 1.25; padding: 8px 10px 2px; }
+.ucard small { color: var(--muted); font-size: .76rem; padding: 0 10px 10px; }
+/* იუნიტის გვერდი */
+.uhead { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 760px) { .uhead { grid-template-columns: 1fr; } }
+.uimg { aspect-ratio: 2 / 3; max-width: 100%; width: 300px; border-radius: 6px; border: 1px solid var(--rule); background-size: cover; background-position: center; display: grid; place-items: center; text-align: center; padding: 16px; }
+.uimg span { font: 700 1.1rem var(--display); color: #f4f5ef; text-shadow: 0 1px 2px #0008; }
+.stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; max-width: 520px; }
+.stats div { padding: 8px 6px; text-align: center; border-right: 1px solid var(--rule); background: var(--sheet); }
+.stats div:last-child { border-right: 0; }
+.stats small { display: block; color: var(--muted); font-size: .72rem; }
+.stats b { font: 500 1.35rem var(--mono); font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.chip { font-size: .82rem; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); }
+.chip.cost { border-color: var(--bronze); color: var(--bronze); font-weight: 600; }
+.wtable { border-collapse: collapse; font-size: .9rem; min-width: 460px; }
+.wtable th, .wtable td { padding: 6px 10px; border-bottom: 1px solid var(--rule); text-align: left; font-variant-numeric: tabular-nums; }
+.wtable th { color: var(--muted); font-weight: 600; font-size: .8rem; }
+.scroll { overflow-x: auto; max-width: 100%; }
+.alist { display: grid; gap: 8px; max-width: 72ch; }
+.alist div { padding: 8px 12px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; }
+.note { color: var(--muted); font-size: .9rem; max-width: 72ch; }
+.back { display: inline-block; margin-bottom: 14px; font-size: .9rem; }
+@media (prefers-reduced-motion: no-preference) { main { animation: rise .25s ease-out; } @keyframes rise { from { opacity: .6; transform: translateY(4px); } } }
+</style>
+
+<header class="bar"><div class="in">
+  <a class="brand" href="#home">ქვესკნელის ფრონტი<small>ვიკი · ფრაქციები, იუნიტები, ლორი</small></a>
+  <div class="search" role="search">
+    <input id="q" type="search" placeholder="იუნიტი ან ფრაქცია…" autocomplete="off" aria-label="ძიება ვიკიში">
+    <div class="results" id="results" hidden></div>
+  </div>
+</div></header>
+<main id="main" tabindex="-1"></main>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  "use strict";
+  const W = window.WIKI;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const F = Object.fromEntries(W.factions.map(f => [f.id, f]));
+  const U = Object.fromEntries(W.units.map(u => [u.id, u]));
+  const byF = {}; W.units.forEach(u => (byF[u.f] = byF[u.f] || []).push(u));
+  const TIER_ORDER = ["I", "II", "III", "IV", "IV+", "V", "hero"];
+  const pal = f => (f.visual && f.visual.palette) || [["#8b7d5a", ""], ["#c8913e", ""], ["#4a5a6a", ""]];
+  const swatch = f => `<div class="sw" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>`;
+  const pic = (u, f) => u.art ? `background-image:url(${u.art})` : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
+
+  function ftile(f) {
+    const n = (byF[f.id] || []).length, img = f.art ? `background-image:url(${f.art})` : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
+    return `<a class="ftile" href="#f-${f.id}"><span class="thumb" style="${img}"></span><span><b>${esc(f.name)}</b><small>${n} იუნიტი${f.war ? " · " + esc(f.war.title) : ""}</small>${swatch(f)}</span></a>`;
+  }
+  function home() {
+    const lc = W.factions.filter(f => f.core && f.side === "light"), dc = W.factions.filter(f => f.core && f.side === "dark"), al = W.factions.filter(f => !f.core);
+    const arts = W.units.filter(u => u.art).length;
+    return `<section class="hero"><div>
+        <p class="eyebrow">1914 · მცირე კავკასიონი · ამბრის ღარი</p>
+        <h1>ქვესკნელის ფრონტი</h1>
+        <p class="lede">ქვესკნელის კარიბჭეები მთელ მსოფლიოში გაიხსნა და ყოველი ერი სანგრებში თავისი მითოლოგიის ბოროტებას — და საკუთარ ერეტიკოსებს — ებრძვის.
+          მთავარი ფრონტი ამბრის ღარის გასწვრივ გადის. აქ არის ${W.factions.length} ფრაქცია, ${W.units.length} იუნიტი (${arts} ილუსტრაციით), ცალკე ომები და ამბები.</p>
+      </div><img src="art/card_back.jpg" alt="ბეჭედი ბზარით — ბარათის ზურგი" width="480" height="720"></section>
+      <h2>ნათელი მხარე</h2><div class="ftiles">${lc.map(ftile).join("")}</div>
+      <h2>ბნელი მხარე</h2><div class="ftiles">${dc.map(ftile).join("")}</div>
+      <h2>მოკავშირეები</h2><p class="note">ყოველი ერი თავის ცალკე ომს ებრძვის და კავკასიონის ფრონტს მოხალისეებს, მარაგს ან გოლიათს უგზავნის.</p>
+      <div class="ftiles">${al.map(ftile).join("")}</div>
+      <h2>ლორი</h2><div class="lorelist">${W.lore.map(l => `<a href="#l-${l.id}">${esc(l.title)}</a>`).join("")}</div>
+      <h2>ვიზუალური სტილი</h2><div class="prose"><p>${esc(W.visual.medium)}</p><p>${esc(W.visual.not_tc)}</p></div>`;
+  }
+  function faction(f) {
+    const us = (byF[f.id] || []).slice().sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
+    const groups = TIER_ORDER.map(t => [t, us.filter(u => u.tier === t)]).filter(([, l]) => l.length);
+    const v = f.visual, ar = f.arch || {}, df = f.defense || {};
+    const AR = { vernacular: "ხალხური არქიტექტურა", history: "ისტორია და ხელობა", house: "სახლი", great: "დიდი ნაგებობა", unique: "უნიკალური", bonus: "ეკონომიკის ბონუსი" };
+    const DF = { tower: "კოშკი", wood: "ხის კედელი", stone: "ქვის კედელი", great_wall: "დიდი გალავანი", moat: "თხრილი", unique: "უნიკალური თავდაცვა" };
+    const toc = [["lore", "ლორი", f.lore], ["war", "ცალკე ომი", f.war], ["stories", "ამბები", f.stories], ["arch", "არქიტექტურა", Object.keys(ar).length || Object.keys(df).length],
+      ["visual", "ვიზუალი", v], ["units", "იუნიტები", us.length], ["campaign", "კამპანია", f.campaign]].filter(x => x[2]);
+    return `<a class="back" href="#home">← ყველა ფრაქცია</a>
+      <div class="band" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>
+      <div class="fhead"><div><p class="eyebrow"><span class="side ${f.side}">${f.side === "light" ? "ნათელი მხარე" : "ბნელი მხარე"}</span> ${f.core ? "· ძირითადი ფრაქცია" : "· მოკავშირე"}</p>
+        <h1>${esc(f.name)}</h1><nav class="toc" aria-label="გვერდის ნაწილები">${toc.map(([k, n]) => `<a href="#f-${f.id}" data-jump="${k}">${n}</a>`).join("")}</nav></div>
+        ${f.art ? `<img src="${f.art}" alt="${esc(f.name)} — ილუსტრაცია" width="480" height="720">` : ""}</div>
+      ${f.lore ? `<h2 id="s-lore">ლორი</h2><div class="prose">${f.lore}</div>` : ""}
+      ${f.war ? `<h2 id="s-war">ცალკე ომი: ${esc(f.war.title)}</h2><div class="prose">${f.war.html}</div>` : ""}
+      ${f.stories ? `<h2 id="s-stories">ამბები</h2><div class="prose">${f.stories}</div>` : ""}
+      ${Object.keys(ar).length || Object.keys(df).length ? `<h2 id="s-arch">არქიტექტურა და თავდაცვა</h2><dl class="kv">
+        ${Object.entries(ar).map(([k, h]) => `<dt>${AR[k] || k}</dt><dd>${h}</dd>`).join("")}${Object.entries(df).map(([k, h]) => `<dt>${DF[k] || k}</dt><dd>${h}</dd>`).join("")}</dl>` : ""}
+      ${v ? `<h2 id="s-visual">ვიზუალი</h2><dl class="kv"><dt>ფერები</dt><dd>${v.palette.map(([h, n]) => `<span class="chip"><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${h};margin-right:6px"></i>${esc(n)}</span>`).join(" ")}</dd>
+        <dt>მასალა</dt><dd>${esc(v.materials)}</dd><dt>სილუეტი</dt><dd>${esc(v.silhouette)}</dd><dt>ემბლემა</dt><dd>${esc(v.emblem)}</dd><dt>არ ვიყენებთ</dt><dd>${esc(v.avoid)}</dd></dl>` : ""}
+      <h2 id="s-units">იუნიტები</h2>${groups.map(([t, l]) => `<h3>${t} · ${esc(W.tiers[t] || t)}</h3><div class="ugrid">${l.map(u => ucard(u, f)).join("")}</div>`).join("")}
+      ${f.campaign ? `<h2 id="s-campaign">კამპანია</h2><div class="prose">${f.campaign}</div>` : ""}`;
+  }
+  function ucard(u, f) {
+    return `<a class="ucard" href="#u-${u.id}"><span class="pic" style="${pic(u, f)}"><span>${u.tier} · ${u.cost ?? "—"} მარჩ.</span></span><b>${esc(u.name)}</b><small>${esc((W.roles[u.role] || {}).name || "")}</small></a>`;
+  }
+  function unit(u) {
+    const f = F[u.f], r = W.roles[u.role] || {}, S = ["მოძ", "სრ", "ხჩ", "ჯავ", "სიც", "ნებ"];
+    const wt = u.weapons.length ? `<div class="scroll"><table class="wtable"><thead><tr><th>იარაღი</th><th>სახე</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th>ნიშნები</th></tr></thead><tbody>
+      ${u.weapons.map(w => `<tr><td>${esc(w.name)}</td><td>${w.mode === "ranged" ? "სასროლი" : "ხელჩართული"}</td><td>${w.mode === "ranged" ? w.range + "″" : "—"}</td><td>${w.attacks}</td><td>${w.power}</td><td>${w.damage}</td><td>${esc((w.tags || []).join(", "))}</td></tr>`).join("")}</tbody></table></div>` : "";
+    return `<a class="back" href="#f-${f.id}">← ${esc(f.name)}</a>
+      <div class="uhead"><div class="uimg" style="${pic(u, f)}">${u.art ? "" : `<span>${esc(u.name)}</span>`}</div><div>
+        <p class="eyebrow">${esc(f.name)} · ${u.tier} · ${esc(W.tiers[u.tier] || "")}</p><h1>${esc(u.name)}</h1>
+        <div class="chips"><span class="chip cost">${u.cost ?? "—"} მარჩილი</span>${r.name ? `<span class="chip">${esc(r.icon || "")} ${esc(r.name)}</span>` : ""}
+          ${u.size > 1 ? `<span class="chip">ზომა ${u.size}</span>` : ""}${u.card ? `<span class="chip">„სამი ხაზი“: ${u.card.cost} მარაგი · ⚔ ${u.card.atk} · ⛨ ${u.card.hp}</span>` : ""}</div>
+        <div class="stats" role="table" aria-label="მაჩვენებლები">${u.st.map((v, i) => `<div role="cell"><small>${S[i]}</small><b>${v}</b></div>`).join("")}</div>
+        ${r.does ? `<p class="note">${esc(r.does)}</p>` : ""}
+      </div></div>
+      ${u.desc ? `<h2>აღწერა</h2><div class="prose">${u.desc}</div>` : ""}
+      ${wt ? `<h2>იარაღი</h2>${wt}` : ""}
+      ${u.abil.length ? `<h2>ძალები</h2><div class="alist">${u.abil.map(([n, t]) => `<div><b>${esc(n)}</b> — ${esc(t)}</div>`).join("")}</div>` : ""}
+      ${u.tags.length ? `<h2>ნიშნები</h2><div class="alist">${u.tags.map(([id, n, t]) => `<div><b>${esc(n)}</b>${t ? " — " + esc(t) : ""}</div>`).join("")}</div>` : ""}
+      ${u.visual ? `<h2>ვიზუალი მხატვრისთვის</h2><p class="note">${esc(u.visual)}</p>` : ""}`;
+  }
+  function lore(l) { return `<a class="back" href="#home">← მთავარი</a><p class="eyebrow">ლორი</p><h1>${esc(l.title)}</h1><div class="prose">${l.html}</div>`; }
+
+  let pendingJump = null;
+  function route() {
+    const h = location.hash.slice(1) || "home";
+    let html = home(), title = "ქვესკნელის ფრონტის ვიკი";
+    if (h.startsWith("f-") && F[h.slice(2)]) { html = faction(F[h.slice(2)]); title = F[h.slice(2)].name; }
+    else if (h.startsWith("u-") && U[h.slice(2)]) { html = unit(U[h.slice(2)]); title = U[h.slice(2)].name; }
+    else if (h.startsWith("l-")) { const l = W.lore.find(x => x.id === h.slice(2)); if (l) { html = lore(l); title = l.title; } }
+    $("main").innerHTML = html;
+    document.title = title === "ქვესკნელის ფრონტის ვიკი" ? title : `${title} · ქვესკნელის ფრონტის ვიკი`;
+    if (pendingJump) { const el = document.getElementById("s-" + pendingJump); pendingJump = null; if (el) { el.scrollIntoView(); return; } }
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", route);
+  document.addEventListener("click", ev => {
+    const a = ev.target.closest("a[data-jump]"); if (!a) return;
+    ev.preventDefault(); const el = document.getElementById("s-" + a.dataset.jump); if (el) el.scrollIntoView({ behavior: "smooth" });
+  });
+
+  // ძიება: იუნიტები და ფრაქციები სახელით
+  const q = $("q"), res = $("results");
+  q.addEventListener("input", () => {
+    const s = q.value.trim().toLowerCase();
+    if (s.length < 2) { res.hidden = true; return; }
+    const fs = W.factions.filter(f => f.name.toLowerCase().includes(s)).slice(0, 5).map(f => `<a href="#f-${f.id}">${esc(f.name)}<small>ფრაქცია</small></a>`);
+    const us = W.units.filter(u => u.name.toLowerCase().includes(s)).slice(0, 15).map(u => `<a href="#u-${u.id}">${esc(u.name)}<small>${esc(F[u.f].name)} · ${u.tier}</small></a>`);
+    res.innerHTML = fs.concat(us).join("") || `<a href="#home">ვერაფერი მოიძებნა<small>სცადე სხვა სიტყვა</small></a>`;
+    res.hidden = false;
+  });
+  res.addEventListener("click", () => { res.hidden = true; q.value = ""; });
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape") res.hidden = true; });
+  document.addEventListener("click", ev => { if (!ev.target.closest(".search")) res.hidden = true; });
+  route();
+})();
+</script>
