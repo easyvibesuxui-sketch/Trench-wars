@@ -1,0 +1,1902 @@
+{
+ "flore:colchis": {
+  "h": "d768902a3f",
+  "en": "> \"We guard the Fleece. The Fleece cannot guard us. It has always been so.\"\n>\n> — an old Colchian proverb\n\n### Origins\nColchis is a kingdom of sea and bronze, west of the Lesser Caucasus. Its kings call themselves the **Aeetids** — descendants of the mythical king\nAeetes, who once kept the Golden Fleece. For centuries Colchis traded, fished and\nworked the forge — and kept an old oath whose reason it had forgotten.\n\nColchis was the first to learn that the oath was no fairy tale. The sealing of the **Black Shaft** (1847) was the work of Colchian mountain wardens. Ambri's\nbarrow (1872) was dug by Colchians. The Colchians take pride that both great sacrifices of the war — the shaft workers and Ambri — were made by their\nhands. And that pride keeps them awake at night.\n\n### How They Fight\nThe Colchian army is a blend of old and new. **Aznauri knights** in plate armour, with sword and shield, look like their grandfathers —\nbut a revolver hangs at their belts. Behind them stand the **Lashkari**: peasants and fishermen with rifles and gas masks.\n\nThe strength of Colchis is **bronze and fire**. Its smiths forge **khalkotauroi** — bronze bull-tanks that breathe fire from their\nmouths. The **Oxen of Ambri** still fight at the front — eight survivors of the twelve that carried the giant to his grave.\nEvery year a new band is added to their iron horns.\n\nColchis has **sky-ships** — zeppelins that fly on the sea winds. And it has the **Dragon of the Fleece** — a giant\nthat never sleeps.\n\n### Alchemy\nThe **Sisters of Medea** — an old order of healing women — keep the alchemy of Colchis: Medea's cauldron, which makes the old young and\nbrings back the mortally wounded; and the **dragon's teeth**, which are sown in the earth and spring up as armed warriors.\nThe sisters never say where the teeth come from. The sown warriors do not live long — and sometimes they turn on one another.\n\n### Heraldry\nA golden **ram** on a black field. Units of veterans of Ambri's March carry **bull's horns** on their banners.\n\n### People (1914)\n- **King Aeetes XIV** — an old king who saw Ambri's March as a child. He does not go to the front, but he writes a letter himself\n  for every fallen aznauri.\n- **Eristavi Zurab Bronze-Arm** — commander of the front. He lost his right arm on the dragon's field; now he has a bronze steam arm.\n- **Mother-Healer Eliso** — eldest of the Sisters of Medea. They say she is over a hundred years old and has climbed out of Medea's cauldron three times.\n- **Master Eldar** — chief of the Smiths of Shavkhan, chief mechanic of the Dragon of the Fleece."
+ },
+ "farch:colchis:bonus": {
+  "h": "4276ecfaa5",
+  "en": "Wagons carry twice as much (oxen); a harbour on every map — fishing boats are cheap"
+ },
+ "fdef:colchis:tower": {
+  "h": "1eaf341377",
+  "en": "Log tower → **Svan tower** (3–5 storeys, a fighting platform on top)"
+ },
+ "fdef:colchis:wood": {
+  "h": "07cac77bf7",
+  "en": "A palisade of crossed logs (the Colchian log-work described by Vitruvius)"
+ },
+ "fdef:colchis:stone": {
+  "h": "e26c6a97b1",
+  "en": "A river-stone wall on a pile foundation"
+ },
+ "fdef:colchis:great_wall": {
+  "h": "daa12d7f34",
+  "en": "The rampart of the fortress of the bronze bulls"
+ },
+ "fdef:colchis:moat": {
+  "h": "ef833808aa",
+  "en": "A water-filled marsh channel"
+ },
+ "fdef:colchis:unique": {
+  "h": "b654867168",
+  "en": "**Tower-House:** any village house can have a tower added — the base's defence is scattered through the village and cannot be broken with one blow"
+ },
+ "flore:iberia": {
+  "h": "8a6e024920",
+  "en": "> \"In the lowlands they think. In the mountains they remember.\"\n>\n> — an Iberian proverb\n\n### Origins\nIberia lies east of the Lesser Caucasus — lowlands and high mountains. The lowlands are ruled by the **king**, but the mountain communities — Khevsurs, Pshavs,\nTush — live by their own law and obey the king only in war.\n\nIt was the mountains that kept the old oath best. In the mountain villages the \"devi winters\" were never a fairy tale. Khevsur warriors\nguarded the passes for centuries — and never took off their chain shirts, even when everyone in the lowlands laughed at them.\n\nIberia's smiths freed **Amirani** (1871). Iberia's Khevsurs held **Qursha's Ravine** for nine days.\n\n### How They Fight\nIberians combine old steel and new lightning. The **Khevsur Levy** fight in chain shirts, with sword, small round shield and\ncarbine. The **Tush Riders** leap the trenches from above. The **Tush Shepherds** scout No Man's Land with their nagazi —\nthe hounds know a heretic by his smell.\n\nIberia's technology is **lightning**. Legend says Kopala drove the devis under the earth with lightning. Iberia's smiths took that legend\nliterally. The steam-electric rifles of the **Thunderbolt Gunners** are made for killing giants and monsters,\nand the **Thunderbolt Keeps** are walking towers with a lightning coil spinning on top. On the mountain paths walk the **Steam Ibexes** — mechanical\nclimbers with cannons on their backs.\n\nIberia has no zeppelins. In the mountains the wind yields the sky to no one.\n\n### Alchemy\nThe **Ekimbashi** draw **dead** and **living water** from the mountain springs. In the war they learned a new art: they lay a fallen warrior\nbeneath a lightning coil, and he rises — for a little while. Iberians do not speak of this aloud.\n\n### Heraldry\nA silver **lightning bolt** and **ibex horns** on a blue field. Veterans of Qursha's Ravine carry a **dog's head** on their banners.\n\n### People (1914)\n- **King Armaz III** — a young king who took the throne after his father died in the Winter of Wire. He lives at the front.\n- **Spasalari Nino Thunder-Eye** — Iberia's commander-in-chief, the first commander of the Thunderbolt Gunners, who scattered a gas\n  cloud with lightning in the Winter of Wire.\n- **Amirani** — the living titan in iron armour, with his hound **Qursha**. He stands beside Ambri's grave and will not leave it.\n\n### Colchis and Iberia\nThe two kingdoms fight together, but the old rivalry has not gone away. In the epic **Ambri defeated Amirani** — Colchians honour Ambri's grave,\nIberians honour Amirani. At the front they joke that Amirani guards Ambri's grave to make sure that this time Ambri\nreally does not get up again.\n\nAmirani does not laugh at this joke."
+ },
+ "farch:iberia:bonus": {
+  "h": "60c6fef181",
+  "en": "They gather iron 20% faster (mountain mines); a nagazi guards one group of carriers"
+ },
+ "fdef:iberia:tower": {
+  "h": "8f68715a51",
+  "en": "**Tush and Khevsur flat-roofed tower** (of the keselo type) — with a lightning coil on top"
+ },
+ "fdef:iberia:wood": {
+  "h": "92c8a5f7df",
+  "en": "No wooden stage — wood is scarce in the mountains: dry-laid slate from Era I"
+ },
+ "fdef:iberia:stone": {
+  "h": "ea8f1428ae",
+  "en": "A slate wall"
+ },
+ "fdef:iberia:great_wall": {
+  "h": "70c2f62d1d",
+  "en": "**The Shatili Chain** — houses and towers knit together into a single fortress"
+ },
+ "fdef:iberia:moat": {
+  "h": "c2f98a57fa",
+  "en": "A rock ravine (natural)"
+ },
+ "fdef:iberia:unique": {
+  "h": "864fab90ab",
+  "en": "**The Chain:** neighbouring towers give each other +1 Armour; stone walls one era early, wooden walls never"
+ },
+ "flore:hell": {
+  "h": "d82780cb80",
+  "en": "> \"Every legion has a number. Every number has a place. Every place has an order. Chaos is for the weak.\"\n>\n> — the first article of the Legion Code (found on a captured marquis)\n\n### Origins\nHell is a kingdom of the underworld, with its capital at **Pandemonium**. Other underworlds raged and roared. Hell **prepared**.\nThrough the centuries of the seals its princes divided the legions into ranks, drew up lists, sewed banners and began planning a war\nthat might begin a thousand years later.\n\nThe **grimoires** written in the Age of Whispers were in truth the muster-rolls of this army. When the legions first rose in 1849, the lists\nproved accurate — the ranks, the number of legions, the names of the commanders.\n\n### Structure\nHell's army is built on ranks: **kings, dukes, princes, marquises, presidents, counts and knights**. Each\ncommands legions. At the top stand:\n\n- **Baal** — commander-in-chief. Never seen at the front.\n- **Lucifuge Rofocale** — the strategist, who plans the war as if playing a game of chess for a thousand years.\n- **Beelzebub** — general of the Caucasus front (since 1907), whose headquarters is on the **Grand Harness**.\n- **The Four Emperors** — rulers of the four quarters of the sky. Of them, **Demoriel** — the Emperor of the North — fights in the Arctic (see `09-separate-wars.md`, No. 31).\n- **Leviathan** — Hell's great admiral. His fleet rises from the rifts of the deep ocean (see `09-separate-wars.md`, the war of Oceania).\n- **Crocell** — a duke, \"the sound of a river where there is no water\". His legions dry out the deserts (see `09-separate-wars.md`, No. 25).\n- **Furfur** — a count, lord of storm, thunder and lightning; he appears as a hart with a burning tail. His legions burn the dry lands (see `09-separate-wars.md`, No. 37).\n\nAt the front the legions are led by **marquises**. Every legion has a number, a banner and a speciality — just as in the old lists:\nthe legions of **Halphas** build fortresses and keep the supplies, the legions of **Malphas** tear down fortifications, the legions of **Andras**\nsow discord in the enemy's ranks, and the legions of **Glasya-Labolas** kill.\n\n### How They Fight\nThe legions do not roar. They come on **in step**. They fire **volleys**, stand in **close order**, guard their **supply lines** and\ncarry out **orders**. Without a leader a legion falls into confusion — and that is its only weakness.\n\nThe legion's infantry — the **Vat Recruits** — are **grown in flasks**: identical, numbered homunculi that grow in weeks through underworld\nalchemy. The **Legionnaires** — heavy demonic infantry in black steam armour — stand in a shield wall. The **Riders of Furcas** and\n**the winged Wolves of Marchosias** guard the flanks. The **Forges of Mulciber** move behind the army and mend damaged armour on the spot.\n\nTheir giant is the **Behemoth** — the great beast of the land, which comes on ahead of the army like a living fortress.\n\n### Heraldry\nEvery legion has a **number** and a **badge of rank** — geometric, cold, precise. Colours: **black and rust**.\n\n### Relations with the Heretics\nThe legions **need** the heretics — they dig, build, fight and die. But the legions **do not trust** them.\nThe marquises call the heretics \"surface material\". The heretics know it.\n\n### People (1914)\n- **Marquis Sabnock** — field commander of the legions of the Wound. The old lists say he builds castles and makes wounds fester.\n  At the front they say both are true."
+ },
+ "farch:hell:bonus": {
+  "h": "55891010f5",
+  "en": "They need no food (they are made with iron); they build 30% faster and gather slowly"
+ },
+ "fdef:hell:tower": {
+  "h": "73bd8036b8",
+  "en": "The Tower of Halphas (Goetia: he builds towers and fills them with weapons)"
+ },
+ "fdef:hell:wood": {
+  "h": "19ce55fafc",
+  "en": "No wooden stage — a black iron fence"
+ },
+ "fdef:hell:stone": {
+  "h": "882fabe2aa",
+  "en": "A basalt wall"
+ },
+ "fdef:hell:great_wall": {
+  "h": "a6c7acccbf",
+  "en": "The colonnaded rampart of Pandemonium"
+ },
+ "fdef:hell:moat": {
+  "h": "9ffcdb9f86",
+  "en": "A burning ditch of pitch"
+ },
+ "fdef:hell:unique": {
+  "h": "866c6c8dcb",
+  "en": "**In a Single Night:** walls build 50% faster but cost 25% more (Pandemonium was built \"in a few hours\")"
+ },
+ "flore:harness": {
+  "h": "7768bda1f1",
+  "en": "> \"We did not fall. We rose.\"\n>\n> — an inscription scratched on a wall in a heretic trench\n\n### Origins\nEvery nation has those who went over to the dark side. Some were drawn by power, some by revenge, some by hunger. Many had a just\ngrievance — against unjust officers, against the rich, against a war they had not chosen. The underworld offered them all one thing: **power**. And that\npower changed them all.\n\nAt the head of the heretics stand the **Listeners** — the secret brotherhood of every nation that dug the Black Shaft. In 1847, when the Colchians\nblew up the shaft, the Listeners' leaders escaped. Now they live on the Grand Harness.\n\n### Language\nThe heretics come from every nation, but they speak one language — **the tongue of the underworld**, which the voices taught them. Since the Night of the Third Bridge\n(1852) there is a rule at the front: a heretic is not addressed by name. The heretics no longer use their old names either.\n\n### How They Fight\nThe heretics are the legions' opposite: **chaos, madness and numbers**. The **Rebels** go into the attack in torn uniforms, with chains, screaming,\nand fight on even without a leader. The **Heretic Sappers** dig. The **Chain-Shooters** hunt giants with harpoons and\nchains — just as they bind devis into the harness.\n\nBeside the heretics fight the creatures of the underworld: **devis**, whose heads grow back; **gveleshapi**; the **kudiani** —\nwitches who serve the ancient **Rokapi**; and the **kaji** — sorcerous smiths who stitch dead bodies together\nand make new warriors.\n\n### The Grand Harness\nThe heretics' home and weapon is the **Grand Harness** — a walking city of steam and blood, dragged by the **Bakbak-Devi** and by devis and captive giants\nyoked in harness. On its back stands the **altar**. The city has one goal — Ambri's grave.\n\n### Heraldry\n**A broken chain**. It has no colour — the heretics paint it on their old uniforms with mud, charcoal or blood.\n\n### People (1914)\n- **The Harness-Lord** — leader of the heretics; no one knows his real name. They say he is one of the first leaders of the Listeners, who escaped the Black Shaft in 1847.\n  No one knows his old name, his nation or his face. He speaks to the heretics in many tongues — and all his tongues sound the same.\n- **Rokapi** — the ancient leader of the kudiani, once chained in the underworld. She is free now.\n- **The Bakbak-Devi** — the mightiest of the devis, harnessed at the head of the Grand Harness. Wounded on the dragon's field (1904). It is not\n  the heretics' ally — it is their captive, and it is waiting."
+ },
+ "farch:harness:bonus": {
+  "h": "89186fa9a3",
+  "en": "Cheap (they are captives), but the light side can **free** them — a freed carrier goes over to the enemy"
+ },
+ "fdef:harness:tower": {
+  "h": "52426f3baa",
+  "en": "A chain wagon-tower"
+ },
+ "fdef:harness:wood": {
+  "h": "1b00ca2130",
+  "en": "A circle of wagons (chained together)"
+ },
+ "fdef:harness:stone": {
+  "h": "ddf2d2092b",
+  "en": "Iron-clad wagons"
+ },
+ "fdef:harness:great_wall": {
+  "h": "0f71e6e6ad",
+  "en": "A moving rampart — the city's wheeled walls"
+ },
+ "fdef:harness:moat": {
+  "h": "c9d3657529",
+  "en": "None"
+ },
+ "fdef:harness:unique": {
+  "h": "1527cfecec",
+  "en": "**Moving Fortress:** the wall moves with the base; when it stops, it closes into a ring (a wagon laager)"
+ },
+ "flore:listeners": {
+  "h": "e57af3c3df",
+  "en": "> \"We did not break the seals. We **built** them. Then we simply opened the door.\"\n>\n> — the only words spoken by an interrogated Listener\n\n### Origins\nSecret brotherhoods that united at the end of the 18th century (`02-chronology.md`). The Listeners include people of **every nation** — engineers, officers,\nscientists, smiths — and belong to none. For twenty years they hid inside the coalition and built its seals, each one\nwith a hidden **lock**. The Night of Opening in 1871 was their work, and the secret of every separate war leads back to their trail (`09-separate-wars.md`).\n\n### How They Fight\nThe Listeners rarely stand in a line at the front. **Infiltration:** before the battle their \"planted\" models hide in the enemy's ranks —\nfalse rankers in coalition uniform, false engineers. **Sabotage:** explosive charges, mimicked voices, false orders. **Locks:**\nin a campaign their currency is locks — every new lock is a new crack in someone else's seal.\n\n### Heraldry\nThey have no emblem — that is their emblem. They know each other by **a nick on the rim of the ear**.\n\n### People (1914)\n- **Master Kalistrate** — a Colchian engineer who built more than forty of the coalition's seals. He vanished after 1871; they say he has appeared\n  at least once in every separate war — always under another name.\n- **The Harness-Lord** — leader of the heretics, an old Listener (see the Grand Harness). The brotherhood calls him \"the one who left\": he is trying to open the door; they want **to own it**.\n- **The Gifted Colossus** — a bronze statue forged as a \"gift\" to a city, which stands up at night."
+ },
+ "farch:listeners:bonus": {
+  "h": "b99adc3a44",
+  "en": "They gather unseen in neutral villages — the enemy takes them for villagers"
+ },
+ "fdef:listeners:tower": {
+  "h": "2ac5689cb4",
+  "en": "A \"water tower\" or \"lighthouse\" — a disguised watch-post"
+ },
+ "fdef:listeners:wood": {
+  "h": "7e735eceb6",
+  "en": "An ordinary garden fence"
+ },
+ "fdef:listeners:stone": {
+  "h": "744bb607df",
+  "en": "An \"old\" stone fence"
+ },
+ "fdef:listeners:great_wall": {
+  "h": "cc682f7e78",
+  "en": "A \"gifted\" rampart"
+ },
+ "fdef:listeners:moat": {
+  "h": "e4727025a0",
+  "en": "Hidden wolf-pits"
+ },
+ "fdef:listeners:unique": {
+  "h": "10766b85b5",
+  "en": "**Disguise:** walls and towers look neutral to the enemy until it comes within 10\" (in the digital game — within sight range)"
+ },
+ "flore:kajeti": {
+  "h": "bf70e6effb",
+  "en": "> \"Flesh is weak. Cast iron is not. Silver, even less so. Come, we'll make you over.\"\n>\n> — a kaji's offer to a captured soldier\n\n### Origins\nThe **kaji** are the sorcerous beings and smiths of Georgian folklore; **Kajeti** is their fortress and their country. In the Age of Whispers, in the valleys of the Caucasus,\non the old land of Kajeti, they relit their forges (`02-chronology.md`). The kaji belong to no nation and serve no god:\nthey love **the craft**. They forge stitched bodies for the Grand Harness — and they name their price to the infernal legions. They have a war of their own: Kajeti\nwants **Ambri's body** — the greatest \"material\" in the world.\n\n### How They Fight\n**Forged bodies:** the Cast-Iron Rankers and Wardens know no fear, and poison does not touch them. **The forge:** the Anvil-Lord makes\nconstructs during the battle. **Silver** is their campaign currency: a silver plate adds armour, an iron casting adds new rankers.\n\n### Heraldry\n**A silver hammer on an anvil**, on a black field. On the fortress gate — two hands, one of flesh, the other of iron.\n\n### People (1914)\n- **Zarda, Queen of the Kaji** — the smith-queen of Kajeti; they say her left hand is silver and her right older than old.\n- **The Citadel-Colossus of Kajeti** — a castle of Kajeti that stood up on its feet."
+ },
+ "farch:kajeti:bonus": {
+  "h": "bafa601834",
+  "en": "They need no food (coal); a scrap collector gathers silver (currency) from the battlefield"
+ },
+ "fdef:kajeti:tower": {
+  "h": "903dccc0fc",
+  "en": "A cast-iron turret"
+ },
+ "fdef:kajeti:wood": {
+  "h": "0333bf4e0f",
+  "en": "No wooden stage — cast-iron shields"
+ },
+ "fdef:kajeti:stone": {
+  "h": "9bd585a312",
+  "en": "A wall cut into the rock"
+ },
+ "fdef:kajeti:great_wall": {
+  "h": "af99a833d8",
+  "en": "The fortress of Kajeti on the cliff"
+ },
+ "fdef:kajeti:moat": {
+  "h": "b2cf2cf71b",
+  "en": "A ditch of boiling slag"
+ },
+ "fdef:kajeti:unique": {
+  "h": "4d990f104d",
+  "en": "**Slag Ditch:** the ditch damages anyone who enters it; cheaper beside a furnace"
+ },
+ "flore:ring": {
+  "h": "fb05607b91",
+  "en": "> \"In my company they speak nine languages. I repeat an order three times, the interpreter four. The enemy shouts once.\"\n>\n> — a letter from a lieutenant of the Ring Battalion, 1911\n\n### Origins\nUnder **the Sea Gate Agreement of 1875** every nation sends one squad to the Wound each year — **the Ring Tribute**. The coalition fell apart,\nbut the tribute squads remained: they were bound into one battalion on the southern rim of the Wound. The battalion holds soldiers from nearly forty nations,\nin one uniform and one gas mask — and many tongues.\n\n### How They Fight\n**Tribute:** the battalion can spend half its budget on allies — with no mark-up, because they are members of the battalion, not\nhired swords. **Confusion of Tongues:** the leader's order reaches an allied unit only within 3\" — unless an **Interpreter** stands within 6\" of it.\nThe battalion says the story of Babel is about them: they build together, in spite of the tongues.\n\n### Heraldry\n**A ring of forty rings** — one for every nation. Colour: grey, \"everyone's and no one's\".\n\n### People (1914)\n- **Colonel Levan Four-Tongues** — an Iberian commander who gives orders in four languages and swears in five. The battalion's third commander;\n  the first two stayed in the Wound.\n- **The Colossus of the Sea Gate** — the battalion's giant: forged from forty-two plates, each from the forge of a different nation."
+ },
+ "farch:ring:bonus": {
+  "h": "c23d5e491d",
+  "en": "The tribute caravan trades with every ally's village; carriers gather every resource equally"
+ },
+ "fdef:ring:tower": {
+  "h": "922020f256",
+  "en": "Observation post → concrete pillbox"
+ },
+ "fdef:ring:wood": {
+  "h": "d35fe8fd89",
+  "en": "A sandbag barrier"
+ },
+ "fdef:ring:stone": {
+  "h": "4d66e582de",
+  "en": "Concrete blocks"
+ },
+ "fdef:ring:great_wall": {
+  "h": "767154ccb0",
+  "en": "A three-line redoubt"
+ },
+ "fdef:ring:moat": {
+  "h": "781e1c8e9a",
+  "en": "An anti-tank ditch"
+ },
+ "fdef:ring:unique": {
+  "h": "68d5b7f227",
+  "en": "**Master of Forty Nations:** it can build one unique defence of any ally (through the tribute market)"
+ },
+ "flore:hellenic": {
+  "h": "821d16c429",
+  "en": "- **Patrons:** **Hephaestus** (the smith), the **Cyclopes** (smiths of the thunderbolt), Heracles.\n- **The evil of their land:** **Cronus** and the spawn of the Titans.\n- **What they send:** engineers and **automatons** — mechanical warriors of the tradition of Hephaestus.\n- **Unit ideas:** the Automaton Phalanx (bronze mechanical shieldbearers), Cyclops Gunners (with one-eyed lens sights), Heracles'\n  hunters (monster specialists).\n- **Giant:** **Talos** — the bronze giant who barred the Titans' gate in the Age of Sealing.\n- **History:** on the dragon's field (1904) the League's automatons fought at the foot of the Dragon of the Fleece. The Colchians respect the Greeks — though the old\n  story (the Argonauts and the Fleece) is always good for a joke."
+ },
+ "farch:hellenic:vernacular": {
+  "h": "c32a373aa5",
+  "en": "White cubic houses of the Cyclades with flat roofs (to catch rainwater); in the mountains — terraced stone villages"
+ },
+ "farch:hellenic:history": {
+  "h": "b9c063344b",
+  "en": "Olives and the olive press, windmills on the islands, sponge divers, coastal boats"
+ },
+ "farch:hellenic:house": {
+  "h": "bc43be53f3",
+  "en": "The white cube — a cistern on the flat roof (water needs no farm)"
+ },
+ "farch:hellenic:great": {
+  "h": "497c79658f",
+  "en": "The great forge of Hephaestus"
+ },
+ "farch:hellenic:unique": {
+  "h": "f95f10d50c",
+  "en": "Windmill (flour +15%) · sponge divers' jetty (currency — they sell to the Sisters of Medea too)"
+ },
+ "farch:hellenic:bonus": {
+  "h": "92b5b04c65",
+  "en": "Automatons need no food (coal)"
+ },
+ "fdef:hellenic:tower": {
+  "h": "4dbf4eb647",
+  "en": "A Cyclopean tower"
+ },
+ "fdef:hellenic:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:hellenic:stone": {
+  "h": "e89c735ca4",
+  "en": "**Cyclopean masonry** — huge boulders (in the myth the Cyclopes built it)"
+ },
+ "fdef:hellenic:great_wall": {
+  "h": "b20526ac5c",
+  "en": "A rampart with a Lion Gate"
+ },
+ "fdef:hellenic:moat": {
+  "h": "85c3911f1e",
+  "en": "A rock slope"
+ },
+ "fdef:hellenic:unique": {
+  "h": "8e260b1ac8",
+  "en": "**Cyclopean Wall:** stone walls +50% strength; Cyclops Gunners on top of the wall shoot far"
+ },
+ "flore:northern": {
+  "h": "ebfd6af3b5",
+  "en": "- **Patrons:** **Thor**, **Tyr** (who bound Fenrir and lost his hand), Heimdall (guardian of the gate).\n- **The evil of their land:** **Fenrir**, **Jörmungandr**, the jötnar.\n- **What they send:** **Jotun Hunters** — the finest masters of fighting giants — and Tyr's veterans.\n- **Unit ideas:** Jotun Hunters (harpoon-cannons, chains), **the One-Hands of Tyr** (veterans with steam prosthetics who swear\n  never to take the hand off until the war is over), Heimdall's horn-blowers (alarm and scouts).\n- **Giant:** the Steel Jotun (kept at home — Fenrir's wolves do not leave the North).\n- ⚠️ Runes and symbols appropriated by the Nazis are not used."
+ },
+ "farch:northern:vernacular": {
+  "h": "3acbdb7480",
+  "en": "Wooden houses with turf roofs; storehouses raised on posts (stabbur); Lofoten fishermen's cabins (rorbu) on stilts, half over the water"
+ },
+ "farch:northern:history": {
+  "h": "72071bdd1c",
+  "en": "Cod dried on A-frame wooden racks (stockfish — a thousand-year export), the seasonal winter fishery, forest"
+ },
+ "farch:northern:house": {
+  "h": "d4c7b6f654",
+  "en": "Rorbu — a shore cabin on stilts (the boat comes right up to the door)"
+ },
+ "farch:northern:great": {
+  "h": "5f58dddc38",
+  "en": "Heimdall's Horn Tower"
+ },
+ "farch:northern:unique": {
+  "h": "5b78dc5e2a",
+  "en": "Drying rack: the fish do not spoil — in winter, when the farm stops, the rack provides food"
+ },
+ "farch:northern:bonus": {
+  "h": "2a6c394aeb",
+  "en": "They do not slow down on winter maps; boats are cheap"
+ },
+ "fdef:northern:tower": {
+  "h": "ce9f75d0b1",
+  "en": "A wooden watch-post on stilts"
+ },
+ "fdef:northern:wood": {
+  "h": "51c54ec428",
+  "en": "A stave palisade"
+ },
+ "fdef:northern:stone": {
+  "h": "2f98aa866a",
+  "en": "A wall of stone and turf"
+ },
+ "fdef:northern:great_wall": {
+  "h": "22da84c8f0",
+  "en": "**Ring Fortress** — a full circle with four gates"
+ },
+ "fdef:northern:moat": {
+  "h": "83fc4d5171",
+  "en": "A ring ditch"
+ },
+ "fdef:northern:unique": {
+  "h": "a0c01ba762",
+  "en": "**Ring Fortress:** inside the ring rampart all the gates open/close at once — a quick sally"
+ },
+ "flore:celtic": {
+  "h": "d4b3b03e6a",
+  "en": "- **Patrons:** **Lugh** (Balor's slayer), **Nuada** (the silver hand), **Goibniu** (the weapon-smith).\n- **The evil of their land:** **Balor** and the Fomorians.\n- **What they send:** **the Smiths of Goibniu** — masters of weapons who, according to legend, forge a spear in three blows.\n- **Unit ideas:** Smiths of Goibniu (a field forge), Marksmen of Lugh (long-range snipers — killers of \"Balor's eye\"),\n  the Silver-Hands of Nuada.\n- ⚠️ TC's Celtic names and themes (Éire Rangers, Fianna, Alba, Claymore, Bagpipes) are not used."
+ },
+ "farch:celtic:vernacular": {
+  "h": "9990c21058",
+  "en": "The \"blackhouse\": a double stone wall, a thatched roof, a peat fire in the middle with no chimney, the byre under the same roof; old dry-stone towers (brochs) and artificial lake islands (crannogs)"
+ },
+ "farch:celtic:history": {
+  "h": "511ba390ad",
+  "en": "Peat cutting (fuel), burning kelp for ash (boom 1750–1810, crash in the 1820s), herring, sheep"
+ },
+ "farch:celtic:house": {
+  "h": "4d5919875e",
+  "en": "The blackhouse — house and byre together (population + a little food); the sooty thatch is farm fertiliser once a year"
+ },
+ "farch:celtic:great": {
+  "h": "0833f28c83",
+  "en": "The great forge of Goibniu"
+ },
+ "farch:celtic:unique": {
+  "h": "dca68ea9c6",
+  "en": "Peat field (instead of coal, in the bog) · kelp kiln (ash → explosives/alchemy, currency)"
+ },
+ "farch:celtic:bonus": {
+  "h": "41b5d1441f",
+  "en": "Seafood +20%"
+ },
+ "fdef:celtic:tower": {
+  "h": "18f6abb2e7",
+  "en": "**Broch** — a round dry-stone tower with a double wall"
+ },
+ "fdef:celtic:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:celtic:stone": {
+  "h": "d644cb0cf2",
+  "en": "A dry-stone wall"
+ },
+ "fdef:celtic:great_wall": {
+  "h": "b8b8b906dc",
+  "en": "A hillfort with several rings of earthworks"
+ },
+ "fdef:celtic:moat": {
+  "h": "059929662a",
+  "en": "A lake — the **crannog** (an artificial island)"
+ },
+ "fdef:celtic:unique": {
+  "h": "48f3d52b50",
+  "en": "**Crannog:** part of the base is built in a lake — infantry can reach it only by bridge or boat"
+ },
+ "flore:finnish": {
+  "h": "ab2c08b34e",
+  "en": "- **Patrons:** **Väinämöinen** (master of song), **Ilmarinen** (the smith, maker of the Sampo).\n- **The evil of their land:** **Louhi** and **Tuoni** (from the \"Kalevala\").\n- **What they send:** **alchemists** — masters of Ilmarinen's tradition — and singers who act in battle through song.\n- **Unit ideas:** Ilmarinen's alchemists (forged people — strong, but cold and soulless), Singers of Väinämöinen\n  (a song that stops the enemy in its tracks)."
+ },
+ "farch:finnish:vernacular": {
+  "h": "3738a27b3d",
+  "en": "The smoke cabin (savupirtti — a stove with no chimney), separate granaries (aitta), a grain-drying barn (riihi), the sauna"
+ },
+ "farch:finnish:history": {
+  "h": "8ce40b24a8",
+  "en": "Tar-burning in forest pits — Ostrobothnia; Oulu in the 1860s was the world's biggest tar-exporting port; tar for wooden ships"
+ },
+ "farch:finnish:house": {
+  "h": "fd8a40782c",
+  "en": "The smoke cabin — cheap but slow to build; the riihi keeps grain until winter"
+ },
+ "farch:finnish:great": {
+  "h": "f493dac100",
+  "en": "The Steam-Sun Mast"
+ },
+ "farch:finnish:unique": {
+  "h": "3759e2a009",
+  "en": "Tar pit: firewood → tar (currency; builds boats and zeppelins twice as fast)"
+ },
+ "farch:finnish:bonus": {
+  "h": "7a255e098f",
+  "en": "Coal +20% in forest (firewood)"
+ },
+ "fdef:finnish:tower": {
+  "h": "0cae423856",
+  "en": "A wooden watch tower"
+ },
+ "fdef:finnish:wood": {
+  "h": "83503d595b",
+  "en": "A log palisade"
+ },
+ "fdef:finnish:stone": {
+  "h": "8b5685dc94",
+  "en": "A wall of glacial boulders"
+ },
+ "fdef:finnish:great_wall": {
+  "h": "7e8f053bd9",
+  "en": "A sea fortress on islands"
+ },
+ "fdef:finnish:moat": {
+  "h": "ee26c9a715",
+  "en": "A cut in the ice"
+ },
+ "fdef:finnish:unique": {
+  "h": "dd10914eb6",
+  "en": "**Snow Wall:** on winter maps a snow barrier is free and quick to build (it melts in spring)"
+ },
+ "flore:britain": {
+  "h": "741baf02c8",
+  "en": "> An old name (formerly \"the Isle of Britain\"): the epic of Beowulf was written in Old Saxon (Old English).\n\n- **Patron:** **Beowulf**.\n- **The evil of their land:** **Grendel** and his mother — and their spawn from the fens.\n- **What they send:** **monster-hunters**.\n- **Unit ideas:** the Heirs of Beowulf (masters of close combat who wrestle monsters bare-handed), Fen Scouts."
+ },
+ "farch:britain:vernacular": {
+  "h": "c38a5246c7",
+  "en": "Reed-thatched cottages of the Fens (the marshes of eastern England); hundreds of wind pumps drained the fen, and from the 1840s — steam pumping stations"
+ },
+ "farch:britain:history": {
+  "h": "3099dae55b",
+  "en": "Draining the fens → new ploughland, reed-cutting, fishing in the channels"
+ },
+ "farch:britain:house": {
+  "h": "cc9661abe2",
+  "en": "A reed cottage on a dike"
+ },
+ "farch:britain:great": {
+  "h": "c13a14f807",
+  "en": "Beowulf's Hall"
+ },
+ "farch:britain:unique": {
+  "h": "d8a08ba27d",
+  "en": "Wind pump (turns a fen tile into farmland; from Era III — a steam station). Lore: every drained fen makes the mere of Grendel's mother smaller"
+ },
+ "farch:britain:bonus": {
+  "h": "7245fca06d",
+  "en": "They do not slow down in marsh"
+ },
+ "fdef:britain:tower": {
+  "h": "9cf3ab79ba",
+  "en": "A wooden hall-tower"
+ },
+ "fdef:britain:wood": {
+  "h": "05034834fc",
+  "en": "The earthwork of a **burh** with a wooden palisade"
+ },
+ "fdef:britain:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:britain:great_wall": {
+  "h": "0521a4928a",
+  "en": "A fortified burh-town"
+ },
+ "fdef:britain:moat": {
+  "h": "f1ee7f2fe7",
+  "en": "A fen channel"
+ },
+ "fdef:britain:unique": {
+  "h": "937adcac21",
+  "en": "**Network of Burhs:** two burhs close together (within a day's march) send each other troops — the garrison moves to a neighbouring wall for free"
+ },
+ "flore:gaul": {
+  "h": "2ac5ea9230",
+  "en": "- **Patron:** **Taranis** (the Gaulish god of thunder).\n- **The evil of their land:** the **Tarasque** and its spawn.\n- **What they send:** lightning technology — which is why they stand closest to **Iberia**. The first rifles of the Thunderbolt Gunners\n  were a joint Iberian-Gaulish work.\n- **Unit ideas:** Taranis' wheeled lightning wagons, lightning signallers."
+ },
+ "farch:gaul:vernacular": {
+  "h": "83cce5eb7b",
+  "en": "The long stone farmhouse (longère), timber-framed houses, the village's shared wash-house by the spring, the dovecote"
+ },
+ "farch:gaul:history": {
+  "h": "e33bb836b9",
+  "en": "Sea-salt pans (Guérande — a 2,000-year tradition, salt raked by hand), river barges, vineyards"
+ },
+ "farch:gaul:house": {
+  "h": "a50987e461",
+  "en": "The longère — house and barn in one line"
+ },
+ "farch:gaul:great": {
+  "h": "a755755538",
+  "en": "The Tower of the Wheel of Taranis"
+ },
+ "farch:gaul:unique": {
+  "h": "94e0e3f2db",
+  "en": "Salt pan (food does not spoil + currency) · dovecote (carrier pigeons — a real WWI link: reveals part of the map)"
+ },
+ "farch:gaul:bonus": {
+  "h": "7b0828bbcd",
+  "en": "Bridges and fords are cheap"
+ },
+ "fdef:gaul:tower": {
+  "h": "8364908bfe",
+  "en": "A gate tower"
+ },
+ "fdef:gaul:wood": {
+  "h": "c055c49e7f",
+  "en": "A timber frame"
+ },
+ "fdef:gaul:stone": {
+  "h": "cf267a501a",
+  "en": "**Gallic wall** — stone laced with timber beams (it stands up to the ram and to fire)"
+ },
+ "fdef:gaul:great_wall": {
+  "h": "0b51effe38",
+  "en": "A hill-town — an oppidum"
+ },
+ "fdef:gaul:moat": {
+  "h": "7ef5cc06b6",
+  "en": "A river meander"
+ },
+ "fdef:gaul:unique": {
+  "h": "5cff459e85",
+  "en": "**Gallic Wall:** stone walls take less damage from fire and rams; straight from the wooden stage to fortification"
+ },
+ "flore:italy": {
+  "h": "98e04d266e",
+  "en": "> An old name (formerly \"the Italian Peninsula\"): the myth of Cacus and Hercules is Roman.\n\n- **Patrons:** **Hercules** (Cacus' slayer), **Vulcan** (the smith).\n- **The evil of their land:** **Cacus** — the fire-breathing giant — and his spawn.\n- **What they send:** **artillery** — the cannons of Vulcan's forges and their crews.\n- **Unit ideas:** Vulcan's Cannoneers, the Hammers of Hercules."
+ },
+ "farch:italy:vernacular": {
+  "h": "ccb580de69",
+  "en": "The trullo — a dry-stone hut with a conical roof (Apulia, stone from the field itself); the sassi — houses cut into the rock at Matera"
+ },
+ "farch:italy:history": {
+  "h": "93c9e2c8ef",
+  "en": "The iron mines of Elba (from the 6th century BC, open-cast 1853–1981), marble quarries, olives"
+ },
+ "farch:italy:house": {
+  "h": "5926653419",
+  "en": "The trullo — clearing the field yields the stone, so the house is almost free; the sassi — a cave storehouse that bombardment cannot touch"
+ },
+ "farch:italy:great": {
+  "h": "b87baf5b33",
+  "en": "Vulcan's Great Furnace"
+ },
+ "farch:italy:unique": {
+  "h": "88c6e3df24",
+  "en": "Island mine (iron +15%, shipped by sea) · marble quarry (cheap stone defences and monuments). Lore: Cacus lived in a cave too"
+ },
+ "farch:italy:bonus": {
+  "h": "3fb0e9fba6",
+  "en": "Iron +15%"
+ },
+ "fdef:italy:tower": {
+  "h": "d2b5e710d4",
+  "en": "A wooden legion tower"
+ },
+ "fdef:italy:wood": {
+  "h": "3cfb2b7af3",
+  "en": "A camp palisade (the legion built one every night)"
+ },
+ "fdef:italy:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:italy:great_wall": {
+  "h": "a1ca09bfb1",
+  "en": "The great city wall"
+ },
+ "fdef:italy:moat": {
+  "h": "9d064aa34a",
+  "en": "A double ditch"
+ },
+ "fdef:italy:unique": {
+  "h": "6bbcea2956",
+  "en": "**Night Camp:** palisade and ditch build twice as fast anywhere — even outside the base"
+ },
+ "flore:polianitsy": {
+  "h": "94282e7aed",
+  "en": "> \"Winter came to our villages, and when it left, it took our fathers, brothers and sons with it. We stayed. We fight.\"\n>\n> — the words of a polianitsa at the Sea Gate\n\nOn the Night of Opening, **Morana** rose in the northern Slavic lands — the old goddess of winter and death. She brought an endless winter\nwith her, and the winter **took the men** — fathers, brothers, sons — from town to town, from village to village. No one knows why only the men.\n\nThe women remained. And the women took up arms.\n\nThey were called **polianitsy** — after the women bogatyrs of the old epic. They fight Morana's winter on their own land, and barely hold out.\nTheir villages are empty, their towns half-frozen.\n\nAnd still — **every year, in a small band, they come down to the Wound.** Very few of them. They fight quietly, ask for nothing and\ngo home before the winter sets in. At the front they are held in special honour — because everyone knows what being here costs them.\n\n- **Patrons:** the women bogatyrs of the old epic (**Nastasya Mikulichna** and others); the legend of the sun god **Dazhbog** — winter's adversary.\n- **The evil of their land:** **Morana** and her endless winter; also Koschei the Deathless and the zmei.\n- **Unit ideas:** polianitsy (heavy mounted warriors in old bogatyr armour), winter scouts (masters of fighting in ice and snow).\n- **In the game:** a very small and expensive warband — few warriors, but each one very strong. **Hiring is very limited.**\n- **Tone:** the polianitsy are tragic heroes — never mocked, never sexualised."
+ },
+ "farch:polianitsy:vernacular": {
+  "h": "fb673b51d2",
+  "en": "The izba — a log house, with a great stove taking up to a quarter of the floor, and people sleep on top of the stove; in the north it stands on a high ground floor"
+ },
+ "farch:polianitsy:history": {
+  "h": "ff4ef18f5a",
+  "en": "Forest beekeeping (bort — bees in a hollow tree, high out of the bear's reach), wax, flax, birch bark, furs"
+ },
+ "farch:polianitsy:house": {
+  "h": "0d8d3284b1",
+  "en": "The izba — the stove removes the winter penalty (lore: the men used to sleep on the stove while the women worked)"
+ },
+ "farch:polianitsy:great": {
+  "h": "83dfc350db",
+  "en": "Marfa's Bell Bridge"
+ },
+ "farch:polianitsy:unique": {
+  "h": "411f80ae58",
+  "en": "Bort forest: honey (food) and wax (currency — wax for armour and weapons)"
+ },
+ "farch:polianitsy:bonus": {
+  "h": "bf8530a34c",
+  "en": "No winter penalty; village houses hold +2 more"
+ },
+ "fdef:polianitsy:tower": {
+  "h": "745f1fa727",
+  "en": "A wooden tower"
+ },
+ "fdef:polianitsy:wood": {
+  "h": "9bda5bb0a0",
+  "en": "**Ostrog** — a log wall"
+ },
+ "fdef:polianitsy:stone": {
+  "h": "b3dc144588",
+  "en": "A white-stone wall"
+ },
+ "fdef:polianitsy:great_wall": {
+  "h": "11d8677fd8",
+  "en": "A kremlin of wood and stone on the riverbank"
+ },
+ "fdef:polianitsy:moat": {
+  "h": "ec17bd70cc",
+  "en": "A river"
+ },
+ "fdef:polianitsy:unique": {
+  "h": "63733e4555",
+  "en": "**Ostrog:** wooden walls are as good as stone (in winter the log is harder than stone); no winter penalty"
+ },
+ "flore:armenian": {
+  "h": "ffff19ea96",
+  "en": "> \"The heavens were in labour, the earth was in labour, the purple sea was in labour too... From a reed a youth came forth: he had fire for hair, flame for a beard,\n> and his eyes were two suns.\"\n>\n> — an old song of the birth of Vahagn (free rendering)\n\n- **Supreme god:** **Aramazd** — the leader of his gods in the Heavenly Host (see `07-gods.md`).\n- **Patrons:**\n  - **Vahagn** — the god born of fire, **\"the Vishap-Slayer\"**. The hunters of vishaps fight in his name.\n  - **Anahit** — the mother-protector, goddess of fertility and healing.\n  - **Astghik** — Vahagn's consort, goddess of water and love. At the front they bless springs in her name.\n  - **Tork Angegh** — a huge, ugly and mighty hero who crushed rock with his hands and hurled boulders at enemy ships.\n  - **The aralez** — dog-like heavenly beings that lick the wounds of warriors fallen on the battlefield and bring them back to life.\n- **The evil of their land:** the **vishaps** — monsters of the lakes, clouds and mountain springs that swallow water and dry out\n  the valleys. On the Night of Opening the old vishaps began to rise from the beds of the mountain lakes.\n- **The vishap stones:** in the highlands stand the old **vishap stones** (vishapakar) — stone steles in the shape of fish or bulls beside the springs.\n  In our world these are **small seals**, raised by an ancient people to bind the vishaps. Many of them still work today.\n  ⚠️ The vishap stones are real monuments — the game never shows them being destroyed or desecrated.\n- **The Georgian link:** Georgian folklore has the **veshapi** too — the old word of two peoples for one monster. At the front it is often a joke:\n  \"your veshapi is smaller than our vishap\".\n\n### What They Send to the Wound\n- **Vahagn's Vishap-Slayers** — monster-hunters with **fire lances**: steam flamethrowers in the shape of spears that\n  burn through a monster's hide at close range. They say the fire is Vahagn's blood.\n- **Keepers of the Aralez** — healers attended by **steam aralez**: mechanical dogs whose tongues seep **living water**.\n  The dog licks the wound, and sometimes — very rarely — a fallen warrior gets up.\n- **Giant:** **the Colossus of Tork** — a giant of stone and iron that bombards the battlefield with boulders strapped to its back. It stays at home —\n  the vishaps do not leave the lakes. They say it came down to the Wound once (see the chronology)."
+ },
+ "farch:armenian:great": {
+  "h": "d61e6cd8b4",
+  "en": "The Circle of Vishap Stones"
+ },
+ "farch:armenian:bonus": {
+  "h": "4a747e333e",
+  "en": "Stone defences are cheap"
+ },
+ "fdef:armenian:tower": {
+  "h": "f5bbd090f1",
+  "en": "A tuff tower"
+ },
+ "fdef:armenian:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:armenian:stone": {
+  "h": "ae51749256",
+  "en": "**Tuff wall** (volcanic stone — light and easy to cut)"
+ },
+ "fdef:armenian:great_wall": {
+  "h": "44e823a9c2",
+  "en": "A mountain fortress at the edge of a gorge"
+ },
+ "fdef:armenian:moat": {
+  "h": "de29fe6954",
+  "en": "A gorge"
+ },
+ "fdef:armenian:unique": {
+  "h": "9901258fd4",
+  "en": "**Tuff:** stone walls are 25% cheaper; vishap stones in the wall — monsters slow down nearby"
+ },
+ "flore:oghuz": {
+  "h": "ebeb49556b",
+  "en": "> \"Basat heated the spit red-hot in the fire, drove it into Tepegöz's eye and crept out in a ram's skin.\n> Giants are many. The eye is one.\"\n>\n> — an old saying of the Hunters of Basat\n\nIn our world the **Oghuz** are the peoples who hold the epic of **Dede Korkut** as their own — from Anatolia to the Caspian Sea and beyond.\nThis is not one state — these are peoples of one old epic, living under one sky.\n\n- **Supreme god:** **Tengri** — the eternal sky (see `07-gods.md`).\n- **Patrons:**\n  - **Umay** — the mother-protector, guardian of women and children. In war — protector of the villages left behind.\n  - **Basat** — a hero of the epic of Dede Korkut, raised by a lion, who defeated **the one-eyed giant Tepegöz**: he blinded the eye with a red-hot\n    spit and killed him with his own sword.\n  - **Köroğlu** — the rider, singer and rebel of the folk epic, with his horse **Qirat**.\n  - **The Zumrud bird** — the emerald bird of the fairy tales, which carries heroes up out of the underworld.\n- **The evil of their land:**\n  - **Erlik** — lord of the underworld in old Turkic myth, eternal adversary of the sky god. On the Night of Opening his\n    host began to rise out of the earth.\n  - **The divs** — the huge evil beings of the fairy tales (kin to the Georgian devis).\n  - **The spawn of Tepegöz** — one-eyed giants who serve Erlik.\n- **The Georgian link:** the div and the Georgian **devi** are words from one root. The Oghuz and the Georgians fight the same monster\n  — and both say the seal of the Father of Devis is the most important of all.\n\n### What They Send to the Wound\n- **The Hunters of Basat** — giant-hunters. Their rifles fire **red-hot bullets** — in memory of Basat's spit —\n  and they aim for the giant's **eye**: one accurate shot blinds a giant.\n- **Köroğlu's Riders** — fast mountain cavalry, **trench-breakers**. Before battle they sing the song of Köroğlu.\n- **Giant:** **the Colossus of the Zumrud Bird** — a winged giant of emerald-coloured steel that flies down into the deep rifts of the Wound and\n  carries people out. It stays among the rivers and lakes — Erlik's host is strongest at home."
+ },
+ "farch:oghuz:great": {
+  "h": "dd05218cac",
+  "en": "The Well Fortress (over Erlik's well)"
+ },
+ "farch:oghuz:bonus": {
+  "h": "e704daf709",
+  "en": "The base can move (the tents fold up)"
+ },
+ "fdef:oghuz:tower": {
+  "h": "42c6a952fe",
+  "en": "A wagon tower"
+ },
+ "fdef:oghuz:wood": {
+  "h": "1678ac1289",
+  "en": "A felt fence"
+ },
+ "fdef:oghuz:stone": {
+  "h": "e1bb1ff02a",
+  "en": "A stone caravanserai wall"
+ },
+ "fdef:oghuz:great_wall": {
+  "h": "9945376971",
+  "en": "A great circle of wagons"
+ },
+ "fdef:oghuz:moat": {
+  "h": "c9d3657529",
+  "en": "None"
+ },
+ "fdef:oghuz:unique": {
+  "h": "a6aa2e776c",
+  "en": "**Tent Camp:** the base folds up and moves; a wagon circle can be built anywhere"
+ },
+ "farch:nile:great": {
+  "h": "843e4eb44d",
+  "en": "The Harbour of the Sun Barque"
+ },
+ "farch:nile:bonus": {
+  "h": "75726c9eba",
+  "en": "River farms yield more"
+ },
+ "fdef:nile:tower": {
+  "h": "3856d3d889",
+  "en": "A mud-brick tower"
+ },
+ "fdef:nile:wood": {
+  "h": "cf2b6c530f",
+  "en": "A reed fence"
+ },
+ "fdef:nile:stone": {
+  "h": "f742a9ea81",
+  "en": "**Mud-brick wall**"
+ },
+ "fdef:nile:great_wall": {
+  "h": "086614313a",
+  "en": "A buttressed river fortress"
+ },
+ "fdef:nile:moat": {
+  "h": "11e51513f5",
+  "en": "A dry ditch with buttresses"
+ },
+ "fdef:nile:unique": {
+  "h": "8742d437ce",
+  "en": "**Mud Brick:** walls build quickly and cheaply, but a flood weakens them"
+ },
+ "farch:yellow_river:great": {
+  "h": "105941b52a",
+  "en": "The Hall of the Nine Tripods"
+ },
+ "farch:yellow_river:bonus": {
+  "h": "af88c656fb",
+  "en": "Farms by a canal +20%"
+ },
+ "fdef:yellow_river:tower": {
+  "h": "597cb8cbe0",
+  "en": "**Signal tower** (smoke and fire)"
+ },
+ "fdef:yellow_river:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:yellow_river:stone": {
+  "h": "c2197a468e",
+  "en": "A rammed-earth wall"
+ },
+ "fdef:yellow_river:great_wall": {
+  "h": "c2565a487d",
+  "en": "A great brick wall"
+ },
+ "fdef:yellow_river:moat": {
+  "h": "8b9d9ad2ca",
+  "en": "A canal ditch"
+ },
+ "fdef:yellow_river:unique": {
+  "h": "298e0de1d3",
+  "en": "**Signal Line:** an enemy seen by one tower is seen by every tower"
+ },
+ "farch:japan_isles:great": {
+  "h": "d4557a3c52",
+  "en": "The Treasure Storehouse"
+ },
+ "farch:japan_isles:bonus": {
+  "h": "707fba5cc1",
+  "en": "Buildings go up 20% faster"
+ },
+ "fdef:japan_isles:tower": {
+  "h": "8a0574ff58",
+  "en": "A castle tower"
+ },
+ "fdef:japan_isles:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:japan_isles:stone": {
+  "h": "62bead1ae9",
+  "en": "**Sloped stone base**"
+ },
+ "fdef:japan_isles:great_wall": {
+  "h": "5f5a3170dd",
+  "en": "A castle keep with several ring baileys"
+ },
+ "fdef:japan_isles:moat": {
+  "h": "f8b6434621",
+  "en": "A water-filled moat"
+ },
+ "fdef:japan_isles:unique": {
+  "h": "d0f2ba0390",
+  "en": "**Sloped Base:** earthquakes and blasts do half damage to the wall"
+ },
+ "farch:indian:great": {
+  "h": "d0a99f46fb",
+  "en": "The Great Lantern Tower"
+ },
+ "farch:indian:bonus": {
+  "h": "dd2e41594b",
+  "en": "They do not stop at night"
+ },
+ "fdef:indian:tower": {
+  "h": "5a357d16ce",
+  "en": "A lantern tower"
+ },
+ "fdef:indian:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:indian:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:indian:great_wall": {
+  "h": "371a339d59",
+  "en": "A hill fort with terraced walls"
+ },
+ "fdef:indian:moat": {
+  "h": "f8b6434621",
+  "en": "A water-filled moat"
+ },
+ "fdef:indian:unique": {
+  "h": "8ab6161f1f",
+  "en": "**Lanterns:** towers see all around at night — a night attack cannot fool them"
+ },
+ "farch:west_african:great": {
+  "h": "67e34a6420",
+  "en": "The Tower of Anansi's Web"
+ },
+ "farch:west_african:bonus": {
+  "h": "cc37b14b31",
+  "en": "Trade +20%"
+ },
+ "fdef:west_african:tower": {
+  "h": "8e8e5b73ea",
+  "en": "A watch platform"
+ },
+ "fdef:west_african:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:west_african:stone": {
+  "h": "f38e96f21b",
+  "en": "A clay wall"
+ },
+ "fdef:west_african:great_wall": {
+  "h": "61a6aabec8",
+  "en": "**A great earth rampart with a deep ditch**"
+ },
+ "fdef:west_african:moat": {
+  "h": "d6f0f24c24",
+  "en": "A deep dry ditch"
+ },
+ "fdef:west_african:unique": {
+  "h": "997fc6fb75",
+  "en": "**Deep Ditch:** the ditch is twice as deep — infantry cannot get down into it without a ladder or bridge"
+ },
+ "farch:north_american:great": {
+  "h": "b304fe8fd5",
+  "en": "The Great Railway Station"
+ },
+ "farch:north_american:bonus": {
+  "h": "5e12ac45b2",
+  "en": "Coal/firewood +15%; rails are fast"
+ },
+ "fdef:north_american:tower": {
+  "h": "677f2b943e",
+  "en": "**Blockhouse** — a two-storey log tower"
+ },
+ "fdef:north_american:wood": {
+  "h": "80d031d26d",
+  "en": "A log stockade"
+ },
+ "fdef:north_american:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:north_american:great_wall": {
+  "h": "6bf622bcd7",
+  "en": "A railway fort"
+ },
+ "fdef:north_american:moat": {
+  "h": "c9d3657529",
+  "en": "None"
+ },
+ "fdef:north_american:unique": {
+  "h": "9dbb4d624c",
+  "en": "**The Forest Is Close:** wooden walls are 50% cheaper; the armoured train is a wall that moves on rails"
+ },
+ "farch:mexica:great": {
+  "h": "7a96b3284c",
+  "en": "The Tower of the New Fire"
+ },
+ "farch:mexica:bonus": {
+  "h": "a85e536cae",
+  "en": "Farms can be built on the water too"
+ },
+ "fdef:mexica:tower": {
+  "h": "0594176cea",
+  "en": "A lake tower"
+ },
+ "fdef:mexica:wood": {
+  "h": "cf2b6c530f",
+  "en": "A reed fence"
+ },
+ "fdef:mexica:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:mexica:great_wall": {
+  "h": "0bf5280e9a",
+  "en": "A lake city"
+ },
+ "fdef:mexica:moat": {
+  "h": "84fc9043e8",
+  "en": "**The lake and removable bridges**"
+ },
+ "fdef:mexica:unique": {
+  "h": "188d913f14",
+  "en": "**Removable Bridges:** the bridges leading to the base are taken up with one order — the base becomes an island"
+ },
+ "farch:amazon:great": {
+  "h": "75134bc7b0",
+  "en": "The Great Harbour"
+ },
+ "farch:amazon:bonus": {
+  "h": "c8cc8123d9",
+  "en": "Twice as fast on the river"
+ },
+ "fdef:amazon:tower": {
+  "h": "e146c56f0d",
+  "en": "A tower on stilts"
+ },
+ "fdef:amazon:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:amazon:stone": {
+  "h": "273c13b3c9",
+  "en": "An earthwork"
+ },
+ "fdef:amazon:great_wall": {
+  "h": "7a81b4ad31",
+  "en": "**A base of ring ditches**"
+ },
+ "fdef:amazon:moat": {
+  "h": "83fc4d5171",
+  "en": "A ring ditch"
+ },
+ "fdef:amazon:unique": {
+  "h": "aa69a56fc1",
+  "en": "**Ring Ditches:** several rings of ditches around the base — each ring slows the enemy"
+ },
+ "farch:andes:great": {
+  "h": "b24368c0b6",
+  "en": "The Woven Bridge"
+ },
+ "farch:andes:bonus": {
+  "h": "8674f30d32",
+  "en": "Farms can be built on slopes too"
+ },
+ "fdef:andes:tower": {
+  "h": "2ccedd2b44",
+  "en": "A stone tower"
+ },
+ "fdef:andes:wood": {
+  "h": "805d37db38",
+  "en": "A stone terrace"
+ },
+ "fdef:andes:stone": {
+  "h": "1e412cf499",
+  "en": "**Mortarless precision stonework**"
+ },
+ "fdef:andes:great_wall": {
+  "h": "137a01ac0c",
+  "en": "A zigzag terraced rampart"
+ },
+ "fdef:andes:moat": {
+  "h": "de29fe6954",
+  "en": "A gorge"
+ },
+ "fdef:andes:unique": {
+  "h": "5663c5dcb2",
+  "en": "**Zigzag Wall:** every corner of the wall fires along its face — an enemy at the wall is caught in crossfire from two sides"
+ },
+ "farch:caribbean:great": {
+  "h": "0c27770726",
+  "en": "The Great Lighthouse"
+ },
+ "farch:caribbean:bonus": {
+  "h": "972a8d7384",
+  "en": "Fishing boats are cheap"
+ },
+ "fdef:caribbean:tower": {
+  "h": "3e98ff10d0",
+  "en": "A lighthouse-tower"
+ },
+ "fdef:caribbean:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:caribbean:stone": {
+  "h": "6ed371ac75",
+  "en": "A coral-stone wall"
+ },
+ "fdef:caribbean:great_wall": {
+  "h": "037e63eaa8",
+  "en": "A coastal fortress with a battery"
+ },
+ "fdef:caribbean:moat": {
+  "h": "78f48f1d9f",
+  "en": "The sea"
+ },
+ "fdef:caribbean:unique": {
+  "h": "d8603f529e",
+  "en": "**Lighthouse:** the tower sees far out to sea; the coastal battery deals +1 damage to boats"
+ },
+ "farch:oceania:great": {
+  "h": "060cb82ae2",
+  "en": "The House of Stars (school of the wayfinders)"
+ },
+ "farch:oceania:bonus": {
+  "h": "0acc9c19c3",
+  "en": "The base can be built across islands too"
+ },
+ "fdef:oceania:tower": {
+  "h": "74ee72e6c7",
+  "en": "A hilltop watch platform"
+ },
+ "fdef:oceania:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:oceania:stone": {
+  "h": "56e8cbb922",
+  "en": "Earth terraces"
+ },
+ "fdef:oceania:great_wall": {
+  "h": "a281fada18",
+  "en": "**A hill fort-village with terraces, palisade and ditches**"
+ },
+ "fdef:oceania:moat": {
+  "h": "26ab6d264b",
+  "en": "Terraced ditches"
+ },
+ "fdef:oceania:unique": {
+  "h": "e1e26b1da5",
+  "en": "**Terraces:** every terrace on the hill is a separate line of defence; boats are part of the base"
+ },
+ "farch:central_african:great": {
+  "h": "56d77c98a1",
+  "en": "The House of the Sceptre"
+ },
+ "farch:central_african:bonus": {
+  "h": "597b1b8342",
+  "en": "Unseen in the forest"
+ },
+ "fdef:central_african:tower": {
+  "h": "b6f0166b5e",
+  "en": "A wooden watch-post"
+ },
+ "fdef:central_african:wood": {
+  "h": "17adaabce4",
+  "en": "**A living hedge** (thorny trees planted close together)"
+ },
+ "fdef:central_african:stone": {
+  "h": "f38e96f21b",
+  "en": "A clay wall"
+ },
+ "fdef:central_african:great_wall": {
+  "h": "0719b3e1f2",
+  "en": "A forest fortress-village"
+ },
+ "fdef:central_african:moat": {
+  "h": "c9d3657529",
+  "en": "None"
+ },
+ "fdef:central_african:unique": {
+  "h": "ee9131337b",
+  "en": "**Living Hedge:** the wooden fence regrows by itself (slowly) and is hidden in the forest"
+ },
+ "farch:southern_african:great": {
+  "h": "c3a7d9e63a",
+  "en": "The Great Mountain Fortress"
+ },
+ "farch:southern_african:bonus": {
+  "h": "fb275dbe70",
+  "en": "Cattle — food that moves"
+ },
+ "fdef:southern_african:tower": {
+  "h": "2ccedd2b44",
+  "en": "A stone tower"
+ },
+ "fdef:southern_african:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:southern_african:stone": {
+  "h": "b5629aa3cd",
+  "en": "**Curving dry-stone walls**"
+ },
+ "fdef:southern_african:great_wall": {
+  "h": "5d7cbb79af",
+  "en": "A mountain fortress with chevron-patterned walls"
+ },
+ "fdef:southern_african:moat": {
+  "h": "493c11cbe8",
+  "en": "A cliff"
+ },
+ "fdef:southern_african:unique": {
+  "h": "22681c2711",
+  "en": "**Curving Walls:** the wall follows the shape of the hill — without gaps, so troops behind it cannot be seen"
+ },
+ "farch:great_lakes:great": {
+  "h": "cf26b0ccc0",
+  "en": "The Great Lake Harbour"
+ },
+ "farch:great_lakes:bonus": {
+  "h": "17eb3e4990",
+  "en": "Underground stores — bombardment cannot touch the resources"
+ },
+ "fdef:great_lakes:tower": {
+  "h": "a4195a94bc",
+  "en": "An earthen watch-post"
+ },
+ "fdef:great_lakes:wood": {
+  "h": "cf2b6c530f",
+  "en": "A reed fence"
+ },
+ "fdef:great_lakes:stone": {
+  "h": "273c13b3c9",
+  "en": "An earthwork"
+ },
+ "fdef:great_lakes:great_wall": {
+  "h": "0b76049a48",
+  "en": "A fortress of underground stores"
+ },
+ "fdef:great_lakes:moat": {
+  "h": "33d86fe59e",
+  "en": "The lakeshore"
+ },
+ "fdef:great_lakes:unique": {
+  "h": "44d52e10e5",
+  "en": "**Underground Stores:** resources and carriers hide below ground — bombardment cannot touch them"
+ },
+ "farch:north_african:great": {
+  "h": "3f89370864",
+  "en": "The Great Agadir"
+ },
+ "farch:north_african:bonus": {
+  "h": "608b342f20",
+  "en": "Khettara: farms can be built even in the desert"
+ },
+ "fdef:north_african:tower": {
+  "h": "adaec3ecdc",
+  "en": "A mud tower"
+ },
+ "fdef:north_african:wood": {
+  "h": "c7e7dcdcee",
+  "en": "A palm fence"
+ },
+ "fdef:north_african:stone": {
+  "h": "c2197a468e",
+  "en": "A rammed-earth wall"
+ },
+ "fdef:north_african:great_wall": {
+  "h": "f5eba77830",
+  "en": "**Agadir** — a fortified granary-fortress"
+ },
+ "fdef:north_african:moat": {
+  "h": "a4b80e7a1d",
+  "en": "Khettara channels"
+ },
+ "fdef:north_african:unique": {
+  "h": "96abc6789b",
+  "en": "**Agadir:** food in the granary-fortress does not run out under siege"
+ },
+ "farch:central_asian:great": {
+  "h": "e008729734",
+  "en": "The Great Caravanserai"
+ },
+ "farch:central_asian:bonus": {
+  "h": "8e28b288ca",
+  "en": "Caravans +25%"
+ },
+ "fdef:central_asian:tower": {
+  "h": "a997aa2af0",
+  "en": "A caravanserai tower"
+ },
+ "fdef:central_asian:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:central_asian:stone": {
+  "h": "da93e68e98",
+  "en": "A mud-brick wall"
+ },
+ "fdef:central_asian:great_wall": {
+  "h": "95b0a80eac",
+  "en": "The city citadel (ark) on a mound"
+ },
+ "fdef:central_asian:moat": {
+  "h": "2949415cb1",
+  "en": "A dry ditch"
+ },
+ "fdef:central_asian:unique": {
+  "h": "7313898be3",
+  "en": "**Caravanserai:** every caravanserai is a small fort — a defensive point on the caravan road"
+ },
+ "farch:gulf:great": {
+  "h": "c213fc1ce8",
+  "en": "The Great Dhow Harbour"
+ },
+ "farch:gulf:bonus": {
+  "h": "3c08f51f27",
+  "en": "Sea trade +20%"
+ },
+ "fdef:gulf:tower": {
+  "h": "6e3d7cc8aa",
+  "en": "A wind-tower and watch-post"
+ },
+ "fdef:gulf:wood": {
+  "h": "c7e7dcdcee",
+  "en": "A palm fence"
+ },
+ "fdef:gulf:stone": {
+  "h": "6ed371ac75",
+  "en": "A coral-stone wall"
+ },
+ "fdef:gulf:great_wall": {
+  "h": "1db78dd0a0",
+  "en": "A harbour fortress"
+ },
+ "fdef:gulf:moat": {
+  "h": "78f48f1d9f",
+  "en": "The sea"
+ },
+ "fdef:gulf:unique": {
+  "h": "1179093434",
+  "en": "**Wind-Tower:** heat does not weaken the troops in the base; coastal towers spot boats"
+ },
+ "farch:sea_islands:great": {
+  "h": "8a14e6daab",
+  "en": "The Great Gong Tower"
+ },
+ "farch:sea_islands:bonus": {
+  "h": "972a8d7384",
+  "en": "Fishing boats are cheap"
+ },
+ "fdef:sea_islands:tower": {
+  "h": "2eb6759b17",
+  "en": "A bamboo tower on stilts"
+ },
+ "fdef:sea_islands:wood": {
+  "h": "65ba5f6411",
+  "en": "**A bamboo palisade with sharpened stakes**"
+ },
+ "fdef:sea_islands:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:sea_islands:great_wall": {
+  "h": "e85d7f6ec9",
+  "en": "A coastal fortress"
+ },
+ "fdef:sea_islands:moat": {
+  "h": "0c0286f85b",
+  "en": "Water and mangrove"
+ },
+ "fdef:sea_islands:unique": {
+  "h": "5aab3f93ab",
+  "en": "**Sharpened Bamboo:** infantry approaching the wooden wall take damage"
+ },
+ "farch:korea:great": {
+  "h": "46c4d57bb7",
+  "en": "The Haetae Gate"
+ },
+ "farch:korea:bonus": {
+  "h": "fd0ff4a8b4",
+  "en": "They do not slow down in winter; iron +10%"
+ },
+ "fdef:korea:tower": {
+  "h": "4778fcedd8",
+  "en": "A barbican tower"
+ },
+ "fdef:korea:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:korea:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:korea:great_wall": {
+  "h": "bce5679dbb",
+  "en": "**A fortress-city with barbicans** (a semicircular wall in front of the gate)"
+ },
+ "fdef:korea:moat": {
+  "h": "f8b6434621",
+  "en": "A water-filled moat"
+ },
+ "fdef:korea:unique": {
+  "h": "0296c71754",
+  "en": "**Barbican:** the gate is double — an enemy at the door is caught between two walls"
+ },
+ "farch:mongolia:great": {
+  "h": "872040ec17",
+  "en": "The Great Örtöö Station"
+ },
+ "farch:mongolia:bonus": {
+  "h": "198ac36ca8",
+  "en": "The base can move; örtöö stations speed up supply"
+ },
+ "fdef:mongolia:tower": {
+  "h": "c6afebd280",
+  "en": "A wagon watch-post"
+ },
+ "fdef:mongolia:wood": {
+  "h": "47761d92d8",
+  "en": "A circle of wagons"
+ },
+ "fdef:mongolia:stone": {
+  "h": "c9d3657529",
+  "en": "None"
+ },
+ "fdef:mongolia:great_wall": {
+  "h": "bff01e276e",
+  "en": "A network of örtöö stations"
+ },
+ "fdef:mongolia:moat": {
+  "h": "c9d3657529",
+  "en": "None"
+ },
+ "fdef:mongolia:unique": {
+  "h": "3181480ae2",
+  "en": "**Nothing to Defend:** the base moves and needs no walls — instead, the stations speed up supply"
+ },
+ "farch:arctic:great": {
+  "h": "c7f0df9c9d",
+  "en": "The Fortress-Sledge Camp"
+ },
+ "farch:arctic:bonus": {
+  "h": "64124dd386",
+  "en": "Swift on ice; no winter penalty"
+ },
+ "fdef:arctic:tower": {
+  "h": "1f79ff65f6",
+  "en": "An ice watch-post"
+ },
+ "fdef:arctic:wood": {
+  "h": "9bb20590a9",
+  "en": "**A snow-block wall**"
+ },
+ "fdef:arctic:stone": {
+  "h": "ea1706d90c",
+  "en": "An ice wall"
+ },
+ "fdef:arctic:great_wall": {
+  "h": "712b82056d",
+  "en": "A camp of fortress-sledges"
+ },
+ "fdef:arctic:moat": {
+  "h": "cfa972fd38",
+  "en": "A crevasse in the ice"
+ },
+ "fdef:arctic:unique": {
+  "h": "4ba28628ed",
+  "en": "**Ice Wall:** free in winter and repairs itself; not available on summer maps"
+ },
+ "farch:siberia:great": {
+  "h": "e428639419",
+  "en": "The Hall of Singers"
+ },
+ "farch:siberia:bonus": {
+  "h": "e0bc1a69cf",
+  "en": "They do not slow down in winter"
+ },
+ "fdef:siberia:tower": {
+  "h": "f806e80d2a",
+  "en": "A log tower"
+ },
+ "fdef:siberia:wood": {
+  "h": "b791dd0d50",
+  "en": "A winter ostrog"
+ },
+ "fdef:siberia:stone": {
+  "h": "83211b2749",
+  "en": "A stone foundation"
+ },
+ "fdef:siberia:great_wall": {
+  "h": "4b3e71a0fb",
+  "en": "A taiga fortress"
+ },
+ "fdef:siberia:moat": {
+  "h": "0c4099efc9",
+  "en": "A frozen river"
+ },
+ "fdef:siberia:unique": {
+  "h": "07335b441b",
+  "en": "**Winter Ostrog:** wooden walls get +1 Armour in winter (the logs freeze)"
+ },
+ "farch:balkans:vernacular": {
+  "h": "9b1142ba83",
+  "en": "Stone tower-houses (kula, 18th–19th c.), two-storey wooden houses with oriels, an open gallery (chardak)"
+ },
+ "farch:balkans:history": {
+  "h": "45ec56169c",
+  "en": "Rose oil (the Kazanlak Valley of Roses; festival since 1903), sheep's cheese and wool, seasonal herding, tobacco"
+ },
+ "farch:balkans:house": {
+  "h": "6aea65d9a0",
+  "en": "The kula — every house is a small tower with loopholes (the house defends itself)"
+ },
+ "farch:balkans:great": {
+  "h": "b56c0b6305",
+  "en": "The Weather Tower"
+ },
+ "farch:balkans:unique": {
+  "h": "59b70168fd",
+  "en": "Rose press (rose oil — currency and healing) · weather tower (a great building that does not change)"
+ },
+ "farch:balkans:bonus": {
+  "h": "847820ecfc",
+  "en": "Hail and weather do not damage farms"
+ },
+ "fdef:balkans:tower": {
+  "h": "cd380828fc",
+  "en": "**Stone tower-house** (kula)"
+ },
+ "fdef:balkans:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:balkans:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:balkans:great_wall": {
+  "h": "74ef36e047",
+  "en": "A valley fortress"
+ },
+ "fdef:balkans:moat": {
+  "h": "de29fe6954",
+  "en": "A gorge"
+ },
+ "fdef:balkans:unique": {
+  "h": "147534e4c3",
+  "en": "**Tower-Houses:** every house is a tower with loopholes; the weather station shows the base the weather in advance"
+ },
+ "farch:pyrenean:vernacular": {
+  "h": "667ef3d7a7",
+  "en": "The Basque baserri — a great stone farmhouse with the family, byre, barn and wine-press under one roof; the Asturian hórreo — a granary on posts, with a flat stone atop each post against mice (20–30 thousand still stand today)"
+ },
+ "farch:pyrenean:history": {
+  "h": "97e2db1149",
+  "en": "Iron ore and water-powered forges (ferrería), apple cider, sheep, seafaring"
+ },
+ "farch:pyrenean:house": {
+  "h": "07e7a736a6",
+  "en": "The baserri — one building = house + byre + barn (expensive, but saves space)"
+ },
+ "farch:pyrenean:great": {
+  "h": "e4f701f275",
+  "en": "Basajaun's Forest Tower"
+ },
+ "farch:pyrenean:unique": {
+  "h": "b24ae68a1e",
+  "en": "Hórreo (food cannot be stolen or spoil) · ferrería on a river (iron +20%)"
+ },
+ "farch:pyrenean:bonus": {
+  "h": "c816071ec5",
+  "en": "Iron +20%"
+ },
+ "fdef:pyrenean:tower": {
+  "h": "fbf5d97849",
+  "en": "**Basque tower-house**"
+ },
+ "fdef:pyrenean:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:pyrenean:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:pyrenean:great_wall": {
+  "h": "e07e6e9842",
+  "en": "A mountain fortress"
+ },
+ "fdef:pyrenean:moat": {
+  "h": "de29fe6954",
+  "en": "A gorge"
+ },
+ "fdef:pyrenean:unique": {
+  "h": "55d5d55d49",
+  "en": "**Tower-House and Hórreo:** the tower-house also works as a baserri (house + defence); the granary on posts keeps food through a siege"
+ },
+ "farch:alps:vernacular": {
+  "h": "7014f5da09",
+  "en": "A wooden chalet on a stone ground floor; Valais granaries (raccard, mazot) on posts, each post topped with a round stone disc against mice — valuables were kept there too, in case the house burned"
+ },
+ "farch:alps:history": {
+  "h": "204deb9c7a",
+  "en": "Seasonal herding — in summer the herd goes up to the high pastures (up to 2,400 m), cheese; in the 19th century — tunnels and cableways"
+ },
+ "farch:alps:house": {
+  "h": "38d74b748b",
+  "en": "A chalet on a stone base (it withstands avalanches)"
+ },
+ "farch:alps:great": {
+  "h": "7d51d21980",
+  "en": "The Avalanche Wall"
+ },
+ "farch:alps:unique": {
+  "h": "ceca990f17",
+  "en": "Alpine pasture (food ×2 in summer, empty in winter) · raccard (a store that fire and bombardment cannot touch)"
+ },
+ "farch:alps:bonus": {
+  "h": "2927680edf",
+  "en": "Fast on slopes; the cableway hauls resources uphill"
+ },
+ "fdef:alps:tower": {
+  "h": "d164865aba",
+  "en": "A mountain stone tower"
+ },
+ "fdef:alps:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:alps:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:alps:great_wall": {
+  "h": "785105384e",
+  "en": "A fortress on a mountain pass"
+ },
+ "fdef:alps:moat": {
+  "h": "a22aec7318",
+  "en": "An abyss"
+ },
+ "fdef:alps:unique": {
+  "h": "26ffd5cbdb",
+  "en": "**Avalanche Wall:** a wall built on a slope sends an avalanche down onto the enemy's path (once)"
+ },
+ "farch:baltic:vernacular": {
+  "h": "779350f77c",
+  "en": "The Estonian barn-dwelling (rehielamu): living room, threshing floor and grain-dryer under one rye-straw or reed roof; the smoke sauna"
+ },
+ "farch:baltic:history": {
+  "h": "bb0c1df407",
+  "en": "Rye and black bread, flax, amber on the shore, windmills"
+ },
+ "farch:baltic:house": {
+  "h": "ed0f087ea6",
+  "en": "The barn-dwelling — the house is itself a grain-dryer (farms beside the house +10%)"
+ },
+ "farch:baltic:great": {
+  "h": "347a759ba7",
+  "en": "The Fortress of the Gate Wardens"
+ },
+ "farch:baltic:unique": {
+  "h": "d05dd3fca8",
+  "en": "Amber shore (currency) · windmill"
+ },
+ "farch:baltic:bonus": {
+  "h": "31e04121ee",
+  "en": "Amber on the shore — the faction's currency"
+ },
+ "fdef:baltic:tower": {
+  "h": "3d6b479cc5",
+  "en": "A wooden tower on a hill"
+ },
+ "fdef:baltic:wood": {
+  "h": "83503d595b",
+  "en": "A log palisade"
+ },
+ "fdef:baltic:stone": {
+  "h": "273c13b3c9",
+  "en": "An earthwork"
+ },
+ "fdef:baltic:great_wall": {
+  "h": "3272c37f1c",
+  "en": "**Hillfort** (with an artificially cut slope)"
+ },
+ "fdef:baltic:moat": {
+  "h": "1ea6f7828d",
+  "en": "A bog"
+ },
+ "fdef:baltic:unique": {
+  "h": "e138a36973",
+  "en": "**Hillfort:** a wall on a hill gives +1 defence against enemies coming from below; no penalty in marsh"
+ },
+ "farch:australia:great": {
+  "h": "3f4125707a",
+  "en": "The Field of Windmills"
+ },
+ "farch:australia:bonus": {
+  "h": "d380056518",
+  "en": "The herd — food that moves; firebreaks are cheap"
+ },
+ "fdef:australia:tower": {
+  "h": "851cf4075e",
+  "en": "An observation tower"
+ },
+ "fdef:australia:wood": {
+  "h": "6096e01de2",
+  "en": "A farm fence"
+ },
+ "fdef:australia:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:australia:great_wall": {
+  "h": "2c03e76885",
+  "en": "A homestead-fortress"
+ },
+ "fdef:australia:moat": {
+  "h": "7e58484c70",
+  "en": "**Firebreak**"
+ },
+ "fdef:australia:unique": {
+  "h": "1c992dcc16",
+  "en": "**Firebreak:** a ploughed strip serves as a ditch — fire and the fire-tailed deer cannot cross it"
+ },
+ "flore:prussia": {
+  "h": "7224302ec1",
+  "en": "> An old name that originally belonged to the Baltic Prussians; in our world — the host of the forests, mines and lowlands of northern Germany.\n- **Patron (legend):** **Wayland the Smith**; the **kobolds** of the mines — guardians who were mistaken for enemies.\n- **The evil of their land:** the **lindwurm** and its spawn (war No. 38, `09-separate-wars.md`).\n- **What they send:** miners and smiths — for the front's tunnels and for repairing the giants.\n- **Units:** Blue Dragoons, Harz Miners, Smiths of Wieland. ⚠️ The Nibelungs, runes and the \"death's head\" symbol are not used."
+ },
+ "farch:prussia:vernacular": {
+  "h": "f22c9dc777",
+  "en": "The northern half-timbered hall-house: a timber frame, 2–10 bays, up to 25 m long; threshing floor and byre in the middle, the family hearth at the end, all under one roof (13th–19th c.)"
+ },
+ "farch:prussia:history": {
+  "h": "8f2a8ee8ae",
+  "en": "The silver mines of the Harz, forestry, blue glass and pigment works (cobalt)"
+ },
+ "farch:prussia:house": {
+  "h": "4681b40783",
+  "en": "The hall-house — house + byre + barn (expensive, but every house yields a little food)"
+ },
+ "farch:prussia:great": {
+  "h": "24e6c5ca3b",
+  "en": "Wieland's Forge of Wings"
+ },
+ "farch:prussia:unique": {
+  "h": "88f87c05f4",
+  "en": "Silver shaft with a bell (currency) · hammer forge (the steam sledgehammer repairs vehicles on the spot)"
+ },
+ "farch:prussia:bonus": {
+  "h": "b5831eea5b",
+  "en": "Iron and silver +15%"
+ },
+ "fdef:prussia:tower": {
+  "h": "38984c37cc",
+  "en": "A brick tower"
+ },
+ "fdef:prussia:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:prussia:stone": {
+  "h": "5c4ab9c205",
+  "en": "A brick wall"
+ },
+ "fdef:prussia:great_wall": {
+  "h": "088607fcf7",
+  "en": "**A star-shaped bastion fortress**"
+ },
+ "fdef:prussia:moat": {
+  "h": "f8b6434621",
+  "en": "A water-filled moat"
+ },
+ "fdef:prussia:unique": {
+  "h": "856a544863",
+  "en": "**The Star:** there is no blind spot around a bastioned rampart — every bastion is covered by its neighbour"
+ },
+ "flore:batavi": {
+  "h": "ecd1d2b212",
+  "en": "> A very old name of the lowland people — an ancient tribe in the river delta.\n- **Patron (fairy tale):** the **Klabautermann** — the kindly spirit of a ship; and the craft of dikes, mills and sluices.\n- **The evil of their land:** the **water-wolf** and the ghost-ships (war No. 39).\n- **What they send:** Dike Wardens — to the marshy front of the Wound and the Colchian lowland.\n- **Units:** Dike Wardens, Skate Riflemen, Klabauter Crews."
+ },
+ "farch:batavi:vernacular": {
+  "h": "9444e5289b",
+  "en": "The stolp farm — a pyramid roof with the hay store in the middle and the byre and house around it; it stands on a mound or a dike"
+ },
+ "farch:batavi:history": {
+  "h": "8c25f9c4f9",
+  "en": "Draining the polders with mills; in 1849–1852 the draining of the great lake with steam pumps; dairying and cheese, fishing, seafaring"
+ },
+ "farch:batavi:house": {
+  "h": "a2e45e4d22",
+  "en": "The stolp — house and hay store together (food does not shrink in winter)"
+ },
+ "farch:batavi:great": {
+  "h": "79eda3347c",
+  "en": "The Great Line of Mills"
+ },
+ "farch:batavi:unique": {
+  "h": "773ae878e0",
+  "en": "Polder mill (water tile → farm plot) · cheese market (currency)"
+ },
+ "farch:batavi:bonus": {
+  "h": "40eae4a3ad",
+  "en": "Polder: they turn a lake or marsh tile into a farm"
+ },
+ "fdef:batavi:tower": {
+  "h": "f6f38f305d",
+  "en": "A mill-tower"
+ },
+ "fdef:batavi:wood": {
+  "h": "f0ef8eebf2",
+  "en": "A dike"
+ },
+ "fdef:batavi:stone": {
+  "h": "5c4ab9c205",
+  "en": "A brick wall"
+ },
+ "fdef:batavi:great_wall": {
+  "h": "cb14eb7dd2",
+  "en": "A star fort in the water"
+ },
+ "fdef:batavi:moat": {
+  "h": "802fcffd5f",
+  "en": "**The Water Line**"
+ },
+ "fdef:batavi:unique": {
+  "h": "485684f3b5",
+  "en": "**The Water Line:** opening the sluices floods the land around the base — knee-deep for infantry, impassable for vehicles"
+ },
+ "flore:lechia": {
+  "h": "5337cc444d",
+  "en": "> An old name for the land of the legendary Lech.\n- **Patrons (legend):** the cobbler **Skuba** (wits against strength) and the **Skarbnik** (the spirit of the mine).\n- **The evil of their land:** the **Smok** and the **utopiec** (war No. 40).\n- **What they send:** the **Winged Hussars** — the loudest cavalry at the front — and salt.\n- **Units:** Winged Hussars, Salt Miners, Skuba Trappers."
+ },
+ "farch:lechia:vernacular": {
+  "h": "da14d8f489",
+  "en": "A wooden cottage (chata) with a high thatched or plank roof; in the mountains — log houses with steep plank roofs"
+ },
+ "farch:lechia:history": {
+  "h": "17bd017066",
+  "en": "Salt mines (since the Middle Ages), rye and flax, forest, and timber rafted down the rivers"
+ },
+ "farch:lechia:house": {
+  "h": "183208005e",
+  "en": "The chata — a cheap, quick wooden house"
+ },
+ "farch:lechia:great": {
+  "h": "7c8e8e1b42",
+  "en": "The Skarbnik's Hall (an underground salt hall)"
+ },
+ "farch:lechia:unique": {
+  "h": "f91c2a8e79",
+  "en": "Salt shaft (currency; food does not spoil) · river raft (timber and cargo travel fast by river)"
+ },
+ "farch:lechia:bonus": {
+  "h": "db03fa2f83",
+  "en": "Salt: food does not spoil; salt is the faction's currency"
+ },
+ "fdef:lechia:tower": {
+  "h": "745f1fa727",
+  "en": "A wooden tower"
+ },
+ "fdef:lechia:wood": {
+  "h": "31e7cc3d50",
+  "en": "**The gród** — a round wooden fort on a lake island"
+ },
+ "fdef:lechia:stone": {
+  "h": "c21e184554",
+  "en": "A stone wall"
+ },
+ "fdef:lechia:great_wall": {
+  "h": "7fdd616034",
+  "en": "The rampart of the salt town"
+ },
+ "fdef:lechia:moat": {
+  "h": "b89338070a",
+  "en": "A lake"
+ },
+ "fdef:lechia:unique": {
+  "h": "f94fa8567f",
+  "en": "**Gród:** a round wooden fort in the lake — the wall is wood, but the water serves as the moat"
+ },
+ "flore:byzantium": {
+  "h": "c969d89eb8",
+  "en": "> A very old name for the city of Byzas. This is not a nation: the league holds every people of the strait, and the wall belongs to no living people.\n> ⚠️ The old empire's religion, churches and emperors are not used.\n- **The evil of their sea:** **the legions of Focalor** — a duke of Hell who sinks ships (war No. 41).\n- **What they send:** the cargo passing through the strait — every ship bound for the Wound passes their wall — and sea fire.\n- **Units:** Sea-Fire Siphoneers, Kataphraktoi, Wall Guards, the Steam Lion of the Magnaura."
+ },
+ "farch:byzantium:vernacular": {
+  "h": "319b4dd4d5",
+  "en": "Banded stone-and-brick masonry, underground cisterns for sieges, wooden houses with oriels on the shore"
+ },
+ "farch:byzantium:history": {
+  "h": "d9637262bf",
+  "en": "Trade and tolls on the strait, the seasonal fishery in the strait, crafts"
+ },
+ "farch:byzantium:house": {
+  "h": "e4f651d048",
+  "en": "The wall house — built into the wall (base walls are cheap)"
+ },
+ "farch:byzantium:great": {
+  "h": "575a6b98e0",
+  "en": "The Triple Wall"
+ },
+ "farch:byzantium:unique": {
+  "h": "2a07800bb6",
+  "en": "Underground cistern (water and food do not run out under siege) · sea-fire workshop (currency)"
+ },
+ "farch:byzantium:bonus": {
+  "h": "0b75d2d0a1",
+  "en": "Walls and towers are cheap; sea trade +15%"
+ },
+ "fdef:byzantium:tower": {
+  "h": "cd7ec12af1",
+  "en": "A wall tower"
+ },
+ "fdef:byzantium:wood": {
+  "h": "bce06213b6",
+  "en": "A wooden palisade"
+ },
+ "fdef:byzantium:stone": {
+  "h": "fc0a16d9ed",
+  "en": "A banded stone-and-brick wall"
+ },
+ "fdef:byzantium:great_wall": {
+  "h": "079382d1a2",
+  "en": "**Triple Wall** — inner wall, outer wall and moat wall"
+ },
+ "fdef:byzantium:moat": {
+  "h": "f8b6434621",
+  "en": "A water-filled moat"
+ },
+ "fdef:byzantium:unique": {
+  "h": "63e0055cdd",
+  "en": "**Triple Wall:** taking one wall does not open the base — the next wall is higher"
+ },
+ "flore:ottoman": {
+  "h": "05de986ef5",
+  "en": "> An old name; in our world — a host of the craftsmen, firefighters and musicians of the Anatolian cities, without a state. Neighbours of the Oghuz Lands.\n> ⚠️ The sultan, religion, Trench Crusade's own names (\"Iron Sultanate\" and others), conquests and the year 1915 are not used. Historical names (Janissaries and others) are allowed.\n- **The evil of their land:** the **karakoncolos** — winter creatures that call out in a familiar voice (war No. 42).\n- **What they send:** the Tulumbacı — for fires in the front's depots — and the mehter, whose drum drowns out the voices of the Listeners.\n- **Units:** Janissaries, Sipahis, Mehter Drummers, Tulumbacı Firemen, Karagöz Shadow-Players, the Great-Drum Steam-Wagon."
+ },
+ "farch:ottoman:vernacular": {
+  "h": "048cce9f13",
+  "en": "Two- and three-storey timber-framed houses with a projecting upper floor (oriel) over a stone ground floor, with an inner courtyard; in the city — stone caravanserais and covered bazaars"
+ },
+ "farch:ottoman:history": {
+  "h": "17827067a7",
+  "en": "Bazaars and caravanserais, craft guilds, silk and textiles, coffee; volunteer city firefighters (from the 18th century)"
+ },
+ "farch:ottoman:house": {
+  "h": "9655c1322f",
+  "en": "The wooden oriel house — quick to build, but cannot stand fire"
+ },
+ "farch:ottoman:great": {
+  "h": "d43a7b6945",
+  "en": "The Great Covered Bazaar"
+ },
+ "farch:ottoman:unique": {
+  "h": "7867f6a2be",
+  "en": "Tulumbacı station (puts out fires in the base) · coffee house (currency; the mehter and the Karagöz players train there)"
+ },
+ "farch:ottoman:bonus": {
+  "h": "edd80e871c",
+  "en": "Trade +15%; fire does half damage to the base"
+ },
+ "fdef:ottoman:tower": {
+  "h": "23085f88ac",
+  "en": "**Fire-watch tower**"
+ },
+ "fdef:ottoman:wood": {
+  "h": "bd90f072cc",
+  "en": "A row of wooden oriel houses"
+ },
+ "fdef:ottoman:stone": {
+  "h": "8ccb3a7221",
+  "en": "A caravanserai stone wall"
+ },
+ "fdef:ottoman:great_wall": {
+  "h": "3bab0852e5",
+  "en": "The city citadel"
+ },
+ "fdef:ottoman:moat": {
+  "h": "2949415cb1",
+  "en": "A dry ditch"
+ },
+ "fdef:ottoman:unique": {
+  "h": "8369b9afef",
+  "en": "**Fire-Watch Tower:** spots fires and enemies from afar; the Tulumbacı put out fires in the base in half the time"
+ }
+}
