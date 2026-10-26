@@ -1,0 +1,8533 @@
+{
+ "keywords": {
+  "fly": {
+   "name": "ფრენა",
+   "rule": "უტევს ნებისმიერ ხაზზე; ხელჩართული მას ვერ ურტყამს"
+  },
+  "anti_air": {
+   "name": "საზენიტო",
+   "rule": "+2 შეტევა მფრინავზე"
+  },
+  "hunter": {
+   "name": "მონადირე",
+   "rule": "+2 შეტევა დიდზე (გროტესკი, გოლიათი)"
+  },
+  "shield": {
+   "name": "ფარი",
+   "rule": "−1 ყოველ მიღებულ ზიანზე"
+  },
+  "breaker": {
+   "name": "მტვრევა",
+   "rule": "თხრილის საფარს და მესერს უგულებელყოფს"
+  },
+  "scout": {
+   "name": "მზვერავი",
+   "rule": "შეიძლება პირდაპირ ნეიტრალურ ზოლში ჩამოვიდეს"
+  },
+  "long": {
+   "name": "შორი",
+   "rule": "უტევს ზურგიდანაც, თავისი ხაზის ნებისმიერ მტერს"
+  },
+  "leader": {
+   "name": "მეთაური",
+   "rule": "იმავე ხაზზე შენს სხვა იუნიტებს +1 შეტევა"
+  },
+  "healer": {
+   "name": "მკურნალი",
+   "rule": "სვლის ბოლოს იმავე ხაზზე ერთ იუნიტს +2 მდგრადობა"
+  },
+  "digger": {
+   "name": "მესანგრე",
+   "rule": "ჩამოსვლისას ამ ხაზზე უფასოდ თხრის თხრილს"
+  },
+  "charge": {
+   "name": "იერიში",
+   "rule": "უტევს იმავე სვლაზე, როცა ჩამოვიდა"
+  },
+  "regen": {
+   "name": "ამოზრდა",
+   "rule": "შენი სვლის დასაწყისში +1 მდგრადობა"
+  },
+  "fearless": {
+   "name": "უშიშარი",
+   "rule": "მასზე დათრგუნვა არ მოქმედებს"
+  },
+  "suppress": {
+   "name": "დათრგუნვა",
+   "rule": "სამიზნე მომდევნო სვლაზე ვერ უტევს"
+  },
+  "fire": {
+   "name": "ცეცხლი",
+   "rule": "სამიზნე თავისი სვლის დასაწყისში 1 ზიანს იღებს"
+  },
+  "gas_mask": {
+   "name": "აირწინაღი",
+   "rule": "გაზი მასზე არ მოქმედებს"
+  },
+  "giant": {
+   "name": "გოლიათი",
+   "rule": "ჩამოსვლა მხოლოდ მაშინ, როცა 2 ხაზის ნეიტრალურ ზოლს აკონტროლებ; დასტაში მაქს. 1"
+  }
+ },
+ "units": [
+  {
+   "id": "lashkari",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "ლაშქარი",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": "lashkari.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "port_brawlers",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "ნავსადგურის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": "port_brawlers.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "dali_hunters",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "დალის მონადირეები",
+   "tier": "I",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "scout"
+   ],
+   "art": "dali_hunters.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "eristavi",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "ერისთავი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 4,
+   "hp": 6,
+   "kw": [
+    "leader",
+    "shield"
+   ],
+   "art": "eristavi.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "aznauri",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "აზნაური რაინდები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "shield"
+   ],
+   "art": "aznauri.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "kolkhi_riders",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "კოლხი მხედრები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": "kolkhi_riders.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "gurian_riders",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "გურული მხედარ-მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "medea_sisters",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "მედეას დები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer"
+   ],
+   "art": "medea_sisters.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "shavkhan_smiths",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "შავხანის მჭედლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "breaker",
+    "digger"
+   ],
+   "art": "shavkhan_smiths.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "monaspa",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "მონასპა",
+   "tier": "III",
+   "cost": 5,
+   "atk": 4,
+   "hp": 6,
+   "kw": [
+    "shield"
+   ],
+   "art": "monaspa.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "iron_arm_veterans",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "რკინახელა ვეტერანები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": "iron_arm_veterans.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "khalkotavri",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "ხალკოტავრი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "fire"
+   ],
+   "art": "khalkotavri.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "ambri_ox",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "ამბრის ხარი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 13,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "golden_ram",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "ოქროს ვერძი",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "fleece_dragon",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "საწმისის დრაკონი",
+   "tier": "V",
+   "cost": 11,
+   "atk": 7,
+   "hp": 15,
+   "kw": [
+    "giant",
+    "fly",
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "khevsur",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ხევსური მოლაშქრეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "shield"
+   ],
+   "art": "khevsur.jpg",
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "lowland_levy",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ბარის ლაშქარი",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "qochebi",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ყოჩები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "tush_shepherds",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "თუში მწყემსები ნაგაზებით",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "mountain_sappers",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "მთის მესანგრეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "breaker",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "spasalari",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "სპასალარი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "natsiliani",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ნიშნიანები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "lightning_gunners",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "მეხის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "tush_riders",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "თუში მხედრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "ekimbashi",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ექიმბაშები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "fortress_guards",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ციხის მცველები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "iakhsar_shields",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "იახსრის ფარისნები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "steam_ibex",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ორთქლის ჯიხვი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 11,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "lightning_castle",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "მეხის ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 13,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "armazi_colossus",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "არმაზის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "recruits",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ახალწვეულები",
+   "tier": "I",
+   "cost": 1,
+   "atk": 1,
+   "hp": 1,
+   "kw": [
+    "long",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "legion_shooters",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ლეგიონის მსროლელები",
+   "tier": "I",
+   "cost": 3,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "penal_squad",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "სასჯელის რაზმი",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "marquis",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ლეგიონის მარკიზი",
+   "tier": "II",
+   "cost": 6,
+   "atk": 5,
+   "hp": 8,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "halphas_fortifiers",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ჰალფასის მეციხოვნეები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "malphas_wreckers",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "მალფასის დამნგრევები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter",
+    "breaker"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "andras_whisperers",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ანდრასის ჩურჩულები",
+   "tier": "II",
+   "cost": 1,
+   "atk": 1,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "glasya_killers",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "გლასია-ლაბოლასის მკვლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "legionnaires",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ლეგიონერები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "shield"
+   ],
+   "art": "legionnaires.jpg",
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "furcas_riders",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ფურკასის მხედრები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 4,
+   "hp": 8,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "marchosias_wolves",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "მარქოსიასის მგლები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "behemoth_spawn",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ბეჰემოთის ნაშიერი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 12,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "mulciber_forge",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "მულციბერის სამჭედლო",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 10,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "standard_fortress",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "სადროშო ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 13,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "behemoth",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "ბეჰემოთი",
+   "tier": "V",
+   "cost": 11,
+   "atk": 7,
+   "hp": 15,
+   "kw": [
+    "giant",
+    "suppress"
+   ],
+   "art": null,
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "rebels",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ამბოხებულები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": "rebels.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "deserter_regulars",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "განდგომილი რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": "deserter_regulars.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "heretic_sappers",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ერეტიკოსი მესანგრეები",
+   "tier": "I",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "digger"
+   ],
+   "art": "heretic_sappers.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "yoke_slaves",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "უღლის მონები",
+   "tier": "I",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [],
+   "art": "yoke_slaves.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "rebel_chief",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ამბოხის ბელადი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": "rebel_chief.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "blood_priests",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "სისხლის ქურუმები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [],
+   "art": "blood_priests.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "kudiani",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "კუდიანები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [],
+   "art": "kudiani.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "chain_shooters",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ჯაჭვის მსროლელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter",
+    "anti_air"
+   ],
+   "art": "chain_shooters.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "kaji_smith",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ქაჯ-მჭედელი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "chained_ones",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ჯაჭვაბმულები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": "chained_ones.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "kaji_stitched",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ქაჯების ნაკერები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 6,
+   "kw": [],
+   "art": "kaji_stitched.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "devi_spawn",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "დევის ნაშიერი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "regen"
+   ],
+   "art": null,
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "gveleshapi",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "გველეშაპი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 12,
+   "kw": [],
+   "art": "gveleshapi.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "chain_wagon",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ჯაჭვის ურემი",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "suppress"
+   ],
+   "art": null,
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "bakbak_devi",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "ბაყბაყ-დევი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "regen"
+   ],
+   "art": null,
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "listeners_leader",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "დიდი მსმენელი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "false_regulars",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ყალბი რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "silent_knives",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ჩუმი დანები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "whisper_scouts",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ჩურჩულის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "false_engineers",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ყალბი ინჟინრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "breaker",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "lock_smiths",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "საკეტის მჭედლები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "voice_mimics",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ხმის ოსტატები",
+   "tier": "II",
+   "cost": 1,
+   "atk": 1,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "masked_guard",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ნიღბიანი გვარდია",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 5,
+   "kw": [
+    "suppress",
+    "shield",
+    "long"
+   ],
+   "art": "masked_guard.jpg",
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "lock_wagon",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "საკეტის ჯავშან-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "listeners_giant",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ჩუქებული კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "kajeti_leader",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ქაჯთა ოსტატი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "leader",
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "cast_regulars",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "თუჯის რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "kaji_hammers",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ქაჯის ჩაქუჩოსნები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "wind_kaji",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ქარის ქაჯები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "flask_smiths",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "კოლბის მჭედლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "forged_riders",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ნაჭედ ცხენზე მხედრები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "silver_shooters",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ვერცხლის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "cast_wardens",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "თუჯის მცველები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "shield",
+    "fearless"
+   ],
+   "art": "cast_wardens.jpg",
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "stitched_brutes",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ნაკერი ბრუტები",
+   "tier": "III",
+   "cost": 7,
+   "atk": 6,
+   "hp": 9,
+   "kw": [
+    "regen",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "walking_furnace",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "მავალი ღუმელი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "kajeti_giant",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ქაჯეთის ციხე-კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "ring_leader",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ბატალიონის მეთაური",
+   "tier": "II",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "ring_regulars",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ხარკის რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": "ring_regulars.jpg",
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "ring_thugs",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ხარკის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "interpreters",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "თარჯიმნები",
+   "tier": "I",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "tribute_veterans",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ხარკის ვეტერანები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 4,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "furrow_sappers",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ღარის მესანგრეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "field_sisters",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "საველე ჰოსპიტლის დები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "tribute_heavies",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ხარკის მძიმე ქვეითი",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 5,
+   "kw": [
+    "suppress",
+    "shield",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "ring_train",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "რგოლის ჯავშნიანი მატარებელი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "ring_giant",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ზღვის კარის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#8b7d5a",
+    "#c8913e",
+    "#4a5a6a"
+   ]
+  },
+  {
+   "id": "automaton_phalanx",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ავტომატ-ფალანგა",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hellenic_regulars",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hellenic_thugs",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "cyclops_gunners",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ციკლოპების არტილერისტები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "jotun_hunters",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "იოტუნის მონადირეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "northern_regulars",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "northern_thugs",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "tyr_onehands",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ტიუს ცალხელები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "lugh_marksmen",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "ლუგის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "celtic_regulars",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "celtic_thugs",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "goibniu_smiths",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "გოიბნიუს მჭედლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "ilmarinen_forged",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ილმარინენის ნაჭედი",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 8,
+   "kw": [
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "finnish_regulars",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "finnish_thugs",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "vainamoinen_singers",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ვიაინამოინენის მომღერლები",
+   "tier": "II",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "beowulf_heirs",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ბეოვულფის მემკვიდრეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "britain_regulars",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "britain_thugs",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "fen_scouts",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "taranis_signallers",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ტარანისის ელვის მეკავშირეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "gaul_regulars",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "gaul_thugs",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "vulcan_gunners",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ვულკანის მექვემეხეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "italy_regulars",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "italy_thugs",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "hercules_hammers",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ჰერკულესის ჩაქუჩოსნები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "polianitsa",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "პოლიანიცა",
+   "tier": "III",
+   "cost": 8,
+   "atk": 9,
+   "hp": 7,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "polianitsy_regulars",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "polianitsy_thugs",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "winter_scouts",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ზამთრის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "vahagn_slayers",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ვაჰაგნის ვიშაპმკვლელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter",
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "armenian_regulars",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "armenian_thugs",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "aralez_keepers",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "არალეზების მცველები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "basat_hunters",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ბასატის მონადირეები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "oghuz_regulars",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "oghuz_thugs",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "koroglu_riders",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ქოროღლის მხედრები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "nile_timekeepers",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "მესაათეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "nile_regulars",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "nile_thugs",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "set_spearmen",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "სეთის შუბოსნები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "sekhmet_warriors",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "სეხმეტის მეომრები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 5,
+   "hp": 5,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "yu_canal_diggers",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "იუს არხის მთხრელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "yellow_river_regulars",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "yellow_river_thugs",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "tripod_scholars",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "სამფეხის მცოდნეები",
+   "tier": "II",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "xiangliu_hunters",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "სიანგლიუს მონადირეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "suppress",
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "hidesato_archers",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "ჰიდესატოს მშვილდოსნები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "japan_isles_regulars",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "japan_isles_thugs",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "three_companions",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "სამი თანამგზავრი",
+   "tier": "I",
+   "cost": 3,
+   "atk": 4,
+   "hp": 2,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "karakuri_soldiers",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "კარაკურის მეომრები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 6,
+   "kw": [
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "lantern_bearers",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ფარნის მატარებლები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "fire",
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "indian_regulars",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "indian_thugs",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "vikram_blades",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ვიკრამის ხმლოსნები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "elephant_gunners",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "სპილო-ციხის მექვემეხეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "net_weavers",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "ქსელის მქსოველები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "west_african_regulars",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "west_african_thugs",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "mirror_marksmen",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "სარკის მსროლელები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "storytellers",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "მთხრობელები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "hammer_crew",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "ჩაქუჩის ბრიგადა",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "north_american_regulars",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "north_american_thugs",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "lumberjacks",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "მეტყევეები",
+   "tier": "I",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "armored_train_gunners",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "ჯავშნიანი მატარებლის მსროლელები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "fire_runners",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ცეცხლის მორბენლები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "fire",
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "mexica_regulars",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "mexica_thugs",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "xiuhcoatl_gunners",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "შიუჰკოატლის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "sky_watchers",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ცის მეთვალყურეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "river_pilots",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "მდინარის პილოტები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "amazon_regulars",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "amazon_thugs",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "curupira_scouts",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "კურუპირას მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "mapinguari_hunters",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "მაპინგუარის მონადირეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "bridge_weavers",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "ხიდის მწნელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "andes_regulars",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "andes_thugs",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "chaski_runners",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "მაცნეები",
+   "tier": "I",
+   "cost": 1,
+   "atk": 1,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "andean_slingers",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "შურდულოსნები",
+   "tier": "I",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "lighthouse_keepers",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "შუქურის მცველები",
+   "tier": "I",
+   "cost": 1,
+   "atk": 1,
+   "hp": 2,
+   "kw": [
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "caribbean_regulars",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "caribbean_thugs",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "harpoon_fishers",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "ჰარპუნიანი მეთევზეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "papa_bois_scouts",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "პაპა ბუას მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "wayfinders",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "მნავიგატორები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "oceania_regulars",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "oceania_thugs",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "canoe_raiders",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "ნავის მოიერიშეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "reef_wardens",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "მეჩხერის მცველები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "nkuba_gunners",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ნკუბას მეხის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "central_african_regulars",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "central_african_thugs",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "forest_trackers",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ტყის მეკვალეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "storyteller_telegraphers",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "მთხრობელი-მეტელეგრაფეები",
+   "tier": "II",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "mountain_riflemen",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "მთის მსროლელები",
+   "tier": "I",
+   "cost": 3,
+   "atk": 4,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "southern_african_regulars",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "southern_african_thugs",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "saw_blades",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "ხერხოსნები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "mounted_scouts",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "ცხენოსანი მზვერავები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "lake_diggers",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "მთხრელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "great_lakes_regulars",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "great_lakes_thugs",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "silent_warriors",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "ჩუმი მეომრები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "lake_boatmen",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "ტბის მენავეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "khettara_diggers",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "ხეტარის მთხრელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "north_african_regulars",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "north_african_thugs",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "caravan_guards",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "ქარავნის მცველები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "agadir_guards",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "აგადირის მცველები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "rostam_heirs",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "როსტომის მემკვიდრეები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "central_asian_regulars",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "central_asian_thugs",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "tulpar_riders",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "თულპარის მხედრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "mountain_guides",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "მთის მეგზურები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "pearl_divers",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "მარგალიტის მყვინთავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "gulf_regulars",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "gulf_thugs",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "dhow_sailors",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "დაუს მეზღვაურები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "coast_gunners",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "სანაპიროს არტილერისტები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "hellenic_leader",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ლიგის სტრატეგოსი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hellenic_grotesque",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ჰეფესტოს ბრინჯაოს ავტომატ-გიგანტი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hellenic_giant",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ტალოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hoplites",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ჰოპლიტები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "northern_leader",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ჩრდილოეთის იარლი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "northern_grotesque",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ჰეიმდალის საყვირის ციხე",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "northern_giant",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ფოლადის იოტუნი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "varangians",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ვარიაგები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 8,
+   "hp": 5,
+   "kw": [
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "celtic_leader",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "კუნძულების ბელადი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "nuada_silverhands",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "ნუადას ვერცხლისხელები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "curragh_raiders",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "კურაღის მეზღვაურები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "celtic_grotesque",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "გოიბნიუს მავალი სამჭედლო",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "healer",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "celtic_giant",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "ლუგის შურდულის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "gallowglass",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "გალოგლასები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 7,
+   "hp": 4,
+   "kw": [
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "finnish_leader",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ტყეების უხუცესი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "finnish_grotesque",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "სამპოს მანქანა",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "finnish_giant",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ილმარინენის ორთქლის მზე",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "hakkapeliitta",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ჰაკაპელიტები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "britain_leader",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის კაპიტანი",
+   "tier": "II",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "britain_grotesque",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის ორთქლის ნავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "britain_giant",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის ციხე-ხომალდი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "huscarls",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჰუსკარლები",
+   "tier": "III",
+   "cost": 7,
+   "atk": 9,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "gaul_leader",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ელვის კომენდანტი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "belenos_shields",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ბელენოსის ფარისნები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "tarasque_breakers",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ტარასკის ჯავშნის მსხვრეველები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "gaul_grotesque",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ტარანისის ელვის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "gaul_giant",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ტარანისის ბორბალი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "cuirassiers",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "კირასირები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 7,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "italy_leader",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ვულკანის მეთაური",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "italy_grotesque",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ვულკანის მავალი ბატარეა",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "italy_giant",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ჰერკულესის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "praetorians",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "პრეტორიანელები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 4,
+   "hp": 5,
+   "kw": [
+    "shield",
+    "long",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "polianitsy_leader",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "პოლიანიცა-ბელადი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "polianitsy_grotesque",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ზამთრის მარხილ-ციხე",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "polianitsy_giant",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "სვიატოგორის ქვის კოლოსი",
+   "tier": "V",
+   "cost": 11,
+   "atk": 7,
+   "hp": 16,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "armenian_leader",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "მთიანეთის სპარაპეტი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "armenian_grotesque",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ვაჰაგნის ცეცხლის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "armenian_giant",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ტორქის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "oghuz_leader",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ოღუზთა ბეგი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "oghuz_grotesque",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ქოროღლის ორთქლის ცხენი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "oghuz_giant",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ზუმრუდის ფრინველის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "nile_leader",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "მზის ნავის კაპიტანი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "nile_grotesque",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "სეთის შუბის ბარჟა",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "nile_giant",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "მზის ნავი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "medjay",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "მეჯაი",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "yellow_river_leader",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "არხების მთავარი ინჟინერი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "yellow_river_grotesque",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "სიანგლიუს მონადირე-ბარჟა",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "yellow_river_giant",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "იინლუნის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "japan_isles_leader",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "მშვილდოსნების მეთაური",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "japan_isles_grotesque",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "მესამე ისრის ქვემეხ-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "japan_isles_giant",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "კარაკურის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "samurai",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "სამურაები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "indian_leader",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ღამის პატრულის მეთაური",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "indian_grotesque",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ფარნების ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "indian_giant",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "სპილო-ციხე",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "west_african_leader",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "ქსელების ოსტატი",
+   "tier": "II",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "west_african_grotesque",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "სარკეების კოშკი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "west_african_giant",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "ანანსის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "north_american_leader",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "რკინიგზის ბრიგადირი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "north_american_grotesque",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "ჯავშნიანი მატარებელი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "north_american_giant",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "პოლ ბანიანის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "mexica_leader",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ცის მეთვალყურეების უხუცესი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "tlaloc_shields",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ტლალოკის ფარისნები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "mictlan_stormers",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "მიქტლანის კიბის მოიერიშეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "mexica_grotesque",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ახალი ცეცხლის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "mexica_giant",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "კინამეცინის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "amazon_leader",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "მდინარის კაპიტანი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "amazon_grotesque",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "ჯავშნიანი მდინარის ნავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "amazon_giant",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "კურუპირას კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "andes_leader",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "ხიდების უხუცესი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "andes_grotesque",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "შურდულის ბატარეა-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "andes_giant",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "კონდორის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "caribbean_leader",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "შუქურების მეთაური",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "caribbean_grotesque",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "შუქურა-ნავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "caribbean_giant",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "მამა დლოს კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "oceania_leader",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "მთავარი მნავიგატორი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "oceania_grotesque",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "ორკორპუსიანი საბრძოლო ნავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "oceania_giant",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "ვარსკვლავების ნავი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "central_african_leader",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "მთხრობელების უხუცესი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "central_african_grotesque",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ნკუბას მეხის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "central_african_giant",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ნკუბას კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "southern_african_leader",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "მთის ბელადი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "southern_african_grotesque",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "ხერხ-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "southern_african_giant",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "ლიტაოლანეს კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "great_lakes_leader",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "მთხრელების მეთაური",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "great_lakes_grotesque",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "ორთქლის ბურღ-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "great_lakes_giant",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "მთხრელი კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "north_african_leader",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "აგადირის მცველთა უფროსი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "north_african_grotesque",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "ქარავნის ციხე-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "north_african_giant",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "აგადირის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "central_asian_leader",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "სტეპის მეთაური",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "central_asian_grotesque",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "რახშის ორთქლის ცხენი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "central_asian_giant",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "თულპარის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "gulf_leader",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "დაუს კაპიტანი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "gulf_grotesque",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "საბრძოლო დაუ",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "gulf_giant",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "რუხის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "sea_islands_leader",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "მეგონგეების ბელადი",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "sea_islands_regulars",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "sea_islands_thugs",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "gong_warriors",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "გონგის მეომრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "bangka_raiders",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "ბანკას მოიერიშეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "lantaka_gunners",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "ლანტაკას მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "sea_islands_grotesque",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "ლანტაკას საბრძოლო ნავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "sea_islands_giant",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "გონგის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "korea_leader",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "მთის სოფლების მეთაური",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "korea_regulars",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "korea_thugs",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "haetae_firewardens",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "ჰეთეს მეხანძრეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "tiger_hunters",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "ვეფხვზე მონადირეები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "dokkaebi_bargainers",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "დოკების მოლაპარაკეები",
+   "tier": "II",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "korea_grotesque",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "მთის ბატარეა-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "korea_giant",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "ჰეთეს კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "hwarang",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "ჰვარანგები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "long",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "mongolia_leader",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "სტეპის ბელადი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "mongolia_regulars",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "mongolia_thugs",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "urtuu_riders",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "ურტუს მხედრები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 1,
+   "hp": 3,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "eagle_hunters",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "არწივით მონადირეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "steppe_riflemen",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "სტეპის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "mongolia_grotesque",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "სტეპის ქვემეხ-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "mongolia_giant",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "არწივის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "keshig",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "ქეშიგი",
+   "tier": "III",
+   "cost": 5,
+   "atk": 5,
+   "hp": 5,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "arctic_leader",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულის ბანაკის უფროსი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "arctic_regulars",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "arctic_thugs",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "sled_riders",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ძაღლის მარხილის მხედრები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "ice_readers",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულის მკითხველები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "kayak_hunters",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "კაიაკის მონადირეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "arctic_grotesque",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ციხე-მარხილი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "arctic_giant",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ირმის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "siberia_leader",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ტაიგის უხუცესი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "siberia_regulars",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "siberia_thugs",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "olonkho_singers",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ოლონხოს მომღერლები",
+   "tier": "II",
+   "cost": 1,
+   "atk": 2,
+   "hp": 1,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "taiga_hunters",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ტაიგის მონადირეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 3,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "reindeer_riders",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ირმის მხედრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 1,
+   "hp": 2,
+   "kw": [
+    "scout",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "siberia_grotesque",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ორთქლის დათვი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "siberia_giant",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "მამონტის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "balkans_leader",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ხეობების მეთაური",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "balkans_regulars",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "balkans_thugs",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "dragon_born",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "დრაკონ-ადამიანები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "fly",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "wind_readers",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ქარის მკითხველები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "mountain_wardens",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "მთის მეველეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "balkans_grotesque",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "მთის ჯავშნიანი ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "balkans_giant",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ზმაის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "pyrenean_leader",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "მთის ფარების მეთაური",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "pyrenean_regulars",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "pyrenean_thugs",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "basajaun_shepherds",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "ბასახაუნის მწყემსები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "miner_sappers",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "მაღაროელი მესანგრეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "cyclops_hunters",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "ცალთვალაზე მონადირეები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "pyrenean_grotesque",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "მაღაროს ჯავშნიანი ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "pyrenean_giant",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "ბასახაუნის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "almogavars",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "ალმოგავარები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "alps_leader",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ხეობის მეგზურთა უფროსი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "alps_regulars",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "alps_thugs",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "ice_climbers",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ყინულის მცოცავები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "avalanche_sappers",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ზვავის მესანგრეები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "long",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "alpine_riflemen",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ალპური შაშხანოსნები",
+   "tier": "I",
+   "cost": 3,
+   "atk": 4,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "alps_grotesque",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "კბილანიანი ჯავშან-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "alps_giant",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ზვავის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "reislaufer",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "რაისლოიფერები",
+   "tier": "III",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "baltic_leader",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "სანაპიროს მეთაური",
+   "tier": "II",
+   "cost": 4,
+   "atk": 5,
+   "hp": 4,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "baltic_regulars",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "baltic_thugs",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "gate_wardens",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "კარის მცველები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "amber_alchemists",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ქარვის ალქიმიკოსები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "marsh_riflemen",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ჭაობის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "baltic_grotesque",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ქარვის ჯავშნიანი ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "baltic_giant",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "კალევიპოეგის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "australia_leader",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "ხანძრის ხაზის უფროსი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "australia_regulars",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "australia_thugs",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "drovers",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "მერეკეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "firebreak_crews",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "ხანძრის ხაზის მთხრელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "plains_riflemen",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "ველის მსროლელები",
+   "tier": "I",
+   "cost": 3,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "australia_grotesque",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "ორთქლის წყლის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "australia_giant",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "გუთნის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "prussia_leader",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ლანდვერის პოლკოვნიკი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "prussia_regulars",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "prussia_thugs",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "blue_dragoons",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ცისფერი დრაგუნები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "harz_miners",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ჰარცის მაღაროელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "wieland_smiths",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ვილანდის მჭედლები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "healer",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "prussia_grotesque",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ორთქლის ურო",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 6,
+   "hp": 10,
+   "kw": [
+    "suppress"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "prussia_giant",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ვილანდის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fly",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "grenadiers",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "გრენადერები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "batavi_leader",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ჯებირის გრაფი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "batavi_regulars",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "batavi_thugs",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "dike_wardens",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ჯებირის მცველები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "skate_riflemen",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ციგურიანი მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "klabauter_crews",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "კლაბაუტერის მეზღვაურები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "batavi_grotesque",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "მავალი წისქვილი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "batavi_giant",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ტუმბოს კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "batavian_riders",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ბატავი მცურავი მხედრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "lechia_leader",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "ხორუნჟი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "lechia_regulars",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "lechia_thugs",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "winged_hussars",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "ფრთოსანი ჰუსარები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 8,
+   "hp": 4,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "salt_miners",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "მარილის მაღაროელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "skuba_trappers",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "სკუბას ხაფანგისტები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "lechia_grotesque",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "მარილის ჯავშან-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "lechia_giant",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "კრაკის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 7,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "charge",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "byzantium_leader",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "სტრატეგოსი",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "byzantium_regulars",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "byzantium_thugs",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "fire_siphoneers",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "ზღვის ცეცხლის სიფონისტები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "kataphraktoi",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "კატაფრაქტები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 7,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "wall_guards",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "კედლის მცველები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 4,
+   "kw": [
+    "shield",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "byzantium_grotesque",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "მაგნაურას ორთქლის ლომი",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 11,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "byzantium_giant",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "ბიზასის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fire",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "ottoman_leader",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ფაშა",
+   "tier": "II",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [
+    "leader"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "ottoman_regulars",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "რიგითები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "ottoman_thugs",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "სანგრის მოჩხუბრები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "mehter_drummers",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "მეჰთერის დოლჩები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "tulumbaci",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "თულუმბაჯები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "shadow_players",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ქარაგოზის ჩრდილოსნები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "ottoman_grotesque",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "დიდი დოლის ორთქლის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "ottoman_giant",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ქარაგოზის კოლოსი",
+   "tier": "V",
+   "cost": 12,
+   "atk": 8,
+   "hp": 17,
+   "kw": [
+    "giant",
+    "fire",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "janissaries",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "იანიჩრები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "sipahis",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "სიფაჰები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  }
+ ],
+ "common": [
+  {
+   "id": "trench",
+   "kind": "ნაგებობა",
+   "name": "თხრილი",
+   "cost": 1,
+   "text": "ამ ხაზზე შენს სანგარში მდგომი იუნიტები ყოველ ზიანზე −1-ს იღებენ (მინ. 1).",
+   "art": "card_trench.jpg"
+  },
+  {
+   "id": "wire",
+   "kind": "ნაგებობა",
+   "name": "მავთული",
+   "cost": 2,
+   "text": "მტრის იუნიტი, რომელიც ამ ხაზის ნეიტრალურ ზოლში შემოდის, ამ სვლაზე ვეღარ უტევს.",
+   "art": "card_wire.jpg"
+  },
+  {
+   "id": "palisade",
+   "kind": "ნაგებობა",
+   "name": "მესერი",
+   "cost": 2,
+   "text": "4 მდგრადობა. სანამ დგას, მტრის ხელჩართული ამ ხაზზე შენს სანგარს ვერ ურტყამს — ჯერ მესერი უნდა დაანგრიოს.",
+   "art": "card_palisade.jpg"
+  },
+  {
+   "id": "nest",
+   "kind": "ნაგებობა",
+   "name": "ტყვიამფრქვევის ბუდე",
+   "cost": 4,
+   "text": "შენი სვლის ბოლოს ურტყამს ამ ხაზის ნეიტრალურ ზოლში ან სანგარში მყოფ მტერს. დათრგუნვა.",
+   "atk": 2,
+   "hp": 4,
+   "art": "card_nest.jpg"
+  },
+  {
+   "id": "tower",
+   "kind": "ნაგებობა",
+   "name": "საგუშაგო კოშკი",
+   "cost": 3,
+   "text": "შენი სვლის ბოლოს ურტყამს ამ ხაზის ნებისმიერ მტერს. შორი.",
+   "atk": 1,
+   "hp": 5,
+   "art": "card_tower.jpg"
+  },
+  {
+   "id": "porter",
+   "kind": "მარაგი",
+   "name": "მზიდავები",
+   "cost": 2,
+   "text": "მუდმივად +1 მარაგი ყოველ სვლაზე (მაქს. 3 ბარათი). შტაბთან დგანან — მათზე თავდასხმა არ შეიძლება.",
+   "art": "card_porter.jpg"
+  },
+  {
+   "id": "barrage",
+   "kind": "ბრძანება",
+   "name": "საარტილერიო მომზადება",
+   "cost": 4,
+   "text": "2 ზიანი მტრის ყველა იუნიტს ერთი ხაზის სანგარში.",
+   "art": "card_barrage.jpg"
+  },
+  {
+   "id": "gas",
+   "kind": "ბრძანება",
+   "name": "გაზის ღრუბელი",
+   "cost": 3,
+   "text": "1 ზიანი ერთი ხაზის ყველა იუნიტს — შენსაც. აირწინაღიანებს არ ეხება.",
+   "art": "card_gas.jpg"
+  },
+  {
+   "id": "raid",
+   "kind": "ბრძანება",
+   "name": "ღამის რეიდი",
+   "cost": 2,
+   "text": "შენი ერთი იუნიტი გადადის ნეიტრალურ ზოლში და მაშინვე უტევს.",
+   "art": "card_raid.jpg"
+  },
+  {
+   "id": "hospital",
+   "kind": "ბრძანება",
+   "name": "საველე ჰოსპიტალი",
+   "cost": 2,
+   "text": "ერთ იუნიტს +4 მდგრადობა (თავდაპირველზე მეტი არა).",
+   "art": "card_hospital.jpg"
+  },
+  {
+   "id": "recon",
+   "kind": "ბრძანება",
+   "name": "დაზვერვა",
+   "cost": 1,
+   "text": "აიღე 2 ბარათი.",
+   "art": "card_recon.jpg"
+  },
+  {
+   "id": "train",
+   "kind": "ბრძანება",
+   "name": "მარაგის მატარებელი",
+   "cost": 2,
+   "text": "ამ სვლაზე +4 მარაგი.",
+   "art": "card_train.jpg"
+  },
+  {
+   "id": "volley",
+   "kind": "ბრძანება",
+   "name": "ზალპი",
+   "cost": 2,
+   "text": "ამ სვლაზე ერთი ხაზის ყველა შენს იუნიტს +1 შეტევა.",
+   "art": "card_volley.jpg"
+  },
+  {
+   "id": "camo",
+   "kind": "ბრძანება",
+   "name": "შენიღბვა",
+   "cost": 1,
+   "text": "ერთი იუნიტი შენს მომდევნო სვლამდე სამიზნე ვერ იქნება.",
+   "art": "card_camo.jpg"
+  }
+ ],
+ "starter": {
+  "colchis": {
+   "units": {
+    "lashkari": 3,
+    "port_brawlers": 3,
+    "dali_hunters": 2,
+    "aznauri": 1,
+    "eristavi": 1,
+    "medea_sisters": 2,
+    "shavkhan_smiths": 2,
+    "kolkhi_riders": 2,
+    "monaspa": 1,
+    "iron_arm_veterans": 1,
+    "khalkotavri": 1
+   },
+   "common": {
+    "trench": 2,
+    "wire": 1,
+    "nest": 1,
+    "porter": 2,
+    "barrage": 1,
+    "gas": 1,
+    "raid": 1,
+    "hospital": 1,
+    "recon": 1
+   }
+  },
+  "harness": {
+   "units": {
+    "rebels": 3,
+    "deserter_regulars": 2,
+    "heretic_sappers": 2,
+    "yoke_slaves": 1,
+    "rebel_chief": 1,
+    "blood_priests": 1,
+    "devi_spawn": 1,
+    "chain_shooters": 2,
+    "kaji_smith": 1,
+    "chained_ones": 2,
+    "kaji_stitched": 1,
+    "gveleshapi": 1
+   },
+   "common": {
+    "trench": 1,
+    "palisade": 2,
+    "nest": 1,
+    "porter": 2,
+    "barrage": 1,
+    "gas": 1,
+    "raid": 1,
+    "train": 1,
+    "volley": 1,
+    "recon": 1
+   }
+  }
+ }
+}
