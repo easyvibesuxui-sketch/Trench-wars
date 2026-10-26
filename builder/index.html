@@ -51,6 +51,10 @@ button { cursor: pointer; }
 /* შტაბის ზოლი */
 .hq { display: grid; gap: 14px; }
 .hq > * { min-width: 0; }
+.hq-top { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; flex: none; }
+.lang button { font: inherit; font-size: .8rem; padding: 6px 10px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--panel); color: var(--ink); font-weight: 700; }
 .hq select { max-width: 100%; }
 .factions { display: flex; flex-wrap: wrap; gap: 8px; }
 .faction-btn {
@@ -220,7 +224,8 @@ footer { color: var(--muted); font-size: .8rem; }
 <div class="wrap">
   <header class="hq">
     <div>
-      <h1>რაზმის ამწყობი</h1>
+      <div class="hq-top"><h1>რაზმის ამწყობი</h1>
+        <div class="lang" role="group" aria-label="სახელების ენა / Name language"><button type="button" data-lang="ka">ქარ</button><button type="button" data-lang="en">EN</button></div></div>
       <p class="sub">აირჩიე მხარე, დაამატე იუნიტები და შეამოწმე, აკმაყოფილებს თუ არა რაზმი წესებს. ფასები მარჩილშია, ბალანსერის ბოლო გაშვებიდან.</p>
     </div>
     <div class="factions" id="factions" role="group" aria-label="ფრაქცია"></div>
@@ -322,6 +327,27 @@ footer { color: var(--muted); font-size: .8rem; }
     vs_leader: "ლიდერზე", festering: "ახრწნის", capture: "ტყვე", curse: "წყევლა", entangle: "ხლართავს", frenzy: "ბრაზი",
     unleash: "გაშვება", swallow: "ყლაპავს", chain_breaker: "ჯაჭვს წყვეტს", suppress: "დათრგუნვა" };
   const ROLES = Object.fromEntries((D.roles || []).map(r => [r.id, r]));
+  // KA/EN: იუნიტების, იარაღის, ნიშნების და ფრაქციების სახელები (წესების ტექსტი — ქართულად)
+  const EN = D.en || { factions: {}, units: {}, weapons: {}, tags: {}, wtags: {}, roles: {}, tiers: {} };
+  const KA = { tag: { ...TAG }, wtag: { ...WTAG }, tier: TIERS.map(t => t[1]), role: Object.fromEntries((D.roles || []).map(r => [r.id, r.name])),
+    fac: { ...D.factions }, ally: { ...(D.allies || {}) } };
+  D.units.forEach(u => { u.ka = u.name; u.weapons.forEach(w => { w.ka = w.name; }); });
+  let LANG = "ka";
+  try { LANG = localStorage.getItem("tw-lang") === "en" ? "en" : "ka"; } catch (e) {}
+  function applyLang(l) {
+    LANG = l; const en = l === "en", pick = (m, k, ka) => (en && m[k]) || ka;
+    Object.keys(KA.tag).forEach(k => { TAG[k] = pick(EN.tags, k, KA.tag[k]); });
+    Object.keys(KA.wtag).forEach(k => { WTAG[k] = pick(EN.wtags, k, KA.wtag[k]); });
+    TIERS.forEach((t, i) => { t[1] = pick(EN.tiers, t[0], KA.tier[i]); });
+    (D.roles || []).forEach(r => { r.name = pick(EN.roles, r.id, KA.role[r.id]); });
+    Object.keys(KA.fac).forEach(k => { D.factions[k] = pick(EN.factions, k, KA.fac[k]); });
+    Object.keys(KA.ally).forEach(k => { D.allies[k] = pick(EN.factions, k, KA.ally[k]); });
+    D.units.forEach(u => { u.name = pick(EN.units, u.id, u.ka); u.weapons.forEach(w => { w.name = pick(EN.weapons, w.ka, w.ka); }); });
+    document.documentElement.lang = en ? "en" : "ka";
+    document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+    try { localStorage.setItem("tw-lang", l); } catch (e) {}
+  }
+  applyLang(LANG);
 
   const byId = Object.fromEntries(D.units.map(u => [u.id, u]));
   const STORE = "tw-warband-v1";
@@ -602,6 +628,7 @@ footer { color: var(--muted); font-size: .8rem; }
   }
 
   function render() { renderFactions(); renderCatalog(); renderSheet(); }
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); render(); }));
 
   function touch() { state.example = false; render(); }
 

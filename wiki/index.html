@@ -108,6 +108,10 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
 .alist div { padding: 8px 12px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; }
 .note { color: var(--muted); font-size: .9rem; max-width: 72ch; }
 .back { display: inline-block; margin-bottom: 14px; font-size: .9rem; }
+.alt { color: var(--muted); margin: -6px 0 10px; font-size: 1rem; }
+.lang { display: flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; flex: none; }
+.lang button { font: inherit; font-size: .8rem; padding: 6px 10px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--sheet); color: inherit; font-weight: 700; }
 @media (prefers-reduced-motion: no-preference) { main { animation: rise .25s ease-out; } @keyframes rise { from { opacity: .6; transform: translateY(4px); } } }
 </style>
 
@@ -117,6 +121,7 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
     <input id="q" type="search" placeholder="იუნიტი ან ფრაქცია…" autocomplete="off" aria-label="ძიება ვიკიში">
     <div class="results" id="results" hidden></div>
   </div>
+  <div class="lang" role="group" aria-label="სახელების ენა / Name language"><button type="button" data-lang="ka">ქარ</button><button type="button" data-lang="en">EN</button></div>
 </div></header>
 <main id="main" tabindex="-1"></main>
 
@@ -131,6 +136,26 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
   const U = Object.fromEntries(W.units.map(u => [u.id, u]));
   const byF = {}; W.units.forEach(u => (byF[u.f] = byF[u.f] || []).push(u));
   const TIER_ORDER = ["I", "II", "III", "IV", "IV+", "V", "hero"];
+  // KA/EN: სახელები ორ ენაზე (აღწერები და ლორი — მხოლოდ ქართულად)
+  const EN = W.en, KA_TIERS = { ...W.tiers }, KA_ROLES = Object.fromEntries(Object.entries(W.roles).map(([k, r]) => [k, r.name]));
+  W.factions.forEach(f => { f.ka = f.name; f.en = EN.factions[f.id] || f.name; });
+  W.units.forEach(u => { u.ka = u.name; u.en = EN.units[u.id] || u.name; u.weapons.forEach(w => { w.ka = w.ka || w.name; }); u.tags.forEach(t => { t.push(t[1]); }); });
+  let LANG = "ka";
+  try { LANG = localStorage.getItem("wiki-lang") === "en" ? "en" : "ka"; } catch (e) {}
+  function applyLang(l) {
+    LANG = l; const en = l === "en";
+    W.factions.forEach(f => { f.name = en ? f.en : f.ka; f.alt = en ? f.ka : f.en; });
+    W.units.forEach(u => {
+      u.name = en ? u.en : u.ka; u.alt = en ? u.ka : u.en;
+      u.weapons.forEach(w => { w.name = en ? (EN.weapons[w.ka] || w.ka) : w.ka; w.tagl = (w.tags || []).map(t => en ? (EN.wtags[t] || t) : t); });
+      u.tags.forEach(t => { t[1] = en ? (EN.tags[t[0]] || t[3]) : t[3]; });
+    });
+    Object.keys(W.tiers).forEach(k => { W.tiers[k] = en ? (EN.tiers[k] || KA_TIERS[k]) : KA_TIERS[k]; });
+    Object.keys(W.roles).forEach(k => { W.roles[k].name = en ? (EN.roles[k] || KA_ROLES[k]) : KA_ROLES[k]; });
+    document.documentElement.lang = en ? "en" : "ka";
+    document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+    try { localStorage.setItem("wiki-lang", l); } catch (e) {}
+  }
   const pal = f => (f.visual && f.visual.palette) || [["#8b7d5a", ""], ["#c8913e", ""], ["#4a5a6a", ""]];
   const swatch = f => `<div class="sw" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>`;
   const pic = (u, f) => u.art ? `background-image:url(${u.art})` : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
@@ -166,7 +191,7 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
     return `<a class="back" href="#home">← ყველა ფრაქცია</a>
       <div class="band" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>
       <div class="fhead"><div><p class="eyebrow"><span class="side ${f.side}">${f.side === "light" ? "ნათელი მხარე" : "ბნელი მხარე"}</span> ${f.core ? "· ძირითადი ფრაქცია" : "· მოკავშირე"}</p>
-        <h1>${esc(f.name)}</h1><nav class="toc" aria-label="გვერდის ნაწილები">${toc.map(([k, n]) => `<a href="#f-${f.id}" data-jump="${k}">${n}</a>`).join("")}</nav></div>
+        <h1>${esc(f.name)}</h1><p class="alt" lang="${LANG === "en" ? "ka" : "en"}">${esc(f.alt)}</p><nav class="toc" aria-label="გვერდის ნაწილები">${toc.map(([k, n]) => `<a href="#f-${f.id}" data-jump="${k}">${n}</a>`).join("")}</nav></div>
         ${f.art ? `<img src="${f.art}" alt="${esc(f.name)} — ილუსტრაცია" width="480" height="720">` : ""}</div>
       ${f.lore ? `<h2 id="s-lore">ლორი</h2><div class="prose">${f.lore}</div>` : ""}
       ${f.war ? `<h2 id="s-war">ცალკე ომი: ${esc(f.war.title)}</h2><div class="prose">${f.war.html}</div>` : ""}
@@ -184,10 +209,10 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
   function unit(u) {
     const f = F[u.f], r = W.roles[u.role] || {}, S = ["მოძ", "სრ", "ხჩ", "ჯავ", "სიც", "ნებ"];
     const wt = u.weapons.length ? `<div class="scroll"><table class="wtable"><thead><tr><th>იარაღი</th><th>სახე</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th>ნიშნები</th></tr></thead><tbody>
-      ${u.weapons.map(w => `<tr><td>${esc(w.name)}</td><td>${w.mode === "ranged" ? "სასროლი" : "ხელჩართული"}</td><td>${w.mode === "ranged" ? w.range + "″" : "—"}</td><td>${w.attacks}</td><td>${w.power}</td><td>${w.damage}</td><td>${esc((w.tags || []).join(", "))}</td></tr>`).join("")}</tbody></table></div>` : "";
+      ${u.weapons.map(w => `<tr><td>${esc(w.name)}</td><td>${w.mode === "ranged" ? "სასროლი" : "ხელჩართული"}</td><td>${w.mode === "ranged" ? w.range + "″" : "—"}</td><td>${w.attacks}</td><td>${w.power}</td><td>${w.damage}</td><td>${esc((w.tagl || w.tags || []).join(", "))}</td></tr>`).join("")}</tbody></table></div>` : "";
     return `<a class="back" href="#f-${f.id}">← ${esc(f.name)}</a>
       <div class="uhead"><div class="uimg" style="${pic(u, f)}">${u.art ? "" : `<span>${esc(u.name)}</span>`}</div><div>
-        <p class="eyebrow">${esc(f.name)} · ${u.tier} · ${esc(W.tiers[u.tier] || "")}</p><h1>${esc(u.name)}</h1>
+        <p class="eyebrow">${esc(f.name)} · ${u.tier} · ${esc(W.tiers[u.tier] || "")}</p><h1>${esc(u.name)}</h1><p class="alt" lang="${LANG === "en" ? "ka" : "en"}">${esc(u.alt)}</p>
         <div class="chips"><span class="chip cost">${u.cost ?? "—"} მარჩილი</span>${r.name ? `<span class="chip">${esc(r.icon || "")} ${esc(r.name)}</span>` : ""}
           ${u.size > 1 ? `<span class="chip">ზომა ${u.size}</span>` : ""}${u.card ? `<span class="chip">„სამი ხაზი“: ${u.card.cost} მარაგი · ⚔ ${u.card.atk} · ⛨ ${u.card.hp}</span>` : ""}</div>
         <div class="stats" role="table" aria-label="მაჩვენებლები">${u.st.map((v, i) => `<div role="cell"><small>${S[i]}</small><b>${v}</b></div>`).join("")}</div>
@@ -224,14 +249,16 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
   q.addEventListener("input", () => {
     const s = q.value.trim().toLowerCase();
     if (s.length < 2) { res.hidden = true; return; }
-    const fs = W.factions.filter(f => f.name.toLowerCase().includes(s)).slice(0, 5).map(f => `<a href="#f-${f.id}">${esc(f.name)}<small>ფრაქცია</small></a>`);
-    const us = W.units.filter(u => u.name.toLowerCase().includes(s)).slice(0, 15).map(u => `<a href="#u-${u.id}">${esc(u.name)}<small>${esc(F[u.f].name)} · ${u.tier}</small></a>`);
+    const fs = W.factions.filter(f => (f.ka + " " + f.en).toLowerCase().includes(s)).slice(0, 5).map(f => `<a href="#f-${f.id}">${esc(f.name)}<small>ფრაქცია</small></a>`);
+    const us = W.units.filter(u => (u.ka + " " + u.en).toLowerCase().includes(s)).slice(0, 15).map(u => `<a href="#u-${u.id}">${esc(u.name)}<small>${esc(F[u.f].name)} · ${u.tier}</small></a>`);
     res.innerHTML = fs.concat(us).join("") || `<a href="#home">ვერაფერი მოიძებნა<small>სცადე სხვა სიტყვა</small></a>`;
     res.hidden = false;
   });
   res.addEventListener("click", () => { res.hidden = true; q.value = ""; });
   document.addEventListener("keydown", ev => { if (ev.key === "Escape") res.hidden = true; });
   document.addEventListener("click", ev => { if (!ev.target.closest(".search")) res.hidden = true; });
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); route(); }));
+  applyLang(LANG);
   route();
 })();
 </script>

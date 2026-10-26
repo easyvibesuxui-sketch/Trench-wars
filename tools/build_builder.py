@@ -28,7 +28,8 @@ def main():
     nml.pop("_comment", None)
     out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment, "campaigns": campaigns,
            "scenarios": json.loads((ROOT / "data" / "scenarios.json").read_text(encoding="utf-8"))["scenarios"],
-           "nml": nml, "tag_rules": json.loads((ROOT / "data" / "abilities.json").read_text(encoding="utf-8"))["tags"], "roles": json.loads((ROOT / "data" / "roles.json").read_text(encoding="utf-8"))["roles"]}
+           "nml": nml, "tag_rules": json.loads((ROOT / "data" / "abilities.json").read_text(encoding="utf-8"))["tags"], "roles": json.loads((ROOT / "data" / "roles.json").read_text(encoding="utf-8"))["roles"],
+           "en": {k: v for k, v in json.loads((ROOT / "data" / "names_en.json").read_text(encoding="utf-8")).items() if k != "_comment"}}
     js = "// ავტომატურად გენერირებული: tools/build_builder.py — ხელით ნუ შეცვლი\n"
     js += "window.TW_DATA = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n"
     target = ROOT / "builder" / "data.js"

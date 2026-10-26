@@ -3,7 +3,7 @@
 
 გაშვება:  python3 tools/validate.py   (შეცდომაზე exit code 1)
 """
-import json
+import os, json
 import re
 import sys
 from pathlib import Path
@@ -173,6 +173,12 @@ def main():
                 errors.append(f"აღჭურვილობა {it['id']}: უცნობი იუნიტი {r}")
         if it["category"] not in equipment["categories"]:
             errors.append(f"აღჭურვილობა {it['id']}: უცნობი კატეგორია")
+
+    # ინგლისური სახელები (KA/EN)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from build_names_en import missing as en_missing
+    for kind, key in en_missing():
+        errors.append(f"names_en.json: აკლია ინგლისური სახელი — {kind} {key}")
 
     for w in warnings:
         print("⚠️ ", w)

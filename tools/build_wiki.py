@@ -158,6 +158,7 @@ def main():
         title = t.split("\n", 1)[0].lstrip("# ").strip()
         W["lore"].append({"id": key, "title": title, "html": md(t.split("\n", 1)[1])})
     W["visual"] = vis["direction"]
+    W["en"] = {k: v for k, v in json.loads((ROOT / "data/names_en.json").read_text(encoding="utf-8")).items() if k != "_comment"}
     (OUT / "data.js").write_text("window.WIKI = " + json.dumps(W, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     n_desc = sum(1 for u in W["units"] if u["desc"])
     print(f"wiki/data.js: {len(W['factions'])} ფრაქცია ({len(fac_md)} ლორით, {len(wars)} ომით, {len(stories)} ამბებით) · "

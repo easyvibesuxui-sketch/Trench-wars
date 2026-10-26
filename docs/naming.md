@@ -31,3 +31,28 @@
 - Warhammer-ის სიტყვებს და კომბინაციებს: Astartes, Primarch, Warmaster, Chapter, Inquisitor, Chaos, Warp, Heresy-ის GW-ის გაგებით და სხვ.
 - Trench Crusade-ის სახელებს (იხ. `fact-check.md`).
 - რეალური ღმერთების, წმინდანებისა და ცოცხალი რელიგიების სახელებს; რეალური დიქტატორების და ლიდერების მსგავსებას.
+
+## ინგლისური ვერსია (English)
+
+ინგლისური სახელები — `data/names_en.json` (49 ფრაქცია, 833 იუნიტი, 359 იარაღი, ნიშნები, როლები, დონეები). ვიკისა და
+ბილდერში **ქარ / EN** გადამრთველია. აღწერები, წესები და ლორი ჯერ მხოლოდ ქართულადაა. სისრულეს ამოწმებს `tools/validate.py`.
+
+**თარგმნის წესები:**
+- ქართული წოდება, რომელსაც ინგლისურში ზუსტი შესატყვისი არ აქვს, **რჩება ტრანსლიტერაციით**: Eristavi, Spasalari, Aznauri,
+  Monaspa, Kudiani, Gveleshapi (როგორც ინგლისურში „Samurai“, „Janissaries“).
+- სახელ-ტიტული **ითარგმნება აზრით**, ჰიფენით: უღლისმთავარი → **The Harness-Lord**, გრდემლისმთავარი → **Anvil-Lord**,
+  ყურისთუხუცესი → **The Eldest Ear**, ურჩთუხუცესი → **Elder of the Defiant**, სისხლისმწდეველნი → **Blood-Cupbearers**.
+- მეტსახელი — ჰიფენით: ბრინჯაოსმკლავა → **Bronze-Arm**, მეხისთვალა → **Thunder-Eye**, ოთხენოვანი → **Four-Tongues**.
+- **„X-ის Y“** → „Y of X“: დალის მონადირეები → **Huntresses of Dali**, მედეას დები → **Sisters of Medea**.
+- „დიდი უღელი“ = **The Grand Harness** (არა „Yoke“ — TC-ის Yoke Fiend). ლაშქარი = **Levy** (არა „Host“).
+- ინგლისურშიც მოქმედებს ყველა აკრძალვა (`fact-check.md`, `lore/09-separate-wars.md`).
+
+| ფრაქცია | ლიდერი | ელიტა | ქვეითი |
+|---|---|---|---|
+| Colchis | Eristavi | Aznauri Knights, Monaspa Guard | Lashkari Levy |
+| Iberia | Spasalari | The Marked | Lowland Levy |
+| The Infernal Legions | Legion Marquis | Legionnaires | Vat Recruits |
+| The Grand Harness | The Harness-Lord, Elder of the Defiant | The Chained | Rebels |
+| Brotherhood of Listeners | The Eldest Ear | Bolt Guard | False Rankers |
+| Kajeti | Anvil-Lord | Cast-Iron Wardens | Cast-Iron Rankers |
+| The Ring Battalion | Battalion Commander | Tribute Veterans | Tribute Rankers |
