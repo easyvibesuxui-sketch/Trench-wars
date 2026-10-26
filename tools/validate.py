@@ -70,8 +70,6 @@ def main():
             errors.append(f"{uid}: ფასი არ აქვს (data/costs.json)")
         if u["name"] not in docs:
             warnings.append(f"{uid}: სახელი „{u['name']}“ units/*.md-ში არ ჩანს")
-        if u.get("allied") and u["tier"] in {"IV+", "hero"}:
-            errors.append(f"{uid}: მოკავშირეს IV+ და გმირი არ ჰყავს")
 
     roles = {r["id"] for r in json.loads((ROOT / "data" / "roles.json").read_text(encoding="utf-8"))["roles"]}
     for u in units:

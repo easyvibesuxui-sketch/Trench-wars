@@ -1389,6 +1389,104 @@
    ]
   },
   {
+   "id": "false_signallers",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ყალბი მეკავშირეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "false_sisters",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ყალბი დები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "lock_guard",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "კლიტის გვარდია",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "shield",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "listening_balloon",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "სასმენი ბუშტი",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 9,
+   "kw": [
+    "fly",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "gifted_fortress",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ჩუქებული ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
    "id": "kajeti_leader",
    "kind": "იუნიტი",
    "faction": "kajeti",
@@ -1599,6 +1697,85 @@
    ]
   },
   {
+   "id": "kajeti_miners",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ქაჯეთის მემაღაროეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "silver_cannoneers",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ვერცხლის ზარბაზნის მსახურები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "silver_sentinel",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ვერცხლის დარაჯი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "forge_citadel",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "მავალი სამჭედლო-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 13,
+   "kw": [
+    "healer",
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
    "id": "ring_leader",
    "kind": "იუნიტი",
    "faction": "ring",
@@ -1782,6 +1959,104 @@
     "fearless"
    ],
    "art": "ring_giant.jpg",
+   "palette": [
+    "#4a5a6a",
+    "#c8913e",
+    "#a8987a"
+   ]
+  },
+  {
+   "id": "tribute_scouts",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ხარკის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#4a5a6a",
+    "#c8913e",
+    "#a8987a"
+   ]
+  },
+  {
+   "id": "forty_hunters",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ორმოცი ენის მონადირეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#4a5a6a",
+    "#c8913e",
+    "#a8987a"
+   ]
+  },
+  {
+   "id": "tribute_cuirassiers",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ხარკის კირასირები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 7,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#4a5a6a",
+    "#c8913e",
+    "#a8987a"
+   ]
+  },
+  {
+   "id": "ring_armored_car",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "რგოლის ჯავშნიანი ავტომობილი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a5a6a",
+    "#c8913e",
+    "#a8987a"
+   ]
+  },
+  {
+   "id": "sea_gate_battery",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "ზღვის კარის ბატარეა-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
    "palette": [
     "#4a5a6a",
     "#c8913e",
@@ -4178,6 +4453,143 @@
    ]
   },
   {
+   "id": "island_scouts",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "კუნძულების მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "peltasts",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "პელტასტები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hydra_cutters",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ჰიდრის მკვეთები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter",
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hephaestus_mechanics",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ჰეფესტოს მემანქანეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "aeolus_gunners",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ეოლოსის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "lens_carriage",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ციკლოპის ლინზის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "storm_wall",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ქარიშხლის კედლის ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
    "id": "northern_leader",
    "kind": "იუნიტი",
    "faction": "northern",
@@ -4245,6 +4657,138 @@
    "hp": 5,
    "kw": [
     "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "ski_scouts",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "თხილამურიანი მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "fjord_riflemen",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ფიორდის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "serpent_harpooners",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "გველის ჰარპუნერები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "chain_smiths",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ჯაჭვის მჭედლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "horn_keepers",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "საყვირის მცველები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "thunder_sledge",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ჭექის მარხილ-ქვემეხი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "bridge_keep",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ხიდის მცველი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -4367,6 +4911,102 @@
    ]
   },
   {
+   "id": "bog_trackers",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "ტორფის მეკვალეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "cliff_riflemen",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "კლდის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "well_keepers",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "წყაროს მცველები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "sling_carriage",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "შურდულის ქვემეხ-ურემი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 11,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "ringfort_walker",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "მავალი რგოლ-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
    "id": "finnish_leader",
    "kind": "იუნიტი",
    "faction": "finnish",
@@ -4444,6 +5084,141 @@
    ]
   },
   {
+   "id": "ski_patrol",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "თხილამურიანი პატრული",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "forest_riflemen",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ტყის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "forge_apprentices",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ილმარინენის შეგირდები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "river_wardens",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "ტუონის მდინარის მცველები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "sampo_guards",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "სამპოს მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "sun_lantern",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "მზის ფარნის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "singing_fortress",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "მომღერალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
    "id": "britain_leader",
    "kind": "იუნიტი",
    "faction": "britain",
@@ -4511,6 +5286,141 @@
    "hp": 5,
    "kw": [
     "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "fen_drainers",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის დამშრობები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "fen_snipers",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის სნაიპერები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "fen_herbalists",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის მებალახეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "fen_riders",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ჭაობის მხედრები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "mere_divers",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ტბის მყვინთავები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "iron_diver",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "რკინის მყვინთავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "heorot_hall",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "მავალი დარბაზი",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -4635,6 +5545,123 @@
    ]
   },
   {
+   "id": "river_watch",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "მდინარის დარაჯები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "voltigeurs",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ვოლტიჟორები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "bridge_gunners",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ხიდის ტყვიამფრქვევები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "belenos_healers",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ბელენოსის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "tarasque_lance",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ტარასკის შუბ-ქვემეხი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "hunter",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "bridge_fortress",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ხიდის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
    "id": "italy_leader",
    "kind": "იუნიტი",
    "faction": "italy",
@@ -4713,6 +5740,140 @@
    ]
   },
   {
+   "id": "cave_scouts",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "გამოქვაბულის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "arditi",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "არდიტები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "vulcan_smiths",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ვულკანის მჭედლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "cacus_hunters",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "კაკუსის მონადირეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "bersaglieri",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ბერსალიერები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "vulcan_ballista",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ვულკანის ბალისტა-ურემი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 11,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "castrum_walker",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "მავალი კასტრუმი",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
    "id": "polianitsy_leader",
    "kind": "იუნიტი",
    "faction": "polianitsy",
@@ -4761,6 +5922,162 @@
    "hp": 16,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "frost_riflemen",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ყინვის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "zmei_slayers",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ზმეის მკვლელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter",
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "young_polianitsy",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ახალგაზრდა პოლიანიცები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "living_water_bearers",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ცოცხალი წყლის მზიდავები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "needle_seekers",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "კოშეის ნემსის მძებნელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "bogatyr_druzhina",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ბოგატირების დრუჟინა",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "sun_stove",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "დაჟბოგის მზის ღუმელი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "winter_citadel",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ზამთრის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -4827,6 +6144,161 @@
    ]
   },
   {
+   "id": "lake_watchers",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ტბის დარაჯები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "highland_riflemen",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "მთიანეთის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "stone_carvers",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ვიშაპის ქვის მთლელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "cloud_gunners",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ღრუბლის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "tork_shieldbearers",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ტორქის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "vahagn_guard",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ვაჰაგნის ცეცხლის გვარდია",
+   "tier": "III",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [
+    "hunter",
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "cloud_mortar",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ღრუბლის ნაღმსატყორცნი-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "mountain_fortress",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "მთის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
    "id": "oghuz_leader",
    "kind": "იუნიტი",
    "faction": "oghuz",
@@ -4877,6 +6349,160 @@
    "kw": [
     "giant",
     "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "well_watchers",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ჭის მცველები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "steppe_outriders",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "სტეპის მხედარ-მზვერავები",
+   "tier": "I",
+   "cost": 3,
+   "atk": 2,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "steppe_healers",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "სტეპის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "ozan_bards",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ოზანები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "korogly_guard",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ქოროღლის მძიმე მხედრები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 7,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "div_breakers",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "დივის მმტვრევლები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "basat_bow",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ბასატის ორთქლის მშვილდი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 11,
+   "kw": [
+    "hunter",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "tent_citadel",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "მავალი კარავ-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -4963,6 +6589,122 @@
    ]
   },
   {
+   "id": "dam_builders",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "კაშხლის მშენებლები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "star_sighters",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "ვარსკვლავის მზომელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "house_of_life",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "სიცოცხლის სახლის ექიმები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "mehen_coil_guard",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "მეჰენის რგოლის გვარდია",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "sun_mirror",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "მზის სარკის ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "fire",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "sand_barque",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "ქვიშის ნავ-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
    "id": "yellow_river_leader",
    "kind": "იუნიტი",
    "faction": "yellow_river",
@@ -5012,6 +6754,138 @@
    "kw": [
     "giant",
     "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "channel_crews",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "არხის ბრიგადები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "boat_scouts",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "ნავის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "poison_physicians",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "შხამის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "dike_shieldbearers",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "ჯებირის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "pump_armor",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "ტუმბოს ჯავშნიანები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "tripod_cannon",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "სამფეხა ქვემეხი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 11,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "sluice_fortress",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "რაბის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -5095,6 +6969,123 @@
    ]
   },
   {
+   "id": "island_riflemen",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "კუნძულების მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "oni_breakers",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "ონის მმტვრევლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "mountain_herbalists",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "მთის მებალახეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "karakuri_makers",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "კარაკურის ოსტატები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "kite_battery",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "ფრანის ბატარეა",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 9,
+   "kw": [
+    "fly",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "oni_island_ship",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "ონის კუნძულის ნავ-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
    "id": "indian_leader",
    "kind": "იუნიტი",
    "faction": "indian",
@@ -5143,6 +7134,143 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "stepwell_builders",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "საფეხურიანი ჭის მშენებლები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 2,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "night_physicians",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ღამის ექიმები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "riddle_solvers",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "გამოცანების მცოდნეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "lantern_wall",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ფარნების კედელი",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "vikram_guard",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ვიკრამის გვარდია",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "shield",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "monsoon_crawler",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "მუსონის ჯავშან-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d97a2a",
+    "#2a5a7a",
+    "#c9a24a"
+   ]
+  },
+  {
+   "id": "night_fortress",
+   "kind": "იუნიტი",
+   "faction": "indian",
+   "name": "ღამის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -5209,6 +7337,138 @@
    ]
   },
   {
+   "id": "mangrove_scouts",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "მანგროს მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "river_riflemen",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "მდინარის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "herb_healers",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "ბალახის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "web_wall",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "ქსელის კედელი",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "forge_guard",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "სამჭედლოს გვარდია",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "spider_walker",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "ობობა-მავალი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
+   "id": "harbor_fortress",
+   "kind": "იუნიტი",
+   "faction": "west_african",
+   "name": "ნავსადგურის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#e0b04a",
+    "#2a3a2a"
+   ]
+  },
+  {
    "id": "north_american_leader",
    "kind": "იუნიტი",
    "faction": "north_american",
@@ -5257,6 +7517,139 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "timber_cruisers",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "ტყის ამზომველები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "camp_doctors",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "ბანაკის ექიმები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "hodag_trappers",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "ჰოდაგის ხაფანგისტები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "rail_guard",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "რკინიგზის დაცვა",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "river_drivers",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "მორების მერეკეები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "blue_ox",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "ცისფერი ორთქლის ხარი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#6a4a2a",
+    "#3a5a3a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "logging_camp",
+   "kind": "იუნიტი",
+   "faction": "north_american",
+   "name": "მავალი ხე-ტყის ბანაკი",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -5359,6 +7752,105 @@
    ]
   },
   {
+   "id": "valley_healers",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ველის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "chinampa_builders",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ჩინამპების მშენებლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "new_fire_gunners",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ახალი ცეცხლის ტყვიამფრქვევები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 6,
+   "kw": [
+    "suppress",
+    "anti_air",
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "star_cannon",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "ვარსკვლავების ქვემეხი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "causeway_fortress",
+   "kind": "იუნიტი",
+   "faction": "mexica",
+   "name": "დამბის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a6a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
    "id": "amazon_leader",
    "kind": "იუნიტი",
    "faction": "amazon",
@@ -5407,6 +7899,142 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "river_nurses",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "მდინარის ნავ-ჰოსპიტლის ექთნები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "stilt_builders",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "ხიმინჯების მშენებლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "canopy_marksmen",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "ვარჯის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "river_shieldbearers",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "მდინარის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "boiuna_harpooners",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "ბოიუნას ჰარპუნერები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "amphibian_crawler",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "ამფიბია-ურემი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 4,
+   "hp": 11,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a5a3a",
+    "#c9a23a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "floating_fort",
+   "kind": "იუნიტი",
+   "faction": "amazon",
+   "name": "მცურავი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -5474,6 +8102,142 @@
    ]
   },
   {
+   "id": "mountain_healers",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "მთის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "condor_watchers",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "კონდორის ბუდის დარაჯები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "terrace_builders",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "ტერასების მშენებლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "drystone_guard",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "მშრალი წყობის ფარისნები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 5,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "giant_breakers",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "ქვის გიგანტების მმტვრევლები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "cable_battery",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "საბაგირო ბატარეა",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
+   "id": "terrace_fortress",
+   "kind": "იუნიტი",
+   "faction": "andes",
+   "name": "ტერასული მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#8a6a4a",
+    "#c9a23a",
+    "#3a5a7a"
+   ]
+  },
+  {
    "id": "caribbean_leader",
    "kind": "იუნიტი",
    "faction": "caribbean",
@@ -5522,6 +8286,137 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "island_nurses",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "კუნძულების ექთნები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "reef_engineers",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "რიფის ინჟინრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "conch_signallers",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "ნიჟარის მესიგნალეები",
+   "tier": "II",
+   "cost": 2,
+   "atk": 2,
+   "hp": 3,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "harbor_shields",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "ნავმისადგომის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "bell_divers",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "ზარის მყვინთავები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "signal_balloon",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "სასიგნალო ბუშტი",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 9,
+   "kw": [
+    "fly",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a8a9a",
+    "#e0b04a",
+    "#7a4a2a"
+   ]
+  },
+  {
+   "id": "lighthouse_fortress",
+   "kind": "იუნიტი",
+   "faction": "caribbean",
+   "name": "მავალი შუქურა-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -5588,6 +8483,140 @@
    ]
   },
   {
+   "id": "atoll_riflemen",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "ატოლის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "canoe_healers",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "ნავის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "outrigger_builders",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "ნავის ოსტატები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 3,
+   "kw": [
+    "healer",
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "reef_wall",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "რიფის კედელი",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "deep_divers",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "ღრმა წყლის მყვინთავები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "reef_crawler",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "რიფის მცოცავი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 4,
+   "hp": 11,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "floating_island",
+   "kind": "იუნიტი",
+   "faction": "oceania",
+   "name": "მცურავი კუნძული-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a9a",
+    "#c9a26a",
+    "#3a5a3a"
+   ]
+  },
+  {
    "id": "central_african_leader",
    "kind": "იუნიტი",
    "faction": "central_african",
@@ -5636,6 +8665,141 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "forest_path_riflemen",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ტყის ბილიკის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "forest_healers",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ტყის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "liana_bridge_builders",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ლიანის ხიდის მშენებლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "scepter_guard",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "კვერთხის გვარდია",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "kirimu_hunters",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "კირიმუს მონადირეები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "river_steamer",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "მდინარის ორთქლმავალი ნავი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 4,
+   "hp": 11,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a2a",
+    "#b5732a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "canopy_fortress",
+   "kind": "იუნიტი",
+   "faction": "central_african",
+   "name": "ვარჯის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -5702,6 +8866,140 @@
    ]
   },
   {
+   "id": "ridge_scouts",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "ქედის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "peak_healers",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "მწვერვალის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "stone_wall_builders",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "ქვის გალავნის მშენებლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "cliff_guard",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "კლდის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "kammapa_cutters",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "კამაპას მუცლის მჭრელები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "ridge_battery",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "ქედის ბატარეა-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "mountain_fastness",
+   "kind": "იუნიტი",
+   "faction": "southern_african",
+   "name": "მთის თავშესაფარი-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a87a4a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
    "id": "great_lakes_leader",
    "kind": "იუნიტი",
    "faction": "great_lakes",
@@ -5759,6 +9057,139 @@
    ]
   },
   {
+   "id": "lakeshore_riflemen",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "ტბის ნაპირის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "lake_healers",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "ტბის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "silence_keepers",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "სიჩუმის მცველები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "pit_guard",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "ორმოს მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "tunnel_rams",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "გვირაბის ტარანები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "lake_steamer",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "ტბის ორთქლნავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
+   "id": "earthwork_fortress",
+   "kind": "იუნიტი",
+   "faction": "great_lakes",
+   "name": "მიწაყრილის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#4a6a3a",
+    "#c9a26a",
+    "#2a4a6a"
+   ]
+  },
+  {
    "id": "north_african_leader",
    "kind": "იუნიტი",
    "faction": "north_african",
@@ -5807,6 +9238,142 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "dune_scouts",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "დიუნის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "oasis_riflemen",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "ოაზისის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "oasis_healers",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "ოაზისის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "mirage_breakers",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "მირაჟის მმტვრევლები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "caravan_lancers",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "ქარავნის მძიმე მხედრები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 7,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "sand_crawler",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "ქვიშის მცოცავი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c97a3a",
+    "#2a4a7a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "granary_fortress",
+   "kind": "იუნიტი",
+   "faction": "north_african",
+   "name": "მავალი ბეღელ-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -5875,6 +9442,143 @@
    ]
   },
   {
+   "id": "dust_scouts",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "მტვრის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "caravanserai_healers",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "ქარვასლის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "white_div_hunters",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "თეთრი დივის მონადირეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 6,
+   "hp": 3,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "pass_gunners",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "უღელტეხილის ტყვიამფრქვევები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "rakhsh_guard",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "რახშის გვარდია",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 7,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "tulpar_balloon",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "თულპარის ფრთიანი ბუშტი",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 9,
+   "kw": [
+    "fly",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
+   "id": "caravanserai_fortress",
+   "kind": "იუნიტი",
+   "faction": "central_asian",
+   "name": "მავალი ქარვასლა-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#c9a24a",
+    "#7a4a3a"
+   ]
+  },
+  {
    "id": "gulf_leader",
    "kind": "იუნიტი",
    "faction": "gulf",
@@ -5924,6 +9628,140 @@
    "kw": [
     "giant",
     "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "harbor_riflemen",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "ნავსადგურის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "ship_healers",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "გემის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "current_readers",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "დინების მკითხველები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "deck_shields",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "გემბანის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "anchor_bearers",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "ღუზოსნები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "harbor_crawler",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "ნავსადგურის ჯავშან-ურემი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 4,
+   "hp": 11,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#d8c49a",
+    "#2a6a8a",
+    "#7a5a3a"
+   ]
+  },
+  {
+   "id": "harbor_tower",
+   "kind": "იუნიტი",
+   "faction": "gulf",
+   "name": "ნავსადგურის მავალი კოშკი",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -6072,6 +9910,142 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "moon_watchers",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "მთვარის დარაჯები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "coast_riflemen",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "სანაპიროს მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "island_herbalists",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "კუნძულის მებალახეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "gong_wall",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "გონგის კედელი",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "rattan_guard",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "რატანის ჯავშნიანები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "shield",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "gong_balloon",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "გონგების ბუშტი",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 9,
+   "kw": [
+    "fly",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a7a5a",
+    "#c9a23a",
+    "#7a3a2a"
+   ]
+  },
+  {
+   "id": "stilt_village",
+   "kind": "იუნიტი",
+   "faction": "sea_islands",
+   "name": "ხიმინჯ-სოფლის ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -6239,6 +10213,121 @@
    "kw": [
     "long",
     "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "mountain_trackers",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "მთის მეკვალეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "village_riflemen",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "მთის სოფლის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "fortress_wall_guard",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "ციხე-კედლის მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "imugi_hunters",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "იმუგის მონადირეები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "haetae_engine",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "ჰეთეს ორთქლის მხეცი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "village_fortress",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "მთის სოფლის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -6420,6 +10509,121 @@
    ]
   },
   {
+   "id": "gobi_healers",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "გობის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "mangus_hunters",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "მანგუსის მონადირეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "woodwrights",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "ხის ოსტატები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "felt_shields",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "თექის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "camel_walker",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "აქლემის ორთქლის მავალი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "felt_citadel",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "თექის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
    "id": "arctic_leader",
    "kind": "იუნიტი",
    "faction": "arctic",
@@ -6560,6 +10764,139 @@
    "hp": 17,
    "kw": [
     "giant"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "ice_riflemen",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "ice_camp_healers",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულის ბანაკის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "snowblock_builders",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "თოვლის ბლოკების მშენებლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "ice_wall_guard",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულის კედლის მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "ice_cutters",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულმჭრელები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "icebreaker_sled",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულმჭრელი მარხილი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 4,
+   "hp": 11,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#3a4a5a",
+    "#8a6a4a"
+   ]
+  },
+  {
+   "id": "ice_floe_fortress",
+   "kind": "იუნიტი",
+   "faction": "arctic",
+   "name": "ყინულის ლოდ-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -6720,6 +11057,140 @@
    ]
   },
   {
+   "id": "taiga_trackers",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ტაიგის მეკვალეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "taiga_healers",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ტაიგის მკურნალები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "permafrost_diggers",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "მუდმივი ყინვის მთხრელები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "larch_shields",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ლარიქსის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "abaasy_hunters",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "აბაასის მონადირეები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "reindeer_sled_battery",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "ირმის მარხილ-ბატარეა",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "log_fortress",
+   "kind": "იუნიტი",
+   "faction": "siberia",
+   "name": "მორის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a4a3a",
+    "#c9b48a",
+    "#8a2a2a"
+   ]
+  },
+  {
    "id": "balkans_leader",
    "kind": "იუნიტი",
    "faction": "balkans",
@@ -6864,6 +11335,144 @@
    "kw": [
     "giant",
     "fly"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "valley_herbalists",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ხეობის მებალახეები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "hail_cannons",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "სეტყვის ქვემეხები",
+   "tier": "II",
+   "cost": 5,
+   "atk": 6,
+   "hp": 4,
+   "kw": [
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "cistern_builders",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "წყალსაცავის მშენებლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "gorge_shields",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ხეობის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "dragon_guard",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "დრაკონ-ადამიანების გვარდია",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "shield",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "cloud_cutter",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ღრუბლის მჭრელი ბუშტი",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 9,
+   "kw": [
+    "fly",
+    "anti_air",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "gorge_fortress",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ხეობის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -7043,6 +11652,123 @@
    ]
   },
   {
+   "id": "pass_riflemen",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "გადასასვლელის მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "mine_doctors",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "მაღაროს ექიმები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "cave_shields",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "გამოქვაბულის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "cuelebre_slayers",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "კუელებრეს მკვლელები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter",
+    "anti_air"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "ore_cart_battery",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "მადნის ვაგონ-ბატარეა",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "pass_fortress",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "უღელტეხილის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
    "id": "alps_leader",
    "kind": "იუნიტი",
    "faction": "alps",
@@ -7211,6 +11937,121 @@
    ]
   },
   {
+   "id": "chamois_trackers",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "არჩვის მეკვალეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "mountain_rescue",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "მთის მაშველები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "tatzelwurm_hunters",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ტაცელვურმის მონადირეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "glacier_guard",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "მყინვარის მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "avalanche_mortar",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ზვავის ნაღმსატყორცნი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "alpine_fortress",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "მავალი ალპური ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
    "id": "baltic_leader",
    "kind": "იუნიტი",
    "faction": "baltic",
@@ -7354,6 +12195,139 @@
    "kw": [
     "giant",
     "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "dune_riflemen",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ზღვისპირა დიუნების მსროლელები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "linden_healers",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ცაცხვის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "bog_wardens",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ჭაობის დარაჯები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "daina_singers",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "დაინების მომღერლები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 3,
+   "hp": 4,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "amber_lancers",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ქარვის შუბოსნები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 7,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "coastal_battery",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "სანაპირო ბატარეა-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 13,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "hillfort_walker",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "ბორცვის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -7516,6 +12490,139 @@
    ]
   },
   {
+   "id": "bush_nurses",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "ველის ექთნები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "well_borers",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "არტეზიული ჭის მბურღავები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "rod_gunners",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "მეხამრიდის მსროლელები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 4,
+   "hp": 4,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "stockade_guard",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "პალისადის მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "steam_firefighters",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "ორთქლის მეხანძრეები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "road_train",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "ორთქლის გზის მატარებელი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
+   "id": "homestead_fortress",
+   "kind": "იუნიტი",
+   "faction": "australia",
+   "name": "მავალი ფერმა-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#b5532a",
+    "#c9b48a",
+    "#3a5a6a"
+   ]
+  },
+  {
    "id": "prussia_leader",
    "kind": "იუნიტი",
    "faction": "prussia",
@@ -7635,9 +12742,9 @@
    "faction": "prussia",
    "name": "ორთქლის ურო",
    "tier": "IV",
-   "cost": 8,
-   "atk": 6,
-   "hp": 10,
+   "cost": 9,
+   "atk": 7,
+   "hp": 11,
    "kw": [
     "suppress"
    ],
@@ -7679,6 +12786,123 @@
    "atk": 4,
    "hp": 4,
    "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "jaegers",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "იეგერები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 1,
+   "kw": [
+    "scout",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "field_surgeons",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "საველე ქირურგები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "shaft_guard",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "შახტის მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "lindwurm_hunters",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ლინდვურმის მონადირეები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "observation_airship",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "სადაზვერვო ცეპელინი",
+   "tier": "IV",
+   "cost": 7,
+   "atk": 4,
+   "hp": 9,
+   "kw": [
+    "fly",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "shaft_tower_fortress",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "შახტის კოშკის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
     "long"
    ],
    "art": null,
@@ -7860,6 +13084,120 @@
    ]
   },
   {
+   "id": "polder_nurses",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "პოლდერის ექთნები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "pump_engineers",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ტუმბოს ინჟინრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "sluice_guard",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "შლუზის მცველები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "fog_cutters",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ნისლის მჭრელები",
+   "tier": "III",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "canal_monitor",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "არხის მონიტორი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 4,
+   "hp": 11,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "polder_fortress",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "პოლდერის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
    "id": "lechia_leader",
    "kind": "იუნიტი",
    "faction": "lechia",
@@ -8013,6 +13351,141 @@
    ]
   },
   {
+   "id": "shore_scouts",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "ნაპირის მზვერავები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "salt_healers",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "მარილის მკურნალები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 2,
+   "hp": 4,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "utopiec_hunters",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "უტოპეცის მონადირეები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 5,
+   "hp": 2,
+   "kw": [
+    "hunter"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "uhlans",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "ულანები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "breaker",
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "salt_mine_shields",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "მარილის შახტის ფარისნები",
+   "tier": "III",
+   "cost": 4,
+   "atk": 3,
+   "hp": 5,
+   "kw": [
+    "shield"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "sulfur_ram",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "გოგირდის ვერძი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 6,
+   "hp": 12,
+   "kw": [
+    "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "krak_hill_fortress",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "კრაკის ბორცვის ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
    "id": "byzantium_leader",
    "kind": "იუნიტი",
    "faction": "byzantium",
@@ -8156,6 +13629,141 @@
     "giant",
     "fire",
     "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "harbor_lookouts",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "ნავსადგურის მეთვალყურეები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "akritai",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "აკრიტები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 2,
+   "hp": 2,
+   "kw": [
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "harbor_physicians",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "ნავსადგურის ექიმები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "chain_engineers",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "ჯაჭვის ინჟინრები",
+   "tier": "II",
+   "cost": 3,
+   "atk": 4,
+   "hp": 3,
+   "kw": [
+    "digger"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "chain_tower_guard",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "ჯაჭვის კოშკის გვარდია",
+   "tier": "III",
+   "cost": 6,
+   "atk": 6,
+   "hp": 6,
+   "kw": [
+    "shield",
+    "fearless"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "siphon_boat",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "სიფონის ნავი",
+   "tier": "IV",
+   "cost": 8,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "fire"
+   ],
+   "art": null,
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "chain_tower",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "ჯაჭვის კოშკი-ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [
@@ -8347,6 +13955,105 @@
    "kw": [
     "breaker",
     "charge"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "night_watchmen",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ღამის დარაჯები",
+   "tier": "I",
+   "cost": 2,
+   "atk": 3,
+   "hp": 1,
+   "kw": [
+    "scout"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "city_physicians",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ქალაქის ექიმები",
+   "tier": "II",
+   "cost": 4,
+   "atk": 2,
+   "hp": 6,
+   "kw": [
+    "healer"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "bastion_gunners",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ბასტიონის ტყვიამფრქვევები",
+   "tier": "III",
+   "cost": 6,
+   "atk": 5,
+   "hp": 5,
+   "kw": [
+    "suppress",
+    "shield",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "lantern_crawler",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ფარნების ჯავშან-ურემი",
+   "tier": "IV",
+   "cost": 9,
+   "atk": 5,
+   "hp": 12,
+   "kw": [
+    "suppress",
+    "long"
+   ],
+   "art": null,
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "city_wall_walker",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ქალაქის კედლის მავალი ციხე",
+   "tier": "IV+",
+   "cost": 10,
+   "atk": 6,
+   "hp": 14,
+   "kw": [
+    "breaker",
+    "long"
    ],
    "art": null,
    "palette": [

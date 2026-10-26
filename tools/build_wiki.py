@@ -113,7 +113,7 @@ def main():
     allies_md = (ROOT / "units/allies.md").read_text(encoding="utf-8")
     for m in re.finditer(r"^- \*\*(.+?)\*\*(?: \((.+?)\))? — (.+(?:\n  .+)*)", allies_md, re.M):
         for u in data["units"]:
-            if u["name"] == m.group(1) and u["id"] not in udesc and (not m.group(2) or m.group(2) in names.get(u["faction"], "")):
+            if u["name"] == m.group(1) and u["id"] not in udesc and (not m.group(2) or m.group(2) == u["tier"] or m.group(2) in names.get(u["faction"], "")):
                 udesc[u["id"]] = m.group(3).replace("\n  ", " ")
 
     art_dir = OUT / "art"

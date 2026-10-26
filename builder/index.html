@@ -354,7 +354,7 @@ footer { color: var(--muted); font-size: .8rem; }
     hellenic: "ჰეფესტოს ავტომატები და ციკლოპების ქვემეხები", northern: "იოტუნებზე მონადირეები და ტიუს ვეტერანები",
     celtic: "გოიბნიუს მჭედლები, ლუგის სნაიპერები, ნუადას ვერცხლისხელები და კურაღის მეზღვაურები", finnish: "ილმარინენის ნაჭედები და მომღერლები",
     britain: "ბეოვულფის მემკვიდრეები, ურჩხულებზე მონადირეები", gaul: "ელვის ტექნოლოგია, იბერიის ძველი პარტნიორი, ბელენოსის ფარისნები და ტარასკის ჯავშნის მსხვრეველები",
-    italy: "ვულკანის საველე არტილერია", polianitsy: "ძალიან ცოტანი არიან — რაზმში მაქს. 1",
+    italy: "ვულკანის საველე არტილერია", polianitsy: "ბოგატირი ქალები და ზამთრის მსროლელები; პოლიანიცა (III) — რაზმში მაქს. 1",
     armenian: "ვიშაპმკვლელები და არალეზები — რგოლის სამხრეთი", oghuz: "ბასატის მონადირეები და ქოროღლის მხედრები — რგოლის აღმოსავლეთი",
     nile: "ღამის ომი აპეპის წინააღმდეგ — მესაათეები, შუბოსნები, სეხმეტის მეომრები",
     yellow_river: "იუს ინჟინრები და ურჩხულების ატლასი — წყალდიდობის ომი", japan_isles: "ჰიდესატოს მშვილდოსნები და კარაკურის მექანიზმები",
@@ -432,13 +432,15 @@ footer { color: var(--muted); font-size: .8rem; }
   function lockReason(u) {
     if (isAllied(u)) {
       if (u.tags.includes("leader")) return "ალიანსში ერთი ლიდერია — შენი";
-      if (u.faction === "polianitsy" && count(x => x.faction === "polianitsy") >= 1) return "პოლიანიცები: მაქს. 1 მოდელი";
+      if (u.tier === "hero") return "პარტნიორის გმირი ალიანსით არ მოდის";
+      if (u.id === "polianitsa" && count(x => x.id === "polianitsa") >= 1) return "პოლიანიცა: მაქს. 1 მოდელი";
       if (allianceSpent() + unitCost(u) > allianceCap()) return `ალიანსის ლიმიტი: ${allianceCap()} მარჩილი (${pct(ALLIANCE_SHARE)})`;
     }
     if (isHired(u)) {
       if (!canHire()) return "მხოლოდ ნათელ მხარეს";
       if (u.tags.includes("leader")) return "ლიდერს ვერ დაიქირავებ";
-      if (u.faction === "polianitsy" && count(x => x.faction === "polianitsy") >= 1) return "პოლიანიცები: მაქს. 1 მოდელი";
+      if (u.tier === "hero" || u.tier === "IV+") return "გმირს და IV+-ს ვერ დაიქირავებ";
+      if (u.id === "polianitsa" && count(x => x.id === "polianitsa") >= 1) return "პოლიანიცა: მაქს. 1 მოდელი";
       if (hiredSpent() + unitCost(u) > hireCap()) return `დაქირავების ლიმიტი: ${hireCap()} მარჩილი (${pct(hireRule()[0])})`;
     }
     if ((u.tier === "V" || u.tier === "hero") && !state.scenario) return "საჭიროა სცენარის რეჟიმი";
@@ -528,23 +530,23 @@ footer { color: var(--muted); font-size: .8rem; }
     const pa = partners();
     if (!pa.length) return "";
     const groups = pa.map(aid => {
-      const list = D.units.filter(u => u.faction === aid && !u.tags.includes("leader") && roleOk(u));
+      const list = D.units.filter(u => u.faction === aid && !u.tags.includes("leader") && u.tier !== "hero" && roleOk(u));
       return `<div class="ally"><h3 class="ally-name">${esc(factionName(aid))} <span>${ALLY_NOTE[aid] || FACTION_NOTE[aid] || ""}</span></h3><div class="cards">${list.map(card).join("")}</div></div>`;
     }).join("");
     return `<section class="tier alliance"><div class="tier-head"><h2>ალიანსის კონტინგენტი</h2>
-      <span class="tier-note">ბიუჯეტის მაქს. ${pct(ALLIANCE_SHARE)} (${allianceCap()} მარჩილი), ფასნამატის გარეშე; პარტნიორის ლიდერი არ მოდის</span></div>${groups}</section>`;
+      <span class="tier-note">ბიუჯეტის მაქს. ${pct(ALLIANCE_SHARE)} (${allianceCap()} მარჩილი), ფასნამატის გარეშე; პარტნიორის ლიდერი და გმირი არ მოდის</span></div>${groups}</section>`;
   }
 
   function renderAllies() {
     if (!canHire()) return "";
     const groups = Object.entries(D.allies || {}).map(([aid, nm]) => {
       if (partners().includes(aid)) return "";
-      const list = D.units.filter(u => u.allied && u.faction === aid && !u.tags.includes("leader") && roleOk(u));
+      const list = D.units.filter(u => u.allied && u.faction === aid && !u.tags.includes("leader") && u.tier !== "hero" && u.tier !== "IV+" && roleOk(u));
       if (!list.length) return "";
       return `<div class="ally"><h3 class="ally-name">${esc(nm)} <span>${ALLY_NOTE[aid] || ""}</span></h3><div class="cards">${list.map(card).join("")}</div></div>`;
     }).join("");
     return `<section class="tier allies"><div class="tier-head"><h2>მოკავშირეების დაქირავება</h2>
-      <span class="tier-note">ბიუჯეტის მაქს. ${pct(hireRule()[0])} (${hireCap()} მარჩილი), ${hireRule()[1] === 1 ? "ფასნამატის გარეშე (ხარკი)" : "ფასი +" + pct(hireRule()[1] - 1)}. ლიდერს ვერ დაიქირავებ; გროტესკი და გოლიათი იგივე წესებით (IV — მაქს. 1, გოლიათი — სცენარით).</span></div>${groups}</section>`;
+      <span class="tier-note">ბიუჯეტის მაქს. ${pct(hireRule()[0])} (${hireCap()} მარჩილი), ${hireRule()[1] === 1 ? "ფასნამატის გარეშე (ხარკი)" : "ფასი +" + pct(hireRule()[1] - 1)}. ლიდერს, გმირს და IV+-ს ვერ დაიქირავებ; გროტესკი და გოლიათი იგივე წესებით (IV — მაქს. 1, გოლიათი — სცენარით).</span></div>${groups}</section>`;
   }
 
   function renderGear() {
