@@ -7,6 +7,12 @@
 3. წერს ანგარიშს docs/balance-report.md-ში და ფასებს data/costs.json-ში და აჩვენებს ზედმეტად ძლიერ/სუსტ იუნიტებს.
 
 გაშვება:  python3 tools/balancer.py [--sims 160] [--calibrate 16] [--mixed-sims 100] [--faction-sims 300] [--warm] [--seed 1]
+           [--focus auto|<ფრაქციები/იუნიტები მძიმით>]
+
+ფოკუსი (--focus): ფასები გადაითვლება მხოლოდ ახალ/შეცვლილ იუნიტებზე, დანარჩენები ინარჩუნებენ data/costs.json-ის ფასს
+(და მოწინააღმდეგეებად გამოიყენება). auto = costs.json-ში არმყოფი იუნიტები + დათრგუნვის, საზენიტო და ფრენის მქონენი.
+შერეული რაზმების სიგნალი და ფრაქციების ცხრილი — მხოლოდ მთლიანად ახალი (ფოკუსის) ფრაქციებისთვის, ყველას წინააღმდეგ.
+ანგარიშში ახლდება მხოლოდ ფოკუსის იუნიტების სტრიქონები და ახალი ფრაქციების მწკრივები; დანარჩენი წინა ანგარიშიდან რჩება.
 
 v1: საწყისი მანძილი შემთხვევითია (12/24/36"), ერთნაირი პროფილები ერთად ითვლება, და ბოლოს ფრაქციები ერთმანეთს
 შერეული რაზმებით ებრძვიან (ფრაქციის დონის ბალანსი).
@@ -21,6 +27,7 @@ import math
 import multiprocessing
 import os
 import random
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -446,7 +453,9 @@ def simulate(units, sims, rng):
     reps = [g[0] for g in groups.values()]
     facs = [{u["faction"] for u in g} for g in groups.values()]
     results = {i: [] for i in range(len(reps))}
-    pairs = [(i, j) for i in range(len(reps)) for j in range(i + 1, len(reps)) if not (len(facs[i]) == 1 and facs[i] == facs[j])]
+    foc = [bool(FOCUS) and any(u["id"] in FOCUS for u in g) for g in groups.values()]
+    pairs = [(i, j) for i in range(len(reps)) for j in range(i + 1, len(reps)) if not (len(facs[i]) == 1 and facs[i] == facs[j])
+             and (not FOCUS or foc[i] or foc[j])]
     # ყოველ წყვილს თავისი seed აქვს — შედეგი პროცესების რაოდენობაზე არ არის დამოკიდებული
     jobs = [(i, j, rng.randrange(2**31)) for i, j in pairs]
     global _POOL, _SIMS
@@ -573,7 +582,7 @@ def _support_score(job):
 
 def support_test(units, sims, rng):
     global _SUP, _BASE, _REG, _SIMS
-    _SUP = [u for u in units if is_support(u)]
+    _SUP = [u for u in units if is_support(u) and (not FOCUS or u["id"] in FOCUS)]
     fs = {u["faction"] for u in _SUP}
     _BASE = {f: [u for u in combat_roster(units, f) if u["tier"] != "IV"] for f in fs}
     _REG = {f: next(u for u in units if u["faction"] == f and u["tier"] == "I" and {"line", "gas_mask"} <= set(u["tags"])) for f in fs}
@@ -602,14 +611,14 @@ def faction_matrix(units, fids, sims, rng):
         if u["tier"] in SIM_TIERS:
             set_pref(u)
     _SIMS = sims
-    jobs = [(a, b, rng.randrange(2**31)) for i, a in enumerate(fids) for b in fids[i + 1:]]
+    jobs = [(a, b, rng.randrange(2**31)) for i, a in enumerate(fids) for b in fids[i + 1:] if not FOCUS or a in FOCUS_F or b in FOCUS_F]
     workers = os.cpu_count() or 1
     if workers > 1:
         with multiprocessing.get_context("fork").Pool(workers) as mp:
             scores = mp.map(_faction_score, jobs, chunksize=8)
     else:
         scores = [_faction_score(j) for j in jobs]
-    m = {f: {} for f in fids}
+    m = {f: {} for f in fids}   # ფოკუსში ივსება მხოლოდ ახალი ფრაქციების წყვილები
     contrib = {}
     for (a, b, _), (sc, cb) in zip(jobs, scores):
         m[a][b], m[b][a] = sc, 1 - sc
@@ -624,6 +633,7 @@ def faction_matrix(units, fids, sims, rng):
 
 
 _POOL, _SIMS = [], 0
+FOCUS, FOCUS_F = set(), set()   # ფოკუსის იუნიტები და მთლიანად ახალი ფრაქციები (--focus)
 
 
 def _pair_score(job):
@@ -657,7 +667,10 @@ def calibrate(units, sims, rng, iterations, fids=(), fsims=0, ssims=0):
         win = simulate(units, sims, rng)
         mixed = faction_matrix(units, list(fids), fsims, rng)[1] if fsims else {}
         for u in units:
-            wr, mx = win.get(u["id"]), mixed.get(u["id"])
+            if FOCUS and u["id"] not in FOCUS:
+                continue   # ფოკუსის გარეთ ფასი უცვლელია
+            wr = win.get(u["id"])
+            mx = mixed.get(u["id"]) if not FOCUS or u["faction"] in FOCUS_F else None   # შერეული სიგნალი მხოლოდ სრულ ფრაქციებზე
             if wr is None:
                 continue  # მხოლოდ შერეული სიგნალით ფასი არ იცვლება (მასში თანაგუნდელების ძალაც ერევა)
             # დაცვა: თუ იუნიტი ცალკე 45–55%-ს გარეთაა, მხოლოდ ცალკე შედეგი ითვლება — შერეულმა სიგნალმა
@@ -679,6 +692,83 @@ def calibrate(units, sims, rng, iterations, fids=(), fsims=0, ssims=0):
     return simulate(units, sims, rng), (support_test(units, ssims, rng) if ssims else sup_win)
 
 
+def set_focus(units, spec):
+    """ფოკუსის იუნიტები: auto — ახალი (costs.json-ში არ არის) და ახალი მექანიკების მქონე; ან ჩამოთვლილი ფრაქციები/იუნიტები."""
+    prev = json.loads(COSTS.read_text(encoding="utf-8")) if COSTS.exists() else {}
+    if spec == "auto":
+        new_mech = lambda u: "fly" in u["tags"] or any(t in w["tags"] for w in u["weapons"] for t in ("suppress", "anti_air"))
+        FOCUS.update(u["id"] for u in units if u["id"] not in prev or new_mech(u))
+    else:
+        keys = set(spec.split(","))
+        FOCUS.update(u["id"] for u in units if u["id"] in keys or u["faction"] in keys)
+    for f in {u["faction"] for u in units}:
+        if all(u["id"] in FOCUS for u in units if u["faction"] == f):
+            FOCUS_F.add(f)
+
+
+def unit_row(u, win, sup_win, raw_win, mixed):
+    wr = win.get(u["id"])
+    if wr is None and u["id"] in sup_win:
+        sw = sup_win[u["id"]]
+        wrs = f"{sw * 100:.0f}% (მხარდაჭერა)"
+        note = "⚠️ ძლიერი" if sw > 0.6 else ("⚠️ სუსტი" if sw < 0.4 else "✓")
+    elif wr is None:
+        note = "სიმულაციის გარეშე (კამპანიის ძალები / სუპერიუნიტი)"
+        wrs = "—"
+    else:
+        wrs = f"{wr * 100:.0f}%"
+        note = "⚠️ ძლიერი" if wr > 0.6 else ("⚠️ სუსტი" if wr < 0.4 else "✓")
+    rw = raw_win.get(u["id"])
+    rws = f"{rw * 100:.0f}%" if rw is not None else "—"
+    mx = mixed.get(u["id"]) if not FOCUS or u["faction"] in FOCUS_F else None
+    mxs = f"{mx * 100:.0f}%" if mx is not None else "—"
+    if mx is not None and not 0.35 <= mx <= 0.65:
+        note += " · ⚠️ შერეულში"
+    return f"| {u['name']} | {u['tier']} | {u['_formula_cost']} | {rws} | {u['ability_points']} | **{u['_cost']}** | {wrs} | {mxs} | {note} |"
+
+
+def merge_report(old, new_lines, units, factions, allies, fm, names):
+    """ფოკუსის ანგარიში: ძველ ანგარიშში ახლდება ფოკუსის იუნიტების სტრიქონები და ახალი ფრაქციების სექციები/მწკრივები."""
+    parts = re.split(r"(?m)^(?=## )", old)
+    head, secs = parts[0], parts[1:]
+    new_secs = {s.split("\n", 1)[0]: s for s in re.split(r"(?m)^(?=## )", "\n".join(new_lines))[1:]}
+    title = lambda fid: "## " + (factions[fid] if fid in factions else allies[fid] + " (მოკავშირე)")
+    out = []
+    seen = set()
+    for s in secs:
+        h = s.split("\n", 1)[0]
+        if h.startswith("## ფრაქციები ერთმანეთის") and fm:
+            rows = [ln for ln in s.split("\n")]
+            newf = [f for f in FOCUS_F if fm.get(f)]
+            keep = [ln for ln in rows if not any(ln.startswith(f"| {names[f]} |") for f in newf)]
+            add = []
+            for f in sorted(newf, key=lambda f: -sum(fm[f].values()) / len(fm[f])):
+                avg = sum(fm[f].values()) / len(fm[f])
+                lo, hi = min(fm[f], key=fm[f].get), max(fm[f], key=fm[f].get)
+                note = ("⚠️ ძლიერი" if avg > 0.6 else ("⚠️ სუსტი" if avg < 0.4 else "✓")) + " · ახალი (ფოკუსი)"
+                add.append(f"| {names[f]} | {avg * 100:.0f}% | {names[lo]} ({fm[f][lo] * 100:.0f}%) | {names[hi]} ({fm[f][hi] * 100:.0f}%) | {note} |")
+            last = max(i for i, ln in enumerate(keep) if ln.startswith("|"))
+            keep[last + 1:last + 1] = add
+            keep.insert(last + 1 + len(add), "")
+            keep.insert(last + 2 + len(add), "> ფოკუსის გაშვება: ახალი ფრაქციები ყველას წინააღმდეგ ითამაშეს; ძველი ფრაქციების საშუალოში ისინი ჯერ არ შედიან.")
+            out.append("\n".join(keep).rstrip("\n") + "\n\n")
+            continue
+        fid = next((f for f in list(factions) + list(allies) if title(f) == h), None)
+        if fid is None or not any(u["id"] in FOCUS for u in units if u["faction"] == fid):
+            out.append(s)
+            continue
+        seen.add(fid)
+        old_rows = {ln.split("|")[1].strip(): ln for ln in s.split("\n") if ln.startswith("| ") and not ln.startswith("| იუნიტი")}
+        new_rows = {ln.split("|")[1].strip(): ln for ln in new_secs.get(h, "").split("\n") if ln.startswith("| ") and not ln.startswith("| იუნიტი")}
+        body = [ln for ln in new_secs[h].split("\n") if not ln.startswith("| ") or ln.startswith("| იუნიტი")][:4]
+        rows = [new_rows[u["name"]] if u["id"] in FOCUS or u["name"] not in old_rows else old_rows[u["name"]] for u in units if u["faction"] == fid]
+        out.append("\n".join(body[:4] + rows) + "\n\n")
+    for fid in list(factions) + list(allies):   # სრულიად ახალი ფრაქციები — ბოლოში
+        if fid not in seen and title(fid) in new_secs and any(u["id"] in FOCUS for u in units if u["faction"] == fid) and not any(s.startswith(title(fid) + "\n") for s in secs):
+            out.append(new_secs[title(fid)].rstrip("\n") + "\n\n")
+    return head + "".join(out).rstrip("\n") + "\n"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sims", type=int, default=200)
@@ -688,6 +778,7 @@ def main():
     ap.add_argument("--support-sims", type=int, default=400, help="მხარდაჭერის ტესტის ბრძოლები თითო იუნიტზე (0 = ძალები ხელით)")
     ap.add_argument("--warm", action="store_true", help="კალიბრაცია data/costs.json-ის ფასებიდან დაიწყოს (ახალი იუნიტები — ფორმულით)")
     ap.add_argument("--calibrate", type=int, default=8, help="ფასების კორექციის იტერაციები (0 = გამორთული)")
+    ap.add_argument("--focus", default="", help="auto ან ფრაქციები/იუნიტები მძიმით: ფასები მხოლოდ მათ გადაითვლება (--warm-ით)")
     args = ap.parse_args()
     data = json.loads(DATA.read_text(encoding="utf-8"))
     units = data["units"]
@@ -695,6 +786,10 @@ def main():
     compute_costs(units)
     for u in units:
         u["_formula_cost"] = u["_cost"]
+    if args.focus:
+        set_focus(units, args.focus)
+        args.warm = True   # ფოკუსის გარეთ ფასები costs.json-იდან მოდის
+        print(f"ფოკუსი: {len(FOCUS)} იუნიტი; ახალი ფრაქციები: {', '.join(sorted(FOCUS_F)) or '—'}", flush=True)
     rng = random.Random(args.seed)
     raw_win = simulate(units, args.sims, rng)
     if args.warm and COSTS.exists():
@@ -746,7 +841,7 @@ def main():
                   "> სიმულაციაში ყოველ მოდელს თავისი პოზიცია აქვს (წინა რიგი ზურგს ფარავს), მაგრამ რელიეფი და მიზნები არ არის. ეს ცხრილი",
                   "> ფრაქციის **შემადგენლობის** სიგნალია (რა აკლია რაზმს), და არა ფასების — ფასები ზედა სვეტებით ფასდება.", "",
                   "| ფრაქცია | საშუალო მოგება % | ყველაზე ძნელი მოწინააღმდეგე | ყველაზე ადვილი | შენიშვნა |", "|---|---|---|---|---|"]
-        for f in sorted(fids, key=lambda f: -sum(fm[f].values()) / len(fm[f])):
+        for f in sorted([f for f in fids if fm[f]], key=lambda f: -sum(fm[f].values()) / len(fm[f])):
             avg = sum(fm[f].values()) / len(fm[f])
             lo = min(fm[f], key=fm[f].get)
             hi = max(fm[f], key=fm[f].get)
@@ -756,30 +851,17 @@ def main():
     for fid, fname in list(factions.items()) + [(k, v + " (მოკავშირე)") for k, v in allies.items()]:
         lines += [f"## {fname}", "", "| იუნიტი | დონე | ფორმულის ფასი | მოგება % (ფორმულით) | ძალები | **ფასი** | მოგება % | შერეულ რაზმში % | შენიშვნა |", "|---|---|---|---|---|---|---|---|---|"]
         for u in [x for x in units if x["faction"] == fid]:
-            wr = win.get(u["id"])
-            if wr is None and u["id"] in sup_win:
-                sw = sup_win[u["id"]]
-                wrs = f"{sw * 100:.0f}% (მხარდაჭერა)"
-                note = "⚠️ ძლიერი" if sw > 0.6 else ("⚠️ სუსტი" if sw < 0.4 else "✓")
-            elif wr is None:
-                note = "სიმულაციის გარეშე (კამპანიის ძალები / სუპერიუნიტი)"
-                wrs = "—"
-            else:
-                wrs = f"{wr * 100:.0f}%"
-                note = "⚠️ ძლიერი" if wr > 0.6 else ("⚠️ სუსტი" if wr < 0.4 else "✓")
-            rw = raw_win.get(u["id"])
-            rws = f"{rw * 100:.0f}%" if rw is not None else "—"
-            mx = mixed.get(u["id"])
-            mxs = f"{mx * 100:.0f}%" if mx is not None else "—"
-            if mx is not None and not 0.35 <= mx <= 0.65:
-                note += " · ⚠️ შერეულში"
-            lines.append(f"| {u['name']} | {u['tier']} | {u['_formula_cost']} | {rws} | {u['ability_points']} | **{u['_cost']}** | {wrs} | {mxs} | {note} |")
+            lines.append(unit_row(u, win, sup_win, raw_win, mixed))
         lines.append("")
     REPORT.parent.mkdir(parents=True, exist_ok=True)
-    REPORT.write_text("\n".join(lines), encoding="utf-8")
+    if FOCUS and REPORT.exists():
+        REPORT.write_text(merge_report(REPORT.read_text(encoding="utf-8"), lines, units, factions, allies, fm, names), encoding="utf-8")
+    else:
+        REPORT.write_text("\n".join(lines), encoding="utf-8")
     COSTS.write_text(json.dumps({u["id"]: u["_cost"] for u in units}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    flagged = [(u["name"], win[u["id"]]) for u in units if win.get(u["id"]) is not None and not 0.4 <= win[u["id"]] <= 0.6]
-    flagged += [(u["name"] + " (მხარდაჭერა)", sup_win[u["id"]]) for u in units if u["id"] in sup_win and not 0.4 <= sup_win[u["id"]] <= 0.6
+    inf = lambda u: not FOCUS or u["id"] in FOCUS
+    flagged = [(u["name"], win[u["id"]]) for u in units if inf(u) and win.get(u["id"]) is not None and not 0.4 <= win[u["id"]] <= 0.6]
+    flagged += [(u["name"] + " (მხარდაჭერა)", sup_win[u["id"]]) for u in units if inf(u) and u["id"] in sup_win and not 0.4 <= sup_win[u["id"]] <= 0.6
                 and not ("leader" in u["tags"] and u["_cost"] <= LEADER_FLOOR and sup_win[u["id"]] < 0.4)]
     print(f"ანგარიში: {REPORT.relative_to(ROOT)}")
     print(f"სიმულირებული იუნიტები: {sum(1 for v in win.values() if v is not None)} + მხარდაჭერა {len(sup_win)}; დროშით მონიშნული: {len(flagged)}")
@@ -787,7 +869,7 @@ def main():
         print(f"  {wr * 100:5.1f}%  {name}")
     if fm:
         print("ფრაქციები (შერეული რაზმები):")
-        for f in sorted(fids, key=lambda f: -sum(fm[f].values()) / len(fm[f])):
+        for f in sorted([f for f in fids if fm[f] and (not FOCUS or f in FOCUS_F)], key=lambda f: -sum(fm[f].values()) / len(fm[f])):
             print(f"  {sum(fm[f].values()) / len(fm[f]) * 100:5.1f}%  {names[f]}")
 
 
