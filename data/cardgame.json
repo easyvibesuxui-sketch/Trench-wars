@@ -539,7 +539,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "ekimbashi.jpg",
    "palette": [
     "#5b6670",
     "#d9c27a",
@@ -1610,7 +1610,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "ring_leader.jpg",
    "palette": [
     "#4a5a6a",
     "#c8913e",
