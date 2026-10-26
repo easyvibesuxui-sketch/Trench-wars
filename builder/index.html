@@ -331,7 +331,8 @@ footer { color: var(--muted); font-size: .8rem; }
   const EN = D.en || { factions: {}, units: {}, weapons: {}, tags: {}, wtags: {}, roles: {}, tiers: {} };
   const KA = { tag: { ...TAG }, wtag: { ...WTAG }, tier: TIERS.map(t => t[1]), role: Object.fromEntries((D.roles || []).map(r => [r.id, r.name])),
     fac: { ...D.factions }, ally: { ...(D.allies || {}) } };
-  D.units.forEach(u => { u.ka = u.name; u.weapons.forEach(w => { w.ka = w.name; }); });
+  const RL = EN.rules || { tags: {}, roles: {}, abil: {} }, KA_RULES = { ...(D.tag_rules || {}) }, KA_DOES = Object.fromEntries((D.roles || []).map(r => [r.id, r.does]));
+  D.units.forEach(u => { u.ka = u.name; u.abil_ka = u.abilities; u.weapons.forEach(w => { w.ka = w.name; }); });
   let LANG = "ka";
   try { LANG = localStorage.getItem("tw-lang") === "en" ? "en" : "ka"; } catch (e) {}
   function applyLang(l) {
@@ -342,7 +343,9 @@ footer { color: var(--muted); font-size: .8rem; }
     (D.roles || []).forEach(r => { r.name = pick(EN.roles, r.id, KA.role[r.id]); });
     Object.keys(KA.fac).forEach(k => { D.factions[k] = pick(EN.factions, k, KA.fac[k]); });
     Object.keys(KA.ally).forEach(k => { D.allies[k] = pick(EN.factions, k, KA.ally[k]); });
-    D.units.forEach(u => { u.name = pick(EN.units, u.id, u.ka); u.weapons.forEach(w => { w.name = pick(EN.weapons, w.ka, w.ka); }); });
+    D.units.forEach(u => { u.name = pick(EN.units, u.id, u.ka); u.abilities = (en && RL.abil[u.id]) || u.abil_ka; u.weapons.forEach(w => { w.name = pick(EN.weapons, w.ka, w.ka); }); });
+    Object.keys(KA_RULES).forEach(k => { D.tag_rules[k] = pick(RL.tags, k, KA_RULES[k]); });
+    (D.roles || []).forEach(r => { r.does = pick(RL.roles, r.id, KA_DOES[r.id]); });
     document.documentElement.lang = en ? "en" : "ka";
     document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
     try { localStorage.setItem("tw-lang", l); } catch (e) {}

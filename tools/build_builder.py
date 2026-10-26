@@ -9,6 +9,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def rules_en():
+    """ინგლისური წესები ბილდერისთვის (data/text_en/rules.json): ნიშნები, როლები, იუნიტების ძალები."""
+    import sys
+    sys.path.insert(0, str(ROOT / "tools"))
+    from i18n_en import en_texts, split2
+    T = en_texts()
+    abil = {}
+    for k, v in T.items():
+        if k.startswith("abil:"):
+            uid, i = k[5:].split("#")
+            abil.setdefault(uid, {})[int(i)] = list(split2(v))
+    return {"tags": {k[4:]: v for k, v in T.items() if k.startswith("tag:")},
+            "roles": {k[5:]: v for k, v in T.items() if k.startswith("role:")},
+            "abil": {uid: [d[i] for i in sorted(d)] for uid, d in abil.items()}}
+
+
 def main():
     data = json.loads((ROOT / "data" / "units.json").read_text(encoding="utf-8"))
     costs = json.loads((ROOT / "data" / "costs.json").read_text(encoding="utf-8"))
@@ -29,7 +45,7 @@ def main():
     out = {"factions": data["factions"], "allies": data.get("allies", {}), "units": units, "equipment": equipment, "campaigns": campaigns,
            "scenarios": json.loads((ROOT / "data" / "scenarios.json").read_text(encoding="utf-8"))["scenarios"],
            "nml": nml, "tag_rules": json.loads((ROOT / "data" / "abilities.json").read_text(encoding="utf-8"))["tags"], "roles": json.loads((ROOT / "data" / "roles.json").read_text(encoding="utf-8"))["roles"],
-           "en": {k: v for k, v in json.loads((ROOT / "data" / "names_en.json").read_text(encoding="utf-8")).items() if k != "_comment"}}
+           "en": {k: v for k, v in json.loads((ROOT / "data" / "names_en.json").read_text(encoding="utf-8")).items() if k != "_comment"} | {"rules": rules_en()}}
     js = "// ავტომატურად გენერირებული: tools/build_builder.py — ხელით ნუ შეცვლი\n"
     js += "window.TW_DATA = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n"
     target = ROOT / "builder" / "data.js"

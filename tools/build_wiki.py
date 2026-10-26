@@ -9,6 +9,7 @@ rules/abilities.md (ნიშნების სახელები), assets/a
 """
 import json
 import re
+import sys
 from pathlib import Path
 
 try:
@@ -18,6 +19,7 @@ except ImportError:  # pragma: no cover
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "tools"))
 OUT = ROOT / "wiki"
 LIGHT_CORE, DARK_CORE = ["colchis", "iberia", "ring"], ["hell", "harness", "kajeti", "listeners"]
 UNIT_FILES = {"colchis": "colchis.md", "iberia": "iberia.md", "hell": "hell-legions.md", "harness": "grand-harness.md",
@@ -66,7 +68,8 @@ def match(name, heading):
     return h == name or h.startswith(name + " —") or h.startswith(name + " (") or h.split(" — ")[-1].strip() == name
 
 
-def main():
+def extract():
+    """ყველა სათარგმნი ქართული ტექსტი, რომელსაც ვიკი აჩვენებს (ასევე იყენებს tools/i18n_en.py)."""
     data = json.loads((ROOT / "data/units.json").read_text(encoding="utf-8"))
     costs = json.loads((ROOT / "data/costs.json").read_text(encoding="utf-8"))
     abil = json.loads((ROOT / "data/abilities.json").read_text(encoding="utf-8"))
@@ -116,6 +119,71 @@ def main():
             if u["name"] == m.group(1) and u["id"] not in udesc and (not m.group(2) or m.group(2) == u["tier"] or m.group(2) in names.get(u["faction"], "")):
                 udesc[u["id"]] = m.group(3).replace("\n  ", " ")
 
+    camps = {}
+    for fid in names:
+        camp = ROOT / "campaigns" / f"{fid}.md"
+        if camp.exists():
+            camps[fid] = camp.read_text(encoding="utf-8").split("\n", 1)[1]
+    lore_pages = {}
+    for key in LORE_PAGES:
+        t = lore[key]
+        lore_pages[key] = (t.split("\n", 1)[0].lstrip("# ").strip(), t.split("\n", 1)[1])
+    return dict(data=data, costs=costs, abil=abil, roles=roles, econ=econ, vis=vis, cg=cg, names=names, tagname=tagname,
+                fac_md=fac_md, wars=wars, stories={k: "\n\n".join(v) for k, v in stories.items()}, udesc=udesc,
+                camps=camps, lore_pages=lore_pages)
+
+
+def attach_en(W):
+    """ინგლისური ტექსტები (data/text_en/) — ველები *_en; რაც არ არის თარგმნილი, ქართულად რჩება."""
+    from i18n_en import en_texts, split2
+    T = en_texts()
+    two = lambda k: split2(T[k]) if k in T else None
+    W["en"]["rules"] = {"tags": {k[4:]: v for k, v in T.items() if k.startswith("tag:")},
+                        "roles": {k[5:]: v for k, v in T.items() if k.startswith("role:")},
+                        "dir": {k[4:]: v for k, v in T.items() if k.startswith("dir:")}}
+    for u in W["units"]:
+        if f"udesc:{u['id']}" in T:
+            u["desc_en"] = md(T[f"udesc:{u['id']}"])
+        if u["abil"]:
+            ab = [two(f"abil:{u['id']}#{i}") or a for i, a in enumerate(u["abil"])]
+            if ab != u["abil"]:
+                u["abil_en"] = [list(x) for x in ab]
+        if f"vis:{u['id']}" in T:
+            u["visual_en"] = T[f"vis:{u['id']}"]
+    for f in W["factions"]:
+        fid = f["id"]
+        if f"flore:{fid}" in T:
+            f["lore_en"] = md(T[f"flore:{fid}"])
+        if f["war"] and f"war:{fid}" in T:
+            t, b = two(f"war:{fid}")
+            f["war_en"] = {"title": t, "html": md(b)}
+        if f"story:{fid}" in T:
+            f["stories_en"] = md(T[f"story:{fid}"])
+        if f"camp:{fid}" in T:
+            f["campaign_en"] = md(T[f"camp:{fid}"])
+        ar = {k: md(T[f"farch:{fid}:{k}"]) for k in f["arch"] if f"farch:{fid}:{k}" in T}
+        df = {k: md(T[f"fdef:{fid}:{k}"]) for k in f["defense"] if f"fdef:{fid}:{k}" in T}
+        if ar:
+            f["arch_en"] = {**f["arch"], **ar}
+        if df:
+            f["defense_en"] = {**f["defense"], **df}
+        if f["visual"] and any(k.startswith(f"fvis:{fid}:") for k in T):
+            v = dict(f["visual"])
+            for k in ("materials", "silhouette", "emblem", "avoid"):
+                v[k] = T.get(f"fvis:{fid}:{k}", v.get(k))
+            if f"fvis:{fid}:palette" in T:
+                v["palette"] = [[h, n] for (h, _), n in zip(v["palette"], T[f"fvis:{fid}:palette"].split(" | "))]
+            f["visual_en"] = v
+    for l in W["lore"]:
+        if f"lore:{l['id']}" in T:
+            t, b = two(f"lore:{l['id']}")
+            l["title_en"], l["html_en"] = t, md(b)
+
+
+def main():
+    X = extract()
+    data, costs, abil, roles, econ, vis, cg, names, tagname = (X[k] for k in ("data", "costs", "abil", "roles", "econ", "vis", "cg", "names", "tagname"))
+    fac_md, wars, stories, udesc, camps = X["fac_md"], X["wars"], X["stories"], X["udesc"], X["camps"]
     art_dir = OUT / "art"
     art_dir.mkdir(parents=True, exist_ok=True)
     arts = set()
@@ -132,13 +200,12 @@ def main():
         e = econ.get(fid, {})
         arch = {k: e.get(k) for k in ("vernacular", "history", "house", "great", "unique", "bonus") if e.get(k)}
         dfn = e.get("defense") or {}
-        camp = ROOT / "campaigns" / f"{fid}.md"
         W["factions"].append({
             "id": fid, "name": nm, "side": side(fid), "core": fid in data["factions"],
             "lore": md(fac_md[fid]) if fid in fac_md else "",
             "war": {"title": wars[fid][0], "html": md(wars[fid][1])} if fid in wars else None,
-            "stories": md("\n\n".join(stories.get(fid, []))) if stories.get(fid) else "",
-            "campaign": md(camp.read_text(encoding="utf-8").split("\n", 1)[1]) if camp.exists() else "",
+            "stories": md(stories[fid]) if stories.get(fid) else "",
+            "campaign": md(camps[fid]) if fid in camps else "",
             "arch": {k: md(v) for k, v in arch.items()}, "defense": {k: md(v) for k, v in dfn.items() if isinstance(v, str)},
             "visual": vis["factions"].get(fid), "art": f"art/{next((u['id'] for u in data['units'] if u['faction'] == fid and u['id'] in arts), '')}.jpg"
                       if any(u["faction"] == fid and u["id"] in arts for u in data["units"]) else None,
@@ -153,12 +220,11 @@ def main():
             "visual": vis["units"].get(u["id"], ""), "art": f"art/{u['id']}.jpg" if u["id"] in arts else None,
             "card": {"cost": c["cost"], "atk": c["atk"], "hp": c["hp"]} if c else None,
         })
-    for key in LORE_PAGES:
-        t = lore[key]
-        title = t.split("\n", 1)[0].lstrip("# ").strip()
-        W["lore"].append({"id": key, "title": title, "html": md(t.split("\n", 1)[1])})
+    for key, (title, body) in X["lore_pages"].items():
+        W["lore"].append({"id": key, "title": title, "html": md(body)})
     W["visual"] = vis["direction"]
     W["en"] = {k: v for k, v in json.loads((ROOT / "data/names_en.json").read_text(encoding="utf-8")).items() if k != "_comment"}
+    attach_en(W)
     (OUT / "data.js").write_text("window.WIKI = " + json.dumps(W, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     n_desc = sum(1 for u in W["units"] if u["desc"])
     print(f"wiki/data.js: {len(W['factions'])} ფრაქცია ({len(fac_md)} ლორით, {len(wars)} ომით, {len(stories)} ამბებით) · "

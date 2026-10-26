@@ -1,0 +1,1278 @@
+{
+ "tag:leader": {
+  "h": "0976320e90",
+  "en": "One per warband. Allies within 6″ get +1 on Morale and Suppression tests."
+ },
+ "tag:hero": {
+  "h": "c5d31b2b09",
+  "en": "Scenario or campaign only; max. 1 per warband."
+ },
+ "tag:giant": {
+  "h": "bb6c81b9b7",
+  "en": "Tier V: scenario only. Source of Fear: a Tier I–II enemy moving within 6″ takes a Nerve test (fail — it cannot approach this activation). Deals triple damage to buildings."
+ },
+ "tag:titan": {
+  "h": "36598bcb5c",
+  "en": "A source of Fear like a Giant, but Size 2 — it can enter trenches and buildings."
+ },
+ "tag:huge": {
+  "h": "00f0720937",
+  "en": "Size 3–4 target: +1 to shoot at it; steps over wooden palisades and models (Size 1)."
+ },
+ "tag:giant_hunter": {
+  "h": "604d96f8f0",
+  "en": "Giant-Hunter: its weapons wound Size 3–4 targets on a roll −2."
+ },
+ "tag:monster_hunter": {
+  "h": "c9a6196015",
+  "en": "Monster-Hunter: +1 Power against monsters (Monster, Regrowth, devi); automatically passes Fear tests against them."
+ },
+ "tag:hunter": {
+  "h": "2e52ce4d28",
+  "en": "Hunter: +1 Melee against a target with no friendly model within 3″ of it."
+ },
+ "tag:healer": {
+  "h": "72c6c97e00",
+  "en": "Healer: action — an ally within 6″ regains 1 Wound (not above its starting value)."
+ },
+ "tag:alchemist": {
+  "h": "a9104cfb80",
+  "en": "Alchemy: uses the warband's alchemical gear (Dead Water, Teeth…) as one action, within 3″; in a campaign — the alchemy shop."
+ },
+ "tag:engineer": {
+  "h": "52a4436529",
+  "en": "Engineer: action — dig 3″ of trench, or restore 1 Wound to a wall section, or cut 3″ of barbed wire."
+ },
+ "tag:digger": {
+  "h": "0310d01a9c",
+  "en": "Digs Trenches: action — one 3″ trench section (heavy cover)."
+ },
+ "tag:cavalry": {
+  "h": "6c969c59e5",
+  "en": "Cavalry: Size 2; crossing a trench costs the whole move (unless it is a Trench-Breaker); in gas without a gas mask the horse panics: −2″ Move."
+ },
+ "tag:trench_breaker": {
+  "h": "528ff547d7",
+  "en": "Trench-Breaker: crosses trenches and barbed wire with no penalty; when it charges, a target in a trench loses heavy cover."
+ },
+ "tag:skirmisher": {
+  "h": "54216cd4d3",
+  "en": "Fires on the Move: no shooting penalty after moving."
+ },
+ "tag:trick_rider": {
+  "h": "9512e056fe",
+  "en": "Jiriti Rider: may split its move before and after shooting; −1 to shoot at it after it has moved."
+ },
+ "tag:shield": {
+  "h": "76fcff289e",
+  "en": "Shield: +1 Armour against shooting."
+ },
+ "tag:shield_wall": {
+  "h": "8a53d90bb5",
+  "en": "Shield Wall: two or more models of this unit within 1″ — each gets +1 Armour."
+ },
+ "tag:steam": {
+  "h": "c6cd3a24d2",
+  "en": "Steam: steam pressure (0–3 tokens, +1 Power each; at the end of the round d10 ≤ tokens → 1 wound); if wounded by Lightning it loses 1 action on its next activation."
+ },
+ "tag:vehicle": {
+  "h": "4ddf989e04",
+  "en": "Vehicle: immune to Fear, Morale, Poison and Suppression; crosses trenches only by bridge or as a Trench-Breaker; healed only by Repair."
+ },
+ "tag:construct": {
+  "h": "015502eb22",
+  "en": "Forged: immune to Fear, Morale, Poison and Suppression; a Healer cannot heal it — only Repair."
+ },
+ "tag:automaton": {
+  "h": "04c2e1c496",
+  "en": "Automaton: as Forged."
+ },
+ "tag:fortress": {
+  "h": "1a924fbd94",
+  "en": "Walking Fortress: carries up to 4 Size 1 models; they have heavy cover and shoot from the loopholes. When it falls they climb out, d10 ≤ 3 → 1 wound."
+ },
+ "tag:relic": {
+  "h": "e628680798",
+  "en": "Relic: allies within 6″ automatically pass Morale and Fear tests; when it falls, every ally takes a Morale test."
+ },
+ "tag:fearless": {
+  "h": "5f010853c6",
+  "en": "Fearless: never takes Morale, Fear or Suppression tests."
+ },
+ "tag:oathbound": {
+  "h": "eda3c04752",
+  "en": "Oathbound: does not fall back (takes no Morale tests) while its leader lives."
+ },
+ "tag:rare": {
+  "h": "f461ec72fd",
+  "en": "Rare: max. 1 model per warband."
+ },
+ "tag:line": {
+  "h": "6043f812b5",
+  "en": "Line: two or more models of this unit within 1″ — they ignore the long-range penalty."
+ },
+ "tag:gas_mask": {
+  "h": "9c36d5260b",
+  "en": "Gas Mask: in a gas cloud it is wounded only on a d10 = 1 (without a gas mask — 1–3)."
+ },
+ "tag:brawler": {
+  "h": "0d22856646",
+  "en": "Trench Brawler: +1 Melee when fighting in a trench, ruin or building."
+ },
+ "tag:scout": {
+  "h": "b03354bac6",
+  "en": "Scout: +1 to Search; after deployment one free move (6″, not within 12″ of an enemy)."
+ },
+ "tag:infiltrate": {
+  "h": "d66bb333ea",
+  "en": "Ambush: after deployment it sets up anywhere more than 12″ from the enemy and out of its sight."
+ },
+ "tag:planted": {
+  "h": "9d493c5e1e",
+  "en": "Planted: deploys in secret in the enemy zone or within 6″ of it after both sides have deployed (max. 2 per 500); revealed on its first activation."
+ },
+ "tag:silent": {
+  "h": "d5b8d1ef4b",
+  "en": "Silent: until its first attack, enemies more than 6″ away cannot see it."
+ },
+ "tag:false_tracks": {
+  "h": "44e7875749",
+  "en": "False Tracks: at the start of the battle place 1 false marker; the enemy treats it as a real model until it comes within 6″ (then it is revealed)."
+ },
+ "tag:night_sight": {
+  "h": "734f39f79d",
+  "en": "Night-Eye: ignores night and fog penalties; sees ambushing and Silent models within 18″."
+ },
+ "tag:clear_sight": {
+  "h": "284cd872af",
+  "en": "Trusts No Mirage: within 12″ it sees through ambushes, false markers, murk and illusions — they appear to it as normal."
+ },
+ "tag:detect_heretic": {
+  "h": "d1337d07d4",
+  "en": "Knows a Heretic: Planted and Ambushing enemies within 12″ are revealed at once; hired swords within 6″ take no Distrust tests."
+ },
+ "tag:climber": {
+  "h": "2cf7437a62",
+  "en": "Cliff-Climber: crosses cliffs, walls and vertical terrain with no penalty."
+ },
+ "tag:high_ground": {
+  "h": "153270b0fe",
+  "en": "From the Heights: +1 to shoot from a cliff, a tower or a rooftop."
+ },
+ "tag:mountain": {
+  "h": "0e61fac0eb",
+  "en": "Mountain Folk: no movement penalty on mountain, cliff or slope terrain."
+ },
+ "tag:river": {
+  "h": "5e84927412",
+  "en": "River-Swift: no movement penalty on water, marsh or shore; +3″ moving along a river."
+ },
+ "tag:landing": {
+  "h": "d5e010b8d9",
+  "en": "Landing: instead of deploying, it may enter in round 1 or 2 from a water or shore edge."
+ },
+ "tag:reef": {
+  "h": "d212765ad4",
+  "en": "Reef: an enemy in the water or on the shore that moves within 3″ of it ends its move."
+ },
+ "tag:winter_born": {
+  "h": "db67032a70",
+  "en": "Winter-Born: ignores snow, ice and winter penalties."
+ },
+ "tag:ice_runner": {
+  "h": "7f6de20000",
+  "en": "Ice-Swift: +3″ on ice and snow; −2″ in trenches and on cliffs."
+ },
+ "tag:ice_reader": {
+  "h": "84f45021f6",
+  "en": "Reads the Ice: thin ice and models hidden under the ice are revealed within 12″; allies within 6″ move on ice with no penalty."
+ },
+ "tag:fell_trees": {
+  "h": "3151c860ea",
+  "en": "Fells Trees: action — turns a forest feature into 3″ of light cover or a wooden palisade."
+ },
+ "tag:rope_bridge": {
+  "h": "6a24dc8a8c",
+  "en": "Rope Bridge: two actions — a crossing up to 6″ over a trench, chasm or barbed wire (for all allies), or a 3″ rope barrier that stops cavalry."
+ },
+ "tag:rail": {
+  "h": "0343e5d71e",
+  "en": "On Rails: on rails +4″ Move and heavy cover; off rails −1 to shoot."
+ },
+ "tag:torch": {
+  "h": "0dfdd7723b",
+  "en": "Torch: action — lights a fire or bonfire; monsters and night creatures within 3″ take a Nerve test (fail — they cannot approach)."
+ },
+ "tag:beacon": {
+  "h": "82744f236b",
+  "en": "Beacon: action — lights a 9″ radius for one round: ambush, murk and night penalties do not apply there."
+ },
+ "tag:wayfinder": {
+  "h": "f3c1e425e4",
+  "en": "Wayfinder: at the start of the battle one friendly unit (or itself) may enter from a side edge in round 2."
+ },
+ "tag:messenger": {
+  "h": "f359f6c9c5",
+  "en": "Messenger: once per round it passes the leader's order or aura to an ally within 12″, as if that ally stood beside the leader."
+ },
+ "tag:interpreter": {
+  "h": "b03ffdc064",
+  "en": "Interpreter: allies within 6″ are immune to the Confusion of Tongues (the leader's orders get through)."
+ },
+ "tag:gong": {
+  "h": "8e2660a84e",
+  "en": "Gong: action — enemies within 6″ take Nerve tests at −1, allies at +1; sea monsters and flyers cannot enter within 6″ while the gong rings (until its next activation)."
+ },
+ "tag:fire_guard": {
+  "h": "513becf7d2",
+  "en": "Fireproof: −1 fire damage (min. 0), never catches fire; action — puts out a burning ally within 3″."
+ },
+ "tag:burn_gas": {
+  "h": "9c7c4dd493",
+  "en": "Burns Gas: action — one gas cloud or murk within 18″ disappears."
+ },
+ "tag:third_arrow": {
+  "h": "7dd4453b1b",
+  "en": "Third Arrow: the third shot of the battle at the same target gets +2 Power."
+ },
+ "tag:marked": {
+  "h": "8791dd8143",
+  "en": "Marked: once per battle, ignore all damage from one hit."
+ },
+ "tag:rage": {
+  "h": "9441eda63b",
+  "en": "Wrath: once wounded it gets +1 Melee, but must attack the nearest enemy within 6″ and cannot fall back."
+ },
+ "tag:madness": {
+  "h": "9d4068c3e4",
+  "en": "Madness: after its leader falls it gets +1 Melee, but on every activation it moves toward or attacks the nearest model."
+ },
+ "tag:needs_orders": {
+  "h": "fbc093fd7b",
+  "en": "Needs Orders: outside 12″ of its leader it has only 1 action per activation."
+ },
+ "tag:nameless": {
+  "h": "6ca7036367",
+  "en": "Nameless: powers aimed at leaders (Leader-Killer, vs. leader) do not affect it."
+ },
+ "tag:never_sleeps": {
+  "h": "8e7567bf3e",
+  "en": "Never Sleeps: no enemy may deploy in ambush within 12″ of it; Planted and hidden models are revealed at once."
+ },
+ "tag:orders": {
+  "h": "c6a441bf7f",
+  "en": "Orders: the leader gives an order within 6″ — Volley (+1 Attack) · Close Ranks (+1 Armour) · Advance (+2″)."
+ },
+ "tag:supply": {
+  "h": "e9e359beb4",
+  "en": "Supply: allies within 6″ reload instantly (no Reload action needed)."
+ },
+ "tag:repair": {
+  "h": "332dec5b75",
+  "en": "Repair: action — a vehicle or Forged model within 6″ regains 1 Wound."
+ },
+ "tag:song": {
+  "h": "d37e400254",
+  "en": "Song: allies within 6″ get +1 Nerve, enemies −1 Melee."
+ },
+ "tag:ritual": {
+  "h": "f724cf1af4",
+  "en": "Ritual: allies within 6″ get +1 Power in melee."
+ },
+ "tag:witch": {
+  "h": "a00be2e26c",
+  "en": "Witch (Curse): action — a visible enemy within 12″: d10 ≤ its Shoot → −1 Shoot and Melee until the end of the round."
+ },
+ "tag:discord": {
+  "h": "7b8c643ce3",
+  "en": "Discord: action — an enemy within 12″ takes a Nerve test; on a fail it loses its next activation."
+ },
+ "tag:weakness": {
+  "h": "28c6cf7eab",
+  "en": "Finds the Weak Spot: action — one enemy within 12″: −1 Armour against all attacks this round."
+ },
+ "tag:stitcher": {
+  "h": "3adc9e1040",
+  "en": "Stitcher: in a campaign, raises the fallen as stitched bodies; in battle — by its own power (abilities)."
+ },
+ "tag:convert": {
+  "h": "59da23bd78",
+  "en": "Turncoat: once per battle a Tier I–II enemy within 12″ takes a Nerve test; on a fail it is yours for one round."
+ },
+ "tag:assassin": {
+  "h": "f950d0b437",
+  "en": "Assassin: +1 Power with its weapons against leaders and heroes."
+ },
+ "tag:fog": {
+  "h": "3f437a6ae0",
+  "en": "Murk: once per battle, 3″ of murk within 12″ — no one can see or shoot through it; it lifts with the wind (night table) or at the end of the battle."
+ },
+ "tag:regen": {
+  "h": "8e8c6bff89",
+  "en": "Regrowth: at the start of its activation +1 Wound, unless wounded this round by fire, lightning or a festering weapon."
+ },
+ "tag:fire_weak": {
+  "h": "8a2ea274c7",
+  "en": "Fears Fire: fire deals +1 damage."
+ },
+ "tag:lightning_weak": {
+  "h": "095290311e",
+  "en": "Fears Lightning: lightning deals +1 damage."
+ },
+ "tag:undead": {
+  "h": "3ccba8ff2a",
+  "en": "Stitched Body: immune to Fear, Morale, Poison and Suppression."
+ },
+ "tag:split": {
+  "h": "926e404fc4",
+  "en": "Splits: when it falls, d10 ≤ 4 → 2 small stitched ones appear in its place."
+ },
+ "tag:monster": {
+  "h": "270fe28acc",
+  "en": "Monster: a source of Fear for Tier I (6″); immune to Suppression."
+ },
+ "tag:flood": {
+  "h": "b931581fce",
+  "en": "Flood: once per battle, action — 3″ radius of mud within 6″: half Move, and trenches fill with water (heavy cover becomes light)."
+ },
+ "tag:tunnel": {
+  "h": "f2ca10a932",
+  "en": "Tunnel: with two actions the model is removed and next round emerges within 12″ at any ruin, trench or open ground (not within 3″ of an enemy)."
+ },
+ "tag:devi_pulled": {
+  "h": "b72358d38c",
+  "en": "Devi-Drawn: when it loses half its Wounds the devis break free, and on every activation their attack hits the nearest model — of either side."
+ },
+ "tag:captive": {
+  "h": "7f01921b37",
+  "en": "Captive: within 6″ of no heretic leader, at the start of each activation d10 ≤ 2 → it breaks free and attacks the nearest model (heretics first)."
+ },
+ "tag:chain_gang": {
+  "h": "3169c45a3e",
+  "en": "Chain Gang: models of this unit move within 1″ of each other."
+ },
+ "tag:cover_for_others": {
+  "h": "68091da834",
+  "en": "Living Wall: an ally standing behind them (within 1″) has light cover."
+ },
+ "tag:can_be_freed": {
+  "h": "18ab451bf4",
+  "en": "Can Be Freed: an enemy in contact may cut the chain with one action: d10 ≤ 5 → the model is free and leaves the table."
+ },
+ "tag:artillery": {
+  "h": "65747afb8b",
+  "en": "Artillery: its blasts deal double damage to walls and towers; cannot shoot after moving."
+ },
+ "tag:anti_air": {
+  "h": "9d9de65d39",
+  "en": "Sky-Breaker: +1 to shoot at flyers (instead of −1) and +1 Power; a flyer it hits cannot fly on its next activation."
+ },
+ "tag:fly": {
+  "h": "86c1534dec",
+  "en": "Flight: passes over terrain and models; −1 to normal shooting at it."
+ },
+ "tag:charge": {
+  "h": "8c5885b069",
+  "en": "Charge: +1 Power on the first strike after a charge."
+ },
+ "tag:frenzy": {
+  "h": "dedee78f35",
+  "en": "Frenzy: +1 Attack in melee."
+ },
+ "tag:blast": {
+  "h": "03f27bd645",
+  "en": "Blast: on a hit, one other model within 2″ of the target — d10 ≤ 5 → it takes the same wound test."
+ },
+ "tag:fire": {
+  "h": "f844158bc9",
+  "en": "Fire: a wounded model catches fire — at the start of each activation a Power 2 wound test, until it puts the fire out with an action."
+ },
+ "tag:lightning": {
+  "h": "be8df50c48",
+  "en": "Lightning: a wounded steam model loses 1 action on its next activation; stops Regrowth."
+ },
+ "tag:poison": {
+  "h": "3865277bba",
+  "en": "Poison: a wounded model (not Forged/vehicle/stitched) loses 1 more Wound on a d10 ≤ 5."
+ },
+ "tag:armor_break": {
+  "h": "c51e3ce4ba",
+  "en": "Armour-Breaker: −1 to the target's Armour on the wound test."
+ },
+ "tag:anti_giant": {
+  "h": "f9fce5a668",
+  "en": "Anti-Giant: wounds Size 3–4 targets on a roll −2."
+ },
+ "tag:anti_devi": {
+  "h": "9a4563d8d1",
+  "en": "Anti-Devi: +1 Power against monsters (Monster, Regrowth)."
+ },
+ "tag:vs_leader": {
+  "h": "9a19bbd678",
+  "en": "Leader-Killer: +1 Power against leaders and heroes."
+ },
+ "tag:sweep": {
+  "h": "ea88226e4a",
+  "en": "Sweep: in melee each attack also hits a second nearby enemy on a d10 ≤ 5."
+ },
+ "tag:indirect": {
+  "h": "f798537c2c",
+  "en": "Indirect: ignores the cover penalty and needs no line of sight if an ally can see the target."
+ },
+ "tag:reload": {
+  "h": "8a550cd2c7",
+  "en": "Reload: after firing, one Reload action before it can fire again."
+ },
+ "tag:once": {
+  "h": "306874dc69",
+  "en": "One-Shot: once per battle."
+ },
+ "tag:demolition": {
+  "h": "9f89d2c0d2",
+  "en": "Demolition: double damage to trenches, barbed wire, walls, towers and fortifications."
+ },
+ "tag:volley": {
+  "h": "692d0545a3",
+  "en": "Volley: two or more models of this unit shoot the same target — each gets +1 Attack."
+ },
+ "tag:suppress": {
+  "h": "258bf75525",
+  "en": "Suppress: a Size 1 model shot at (hit or not) gets a token — −1 to shoot at it; on activation a Nerve test, fail: 1 action, cannot move or attack."
+ },
+ "tag:pin": {
+  "h": "2d8f4c4013",
+  "en": "Pins: a model hit (no wound needed) cannot move on its next activation; cavalry loses its charge bonus."
+ },
+ "tag:entangle": {
+  "h": "cc6f348b27",
+  "en": "Entangle: a model hit cannot move on its next activation."
+ },
+ "tag:grab": {
+  "h": "b39363cd58",
+  "en": "Grab: a model hit cannot move on its next activation."
+ },
+ "tag:chain": {
+  "h": "c62f0fbbd0",
+  "en": "Chain: a Size 3+ model hit makes only half a move on its next activation."
+ },
+ "tag:chain_breaker": {
+  "h": "dab89098a0",
+  "en": "Chain-Breaker: immune to Chain, Entangle and Pins; double damage to Chain Wagons and harnessed monsters."
+ },
+ "tag:festering": {
+  "h": "d65864abf8",
+  "en": "Festering: a wounded model cannot regrow this round, and its wound cannot be healed."
+ },
+ "tag:capture": {
+  "h": "0644b95ddb",
+  "en": "Capture: a model felled by this weapon is taken captive."
+ },
+ "tag:curse": {
+  "h": "e032c92b29",
+  "en": "Curse: see Witch — no wound needed."
+ },
+ "tag:unleash": {
+  "h": "bc38adfca3",
+  "en": "Unleash: once per battle its Power is doubled; afterwards the bearer is uncontrolled (attacks the nearest model)."
+ },
+ "tag:swallow": {
+  "h": "53633265a1",
+  "en": "Swallow: a Size 1 model hit, d10 ≤ 3 → swallowed; it returns with 1 Wound when the swallower falls."
+ },
+ "tag:aura": {
+  "h": "319138f6f7",
+  "en": "Aura: a power that is always active (described in the unit's abilities)."
+ },
+ "common:დათესილი მეომარი": {
+  "h": "438b202b34",
+  "en": "Sown Warrior\nMv 5 · Me 5 · Ar 1 · Wd 1 · Nv 10 · sword (1 Attack, Power 2). Activates as your model; crumbles at the end of the battle and does not count toward the warband. On its own activation d10 = 1 → it attacks the nearest model (of either side) — in the myth, the sown warriors turned on each other."
+ },
+ "common:პატარა ნაკერი": {
+  "h": "1d68c3662f",
+  "en": "Small Stitched One\nMv 4 · Me 5 · Ar 1 · Wd 1 · Nv 10 · fist (1 Attack, Power 2); immune to Fear and Poison."
+ },
+ "common:წაქცეული": {
+  "h": "ea58574b37",
+  "en": "Knocked Down\nOn its next activation the model has only 1 action."
+ },
+ "common:უკან ყრა": {
+  "h": "ea4746f2e6",
+  "en": "Hurled Back\nThe model is moved the stated distance directly away from the attacker; it stops if it hits a wall or a model. A model hurled out of a trench loses its cover."
+ },
+ "abil:lashkari#0": {
+  "h": "214fe5e5f1",
+  "en": "Sons of the Trench\nLashkari in a trench or heavy cover get +1 on Morale and Fear tests."
+ },
+ "abil:dali_hunters#0": {
+  "h": "64bf701192",
+  "en": "Patient\n+1 to shoot if it has not moved this activation."
+ },
+ "abil:dali_hunters#1": {
+  "h": "1e86fb000f",
+  "en": "Great Game\n= Giant-Hunter: wounds Size 3–4 targets on a roll −2."
+ },
+ "abil:eristavi#0": {
+  "h": "cf82dfa036",
+  "en": "Follow Me!\nOnce per round, at the end of the Eristavi's activation, one not-yet-activated Colchian within 3″ activates immediately."
+ },
+ "abil:eristavi#1": {
+  "h": "17a93cc440",
+  "en": "Blood of the Aeetids\nWhile the Eristavi lives, Colchians within 6″ automatically pass Morale tests."
+ },
+ "abil:eristavi#2": {
+  "h": "01fee46ec7",
+  "en": "Weakness\nWhen the Eristavi falls, every Colchian immediately takes a Morale test — regardless of losses."
+ },
+ "abil:aznauri#0": {
+  "h": "d5657938cd",
+  "en": "A Knight's Challenge\nOnce per battle, after a charge: an enemy of Tier II+ in contact is in a duel. While both live and remain in contact, no one else may join their melee, and both get +1 Melee."
+ },
+ "abil:kolkhi_riders#0": {
+  "h": "94ff1ec267",
+  "en": "Charge into the Trench\nWhen it charges, a target in a trench is hurled back 1″ (out of the trench) and loses heavy cover for this fight."
+ },
+ "abil:gurian_riders#0": {
+  "h": "d9fc6f4e2b",
+  "en": "Jiriti\nThe move action may be split before and after shooting (half + half); no shooting penalty after moving."
+ },
+ "abil:gurian_riders#1": {
+  "h": "460a5ef7df",
+  "en": "Horse-Shield\nAfter it moves, until its next activation, −1 to shoot at it."
+ },
+ "abil:medea_sisters#0": {
+  "h": "08b26606d4",
+  "en": "Dead Water\n= Healer: action — an ally within 6″ regains 1 Wound."
+ },
+ "abil:medea_sisters#1": {
+  "h": "144e517577",
+  "en": "Sowing the Dragon's Teeth\nOnce per battle, action: place 2 Sown Warriors within 3″."
+ },
+ "abil:shavkhan_smiths#0": {
+  "h": "f53d15b621",
+  "en": "Repair Crew\nAction: a vehicle or steam model within 3″ regains 1 Wound."
+ },
+ "abil:shavkhan_smiths#1": {
+  "h": "cd37fd5b88",
+  "en": "Demolition\nIts explosives deal double damage to trenches, barbed wire, walls and towers."
+ },
+ "abil:monaspa#0": {
+  "h": "f8b72565ff",
+  "en": "Living Shield\nBehind two or more Monaspa (within 1″ of each other), an ally standing within 1″ has light cover."
+ },
+ "abil:iron_arm_veterans#0": {
+  "h": "ad9df1a932",
+  "en": "Feels No Pain\nOnce per battle the first wound it takes is ignored on a d10 ≤ 3."
+ },
+ "abil:khalkotavri#0": {
+  "h": "52648346bb",
+  "en": "Horn Charge\nWhen it charges, Size 1 models in contact are hurled back 2″."
+ },
+ "abil:khalkotavri#1": {
+  "h": "8617764b9b",
+  "en": "Weakness: the Back\nShooting and attacks from behind (the Khalkotauros' rear half) are against −1 Armour."
+ },
+ "abil:ambri_ox#0": {
+  "h": "0965141e58",
+  "en": "Ambri's Furrow\nAfter each move action, 3″ of trench is left along its path (max. 1 per activation)."
+ },
+ "abil:ambri_ox#1": {
+  "h": "eb40b42d95",
+  "en": "Relic\nColchians within 6″ automatically pass Morale and Fear tests."
+ },
+ "abil:ambri_ox#2": {
+  "h": "aae1a73c1e",
+  "en": "Weakness\nWhen the Ox of Ambri falls, every Colchian immediately takes a Morale test."
+ },
+ "abil:golden_ram#0": {
+  "h": "f6c8c63450",
+  "en": "Bronze Horns\nIts charge wrecks 3″ of trench, barbed wire or a wall section in its path; Size 1 models are hurled back 2″."
+ },
+ "abil:golden_ram#1": {
+  "h": "e63e3ac72f",
+  "en": "Unstoppable\nOnce per round it ignores one stopping effect (Chain, Entangle, Pins, Lightning)."
+ },
+ "abil:golden_ram#2": {
+  "h": "ab3125d854",
+  "en": "Weakness: the Belly-Boiler\nGiant-Hunter weapons deal +1 damage to it."
+ },
+ "abil:fleece_dragon#0": {
+  "h": "5b7d483bc5",
+  "en": "Never Sleeps\nNo enemy may deploy in ambush within 12″ of it; Planted and hidden models are revealed at once."
+ },
+ "abil:fleece_dragon#1": {
+  "h": "5d66b8cbc6",
+  "en": "Bronze Wings\nFlight: passes over terrain and models; weakness — the second wing: only every other round (1, 3, 5…)."
+ },
+ "abil:fleece_dragon#2": {
+  "h": "1038ad80a7",
+  "en": "The Golden Scrap\nA campaign scenario rule; has no effect in an ordinary battle."
+ },
+ "abil:hero_zurab#0": {
+  "h": "dcea276de8",
+  "en": "Father of Soldiers\nLashkari within 6″ of him get +1 Melee."
+ },
+ "abil:hero_zurab#1": {
+  "h": "762905b657",
+  "en": "An Old Score\n+1 Attack in melee against Marquis Sabnock."
+ },
+ "abil:hero_eliso#0": {
+  "h": "ffd76aa864",
+  "en": "Medea's Cauldron\nOnce per battle, action: a fallen ally within 3″ returns with 1 Wound."
+ },
+ "abil:hero_eliso#1": {
+  "h": "535d564565",
+  "en": "Devi Teeth\nOnce per battle, action: place 3 Sown Warriors (+1 Melee) within 3″; they \"turn on each other\" on a d10 of 1–2."
+ },
+ "abil:hero_eliso#2": {
+  "h": "a227acb627",
+  "en": "Thrice Risen\nThe first two times she falls, d10 ≤ 5 → she rises with 1 Wound."
+ },
+ "abil:khevsur#0": {
+  "h": "4da8e03414",
+  "en": "Swordplay\nIn melee, the first attack against it each round is at −1 to hit."
+ },
+ "abil:khevsur#1": {
+  "h": "32b866cdf7",
+  "en": "Chain Shirt\n+1 Armour against the secondary hit of a blast (a blast aimed at another target)."
+ },
+ "abil:tush_shepherds#0": {
+  "h": "ab1a98a87f",
+  "en": "Scent\nNo enemy may deploy in ambush within 12″; Planted and hidden enemies within 12″ are revealed at once."
+ },
+ "abil:tush_shepherds#1": {
+  "h": "a5c7a9bf9b",
+  "en": "The Heretic's Smell\nYour hired models within 6″ take no Distrust tests."
+ },
+ "abil:mountain_sappers#0": {
+  "h": "8185b7c3a5",
+  "en": "Rockfall\nOnce per battle, action: a cliff or ruin within 12″ collapses — a 3″ radius becomes impassable for the rest of the battle; models inside, d10 ≤ 5 → 1 wound."
+ },
+ "abil:spasalari#0": {
+  "h": "09c4fbf979",
+  "en": "Mountain Command\nOnce per round, at the end of its activation: two not-yet-activated Iberians within 6″ activate immediately — with 1 action each."
+ },
+ "abil:spasalari#1": {
+  "h": "b0bb933350",
+  "en": "Engines before Glory\nThunderbolt Gunners within 6″ get +1 Shoot."
+ },
+ "abil:natsiliani#0": {
+  "h": "8fdfc33892",
+  "en": "The Mark\nOnce per battle, ignore all damage from one hit."
+ },
+ "abil:lightning_gunners#0": {
+  "h": "05d3b8da14",
+  "en": "Burning the Cloud\nAction: one gas cloud or murk within 18″ disappears."
+ },
+ "abil:lightning_gunners#1": {
+  "h": "94f0b42008",
+  "en": "Weakness: the Battery\nWhen an attack on it rolls a natural 1, the battery explodes: every model within 2″, d10 ≤ 3 → 1 wound."
+ },
+ "abil:tush_riders#0": {
+  "h": "e78b049f70",
+  "en": "Shooting from the Saddle\nNo shooting penalty after moving."
+ },
+ "abil:ekimbashi#0": {
+  "h": "be45a6a54b",
+  "en": "Dead Water\n= Healer: action — an ally within 6″ regains 1 Wound."
+ },
+ "abil:ekimbashi#1": {
+  "h": "e41b6735b3",
+  "en": "Raised by Lightning\nOnce per battle, action: an ally within 3″ who fell this round or last rises with 1 Wound; at the end of the next round it falls for good."
+ },
+ "abil:fortress_guards#0": {
+  "h": "d5abda445e",
+  "en": "Piston Shield\nA Size 1 enemy it hits in melee is hurled back 2″."
+ },
+ "abil:fortress_guards#1": {
+  "h": "6fcc98cd7b",
+  "en": "Living Shield\nBehind two or more Wardens (within 1″), an ally standing within 1″ has light cover."
+ },
+ "abil:iakhsar_shields#0": {
+  "h": "2533d4508f",
+  "en": "Devi-Slayer\nThe war hammer gets +1 Power against monsters (Monster, Regrowth)."
+ },
+ "abil:iakhsar_shields#1": {
+  "h": "0bd534f653",
+  "en": "Earthquake\nOnce per battle, action: Size 1 enemies within 2″, d10 ≤ 5 → Knocked Down."
+ },
+ "abil:steam_ibex#0": {
+  "h": "0b77418634",
+  "en": "Cliff-Walker\nCrosses cliffs, walls and vertical terrain with no penalty."
+ },
+ "abil:lightning_castle#0": {
+  "h": "4b8ae410a2",
+  "en": "Lightning Coil\nAt the end of each round every model within 6″ (of either side), d10 ≤ 2 → a Power 3 lightning wound test."
+ },
+ "abil:lightning_castle#1": {
+  "h": "0f25cc4c04",
+  "en": "Garrison\nUp to 4 of your Size 1 models fit inside; they shoot from the loopholes with heavy cover. When the keep falls they climb out, d10 ≤ 3 → 1 wound."
+ },
+ "abil:armazi_colossus#0": {
+  "h": "cca41e0b65",
+  "en": "Gaze of Armazi\nIberians within 12″ automatically pass Fear and Morale tests; enemies within 12″ get −1 Nerve."
+ },
+ "abil:armazi_colossus#1": {
+  "h": "15df0abe8c",
+  "en": "Sea Wave\nA one-shot weapon; also puts out every fire and gas within 3″ of the wave."
+ },
+ "abil:armazi_colossus#2": {
+  "h": "b95352a7f0",
+  "en": "Gaim's Alchemy\nOnce per battle the colossus regains 2 Wounds."
+ },
+ "abil:armazi_colossus#3": {
+  "h": "d6774cf5d0",
+  "en": "Weakness: the Eyes\nWhen it has lost half its Wounds, −2″ Move."
+ },
+ "abil:hero_amirani#0": {
+  "h": "9821a15032",
+  "en": "Chain-Breaker\nImmune to Chain, Entangle and Pins; deals double damage in melee to Chain Wagons and harnessed monsters. Breaking a chain is an action in contact."
+ },
+ "abil:hero_amirani#1": {
+  "h": "6808f8a9d5",
+  "en": "Qursha\nOnce per battle, the hound Qursha takes one hit aimed at Amirani — the damage is ignored."
+ },
+ "abil:hero_amirani#2": {
+  "h": "5f27462153",
+  "en": "Warden of Ambri\n+1 Melee and +1 Nerve in Ambri's Furrow scenarios."
+ },
+ "abil:recruits#0": {
+  "h": "0c671fa177",
+  "en": "All Alike\nA single order from the leader within 6″ applies to all Vat Recruits at once."
+ },
+ "abil:recruits#1": {
+  "h": "eb1bf2fff2",
+  "en": "Needs Orders\nOutside 12″ of the leader it has only 1 action per activation."
+ },
+ "abil:legion_shooters#0": {
+  "h": "a9e23911ad",
+  "en": "Discipline\nTwo or more Riflemen within 1″ of each other — +1 on Morale tests."
+ },
+ "abil:marquis#0": {
+  "h": "3bec8c9a09",
+  "en": "The Plan\nBefore the battle, secretly write down one objective or enemy model. If at the end of the battle the objective is yours or the model has fallen — +1 victory point (+1 rank in a campaign)."
+ },
+ "abil:halphas_fortifiers#0": {
+  "h": "656529fd28",
+  "en": "Fortress by Night\nOnce per battle, with 2 actions: a 3″ sandbag wall (heavy cover; Armour 4, 6 Wounds)."
+ },
+ "abil:malphas_wreckers#0": {
+  "h": "9d9d6f8112",
+  "en": "Demolition\nThe mine and the lance deal double damage to trenches, barbed wire, walls and towers."
+ },
+ "abil:malphas_wreckers#1": {
+  "h": "39fa8c116a",
+  "en": "Weakness: the Charge\nIf it falls before using the lance, d10 ≤ 3 → a 2″ Power 3 blast (hits both sides)."
+ },
+ "abil:andras_whisperers#0": {
+  "h": "ac26351d3e",
+  "en": "A Familiar Voice\nOnce per round: if an enemy fails the Whisperers' Discord test, instead of losing its activation you may have it shoot its nearest ally once."
+ },
+ "abil:glasya_killers#0": {
+  "h": "c222e3d1b7",
+  "en": "Leader-Killer\n+1 Power with its weapons against leaders and heroes."
+ },
+ "abil:glasya_killers#1": {
+  "h": "518d8d7985",
+  "en": "Unseen Approach\nUntil their first activation they cannot be shot from more than 12″ away."
+ },
+ "abil:legionnaires#0": {
+  "h": "6e334f9d41",
+  "en": "In Step\nTwo or more Legionnaires within 1″ of each other automatically pass Morale tests."
+ },
+ "abil:furcas_riders#0": {
+  "h": "589137cbc3",
+  "en": "Knight's Charge\nTheir charge cuts barbed wire (3″ is removed)."
+ },
+ "abil:marchosias_wolves#0": {
+  "h": "bfe3717a91",
+  "en": "The Hunt\n+1 Melee against a target with no friendly model within 3″ of it."
+ },
+ "abil:behemoth_spawn#0": {
+  "h": "3791711e05",
+  "en": "Trample\nSize 1 models in the path of its charge, d10 ≤ 3 → 1 wound."
+ },
+ "abil:behemoth_spawn#1": {
+  "h": "858bd1df6d",
+  "en": "Wrath\nAfter being wounded by fire or lightning, on its next activation it attacks the nearest model — of either side."
+ },
+ "abil:mulciber_forge#0": {
+  "h": "b23c8421b5",
+  "en": "Field Repair\nAction: a Legionnaire or vehicle within 6″ regains 1 Wound."
+ },
+ "abil:standard_fortress#0": {
+  "h": "f7db820980",
+  "en": "Legion Standard\nOrder range extends to 12″ of it; no confusion after the leader falls."
+ },
+ "abil:standard_fortress#1": {
+  "h": "620f9c0142",
+  "en": "Stronghold\nLegionnaires within 2″ of it have heavy cover."
+ },
+ "abil:standard_fortress#2": {
+  "h": "0e77dc139a",
+  "en": "Weakness\nWhen it falls, every Legionnaire immediately takes a Morale test."
+ },
+ "abil:behemoth#0": {
+  "h": "568093c6fd",
+  "en": "Earthquake\nAt the end of its activation, Size 1 models within 3″, d10 ≤ 3 → Knocked Down; any trench section it crosses collapses."
+ },
+ "abil:behemoth#1": {
+  "h": "56b19a05be",
+  "en": "Endless Hunger\nEach model it fells — +1 Wound (not above its starting value)."
+ },
+ "abil:behemoth#2": {
+  "h": "de41c48ccc",
+  "en": "Weakness\nAfter its leader falls, on every activation it attacks the nearest model — of either side."
+ },
+ "abil:hero_sabnock#0": {
+  "h": "af96044eed",
+  "en": "Fortress by Night\nAt the start of the battle place a 3″ stone wall anywhere in the middle strip."
+ },
+ "abil:hero_sabnock#1": {
+  "h": "72cd68d350",
+  "en": "Festering Wound\nWounds he inflicts cannot be closed by a Healer — only by an alchemist."
+ },
+ "abil:hero_sabnock#2": {
+  "h": "87063f0a13",
+  "en": "An Old Score\n+1 Attack in melee against Zurab Bronze-Arm."
+ },
+ "abil:rebels#0": {
+  "h": "660f587a32",
+  "en": "Brother against Brother\nOnce per battle: the first light-side model to attack this unit in melee gets −1 Melee on that attack (a familiar face)."
+ },
+ "abil:rebel_chief#0": {
+  "h": "782986c040",
+  "en": "The Word\nWhile the chief lives, Rebels within 6″ get +1 Melee."
+ },
+ "abil:rebel_chief#1": {
+  "h": "42b2323cf2",
+  "en": "Nameless\nPowers aimed at leaders (Leader-Killer and the like) do not affect him."
+ },
+ "abil:blood_priests#0": {
+  "h": "a634a26ae0",
+  "en": "Taking Captives\n= Capture: a model felled by the ritual knife is taken captive (a point in a scenario; the altar in a campaign)."
+ },
+ "abil:kudiani#0": {
+  "h": "f2ea2df61b",
+  "en": "Gathering Hearts\nEvery enemy that falls within 6″ of her — +1 Wound (max. starting value +1)."
+ },
+ "abil:kudiani#1": {
+  "h": "166906165f",
+  "en": "Weakness\nAfter being wounded by fire or lightning, all her curses end."
+ },
+ "abil:chain_shooters#0": {
+  "h": "2e613145e7",
+  "en": "Two Chains\nIf two chains hit a Size 3+ target in one round, it cannot move on its next activation."
+ },
+ "abil:kaji_smith#0": {
+  "h": "6058f84f4f",
+  "en": "Stitching\nOnce per battle, action: in place of a fallen Size 1 model (of either side) within 3″, place a Kaji-Stitched with 2 Wounds."
+ },
+ "abil:kaji_smith#1": {
+  "h": "e93185d9b5",
+  "en": "Devi Blood\nAction: a heretic within 3″ gets +1 Melee and +1 Power until the end of the battle; d10 = 1 → maddened: on every activation it attacks the nearest model."
+ },
+ "abil:chained_ones#0": {
+  "h": "2a7a0dceaa",
+  "en": "Slipping the Chains\nOnce per battle: the heavy chains have double Power this activation; afterwards, until the end of the battle, they attack the nearest model on every activation — of either side."
+ },
+ "abil:kaji_stitched#0": {
+  "h": "70c260fdd0",
+  "en": "Feels No Pain\n= Stitched Body: immune to Fear, Morale and Poison."
+ },
+ "abil:kaji_stitched#1": {
+  "h": "d129ee3dc1",
+  "en": "Falling to Pieces\nWhen it falls, d10 ≤ 4 → 2 small stitched ones in its place."
+ },
+ "abil:kaji_stitched#2": {
+  "h": "fc7ac12f82",
+  "en": "Weakness\nFire deals +1 damage to it."
+ },
+ "abil:devi_spawn#0": {
+  "h": "8110480669",
+  "en": "Many Heads\nIts 3 attacks may be split among different models within 1″."
+ },
+ "abil:gveleshapi#0": {
+  "h": "b3f8f6cce5",
+  "en": "Flood\nOnce per battle, action: mud in a 6″ radius — half Move, and trenches fill with water (heavy cover becomes light)."
+ },
+ "abil:gveleshapi#1": {
+  "h": "9427abbe62",
+  "en": "Swallow Whole\nA Size 1 model hit, d10 ≤ 3 → swallowed (remove it); it returns with 1 Wound when the Gveleshapi falls."
+ },
+ "abil:chain_wagon#0": {
+  "h": "f32e98b5ff",
+  "en": "Rolling Altar\nSacrificing a captive within 3″ of it — heretics within 6″ get +1 Power this round."
+ },
+ "abil:chain_wagon#1": {
+  "h": "31ec5c2d66",
+  "en": "Weakness: the Chains\nWhen it has lost half its Wounds the devis break free: on every activation the harnessed devis attack the nearest model — of either side."
+ },
+ "abil:bakbak_devi#0": {
+  "h": "5583e0a0f3",
+  "en": "The Mightiest\n+1 damage against vehicles and fortifications."
+ },
+ "abil:bakbak_devi#1": {
+  "h": "cbd3ba5b1b",
+  "en": "Captive\nAt the start of each activation, if no heretic leader stands within 6″, d10 ≤ 2 → it breaks free and attacks the nearest model until the end of the battle — heretics first."
+ },
+ "abil:hero_nameless#0": {
+  "h": "c53794eb4b",
+  "en": "Many Tongues\nOnce per battle, action: a Tier I–II enemy within 12″ takes a Nerve test; on a fail it is your model for one round."
+ },
+ "abil:hero_nameless#1": {
+  "h": "dc121e33de",
+  "en": "Many Faces\nAmbushing and scout models are at −1 Shoot against him."
+ },
+ "abil:hero_nameless#2": {
+  "h": "31477eb9bf",
+  "en": "Past a Hundred Years\nOnce per battle, when he falls, d10 ≤ 3 → he rises with 1 Wound."
+ },
+ "abil:voice_mimics#0": {
+  "h": "498021a5a8",
+  "en": "False Order\nOnce per round, one enemy unit within 12″ takes a Nerve test; on a fail it cannot activate this round."
+ },
+ "abil:flask_smiths#0": {
+  "h": "536f86262f",
+  "en": "Stitched Bodies\nIn a campaign: after the battle one fallen model returns as a stitched body on a d10 of 6+."
+ },
+ "abil:lock_smiths#0": {
+  "h": "ea390d34f6",
+  "en": "The Weak Spot\nOne enemy within 6″ — your attacks against it this round get +1 to wound."
+ },
+ "abil:field_sisters#0": {
+  "h": "fd4a2276a9",
+  "en": "Field Hospital\n= Healer, but within 3″: action — an ally regains 1 Wound."
+ },
+ "abil:hero_kalistrate#0": {
+  "h": "4c2ffff6dc",
+  "en": "The Planted Leader\nThe only leader who appears in the enemy zone under the Planted rule."
+ },
+ "abil:hero_levan#0": {
+  "h": "3df1214cda",
+  "en": "Four-Tongues\nHis orders reach allies without an interpreter (the Confusion of Tongues does not apply)."
+ },
+ "abil:vahagn_slayers#0": {
+  "h": "3c584e7f52",
+  "en": "Scent of the Vishap\nWithin 6″ of a Tier IV–V or Monster target they automatically pass Nerve and Fear tests."
+ },
+ "abil:vahagn_slayers#1": {
+  "h": "cc74f62746",
+  "en": "Weakness: Sparks\nThe fire lance cannot fire if a steam ally is within 2″."
+ },
+ "abil:aralez_keepers#0": {
+  "h": "84df9ab2f2",
+  "en": "Licking Wounds\n= Healer, but within 3″."
+ },
+ "abil:aralez_keepers#1": {
+  "h": "2872b1221e",
+  "en": "The Return\nOnce per battle: an ally that fell within 3″ this round rises with 1 Wound on a d10 ≤ 3."
+ },
+ "abil:aralez_keepers#2": {
+  "h": "cb0c06ad61",
+  "en": "Weakness: the Aralez\nThe first wound taken hits the aralez (the hound) — both powers are lost."
+ },
+ "abil:basat_hunters#0": {
+  "h": "337cff1954",
+  "en": "A Shot to the Eye\nA natural 1 (critical) on a Size 3–4 target — it gets −2 Shoot until the end of the battle."
+ },
+ "abil:cyclops_hunters#0": {
+  "h": "ddbe5d0af5",
+  "en": "The Eye\nA natural 1 (critical) on a Size 3–4 target — it gets −2 Shoot until the end of the battle."
+ },
+ "abil:koroglu_riders#0": {
+  "h": "f13bc40db0",
+  "en": "Qirat's Leap\nOnce per battle they leap barbed wire or a wall section with no penalty."
+ },
+ "abil:set_spearmen#0": {
+  "h": "842531c40d",
+  "en": "The Prow\nOnce per battle, when a monster or Tier IV–V model charges them, they fire the spear cannon before it arrives (if loaded)."
+ },
+ "abil:sekhmet_warriors#0": {
+  "h": "6dd8956abc",
+  "en": "Wrath\n= Wrath (tag): once wounded +1 Melee; they attack the nearest enemy within 6″."
+ },
+ "abil:yu_canal_diggers#0": {
+  "h": "6e3d76316f",
+  "en": "Draining the Water\nOnce per battle, action: one flooded trench within 6″ dries out, or one gas cloud disappears."
+ },
+ "abil:tripod_scholars#0": {
+  "h": "d8d84afb70",
+  "en": "Atlas of Monsters\nAction: a monster or Tier IV–V model within 12″ — allies strike it with +1 Power this round."
+ },
+ "abil:xiangliu_hunters#0": {
+  "h": "308d216194",
+  "en": "Nine Heads\nThe volley gun gets +1 Attack against a many-headed monster (Regrowth)."
+ },
+ "abil:three_companions#0": {
+  "h": "66843475ee",
+  "en": "The Dog\nSees ambushing and Silent models within 12″."
+ },
+ "abil:three_companions#1": {
+  "h": "8b31904446",
+  "en": "The Monkey\n= Cliff-Climber."
+ },
+ "abil:three_companions#2": {
+  "h": "2d40a87cf1",
+  "en": "The Pheasant\nAt the start of the battle one ambushing or Planted enemy is revealed."
+ },
+ "abil:karakuri_soldiers#0": {
+  "h": "986e4ce41f",
+  "en": "The Mainspring\nIn rounds 3 and 6 they have only 1 action per activation (the spring is being wound)."
+ },
+ "abil:lantern_bearers#0": {
+  "h": "e380cabc8b",
+  "en": "The Lantern\n= Torch; Night-Eye."
+ },
+ "abil:vikram_blades#0": {
+  "h": "a850dda217",
+  "en": "Oath of Patience\nFearless; immune to Discord, Curses and False Orders."
+ },
+ "abil:net_weavers#0": {
+  "h": "72f1483205",
+  "en": "Steel Net\nA model hit cannot move on its next activation; Size 3–4 — −3″ Move. One action (folding the net) before it can throw again."
+ },
+ "abil:mirror_marksmen#0": {
+  "h": "d644ee40c3",
+  "en": "Periscope\nAfter shooting from heavy cover, until their next activation, an extra −1 to shoot at them."
+ },
+ "abil:storytellers#0": {
+  "h": "3bfd0652b1",
+  "en": "The Tale\nAction: an ally within 6″ that has fallen back returns (retakes the Nerve test), or one model rerolls a failed test."
+ },
+ "abil:hammer_crew#0": {
+  "h": "29b6e9846a",
+  "en": "John Henry's Song\nOnce per battle: they strike twice with the steam hammer this activation, then take 1 wound."
+ },
+ "abil:lumberjacks#0": {
+  "h": "a5bf94bdbe",
+  "en": "The Hidebehind\nEnemies attacking them in the forest from ambush or from behind do not get +1 Melee."
+ },
+ "abil:armored_train_gunners#0": {
+  "h": "fd80d6a487",
+  "en": "The Rails\n= On Rails."
+ },
+ "abil:fire_runners#0": {
+  "h": "9f6d4328c5",
+  "en": "The Torch\n= Torch; also works against winged creatures."
+ },
+ "abil:sky_watchers#0": {
+  "h": "3d2cb64fb1",
+  "en": "Watcher of the Sky\nNight-Eye at 24″; once per battle an enemy flyer is revealed before its first activation, and the first shot at it is without the −1."
+ },
+ "abil:papa_bois_scouts#0": {
+  "h": "57f74379cf",
+  "en": "Forest Paths\nOn a forest map they deploy 6″ further forward."
+ },
+ "abil:storyteller_telegraphers#0": {
+  "h": "b76e971be1",
+  "en": "The Telegraph\n= Messenger at 12″."
+ },
+ "abil:urtuu_riders#0": {
+  "h": "b0db03008d",
+  "en": "Örtöö\n= Messenger, but at 18″."
+ },
+ "abil:chaski_runners#0": {
+  "h": "7178421b49",
+  "en": "The Message\n= Messenger: if they start within 6″ of the leader and end their move beside an ally, that ally counts as beside the leader this round."
+ },
+ "abil:khettara_diggers#0": {
+  "h": "9c5fc68f63",
+  "en": "Water\nOnce per battle allies within 6″ regain 1 Wound."
+ },
+ "abil:agadir_guards#0": {
+  "h": "c7696f9f31",
+  "en": "Guarding the Granary\nWithin 3″ of an objective they automatically pass Fear and Morale tests."
+ },
+ "abil:gate_wardens#0": {
+  "h": "b7c29ed4cb",
+  "en": "Guarding the Gate\nWithin 3″ of an objective they automatically pass Fear and Morale tests."
+ },
+ "abil:belenos_shields#0": {
+  "h": "f214f49061",
+  "en": "Guarding the Bridge\nOn a bridge, a ford or within 3″ of an objective they automatically pass Fear and Morale tests."
+ },
+ "abil:tlaloc_shields#0": {
+  "h": "77bf9d0178",
+  "en": "Ring of Fire\nWithin 3″ of a torch, bonfire or objective they automatically pass Fear and Morale tests."
+ },
+ "abil:rostam_heirs#0": {
+  "h": "345c45f2be",
+  "en": "The Tiger-Skin\nThey automatically pass Fear tests against giants and monsters."
+ },
+ "abil:pearl_divers#0": {
+  "h": "aa0d230fa5",
+  "en": "The Dive\nNo penalty in water; once per battle one round underwater — they cannot be shot."
+ },
+ "abil:olonkho_singers#0": {
+  "h": "4631f9d94a",
+  "en": "Song of the Epic\n= Song; creatures of the underworld and demons within 6″ get −1 Melee. A singer cannot move while singing (on its own activation)."
+ },
+ "abil:dokkaebi_bargainers#0": {
+  "h": "9e2ca653d4",
+  "en": "Cunning\nOnce per round, action: an enemy model within 12″ has only 1 action on its next activation (no test)."
+ },
+ "abil:haetae_firewardens#0": {
+  "h": "8b1bfa8f13",
+  "en": "The Hose\n= Fireproof; action — every burning ally within 3″ is put out."
+ },
+ "abil:dragon_born#0": {
+  "h": "11adb75cdc",
+  "en": "Dragon Wings\n+1 Melee against flyers and weather creatures."
+ },
+ "abil:dragon_born#1": {
+  "h": "0431108dfc",
+  "en": "Weakness: the Wings\nAfter being wounded by fire or lightning they cannot fly for one round."
+ },
+ "abil:wind_readers#0": {
+  "h": "6eed0c786e",
+  "en": "Foretelling the Weather\nBefore the battle: their side may choose the result of the night table for one round."
+ },
+ "abil:basajaun_shepherds#0": {
+  "h": "b1acd2fd0c",
+  "en": "Sign of the Forest Lord\nAt the start of the battle one ambushing or Planted enemy unit is revealed."
+ },
+ "abil:ice_climbers#0": {
+  "h": "6e912e0085",
+  "en": "Charge from the Cliff\n+1 Melee when charging from a cliff, wall or slope."
+ },
+ "abil:avalanche_sappers#0": {
+  "h": "093e3b8c3f",
+  "en": "Avalanche\nOn a mountain map the avalanche charge also creates a 3″ avalanche strip: crossing it eats the whole move (for the rest of the battle)."
+ },
+ "abil:amber_alchemists#0": {
+  "h": "ac80641d44",
+  "en": "Resin\n= Healer, but within 3″."
+ },
+ "abil:amber_alchemists#1": {
+  "h": "87e5f758c3",
+  "en": "Resin Seal\nOnce per battle one objective or wall section is undamageable for one round."
+ },
+ "abil:drovers#0": {
+  "h": "dd83269e4d",
+  "en": "The Herd's Trail\nOnce per battle, while moving: the strip they cross (2″ wide) is impassable to fire for the rest of the battle."
+ },
+ "abil:harz_miners#0": {
+  "h": "5ea534f579",
+  "en": "The Kobold's Knock\nEnemies emerging from a tunnel or from ambush within 6″ of them are revealed at once and get no +1 Melee on their first attack."
+ },
+ "abil:dike_wardens#0": {
+  "h": "a9e4bbfe4f",
+  "en": "The Sluice\n= Flood (3″ radius), only in low ground or beside a trench."
+ },
+ "abil:salt_miners#0": {
+  "h": "a77aca8c4a",
+  "en": "The Skarbnik's Knock\nOnce per battle they automatically pass a rockfall, trap or blast test."
+ },
+ "abil:fire_siphoneers#0": {
+  "h": "f821f2bdbd",
+  "en": "Sea Fire\nFire burns even on water: a fire marker left on water damages anyone entering it for 2 rounds."
+ },
+ "abil:tulumbaci#0": {
+  "h": "96c75d431c",
+  "en": "Firefighting\n= Fireproof; they put out a fire marker without an action if they end their activation within 1″ of it."
+ },
+ "abil:shadow_players#0": {
+  "h": "0c974cd7a9",
+  "en": "Shadow Theatre\nOnce per battle: an enemy shot at them automatically hits a false shadow (a miss) — revealed after the shot."
+ },
+ "abil:praetorians#0": {
+  "h": "a4d6829d7f",
+  "en": "The Guard\nWithin 3″ of the leader: a hit aimed at the leader (before the wound test) may be taken by this model instead."
+ },
+ "abil:hoplites#0": {
+  "h": "96e7f0c257",
+  "en": "Spear Rank\nThe spear strikes at 2″ — even from the second rank."
+ },
+ "abil:mehter_drummers#0": {
+  "h": "a8b59886ca",
+  "en": "Voice of the Drum\n= Song; in addition, allies within 6″ are immune to voices, False Orders and Discord."
+ },
+ "abil:klabauter_crews#0": {
+  "h": "b8d7927d8e",
+  "en": "The Klabautermann\nOnce per battle: a vehicle or boat within 6″ avoids critical damage (one hit)."
+ },
+ "abil:polianitsa#0": {
+  "h": "ac2dc2c45c",
+  "en": "Bogatyr\nRare (1 per warband); Winter-Born; when she charges she hurls a Size 1 target back 2″."
+ },
+ "abil:byzantium_grotesque#0": {
+  "h": "43229cb5af",
+  "en": "The Lion's Roar\n= Discord; the roar may target two models (within 12″) in one activation."
+ },
+ "abil:ottoman_grotesque#0": {
+  "h": "274d6473f1",
+  "en": "The Great Drum\n= Song at 9″."
+ },
+ "role:command": {
+  "h": "6a1521c385",
+  "en": "Leader: morale, orders, the chain of activations. 1 is required per warband."
+ },
+ "role:line": {
+  "h": "4856f397f2",
+  "en": "Cheap, numerous trench troops: holding objectives, rifle fire in line."
+ },
+ "role:assault": {
+  "h": "6a4928e6e6",
+  "en": "Clearing trenches at close range: frenzy, trench brawling, night raids."
+ },
+ "role:marksman": {
+  "h": "d4985fa3cf",
+  "en": "Accurate mid-range fire, volleys."
+ },
+ "role:sniper": {
+  "h": "bc9e64bac0",
+  "en": "Long, accurate shooting; hunting leaders and specialists."
+ },
+ "role:scout": {
+  "h": "e4658915a2",
+  "en": "Ambush, sight, searching No Man's Land, finding snipers."
+ },
+ "role:heavy_weapons": {
+  "h": "c075b5eb8c",
+  "en": "Machine-guns and volley fire — **suppression**: pins infantry down and stops them."
+ },
+ "role:artillery": {
+  "h": "854d5b1b22",
+  "en": "Blasts and indirect fire; wrecking fortifications and groups."
+ },
+ "role:engineer": {
+  "h": "de95ff817d",
+  "en": "Trenches, tunnels, demolition, repairing vehicles."
+ },
+ "role:support": {
+  "h": "5b11beadbb",
+  "en": "Healing, alchemy, song, ritual, supply — makes others stronger."
+ },
+ "role:disruptor": {
+  "h": "4a8c0e704b",
+  "en": "Curses, discord, infiltration, assassination — breaking the enemy's order."
+ },
+ "role:heavy_infantry": {
+  "h": "c7f6872c79",
+  "en": "Armour and the shield wall; holding the line and charging."
+ },
+ "role:cavalry": {
+  "h": "c33d7f62e1",
+  "en": "Speed, charges, breaking trenches, the flank."
+ },
+ "role:flyer": {
+  "h": "9116f010ba",
+  "en": "Passes over terrain; normal shooting at it is at −1."
+ },
+ "role:hunter": {
+  "h": "79cc37e1e1",
+  "en": "Hunting giants, monsters and flyers."
+ },
+ "role:armor": {
+  "h": "af011f8c13",
+  "en": "Steam engines and walking fortresses: firepower and endurance."
+ },
+ "role:monster": {
+  "h": "e8dcba2941",
+  "en": "Living evil: regrowth, fear, melee power."
+ },
+ "role:giant": {
+  "h": "aab55c3b6b",
+  "en": "Tier V — scenario only; wrecks everything."
+ }
+}

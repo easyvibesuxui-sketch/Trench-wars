@@ -137,104 +137,125 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
   const byF = {}; W.units.forEach(u => (byF[u.f] = byF[u.f] || []).push(u));
   const TIER_ORDER = ["I", "II", "III", "IV", "IV+", "V", "hero"];
   // KA/EN: სახელები ორ ენაზე (აღწერები და ლორი — მხოლოდ ქართულად)
-  const EN = W.en, KA_TIERS = { ...W.tiers }, KA_ROLES = Object.fromEntries(Object.entries(W.roles).map(([k, r]) => [k, r.name]));
+  const EN = W.en, KA_TIERS = { ...W.tiers }, KA_ROLES = Object.fromEntries(Object.entries(W.roles).map(([k, r]) => [k, [r.name, r.does]]));
+  const KA_DIR = { medium: W.visual.medium, not_tc: W.visual.not_tc };
   W.factions.forEach(f => { f.ka = f.name; f.en = EN.factions[f.id] || f.name; });
-  W.units.forEach(u => { u.ka = u.name; u.en = EN.units[u.id] || u.name; u.weapons.forEach(w => { w.ka = w.ka || w.name; }); u.tags.forEach(t => { t.push(t[1]); }); });
+  W.units.forEach(u => { u.ka = u.name; u.en = EN.units[u.id] || u.name; u.weapons.forEach(w => { w.ka = w.ka || w.name; }); u.tags.forEach(t => { t.push(t[1], t[2]); }); });
   let LANG = "ka";
   try { LANG = localStorage.getItem("wiki-lang") === "en" ? "en" : "ka"; } catch (e) {}
+  const t = (ka, en) => LANG === "en" ? en : ka;
+  // ველი X_en (build_wiki.py) — ინგლისური; ქართული ასლი ინახება o._ka-ში
+  function swap(o, fields, en) {
+    o._ka = o._ka || Object.fromEntries(fields.map(k => [k, o[k]]));
+    fields.forEach(k => { o[k] = en && o[k + "_en"] !== undefined ? o[k + "_en"] : o._ka[k]; });
+  }
   function applyLang(l) {
-    LANG = l; const en = l === "en";
-    W.factions.forEach(f => { f.name = en ? f.en : f.ka; f.alt = en ? f.ka : f.en; });
+    LANG = l; const en = l === "en", R = (EN.rules || {});
+    W.factions.forEach(f => { f.name = en ? f.en : f.ka; f.alt = en ? f.ka : f.en; swap(f, ["lore", "war", "stories", "campaign", "arch", "defense", "visual"], en); });
     W.units.forEach(u => {
       u.name = en ? u.en : u.ka; u.alt = en ? u.ka : u.en;
-      u.weapons.forEach(w => { w.name = en ? (EN.weapons[w.ka] || w.ka) : w.ka; w.tagl = (w.tags || []).map(t => en ? (EN.wtags[t] || t) : t); });
-      u.tags.forEach(t => { t[1] = en ? (EN.tags[t[0]] || t[3]) : t[3]; });
+      swap(u, ["desc", "abil", "visual"], en);
+      u.weapons.forEach(w => { w.name = en ? (EN.weapons[w.ka] || w.ka) : w.ka; w.tagl = (w.tags || []).map(x => en ? (EN.wtags[x] || x) : x); });
+      u.tags.forEach(x => { x[1] = en ? (EN.tags[x[0]] || x[3]) : x[3]; x[2] = en ? ((R.tags || {})[x[0]] || x[4]) : x[4]; });
     });
-    Object.keys(W.tiers).forEach(k => { W.tiers[k] = en ? (EN.tiers[k] || KA_TIERS[k]) : KA_TIERS[k]; });
-    Object.keys(W.roles).forEach(k => { W.roles[k].name = en ? (EN.roles[k] || KA_ROLES[k]) : KA_ROLES[k]; });
+    W.lore.forEach(x => swap(x, ["title", "html"], en));
+    Object.keys(W.tiers).forEach(k => { W.tiers[k] = en ? (EN.tiers[k] || KA_TIERS[k]).replace(/^[IV+]+\. /, "") : KA_TIERS[k]; });
+    Object.keys(W.roles).forEach(k => { W.roles[k].name = en ? (EN.roles[k] || KA_ROLES[k][0]) : KA_ROLES[k][0]; W.roles[k].does = en ? ((R.roles || {})[k] || KA_ROLES[k][1]) : KA_ROLES[k][1]; });
+    W.visual.medium = en ? ((R.dir || {}).medium || KA_DIR.medium) : KA_DIR.medium;
+    W.visual.not_tc = en ? ((R.dir || {}).not_tc || KA_DIR.not_tc) : KA_DIR.not_tc;
     document.documentElement.lang = en ? "en" : "ka";
     document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+    document.querySelector(".brand").innerHTML = t("ქვესკნელის ფრონტი<small>ვიკი · ფრაქციები, იუნიტები, ლორი</small>", "Underfront<small>Wiki · factions, units, lore</small>");
+    $("q").placeholder = t("იუნიტი ან ფრაქცია…", "Unit or faction…");
+    $("q").setAttribute("aria-label", t("ძიება ვიკიში", "Search the wiki"));
     try { localStorage.setItem("wiki-lang", l); } catch (e) {}
   }
   const pal = f => (f.visual && f.visual.palette) || [["#8b7d5a", ""], ["#c8913e", ""], ["#4a5a6a", ""]];
   const swatch = f => `<div class="sw" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>`;
   const pic = (u, f) => u.art ? `background-image:url(${u.art})` : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
+  const SITE = () => t("ქვესკნელის ფრონტის ვიკი", "Underfront Wiki");
 
   function ftile(f) {
     const n = (byF[f.id] || []).length, img = f.art ? `background-image:url(${f.art})` : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
-    return `<a class="ftile" href="#f-${f.id}"><span class="thumb" style="${img}"></span><span><b>${esc(f.name)}</b><small>${n} იუნიტი${f.war ? " · " + esc(f.war.title) : ""}</small>${swatch(f)}</span></a>`;
+    return `<a class="ftile" href="#f-${f.id}"><span class="thumb" style="${img}"></span><span><b>${esc(f.name)}</b><small>${n} ${t("იუნიტი", "units")}${f.war ? " · " + esc(f.war.title) : ""}</small>${swatch(f)}</span></a>`;
   }
   function home() {
     const lc = W.factions.filter(f => f.core && f.side === "light"), dc = W.factions.filter(f => f.core && f.side === "dark"), al = W.factions.filter(f => !f.core);
     const arts = W.units.filter(u => u.art).length;
     return `<section class="hero"><div>
-        <p class="eyebrow">1914 · მცირე კავკასიონი · ამბრის ღარი</p>
-        <h1>ქვესკნელის ფრონტი</h1>
-        <p class="lede">ქვესკნელის კარიბჭეები მთელ მსოფლიოში გაიხსნა და ყოველი ერი სანგრებში თავისი მითოლოგიის ბოროტებას — და საკუთარ ერეტიკოსებს — ებრძვის.
-          მთავარი ფრონტი ამბრის ღარის გასწვრივ გადის. აქ არის ${W.factions.length} ფრაქცია, ${W.units.length} იუნიტი (${arts} ილუსტრაციით), ცალკე ომები და ამბები.</p>
-      </div><img src="art/card_back.jpg" alt="ბეჭედი ბზარით — ბარათის ზურგი" width="480" height="720"></section>
-      <h2>ნათელი მხარე</h2><div class="ftiles">${lc.map(ftile).join("")}</div>
-      <h2>ბნელი მხარე</h2><div class="ftiles">${dc.map(ftile).join("")}</div>
-      <h2>მოკავშირეები</h2><p class="note">ყოველი ერი თავის ცალკე ომს ებრძვის და კავკასიონის ფრონტს მოხალისეებს, მარაგს ან გოლიათს უგზავნის.</p>
+        <p class="eyebrow">${t("1914 · მცირე კავკასიონი · ამბრის ღარი", "1914 · Lesser Caucasus · Ambri's Furrow")}</p>
+        <h1>${t("ქვესკნელის ფრონტი", "Underfront")}</h1>
+        <p class="lede">${t(`ქვესკნელის კარიბჭეები მთელ მსოფლიოში გაიხსნა და ყოველი ერი სანგრებში თავისი მითოლოგიის ბოროტებას — და საკუთარ ერეტიკოსებს — ებრძვის.
+          მთავარი ფრონტი ამბრის ღარის გასწვრივ გადის. აქ არის ${W.factions.length} ფრაქცია, ${W.units.length} იუნიტი (${arts} ილუსტრაციით), ცალკე ომები და ამბები.`,
+          `The gates of the underworld have opened all over the world, and in the trenches every nation fights the evil of its own mythology — and its own heretics.
+          The main front runs along Ambri's Furrow. Here are ${W.factions.length} factions, ${W.units.length} units (${arts} illustrated), separate wars and stories.`)}</p>
+        ${LANG === "en" ? `<p class="note">Names, rules and texts are being translated; anything not yet translated is shown in Georgian.</p>` : ""}
+      </div><img src="art/card_back.jpg" alt="${t("ბეჭედი ბზარით — ბარათის ზურგი", "A cracked seal — the card back")}" width="480" height="720"></section>
+      <h2>${t("ნათელი მხარე", "The Light Side")}</h2><div class="ftiles">${lc.map(ftile).join("")}</div>
+      <h2>${t("ბნელი მხარე", "The Dark Side")}</h2><div class="ftiles">${dc.map(ftile).join("")}</div>
+      <h2>${t("მოკავშირეები", "Allies")}</h2><p class="note">${t("ყოველი ერი თავის ცალკე ომს ებრძვის და კავკასიონის ფრონტს მოხალისეებს, მარაგს ან გოლიათს უგზავნის.", "Every nation fights its own separate war and sends volunteers, supplies or a giant to the Caucasus front.")}</p>
       <div class="ftiles">${al.map(ftile).join("")}</div>
-      <h2>ლორი</h2><div class="lorelist">${W.lore.map(l => `<a href="#l-${l.id}">${esc(l.title)}</a>`).join("")}</div>
-      <h2>ვიზუალური სტილი</h2><div class="prose"><p>${esc(W.visual.medium)}</p><p>${esc(W.visual.not_tc)}</p></div>`;
+      <h2>${t("ლორი", "Lore")}</h2><div class="lorelist">${W.lore.map(l => `<a href="#l-${l.id}">${esc(l.title)}</a>`).join("")}</div>
+      <h2>${t("ვიზუალური სტილი", "Visual Style")}</h2><div class="prose"><p>${esc(W.visual.medium)}</p><p>${esc(W.visual.not_tc)}</p></div>`;
   }
   function faction(f) {
     const us = (byF[f.id] || []).slice().sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier));
-    const groups = TIER_ORDER.map(t => [t, us.filter(u => u.tier === t)]).filter(([, l]) => l.length);
+    const groups = TIER_ORDER.map(x => [x, us.filter(u => u.tier === x)]).filter(([, l]) => l.length);
     const v = f.visual, ar = f.arch || {}, df = f.defense || {};
-    const AR = { vernacular: "ხალხური არქიტექტურა", history: "ისტორია და ხელობა", house: "სახლი", great: "დიდი ნაგებობა", unique: "უნიკალური", bonus: "ეკონომიკის ბონუსი" };
-    const DF = { tower: "კოშკი", wood: "ხის კედელი", stone: "ქვის კედელი", great_wall: "დიდი გალავანი", moat: "თხრილი", unique: "უნიკალური თავდაცვა" };
-    const toc = [["lore", "ლორი", f.lore], ["war", "ცალკე ომი", f.war], ["stories", "ამბები", f.stories], ["arch", "არქიტექტურა", Object.keys(ar).length || Object.keys(df).length],
-      ["visual", "ვიზუალი", v], ["units", "იუნიტები", us.length], ["campaign", "კამპანია", f.campaign]].filter(x => x[2]);
-    return `<a class="back" href="#home">← ყველა ფრაქცია</a>
+    const AR = { vernacular: t("ხალხური არქიტექტურა", "Vernacular architecture"), history: t("ისტორია და ხელობა", "History and craft"), house: t("სახლი", "House"),
+      great: t("დიდი ნაგებობა", "Great building"), unique: t("უნიკალური", "Unique"), bonus: t("ეკონომიკის ბონუსი", "Economy bonus") };
+    const DF = { tower: t("კოშკი", "Tower"), wood: t("ხის კედელი", "Wooden wall"), stone: t("ქვის კედელი", "Stone wall"), great_wall: t("დიდი გალავანი", "Great rampart"),
+      moat: t("თხრილი", "Moat"), unique: t("უნიკალური თავდაცვა", "Unique defence") };
+    const toc = [["lore", t("ლორი", "Lore"), f.lore], ["war", t("ცალკე ომი", "Separate war"), f.war], ["stories", t("ამბები", "Stories"), f.stories],
+      ["arch", t("არქიტექტურა", "Architecture"), Object.keys(ar).length || Object.keys(df).length],
+      ["visual", t("ვიზუალი", "Visuals"), v], ["units", t("იუნიტები", "Units"), us.length], ["campaign", t("კამპანია", "Campaign"), f.campaign]].filter(x => x[2]);
+    return `<a class="back" href="#home">← ${t("ყველა ფრაქცია", "All factions")}</a>
       <div class="band" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>
-      <div class="fhead"><div><p class="eyebrow"><span class="side ${f.side}">${f.side === "light" ? "ნათელი მხარე" : "ბნელი მხარე"}</span> ${f.core ? "· ძირითადი ფრაქცია" : "· მოკავშირე"}</p>
-        <h1>${esc(f.name)}</h1><p class="alt" lang="${LANG === "en" ? "ka" : "en"}">${esc(f.alt)}</p><nav class="toc" aria-label="გვერდის ნაწილები">${toc.map(([k, n]) => `<a href="#f-${f.id}" data-jump="${k}">${n}</a>`).join("")}</nav></div>
-        ${f.art ? `<img src="${f.art}" alt="${esc(f.name)} — ილუსტრაცია" width="480" height="720">` : ""}</div>
-      ${f.lore ? `<h2 id="s-lore">ლორი</h2><div class="prose">${f.lore}</div>` : ""}
-      ${f.war ? `<h2 id="s-war">ცალკე ომი: ${esc(f.war.title)}</h2><div class="prose">${f.war.html}</div>` : ""}
-      ${f.stories ? `<h2 id="s-stories">ამბები</h2><div class="prose">${f.stories}</div>` : ""}
-      ${Object.keys(ar).length || Object.keys(df).length ? `<h2 id="s-arch">არქიტექტურა და თავდაცვა</h2><dl class="kv">
+      <div class="fhead"><div><p class="eyebrow"><span class="side ${f.side}">${f.side === "light" ? t("ნათელი მხარე", "Light side") : t("ბნელი მხარე", "Dark side")}</span> ${f.core ? t("· ძირითადი ფრაქცია", "· core faction") : t("· მოკავშირე", "· ally")}</p>
+        <h1>${esc(f.name)}</h1><p class="alt" lang="${LANG === "en" ? "ka" : "en"}">${esc(f.alt)}</p><nav class="toc" aria-label="${t("გვერდის ნაწილები", "Page sections")}">${toc.map(([k, n]) => `<a href="#f-${f.id}" data-jump="${k}">${n}</a>`).join("")}</nav></div>
+        ${f.art ? `<img src="${f.art}" alt="${esc(f.name)} — ${t("ილუსტრაცია", "illustration")}" width="480" height="720">` : ""}</div>
+      ${f.lore ? `<h2 id="s-lore">${t("ლორი", "Lore")}</h2><div class="prose">${f.lore}</div>` : ""}
+      ${f.war ? `<h2 id="s-war">${t("ცალკე ომი", "Separate war")}: ${esc(f.war.title)}</h2><div class="prose">${f.war.html}</div>` : ""}
+      ${f.stories ? `<h2 id="s-stories">${t("ამბები", "Stories")}</h2><div class="prose">${f.stories}</div>` : ""}
+      ${Object.keys(ar).length || Object.keys(df).length ? `<h2 id="s-arch">${t("არქიტექტურა და თავდაცვა", "Architecture and defence")}</h2><dl class="kv">
         ${Object.entries(ar).map(([k, h]) => `<dt>${AR[k] || k}</dt><dd>${h}</dd>`).join("")}${Object.entries(df).map(([k, h]) => `<dt>${DF[k] || k}</dt><dd>${h}</dd>`).join("")}</dl>` : ""}
-      ${v ? `<h2 id="s-visual">ვიზუალი</h2><dl class="kv"><dt>ფერები</dt><dd>${v.palette.map(([h, n]) => `<span class="chip"><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${h};margin-right:6px"></i>${esc(n)}</span>`).join(" ")}</dd>
-        <dt>მასალა</dt><dd>${esc(v.materials)}</dd><dt>სილუეტი</dt><dd>${esc(v.silhouette)}</dd><dt>ემბლემა</dt><dd>${esc(v.emblem)}</dd><dt>არ ვიყენებთ</dt><dd>${esc(v.avoid)}</dd></dl>` : ""}
-      <h2 id="s-units">იუნიტები</h2>${groups.map(([t, l]) => `<h3>${t} · ${esc(W.tiers[t] || t)}</h3><div class="ugrid">${l.map(u => ucard(u, f)).join("")}</div>`).join("")}
-      ${f.campaign ? `<h2 id="s-campaign">კამპანია</h2><div class="prose">${f.campaign}</div>` : ""}`;
+      ${v ? `<h2 id="s-visual">${t("ვიზუალი", "Visuals")}</h2><dl class="kv"><dt>${t("ფერები", "Colours")}</dt><dd>${v.palette.map(([h, n]) => `<span class="chip"><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${h};margin-right:6px"></i>${esc(n)}</span>`).join(" ")}</dd>
+        <dt>${t("მასალა", "Materials")}</dt><dd>${esc(v.materials)}</dd><dt>${t("სილუეტი", "Silhouette")}</dt><dd>${esc(v.silhouette)}</dd><dt>${t("ემბლემა", "Emblem")}</dt><dd>${esc(v.emblem)}</dd><dt>${t("არ ვიყენებთ", "Never use")}</dt><dd>${esc(v.avoid)}</dd></dl>` : ""}
+      <h2 id="s-units">${t("იუნიტები", "Units")}</h2>${groups.map(([x, l]) => `<h3>${x} · ${esc(W.tiers[x] || x)}</h3><div class="ugrid">${l.map(u => ucard(u, f)).join("")}</div>`).join("")}
+      ${f.campaign ? `<h2 id="s-campaign">${t("კამპანია", "Campaign")}</h2><div class="prose">${f.campaign}</div>` : ""}`;
   }
   function ucard(u, f) {
-    return `<a class="ucard" href="#u-${u.id}"><span class="pic" style="${pic(u, f)}"><span>${u.tier} · ${u.cost ?? "—"} მარჩ.</span></span><b>${esc(u.name)}</b><small>${esc((W.roles[u.role] || {}).name || "")}</small></a>`;
+    return `<a class="ucard" href="#u-${u.id}"><span class="pic" style="${pic(u, f)}"><span>${u.tier} · ${u.cost ?? "—"} ${t("მარჩ.", "mch.")}</span></span><b>${esc(u.name)}</b><small>${esc((W.roles[u.role] || {}).name || "")}</small></a>`;
   }
   function unit(u) {
-    const f = F[u.f], r = W.roles[u.role] || {}, S = ["მოძ", "სრ", "ხჩ", "ჯავ", "სიც", "ნებ"];
-    const wt = u.weapons.length ? `<div class="scroll"><table class="wtable"><thead><tr><th>იარაღი</th><th>სახე</th><th>მან</th><th>შ</th><th>ძ</th><th>ზ</th><th>ნიშნები</th></tr></thead><tbody>
-      ${u.weapons.map(w => `<tr><td>${esc(w.name)}</td><td>${w.mode === "ranged" ? "სასროლი" : "ხელჩართული"}</td><td>${w.mode === "ranged" ? w.range + "″" : "—"}</td><td>${w.attacks}</td><td>${w.power}</td><td>${w.damage}</td><td>${esc((w.tagl || w.tags || []).join(", "))}</td></tr>`).join("")}</tbody></table></div>` : "";
+    const f = F[u.f], r = W.roles[u.role] || {}, S = LANG === "en" ? ["Mv", "Sh", "Me", "Ar", "Wd", "Nv"] : ["მოძ", "სრ", "ხჩ", "ჯავ", "სიც", "ნებ"];
+    const wt = u.weapons.length ? `<div class="scroll"><table class="wtable"><thead><tr><th>${t("იარაღი", "Weapon")}</th><th>${t("სახე", "Type")}</th><th>${t("მან", "Rng")}</th><th>${t("შ", "A")}</th><th>${t("ძ", "P")}</th><th>${t("ზ", "D")}</th><th>${t("ნიშნები", "Traits")}</th></tr></thead><tbody>
+      ${u.weapons.map(w => `<tr><td>${esc(w.name)}</td><td>${w.mode === "ranged" ? t("სასროლი", "ranged") : t("ხელჩართული", "melee")}</td><td>${w.mode === "ranged" ? w.range + "″" : "—"}</td><td>${w.attacks}</td><td>${w.power}</td><td>${w.damage}</td><td>${esc((w.tagl || w.tags || []).join(", "))}</td></tr>`).join("")}</tbody></table></div>` : "";
     return `<a class="back" href="#f-${f.id}">← ${esc(f.name)}</a>
       <div class="uhead"><div class="uimg" style="${pic(u, f)}">${u.art ? "" : `<span>${esc(u.name)}</span>`}</div><div>
         <p class="eyebrow">${esc(f.name)} · ${u.tier} · ${esc(W.tiers[u.tier] || "")}</p><h1>${esc(u.name)}</h1><p class="alt" lang="${LANG === "en" ? "ka" : "en"}">${esc(u.alt)}</p>
-        <div class="chips"><span class="chip cost">${u.cost ?? "—"} მარჩილი</span>${r.name ? `<span class="chip">${esc(r.icon || "")} ${esc(r.name)}</span>` : ""}
-          ${u.size > 1 ? `<span class="chip">ზომა ${u.size}</span>` : ""}${u.card ? `<span class="chip">„სამი ხაზი“: ${u.card.cost} მარაგი · ⚔ ${u.card.atk} · ⛨ ${u.card.hp}</span>` : ""}</div>
-        <div class="stats" role="table" aria-label="მაჩვენებლები">${u.st.map((v, i) => `<div role="cell"><small>${S[i]}</small><b>${v}</b></div>`).join("")}</div>
+        <div class="chips"><span class="chip cost">${u.cost ?? "—"} ${t("მარჩილი", "marchili")}</span>${r.name ? `<span class="chip">${esc(r.icon || "")} ${esc(r.name)}</span>` : ""}
+          ${u.size > 1 ? `<span class="chip">${t("ზომა", "Size")} ${u.size}</span>` : ""}${u.card ? `<span class="chip">${t("„სამი ხაზი“", "Three Lines")}: ${u.card.cost} ${t("მარაგი", "supply")} · ⚔ ${u.card.atk} · ⛨ ${u.card.hp}</span>` : ""}</div>
+        <div class="stats" role="table" aria-label="${t("მაჩვენებლები", "Stats")}">${u.st.map((v, i) => `<div role="cell"><small>${S[i]}</small><b>${v}</b></div>`).join("")}</div>
         ${r.does ? `<p class="note">${esc(r.does)}</p>` : ""}
       </div></div>
-      ${u.desc ? `<h2>აღწერა</h2><div class="prose">${u.desc}</div>` : ""}
-      ${wt ? `<h2>იარაღი</h2>${wt}` : ""}
-      ${u.abil.length ? `<h2>ძალები</h2><div class="alist">${u.abil.map(([n, t]) => `<div><b>${esc(n)}</b> — ${esc(t)}</div>`).join("")}</div>` : ""}
-      ${u.tags.length ? `<h2>ნიშნები</h2><div class="alist">${u.tags.map(([id, n, t]) => `<div><b>${esc(n)}</b>${t ? " — " + esc(t) : ""}</div>`).join("")}</div>` : ""}
-      ${u.visual ? `<h2>ვიზუალი მხატვრისთვის</h2><p class="note">${esc(u.visual)}</p>` : ""}`;
+      ${u.desc ? `<h2>${t("აღწერა", "Description")}</h2><div class="prose">${u.desc}</div>` : ""}
+      ${wt ? `<h2>${t("იარაღი", "Weapons")}</h2>${wt}` : ""}
+      ${u.abil.length ? `<h2>${t("ძალები", "Abilities")}</h2><div class="alist">${u.abil.map(([n, x]) => `<div><b>${esc(n)}</b> — ${esc(x)}</div>`).join("")}</div>` : ""}
+      ${u.tags.length ? `<h2>${t("ნიშნები", "Traits")}</h2><div class="alist">${u.tags.map(([id, n, x]) => `<div><b>${esc(n)}</b>${x ? " — " + esc(x) : ""}</div>`).join("")}</div>` : ""}
+      ${u.visual ? `<h2>${t("ვიზუალი მხატვრისთვის", "Notes for the artist")}</h2><p class="note">${esc(u.visual)}</p>` : ""}`;
   }
-  function lore(l) { return `<a class="back" href="#home">← მთავარი</a><p class="eyebrow">ლორი</p><h1>${esc(l.title)}</h1><div class="prose">${l.html}</div>`; }
+  function lore(l) { return `<a class="back" href="#home">← ${t("მთავარი", "Home")}</a><p class="eyebrow">${t("ლორი", "Lore")}</p><h1>${esc(l.title)}</h1><div class="prose">${l.html}</div>`; }
 
   let pendingJump = null;
   function route() {
     const h = location.hash.slice(1) || "home";
-    let html = home(), title = "ქვესკნელის ფრონტის ვიკი";
+    let html = home(), title = "";
     if (h.startsWith("f-") && F[h.slice(2)]) { html = faction(F[h.slice(2)]); title = F[h.slice(2)].name; }
     else if (h.startsWith("u-") && U[h.slice(2)]) { html = unit(U[h.slice(2)]); title = U[h.slice(2)].name; }
     else if (h.startsWith("l-")) { const l = W.lore.find(x => x.id === h.slice(2)); if (l) { html = lore(l); title = l.title; } }
     $("main").innerHTML = html;
-    document.title = title === "ქვესკნელის ფრონტის ვიკი" ? title : `${title} · ქვესკნელის ფრონტის ვიკი`;
+    document.title = title ? `${title} · ${SITE()}` : SITE();
     if (pendingJump) { const el = document.getElementById("s-" + pendingJump); pendingJump = null; if (el) { el.scrollIntoView(); return; } }
     window.scrollTo(0, 0);
   }
@@ -244,14 +265,14 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
     ev.preventDefault(); const el = document.getElementById("s-" + a.dataset.jump); if (el) el.scrollIntoView({ behavior: "smooth" });
   });
 
-  // ძიება: იუნიტები და ფრაქციები სახელით
+  // ძიება: იუნიტები და ფრაქციები სახელით (ორივე ენაზე)
   const q = $("q"), res = $("results");
   q.addEventListener("input", () => {
     const s = q.value.trim().toLowerCase();
     if (s.length < 2) { res.hidden = true; return; }
-    const fs = W.factions.filter(f => (f.ka + " " + f.en).toLowerCase().includes(s)).slice(0, 5).map(f => `<a href="#f-${f.id}">${esc(f.name)}<small>ფრაქცია</small></a>`);
+    const fs = W.factions.filter(f => (f.ka + " " + f.en).toLowerCase().includes(s)).slice(0, 5).map(f => `<a href="#f-${f.id}">${esc(f.name)}<small>${t("ფრაქცია", "faction")}</small></a>`);
     const us = W.units.filter(u => (u.ka + " " + u.en).toLowerCase().includes(s)).slice(0, 15).map(u => `<a href="#u-${u.id}">${esc(u.name)}<small>${esc(F[u.f].name)} · ${u.tier}</small></a>`);
-    res.innerHTML = fs.concat(us).join("") || `<a href="#home">ვერაფერი მოიძებნა<small>სცადე სხვა სიტყვა</small></a>`;
+    res.innerHTML = fs.concat(us).join("") || `<a href="#home">${t("ვერაფერი მოიძებნა", "Nothing found")}<small>${t("სცადე სხვა სიტყვა", "Try another word")}</small></a>`;
     res.hidden = false;
   });
   res.addEventListener("click", () => { res.hidden = true; q.value = ""; });

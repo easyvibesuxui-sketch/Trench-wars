@@ -179,6 +179,13 @@ def main():
     from build_names_en import missing as en_missing
     for kind, key in en_missing():
         errors.append(f"names_en.json: აკლია ინგლისური სახელი — {kind} {key}")
+    from i18n_en import status as en_status
+    rep, orphans = en_status()
+    stale = sum(r["stale"] for r in rep.values())
+    if stale:
+        warnings.append(f"text_en: {stale} ინგლისური თარგმანი მოძველდა (ქართული წყარო შეიცვალა) — tools/i18n_en.py status")
+    if orphans:
+        warnings.append(f"text_en: {len(orphans)} თარგმანს წყარო აღარ აქვს: {', '.join(orphans[:5])}")
 
     for w in warnings:
         print("⚠️ ", w)
