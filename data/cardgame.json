@@ -539,7 +539,7 @@
    "kw": [
     "healer"
    ],
-   "art": "ekimbashi.jpg",
+   "art": null,
    "palette": [
     "#5b6670",
     "#d9c27a",
@@ -1610,11 +1610,11 @@
    "kw": [
     "leader"
    ],
-   "art": "ring_leader.jpg",
+   "art": null,
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1631,9 +1631,9 @@
    ],
    "art": "ring_regulars.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1648,9 +1648,9 @@
    "kw": [],
    "art": "ring_thugs.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1665,9 +1665,9 @@
    "kw": [],
    "art": "interpreters.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1685,9 +1685,9 @@
    ],
    "art": "tribute_veterans.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1704,9 +1704,9 @@
    ],
    "art": "furrow_sappers.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1723,9 +1723,9 @@
    ],
    "art": "field_sisters.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1744,9 +1744,9 @@
    ],
    "art": "tribute_heavies.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1763,9 +1763,9 @@
    ],
    "art": "ring_train.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
@@ -1783,9 +1783,9 @@
    ],
    "art": "ring_giant.jpg",
    "palette": [
-    "#8b7d5a",
+    "#4a5a6a",
     "#c8913e",
-    "#4a5a6a"
+    "#a8987a"
    ]
   },
   {
