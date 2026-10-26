@@ -63,7 +63,7 @@ def main():
     out += ["⚠️ არცერთ სცენარში მშვიდობიანი მოსახლეობა მიზანი არ არის: სოფლები ცარიელია, ურმები — ორთქლის მანქანები.", ""]
     (ROOT / "rules" / "scenarios.md").write_text("\n".join(out), encoding="utf-8")
     # HTML
-    secs = [f'''<section class="page cover"><p class="muted">ამბრის ღარი · სცენარების ნაკრები · სატესტო ვერსია</p><h1>ექვსი ბრძოლა ნეიტრალურ ზოლში</h1>
+    secs = [f'''<section class="page cover"><p class="muted">ქვესკნელის ფრონტი · სცენარების ნაკრები · სატესტო ვერსია</p><h1>ექვსი ბრძოლა ნეიტრალურ ზოლში</h1>
 <p class="lead">უნივერსალური სცენარები ნებისმიერი ფრაქციისთვის: გარღვევა, ღამის რეიდი, სიმაგრის დაცვა, ესკორტი, ურჩხულზე ნადირობა და ორი ალიანსი.</p>
 <div class="box">{md(d["pick"])}</div><p class="small muted">წესები: მოკლე წესები (kit.pdf), ნეიტრალური ზოლის ცხრილები, ნიშნების ლექსიკონი (cards-all.pdf).</p></section>''']
     for i, sc in enumerate(d["scenarios"], 1):
@@ -72,7 +72,7 @@ def main():
 <p class="small"><b>მოთამაშეები:</b> {e(sc["players"])} · <b>ბიუჯეტი:</b> {e(sc["budget"])} · <b>მაგიდა:</b> {e(sc["table"])} · <b>რაუნდები:</b> {sc["rounds"]} ·
 <b>ზონა:</b> {e(sc["zone"])}</p>{map_html(sc)}<div class="cols small"><h3>მომზადება</h3>{li(sc["setup"])}<h3>გამარჯვება</h3>{li(sc["victory"])}
 <h3>სპეციალური წესები</h3>{li(sc["special"])}</div></section>''')
-    (ROOT / "playtest" / "scenarios.html").write_text(P.doc("ამბრის ღარის სცენარები", "".join(secs)), encoding="utf-8")
+    (ROOT / "playtest" / "scenarios.html").write_text(P.doc("ქვესკნელის ფრონტის სცენარები", "".join(secs)), encoding="utf-8")
     print(f"rules/scenarios.md · playtest/scenarios.html: {len(d['scenarios'])} სცენარი")
 
 
