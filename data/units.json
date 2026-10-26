@@ -2123,7 +2123,7 @@
   {
    "id": "rebel_chief",
    "faction": "harness",
-   "name": "ამბოხის ბელადი",
+   "name": "ურჩთუხუცესი",
    "tier": "II",
    "size": 1,
    "move": 6,
@@ -2162,7 +2162,7 @@
   {
    "id": "blood_priests",
    "faction": "harness",
-   "name": "სისხლის ქურუმები",
+   "name": "სისხლისმწდეველნი",
    "tier": "II",
    "size": 1,
    "move": 6,
@@ -2585,7 +2585,7 @@
   {
    "id": "listeners_leader",
    "faction": "listeners",
-   "name": "დიდი მსმენელი",
+   "name": "ყურისთუხუცესი",
    "tier": "II",
    "size": 1,
    "move": 6,
@@ -3240,7 +3240,7 @@
   {
    "id": "kajeti_leader",
    "faction": "kajeti",
-   "name": "ქაჯთა ოსტატი",
+   "name": "გრდემლისმთავარი",
    "tier": "II",
    "size": 1,
    "move": 5,
@@ -4566,7 +4566,7 @@
   {
    "id": "hellenic_regulars",
    "faction": "hellenic",
-   "name": "რიგითები",
+   "name": "ბრინჯაოს მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -4606,7 +4606,7 @@
   {
    "id": "hellenic_thugs",
    "faction": "hellenic",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ნავსადგურის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -4723,7 +4723,7 @@
   {
    "id": "northern_regulars",
    "faction": "northern",
-   "name": "რიგითები",
+   "name": "ფიორდის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -4763,7 +4763,7 @@
   {
    "id": "northern_thugs",
    "faction": "northern",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ზამთრის მეცულეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -4872,7 +4872,7 @@
   {
    "id": "celtic_regulars",
    "faction": "celtic",
-   "name": "რიგითები",
+   "name": "ტორფის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -4912,7 +4912,7 @@
   {
    "id": "celtic_thugs",
    "faction": "celtic",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "კლდის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -5016,7 +5016,7 @@
   {
    "id": "finnish_regulars",
    "faction": "finnish",
-   "name": "რიგითები",
+   "name": "ტყის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -5056,7 +5056,7 @@
   {
    "id": "finnish_thugs",
    "faction": "finnish",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "თოვლის დანოსნები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -5160,7 +5160,7 @@
   {
    "id": "britain_regulars",
    "faction": "britain",
-   "name": "რიგითები",
+   "name": "ჭაობის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -5200,7 +5200,7 @@
   {
    "id": "britain_thugs",
    "faction": "britain",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ლერწმის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -5305,7 +5305,7 @@
   {
    "id": "gaul_regulars",
    "faction": "gaul",
-   "name": "რიგითები",
+   "name": "ელვის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -5345,7 +5345,7 @@
   {
    "id": "gaul_thugs",
    "faction": "gaul",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ხიდის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -5420,7 +5420,7 @@
   {
    "id": "italy_regulars",
    "faction": "italy",
-   "name": "რიგითები",
+   "name": "ვულკანის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -5460,7 +5460,7 @@
   {
    "id": "italy_thugs",
    "faction": "italy",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "გამოქვაბულის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -5564,7 +5564,7 @@
   {
    "id": "polianitsy_regulars",
    "faction": "polianitsy",
-   "name": "რიგითები",
+   "name": "ზამთრის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -5604,7 +5604,7 @@
   {
    "id": "polianitsy_thugs",
    "faction": "polianitsy",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ყინვის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -5719,7 +5719,7 @@
   {
    "id": "armenian_regulars",
    "faction": "armenian",
-   "name": "რიგითები",
+   "name": "მთიანეთის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -5759,7 +5759,7 @@
   {
    "id": "armenian_thugs",
    "faction": "armenian",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ქვის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -5873,7 +5873,7 @@
   {
    "id": "oghuz_regulars",
    "faction": "oghuz",
-   "name": "რიგითები",
+   "name": "სტეპის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -5913,7 +5913,7 @@
   {
    "id": "oghuz_thugs",
    "faction": "oghuz",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ჭის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -6028,7 +6028,7 @@
   {
    "id": "nile_regulars",
    "faction": "nile",
-   "name": "რიგითები",
+   "name": "მზის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -6068,7 +6068,7 @@
   {
    "id": "nile_thugs",
    "faction": "nile",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ნავმისადგომის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -6225,7 +6225,7 @@
   {
    "id": "yellow_river_regulars",
    "faction": "yellow_river",
-   "name": "რიგითები",
+   "name": "არხის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -6265,7 +6265,7 @@
   {
    "id": "yellow_river_thugs",
    "faction": "yellow_river",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ჯებირის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -6421,7 +6421,7 @@
   {
    "id": "japan_isles_regulars",
    "faction": "japan_isles",
-   "name": "რიგითები",
+   "name": "კუნძულების ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -6461,7 +6461,7 @@
   {
    "id": "japan_isles_thugs",
    "faction": "japan_isles",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ატმის სოფლის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -6609,7 +6609,7 @@
   {
    "id": "indian_regulars",
    "faction": "indian",
-   "name": "რიგითები",
+   "name": "ფარნის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -6649,7 +6649,7 @@
   {
    "id": "indian_thugs",
    "faction": "indian",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ღამის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -6795,7 +6795,7 @@
   {
    "id": "west_african_regulars",
    "faction": "west_african",
-   "name": "რიგითები",
+   "name": "ქსელის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -6835,7 +6835,7 @@
   {
    "id": "west_african_thugs",
    "faction": "west_african",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "მანგროს მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -6972,7 +6972,7 @@
   {
    "id": "north_american_regulars",
    "faction": "north_american",
-   "name": "რიგითები",
+   "name": "რკინიგზის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -7012,7 +7012,7 @@
   {
    "id": "north_american_thugs",
    "faction": "north_american",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ტყის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -7158,7 +7158,7 @@
   {
    "id": "mexica_regulars",
    "faction": "mexica",
-   "name": "რიგითები",
+   "name": "ახალი ცეცხლის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -7198,7 +7198,7 @@
   {
    "id": "mexica_thugs",
    "faction": "mexica",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ობსიდიანის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -7335,7 +7335,7 @@
   {
    "id": "amazon_regulars",
    "faction": "amazon",
-   "name": "რიგითები",
+   "name": "მდინარის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -7375,7 +7375,7 @@
   {
    "id": "amazon_thugs",
    "faction": "amazon",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "მაჩეტეს მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -7530,7 +7530,7 @@
   {
    "id": "andes_regulars",
    "faction": "andes",
-   "name": "რიგითები",
+   "name": "ტერასის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -7570,7 +7570,7 @@
   {
    "id": "andes_thugs",
    "faction": "andes",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "შურდულის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -7707,7 +7707,7 @@
   {
    "id": "caribbean_regulars",
    "faction": "caribbean",
-   "name": "რიგითები",
+   "name": "ნაპირის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -7747,7 +7747,7 @@
   {
    "id": "caribbean_thugs",
    "faction": "caribbean",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "რიფის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -7894,7 +7894,7 @@
   {
    "id": "oceania_regulars",
    "faction": "oceania",
-   "name": "რიგითები",
+   "name": "ატოლის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -7934,7 +7934,7 @@
   {
    "id": "oceania_thugs",
    "faction": "oceania",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ნავის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -8090,7 +8090,7 @@
   {
    "id": "central_african_regulars",
    "faction": "central_african",
-   "name": "რიგითები",
+   "name": "ტყის ბილიკის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -8130,7 +8130,7 @@
   {
    "id": "central_african_thugs",
    "faction": "central_african",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ლიანის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -8264,7 +8264,7 @@
   {
    "id": "southern_african_regulars",
    "faction": "southern_african",
-   "name": "რიგითები",
+   "name": "ქედის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -8304,7 +8304,7 @@
   {
    "id": "southern_african_thugs",
    "faction": "southern_african",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "მთის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -8440,7 +8440,7 @@
   {
    "id": "great_lakes_regulars",
    "faction": "great_lakes",
-   "name": "რიგითები",
+   "name": "ტბის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -8480,7 +8480,7 @@
   {
    "id": "great_lakes_thugs",
    "faction": "great_lakes",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ორმოს მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -8615,7 +8615,7 @@
   {
    "id": "north_african_regulars",
    "faction": "north_african",
-   "name": "რიგითები",
+   "name": "ოაზისის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -8655,7 +8655,7 @@
   {
    "id": "north_african_thugs",
    "faction": "north_african",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "დიუნის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -8807,7 +8807,7 @@
   {
    "id": "central_asian_regulars",
    "faction": "central_asian",
-   "name": "რიგითები",
+   "name": "უღელტეხილის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -8847,7 +8847,7 @@
   {
    "id": "central_asian_thugs",
    "faction": "central_asian",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ქარვასლის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -9002,7 +9002,7 @@
   {
    "id": "gulf_regulars",
    "faction": "gulf",
-   "name": "რიგითები",
+   "name": "დაუს ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -9042,7 +9042,7 @@
   {
    "id": "gulf_thugs",
    "faction": "gulf",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ღუზის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -22582,7 +22582,7 @@
   {
    "id": "sea_islands_regulars",
    "faction": "sea_islands",
-   "name": "რიგითები",
+   "name": "გონგის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -22622,7 +22622,7 @@
   {
    "id": "sea_islands_thugs",
    "faction": "sea_islands",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ბანკას მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -23251,7 +23251,7 @@
   {
    "id": "korea_regulars",
    "faction": "korea",
-   "name": "რიგითები",
+   "name": "მთის სოფლის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -23291,7 +23291,7 @@
   {
    "id": "korea_thugs",
    "faction": "korea",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ხანძრის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -23917,7 +23917,7 @@
   {
    "id": "mongolia_regulars",
    "faction": "mongolia",
-   "name": "რიგითები",
+   "name": "გობის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -23957,7 +23957,7 @@
   {
    "id": "mongolia_thugs",
    "faction": "mongolia",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ურტუს მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -24583,7 +24583,7 @@
   {
    "id": "arctic_regulars",
    "faction": "arctic",
-   "name": "რიგითები",
+   "name": "ყინულის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -24623,7 +24623,7 @@
   {
    "id": "arctic_thugs",
    "faction": "arctic",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ყინულის წერაქვოსნები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -25257,7 +25257,7 @@
   {
    "id": "siberia_regulars",
    "faction": "siberia",
-   "name": "რიგითები",
+   "name": "ტაიგის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -25297,7 +25297,7 @@
   {
    "id": "siberia_thugs",
    "faction": "siberia",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ლარიქსის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -25912,7 +25912,7 @@
   {
    "id": "balkans_regulars",
    "faction": "balkans",
-   "name": "რიგითები",
+   "name": "ხეობის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -25952,7 +25952,7 @@
   {
    "id": "balkans_thugs",
    "faction": "balkans",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "სეტყვის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -26578,7 +26578,7 @@
   {
    "id": "pyrenean_regulars",
    "faction": "pyrenean",
-   "name": "რიგითები",
+   "name": "მაღაროს ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -26618,7 +26618,7 @@
   {
    "id": "pyrenean_thugs",
    "faction": "pyrenean",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "წერაქვის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -27250,7 +27250,7 @@
   {
    "id": "alps_regulars",
    "faction": "alps",
-   "name": "რიგითები",
+   "name": "მყინვარის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -27290,7 +27290,7 @@
   {
    "id": "alps_thugs",
    "faction": "alps",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ზვავის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -27926,7 +27926,7 @@
   {
    "id": "baltic_regulars",
    "faction": "baltic",
-   "name": "რიგითები",
+   "name": "ქარვის მწკრივი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -27966,7 +27966,7 @@
   {
    "id": "baltic_thugs",
    "faction": "baltic",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ნაპირის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -28579,7 +28579,7 @@
   {
    "id": "australia_regulars",
    "faction": "australia",
-   "name": "რიგითები",
+   "name": "ხანძრის ხაზის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -28619,7 +28619,7 @@
   {
    "id": "australia_thugs",
    "faction": "australia",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ველის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -29262,7 +29262,7 @@
   {
    "id": "prussia_regulars",
    "faction": "prussia",
-   "name": "რიგითები",
+   "name": "ლანდვერი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -29302,7 +29302,7 @@
   {
    "id": "prussia_thugs",
    "faction": "prussia",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "შახტის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -29957,7 +29957,7 @@
   {
    "id": "batavi_regulars",
    "faction": "batavi",
-   "name": "რიგითები",
+   "name": "პოლდერის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -29997,7 +29997,7 @@
   {
    "id": "batavi_thugs",
    "faction": "batavi",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "არხის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -30649,7 +30649,7 @@
   {
    "id": "lechia_regulars",
    "faction": "lechia",
-   "name": "რიგითები",
+   "name": "მარილის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -30689,7 +30689,7 @@
   {
    "id": "lechia_thugs",
    "faction": "lechia",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ნაჯახის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -31341,7 +31341,7 @@
   {
    "id": "byzantium_regulars",
    "faction": "byzantium",
-   "name": "რიგითები",
+   "name": "კედლის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -31381,7 +31381,7 @@
   {
    "id": "byzantium_thugs",
    "faction": "byzantium",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "სრუტის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
@@ -32033,7 +32033,7 @@
   {
    "id": "ottoman_regulars",
    "faction": "ottoman",
-   "name": "რიგითები",
+   "name": "ქალაქის ლაშქარი",
    "tier": "I",
    "size": 1,
    "move": 5,
@@ -32073,7 +32073,7 @@
   {
    "id": "ottoman_thugs",
    "faction": "ottoman",
-   "name": "სანგრის მოჩხუბრები",
+   "name": "ზემჰერის მეკეტეები",
    "tier": "I",
    "size": 1,
    "move": 6,
