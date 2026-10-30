@@ -2075,7 +2075,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "automaton_phalanx.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -2094,7 +2094,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "hellenic_regulars.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -2111,7 +2111,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "hellenic_thugs.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -2130,7 +2130,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "cyclops_gunners.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -2150,7 +2150,7 @@
     "hunter",
     "anti_air"
    ],
-   "art": null,
+   "art": "jotun_hunters.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -2169,7 +2169,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "northern_regulars.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -2186,7 +2186,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "northern_thugs.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -2203,7 +2203,7 @@
    "atk": 6,
    "hp": 5,
    "kw": [],
-   "art": null,
+   "art": "tyr_onehands.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -2224,7 +2224,7 @@
     "anti_air",
     "scout"
    ],
-   "art": null,
+   "art": "lugh_marksmen.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -2243,7 +2243,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "celtic_regulars.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -2260,7 +2260,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "celtic_thugs.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -2280,7 +2280,7 @@
     "healer",
     "digger"
    ],
-   "art": null,
+   "art": "goibniu_smiths.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -2299,7 +2299,7 @@
    "kw": [
     "fearless"
    ],
-   "art": null,
+   "art": "ilmarinen_forged.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -2318,7 +2318,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "finnish_regulars.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -2335,7 +2335,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "finnish_thugs.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -2352,7 +2352,7 @@
    "atk": 2,
    "hp": 1,
    "kw": [],
-   "art": null,
+   "art": "vainamoinen_singers.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -2371,7 +2371,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "beowulf_heirs.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -2390,7 +2390,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "britain_regulars.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -2407,7 +2407,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "britain_thugs.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -2427,7 +2427,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "fen_scouts.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -2444,7 +2444,7 @@
    "atk": 5,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "taranis_signallers.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -2463,7 +2463,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "gaul_regulars.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -2480,7 +2480,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "gaul_thugs.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -2499,7 +2499,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "vulcan_gunners.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -2518,7 +2518,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "italy_regulars.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -2535,7 +2535,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "italy_thugs.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -2552,7 +2552,7 @@
    "atk": 7,
    "hp": 6,
    "kw": [],
-   "art": null,
+   "art": "hercules_hammers.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -4387,7 +4387,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "hellenic_leader.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4407,7 +4407,7 @@
     "charge",
     "fearless"
    ],
-   "art": null,
+   "art": "hellenic_grotesque.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4426,7 +4426,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "hellenic_giant.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4445,7 +4445,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "hoplites.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4464,7 +4464,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "island_scouts.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4483,7 +4483,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "peltasts.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4503,7 +4503,7 @@
     "hunter",
     "fire"
    ],
-   "art": null,
+   "art": "hydra_cutters.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4523,7 +4523,7 @@
     "healer",
     "digger"
    ],
-   "art": null,
+   "art": "hephaestus_mechanics.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4543,7 +4543,7 @@
     "anti_air",
     "long"
    ],
-   "art": null,
+   "art": "aeolus_gunners.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4562,7 +4562,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "lens_carriage.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4582,7 +4582,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "storm_wall.jpg",
    "palette": [
     "#e8e2d0",
     "#2a4f7a",
@@ -4601,7 +4601,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "northern_leader.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4620,7 +4620,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "northern_grotesque.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4639,7 +4639,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "northern_giant.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4658,7 +4658,7 @@
    "kw": [
     "fearless"
    ],
-   "art": null,
+   "art": "varangians.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4677,7 +4677,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "ski_scouts.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4696,7 +4696,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "fjord_riflemen.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4715,7 +4715,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "serpent_harpooners.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4734,7 +4734,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "chain_smiths.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4751,7 +4751,7 @@
    "atk": 3,
    "hp": 4,
    "kw": [],
-   "art": null,
+   "art": "horn_keepers.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4770,7 +4770,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "thunder_sledge.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4790,7 +4790,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "bridge_keep.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -4809,7 +4809,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "celtic_leader.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4828,7 +4828,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "nuada_silverhands.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4845,7 +4845,7 @@
    "atk": 5,
    "hp": 4,
    "kw": [],
-   "art": null,
+   "art": "curragh_raiders.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4865,7 +4865,7 @@
     "healer",
     "long"
    ],
-   "art": null,
+   "art": "celtic_grotesque.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4884,7 +4884,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "celtic_giant.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4903,7 +4903,7 @@
    "kw": [
     "fearless"
    ],
-   "art": null,
+   "art": "gallowglass.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4922,7 +4922,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "bog_trackers.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4941,7 +4941,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "cliff_riflemen.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4960,7 +4960,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "well_keepers.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4979,7 +4979,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "sling_carriage.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -4999,7 +4999,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "ringfort_walker.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -5018,7 +5018,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "finnish_leader.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5037,7 +5037,7 @@
    "kw": [
     "charge"
    ],
-   "art": null,
+   "art": "finnish_grotesque.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5057,7 +5057,7 @@
     "giant",
     "fly"
    ],
-   "art": null,
+   "art": "finnish_giant.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5076,7 +5076,7 @@
    "kw": [
     "charge"
    ],
-   "art": null,
+   "art": "hakkapeliitta.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5095,7 +5095,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "ski_patrol.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5114,7 +5114,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "forest_riflemen.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5134,7 +5134,7 @@
     "healer",
     "digger"
    ],
-   "art": null,
+   "art": "forge_apprentices.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5153,7 +5153,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "river_wardens.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5172,7 +5172,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "sampo_guards.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5191,7 +5191,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "sun_lantern.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5211,7 +5211,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "singing_fortress.jpg",
    "palette": [
     "#e9eef0",
     "#2f4b3a",
@@ -5230,7 +5230,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "britain_leader.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5249,7 +5249,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "britain_grotesque.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5268,7 +5268,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "britain_giant.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5287,7 +5287,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "huscarls.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5306,7 +5306,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "fen_drainers.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5326,7 +5326,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "fen_snipers.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5345,7 +5345,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "fen_herbalists.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5365,7 +5365,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "fen_riders.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5382,7 +5382,7 @@
    "atk": 6,
    "hp": 5,
    "kw": [],
-   "art": null,
+   "art": "mere_divers.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5402,7 +5402,7 @@
     "charge",
     "fearless"
    ],
-   "art": null,
+   "art": "iron_diver.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5422,7 +5422,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "heorot_hall.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -5441,7 +5441,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "gaul_leader.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5460,7 +5460,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "belenos_shields.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5479,7 +5479,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "tarasque_breakers.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5498,7 +5498,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "gaul_grotesque.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5517,7 +5517,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "gaul_giant.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5537,7 +5537,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "cuirassiers.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5556,7 +5556,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "river_watch.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5575,7 +5575,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "voltigeurs.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5595,7 +5595,7 @@
     "suppress",
     "long"
    ],
-   "art": null,
+   "art": "bridge_gunners.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5614,7 +5614,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "belenos_healers.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5634,7 +5634,7 @@
     "hunter",
     "long"
    ],
-   "art": null,
+   "art": "tarasque_lance.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5654,7 +5654,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "bridge_fortress.jpg",
    "palette": [
     "#4a6a9a",
     "#a33a2a",
@@ -5673,7 +5673,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "italy_leader.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5692,7 +5692,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "italy_grotesque.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5711,7 +5711,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "italy_giant.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5732,7 +5732,7 @@
     "long",
     "fearless"
    ],
-   "art": null,
+   "art": "praetorians.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5751,7 +5751,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "cave_scouts.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5768,7 +5768,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "arditi.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5788,7 +5788,7 @@
     "healer",
     "digger"
    ],
-   "art": null,
+   "art": "vulcan_smiths.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5807,7 +5807,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "cacus_hunters.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5827,7 +5827,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "bersaglieri.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5846,7 +5846,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "vulcan_ballista.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -5866,7 +5866,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "castrum_walker.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
