@@ -136,7 +136,7 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
   const U = Object.fromEntries(W.units.map(u => [u.id, u]));
   const byF = {}; W.units.forEach(u => (byF[u.f] = byF[u.f] || []).push(u));
   const TIER_ORDER = ["I", "II", "III", "IV", "IV+", "V", "hero"];
-  // KA/EN: სახელები ორ ენაზე (აღწერები და ლორი — მხოლოდ ქართულად)
+  // KA/EN: სახელები და ტექსტები ორ ენაზე (ტექსტები: data/text_en/, ველები *_en)
   const EN = W.en, KA_TIERS = { ...W.tiers }, KA_ROLES = Object.fromEntries(Object.entries(W.roles).map(([k, r]) => [k, [r.name, r.does]]));
   const KA_DIR = { medium: W.visual.medium, not_tc: W.visual.not_tc };
   W.factions.forEach(f => { f.ka = f.name; f.en = EN.factions[f.id] || f.name; });

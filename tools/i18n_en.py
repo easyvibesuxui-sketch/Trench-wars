@@ -70,9 +70,9 @@ def sources():
             if v.get(k):
                 out[f"fvis:{fid}:{k}"] = ("visuals", v[k])
         out[f"fvis:{fid}:palette"] = ("visuals", " | ".join(n for _, n in v["palette"]))
-    for uid, v in X["vis"]["units"].items():
-        if v:
-            out[f"vis:{uid}"] = ("visuals", v)
+    # იუნიტების ვიზუალი შაბლონით აიწყობა (build_visuals.brief_en) — ითარგმნება მხოლოდ TC შენიშვნები
+    for uid, v in X["vis"]["tc_notes"].items():
+        out[f"tc:{uid}"] = ("visuals", v)
     return out
 
 

@@ -40,6 +40,51 @@ W_LOOK = {"fire": "ცეცხლსაფრქვევი", "suppress": "ტ
           "demolition": "ასაფეთქებელი", "indirect": "ნაღმმტყორცნი", "anti_giant": "გოლიათის საწინააღმდეგო იარაღი"}
 
 
+# ინგლისური ვერსია (KA/EN გადამრთველისთვის) — იგივე შაბლონი; იარაღი names_en.json-იდან, ფერები და TC შენიშვნა data/text_en/-იდან
+SCALE_EN = {"I": "human-sized", "II": "human-sized, with a distinctive headdress or cloak", "III": "massive, armoured (~1.2×)",
+            "IV": "large machine or creature (2–3×)", "IV+": "walking structure", "V": "giant — taller than houses", "hero": "named hero, with a unique face"}
+POSE_EN = {
+    "command": "stands in front, pointing, with a flag or signal horn", "line": "in a rank, rifle on the shoulder or bayonet forward",
+    "assault": "running, crouched, melee weapon raised", "marksman": "kneeling, taking aim", "sniper": "lying prone, camouflaged, with a scope",
+    "scout": "lightly equipped, crouching, with field glasses", "heavy_weapons": "two-man crew — heavy weapon on a mount", "artillery": "gun or mortar with crew",
+    "engineer": "shovel/spanner, tools on the back", "support": "satchel, vials or instrument, back toward teammates",
+    "disruptor": "in shadow, face covered, a secret object in hand", "heavy_infantry": "wide stance, shield or plates forward",
+    "cavalry": "mounted (horse or the faction's war beast), charging", "flyer": "airborne, wings or a steam engine", "hunter": "big weapon pointed up — aimed at a giant or monster",
+    "armor": "machine/living tank, driver or herder nearby", "monster": "a monster, in its myth's own form", "giant": "a giant, soldiers at its feet for scale",
+}
+TAG_LOOK_EN = {
+    "gas_mask": "gas mask", "steam": "steam boiler/pipes", "shield": "shield", "shield_wall": "large shield", "fly": "wings", "cavalry": "rider",
+    "engineer": "tools", "digger": "shovel", "tunnel": "miner's lamp", "scout": "light kit", "infiltrate": "camouflage",
+    "climber": "hook and rope", "giant_hunter": "harpoon or big rifle", "monster_hunter": "traps and ropes", "anti_air": "barrel pointed upward",
+    "trench_breaker": "wire cutters", "construct": "forged/mechanical body", "automaton": "automaton joints", "healer": "bandages and vials",
+    "alchemist": "flasks", "artillery": "cannon", "fire_guard": "fire helmet and hose", "song": "musical instrument", "orders": "signal flag",
+    "river": "boat or waterproof clothing", "landing": "boat ramp", "winter_born": "fur", "ice_runner": "skates/skis", "mountain": "mountain gear",
+    "messenger": "satchel and horn", "rail": "rail wheels", "beacon": "lantern/signal fire", "torch": "torch", "regen": "self-healing hide",
+    "repair": "spanner", "night_sight": "night goggles", "huge": "large silhouette", "leader": "rank badge",
+}
+W_LOOK_EN = {"fire": "flamethrower", "suppress": "machine gun", "lightning": "lightning coil", "poison": "poison vials", "chain": "chain", "volley": "volley rifle",
+             "demolition": "explosives", "indirect": "mortar", "anti_giant": "anti-giant weapon"}
+
+
+def _looks(u, tags, wlook):
+    looks = [tags[t] for t in u["tags"] if t in tags and t not in ("huge", "leader")]
+    looks += [wlook[t] for w in u["weapons"] for t in w["tags"] if t in wlook]
+    return list(dict.fromkeys(looks))
+
+
+def brief_en(u, wnames, palette, tc_note=None):
+    """ინგლისური ვიზუალური აღწერა. wnames: {ქართული იარაღი: English}; palette: ინგლისური ფერების სია; tc_note: ნათარგმნი TC შენიშვნა."""
+    looks = _looks(u, TAG_LOOK_EN, W_LOOK_EN)
+    weapons = ", ".join(wnames.get(w["name"], w["name"]) for w in u["weapons"]) or "—"
+    parts = [SCALE_EN.get(u["tier"], ""), POSE_EN.get(u.get("role"), ""), f"weapons: {weapons}"]
+    if looks:
+        parts.append("marks: " + ", ".join(looks[:5]))
+    parts.append("colours: " + ", ".join(palette))
+    if tc_note:
+        parts.append("⚠️ Difference from TC: " + tc_note)
+    return " · ".join(p for p in parts if p)
+
+
 def brief(u, f):
     if u.get("visual"):
         return u["visual"]

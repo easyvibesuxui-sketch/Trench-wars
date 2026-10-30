@@ -1,5 +1,5 @@
 {
- "_comment": "ინგლისური სახელები (KA/EN გადამრთველისთვის). აღწერები და ლორი ჯერ მხოლოდ ქართულადაა. სისრულე: tools/build_names_en.py; სახელების წესები: docs/naming.md.",
+ "_comment": "ინგლისური სახელები (KA/EN გადამრთველისთვის). აღწერები და ლორი — data/text_en/ (tools/i18n_en.py). სისრულე: tools/build_names_en.py; სახელების წესები: docs/naming.md.",
  "factions": {
   "colchis": "Colchis",
   "iberia": "Iberia",

@@ -136,7 +136,10 @@ def extract():
 def attach_en(W):
     """ინგლისური ტექსტები (data/text_en/) — ველები *_en; რაც არ არის თარგმნილი, ქართულად რჩება."""
     from i18n_en import en_texts, split2
+    from build_visuals import brief_en
     T = en_texts()
+    RAW = {u["id"]: u for u in json.loads((ROOT / "data/units.json").read_text(encoding="utf-8"))["units"]}
+    WN = json.loads((ROOT / "data/names_en.json").read_text(encoding="utf-8"))["weapons"]
     two = lambda k: split2(T[k]) if k in T else None
     W["en"]["rules"] = {"tags": {k[4:]: v for k, v in T.items() if k.startswith("tag:")},
                         "roles": {k[5:]: v for k, v in T.items() if k.startswith("role:")},
@@ -148,8 +151,11 @@ def attach_en(W):
             ab = [two(f"abil:{u['id']}#{i}") or a for i, a in enumerate(u["abil"])]
             if ab != u["abil"]:
                 u["abil_en"] = [list(x) for x in ab]
-        if f"vis:{u['id']}" in T:
-            u["visual_en"] = T[f"vis:{u['id']}"]
+        if u["visual"]:
+            raw = RAW[u["id"]]
+            pal = T.get(f"fvis:{raw['faction']}:palette")
+            if pal:
+                u["visual_en"] = brief_en(raw, WN, pal.split(" | "), T.get(f"tc:{u['id']}"))
     for f in W["factions"]:
         fid = f["id"]
         if f"flore:{fid}" in T:
