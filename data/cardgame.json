@@ -2571,7 +2571,7 @@
    "kw": [
     "charge"
    ],
-   "art": null,
+   "art": "polianitsa.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -2590,7 +2590,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "polianitsy_regulars.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -2607,7 +2607,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "polianitsy_thugs.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -2627,7 +2627,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "winter_scouts.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -2647,7 +2647,7 @@
     "hunter",
     "fire"
    ],
-   "art": null,
+   "art": "vahagn_slayers.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -2666,7 +2666,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "armenian_regulars.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -2683,7 +2683,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "armenian_thugs.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -2702,7 +2702,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "aralez_keepers.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -2723,7 +2723,7 @@
     "anti_air",
     "long"
    ],
-   "art": null,
+   "art": "basat_hunters.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -2742,7 +2742,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "oghuz_regulars.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -2759,7 +2759,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "oghuz_thugs.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -2779,7 +2779,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "koroglu_riders.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -5885,7 +5885,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "polianitsy_leader.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -5904,7 +5904,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "polianitsy_grotesque.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -5923,7 +5923,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "polianitsy_giant.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -5942,7 +5942,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "frost_riflemen.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -5962,7 +5962,7 @@
     "hunter",
     "fire"
    ],
-   "art": null,
+   "art": "zmei_slayers.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -5982,7 +5982,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "young_polianitsy.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -6001,7 +6001,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "living_water_bearers.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -6021,7 +6021,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "needle_seekers.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -6040,7 +6040,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "bogatyr_druzhina.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -6059,7 +6059,7 @@
    "kw": [
     "fire"
    ],
-   "art": null,
+   "art": "sun_stove.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -6079,7 +6079,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "winter_citadel.jpg",
    "palette": [
     "#b23a2a",
     "#e9e2cf",
@@ -6098,7 +6098,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "armenian_leader.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6117,7 +6117,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "armenian_grotesque.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6136,7 +6136,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "armenian_giant.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6155,7 +6155,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "lake_watchers.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6174,7 +6174,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "highland_riflemen.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6193,7 +6193,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "stone_carvers.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6213,7 +6213,7 @@
     "anti_air",
     "long"
    ],
-   "art": null,
+   "art": "cloud_gunners.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6232,7 +6232,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "tork_shieldbearers.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6252,7 +6252,7 @@
     "hunter",
     "fire"
    ],
-   "art": null,
+   "art": "vahagn_guard.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6271,7 +6271,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "cloud_mortar.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6291,7 +6291,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "mountain_fortress.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -6310,7 +6310,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "oghuz_leader.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6330,7 +6330,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "oghuz_grotesque.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6350,7 +6350,7 @@
     "giant",
     "fly"
    ],
-   "art": null,
+   "art": "oghuz_giant.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6369,7 +6369,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "well_watchers.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6389,7 +6389,7 @@
     "scout",
     "charge"
    ],
-   "art": null,
+   "art": "steppe_outriders.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6408,7 +6408,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "steppe_healers.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6425,7 +6425,7 @@
    "atk": 3,
    "hp": 4,
    "kw": [],
-   "art": null,
+   "art": "ozan_bards.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6445,7 +6445,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "korogly_guard.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6464,7 +6464,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "div_breakers.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6484,7 +6484,7 @@
     "hunter",
     "long"
    ],
-   "art": null,
+   "art": "basat_bow.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
@@ -6504,7 +6504,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "tent_citadel.jpg",
    "palette": [
     "#c9a24a",
     "#3a6a8a",
