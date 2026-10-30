@@ -7219,7 +7219,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "baltic_leader.jpg",
    "palette": [
     "#c9a23a",
     "#2a4a5a",
@@ -7409,7 +7409,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "bog_wardens.jpg",
    "palette": [
     "#c9a23a",
     "#2a4a5a",
@@ -7426,7 +7426,7 @@
    "atk": 3,
    "hp": 4,
    "kw": [],
-   "art": null,
+   "art": "daina_singers.jpg",
    "palette": [
     "#c9a23a",
     "#2a4a5a",
@@ -7446,7 +7446,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "amber_lancers.jpg",
    "palette": [
     "#c9a23a",
     "#2a4a5a",
@@ -7504,7 +7504,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "prussia_leader.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7523,7 +7523,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "prussia_regulars.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7540,7 +7540,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "prussia_thugs.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7560,7 +7560,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "blue_dragoons.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7579,7 +7579,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "harz_miners.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7599,7 +7599,7 @@
     "healer",
     "digger"
    ],
-   "art": null,
+   "art": "wieland_smiths.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7618,7 +7618,7 @@
    "kw": [
     "suppress"
    ],
-   "art": null,
+   "art": "prussia_grotesque.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7639,7 +7639,7 @@
     "fly",
     "fearless"
    ],
-   "art": null,
+   "art": "prussia_giant.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7658,7 +7658,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "grenadiers.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7678,7 +7678,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "jaegers.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7697,7 +7697,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "field_surgeons.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7716,7 +7716,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "shaft_guard.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7735,7 +7735,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "lindwurm_hunters.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7755,7 +7755,7 @@
     "fly",
     "long"
    ],
-   "art": null,
+   "art": "observation_airship.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7775,7 +7775,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "shaft_tower_fortress.jpg",
    "palette": [
     "#3a5a8a",
     "#c0c4c8",
@@ -7794,7 +7794,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "batavi_leader.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7813,7 +7813,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "batavi_regulars.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7830,7 +7830,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "batavi_thugs.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7849,7 +7849,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "dike_wardens.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7869,7 +7869,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "skate_riflemen.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7888,7 +7888,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "klabauter_crews.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7907,7 +7907,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "batavi_grotesque.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7927,7 +7927,7 @@
     "giant",
     "fearless"
    ],
-   "art": null,
+   "art": "batavi_giant.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7946,7 +7946,7 @@
    "kw": [
     "charge"
    ],
-   "art": null,
+   "art": "batavian_riders.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7965,7 +7965,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "polder_nurses.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -7984,7 +7984,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "pump_engineers.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -8003,7 +8003,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "sluice_guard.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -8020,7 +8020,7 @@
    "atk": 6,
    "hp": 5,
    "kw": [],
-   "art": null,
+   "art": "fog_cutters.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -8040,7 +8040,7 @@
     "suppress",
     "long"
    ],
-   "art": null,
+   "art": "canal_monitor.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -8060,7 +8060,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "polder_fortress.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -8079,7 +8079,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "lechia_leader.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8098,7 +8098,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "lechia_regulars.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8115,7 +8115,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "lechia_thugs.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8135,7 +8135,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "winged_hussars.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8154,7 +8154,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "salt_miners.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8173,7 +8173,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "skuba_trappers.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8192,7 +8192,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "lechia_grotesque.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8213,7 +8213,7 @@
     "charge",
     "fearless"
    ],
-   "art": null,
+   "art": "lechia_giant.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8232,7 +8232,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "shore_scouts.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8251,7 +8251,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "salt_healers.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8270,7 +8270,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "utopiec_hunters.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8290,7 +8290,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "uhlans.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8309,7 +8309,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "salt_mine_shields.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8328,7 +8328,7 @@
    "kw": [
     "charge"
    ],
-   "art": null,
+   "art": "sulfur_ram.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8348,7 +8348,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "krak_hill_fortress.jpg",
    "palette": [
     "#a83a2a",
     "#e9e2cf",
@@ -8367,7 +8367,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "byzantium_leader.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8386,7 +8386,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "byzantium_regulars.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8403,7 +8403,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "byzantium_thugs.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8422,7 +8422,7 @@
    "kw": [
     "fire"
    ],
-   "art": null,
+   "art": "fire_siphoneers.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8442,7 +8442,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "kataphraktoi.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8462,7 +8462,7 @@
     "shield",
     "long"
    ],
-   "art": null,
+   "art": "wall_guards.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8479,7 +8479,7 @@
    "atk": 4,
    "hp": 11,
    "kw": [],
-   "art": null,
+   "art": "byzantium_grotesque.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8500,7 +8500,7 @@
     "fire",
     "fearless"
    ],
-   "art": null,
+   "art": "byzantium_giant.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8519,7 +8519,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "harbor_lookouts.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8538,7 +8538,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "akritai.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8557,7 +8557,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "harbor_physicians.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8576,7 +8576,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "chain_engineers.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8596,7 +8596,7 @@
     "shield",
     "fearless"
    ],
-   "art": null,
+   "art": "chain_tower_guard.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8615,7 +8615,7 @@
    "kw": [
     "fire"
    ],
-   "art": null,
+   "art": "siphon_boat.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8635,7 +8635,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "chain_tower.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8654,7 +8654,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "ottoman_leader.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8673,7 +8673,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "ottoman_regulars.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8690,7 +8690,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "ottoman_thugs.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8726,7 +8726,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "tulumbaci.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8765,7 +8765,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "ottoman_grotesque.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8786,7 +8786,7 @@
     "fire",
     "fearless"
    ],
-   "art": null,
+   "art": "ottoman_giant.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8806,7 +8806,7 @@
     "suppress",
     "long"
    ],
-   "art": null,
+   "art": "janissaries.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8826,7 +8826,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "sipahis.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8864,7 +8864,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "city_physicians.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8885,7 +8885,7 @@
     "shield",
     "long"
    ],
-   "art": null,
+   "art": "bastion_gunners.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8925,7 +8925,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "city_wall_walker.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
