@@ -240,7 +240,7 @@
           <div class="panel"><h3>დაქირავება ხაზინიდან</h3>
             <div class="form-row"><select id="recruitSel" aria-label="იუნიტი">${recruitable.map(u => `<option value="${u.id}">${esc(u.name)} — ${B.unitCost(u)}${u.allied ? " (მოკავშირე)" : ""}</option>`).join("")}</select>
             <button type="button" class="primary" id="recruitBtn">დაქირავება</button></div></div>
-          <div class="panel"><h3>${cur}ს დახარჯვა</h3>
+          <div class="panel"><h3>დახარჯვა: ${cur}</h3>
             ${(SHOP[side] || []).map(([k, t, c]) => `<div class="form-row"><span>${t} — <b>${c}</b> ${cur}</span>
               ${["renown", "rank", "devi_blood", "new_lock", "plate"].includes(k) ? `<select id="shop-${k}" aria-label="მოდელი">${active.filter(m => m.status !== "captured").map(m => `<option value="${m.uid}">${esc(m.name)}</option>`).join("")}</select>` : ""}
               <button type="button" data-shop="${k}" data-price="${c}" ${camp.currency < c ? "disabled" : ""}>ყიდვა</button></div>`).join("")}

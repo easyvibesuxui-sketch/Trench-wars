@@ -1,5 +1,6 @@
 // ყველა ფრაქციის ავტომატური ტესტი: ძირითადი 4 + ყველა მოკავშირე
 // გაშვება: NODE_PATH=$(npm root -g) node tools/test_builder.js   (საჭიროა playwright და chromium)
+//          TW_LANG=en ... — იგივე ტესტი ინგლისურ რეჟიმში; მოსალოდნელი სახელები გვერდის (უკვე გადართული) მონაცემებიდან მოდის
 const { chromium } = require('playwright');
 const path = require('path');
 const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
@@ -10,7 +11,10 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   if (process.env.TW_LANG) await p.addInitScript(l => { try { localStorage.setItem("tw-lang", l); } catch (e) {} }, process.env.TW_LANG);
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(PAGE); await p.waitForTimeout(400);
-  const D = await p.evaluate(() => ({ factions: window.TW_DATA.factions, allies: window.TW_DATA.allies, units: window.TW_DATA.units }));
+  const D = await p.evaluate(() => ({ factions: window.TW_DATA.factions, allies: window.TW_DATA.allies, units: window.TW_DATA.units,
+    scenarios: window.TW_DATA.scenarios, nml: window.TW_DATA.nml, tags: (window.TW_DATA.en || {}).tags || {} }));
+  const EN = process.env.TW_LANG === 'en', L = (ka, en) => (EN ? en : ka);  // ინტერფეისის ფრაზა მიმდინარე ენაზე
+  const unitName = id => D.units.find(u => u.id === id).name;
   const fails = [];
   const D2 = await p.evaluate(() => ({ campaigns: window.TW_DATA.campaigns || {} }));
   for (const f of [...Object.keys(D.factions), ...Object.keys(D.allies)]) {
@@ -54,7 +58,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
     await p.click('#scenario');
     if (!await clickAdd(v.id)) fails.push(`${f}: გოლიათი სცენარით ვერ დაემატა`);
     c = await checks();
-    const bad = c.filter(x => x.startsWith('bad') && !x.includes('ბიუჯეტი'));
+    const bad = c.filter(x => x.startsWith('bad') && !x.includes(L('ბიუჯეტი', 'Budget')));
     if (bad.length) fails.push(`${f}: სცენარის რაზმი: ${bad.join('; ')}`);
     // დაქირავების სექცია: მხოლოდ კოლხეთსა და იბერიაში
     const hasAllies = !!(await p.$('#catalog section.allies'));
@@ -99,7 +103,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   await clickAdd('eristavi'); await clickAdd('lashkari');
   await p.selectOption('#printScenario', '0'); await p.click('#printBtn');
   const pv = await p.$eval('#printView', v => v.textContent);
-  if (!await p.evaluate(() => window.__printed) || !pv.includes('ერისთავი') || !pv.includes('გარღვევა') || !pv.includes('მწკრივი'))
+  if (!await p.evaluate(() => window.__printed) || !pv.includes(unitName('eristavi')) || !pv.includes(D.scenarios[0].name) || !pv.includes(L('მწკრივი', D.tags.line)))
     fails.push('ბეჭდვის გვერდი არასრულია');
   // ალიანსი: პრუსია + კოლხეთი + ოსმალები; კონტინგენტი 30%, ფასნამატის გარეშე, პარტნიორის ლიდერი არ ჩანს
   await p.selectOption('#allySel', 'prussia'); await p.click('#clearBtn'); await p.selectOption('#budget', '500');
@@ -116,12 +120,12 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   let added = 0; while (await clickAdd('janissaries')) added++;
   if (added * jan.cost > 150 || (added < 6 && (added + 1) * jan.cost <= 150)) fails.push(`ალიანსის ლიმიტი (150) არ მუშაობს: ${added} იანიჩარი`);
   let ac = await checks();
-  if (!ac.some(x => x.startsWith('good') && x.includes('ალიანსი'))) fails.push('ალიანსის შემოწმება არ ჩანს');
+  if (!ac.some(x => x.startsWith('good') && x.includes(L('ალიანსი', 'Alliance')))) fails.push('ალიანსის შემოწმება არ ჩანს');
   await p.click('#copyBtn');
-  if (!(await p.$eval('#exportBox', x => x.value)).includes('ალიანსი: კოლხეთი')) fails.push('ექსპორტში ალიანსი არ ჩანს');
+  if (!(await p.$eval('#exportBox', x => x.value)).includes(`${L('ალიანსი', 'Alliance')}: ${D.factions.colchis}`)) fails.push('ექსპორტში ალიანსი არ ჩანს');
   // ალიანსის დაშლა პარტნიორის იუნიტებს რაზმიდან აშორებს
   await p.selectOption('#allianceB', '');
-  if ((await p.$$eval('#roster li', l => l.map(x => x.textContent).join('|'))).includes('იანიჩრები')) fails.push('ალიანსის დაშლის შემდეგ იანიჩრები რაზმში დარჩა');
+  if ((await p.$$eval('#roster li', l => l.map(x => x.textContent).join('|'))).includes(unitName('janissaries'))) fails.push('ალიანსის დაშლის შემდეგ იანიჩრები რაზმში დარჩა');
   // ბნელი ალიანსი: ლეგიონები + დიდი უღელი
   await p.click('[data-f="hell"]'); await p.click('#clearBtn');
   const hellOpts = await p.$$eval('#allianceA option', o => o.map(x => x.value));
@@ -129,7 +133,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   await p.selectOption('#allianceA', 'harness');
   if (!await p.$('#catalog section.alliance')) fails.push('ბნელი ალიანსის კონტინგენტი არ ჩანს');
   ac = await checks();
-  if (!ac.some(x => x.includes('შიდა ომი'))) fails.push('ბნელ ალიანსს შიდა ომის წესი არ აქვს');
+  if (!ac.some(x => x.includes(L('შიდა ომი', 'Infighting')))) fails.push('ბნელ ალიანსს შიდა ომის წესი არ აქვს');
   // კამპანია მოკავშირე ფრაქციით
   await p.selectOption('#allySel', 'gulf'); await p.click('#clearBtn');
   await clickAdd('gulf_leader'); await clickAdd('pearl_divers');
@@ -140,7 +144,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   const startBtn = await p.$('#campaignView button');
   if (startBtn) { await startBtn.click(); await p.waitForTimeout(200); }
   const campHead = await p.$eval('#campaignView', v => v.textContent.slice(0, 200));
-  if (!campHead.includes('ყურისა')) fails.push('კამპანიაში მოკავშირე ფრაქციის სახელი არ ჩანს: ' + campHead.slice(0, 80));
+  if (!campHead.includes(D.allies.gulf)) fails.push('კამპანიაში მოკავშირე ფრაქციის სახელი არ ჩანს: ' + campHead.slice(0, 80));
   // ბაზა: ბლინდაჟის აშენება ლიმიტს ზრდის და ხაზინას ამცირებს
   const capBefore = await p.$eval('#campaignView .base .sub', x => x.textContent);
   const dug = await p.$('#campaignView [data-build="dugout"]');
@@ -160,7 +164,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   // უნივერსალური სცენარი კამპანიის ჟურნალში
   await p.selectOption('#bStory', 'u4'); await p.selectOption('#bResult', 'draw');
   await p.click('#battleForm button[type="submit"]'); await p.waitForTimeout(200);
-  if (!(await p.$eval('#campaignView', v => v.textContent)).includes('ურჩხულზე ნადირობა')) fails.push('უნივერსალური სცენარი ჟურნალში არ ჩაიწერა');
+  if (!(await p.$eval('#campaignView', v => v.textContent)).includes(D.scenarios[4].name)) fails.push('უნივერსალური სცენარი ჟურნალში არ ჩაიწერა');
   // ნეიტრალური ზოლი: დაზვერვა ჩაიწერება და ლიმიტს ამცირებს
   const zones = await p.$$eval('#raidZone option', o => o.length);
   if (zones < 8) fails.push(`ნეიტრალური ზოლის ზონები არ ჩანს (${zones})`);
@@ -169,12 +173,23 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   else {
     await p.selectOption('#raidZone', 'burned_villages'); await p.click('#raidBtn'); await p.waitForTimeout(150);
     const raids = await p.$$eval('#campaignView .raids li', l => l.map(x => x.textContent));
-    if (raids.length !== 1 || !raids[0].includes('დამწვარი სოფლები')) fails.push('დაზვერვა ჟურნალში არ ჩაიწერა');
+    if (raids.length !== 1 || !raids[0].includes(D.nml.zones.find(z => z.id === 'burned_villages').name)) fails.push('დაზვერვა ჟურნალში არ ჩაიწერა');
     const left = await p.$eval('#campaignView .nml .sub b', x => x.textContent);
     if (left !== '1') fails.push(`დაზვერვის ლიმიტი არ შემცირდა (${left})`);
   }
   // ტელეფონის სიგანე
+  // EN რეჟიმში გვერდზე ქართული აღარ უნდა დარჩეს (გარდა „ქარ“ ღილაკისა)
+  if (EN) {
+    await p.click('#tabBuild'); await p.click('[data-f="colchis"]'); await p.waitForTimeout(150);
+    for (const view of ['build', 'campaign']) {
+      if (view === 'campaign') { await p.click('#tabCampaign'); await p.waitForTimeout(150); }
+      const ge = (await p.evaluate(() => document.body.innerText)).match(/[\u10D0-\u10FF]+/g) || [];
+      const left = ge.filter(w => w !== 'ქარ');
+      if (left.length) fails.push(`EN (${view}): ქართული ტექსტი დარჩა: ${[...new Set(left)].slice(0, 8).join(' ')}`);
+    }
+  }
   const m = await b.newPage({ viewport: { width: 390, height: 800 } });
+  if (process.env.TW_LANG) await m.addInitScript(l => { try { localStorage.setItem("tw-lang", l); } catch (e) {} }, process.env.TW_LANG);
   await m.goto(PAGE); await m.waitForTimeout(300);
   if (await m.evaluate(() => document.documentElement.scrollWidth > innerWidth)) fails.push('ტელეფონზე ჰორიზონტალური გადახვევა');
   console.log(`ფრაქციები: ${all.length} · ჩავარდნები: ${fails.length} · JS შეცდომები: ${errs.length}`);
