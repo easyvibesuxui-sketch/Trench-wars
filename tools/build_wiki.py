@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ვიკი: ყველა მონაცემი და ტექსტი → wiki/data.js (+ wiki/art/ ილუსტრაციების მსუბუქი ასლები). გვერდი — wiki/index.html.
+"""ვიკი: ყველა მონაცემი და ტექსტი → wiki/data.js (+ wiki/sheets/ — ილუსტრაციები ფრაქციის სპრაიტ-ფურცლებად). გვერდი — wiki/index.html.
 
 წყაროები: data/units.json, data/costs.json, data/abilities.json, data/roles.json, data/economy.json, data/visuals.json,
 data/cardgame.json, lore/*.md (ფრაქციები, მოკავშირეები, ცალკე ომები, ამბები), units/*.md (იუნიტების აღწერა), campaigns/*.md,
@@ -190,14 +190,37 @@ def main():
     X = extract()
     data, costs, abil, roles, econ, vis, cg, names, tagname = (X[k] for k in ("data", "costs", "abil", "roles", "econ", "vis", "cg", "names", "tagname"))
     fac_md, wars, stories, udesc, camps = X["fac_md"], X["wars"], X["stories"], X["udesc"], X["camps"]
-    art_dir = OUT / "art"
+    # ილუსტრაციები ფრაქციის სპრაიტ-ფურცლებად (wiki/sheets/<fid>.jpg): არტიფაქტს 511 ფაილის ლიმიტი აქვს
+    art_dir, sheet_dir = OUT / "art", OUT / "sheets"
     art_dir.mkdir(parents=True, exist_ok=True)
-    arts = set()
-    for p in (ROOT / "assets/art").glob("*.jpg"):
-        dst = art_dir / p.name
-        if not dst.exists() or dst.stat().st_mtime < p.stat().st_mtime:
-            Image.open(p).convert("RGB").resize((480, 720), Image.LANCZOS).save(dst, quality=78, optimize=True)
-        arts.add(p.stem)
+    sheet_dir.mkdir(parents=True, exist_ok=True)
+    back = ROOT / "assets/art/card_back.jpg"
+    if back.exists():
+        Image.open(back).convert("RGB").resize((480, 720), Image.LANCZOS).save(art_dir / "card_back.jpg", quality=78, optimize=True)
+    for p in art_dir.glob("*.jpg"):
+        if p.name != "card_back.jpg":
+            p.unlink()
+    src = {p.stem: p for p in (ROOT / "assets/art").glob("*.jpg")}
+    arts, pos = set(), {}
+    TW, TH = 400, 600
+    for fid in names:
+        ids = [u["id"] for u in data["units"] if u["faction"] == fid and u["id"] in src]
+        if not ids:
+            continue
+        cols = min(len(ids), 6)
+        rows = -(-len(ids) // cols)
+        dst = sheet_dir / f"{fid}.jpg"
+        for i, uid in enumerate(ids):
+            pos[uid] = {"s": f"sheets/{fid}.jpg", "x": i % cols, "y": i // cols, "c": cols, "r": rows}
+            arts.add(uid)
+        if not dst.exists() or any(src[i].stat().st_mtime > dst.stat().st_mtime for i in ids):
+            sheet = Image.new("RGB", (cols * TW, rows * TH), "#e9e2cf")
+            for i, uid in enumerate(ids):
+                sheet.paste(Image.open(src[uid]).convert("RGB").resize((TW, TH), Image.LANCZOS), ((i % cols) * TW, (i // cols) * TH))
+            sheet.save(dst, quality=80, optimize=True)
+    for p in sheet_dir.glob("*.jpg"):
+        if p.stem not in names:
+            p.unlink()
 
     side = lambda f: "light" if f in LIGHT_CORE or f in data["allies"] else "dark"
     W = {"factions": [], "units": [], "lore": [], "tiers": TIER_NAME,
@@ -213,8 +236,8 @@ def main():
             "stories": md(stories[fid]) if stories.get(fid) else "",
             "campaign": md(camps[fid]) if fid in camps else "",
             "arch": {k: md(v) for k, v in arch.items()}, "defense": {k: md(v) for k, v in dfn.items() if isinstance(v, str)},
-            "visual": vis["factions"].get(fid), "art": f"art/{next((u['id'] for u in data['units'] if u['faction'] == fid and u['id'] in arts), '')}.jpg"
-                      if any(u["faction"] == fid and u["id"] in arts for u in data["units"]) else None,
+            "visual": vis["factions"].get(fid),
+            "art": next((pos[u["id"]] for u in data["units"] if u["faction"] == fid and u["id"] in arts), None),
         })
     for u in data["units"]:
         c = cg.get(u["id"])
@@ -223,7 +246,7 @@ def main():
             "st": [u["move"], u["shoot"], u["melee"], u["armor"], u["wounds"], u["nerve"]], "cost": costs.get(u["id"], u.get("cost")),
             "role": u.get("role"), "weapons": u["weapons"], "tags": [[t, tagname.get(t, t), abil["tags"].get(t, "")] for t in u["tags"]],
             "abil": abil["units"].get(u["id"], []), "desc": md(udesc[u["id"]]) if u["id"] in udesc else "",
-            "visual": vis["units"].get(u["id"], ""), "art": f"art/{u['id']}.jpg" if u["id"] in arts else None,
+            "visual": vis["units"].get(u["id"], ""), "art": pos.get(u["id"]),
             "card": {"cost": c["cost"], "atk": c["atk"], "hp": c["hp"]} if c else None,
         })
     for key, (title, body) in X["lore_pages"].items():

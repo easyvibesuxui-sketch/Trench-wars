@@ -60,7 +60,7 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
 .ftile { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px; background: var(--sheet);
   border: 1px solid var(--rule); border-radius: 6px; color: var(--ink); text-decoration: none; }
 .ftile:hover { border-color: var(--bronze); }
-.ftile .thumb { width: 56px; height: 72px; border-radius: 3px; background-size: cover; background-position: center 20%; }
+.ftile .thumb { width: 56px; height: 84px; border-radius: 3px; background-size: cover; background-position: center 20%; }
 .ftile b { font-family: var(--display); font-weight: 700; line-height: 1.25; display: block; }
 .ftile small { color: var(--muted); font-size: .78rem; }
 .sw { display: flex; height: 6px; border-radius: 2px; overflow: hidden; margin-top: 6px; }
@@ -76,7 +76,8 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
 .toc { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 14px 0 0; font-size: .9rem; }
 .fhead { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 24px; align-items: start; }
 .fhead img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--rule); }
-@media (max-width: 720px) { .fhead { grid-template-columns: 1fr; } .fhead img { max-width: 200px; } }
+.fhead .uimg { width: 100%; padding: 0; }
+@media (max-width: 720px) { .fhead { grid-template-columns: 1fr; } .fhead img, .fhead .uimg { max-width: 200px; } }
 .kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 16px; max-width: 72ch; }
 .kv dt { color: var(--muted); font-size: .88rem; } .kv dd { margin: 0; min-width: 0; }
 .kv dd p { margin: 0; }
@@ -172,11 +173,12 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
   }
   const pal = f => (f.visual && f.visual.palette) || [["#8b7d5a", ""], ["#c8913e", ""], ["#4a5a6a", ""]];
   const swatch = f => `<div class="sw" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>`;
-  const pic = (u, f) => u.art ? `background-image:url(${u.art})` : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
+  const sprite = a => `background-image:url(${a.s});background-size:${a.c * 100}% ${a.r * 100}%;background-position:${a.c > 1 ? a.x / (a.c - 1) * 100 : 0}% ${a.r > 1 ? a.y / (a.r - 1) * 100 : 0}%`;
+  const pic = (u, f) => u.art ? sprite(u.art) : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
   const SITE = () => t("ქვესკნელის ფრონტის ვიკი", "Underfront Wiki");
 
   function ftile(f) {
-    const n = (byF[f.id] || []).length, img = f.art ? `background-image:url(${f.art})` : `background:linear-gradient(160deg, ${pal(f)[0][0]}, ${pal(f)[2][0]})`;
+    const n = (byF[f.id] || []).length, img = pic(f, f);
     return `<a class="ftile" href="#f-${f.id}"><span class="thumb" style="${img}"></span><span><b>${esc(f.name)}</b><small>${n} ${t("იუნიტი", "units")}${f.war ? " · " + esc(f.war.title) : ""}</small>${swatch(f)}</span></a>`;
   }
   function home() {
@@ -213,7 +215,7 @@ h3 { font-size: 1.1rem; margin: 22px 0 8px; }
       <div class="band" aria-hidden="true">${pal(f).map(([h]) => `<i style="background:${h}"></i>`).join("")}</div>
       <div class="fhead"><div><p class="eyebrow"><span class="side ${f.side}">${f.side === "light" ? t("ნათელი მხარე", "Light side") : t("ბნელი მხარე", "Dark side")}</span> ${f.core ? t("· ძირითადი ფრაქცია", "· core faction") : t("· მოკავშირე", "· ally")}</p>
         <h1>${esc(f.name)}</h1><p class="alt" lang="${LANG === "en" ? "ka" : "en"}">${esc(f.alt)}</p><nav class="toc" aria-label="${t("გვერდის ნაწილები", "Page sections")}">${toc.map(([k, n]) => `<a href="#f-${f.id}" data-jump="${k}">${n}</a>`).join("")}</nav></div>
-        ${f.art ? `<img src="${f.art}" alt="${esc(f.name)} — ${t("ილუსტრაცია", "illustration")}" width="480" height="720">` : ""}</div>
+        ${f.art ? `<div class="uimg" role="img" aria-label="${esc(f.name)} — ${t("ილუსტრაცია", "illustration")}" style="${pic(f, f)}"></div>` : ""}</div>
       ${f.lore ? `<h2 id="s-lore">${t("ლორი", "Lore")}</h2><div class="prose">${f.lore}</div>` : ""}
       ${f.war ? `<h2 id="s-war">${t("ცალკე ომი", "Separate war")}: ${esc(f.war.title)}</h2><div class="prose">${f.war.html}</div>` : ""}
       ${f.stories ? `<h2 id="s-stories">${t("ამბები", "Stories")}</h2><div class="prose">${f.stories}</div>` : ""}
