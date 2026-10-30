@@ -8707,7 +8707,7 @@
    "atk": 4,
    "hp": 3,
    "kw": [],
-   "art": null,
+   "art": "mehter_drummers.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8746,7 +8746,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "shadow_players.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8845,7 +8845,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "night_watchmen.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
@@ -8905,7 +8905,7 @@
     "suppress",
     "long"
    ],
-   "art": null,
+   "art": "lantern_crawler.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",
