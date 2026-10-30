@@ -25,8 +25,8 @@ LIGHT_CORE, DARK_CORE = ["colchis", "iberia", "ring"], ["hell", "harness", "kaje
 UNIT_FILES = {"colchis": "colchis.md", "iberia": "iberia.md", "hell": "hell-legions.md", "harness": "grand-harness.md",
               "kajeti": "kajeti.md", "listeners": "listeners.md", "ring": "ring.md"}
 STORY_FILES = {"01-colchis.md": "colchis", "02-iberia.md": "iberia", "03-hell-legions.md": "hell", "04-grand-harness.md": "harness",
-               "09-arctic.md": "arctic", "10-siberia.md": "siberia", "11-balkans.md": "balkans", "12-pyrenean.md": "pyrenean",
-               "13-alps.md": "alps", "14-baltic.md": "baltic", "15-australia.md": "australia"}
+               "11-balkans.md": "balkans", "12-pyrenean.md": "pyrenean",
+               "13-alps.md": "alps", "14-baltic.md": "baltic"}
 LORE_PAGES = ["01-general-lore", "02-chronology", "03-named-battles", "05-characters", "07-gods", "11-sacrifices"]
 TIER_NAME = {"I": "ქვეითი", "II": "ელიტა", "III": "ჯავშნიანი", "IV": "გროტესკული", "IV+": "დიდი გროტესკული", "V": "გოლიათი", "hero": "გმირი"}
 

@@ -1019,69 +1019,9 @@
   "h": "986e4ce41f",
   "en": "The Mainspring\nIn rounds 3 and 6 they have only 1 action per activation (the spring is being wound)."
  },
- "abil:lantern_bearers#0": {
-  "h": "e380cabc8b",
-  "en": "The Lantern\n= Torch; Night-Eye."
- },
- "abil:vikram_blades#0": {
-  "h": "a850dda217",
-  "en": "Oath of Patience\nFearless; immune to Discord, Curses and False Orders."
- },
- "abil:net_weavers#0": {
-  "h": "72f1483205",
-  "en": "Steel Net\nA model hit cannot move on its next activation; Size 3–4 — −3″ Move. One action (folding the net) before it can throw again."
- },
- "abil:mirror_marksmen#0": {
-  "h": "d644ee40c3",
-  "en": "Periscope\nAfter shooting from heavy cover, until their next activation, an extra −1 to shoot at them."
- },
- "abil:storytellers#0": {
-  "h": "3bfd0652b1",
-  "en": "The Tale\nAction: an ally within 6″ that has fallen back returns (retakes the Nerve test), or one model rerolls a failed test."
- },
- "abil:hammer_crew#0": {
-  "h": "29b6e9846a",
-  "en": "John Henry's Song\nOnce per battle: they strike twice with the steam hammer this activation, then take 1 wound."
- },
- "abil:lumberjacks#0": {
-  "h": "a5bf94bdbe",
-  "en": "The Hidebehind\nEnemies attacking them in the forest from ambush or from behind do not get +1 Melee."
- },
- "abil:armored_train_gunners#0": {
-  "h": "fd80d6a487",
-  "en": "The Rails\n= On Rails."
- },
- "abil:fire_runners#0": {
-  "h": "9f6d4328c5",
-  "en": "The Torch\n= Torch; also works against winged creatures."
- },
- "abil:sky_watchers#0": {
-  "h": "3d2cb64fb1",
-  "en": "Watcher of the Sky\nNight-Eye at 24″; once per battle an enemy flyer is revealed before its first activation, and the first shot at it is without the −1."
- },
- "abil:papa_bois_scouts#0": {
-  "h": "57f74379cf",
-  "en": "Forest Paths\nOn a forest map they deploy 6″ further forward."
- },
- "abil:storyteller_telegraphers#0": {
-  "h": "b76e971be1",
-  "en": "The Telegraph\n= Messenger at 12″."
- },
  "abil:urtuu_riders#0": {
   "h": "b0db03008d",
   "en": "Örtöö\n= Messenger, but at 18″."
- },
- "abil:chaski_runners#0": {
-  "h": "7178421b49",
-  "en": "The Message\n= Messenger: if they start within 6″ of the leader and end their move beside an ally, that ally counts as beside the leader this round."
- },
- "abil:khettara_diggers#0": {
-  "h": "9c5fc68f63",
-  "en": "Water\nOnce per battle allies within 6″ regain 1 Wound."
- },
- "abil:agadir_guards#0": {
-  "h": "c7696f9f31",
-  "en": "Guarding the Granary\nWithin 3″ of an objective they automatically pass Fear and Morale tests."
  },
  "abil:gate_wardens#0": {
   "h": "b7c29ed4cb",
@@ -1090,22 +1030,6 @@
  "abil:belenos_shields#0": {
   "h": "f214f49061",
   "en": "Guarding the Bridge\nOn a bridge, a ford or within 3″ of an objective they automatically pass Fear and Morale tests."
- },
- "abil:tlaloc_shields#0": {
-  "h": "77bf9d0178",
-  "en": "Ring of Fire\nWithin 3″ of a torch, bonfire or objective they automatically pass Fear and Morale tests."
- },
- "abil:rostam_heirs#0": {
-  "h": "345c45f2be",
-  "en": "The Tiger-Skin\nThey automatically pass Fear tests against giants and monsters."
- },
- "abil:pearl_divers#0": {
-  "h": "aa0d230fa5",
-  "en": "The Dive\nNo penalty in water; once per battle one round underwater — they cannot be shot."
- },
- "abil:olonkho_singers#0": {
-  "h": "4631f9d94a",
-  "en": "Song of the Epic\n= Song; creatures of the underworld and demons within 6″ get −1 Melee. A singer cannot move while singing (on its own activation)."
  },
  "abil:dokkaebi_bargainers#0": {
   "h": "9e2ca653d4",
@@ -1146,10 +1070,6 @@
  "abil:amber_alchemists#1": {
   "h": "87e5f758c3",
   "en": "Resin Seal\nOnce per battle one objective or wall section is undamageable for one round."
- },
- "abil:drovers#0": {
-  "h": "dd83269e4d",
-  "en": "The Herd's Trail\nOnce per battle, while moving: the strip they cross (2″ wide) is impassable to fire for the rest of the battle."
  },
  "abil:harz_miners#0": {
   "h": "5ea534f579",

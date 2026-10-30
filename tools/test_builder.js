@@ -135,16 +135,16 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   ac = await checks();
   if (!ac.some(x => x.includes(L('შიდა ომი', 'Infighting')))) fails.push('ბნელ ალიანსს შიდა ომის წესი არ აქვს');
   // კამპანია მოკავშირე ფრაქციით
-  await p.selectOption('#allySel', 'gulf'); await p.click('#clearBtn');
-  await clickAdd('gulf_leader'); await clickAdd('pearl_divers');
+  await p.selectOption('#allySel', 'korea'); await p.click('#clearBtn');
+  await clickAdd('korea_leader'); await clickAdd('village_riflemen');
   await p.click('#tabCampaign'); await p.waitForTimeout(200);
   if (await p.$eval('#buildView', v => getComputedStyle(v).display !== 'none')) fails.push('კამპანიის ჩანართზე აწყობის ხედი ისევ ჩანს');
   const brief = await p.$eval('#campaignView', v => v.textContent);
-  if (!brief.includes(D2.campaigns.gulf.title)) fails.push('კამპანიამდე ფრაქციის ომის კამპანია არ ჩანს');
+  if (!brief.includes(D2.campaigns.korea.title)) fails.push('კამპანიამდე ფრაქციის ომის კამპანია არ ჩანს');
   const startBtn = await p.$('#campaignView button');
   if (startBtn) { await startBtn.click(); await p.waitForTimeout(200); }
   const campHead = await p.$eval('#campaignView', v => v.textContent.slice(0, 200));
-  if (!campHead.includes(D.allies.gulf)) fails.push('კამპანიაში მოკავშირე ფრაქციის სახელი არ ჩანს: ' + campHead.slice(0, 80));
+  if (!campHead.includes(D.allies.korea)) fails.push('კამპანიაში მოკავშირე ფრაქციის სახელი არ ჩანს: ' + campHead.slice(0, 80));
   // ბაზა: ბლინდაჟის აშენება ლიმიტს ზრდის და ხაზინას ამცირებს
   const capBefore = await p.$eval('#campaignView .base .sub', x => x.textContent);
   const dug = await p.$('#campaignView [data-build="dugout"]');
@@ -160,7 +160,7 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
   const doneCount = await p.$$eval('#campaignView .scenarios li.done', l => l.length);
   if (doneCount !== 1) fails.push(`მოგებული სცენარი არ აღინიშნა (${doneCount})`);
   const log = await p.$eval('#campaignView', v => v.textContent);
-  if (!log.includes(D2.campaigns.gulf.scenarios[0].name)) fails.push('ჟურნალში სცენარის სახელი არ ჩაიწერა');
+  if (!log.includes(D2.campaigns.korea.scenarios[0].name)) fails.push('ჟურნალში სცენარის სახელი არ ჩაიწერა');
   // უნივერსალური სცენარი კამპანიის ჟურნალში
   await p.selectOption('#bStory', 'u4'); await p.selectOption('#bResult', 'draw');
   await p.click('#battleForm button[type="submit"]'); await p.waitForTimeout(200);
