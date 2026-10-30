@@ -17,7 +17,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 STORE = ROOT / "data" / "text_en"
-GROUPS = ["rules", "units", "factions", "lore", "wars", "stories", "campaigns", "visuals"]
+GROUPS = ["rules", "units", "factions", "lore", "wars", "stories", "campaigns", "visuals", "app"]
+APP_FILES = ["scenarios", "no_mans_land", "equipment"]  # აპების (ბილდერი/თამაშები) მონაცემები: გასაღები app:<ფაილი>:<გზა>
 
 
 def _h(s):
@@ -73,7 +74,36 @@ def sources():
     # იუნიტების ვიზუალი შაბლონით აიწყობა (build_visuals.brief_en) — ითარგმნება მხოლოდ TC შენიშვნები
     for uid, v in X["vis"]["tc_notes"].items():
         out[f"tc:{uid}"] = ("visuals", v)
+    for name in APP_FILES:
+        d = json.loads((ROOT / "data" / f"{name}.json").read_text(encoding="utf-8"))
+        d.pop("_comment", None)
+        for path, v in walk_ka(d):
+            out[f"app:{name}:{path}"] = ("app", v)
     return out
+
+
+def walk_ka(o, p=""):
+    """(გზა, ტექსტი) ყოველი ქართული სტრიქონისთვის — გზა: a.b[0].c"""
+    if isinstance(o, str):
+        if any("\u10d0" <= ch <= "\u10ff" for ch in o):
+            yield p, o
+    elif isinstance(o, dict):
+        for k, v in o.items():
+            yield from walk_ka(v, f"{p}.{k}" if p else k)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            yield from walk_ka(v, f"{p}[{i}]")
+
+
+def en_copy(o, T, prefix, p=""):
+    """o-ს ასლი, სადაც ნათარგმნი სტრიქონები ინგლისურით შეიცვალა (T[prefix + გზა])."""
+    if isinstance(o, str):
+        return T.get(prefix + p, o)
+    if isinstance(o, dict):
+        return {k: en_copy(v, T, prefix, f"{p}.{k}" if p else k) for k, v in o.items()}
+    if isinstance(o, list):
+        return [en_copy(v, T, prefix, f"{p}[{i}]") for i, v in enumerate(o)]
+    return o
 
 
 def load_store():

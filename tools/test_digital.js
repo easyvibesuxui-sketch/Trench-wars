@@ -4,6 +4,8 @@ const path = require("path");
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  // TW_LANG=en — იგივე ტესტი ინგლისურ რეჟიმში (KA/EN გადამრთველი)
+  if (process.env.TW_LANG) await page.addInitScript(l => { try { localStorage.setItem("tw-lang", l); } catch (e) {} }, process.env.TW_LANG);
   const errors = [];
   page.on("pageerror", e => errors.push(e.message));
   await page.goto("file://" + path.resolve(__dirname, "../digital/index.html"));

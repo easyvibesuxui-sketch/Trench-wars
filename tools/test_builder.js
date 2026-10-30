@@ -6,6 +6,8 @@ const PAGE = 'file://' + path.resolve(__dirname, '..', 'builder', 'index.html');
 (async () => {
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
+  // TW_LANG=en — იგივე ტესტი ინგლისურ რეჟიმში (KA/EN გადამრთველი)
+  if (process.env.TW_LANG) await p.addInitScript(l => { try { localStorage.setItem("tw-lang", l); } catch (e) {} }, process.env.TW_LANG);
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(PAGE); await p.waitForTimeout(400);
   const D = await p.evaluate(() => ({ factions: window.TW_DATA.factions, allies: window.TW_DATA.allies, units: window.TW_DATA.units }));

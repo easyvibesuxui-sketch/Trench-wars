@@ -85,17 +85,19 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
 </div>
 
 <script src="data.js"></script>
+<script src="ui-lang.js"></script>
 <script>
 (function () {
   "use strict";
   const D = window.TW_DATA || { units: [], factions: {}, allies: {} };
-  // ქარ/EN: იუნიტებისა და ფრაქციების სახელები (ინტერფეისი — ქართულად). ენის შეცვლა თამაშს თავიდან იწყებს.
+  // ქარ/EN: იუნიტებისა და ფრაქციების სახელები (ინტერფეისი — ui-lang.js). ენის შეცვლა თამაშს თავიდან იწყებს.
   let LANG = "ka";
   try { LANG = localStorage.getItem("tw-lang") === "en" ? "en" : "ka"; } catch (e) {}
   if (LANG === "en" && D.en) {
     D.units.forEach(u => { u.name = D.en.units[u.id] || u.name; (u.weapons || []).forEach(w => { w.name = D.en.weapons[w.name] || w.name; }); });
     ["factions", "allies"].forEach(k => Object.keys(D[k] || {}).forEach(f => { D[k][f] = D.en.factions[f] || D[k][f]; }));
   }
+  if (window.TW_UI) TW_UI.setLang(LANG);
   document.querySelectorAll(".lang button").forEach(b => {
     b.setAttribute("aria-pressed", String(b.dataset.lang === LANG));
     b.addEventListener("click", () => { if (b.dataset.lang === LANG) return; try { localStorage.setItem("tw-lang", b.dataset.lang); } catch (e) {} location.reload(); });

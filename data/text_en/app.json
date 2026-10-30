@@ -1,0 +1,990 @@
+{
+ "app:scenarios:pick": {
+  "h": "f5753a820f",
+  "en": "Choose together or roll d6: 1 — Breakthrough · 2 — Night Raid · 3 — Holding the Fort · 4 — Escort · 5 — Monster Hunt · 6 — Two Alliances. Attacker and defender are decided by d10 (the higher chooses)."
+ },
+ "app:scenarios:scenarios[0].name": {
+  "h": "e614aeb3f1",
+  "en": "Breakthrough"
+ },
+ "app:scenarios:scenarios[0].players": {
+  "h": "d874d1b49b",
+  "en": "2 (attacker and defender)"
+ },
+ "app:scenarios:scenarios[0].budget": {
+  "h": "a10f8d5fa9",
+  "en": "500 each"
+ },
+ "app:scenarios:scenarios[0].zone": {
+  "h": "f308dd741c",
+  "en": "Ambri's Furrow or the Wire Forest"
+ },
+ "app:scenarios:scenarios[0].story": {
+  "h": "202644bfc5",
+  "en": "In the morning fog the artillery preparation is ending. The attacker must break through three trench lines before the reserve arrives."
+ },
+ "app:scenarios:scenarios[0].setup[0]": {
+  "h": "4e57443af0",
+  "en": "The defender places 3 trench lines in their half (6″ each) and 2 barbed-wire entanglements (6″); the attacker — 2 ruins in No Man's Land."
+ },
+ "app:scenarios:scenarios[0].setup[1]": {
+  "h": "dbd4e1ea04",
+  "en": "3 objectives — one in the middle of each trench line."
+ },
+ "app:scenarios:scenarios[0].setup[2]": {
+  "h": "cb2f3c747b",
+  "en": "The defender deploys in their half (12″ from the edge); the attacker — 6″ from their own edge. The defender deploys first."
+ },
+ "app:scenarios:scenarios[0].victory[0]": {
+  "h": "6bc2573a11",
+  "en": "**Attacker:** 3 points for each model that exits via the defender's edge (max. 9); 2 points for each objective they hold at the end (their model within 3″, the enemy's — not)."
+ },
+ "app:scenarios:scenarios[0].victory[1]": {
+  "h": "9d83fad5cc",
+  "en": "**Defender:** 2 points for each objective they hold at the end; 1 point for each fallen attacker of tier II+."
+ },
+ "app:scenarios:scenarios[0].victory[2]": {
+  "h": "01b3fb5a65",
+  "en": "The most points wins."
+ },
+ "app:scenarios:scenarios[0].special[0]": {
+  "h": "a9eea919aa",
+  "en": "**Artillery preparation:** before the first round the attacker picks 3 points in the defender's half: 3″ blast, Power 3 (d10 ≤ 5 — per model)."
+ },
+ "app:scenarios:scenarios[0].special[1]": {
+  "h": "6241be0bdb",
+  "en": "**Reserve:** from round 4 one fallen tier I model returns to the defender from their edge each round."
+ },
+ "app:scenarios:scenarios[0].special[2]": {
+  "h": "89582182c5",
+  "en": "**Suppression:** in this scenario both sides get one free \"light machine gun\"."
+ },
+ "app:scenarios:scenarios[0].map[0].label": {
+  "h": "0102861078",
+  "en": "Defender (12″)"
+ },
+ "app:scenarios:scenarios[0].map[1].label": {
+  "h": "6515b2cf7e",
+  "en": "Attacker (6″)"
+ },
+ "app:scenarios:scenarios[0].map[12].label": {
+  "h": "40968891c0",
+  "en": "↑ exit edge"
+ },
+ "app:scenarios:scenarios[1].name": {
+  "h": "2504e1ed27",
+  "en": "Night Raid"
+ },
+ "app:scenarios:scenarios[1].budget": {
+  "h": "9fd5ba2fbc",
+  "en": "300–500 each"
+ },
+ "app:scenarios:scenarios[1].zone": {
+  "h": "1d6d995793",
+  "en": "Burned Villages or the Field of Bones"
+ },
+ "app:scenarios:scenarios[1].story": {
+  "h": "7112961193",
+  "en": "A moonless night. Both warbands went out into No Man's Land for the same purpose — and did not expect each other."
+ },
+ "app:scenarios:scenarios[1].setup[0]": {
+  "h": "bc703397e9",
+  "en": "4 search markers: 9″ from the table centre, in four directions. 6–8 ruins and trenches spread evenly."
+ },
+ "app:scenarios:scenarios[1].setup[1]": {
+  "h": "4b42e4d6cc",
+  "en": "Deployment — 6″ from your own edge; ambushers last."
+ },
+ "app:scenarios:scenarios[1].victory[0]": {
+  "h": "a70431c331",
+  "en": "1 point for each marker searched; +1 if the searcher is alive at the end."
+ },
+ "app:scenarios:scenarios[1].victory[1]": {
+  "h": "5616e21843",
+  "en": "2 points for each captive brought to your own edge."
+ },
+ "app:scenarios:scenarios[1].victory[2]": {
+  "h": "adeb98d25c",
+  "en": "1 point — the enemy leader fell."
+ },
+ "app:scenarios:scenarios[1].special[0]": {
+  "h": "171a3b6a3c",
+  "en": "**Night:** visibility 12″ (night-eyes — 18″, light — 9″ radius). At the start of each round — the night table (`no-mans-land.md`)."
+ },
+ "app:scenarios:scenarios[1].special[1]": {
+  "h": "c8f87d40a1",
+  "en": "**Captive:** a size-1 model that falls in melee is a captive (marker); a model in contact drags it at half speed. The captive is freed if a model of its side comes into contact and the dragger is not there."
+ },
+ "app:scenarios:scenarios[1].special[2]": {
+  "h": "89d62d7fcc",
+  "en": "**Wandering monster:** by the night table (1) — the zone's monster."
+ },
+ "app:scenarios:scenarios[1].map[0].label": {
+  "h": "f11a6e596f",
+  "en": "Side A"
+ },
+ "app:scenarios:scenarios[1].map[1].label": {
+  "h": "8c03d8ca82",
+  "en": "Side B"
+ },
+ "app:scenarios:scenarios[2].name": {
+  "h": "9232cae8e9",
+  "en": "Holding the Fort"
+ },
+ "app:scenarios:scenarios[2].players": {
+  "h": "d874d1b49b",
+  "en": "2 (attacker and defender)"
+ },
+ "app:scenarios:scenarios[2].budget": {
+  "h": "fa98d0ad01",
+  "en": "attacker 600, defender 450 + fort"
+ },
+ "app:scenarios:scenarios[2].zone": {
+  "h": "f489b10a4c",
+  "en": "The Edge of the Wound or the Sky Wreckage"
+ },
+ "app:scenarios:scenarios[2].story": {
+  "h": "4bfad59ea2",
+  "en": "The fort on the front is small: three walls, one tower, a gate and a ditch. But it blocks the Furrow road — and so today it is everything to both sides."
+ },
+ "app:scenarios:scenarios[2].setup[0]": {
+  "h": "cdebca39cc",
+  "en": "A fort in the middle of the defender's half: 3 stone wall sections (6″ each, Armour 6, 8 Wounds), 1 tower (Armour 6, 10 Wounds), a gate (Armour 5, 6 Wounds) and an earth ditch in front of it (`core-rules.md`, 7b). The faction's look and unique defence rule — `architecture.md`, part 8."
+ },
+ "app:scenarios:scenarios[2].setup[1]": {
+  "h": "7bd9c53ac4",
+  "en": "The fort's courtyard is an objective. The defender deploys in the fort and within 6″ of it; the attacker — 6″ from their own edge."
+ },
+ "app:scenarios:scenarios[2].victory[0]": {
+  "h": "e3072eb618",
+  "en": "**The attacker wins** if at the end their model is in the courtyard and the defender's is not, or if the tower and 2 wall sections are destroyed."
+ },
+ "app:scenarios:scenarios[2].victory[1]": {
+  "h": "d5cd53e04f",
+  "en": "**The defender wins** in any other case."
+ },
+ "app:scenarios:scenarios[2].special[0]": {
+  "h": "580cdf8cdc",
+  "en": "**Ladders:** a size-1 attacker climbs a stone wall with its whole move; d10 ≤ 3 → it falls (1 Wound). Climbers have no penalty."
+ },
+ "app:scenarios:scenarios[2].special[1]": {
+  "h": "f4658dbe85",
+  "en": "**Wall or trench:** blast, armour-break and demolition deal double damage to a wall; giants — triple."
+ },
+ "app:scenarios:scenarios[2].special[2]": {
+  "h": "c009fd9720",
+  "en": "**Engineers:** a defender's engineer restores 1 Wound to a wall with an action."
+ },
+ "app:scenarios:scenarios[2].map[0].label": {
+  "h": "6515b2cf7e",
+  "en": "Attacker (6″)"
+ },
+ "app:scenarios:scenarios[2].map[5].label": {
+  "h": "a8f8790275",
+  "en": "Gate"
+ },
+ "app:scenarios:scenarios[2].map[8].label": {
+  "h": "ace2697c91",
+  "en": "Tower"
+ },
+ "app:scenarios:scenarios[2].map[9].label": {
+  "h": "f4c521b8b6",
+  "en": "Courtyard"
+ },
+ "app:scenarios:scenarios[3].name": {
+  "h": "8fab678700",
+  "en": "Escort"
+ },
+ "app:scenarios:scenarios[3].players": {
+  "h": "85c2f0aedb",
+  "en": "2 (guard and raider)"
+ },
+ "app:scenarios:scenarios[3].budget": {
+  "h": "a10f8d5fa9",
+  "en": "500 each"
+ },
+ "app:scenarios:scenarios[3].table": {
+  "h": "6d99d82793",
+  "en": "36″×48″ (long)"
+ },
+ "app:scenarios:scenarios[3].zone": {
+  "h": "288ba4663c",
+  "en": "The Track of the Grand Harness or the Wire Forest"
+ },
+ "app:scenarios:scenarios[3].story": {
+  "h": "2f52f26789",
+  "en": "Three steam supply wagons are heading for the front — ammunition, dead water, coal. The road crosses No Man's Land."
+ },
+ "app:scenarios:scenarios[3].setup[0]": {
+  "h": "729db34301",
+  "en": "3 wagons (Armour 4, 6 Wounds, Move 4″) at the guard's edge, at the start of the table's long side; the guard deploys within 6″ of them."
+ },
+ "app:scenarios:scenarios[3].setup[1]": {
+  "h": "fa6f8715b1",
+  "en": "The raider deploys on either side edge of the table, more than 18″ from the wagons; ambushers last."
+ },
+ "app:scenarios:scenarios[3].victory[0]": {
+  "h": "5e16126716",
+  "en": "**Guard:** 3 points for each wagon that exits via the opposite short edge."
+ },
+ "app:scenarios:scenarios[3].victory[1]": {
+  "h": "3bbf055ebb",
+  "en": "**Raider:** 2 points for each wagon destroyed; 3 points for each one captured (at the end their model is in contact and no guard model is within 3″)."
+ },
+ "app:scenarios:scenarios[3].special[0]": {
+  "h": "a737f75ef7",
+  "en": "**Wagons:** at the end of each round the guard moves each wagon 4″ if a guard model is within 3″ of it. Wagons are not subject to fear, morale or suppression."
+ },
+ "app:scenarios:scenarios[3].special[1]": {
+  "h": "7d3885b2eb",
+  "en": "**Crew:** there are no people in the wagons — they are steam machines; destroying a wagon harms no one."
+ },
+ "app:scenarios:scenarios[3].special[2]": {
+  "h": "a260609086",
+  "en": "**Ambush:** in this scenario the raider's ambushers cannot deploy within 12″ of the wagons."
+ },
+ "app:scenarios:scenarios[3].map[0].label": {
+  "h": "e226af60dc",
+  "en": "Guard + wagons"
+ },
+ "app:scenarios:scenarios[3].map[4].label": {
+  "h": "e292d16fca",
+  "en": "↑ wagons' exit"
+ },
+ "app:scenarios:scenarios[3].map[5].label": {
+  "h": "aa551cec9c",
+  "en": "Raider"
+ },
+ "app:scenarios:scenarios[3].map[6].label": {
+  "h": "aa551cec9c",
+  "en": "Raider"
+ },
+ "app:scenarios:scenarios[4].name": {
+  "h": "3b7c336275",
+  "en": "Monster Hunt"
+ },
+ "app:scenarios:scenarios[4].budget": {
+  "h": "9f2f8543a3",
+  "en": "400–500 each"
+ },
+ "app:scenarios:scenarios[4].zone": {
+  "h": "581a463ea3",
+  "en": "The Field of Bones or the Edge of the Wound"
+ },
+ "app:scenarios:scenarios[4].story": {
+  "h": "70f905e4d9",
+  "en": "Something big has come up out of the rift. It belongs to neither side — and both sides need its bones, hide or head."
+ },
+ "app:scenarios:scenarios[4].setup[0]": {
+  "h": "9190801f25",
+  "en": "In the centre, **the monster**: with the stats of a devi-spawn (`no-mans-land.md`), +4 Wounds. It belongs to neither side."
+ },
+ "app:scenarios:scenarios[4].setup[1]": {
+  "h": "2a11943ea4",
+  "en": "Deployment — 6″ from your own edge. 4–6 ruins or bone mounds."
+ },
+ "app:scenarios:scenarios[4].victory[0]": {
+  "h": "6a07de5d61",
+  "en": "4 points — to whoever deals the monster the final blow."
+ },
+ "app:scenarios:scenarios[4].victory[1]": {
+  "h": "d1ca75632c",
+  "en": "1 point for every 3 Wounds you dealt the monster (keep a record)."
+ },
+ "app:scenarios:scenarios[4].victory[2]": {
+  "h": "7bb2a9eb5e",
+  "en": "2 points for each bone marker searched after the monster falls (search +2)."
+ },
+ "app:scenarios:scenarios[4].special[0]": {
+  "h": "21fcec6c3c",
+  "en": "**The monster** activates at the end of each round: it moves toward the nearest model and attacks (`no-mans-land.md`, wandering monsters)."
+ },
+ "app:scenarios:scenarios[4].special[1]": {
+  "h": "0e9e7702c8",
+  "en": "**Hunters:** in this scenario units with the hunter role (Giant-/Monster-Hunter) get +1 Nerve and +1 Sh against the monster."
+ },
+ "app:scenarios:scenarios[4].special[2]": {
+  "h": "381ab9ee2e",
+  "en": "**Bones:** when the monster falls, 2 search markers appear where it fell."
+ },
+ "app:scenarios:scenarios[4].map[0].label": {
+  "h": "f11a6e596f",
+  "en": "Side A"
+ },
+ "app:scenarios:scenarios[4].map[1].label": {
+  "h": "8c03d8ca82",
+  "en": "Side B"
+ },
+ "app:scenarios:scenarios[4].map[2].label": {
+  "h": "c20039b079",
+  "en": "Monster"
+ },
+ "app:scenarios:scenarios[5].name": {
+  "h": "08e81a7874",
+  "en": "Two Alliances"
+ },
+ "app:scenarios:scenarios[5].budget": {
+  "h": "bdf7b1fedc",
+  "en": "300 each"
+ },
+ "app:scenarios:scenarios[5].zone": {
+  "h": "6b4bd38d38",
+  "en": "any"
+ },
+ "app:scenarios:scenarios[5].story": {
+  "h": "bf61d64d12",
+  "en": "Two alliances meet on one stretch of the front. Whoever holds the crossroads controls the Furrow."
+ },
+ "app:scenarios:scenarios[5].setup[0]": {
+  "h": "bb5b66aebe",
+  "en": "In the centre, **the crossroads** (objective, 2 points), and near the four corners — 4 objectives (1 point each), 12″ from the corner."
+ },
+ "app:scenarios:scenarios[5].setup[1]": {
+  "h": "cab6246d25",
+  "en": "Each alliance on its own long side of the table; each player in their own half, 6″ from the edge."
+ },
+ "app:scenarios:scenarios[5].victory[0]": {
+  "h": "3df2ec8446",
+  "en": "From round 2, at the end of each round: an objective's points go to the alliance with a model within 3″ of it while the enemy has none."
+ },
+ "app:scenarios:scenarios[5].victory[1]": {
+  "h": "01b3fb5a65",
+  "en": "The most points wins."
+ },
+ "app:scenarios:scenarios[5].special[0]": {
+  "h": "17f49e13d9",
+  "en": "**Activation:** alliances alternate; within an alliance the players decide who activates (`core-rules.md`, 11)."
+ },
+ "app:scenarios:scenarios[5].special[1]": {
+  "h": "bd6bcbb2d2",
+  "en": "**Alliance rules:** the leader's orders only affect their own units; a light alliance — the oath (no mistrust test), a dark one — infighting (d10 = 1 → the partner does not act in the first round)."
+ },
+ "app:scenarios:scenarios[5].special[2]": {
+  "h": "c5680029f3",
+  "en": "**Betrayal (dark, optional):** from round 4 a dark player may betray their partner — at the end only their own points count, and the partner's models become their enemies."
+ },
+ "app:no_mans_land:zones[0].name": {
+  "h": "f52a39015a",
+  "en": "Ambri's Furrow"
+ },
+ "app:no_mans_land:zones[0].terrain": {
+  "h": "90aff2a3cc",
+  "en": "A deep, long furrow that Ambri ploughed with his foot — now the front's main trench; on its floor, old bronze chains and the tracks of the steam oxen."
+ },
+ "app:no_mans_land:zones[0].rule": {
+  "h": "3a7b6ebb8f",
+  "en": "A model in the Furrow has heavy cover and +1 to Nerve tests. **The Furrow cannot be searched** — it is Ambri's road to the grave, and no one plunders it."
+ },
+ "app:no_mans_land:zones[0].lore": {
+  "h": "4292db2321",
+  "en": "Soldiers of both sides treat the Furrow the same way: even a heretic who jumps into it takes off his helmet. They say whoever falls asleep on the Furrow's floor hears Ambri's footsteps — the steps of twelve yoke of oxen, from very far away."
+ },
+ "app:no_mans_land:zones[1].name": {
+  "h": "e3decf1153",
+  "en": "The Field of Bones"
+ },
+ "app:no_mans_land:zones[1].terrain": {
+  "h": "f85c1781ec",
+  "en": "A field where monsters fell: ribs like bridges, skulls like hills, and bone dust everywhere."
+ },
+ "app:no_mans_land:zones[1].rule": {
+  "h": "0d802913b1",
+  "en": "Bones are light cover. Bone dust: shooting beyond 18\" at −1."
+ },
+ "app:no_mans_land:zones[1].find.name": {
+  "h": "91cc6b0370",
+  "en": "Devi's tooth"
+ },
+ "app:no_mans_land:zones[1].lore": {
+  "h": "d1d7f59810",
+  "en": "Alchemists call the Field of Bones \"the market\": a devi's tooth, a gveleshap's scale, a spawn's bone — everything lies here and everything has a price. That is why those most often killed here are the ones who never came to the war."
+ },
+ "app:no_mans_land:zones[2].name": {
+  "h": "b5f4acb726",
+  "en": "The Track of the Grand Harness"
+ },
+ "app:no_mans_land:zones[2].terrain": {
+  "h": "5d7696c6eb",
+  "en": "A wide, trampled strip where the Grand Harness passed: deep wheel ruts, broken chains, abandoned cages."
+ },
+ "app:no_mans_land:zones[2].rule": {
+  "h": "e0b36e50bd",
+  "en": "Open ground — no cover except the wheel ruts (light cover for a prone model). The cages are sometimes not empty."
+ },
+ "app:no_mans_land:zones[2].find.name": {
+  "h": "3ebd7798f0",
+  "en": "A living captive in a cage"
+ },
+ "app:no_mans_land:zones[2].lore": {
+  "h": "85f8bc8b75",
+  "en": "The Harness leaves captives along the way when they can no longer walk. Light-side detachments follow the track at night and open the cages; the heretics know it and leave cages as traps. Every cage is a question you can only answer by going close."
+ },
+ "app:no_mans_land:zones[3].name": {
+  "h": "3411f93e65",
+  "en": "Burned Villages"
+ },
+ "app:no_mans_land:zones[3].terrain": {
+  "h": "e75fd49425",
+  "en": "The front has rolled over villages their people left long ago: ruins, wells, orchards overgrown with grass."
+ },
+ "app:no_mans_land:zones[3].rule": {
+  "h": "c87a7cb9dd",
+  "en": "Ruins are heavy cover. No one lives in the villages any more — **there are no civilians in the game**. A model at a well removes 1 Wound once per battle."
+ },
+ "app:no_mans_land:zones[3].find.name": {
+  "h": "63967cb346",
+  "en": "A village wine jar"
+ },
+ "app:no_mans_land:zones[3].lore": {
+  "h": "d6b1901cd1",
+  "en": "The villagers went to the rear, and every autumn they come back — to the trenches, no further — and look out at No Man's Land, where their houses are. The soldiers know: they open a village wine jar when searching, but never drink it to the bottom. \"The owner will come back.\""
+ },
+ "app:no_mans_land:zones[4].name": {
+  "h": "949aa39a52",
+  "en": "The Gas Lowland"
+ },
+ "app:no_mans_land:zones[4].terrain": {
+  "h": "59682a460e",
+  "en": "A lowland where alchemical gas settles and clears only in a strong wind; a yellowish fog, withered trees."
+ },
+ "app:no_mans_land:zones[4].rule": {
+  "h": "cbc2c70ee5",
+  "en": "In the lowland, a model without a gas mask rolls d10 at the end of its activation: 1–3 → a Wound. When the wind shifts (night table: gas wave) the gas moves 6\"."
+ },
+ "app:no_mans_land:zones[4].find.name": {
+  "h": "da2e59f4ad",
+  "en": "An alchemist's satchel"
+ },
+ "app:no_mans_land:zones[4].lore": {
+  "h": "3454214a27",
+  "en": "The gas belongs to no one: the alchemists of both sides tested their mixtures here, and now every gas lies together in the lowland. The Sisters of Medea cross the lowland on foot, with gas masks and notebooks: every new colour is a new medicine — or a new death."
+ },
+ "app:no_mans_land:zones[5].name": {
+  "h": "e5ea5809bd",
+  "en": "The Wire Forest"
+ },
+ "app:no_mans_land:zones[5].terrain": {
+  "h": "b8304635c0",
+  "en": "Entanglements left over from the \"Winter of Wire\" — so dense they look like a forest; posts, coils, snagged uniforms."
+ },
+ "app:no_mans_land:zones[5].rule": {
+  "h": "9853cb642e",
+  "en": "Half movement; cavalry cannot enter. An engineer can cut a 3\" path with an activation."
+ },
+ "app:no_mans_land:zones[5].find.name": {
+  "h": "65c54b0034",
+  "en": "Engineer's tools"
+ },
+ "app:no_mans_land:zones[5].lore": {
+  "h": "3b4bd79e73",
+  "en": "Everything in the forest is snagged: caps, flags, letters, sometimes people too. When searching, soldiers gather the letters and send them to the rear — some reach their addressee twelve years later."
+ },
+ "app:no_mans_land:zones[6].name": {
+  "h": "6b9aca9ed7",
+  "en": "The Sky Wreckage"
+ },
+ "app:no_mans_land:zones[6].terrain": {
+  "h": "a65478f5e5",
+  "en": "The skeletons of fallen zeppelins and blood balloons: snapped cables, steam boilers, gondolas."
+ },
+ "app:no_mans_land:zones[6].rule": {
+  "h": "225a35b483",
+  "en": "A gondola is heavy cover. Steam boiler: blast damage +1 within 3\" of it."
+ },
+ "app:no_mans_land:zones[6].find.name": {
+  "h": "168f841715",
+  "en": "A zeppelin map"
+ },
+ "app:no_mans_land:zones[6].lore": {
+  "h": "ed756f5137",
+  "en": "The sky-ships of both sides lie here together — a Colchian zeppelin and a Grand Harness blood balloon fell on each other one night in 1909. The survivors of both crews spent one winter together in the wreckage before they were found. Neither has ever said what happened that winter."
+ },
+ "app:no_mans_land:zones[7].name": {
+  "h": "6900d3757d",
+  "en": "The Edge of the Wound"
+ },
+ "app:no_mans_land:zones[7].terrain": {
+  "h": "dd6846c4a0",
+  "en": "The crater's edge: rifts from which the warm steam of the underworld rises; fragments of the seal in the earth."
+ },
+ "app:no_mans_land:zones[7].rule": {
+  "h": "d30a9ab887",
+  "en": "At the start of each round roll d10: 1–2 → a wandering monster comes up out of a rift. Whispers: Nerve tests at −1."
+ },
+ "app:no_mans_land:zones[7].find.name": {
+  "h": "bb08740747",
+  "en": "A seal fragment"
+ },
+ "app:no_mans_land:zones[7].lore": {
+  "h": "715e0ad3bb",
+  "en": "The seal fragments are warm, and whoever picks one up by hand hears Ambri's heartbeat for a short while — slow, very slow. The Listeners pay dearly for fragments. The light side leaves them right at the edge of the Wound, under a stone, so as not to weaken the lock — without orders, by custom."
+ },
+ "app:no_mans_land:search[0].name": {
+  "h": "4944bc05c8",
+  "en": "Trap"
+ },
+ "app:no_mans_land:search[0].text": {
+  "h": "14219f425e",
+  "en": "A mine, an entanglement or a heretic's trap: the searcher takes 1 Wound."
+ },
+ "app:no_mans_land:search[1].name": {
+  "h": "e159b0ab74",
+  "en": "Empty"
+ },
+ "app:no_mans_land:search[1].text": {
+  "h": "b7bc7678c6",
+  "en": "Nothing — only mud and old letters."
+ },
+ "app:no_mans_land:search[2].name": {
+  "h": "f63bd36a4b",
+  "en": "Unexploded shell"
+ },
+ "app:no_mans_land:search[2].text": {
+  "h": "852e69872c",
+  "en": "d10 1–3 → it explodes: 3\" blast, Power 3; otherwise — empty."
+ },
+ "app:no_mans_land:search[3].name": {
+  "h": "269aed4fa5",
+  "en": "Food and water"
+ },
+ "app:no_mans_land:search[3].text": {
+  "h": "d36607ea71",
+  "en": "+10 marchili in a campaign."
+ },
+ "app:no_mans_land:search[4].name": {
+  "h": "bbbb93680c",
+  "en": "Ammunition"
+ },
+ "app:no_mans_land:search[4].text": {
+  "h": "2da06e9915",
+  "en": "One hand grenade in this battle; in a campaign — into stock."
+ },
+ "app:no_mans_land:search[5].name": {
+  "h": "cb9879f992",
+  "en": "Wounded comrade"
+ },
+ "app:no_mans_land:search[5].text": {
+  "h": "39dd65daab",
+  "en": "A wounded soldier of your side: in a campaign a free tier I rank-and-file joins the warband."
+ },
+ "app:no_mans_land:search[6].name": {
+  "h": "f2ee744b38",
+  "en": "Monster bone"
+ },
+ "app:no_mans_land:search[6].text": {
+  "h": "74f6247a50",
+  "en": "For alchemy: +1 currency in a campaign."
+ },
+ "app:no_mans_land:search[7].name": {
+  "h": "69218350d4",
+  "en": "Map or notes"
+ },
+ "app:no_mans_land:search[7].text": {
+  "h": "1cfa278e69",
+  "en": "You choose the deployment side in the next battle; in a campaign +1 experience for the searcher."
+ },
+ "app:no_mans_land:search[8].name": {
+  "h": "5d822c0d93",
+  "en": "Old stores"
+ },
+ "app:no_mans_land:search[8].text": {
+  "h": "ca20339716",
+  "en": "Dead water into stock in a campaign."
+ },
+ "app:no_mans_land:search[9].name": {
+  "h": "70225addbc",
+  "en": "Zone find"
+ },
+ "app:no_mans_land:search[9].text": {
+  "h": "a5c65dba55",
+  "en": "The zone's own find (zone table); in the Furrow — +1 experience."
+ },
+ "app:no_mans_land:night[0].name": {
+  "h": "fb283b3a04",
+  "en": "Wandering monster"
+ },
+ "app:no_mans_land:night[0].text": {
+  "h": "ad03731be2",
+  "en": "The zone's monster enters from a random edge (d10: 1–5 — left, 6–10 — right)."
+ },
+ "app:no_mans_land:night[1].name": {
+  "h": "0528a912ea",
+  "en": "Gas wave"
+ },
+ "app:no_mans_land:night[1].text": {
+  "h": "a8f54b8fef",
+  "en": "A 6\" gas cloud in the middle of the board; each round the wind moves it 3\" (d10 — direction)."
+ },
+ "app:no_mans_land:night[2].name": {
+  "h": "559a7646f2",
+  "en": "Fog"
+ },
+ "app:no_mans_land:night[2].text": {
+  "h": "7483a460f2",
+  "en": "Visibility 12\"; ambushers get +1 defence."
+ },
+ "app:no_mans_land:night[3].name": {
+  "h": "408a216c06",
+  "en": "Voices"
+ },
+ "app:no_mans_land:night[3].text": {
+  "h": "8c8cde322b",
+  "en": "Each side: the enemy picks one of your models — a Nerve test; on a failure it moves 3\" toward the enemy."
+ },
+ "app:no_mans_land:night[4].name": {
+  "h": "0e53ae5576",
+  "en": "Signal flare"
+ },
+ "app:no_mans_land:night[4].text": {
+  "h": "902bc1301f",
+  "en": "This round the whole board is visible — night penalties do not apply."
+ },
+ "app:no_mans_land:night[5].name": {
+  "h": "4cf6bc0010",
+  "en": "Artillery barrage"
+ },
+ "app:no_mans_land:night[5].text": {
+  "h": "55c636abfd",
+  "en": "d10 points on the board: 3\" blast, Power 3 — to both sides."
+ },
+ "app:no_mans_land:night[6].name": {
+  "h": "f93a8c349d",
+  "en": "Rain and mud"
+ },
+ "app:no_mans_land:night[6].text": {
+  "h": "8e4a277ed3",
+  "en": "Movement −1\" for everyone; the trenches fill with water (crossing a trench costs half)."
+ },
+ "app:no_mans_land:night[7].name": {
+  "h": "115bcfb094",
+  "en": "Silence"
+ },
+ "app:no_mans_land:night[7].text": {
+  "h": "dc3c49ea55",
+  "en": "Nothing. Everyone is listening."
+ },
+ "app:no_mans_land:night[8].name": {
+  "h": "60a8183737",
+  "en": "A bell from the rear"
+ },
+ "app:no_mans_land:night[8].text": {
+  "h": "b4555b0549",
+  "en": "On each side one fallen tier I model returns from its own edge."
+ },
+ "app:no_mans_land:night[9].name": {
+  "h": "5f412bba86",
+  "en": "Earth tremor"
+ },
+ "app:no_mans_land:night[9].text": {
+  "h": "07a9fef93a",
+  "en": "The Wound breathes: one terrain structure (the enemy chooses) collapses and becomes a ruin."
+ },
+ "app:no_mans_land:raid[0].name": {
+  "h": "ded6dfb048",
+  "en": "Lost"
+ },
+ "app:no_mans_land:raid[0].text": {
+  "h": "6567a99cef",
+  "en": "The scout did not return: casualty roll (1 — died, 2–5 — captured, 6+ — wounded)."
+ },
+ "app:no_mans_land:raid[1].name": {
+  "h": "be9302ef34",
+  "en": "Wounded"
+ },
+ "app:no_mans_land:raid[1].text": {
+  "h": "2d6f5a40ee",
+  "en": "Came back, but wounded — will miss the next battle."
+ },
+ "app:no_mans_land:raid[2].name": {
+  "h": "7908566bfc",
+  "en": "Empty night"
+ },
+ "app:no_mans_land:raid[2].text": {
+  "h": "3035c86376",
+  "en": "Found nothing, but learned the strip."
+ },
+ "app:no_mans_land:raid[3].name": {
+  "h": "3cf8b0677c",
+  "en": "A find"
+ },
+ "app:no_mans_land:raid[3].text": {
+  "h": "85a6fb2d27",
+  "en": "The search table once."
+ },
+ "app:no_mans_land:raid[4].name": {
+  "h": "9fde66ff63",
+  "en": "A good night"
+ },
+ "app:no_mans_land:raid[4].text": {
+  "h": "eb37d0a747",
+  "en": "The search table once and +1 experience."
+ },
+ "app:no_mans_land:raid[5].name": {
+  "h": "284e62b85b",
+  "en": "The zone's secret"
+ },
+ "app:no_mans_land:raid[5].text": {
+  "h": "c545858e21",
+  "en": "The zone's own find and +1 experience."
+ },
+ "app:no_mans_land:beasts[0].name": {
+  "h": "5687886afd",
+  "en": "Carrion Dogs"
+ },
+ "app:no_mans_land:beasts[0].attack": {
+  "h": "e732d69504",
+  "en": "Teeth: 1 attack, Power 2"
+ },
+ "app:no_mans_land:beasts[0].rule": {
+  "h": "87f5feb7e3",
+  "en": "Pack: they move together; they attack the wounded first."
+ },
+ "app:no_mans_land:beasts[1].name": {
+  "h": "8d423b5ef3",
+  "en": "Bone Wolves"
+ },
+ "app:no_mans_land:beasts[1].attack": {
+  "h": "f5ce19dff2",
+  "en": "Teeth: 2 attacks, Power 3"
+ },
+ "app:no_mans_land:beasts[1].rule": {
+  "h": "2eda53f522",
+  "en": "Invisible in the bone dust: shooting at them from beyond 12\" at −1."
+ },
+ "app:no_mans_land:beasts[2].name": {
+  "h": "de3db58895",
+  "en": "Gas Crawler"
+ },
+ "app:no_mans_land:beasts[2].attack": {
+  "h": "d6e0aed017",
+  "en": "Tentacles: 2 attacks, Power 3"
+ },
+ "app:no_mans_land:beasts[2].rule": {
+  "h": "4c5e660070",
+  "en": "Gas cloud: a model without a gas mask within 3\" of it rolls d10 at the end of its activation, 1–3 → a Wound."
+ },
+ "app:no_mans_land:beasts[3].name": {
+  "h": "448a89cf31",
+  "en": "Devi-Spawn"
+ },
+ "app:no_mans_land:beasts[3].attack": {
+  "h": "26cef5c817",
+  "en": "Many heads: 3 attacks, Power 3"
+ },
+ "app:no_mans_land:beasts[3].rule": {
+  "h": "4c9acc5c2d",
+  "en": "With the stats of the Grand Harness's tier IV (Regrowth; Fears Fire and Lightning), but belonging to neither side: it attacks both."
+ },
+ "app:no_mans_land:monster_rules": {
+  "h": "e2982d5280",
+  "en": "A wandering monster belongs to neither side. It activates at the end of each round: it moves toward the nearest model (on a tie — toward the wounded one) and attacks. Both sides may shoot and strike it. Whoever kills it gets 1 victory point in a scenario, and +1 currency in a campaign."
+ },
+ "app:no_mans_land:control": {
+  "h": "eabd521853",
+  "en": "When you win a battle the zone becomes yours (note it in the log): scouting in that zone gets +1, and the zone's find comes to your scout twice — until the enemy takes the zone back from you in battle there."
+ },
+ "app:equipment:categories.gear": {
+  "h": "3d76e11bfa",
+  "en": "Common equipment"
+ },
+ "app:equipment:categories.alchemy": {
+  "h": "13122554d6",
+  "en": "Alchemy"
+ },
+ "app:equipment:categories.faction": {
+  "h": "16e9fa0340",
+  "en": "Faction equipment"
+ },
+ "app:equipment:items[0].name": {
+  "h": "986d25b484",
+  "en": "Gas mask"
+ },
+ "app:equipment:items[0].effect": {
+  "h": "868a1876fa",
+  "en": "In a gas cloud, a Wound only on d10 = 1. For a model that has no gas mask."
+ },
+ "app:equipment:items[1].name": {
+  "h": "0fba494870",
+  "en": "Hand grenades"
+ },
+ "app:equipment:items[1].effect": {
+  "h": "df9ed3fb4b",
+  "en": "6\", 1 attack, Power 3, blast. Single use."
+ },
+ "app:equipment:items[2].name": {
+  "h": "f1b1b34650",
+  "en": "Light machine gun"
+ },
+ "app:equipment:items[2].effect": {
+  "h": "a6354913dd",
+  "en": "One tier I–II infantryman fires it instead of a rifle: 24\", 2 attacks, Power 3, Damage 1, suppression. Shooting after moving −1. At 750+ marchili — max. 2 (by game rule)."
+ },
+ "app:equipment:items[3].name": {
+  "h": "f2b8c5b5af",
+  "en": "Field shovel"
+ },
+ "app:equipment:items[3].effect": {
+  "h": "f8b0ee6df5",
+  "en": "A non-engineer model may dig one trench section in battle."
+ },
+ "app:equipment:items[4].name": {
+  "h": "2607c233be",
+  "en": "Armour plate"
+ },
+ "app:equipment:items[4].effect": {
+  "h": "4326cb8d94",
+  "en": "One model gets +1 Armour (max. 5); −1\" movement."
+ },
+ "app:equipment:items[5].name": {
+  "h": "1fb0074e36",
+  "en": "Binoculars"
+ },
+ "app:equipment:items[5].effect": {
+  "h": "24d8ba6afb",
+  "en": "Ambushing enemies within 18\" are seen; the long-range penalty is 0 instead of −1."
+ },
+ "app:equipment:items[6].name": {
+  "h": "3bc4bab30b",
+  "en": "Coil of barbed wire"
+ },
+ "app:equipment:items[6].effect": {
+  "h": "b49a57cd43",
+  "en": "Before the battle, place 6\" of barbed wire: crossing it costs the whole move (except cavalry that are Trench-Breakers)."
+ },
+ "app:equipment:items[7].name": {
+  "h": "0e53ae5576",
+  "en": "Signal flare"
+ },
+ "app:equipment:items[7].effect": {
+  "h": "9bdf8e358c",
+  "en": "In a night scenario: a 12\" radius is lit for one round."
+ },
+ "app:equipment:items[8].name": {
+  "h": "6c6df87a93",
+  "en": "Dead water"
+ },
+ "app:equipment:items[8].effect": {
+  "h": "69021ebcf2",
+  "en": "Single use: closes 2 Wounds on one model."
+ },
+ "app:equipment:items[9].name": {
+  "h": "b66513f8c7",
+  "en": "Living water"
+ },
+ "app:equipment:items[9].effect": {
+  "h": "f215961fc0",
+  "en": "Single use: brings back one model that fell in this battle with full Wounds. Very rare."
+ },
+ "app:equipment:items[10].name": {
+  "h": "c5a8eb9276",
+  "en": "Dragon's teeth"
+ },
+ "app:equipment:items[10].effect": {
+  "h": "e5a27f7815",
+  "en": "Once per battle, sow them within 6\": 3 sown warriors spring up (like Levy, Melee 6). After 3 rounds they crumble; on d10 = 1 they attack the nearest model."
+ },
+ "app:equipment:items[11].name": {
+  "h": "1a421ae72d",
+  "en": "Devi's teeth"
+ },
+ "app:equipment:items[11].effect": {
+  "h": "23d0252f72",
+  "en": "Like dragon's teeth, but the sown get +1 Armour and +1 Power; on d10 ≤ 3 they attack allies."
+ },
+ "app:equipment:items[12].name": {
+  "h": "f5d93c04be",
+  "en": "Lightning coil (raising)"
+ },
+ "app:equipment:items[12].effect": {
+  "h": "d62de6d2e0",
+  "en": "Once per battle: a model that fell within 3\" of an Ekimbashi stands up with 1 Wound for 2 rounds, then falls again."
+ },
+ "app:equipment:items[13].name": {
+  "h": "3ffeed85af",
+  "en": "Gatsi and Gaim's salve"
+ },
+ "app:equipment:items[13].effect": {
+  "h": "4df7988cad",
+  "en": "Alchemy of gold and silver: removes poison, a curse or a festering wound (Sabnock) from one model."
+ },
+ "app:equipment:items[14].name": {
+  "h": "6265345578",
+  "en": "Underworld steam canister"
+ },
+ "app:equipment:items[14].effect": {
+  "h": "ce9d1f878f",
+  "en": "Single use: creates a gas cloud (3\" radius) within 12\", which drifts with the wind."
+ },
+ "app:equipment:items[15].name": {
+  "h": "48fc99f5eb",
+  "en": "Devi blood"
+ },
+ "app:equipment:items[15].effect": {
+  "h": "e55f941223",
+  "en": "One model gets +1 Melee and +1 Power for the whole battle; at the end of a round d10 = 1 → madness (attacks the nearest model)."
+ },
+ "app:equipment:items[16].name": {
+  "h": "030cfb8712",
+  "en": "Blood vessel"
+ },
+ "app:equipment:items[16].effect": {
+  "h": "69f7696898",
+  "en": "Stores one blood tithe: you can use it later, without a captive or a wound."
+ },
+ "app:equipment:items[17].name": {
+  "h": "c935652be9",
+  "en": "New flask"
+ },
+ "app:equipment:items[17].effect": {
+  "h": "73c22a4beb",
+  "en": "At the start of round 3, 2 recruits arrive from your table edge."
+ },
+ "app:equipment:items[18].name": {
+  "h": "ee5cf37186",
+  "en": "Bronze shield"
+ },
+ "app:equipment:items[18].effect": {
+  "h": "70fb6ad815",
+  "en": "One model gets +1 Armour against shooting."
+ },
+ "app:equipment:items[19].name": {
+  "h": "53ad18f626",
+  "en": "Backpack flamethrower"
+ },
+ "app:equipment:items[19].effect": {
+  "h": "c9a3ba1325",
+  "en": "One model's weapon: 6\", 2 attacks, Power 3, fire, blast."
+ },
+ "app:equipment:items[20].name": {
+  "h": "57f98c55e7",
+  "en": "Nagazi's iron collar"
+ },
+ "app:equipment:items[20].effect": {
+  "h": "e6e61aceeb",
+  "en": "The nagazi's attack gets +1 Power; the nagazi is hard to kill in melee (+1 Armour)."
+ },
+ "app:equipment:items[21].name": {
+  "h": "571d1d689c",
+  "en": "Spare thunderbolt battery"
+ },
+ "app:equipment:items[21].effect": {
+  "h": "4c6be9e296",
+  "en": "One Thunderbolt Gunner no longer needs to reload."
+ },
+ "app:equipment:items[22].name": {
+  "h": "87efa531a0",
+  "en": "Legion banner"
+ },
+ "app:equipment:items[22].effect": {
+  "h": "7cdc10ebc0",
+  "en": "Order range +3\"; within 6\" of the banner-bearer the leader's fall causes no confusion."
+ },
+ "app:equipment:items[23].name": {
+  "h": "4f0bc98633",
+  "en": "Heavy chains"
+ },
+ "app:equipment:items[23].effect": {
+  "h": "39944c7b6d",
+  "en": "One model's melee weapon \"entangles\": a model it hits cannot move on its next activation."
+ }
+}

@@ -380,5 +380,6 @@
     if (t.id === "endYes") { camp = null; try { localStorage.removeItem(STORE); } catch (err) {} render(); return; }
   });
   document.addEventListener("submit", e => { if (e.target.id === "battleForm") { e.preventDefault(); recordBattle(); } });
+  document.addEventListener("tw-lang", () => render());  // KA/EN: კამპანიის ტექსტები D.campaigns-იდან ხელახლა
   document.addEventListener("input", e => { const id = e.target.dataset && e.target.dataset.mname; if (id && camp) { model(id).name = e.target.value; save(); } });
 })();

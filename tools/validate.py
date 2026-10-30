@@ -186,6 +186,14 @@ def main():
         warnings.append(f"text_en: {stale} ინგლისური თარგმანი მოძველდა (ქართული წყარო შეიცვალა) — tools/i18n_en.py status")
     if orphans:
         warnings.append(f"text_en: {len(orphans)} თარგმანს წყარო აღარ აქვს: {', '.join(orphans[:5])}")
+    # ნათარგმნი კამპანიები ბილდერისთვის სტრუქტურაში უნდა ჩაიშალოს (build_builder.campaign_en), თორემ აპი ქართულს აჩვენებს
+    from build_builder import campaign_en
+    from i18n_en import en_texts
+    T = en_texts()
+    bad = [p.stem for p in sorted((ROOT / "data" / "campaigns").glob("*.json"))
+           if f"camp:{p.stem}" in T and not campaign_en(T[f"camp:{p.stem}"], json.loads(p.read_text(encoding="utf-8")))]
+    if bad:
+        warnings.append(f"text_en: {len(bad)} ინგლისური კამპანია ბილდერის სტრუქტურას არ ემთხვევა (სათაურები/სცენარები): {', '.join(bad[:5])}")
 
     for w in warnings:
         print("⚠️ ", w)

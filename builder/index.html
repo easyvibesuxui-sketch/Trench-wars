@@ -284,6 +284,7 @@ footer { color: var(--muted); font-size: .8rem; }
 </div>
 
 <script src="data.js"></script>
+<script src="ui-lang.js"></script>
 <script>
 (function () {
   const D = window.TW_DATA;
@@ -327,10 +328,11 @@ footer { color: var(--muted); font-size: .8rem; }
     vs_leader: "ლიდერზე", festering: "ახრწნის", capture: "ტყვე", curse: "წყევლა", entangle: "ხლართავს", frenzy: "ბრაზი",
     unleash: "გაშვება", swallow: "ყლაპავს", chain_breaker: "ჯაჭვს წყვეტს", suppress: "დათრგუნვა" };
   const ROLES = Object.fromEntries((D.roles || []).map(r => [r.id, r]));
-  // KA/EN: იუნიტების, იარაღის, ნიშნების და ფრაქციების სახელები (წესების ტექსტი — ქართულად)
+  // KA/EN: სახელები, წესები, სცენარები, აღჭურვილობა, კამპანიები (D.en); ინტერფეისის ფრაზები — ui-lang.js
   const EN = D.en || { factions: {}, units: {}, weapons: {}, tags: {}, wtags: {}, roles: {}, tiers: {} };
   const KA = { tag: { ...TAG }, wtag: { ...WTAG }, tier: TIERS.map(t => t[1]), role: Object.fromEntries((D.roles || []).map(r => [r.id, r.name])),
-    fac: { ...D.factions }, ally: { ...(D.allies || {}) } };
+    fac: { ...D.factions }, ally: { ...(D.allies || {}) },
+    scen: (D.scenarios || []).slice(), nml: { ...(D.nml || {}) }, eq: { ...(D.equipment || {}) }, camps: { ...(D.campaigns || {}) } };
   const RL = EN.rules || { tags: {}, roles: {}, abil: {} }, KA_RULES = { ...(D.tag_rules || {}) }, KA_DOES = Object.fromEntries((D.roles || []).map(r => [r.id, r.does]));
   D.units.forEach(u => { u.ka = u.name; u.abil_ka = u.abilities; u.weapons.forEach(w => { w.ka = w.name; }); });
   let LANG = "ka";
@@ -346,6 +348,12 @@ footer { color: var(--muted); font-size: .8rem; }
     D.units.forEach(u => { u.name = pick(EN.units, u.id, u.ka); u.abilities = (en && RL.abil[u.id]) || u.abil_ka; u.weapons.forEach(w => { w.name = pick(EN.weapons, w.ka, w.ka); }); });
     Object.keys(KA_RULES).forEach(k => { D.tag_rules[k] = pick(RL.tags, k, KA_RULES[k]); });
     (D.roles || []).forEach(r => { r.does = pick(RL.roles, r.id, KA_DOES[r.id]); });
+    // მონაცემთა ობიექტები ადგილზე იცვლება — EQ, NML და სხვ. იმავე ობიექტზე მიუთითებენ
+    if (D.scenarios) D.scenarios.splice(0, D.scenarios.length, ...((en && EN.scenarios && EN.scenarios.scenarios) || KA.scen));
+    if (D.nml) Object.assign(D.nml, (en && EN.no_mans_land) || KA.nml);
+    if (D.equipment) Object.assign(D.equipment, (en && EN.equipment) || KA.eq);
+    if (D.campaigns) Object.assign(D.campaigns, KA.camps, (en && EN.campaigns) || {});
+    if (window.TW_UI) TW_UI.setLang(l);
     document.documentElement.lang = en ? "en" : "ka";
     document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
     try { localStorage.setItem("tw-lang", l); } catch (e) {}
@@ -627,11 +635,13 @@ footer { color: var(--muted); font-size: .8rem; }
         <span class="line-cost">${it.cost * n}</span></li>`;
     }).join("") : "";
     $("exampleTag").hidden = !state.example;
-    $("budget").value = String(state.budget); $("scenario").checked = state.scenario; $("wbname").value = state.name || "";
+    $("budget").value = String(state.budget); $("scenario").checked = state.scenario; $("wbname").value = state.name === EXAMPLE.name && window.TW_UI ? TW_UI.tr(state.name) : state.name || "";
   }
 
   function render() { renderFactions(); renderCatalog(); renderSheet(); }
-  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); render(); }));
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+    applyLang(b.dataset.lang); render(); if (typeof fillPrintScenarios === "function") fillPrintScenarios();
+    document.dispatchEvent(new CustomEvent("tw-lang")); }));
 
   function touch() { state.example = false; render(); }
 
@@ -716,11 +726,14 @@ footer { color: var(--muted); font-size: .8rem; }
     try { window.print(); } catch (e) { /* ჩაშენებულ ხედში ბეჭდვა დაბლოკილია — ხედი მაინც ჩანს */ }
   }
   document.addEventListener("click", e => { if (e.target.id === "printClose") $("printView").hidden = true; });
-  $("printScenario").innerHTML = `<option value="">სცენარის გარეშე</option>` + (D.scenarios || []).map((s, i) => `<option value="${i}">${esc(s.name)}</option>`).join("");
+  const fillPrintScenarios = () => { const v = $("printScenario").value;
+    $("printScenario").innerHTML = `<option value="">სცენარის გარეშე</option>` + (D.scenarios || []).map((s, i) => `<option value="${i}">${esc(s.name)}</option>`).join("");
+    $("printScenario").value = v; };
+  fillPrintScenarios();
   $("printBtn").addEventListener("click", printSheet);
 
   $("copyBtn").addEventListener("click", () => {
-    const text = asText(); const box = $("exportBox");
+    const text = window.TW_UI ? TW_UI.tr(asText()) : asText(); const box = $("exportBox");
     box.value = text; box.hidden = false;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(() => setStatus("კოპირებულია."), () => { box.select(); setStatus("მონიშნულია — დააკოპირე ხელით."); });
