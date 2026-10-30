@@ -2799,7 +2799,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "nile_timekeepers.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -2818,7 +2818,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "nile_regulars.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -2835,7 +2835,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "nile_thugs.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -2854,7 +2854,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "set_spearmen.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -2873,7 +2873,7 @@
    "kw": [
     "charge"
    ],
-   "art": null,
+   "art": "sekhmet_warriors.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -2892,7 +2892,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "yu_canal_diggers.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -2911,7 +2911,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "yellow_river_regulars.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -2928,7 +2928,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "yellow_river_thugs.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -2945,7 +2945,7 @@
    "atk": 2,
    "hp": 1,
    "kw": [],
-   "art": null,
+   "art": "tripod_scholars.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -2965,7 +2965,7 @@
     "suppress",
     "hunter"
    ],
-   "art": null,
+   "art": "xiangliu_hunters.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -2986,7 +2986,7 @@
     "anti_air",
     "long"
    ],
-   "art": null,
+   "art": "hidesato_archers.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -3005,7 +3005,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "japan_isles_regulars.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -3022,7 +3022,7 @@
    "atk": 3,
    "hp": 2,
    "kw": [],
-   "art": null,
+   "art": "japan_isles_thugs.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -3041,7 +3041,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "three_companions.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -3060,7 +3060,7 @@
    "kw": [
     "fearless"
    ],
-   "art": null,
+   "art": "karakuri_soldiers.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -6523,7 +6523,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "nile_leader.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6542,7 +6542,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "nile_grotesque.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6561,7 +6561,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "nile_giant.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6581,7 +6581,7 @@
     "scout",
     "long"
    ],
-   "art": null,
+   "art": "medjay.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6600,7 +6600,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "dam_builders.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6619,7 +6619,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "star_sighters.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6638,7 +6638,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "house_of_life.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6657,7 +6657,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "mehen_coil_guard.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6677,7 +6677,7 @@
     "fire",
     "long"
    ],
-   "art": null,
+   "art": "sun_mirror.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6697,7 +6697,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "sand_barque.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -6716,7 +6716,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "yellow_river_leader.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6735,7 +6735,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "yellow_river_grotesque.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6755,7 +6755,7 @@
     "giant",
     "fly"
    ],
-   "art": null,
+   "art": "yellow_river_giant.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6774,7 +6774,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "channel_crews.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6793,7 +6793,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "boat_scouts.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6812,7 +6812,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "poison_physicians.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6831,7 +6831,7 @@
    "kw": [
     "shield"
    ],
-   "art": null,
+   "art": "dike_shieldbearers.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6848,7 +6848,7 @@
    "atk": 6,
    "hp": 5,
    "kw": [],
-   "art": null,
+   "art": "pump_armor.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6867,7 +6867,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "tripod_cannon.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6887,7 +6887,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "sluice_fortress.jpg",
    "palette": [
     "#c9a23a",
     "#2f5a4a",
@@ -6906,7 +6906,7 @@
    "kw": [
     "leader"
    ],
-   "art": null,
+   "art": "japan_isles_leader.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -6925,7 +6925,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "japan_isles_grotesque.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -6944,7 +6944,7 @@
    "kw": [
     "giant"
    ],
-   "art": null,
+   "art": "japan_isles_giant.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -6961,7 +6961,7 @@
    "atk": 7,
    "hp": 6,
    "kw": [],
-   "art": null,
+   "art": "samurai.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -6980,7 +6980,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "island_riflemen.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -6999,7 +6999,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "oni_breakers.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -7018,7 +7018,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "mountain_herbalists.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -7038,7 +7038,7 @@
     "healer",
     "digger"
    ],
-   "art": null,
+   "art": "karakuri_makers.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -7058,7 +7058,7 @@
     "fly",
     "long"
    ],
-   "art": null,
+   "art": "kite_battery.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -7078,7 +7078,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "oni_island_ship.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
