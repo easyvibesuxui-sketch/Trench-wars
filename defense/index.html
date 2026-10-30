@@ -378,6 +378,9 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     scale = Math.min(cv.width / W, cv.height / H); offX = (cv.width - W * scale) / 2; offY = (cv.height - H * scale) / 2;
   }
   window.addEventListener("resize", resize);
+  // ველის ზომა იცვლება პანელის სიმაღლესთან ერთად (მაგ. EN-ში ღილაკები სხვა რიგებად ლაგდება) — canvas-ი ხელახლა იზომება,
+  // თორემ დაწკაპუნება სხვა უჯრაზე მოხვდება
+  if (window.ResizeObserver) new ResizeObserver(() => resize()).observe($("field"));
   function draw() {
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = "#2a241d"; ctx.fillRect(0, 0, cv.width, cv.height);
     if (!S) return;

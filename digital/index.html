@@ -413,6 +413,9 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     clampCam();
   }
   window.addEventListener("resize", resize);
+  // ველის ზომა იცვლება პანელის სიმაღლესთან ერთად (მაგ. EN-ში ღილაკები სხვა რიგებად ლაგდება) — canvas-ი ხელახლა იზომება,
+  // თორემ დაწკაპუნება სხვა უჯრაზე მოხვდება
+  if (window.ResizeObserver) new ResizeObserver(() => resize()).observe($("field"));
   function clampCam() {
     cam.z = Math.max(fitZ, Math.min(fitZ * 4, cam.z || fitZ));
     const hw = cv.width / 2 / cam.z, hh = cv.height / 2 / cam.z;
