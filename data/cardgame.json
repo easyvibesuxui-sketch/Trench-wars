@@ -1400,7 +1400,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "false_signallers.jpg",
    "palette": [
     "#2e3440",
     "#b8a77a",
@@ -1419,7 +1419,7 @@
    "kw": [
     "healer"
    ],
-   "art": null,
+   "art": "false_sisters.jpg",
    "palette": [
     "#2e3440",
     "#b8a77a",
@@ -1439,7 +1439,7 @@
     "shield",
     "fearless"
    ],
-   "art": null,
+   "art": "lock_guard.jpg",
    "palette": [
     "#2e3440",
     "#b8a77a",
@@ -1459,7 +1459,7 @@
     "fly",
     "long"
    ],
-   "art": null,
+   "art": "listening_balloon.jpg",
    "palette": [
     "#2e3440",
     "#b8a77a",
@@ -1479,7 +1479,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "gifted_fortress.jpg",
    "palette": [
     "#2e3440",
     "#b8a77a",
@@ -1708,7 +1708,7 @@
    "kw": [
     "digger"
    ],
-   "art": null,
+   "art": "kajeti_miners.jpg",
    "palette": [
     "#c0c4c8",
     "#e07a2a",
@@ -1727,7 +1727,7 @@
    "kw": [
     "long"
    ],
-   "art": null,
+   "art": "silver_cannoneers.jpg",
    "palette": [
     "#c0c4c8",
     "#e07a2a",
@@ -1747,7 +1747,7 @@
     "charge",
     "fearless"
    ],
-   "art": null,
+   "art": "silver_sentinel.jpg",
    "palette": [
     "#c0c4c8",
     "#e07a2a",
@@ -1768,7 +1768,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "forge_citadel.jpg",
    "palette": [
     "#c0c4c8",
     "#e07a2a",
@@ -1977,7 +1977,7 @@
    "kw": [
     "scout"
    ],
-   "art": null,
+   "art": "tribute_scouts.jpg",
    "palette": [
     "#4a5a6a",
     "#c8913e",
@@ -1996,7 +1996,7 @@
    "kw": [
     "hunter"
    ],
-   "art": null,
+   "art": "forty_hunters.jpg",
    "palette": [
     "#4a5a6a",
     "#c8913e",
@@ -2016,7 +2016,7 @@
     "breaker",
     "charge"
    ],
-   "art": null,
+   "art": "tribute_cuirassiers.jpg",
    "palette": [
     "#4a5a6a",
     "#c8913e",
@@ -2036,7 +2036,7 @@
     "suppress",
     "long"
    ],
-   "art": null,
+   "art": "ring_armored_car.jpg",
    "palette": [
     "#4a5a6a",
     "#c8913e",
@@ -2056,7 +2056,7 @@
     "breaker",
     "long"
    ],
-   "art": null,
+   "art": "sea_gate_battery.jpg",
    "palette": [
     "#4a5a6a",
     "#c8913e",
