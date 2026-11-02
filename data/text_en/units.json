@@ -475,6 +475,10 @@
   "h": "1a2560a20a",
   "en": "**Tier:** hero.\nThe battalion's chief interpreter, who speaks seven languages and listens in forty. **Interpreter** (12\"), **Messenger**; **Everyone's Tongue:** once per battle the leader's order reaches every allied unit, whatever the distance. **Weakness:** she barely fights."
  },
+ "udesc:automaton_phalanx": {
+  "h": "863b287f7b",
+  "en": "Bronze shield-bearers forged in Hephaestus' workshops, driven by steam and never breaking an order. **Shield wall**, **steam**, **automaton**; armour 5 and fearless. **Weakness:** slow (4\") and poor shots."
+ },
  "udesc:hellenic_regulars": {
   "h": "3ba91f1eb0",
   "en": "Hellenic League: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -482,6 +486,14 @@
  "udesc:hellenic_thugs": {
   "h": "d4f1942b4c",
   "en": "Hellenic League: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
+ },
+ "udesc:cyclops_gunners": {
+  "h": "becee476eb",
+  "en": "Gunners of the Cyclops tradition, with a huge lens on the barrel that lets them see far. **Artillery**; lens cannon at 30\", power 4, **blast**, **reload**. **Weakness:** weak in melee and lose a round reloading."
+ },
+ "udesc:jotun_hunters": {
+  "h": "ebfbd7fe49",
+  "en": "Hunters who track the jotuns with harpoon and axe. **Giant-hunter**, **anti-air**; harpoon gun at 18\", power 4, damage 2. **Weakness:** a single shot and light armour."
  },
  "udesc:northern_regulars": {
   "h": "2695732542",
@@ -491,6 +503,14 @@
   "h": "2b5ffd62c7",
   "en": "Northern Union: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
  },
+ "udesc:tyr_onehands": {
+  "h": "04f72ae8b6",
+  "en": "Veterans who left a hand to the underworld's wolves and now fight with a steam arm. **Steam**, **oathbound**; the steam arm hits at power 4, damage 2. **Weakness:** slow (5\") and poor shots."
+ },
+ "udesc:lugh_marksmen": {
+  "h": "f14ed41f6b",
+  "en": "Heirs of Lugh's sling, aiming long-barrelled rifles at Balor's eye. **Ambush**, **giant-hunter**, **anti-air**; shooting 8 at 42\". **Weakness:** one wound, no armour, weak in melee."
+ },
  "udesc:celtic_regulars": {
   "h": "e0c663a650",
   "en": "Celtic Isles: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -498,6 +518,14 @@
  "udesc:celtic_thugs": {
   "h": "1907e244d0",
   "en": "Celtic Isles: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
+ },
+ "udesc:goibniu_smiths": {
+  "h": "fc8b0d8e83",
+  "en": "Field smiths who mend broken arms and armour in the middle of the fight. **Engineer**, **repair**; the forge hammer hits at power 4. **Weakness:** poor shots and few wounds."
+ },
+ "udesc:ilmarinen_forged": {
+  "h": "41af4ddbc9",
+  "en": "Men forged from gold in Ilmarinen's smithy: strong, cold and soulless. **Forged**, **fearless**; 4 wounds, armour 4. **Weakness:** they cannot shoot at all and are slow (4\")."
  },
  "udesc:finnish_regulars": {
   "h": "c211ca300b",
@@ -507,6 +535,14 @@
   "h": "8e0c5e95fa",
   "en": "Finnish Forests: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
  },
+ "udesc:vainamoinen_singers": {
+  "h": "90ec512bba",
+  "en": "Keepers of Väinämöinen's old songs, whose voices root the enemy in place. **Song**; lifts the courage of allies within 6\". **Weakness:** armed only with knives, and a single wound."
+ },
+ "udesc:beowulf_heirs": {
+  "h": "0acf19f4de",
+  "en": "Warriors of Beowulf's school who meet monsters hand to hand with a great sword. **Monster-hunter**; melee 8, the great sword strikes twice and is **anti-giant**. **Weakness:** poor shots."
+ },
  "udesc:britain_regulars": {
   "h": "6f4b0e5bc8",
   "en": "The Saxons: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -514,6 +550,14 @@
  "udesc:britain_thugs": {
   "h": "b0787e5e1e",
   "en": "The Saxons: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
+ },
+ "udesc:fen_scouts": {
+  "h": "3a0723ec7a",
+  "en": "Scouts hidden in the fen reeds, always first to find Grendel's trail. **Ambush**, **scout**; rifle at 24\". **Weakness:** one wound and no armour."
+ },
+ "udesc:taranis_signallers": {
+  "h": "f64a17bb4d",
+  "en": "Signallers of the lightning corps; their carbines fire small bolts that burn away gas clouds. **Burns gas**; lightning carbine at 12\", 2 shots, **lightning**. **Weakness:** short range and weak in melee."
  },
  "udesc:gaul_regulars": {
   "h": "6558900450",
@@ -523,6 +567,10 @@
   "h": "76cbd2ae90",
   "en": "Gaul: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
  },
+ "udesc:vulcan_gunners": {
+  "h": "a66c0f2f14",
+  "en": "Cannoneers from Vulcan's forges with a heavy field gun. **Artillery**; cannon at 30\", power 4, **blast**, **reload**. **Weakness:** very slow (4\") and weak in melee."
+ },
  "udesc:italy_regulars": {
   "h": "1c57c6a677",
   "en": "Rome: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -531,6 +579,14 @@
   "h": "3f3d0df284",
   "en": "Rome: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
  },
+ "udesc:hercules_hammers": {
+  "h": "0fee23eab3",
+  "en": "Heirs of Hercules' club: heavily armoured assault troops who walk into Cacus' fire. Melee 7, the club hits at power 4, damage 2; armour 4. **Weakness:** poor shots."
+ },
+ "udesc:polianitsa": {
+  "h": "f8ad336779",
+  "en": "A woman bogatyr of the winter steppe: heavy cavalry whose charge breaks the enemy line. **Cavalry**, **child of winter**, **rare**; **Bogatyr:** on a charge, throws a size-1 target back 2\". **Weakness:** only one per warband, and a poor shot."
+ },
  "udesc:polianitsy_regulars": {
   "h": "8a7b2e9d98",
   "en": "Northern Slavic Lands: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -538,6 +594,10 @@
  "udesc:polianitsy_thugs": {
   "h": "cdbaccf7e7",
   "en": "Northern Slavic Lands: clubmen. Trench raiders: revolver, club and a sharpened trench spade, **Frenzy**, **Gas Mask**, **Trench Brawler** (+1 Melee in a trench). Made for night raids. **Weakness:** poor shots."
+ },
+ "udesc:winter_scouts": {
+  "h": "99ae1c2a32",
+  "en": "Scouts who move over ice and snow and can see through winter haze. **Scout**, **child of winter**; rifle at 24\". **Weakness:** one wound and light armour."
  },
  "udesc:vahagn_slayers": {
   "h": "60ef7c3c68",
@@ -631,6 +691,18 @@
   "h": "ccaab57aeb",
   "en": "Mechanical, Fearless. **The Mainspring:** every 3rd round they lose an action until they are wound up again."
  },
+ "udesc:hellenic_leader": {
+  "h": "367dc4dccd",
+  "en": "Commander of the Hellenic League, who keeps the phalanx together inside Typhon's storm. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:hellenic_grotesque": {
+  "h": "04ee20c0c3",
+  "en": "A bronze giant from Hephaestus' forge, Talos' younger brother. **Forged**, **automaton**, **fearless**; bronze spear strikes 3 times at power 4, **charge**. **Weakness:** cannot shoot at all."
+ },
+ "udesc:hellenic_giant": {
+  "h": "564652f772",
+  "en": "Hephaestus' greatest work, a bronze giant guarding the islands against the Titans. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. Bronze fists **sweep**; giant battery. **Weakness:** like Talos, it has a single vein; slow (6\") and impossible to hide."
+ },
  "udesc:hoplites": {
   "h": "78fe4d0d48",
   "en": "**Shield Wall**; spear (2\" — strikes even from the second rank). **Weakness:** slow (4\")."
@@ -670,6 +742,18 @@
  "udesc:hero_alexios": {
   "h": "abc4495520",
   "en": "Commander of the Storm Wall fleet, who sailed into the eye of Typhon twice. **Orders**; **Fire from the Shore:** once per battle a volley from the sea — 3 shots at one point within 24\", Power 4, blast. **Weakness:** −1\" Move in the mountains."
+ },
+ "udesc:northern_leader": {
+  "h": "5c9b8a08c2",
+  "en": "A jarl of the fjords who meets Fenrir's whelps on the winter front. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:northern_grotesque": {
+  "h": "f2b8c6e50a",
+  "en": "A walking keep shaped like Heimdall's horn; its cannon is heard across the whole valley. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:northern_giant": {
+  "h": "8ebb961015",
+  "en": "A jotun forged of steel that fights the winter front with an axe. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. The jotun axe **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:varangians": {
   "h": "b6ff9ca544",
@@ -711,6 +795,10 @@
   "h": "86570e78af",
   "en": "The smith who forged the last link of Fenrir's new chain. **Engineer**, **Repair**; **Binding:** once per battle she stops one Tier IV–V model within 12\" for one round. **Weakness:** short range."
  },
+ "udesc:celtic_leader": {
+  "h": "a7c6341bc4",
+  "en": "Chief of the Isles, who meets the Fomorian boats on the shore. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:nuada_silverhands": {
   "h": "7d678243bb",
   "en": "Nuada lost his hand in battle and came back with a hand of silver; these too are veterans maimed in the war with the Fomorians, with steam silver hands: **Steam Pressure**, **Shield**, 2 Attacks in melee. **Weakness:** slow, poor shots."
@@ -718,6 +806,14 @@
  "udesc:curragh_raiders": {
   "h": "85a656ab2e",
   "en": "**Landing** (they appear anywhere on a shore or riverbank); boarding axe (2 Attacks). **Weakness:** light armour."
+ },
+ "udesc:celtic_grotesque": {
+  "h": "ef6117998f",
+  "en": "Goibniu's forge on steam legs, mending allied weapons mid-battle. **Vehicle**, **steam**, **repair**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:celtic_giant": {
+  "h": "7970cbe3ab",
+  "en": "A stone colossus armed with Lugh's sling, sinking Fomorian boats with boulders. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. The sling stone **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:gallowglass": {
   "h": "ddf7ba87e7",
@@ -750,6 +846,18 @@
  "udesc:hero_niamh": {
   "h": "43c09c5388",
   "en": "Daughter of the Chief of the Isles, who meets the Fomorians' boats on the shore itself. **Orders**; **Boarding:** Curragh Raiders and Gallowglass within 6\" get +1 Melee when they charge. **Weakness:** a poor shot."
+ },
+ "udesc:finnish_leader": {
+  "h": "332d6ace55",
+  "en": "Elder of the Forests, who knows every trail and every old song. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:finnish_grotesque": {
+  "h": "5bee27732a",
+  "en": "An engine built after Ilmarinen's Sampo, whose wheels grind through the enemy line. **Forged**, **steam**; the wheels strike 3 times at power 4, **charge**. **Weakness:** cannot shoot at all."
+ },
+ "udesc:finnish_giant": {
+  "h": "dcf43be6fe",
+  "en": "Ilmarinen's forged flying sun, a steam colossus raised into the sky to replace the stolen one. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Flies**; the sunbeam **sweeps**; giant battery. **Weakness:** anti-air fire hits it harder than most."
  },
  "udesc:hakkapeliitta": {
   "h": "ad2e8823be",
@@ -791,6 +899,18 @@
   "h": "e5537ecc6c",
   "en": "Commander of the forest partisans, who fights Louhi's army in winter. **Orders**, **Winter-Born**; **Forest War:** allies within 6\" gain Ambush in a forest. **Weakness:** −1 Nerve in the open field."
  },
+ "udesc:britain_leader": {
+  "h": "def1d2f203",
+  "en": "Fen Captain, who leads troops hidden in the mist along the marsh paths. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:britain_grotesque": {
+  "h": "3ee5f30fdb",
+  "en": "A fen steam-boat that churns through reeds and mud. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:britain_giant": {
+  "h": "de9cd6e406",
+  "en": "The Fen Fortress-Ship, a whole castle sailing through reed and mud. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. Ship's battery **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
+ },
  "udesc:huscarls": {
   "h": "8002da0e72",
   "en": "**Shield Wall**, **Oathbound**; axe (**Armour-Breaker**). **Weakness:** poor shots."
@@ -831,6 +951,10 @@
   "h": "16b7fc74f9",
   "en": "Chief of the Mere-Divers, who stays longest on the bottom. **Fearless**, **River-Swift**; **From the Depths:** once per battle she emerges within 6\" of water terrain. **Weakness:** slow on land (5\")."
  },
+ "udesc:gaul_leader": {
+  "h": "e56fee00e6",
+  "en": "Commandant of the lightning corps, who holds the bridges against the Tarasque. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:belenos_shields": {
   "h": "5f9b8ba6ad",
   "en": "**Shield Wall**; polished shields named for the sun god: those standing on a bridge or ford need no Fear test. **Weakness:** slow."
@@ -838,6 +962,14 @@
  "udesc:tarasque_breakers": {
   "h": "bf22706091",
   "en": "**Monster-Hunter**; steam hammer (2 Attacks, **Armour-Breaker**), **bridge charge** (6\", blast, one-shot). **Weakness:** short range."
+ },
+ "udesc:gaul_grotesque": {
+  "h": "864860c6b1",
+  "en": "A wagon shaped like Taranis' wheel, whose coil hurls lightning. **Vehicle**, **steam**; lightning coil at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:gaul_giant": {
+  "h": "c4269d32ec",
+  "en": "The Wheel of Taranis, a huge lightning wheel that lashes the Tarasque's back with bolts. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. The lightning wheel **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:cuirassiers": {
   "h": "becc42b0a8",
@@ -874,6 +1006,18 @@
  "udesc:hero_lucien": {
   "h": "05a3084da8",
   "en": "A veteran commandant of the Lightning Corps, who has lived through three onslaughts of the Tarasque. **Orders**; **Oath of the Bridge:** allies on a bridge or within 6\" of it do not fall back. **Weakness:** slow (5\")."
+ },
+ "udesc:italy_leader": {
+  "h": "67a97a5ae2",
+  "en": "Commander of Vulcan's forges, who sets the batteries before Cacus' caves. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:italy_grotesque": {
+  "h": "21ac175d79",
+  "en": "Vulcan's walking battery: a heavy cannon on steam legs. **Vehicle**, **steam**, **artillery**; heavy cannon at 30\", 2 shots, power 4, **blast**. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:italy_giant": {
+  "h": "2101352f1a",
+  "en": "The Colossus of Hercules with a steel club, walking into Cacus' burning caves. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. The steel club **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:praetorians": {
   "h": "23514b2095",
@@ -915,6 +1059,18 @@
   "h": "56e643da88",
   "en": "Champion of the Hammers of Hercules, slayer of the spawn of Cacus. **Fearless**; **Blow of Hercules:** once per battle his damage against a monster or a Tier IV–V model is doubled. **Weakness:** a poor shot."
  },
+ "udesc:polianitsy_leader": {
+  "h": "37538487bc",
+  "en": "Chieftain of the polianitsy, a woman bogatyr who rides at the head of the host on the winter steppe. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:polianitsy_grotesque": {
+  "h": "758015de58",
+  "en": "A winter fortress built on sledge runners, gliding over snow and ice. **Vehicle**, **child of winter**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:polianitsy_giant": {
+  "h": "892dfcedfb",
+  "en": "The Stone Colossus of Svyatogor, so heavy the earth can barely bear it. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. Stone sword **sweeps**; giant battery. **Weakness:** the slowest of the giants (4\")."
+ },
  "udesc:frost_riflemen": {
   "h": "93e5437e09",
   "en": "Riflemen of the endless winter. **Fires on the Move**, **Winter-Born**. **Weakness:** light armour."
@@ -954,6 +1110,18 @@
  "udesc:hero_marya": {
   "h": "e1e1b0c5f4",
   "en": "A master swordswoman who bears the name of the warrior queen of the fairy tale and has twice taken a servant of Koschei captive. **Fearless**; **Two Swords:** a target with Regrowth cannot restore wounds she inflicts. **Weakness:** a poor shot."
+ },
+ "udesc:armenian_leader": {
+  "h": "7a992d2c56",
+  "en": "Sparapet of the Highlands, the commander who leads the army through the vishap valleys. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:armenian_grotesque": {
+  "h": "530aad80b2",
+  "en": "Vahagn's Fire-Wagon, which pierces vishap scales with burning shells. **Vehicle**, **steam**; fire cannon at 30\", 2 shots, power 4, **blast**. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:armenian_giant": {
+  "h": "b1f24e4932",
+  "en": "The Colossus of Tork, a mountain giant who hurls crags at the vishaps. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. Crags **sweep**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:lake_watchers": {
   "h": "51fb92b806",
@@ -995,6 +1163,18 @@
   "h": "9a59780732",
   "en": "A veteran of the battle of the drained lake, commander of the mountain riflemen. **Orders**, **Mountain Folk**; **The Stone Road:** allies within 6\" move on cliffs with no penalty. **Weakness:** −1\" Move in the lowlands."
  },
+ "udesc:oghuz_leader": {
+  "h": "af94adad4c",
+  "en": "Bey of the Oghuz, who sends the riders after Tepegöz. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:oghuz_grotesque": {
+  "h": "2c7140fd8b",
+  "en": "A steam copy of Köroğlu's legendary horse, with steel hooves. **Forged**, **steam**, **breaks trenches**; fast (6\"), the hooves strike 3 times at power 4, **charge**. **Weakness:** cannot shoot at all."
+ },
+ "udesc:oghuz_giant": {
+  "h": "ee3063a4d4",
+  "en": "A flying colossus shaped like the Zumrud bird, with emerald talons. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Flies**; talons **sweep**; giant battery. **Weakness:** anti-air fire hits it harder than most."
+ },
  "udesc:well_watchers": {
   "h": "259314ceed",
   "en": "Guards of Erlik's wells: they know by the sound when something rises from the underworld. **Scout**, **Ambush**, **Night-Eye**. **Weakness:** one Wound."
@@ -1035,6 +1215,18 @@
   "h": "de5221d388",
   "en": "A rider who bears the name of the heroine of the epic — in the saddle, with a bow, and unbeaten at wrestling. **Orders**, **Cavalry**, **Fires on the Move**. **Weakness:** light armour."
  },
+ "udesc:nile_leader": {
+  "h": "a40ef0f068",
+  "en": "Captain of the Sun Barque, who waits on the river at night for Apep to rise. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:nile_grotesque": {
+  "h": "7a046064c8",
+  "en": "An armoured barge with a giant spear-cannon that pierces Apep's coils. **Vehicle**, **steam**; spear cannon at 30\", 2 shots, power 4, **blast**. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:nile_giant": {
+  "h": "a941b2a4eb",
+  "en": "The Sun Barque, a giant steam vessel that fights Apep every night. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. Set's spear **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
+ },
  "udesc:medjay": {
   "h": "e06663d9fb",
   "en": "**Scout**; they know the desert roads. **Weakness:** light armour."
@@ -1070,6 +1262,18 @@
  "udesc:hero_khaled": {
   "h": "5b0124edb2",
   "en": "Captain of the Barge of Set's Spear, survivor of two of Apep's nights. **Orders**, **River-Swift**; **The Prow:** Spearmen of Set within 6\" get +1 to shoot at monsters. **Weakness:** −1\" in sand."
+ },
+ "udesc:yellow_river_leader": {
+  "h": "8be4c60c95",
+  "en": "Chief Engineer of the Canals, who commands water the way others command troops. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:yellow_river_grotesque": {
+  "h": "22f034ba5f",
+  "en": "A river barge with a many-barrelled cannon, one barrel for each of Xiangliu's heads. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:yellow_river_giant": {
+  "h": "0ca045f69e",
+  "en": "The Colossus of Yinglong, the winged dragon who carves channels for the flood. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Flies**; dragon tail **sweeps**; giant battery. **Weakness:** anti-air fire hits it harder than most."
  },
  "udesc:channel_crews": {
   "h": "dd3b49baf5",
@@ -1107,6 +1311,18 @@
   "h": "044583a01b",
   "en": "Captain of the Xiangliu Hunter-Barge. **Orders**, **River-Swift**; **Nine Heads:** allies within 6\" get +1 Attack against a many-headed monster. **Weakness:** −1 Nerve on land."
  },
+ "udesc:japan_isles_leader": {
+  "h": "4bc7138396",
+  "en": "Archer-Commander, a master of Hidesato's school who aims for the monster's eye. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
+ "udesc:japan_isles_grotesque": {
+  "h": "2832073f04",
+  "en": "A wagon named for Hidesato's third and final arrow; its bow-cannon looses a huge bolt. **Vehicle**; bow-cannon at 30\", 2 shots, power 4, **blast**. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:japan_isles_giant": {
+  "h": "550c5b2868",
+  "en": "The Karakuri Colossus, a towering clockwork warrior driven by springs. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. Spring-sword **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
+ },
  "udesc:samurai": {
   "h": "5aa619b58d",
   "en": "Bow and sword (2 Attacks); **Oathbound**. **Weakness:** expensive."
@@ -1143,6 +1359,10 @@
   "h": "654e0ebbd6",
   "en": "A commander raised on the tale of Momotarō, attended by a dog, a monkey and a pheasant. **Orders**; **The Three Companions:** sees ambushers within 12\" and climbs cliffs. **Weakness:** light armour."
  },
+ "udesc:korea_leader": {
+  "h": "a03403a44c",
+  "en": "Commander of the Mountain Villages, who guards them from tigers and fire. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:korea_regulars": {
   "h": "6b4de8c6b1",
   "en": "Korean Peninsula: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1162,6 +1382,14 @@
  "udesc:dokkaebi_bargainers": {
   "h": "968a5746f2",
   "en": "**Cunning (Discord):** once per round one enemy model within 12\" takes only 1 action on its next activation. **Weakness:** they do not fight."
+ },
+ "udesc:korea_grotesque": {
+  "h": "142a2c7b7b",
+  "en": "A wagon that climbs mountain paths, carrying light mountain guns. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:korea_giant": {
+  "h": "ac0e67edb2",
+  "en": "The Haetae Colossus, the fire-eating guardian lion that no blaze can overcome. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Fireproof**; stone teeth **sweep**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:hwarang": {
   "h": "8f24ca93e3",
@@ -1199,6 +1427,10 @@
   "h": "fb082c1f60",
   "en": "Captain of the Haetae Fire-Wardens. **Orders**, **Fireproof**; **Bucket Chain:** allies within 6\" put out a fire marker in half a round. **Weakness:** light armour."
  },
+ "udesc:mongolia_leader": {
+  "h": "26096c30a0",
+  "en": "Steppe Chief, whose messengers bring word faster than the wind. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:mongolia_regulars": {
   "h": "c0fe323605",
   "en": "Mongolian Steppe and Gobi: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1218,6 +1450,14 @@
  "udesc:steppe_riflemen": {
   "h": "d839caa4e7",
   "en": "Scouts, cheap and numerous. **Weakness:** one Wound."
+ },
+ "udesc:mongolia_grotesque": {
+  "h": "a94c858ce6",
+  "en": "A steppe cannon-wagon that rolls along with the caravan. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:mongolia_giant": {
+  "h": "b6b541f777",
+  "en": "The Eagle Colossus, flying over the steppe on steel wings. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Flies**; steel talons **sweep**; giant battery. **Weakness:** anti-air fire hits it harder than most."
  },
  "udesc:keshig": {
   "h": "c891f6289e",
@@ -1255,6 +1495,10 @@
   "h": "970c1c9141",
   "en": "An eagle hunter whose eagle sees the sand worm even beneath the sand. **Scout**; the eagle attacks **from above**; **Eagle-Eye:** he sees anything hidden in a tunnel or under the sand within 18\". **Weakness:** weak in melee."
  },
+ "udesc:balkans_leader": {
+  "h": "6566dea440",
+  "en": "Commander of the Valleys, who holds the mountain passes against the ala's storms. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:balkans_regulars": {
   "h": "6b02fb0af7",
   "en": "Balkan Mountains: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1274,6 +1518,14 @@
  "udesc:mountain_wardens": {
   "h": "7610fab150",
   "en": "They climb cliffs; cheap riflemen. **Weakness:** one Wound."
+ },
+ "udesc:balkans_grotesque": {
+  "h": "4c8a6bbded",
+  "en": "A mountain armour-wagon that bars the passes with its guns. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:balkans_giant": {
+  "h": "c8b9bd4614",
+  "en": "The Zmaj Colossus, the mountains' guardian dragon who fights the ala's storms. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Flies**; dragon talons **sweep**; giant battery. **Weakness:** anti-air fire hits it harder than most."
  },
  "udesc:valley_herbalists": {
   "h": "1bba376b3c",
@@ -1311,6 +1563,10 @@
   "h": "202009a896",
   "en": "Chief of the Wind-Readers, who sees hail a day ahead. **Scout**, **Orders**; **Foretelling the Weather:** you choose the scenario's weather at the start of the battle. **Weakness:** he barely fights."
  },
+ "udesc:pyrenean_leader": {
+  "h": "13ab0b1484",
+  "en": "Commander of the Mountain Shields, who closes the valley with a wall of shields. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:pyrenean_regulars": {
   "h": "b9f45b2b04",
   "en": "Pyrenean Mountains: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1330,6 +1586,14 @@
  "udesc:cyclops_hunters": {
   "h": "7377782065",
   "en": "**Mountain rifle** (30\", Power 3, Damage 2, Giant-Hunter); a critical hit on a Size 3–4 target gives it −2 Shoot until the end of the battle (the eye). **Weakness:** weak in melee."
+ },
+ "udesc:pyrenean_grotesque": {
+  "h": "5ab6018c96",
+  "en": "An armoured wagon built from mine carts, able to roll out of the tunnels. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:pyrenean_giant": {
+  "h": "958e00cb0e",
+  "en": "The Basajaun Colossus, a forest-guardian giant with huge wooden fists. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. Wooden fists **sweep**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:almogavars": {
   "h": "2365796e82",
@@ -1367,6 +1631,10 @@
   "h": "102eb059a2",
   "en": "A veteran captain of the Mountain Shields, who has met the one-eyed giant twice. **Orders**, **Mountain Folk**; **The One-Eye Trap:** allies within 6\" get +1 to shoot at Size 3–4 targets. **Weakness:** slow (5\")."
  },
+ "udesc:alps_leader": {
+  "h": "0eefcceaac",
+  "en": "Chief of the Valley Guides, who fights with an ice axe and knows every path, avalanche routes included. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:alps_regulars": {
   "h": "a174c58096",
   "en": "The Alps: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1386,6 +1654,14 @@
  "udesc:alpine_riflemen": {
   "h": "ee0ad772a7",
   "en": "36\" rifle; they climb cliffs. **Weakness:** one Wound."
+ },
+ "udesc:alps_grotesque": {
+  "h": "437e19af18",
+  "en": "A wagon on cog-railway wheels that climbs sheer rock. **Vehicle**, **steam**, **climbs cliffs**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:alps_giant": {
+  "h": "c704f5277b",
+  "en": "The Avalanche Colossus, a cliff-climbing giant that buries the enemy under avalanche charges. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Climbs cliffs**; steel arms **sweep**; avalanche charges fire **indirect**. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:reislaufer": {
   "h": "8eb9458fb3",
@@ -1423,6 +1699,10 @@
   "h": "da21158cb7",
   "en": "A veteran of the valley guides, who knows every path and every avalanche line. **Orders**, **Cliff-Climber**; **The Guide:** allies within 6\" take no penalty on cliffs and snow. **Weakness:** light armour."
  },
+ "udesc:baltic_leader": {
+  "h": "ad4c389003",
+  "en": "Commander of the Shore, who guards the amber coast against monsters from the sea. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:baltic_regulars": {
   "h": "b074be87d5",
   "en": "Baltic Forests and Shore: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1442,6 +1722,14 @@
  "udesc:marsh_riflemen": {
   "h": "ec711d9824",
   "en": "**Ambush**; they move through marsh with no penalty. **Weakness:** one Wound."
+ },
+ "udesc:baltic_grotesque": {
+  "h": "84a5a095da",
+  "en": "An armour-wagon plated in amber-hued sheets to guard the shore. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:baltic_giant": {
+  "h": "7f81e2f8a9",
+  "en": "The Kalevipoeg Colossus, a steel likeness of the shore's hero, wielding a hero's sword. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Fearless**; hero's sword **sweeps**; giant battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:dune_riflemen": {
   "h": "1b38104fe8",
@@ -1479,6 +1767,10 @@
   "h": "a6db4d7b84",
   "en": "Captain of the Gate Wardens. **Orders**; **The Gate Is Shut:** allies within 6\" do not fall back on a bridge, at a gate or in a pass. **Weakness:** slow (5\")."
  },
+ "udesc:prussia_leader": {
+  "h": "df71788100",
+  "en": "Landwehr Colonel, who commands the militia in marsh and forest. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:prussia_regulars": {
   "h": "2ebd294fdc",
   "en": "Prussia: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1498,6 +1790,14 @@
  "udesc:wieland_smiths": {
   "h": "4e2daad90a",
   "en": "**Repair** (a vehicle or Forged model regains 1 wound in battle); the smith's sledge is an **Armour-Breaker**. **Weakness:** slow."
+ },
+ "udesc:prussia_grotesque": {
+  "h": "0f945b3d3b",
+  "en": "A steam sledgehammer on armoured legs: its machine gun pins the enemy, its hammer smashes armour. **Vehicle**, **steam**; machine gun at 24\" **suppresses**; hammer at power 6, **armour-break**. **Weakness:** poor shot (4) and slow (5\")."
+ },
+ "udesc:prussia_giant": {
+  "h": "fcfdadbeb3",
+  "en": "The Colossus of Wieland, a giant flying on smith-forged wings and swinging a huge hammer. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Fearless**, **flies**; giant hammer **sweeps**; wing battery. **Weakness:** anti-air fire hits it harder than most."
  },
  "udesc:grenadiers": {
   "h": "86eac5f769",
@@ -1535,6 +1835,10 @@
   "h": "5d24ade82c",
   "en": "A Landwehr captain, formerly chief of the Harz miners. **Orders**, **Tunnel**; **The Miner's Voice:** allies within 6\" take no penalty in tunnels. **Weakness:** slow (5\")."
  },
+ "udesc:batavi_leader": {
+  "h": "bf6daee2a2",
+  "en": "Count of the Dikes, at whose word a dike holds or breaks on the enemy's head. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:batavi_regulars": {
   "h": "1f08e0d257",
   "en": "The Batavi: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1554,6 +1858,14 @@
  "udesc:klabauter_crews": {
   "h": "6a973d84e5",
   "en": "**Supply** (an adjacent unit reloads at once), **Repair**; they say the Klabautermann shows them the cracks. **Weakness:** light armour."
+ },
+ "udesc:batavi_grotesque": {
+  "h": "2733a72d06",
+  "en": "A windmill standing on steam legs; its sails sweep foes aside while its cannons fire from afar. **Vehicle**, **steam**; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. The sails **sweep**. **Weakness:** very slow (4\")."
+ },
+ "udesc:batavi_giant": {
+  "h": "47d726a29d",
+  "en": "The Pump Colossus, a piston-armed giant that holds the sea behind the dikes or lets it loose on the enemy. **Giant**, **huge** (size 4): 24 wounds, armour 7; takes the table only when a scenario calls for it. **Fearless**, **flood**; piston arms **sweep**; water cannon at 24\". **Weakness:** among the slowest giants (5\")."
  },
  "udesc:batavian_riders": {
   "h": "7f36240ac8",
@@ -1591,6 +1903,10 @@
   "h": "3a7efdc13c",
   "en": "Captain of the Canal Monitor, who has fought the ghost-ships in the fog twice. **Orders**, **River-Swift**; **The Fog Bell:** allies within 6\" take no penalty in murk. **Weakness:** light armour."
  },
+ "udesc:lechia_leader": {
+  "h": "c52d20b7de",
+  "en": "Chorąży, an officer of the hussar company who rides at the front of the charge. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:lechia_regulars": {
   "h": "30ffa07ad3",
   "en": "Lechia: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1610,6 +1926,14 @@
  "udesc:skuba_trappers": {
   "h": "0b1304f3e9",
   "en": "**Giant-** and **Monster-Hunters**; salt grenade (8\", blast, Damage 2, Anti-Giant). **Weakness:** short range; weak in melee."
+ },
+ "udesc:lechia_grotesque": {
+  "h": "e492dd9af6",
+  "en": "An armour-wagon plated in white slabs from the salt mines. **Vehicle**, **steam**; faster than other wagons (6\"); Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** weak in melee."
+ },
+ "udesc:lechia_giant": {
+  "h": "3b190fb19c",
+  "en": "The Krak Colossus, named for the city's legendary founder who freed it from the Wawel dragon, armed with a long lance. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Fearless**; the lance reaches 2\", **charge**; salt battery. **Weakness:** slow (6\") and visible from afar."
  },
  "udesc:shore_scouts": {
   "h": "18c0db5a60",
@@ -1647,6 +1971,10 @@
   "h": "b93f270447",
   "en": "A young chorąży of the Winged Hussars. **Orders**, **Cavalry**; **The Sound of Wings:** when he charges, enemies within 6\" take Nerve tests at −1. **Weakness:** thrown from the saddle, he moves 6\"."
  },
+ "udesc:byzantium_leader": {
+  "h": "219d3bd1ab",
+  "en": "Strategos, who commands the strait's forts and the sea chain. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:byzantium_regulars": {
   "h": "bf2eb1bd2d",
   "en": "Byzantium: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1666,6 +1994,14 @@
  "udesc:wall_guards": {
   "h": "ef6a36a67d",
   "en": "**Shield**, **Shield Wall**. **Weakness:** slow (4\")."
+ },
+ "udesc:byzantium_grotesque": {
+  "h": "78f3aea32b",
+  "en": "The bronze lion of the Magnaura palace, brought to life by steam; its roar spreads fear through the enemy ranks. **Vehicle**, **steam**, **automaton**, **discord**; **Lion's Roar:** two targets within 12\" in one activation. **Weakness:** poor shot (4)."
+ },
+ "udesc:byzantium_giant": {
+  "h": "a2e4c3ccaa",
+  "en": "The Colossus of Byzas, named for the city's founder, which cuts the strait chain and hurls sea-fire. **Giant**, **huge** (size 4): 22 wounds, armour 7; takes the table only when a scenario calls for it. **Fearless**; chain-cutter **sweeps**; sea-fire at 18\", **fire**, **blast**. **Weakness:** the battery's short range."
  },
  "udesc:harbor_lookouts": {
   "h": "35415a4b8f",
@@ -1703,6 +2039,10 @@
   "h": "fd354bb6e6",
   "en": "Captain of the Wall Guards. **Orders**; **The Wall Does Not Fall:** Wall Guards and shieldbearers within 6\" do not fall back and get +1 Nerve. **Weakness:** slow (5\")."
  },
+ "udesc:ottoman_leader": {
+  "h": "fe9348aef7",
+  "en": "Pasha, who holds the city walls through the forty frozen nights of Zemheri. **Leader**: orders within 6\"; cannot be hired. **Weakness:** when they fall, the warband is confused for one round."
+ },
  "udesc:ottoman_regulars": {
   "h": "24e29a0c2a",
   "en": "The Ottomans: rank-and-file. Trench infantry in gas masks: rifle and bayonet, **Line**, **Gas Mask**. The backbone of the warband and its cheapest troops."
@@ -1722,6 +2062,14 @@
  "udesc:shadow_players": {
   "h": "c9a4940f23",
   "en": "Scouts, **Ambush**, **False Tracks** (tricks of the shadow theatre — once per battle the enemy fires at a false target). **Weakness:** light armour."
+ },
+ "udesc:ottoman_grotesque": {
+  "h": "c3918c515e",
+  "en": "A steam-wagon carrying a huge drum whose rhythm moves the army as one. **Vehicle**, **steam**, **song**; **Great Drum:** song at 9\"; Cannon at 30\", 2 shots, power 4, **blast**; rams anything that gets close. **Weakness:** slow (5\") and weak in melee."
+ },
+ "udesc:ottoman_giant": {
+  "h": "e5762f5e0e",
+  "en": "The Karagöz Colossus, a shadow-theatre figure brought to life by lantern light; its shadow splits Zemheri's night. **Giant**, **huge** (size 4): 22 wounds, armour 6; takes the table only when a scenario calls for it. **Fearless**; shadow blade **sweeps**; lantern battery, **fire**. **Weakness:** slow (6\") and its lantern gives it away at night."
  },
  "udesc:janissaries": {
   "h": "27e00d4473",
