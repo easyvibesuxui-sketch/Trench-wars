@@ -65,6 +65,67 @@ STARTER = {   # სასტარტო დასტები (30): იუნ�
 }
 
 
+DECK_TWEAKS = {   # ფრაქცია → ავტომატური დასტის შესწორება სიმულაციით (sim_cardgame.py --all): id → რაოდენობა, 0 — ამოღება
+    "listeners": {"units": {"listeners_leader": 2, "lock_wagon": 0}},
+    "northern": {"units": {"northern_leader": 2, "northern_thugs": 1}},
+    "celtic": {"units": {"nuada_silverhands": 2, "sling_carriage": 0}},
+    "finnish": {"common": {"gas": 2, "porter": 1}},
+    "gaul": {"units": {"gaul_leader": 2, "gaul_thugs": 1}},
+    "italy": {"units": {"praetorians": 2, "vulcan_gunners": 1}},
+    "polianitsy": {"units": {"bogatyr_druzhina": 0, "polianitsy_leader": 2}},
+    "oghuz": {"common": {"gas": 2, "porter": 1}},
+    "korea": {"common": {"gas": 0, "nest": 2}},
+    "mongolia": {"units": {"keshig": 0, "mongolia_leader": 2}},
+    "alps": {"common": {"gas": 0, "train": 2}},
+    "baltic": {"common": {"gas": 0, "nest": 2}},
+    "prussia": {"units": {"blue_dragoons": 1, "shaft_guard": 2}},
+    "batavi": {"common": {"gas": 2, "recon": 0}},
+    "lechia": {"units": {"lechia_leader": 2, "uhlans": 1}},
+    "byzantium": {"units": {"byzantium_leader": 2, "chain_engineers": 1}},
+    "yellow_river": {"units": {"tripod_cannon": 0, "yellow_river_leader": 2}},
+}
+
+
+def auto_deck(fid, units):
+    """სასტარტო დასტა (30) ფრაქციის ბარათებიდან: 20 იუნიტი + 10 საერთო ბარათი; ერთ ბარათს მაქს. 2 ასლი, IV — 1, IV+/გოლიათი — არა."""
+    pool = [c for c in units if c["faction"] == fid]
+    by = {t: sorted((c for c in pool if c["tier"] == t), key=lambda c: c["cost"]) for t in ("I", "II", "III", "IV")}
+    deck = {}
+    if by["IV"]:
+        deck[max(by["IV"], key=lambda c: (c["atk"] + c["hp"]) / c["cost"])["id"]] = 1
+    for c in by["I"][:5]:
+        deck[c["id"]] = 2
+    for c in by["III"][:2] + by["II"]:
+        deck[c["id"]] = 1
+    order = by["II"] + by["I"] + by["III"]                       # შევსება: ჯერ II-ის მეორე ასლები
+    while sum(deck.values()) < 20:
+        c = next((c for c in order if deck.get(c["id"], 0) < 2 and "leader" not in c["kw"]), None)
+        if not c:
+            break
+        deck[c["id"]] = deck.get(c["id"], 0) + 1
+    while sum(deck.values()) > 20:                              # ზედმეტი: ყველაზე ძვირი II/III ერთეული
+        c = max((c for c in by["II"] + by["III"] if deck.get(c["id"]) and "leader" not in c["kw"]), key=lambda c: c["cost"])
+        deck[c["id"]] -= 1
+        if not deck[c["id"]]:
+            del deck[c["id"]]
+    kws = {k for c in pool if c["id"] in deck for k in c["kw"]}
+    common = {"trench": 2, "porter": 2, "nest": 1, "barrage": 1, "raid": 1, "hospital": 1, "recon": 1, "gas": 1}
+    if "digger" in kws:
+        common["trench"], common["palisade"] = 1, 1
+    if "healer" in kws:
+        del common["hospital"]
+        common["train"] = 1
+    tw = DECK_TWEAKS.get(fid, {})
+    for k in ("units", "common"):
+        tgt = deck if k == "units" else common
+        for i, n in tw.get(k, {}).items():
+            if n:
+                tgt[i] = n
+            else:
+                tgt.pop(i, None)
+    return {"units": deck, "common": common}
+
+
 def supply(cost):
     return max(1, min(12, round(2 * math.log2(max(cost, 10) / 10))))
 
@@ -157,6 +218,8 @@ h1, h2 { font-family: "Noto Serif Georgian", serif; margin: 0 0 3mm; }
 .back { width: 63mm; height: 88mm; border-radius: 3mm; background: url(../assets/art/card_back.jpg) center/cover; }
 .board { width: 100%; border-collapse: collapse; margin-top: 4mm; } .board td { border: .5mm solid #b9ad9c; height: 34mm; text-align: center; color: #6a6158; width: 33%; }
 .board tr.nml td { background: #efe6d2; } .board tr.mine td { background: #f8f3e8; }
+.decks { columns: 3; column-gap: 5mm; font-size: 6.6pt; line-height: 1.25; } .decks .deck { break-inside: avoid; margin-bottom: 2.5mm; }
+.decks h3 { font-size: 8pt; margin: 0 0 .5mm; } .decks p { margin: 0; } .decks .cm { color: #6a6158; }
 .rules { columns: 2; column-gap: 6mm; font-size: 8.6pt; } .rules h3 { margin: 2mm 0 1mm; font-size: 9.5pt; }
 """
 
@@ -172,13 +235,20 @@ def main():
         units.append(unit_card({**u, "cost": costs.get(u["id"], u.get("cost", 20))}, V.F[u["faction"]]["palette"]))
     common = [{"id": i, "kind": k, "name": n, "cost": c, "text": t, **({"atk": s[0], "hp": s[1]} if s else {}),
                "art": f"card_{i}.jpg" if (ART / f"card_{i}.jpg").exists() else None} for i, k, n, c, t, s in COMMON]
+    starter = dict(STARTER)
+    for fid in names:
+        if fid not in starter:
+            starter[fid] = auto_deck(fid, units)
+    for fid, d in starter.items():
+        n = sum(d["units"].values()) + sum(d["common"].values())
+        assert n == 30, (fid, n)
     (ROOT / "data" / "cardgame.json").write_text(json.dumps({"keywords": {k: {"name": v[0], "rule": v[1]} for k, v in KW.items()},
-        "units": units, "common": common, "starter": STARTER}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        "units": units, "common": common, "starter": starter}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
     byid = {c["id"]: c for c in units}
     cbyid = {c["id"]: c for c in common}
     pages = [f'<section class="page"><h1>სამი ხაზი — ბარათის თამაში</h1><p>„ქვესკნელის ფრონტის“ ბარათის თამაში ორი მოთამაშისთვის, 20–30 წუთი. '
-             f'ამ ფაილში: მოკლე წესები, ველი, ორი სასტარტო დასტა (კოლხეთი და დიდი უღელი, 30–30 ბარათი) და ზურგები. სრული წესები — <code>rules/cardgame.md</code>.</p>'
+             f'ამ ფაილში: მოკლე წესები, ველი, სხვა ფრაქციების სასტარტო დასტების სია, კოლხეთისა და დიდი უღლის დასტები ბარათებად (30–30) და ზურგები. სრული წესები — <code>rules/cardgame.md</code>.</p>'
              f'{RULES_HTML}</section>',
              '<section class="page"><h2>ველი (თითო მოთამაშეს — თავისი ნახევარი)</h2><table class="board">'
              '<tr><td>მტრის ზურგი</td><td>მტრის ზურგი</td><td>მტრის ზურგი</td></tr><tr><td>მტრის სანგარი</td><td>მტრის სანგარი</td><td>მტრის სანგარი</td></tr>'
@@ -186,6 +256,11 @@ def main():
              '<tr class="mine"><td>შენი სანგარი (+ ნაგებობა)</td><td>შენი სანგარი (+ ნაგებობა)</td><td>შენი სანგარი (+ ნაგებობა)</td></tr>'
              '<tr class="mine"><td>შენი ზურგი</td><td>შენი ზურგი</td><td>შენი ზურგი</td></tr></table>'
              '<p>თითო ადგილზე მაქს. 2 იუნიტი. შტაბის ნებისყოფა: 20 (მთვლელი ან კამათელი). მზიდავები — შტაბის გვერდით.</p></section>']
+    others = [f for f in starter if f not in STARTER]
+    if others:   # დანარჩენი ფრაქციების დასტები — სიად (ბარათები: cards-all.pdf / ვიკი)
+        lst = "".join(f'<div class="deck"><h3>{e(names[f])}</h3><p>' + ", ".join(f'{e(byid[i]["name"])} ×{n}' for i, n in starter[f]["units"].items())
+                      + '</p><p class="cm">' + ", ".join(f'{e(cbyid[i]["name"])} ×{n}' for i, n in starter[f]["common"].items()) + "</p></div>" for f in others)
+        pages.append(f'<section class="page"><h2>სხვა ფრაქციების სასტარტო დასტები ({len(others)})</h2><div class="decks">{lst}</div></section>')
     for fid, deck in STARTER.items():
         cards = [byid[i] for i, n in deck["units"].items() for _ in range(n)] + [cbyid[i] for i, n in deck["common"].items() for _ in range(n)]
         assert len(cards) == 30, (fid, len(cards))

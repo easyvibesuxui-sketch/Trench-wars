@@ -199,20 +199,12 @@ class Game:
         return None
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--games", type=int, default=2000)
-    args = ap.parse_args()
-    d = json.loads((ROOT / "data" / "cardgame.json").read_text(encoding="utf-8"))
-    cards = {c["id"]: c for c in d["units"]}
-    common = {c["id"]: c for c in d["common"]}
-    fids = list(d["starter"])
-    rng = random.Random(7)
+def duel(d, fids, games, rng, cards, common):
+    """ორი დასტა: მოგებები, სვლები, მოგების გზები."""
     wins, turns, how = {f: 0 for f in fids}, [], {}
-    for g in range(args.games):
+    for g in range(games):
         order = fids if g % 2 == 0 else fids[::-1]
         game = Game([build(d["starter"][f], cards, common) for f in order], rng)
-        res = None
         for t in range(60):
             me = t % 2
             res = game.step(me)
@@ -224,6 +216,41 @@ def main():
         else:
             turns.append(60)
             how["ფრე"] = how.get("ფრე", 0) + 1
+    return wins, turns, how
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--games", type=int, default=2000)
+    ap.add_argument("--all", action="store_true", help="ყველა სასტარტო დასტა ყველას წინააღმდეგ (--games — თითო წყვილზე)")
+    ap.add_argument("--save", action="store_true", help="--all-ის შედეგი data/cardgame_winrates.json-ში (ვიკი აჩვენებს)")
+    ap.add_argument("--decks", default="colchis,harness", help="ორი დასტა, მძიმით")
+    args = ap.parse_args()
+    d = json.loads((ROOT / "data" / "cardgame.json").read_text(encoding="utf-8"))
+    cards = {c["id"]: c for c in d["units"]}
+    common = {c["id"]: c for c in d["common"]}
+    rng = random.Random(7)
+    if args.all:
+        fs = list(d["starter"])
+        score = {f: [0, 0] for f in fs}
+        allturns = []
+        for i, a in enumerate(fs):
+            for b in fs[i + 1:]:
+                w, t, _ = duel(d, [a, b], args.games, rng, cards, common)
+                score[a][0] += w[a]; score[b][0] += w[b]
+                score[a][1] += args.games; score[b][1] += args.games
+                allturns += t
+        print(f"ყველა ყველას წინააღმდეგ: {len(fs)} დასტა · {args.games} თამაში წყვილზე · საშუალო სვლა: {sum(allturns) / len(allturns):.1f}")
+        for f in sorted(fs, key=lambda f: -score[f][0] / score[f][1]):
+            print(f"  {f:14s} {score[f][0] / score[f][1] * 100:5.1f}%")
+        if args.save:
+            out = {"_comment": f"sim_cardgame.py --all --games {args.games}: მოგების % ყველა სხვა სასტარტო დასტის წინააღმდეგ",
+                   "winrates": {f: round(score[f][0] / score[f][1] * 100) for f in fs}}
+            (ROOT / "data" / "cardgame_winrates.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            print("data/cardgame_winrates.json")
+        return
+    fids = args.decks.split(",")
+    wins, turns, how = duel(d, fids, args.games, rng, cards, common)
     n = args.games
     print(f"თამაშები: {n} · საშუალო სვლა: {sum(turns) / n:.1f} · " + ", ".join(f"{k}: {v}" for k, v in how.items()))
     for f in fids:

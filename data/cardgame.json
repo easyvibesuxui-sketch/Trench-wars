@@ -9105,6 +9105,775 @@
     "volley": 1,
     "recon": 1
    }
+  },
+  "iberia": {
+   "units": {
+    "steam_ibex": 1,
+    "khevsur": 2,
+    "lowland_levy": 2,
+    "qochebi": 2,
+    "tush_shepherds": 2,
+    "mountain_sappers": 2,
+    "fortress_guards": 1,
+    "iakhsar_shields": 1,
+    "tush_riders": 2,
+    "ekimbashi": 2,
+    "natsiliani": 1,
+    "lightning_gunners": 1,
+    "spasalari": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "hell": {
+   "units": {
+    "behemoth_spawn": 1,
+    "recruits": 2,
+    "penal_squad": 2,
+    "legion_shooters": 2,
+    "legionnaires": 2,
+    "furcas_riders": 2,
+    "andras_whisperers": 2,
+    "halphas_fortifiers": 2,
+    "malphas_wreckers": 2,
+    "glasya_killers": 2,
+    "marquis": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "hospital": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1
+   }
+  },
+  "listeners": {
+   "units": {
+    "false_regulars": 2,
+    "silent_knives": 2,
+    "whisper_scouts": 2,
+    "false_signallers": 2,
+    "masked_guard": 1,
+    "lock_guard": 1,
+    "voice_mimics": 2,
+    "lock_smiths": 2,
+    "false_engineers": 2,
+    "listeners_leader": 2,
+    "false_sisters": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "kajeti": {
+   "units": {
+    "walking_furnace": 1,
+    "cast_regulars": 2,
+    "kaji_hammers": 2,
+    "wind_kaji": 2,
+    "kajeti_miners": 2,
+    "cast_wardens": 1,
+    "stitched_brutes": 1,
+    "flask_smiths": 2,
+    "kajeti_leader": 1,
+    "forged_riders": 2,
+    "silver_shooters": 2,
+    "silver_cannoneers": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "ring": {
+   "units": {
+    "ring_train": 1,
+    "interpreters": 2,
+    "ring_regulars": 2,
+    "ring_thugs": 2,
+    "tribute_scouts": 2,
+    "tribute_heavies": 1,
+    "tribute_cuirassiers": 1,
+    "furrow_sappers": 2,
+    "tribute_veterans": 2,
+    "field_sisters": 2,
+    "forty_hunters": 2,
+    "ring_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "hellenic": {
+   "units": {
+    "hellenic_grotesque": 1,
+    "hellenic_regulars": 2,
+    "hellenic_thugs": 2,
+    "island_scouts": 2,
+    "peltasts": 2,
+    "hoplites": 1,
+    "automaton_phalanx": 1,
+    "hydra_cutters": 2,
+    "hephaestus_mechanics": 2,
+    "hellenic_leader": 1,
+    "aeolus_gunners": 2,
+    "cyclops_gunners": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "northern": {
+   "units": {
+    "northern_grotesque": 1,
+    "northern_regulars": 2,
+    "northern_thugs": 1,
+    "ski_scouts": 2,
+    "fjord_riflemen": 2,
+    "tyr_onehands": 1,
+    "varangians": 1,
+    "serpent_harpooners": 2,
+    "chain_smiths": 2,
+    "horn_keepers": 2,
+    "jotun_hunters": 2,
+    "northern_leader": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "hospital": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1
+   }
+  },
+  "celtic": {
+   "units": {
+    "celtic_regulars": 2,
+    "celtic_thugs": 2,
+    "bog_trackers": 2,
+    "cliff_riflemen": 2,
+    "gallowglass": 1,
+    "nuada_silverhands": 2,
+    "goibniu_smiths": 2,
+    "lugh_marksmen": 2,
+    "curragh_raiders": 2,
+    "well_keepers": 2,
+    "celtic_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "finnish": {
+   "units": {
+    "finnish_grotesque": 1,
+    "finnish_regulars": 2,
+    "finnish_thugs": 2,
+    "ski_patrol": 2,
+    "forest_riflemen": 2,
+    "sampo_guards": 1,
+    "ilmarinen_forged": 1,
+    "vainamoinen_singers": 2,
+    "forge_apprentices": 2,
+    "river_wardens": 2,
+    "finnish_leader": 1,
+    "hakkapeliitta": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 1,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 2,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "britain": {
+   "units": {
+    "britain_grotesque": 1,
+    "britain_regulars": 2,
+    "britain_thugs": 2,
+    "fen_scouts": 2,
+    "fen_drainers": 2,
+    "mere_divers": 1,
+    "huscarls": 1,
+    "beowulf_heirs": 2,
+    "fen_snipers": 2,
+    "fen_herbalists": 2,
+    "fen_riders": 2,
+    "britain_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "gaul": {
+   "units": {
+    "gaul_grotesque": 1,
+    "gaul_regulars": 2,
+    "gaul_thugs": 1,
+    "river_watch": 2,
+    "voltigeurs": 2,
+    "belenos_shields": 1,
+    "cuirassiers": 1,
+    "taranis_signallers": 2,
+    "gaul_leader": 2,
+    "tarasque_breakers": 2,
+    "bridge_gunners": 2,
+    "belenos_healers": 2
+   },
+   "common": {
+    "trench": 2,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "train": 1
+   }
+  },
+  "italy": {
+   "units": {
+    "vulcan_ballista": 1,
+    "italy_regulars": 2,
+    "italy_thugs": 2,
+    "cave_scouts": 2,
+    "arditi": 2,
+    "praetorians": 2,
+    "hercules_hammers": 1,
+    "vulcan_smiths": 2,
+    "cacus_hunters": 2,
+    "vulcan_gunners": 1,
+    "italy_leader": 1,
+    "bersaglieri": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "polianitsy": {
+   "units": {
+    "sun_stove": 1,
+    "polianitsy_regulars": 2,
+    "polianitsy_thugs": 2,
+    "winter_scouts": 2,
+    "frost_riflemen": 2,
+    "polianitsa": 1,
+    "zmei_slayers": 2,
+    "living_water_bearers": 2,
+    "needle_seekers": 2,
+    "young_polianitsy": 2,
+    "polianitsy_leader": 2
+   },
+   "common": {
+    "trench": 2,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "train": 1
+   }
+  },
+  "armenian": {
+   "units": {
+    "armenian_grotesque": 1,
+    "armenian_regulars": 2,
+    "armenian_thugs": 2,
+    "lake_watchers": 2,
+    "highland_riflemen": 2,
+    "tork_shieldbearers": 1,
+    "vahagn_guard": 1,
+    "aralez_keepers": 2,
+    "vahagn_slayers": 2,
+    "stone_carvers": 2,
+    "armenian_leader": 1,
+    "cloud_gunners": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "oghuz": {
+   "units": {
+    "basat_bow": 1,
+    "oghuz_regulars": 2,
+    "oghuz_thugs": 2,
+    "well_watchers": 2,
+    "steppe_outriders": 2,
+    "div_breakers": 1,
+    "korogly_guard": 1,
+    "steppe_healers": 2,
+    "ozan_bards": 2,
+    "koroglu_riders": 2,
+    "basat_hunters": 2,
+    "oghuz_leader": 1
+   },
+   "common": {
+    "trench": 2,
+    "porter": 1,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 2,
+    "train": 1
+   }
+  },
+  "nile": {
+   "units": {
+    "nile_grotesque": 1,
+    "nile_timekeepers": 2,
+    "nile_regulars": 2,
+    "nile_thugs": 2,
+    "dam_builders": 2,
+    "mehen_coil_guard": 1,
+    "sekhmet_warriors": 1,
+    "medjay": 2,
+    "set_spearmen": 2,
+    "star_sighters": 2,
+    "house_of_life": 2,
+    "nile_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "yellow_river": {
+   "units": {
+    "yellow_river_regulars": 2,
+    "yellow_river_thugs": 2,
+    "channel_crews": 2,
+    "boat_scouts": 2,
+    "dike_shieldbearers": 1,
+    "pump_armor": 1,
+    "tripod_scholars": 2,
+    "yu_canal_diggers": 2,
+    "poison_physicians": 2,
+    "xiangliu_hunters": 2,
+    "yellow_river_leader": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "japan_isles": {
+   "units": {
+    "japan_isles_grotesque": 1,
+    "japan_isles_regulars": 2,
+    "japan_isles_thugs": 2,
+    "island_riflemen": 2,
+    "three_companions": 2,
+    "karakuri_soldiers": 1,
+    "samurai": 1,
+    "oni_breakers": 2,
+    "karakuri_makers": 2,
+    "japan_isles_leader": 1,
+    "mountain_herbalists": 2,
+    "hidesato_archers": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "korea": {
+   "units": {
+    "korea_grotesque": 1,
+    "korea_regulars": 2,
+    "korea_thugs": 2,
+    "mountain_trackers": 2,
+    "village_riflemen": 2,
+    "fortress_wall_guard": 1,
+    "imugi_hunters": 1,
+    "dokkaebi_bargainers": 2,
+    "haetae_firewardens": 2,
+    "hwarang": 2,
+    "korea_leader": 1,
+    "tiger_hunters": 2
+   },
+   "common": {
+    "trench": 2,
+    "porter": 2,
+    "nest": 2,
+    "barrage": 1,
+    "raid": 1,
+    "hospital": 1,
+    "recon": 1
+   }
+  },
+  "mongolia": {
+   "units": {
+    "mongolia_grotesque": 1,
+    "mongolia_regulars": 2,
+    "mongolia_thugs": 2,
+    "eagle_hunters": 2,
+    "steppe_riflemen": 2,
+    "felt_shields": 1,
+    "urtuu_riders": 2,
+    "mangus_hunters": 2,
+    "woodwrights": 2,
+    "gobi_healers": 2,
+    "mongolia_leader": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "balkans": {
+   "units": {
+    "balkans_grotesque": 1,
+    "balkans_regulars": 2,
+    "balkans_thugs": 2,
+    "wind_readers": 2,
+    "mountain_wardens": 2,
+    "gorge_shields": 1,
+    "dragon_guard": 1,
+    "cistern_builders": 2,
+    "valley_herbalists": 2,
+    "balkans_leader": 1,
+    "dragon_born": 2,
+    "hail_cannons": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "pyrenean": {
+   "units": {
+    "pyrenean_grotesque": 1,
+    "pyrenean_regulars": 2,
+    "pyrenean_thugs": 2,
+    "basajaun_shepherds": 2,
+    "pass_riflemen": 2,
+    "cave_shields": 1,
+    "cuelebre_slayers": 1,
+    "miner_sappers": 2,
+    "almogavars": 2,
+    "mine_doctors": 2,
+    "pyrenean_leader": 1,
+    "cyclops_hunters": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "alps": {
+   "units": {
+    "alps_grotesque": 1,
+    "alps_regulars": 2,
+    "alps_thugs": 2,
+    "chamois_trackers": 2,
+    "alpine_riflemen": 2,
+    "reislaufer": 1,
+    "glacier_guard": 1,
+    "avalanche_sappers": 2,
+    "mountain_rescue": 2,
+    "tatzelwurm_hunters": 2,
+    "ice_climbers": 2,
+    "alps_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "palisade": 1,
+    "train": 2
+   }
+  },
+  "baltic": {
+   "units": {
+    "baltic_grotesque": 1,
+    "baltic_regulars": 2,
+    "baltic_thugs": 2,
+    "marsh_riflemen": 2,
+    "dune_riflemen": 2,
+    "gate_wardens": 1,
+    "amber_lancers": 1,
+    "amber_alchemists": 2,
+    "linden_healers": 2,
+    "bog_wardens": 2,
+    "daina_singers": 2,
+    "baltic_leader": 1
+   },
+   "common": {
+    "trench": 2,
+    "porter": 2,
+    "nest": 2,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "train": 1
+   }
+  },
+  "prussia": {
+   "units": {
+    "prussia_grotesque": 1,
+    "prussia_regulars": 2,
+    "prussia_thugs": 2,
+    "harz_miners": 2,
+    "jaegers": 2,
+    "shaft_guard": 2,
+    "lindwurm_hunters": 1,
+    "wieland_smiths": 2,
+    "blue_dragoons": 1,
+    "grenadiers": 2,
+    "field_surgeons": 2,
+    "prussia_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "batavi": {
+   "units": {
+    "batavi_grotesque": 1,
+    "batavi_regulars": 2,
+    "batavi_thugs": 2,
+    "dike_wardens": 2,
+    "skate_riflemen": 2,
+    "sluice_guard": 1,
+    "fog_cutters": 1,
+    "klabauter_crews": 2,
+    "batavian_riders": 2,
+    "pump_engineers": 2,
+    "polder_nurses": 2,
+    "batavi_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "gas": 2,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "lechia": {
+   "units": {
+    "lechia_grotesque": 1,
+    "lechia_regulars": 2,
+    "lechia_thugs": 2,
+    "salt_miners": 2,
+    "shore_scouts": 2,
+    "salt_mine_shields": 1,
+    "winged_hussars": 1,
+    "skuba_trappers": 2,
+    "salt_healers": 2,
+    "utopiec_hunters": 2,
+    "uhlans": 1,
+    "lechia_leader": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "byzantium": {
+   "units": {
+    "byzantium_grotesque": 1,
+    "byzantium_regulars": 2,
+    "byzantium_thugs": 2,
+    "harbor_lookouts": 2,
+    "akritai": 2,
+    "kataphraktoi": 1,
+    "chain_tower_guard": 1,
+    "fire_siphoneers": 2,
+    "chain_engineers": 1,
+    "wall_guards": 2,
+    "harbor_physicians": 2,
+    "byzantium_leader": 2
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
+  },
+  "ottoman": {
+   "units": {
+    "ottoman_grotesque": 1,
+    "ottoman_regulars": 2,
+    "ottoman_thugs": 2,
+    "tulumbaci": 2,
+    "night_watchmen": 2,
+    "sipahis": 1,
+    "bastion_gunners": 1,
+    "mehter_drummers": 2,
+    "shadow_players": 2,
+    "janissaries": 2,
+    "city_physicians": 2,
+    "ottoman_leader": 1
+   },
+   "common": {
+    "trench": 1,
+    "porter": 2,
+    "nest": 1,
+    "barrage": 1,
+    "raid": 1,
+    "recon": 1,
+    "gas": 1,
+    "palisade": 1,
+    "train": 1
+   }
   }
  }
 }

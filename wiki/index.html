@@ -107,6 +107,8 @@ a.chip { color: inherit; text-decoration: none; } a.chip:hover { border-color: v
 .wtable th { color: var(--muted); font-weight: 600; font-size: .8rem; }
 .scroll { overflow-x: auto; max-width: 100%; }
 .alist { display: grid; gap: 8px; max-width: 72ch; }
+.deck { margin: 6px 0; max-width: 72ch; } .deck summary { cursor: pointer; padding: 8px 12px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; }
+.deck summary small { color: var(--muted); } .deck[open] summary { border-color: var(--bronze); } .deck .alist { margin-top: 6px; }
 .alist div { padding: 8px 12px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; }
 .note { color: var(--muted); font-size: .9rem; max-width: 72ch; }
 .back { display: inline-block; margin-bottom: 14px; font-size: .9rem; }
@@ -262,15 +264,20 @@ a.chip { color: inherit; text-decoration: none; } a.chip:hover { border-color: v
     const ccard = c => `<div class="ucard"><span class="pic" style="${c.art ? sprite(c.art) : "background:var(--rule)"}"><span>${c.cost} ${t("მარაგი", "supply")}${c.atk != null ? ` · ⚔ ${c.atk} · ⛨ ${c.hp}` : ""}</span></span><b>${esc(c.name)}</b><small>${esc(c.text)}</small></div>`;
     const deck = ([fid, d]) => { const f = F[fid]; const cn = Object.fromEntries(C.common.map(c => [c.id, c.name]));
       const n = d.units.reduce((a, [, k]) => a + k, 0) + d.common.reduce((a, [, k]) => a + k, 0);
-      return `<h3>${f ? `<a href="#f-${fid}">${esc(f.name)}</a>` : fid} · ${n} ${t("ბარათი", "cards")}</h3><div class="alist">
+      const sup = d.units.reduce((a, [id, k]) => a + ((U[id] || {}).card || {}).cost * k, 0);
+      return `<details class="deck"><summary><b>${f ? esc(f.name) : fid}</b> <small>${n} ${t("ბარათი", "cards")} · ${t("იუნიტების ფასი", "unit cost")} ${sup} ${t("მარაგი", "supply")}${d.win ? ` · ${t("სიმულაციაში", "simulated")} ${d.win}%` : ""}</small></summary><div class="alist">
         <div><b>${t("იუნიტები", "Units")}:</b> ${d.units.map(([id, k]) => `${U[id] ? `<a href="#u-${id}">${esc(U[id].name)}</a>` : id} ×${k}`).join(", ")}</div>
-        <div><b>${t("საერთო ბარათები", "Common cards")}:</b> ${d.common.map(([id, k]) => `${esc(cn[id] || id)} ×${k}`).join(", ")}</div></div>`; };
+        <div><b>${t("საერთო ბარათები", "Common cards")}:</b> ${d.common.map(([id, k]) => `${esc(cn[id] || id)} ×${k}`).join(", ")}</div>
+        ${f ? `<div><a href="#f-${fid}">${t("ფრაქციის გვერდი", "Faction page")} →</a></div>` : ""}</div></details>`; };
+    const decks = Object.entries(C.starter), grp = (l, fn) => { const x = decks.filter(([fid]) => F[fid] && fn(F[fid])); return x.length ? `<h3>${l}</h3>${x.map(deck).join("")}` : ""; };
     return `<a class="back" href="#home">← ${t("მთავარი", "Home")}</a><p class="eyebrow">${t("ბარათის თამაში", "Card game")}</p><h1>${esc(C.title)}</h1>
       <nav class="toc" aria-label="${t("გვერდის ნაწილები", "Page sections")}"><a href="#cg" data-jump="cg-rules">${t("წესები", "Rules")}</a><a href="#cg" data-jump="cg-common">${t("საერთო ბარათები", "Common cards")}</a><a href="#cg" data-jump="cg-decks">${t("სასტარტო დასტები", "Starter decks")}</a></nav>
       <h2 id="s-cg-rules">${t("წესები", "Rules")}</h2><div class="prose">${C.html}</div>
       <h2 id="s-cg-common">${t("საერთო ბარათები", "Common cards")}</h2><p class="note">${t("ნებისმიერ დასტაში შედის. იუნიტების ბარათები — ფრაქციების გვერდებზე, ყოველი იუნიტის გვერდზე „სამი ხაზის“ მაჩვენებლებით.", "Usable in any deck. Unit cards are on the faction pages, with Three Lines stats on each unit's page.")}</p>
       ${kinds.map(k => `<h3>${LANG === "en" ? (KIND[k] || [k, k])[1] : (KIND_KA[k] || k)}</h3><div class="ugrid">${C.common.filter(c => c.kind === k).map(ccard).join("")}</div>`).join("")}
-      <h2 id="s-cg-decks">${t("სასტარტო დასტები", "Starter decks")}</h2>${Object.entries(C.starter).map(deck).join("")}`;
+      <h2 id="s-cg-decks">${t("სასტარტო დასტები", "Starter decks")}</h2><p class="note">${t(`${decks.length} ფრაქციის მზა დასტა, 30–30 ბარათი. „სიმულაციაში“ — მოგების წილი ყველა სხვა დასტის წინააღმდეგ (tools/sim_cardgame.py --all).`,
+        `Ready-made decks for ${decks.length} factions, 30 cards each. "Simulated" is the win rate against every other deck (tools/sim_cardgame.py --all).`)}</p>
+      ${grp(t("ნათელი მხარე", "The Light Side"), f => f.core && f.side === "light")}${grp(t("ბნელი მხარე", "The Dark Side"), f => f.core && f.side === "dark")}${grp(t("მოკავშირეები", "Allies"), f => !f.core)}`;
   }
   function lore(l) { return `<a class="back" href="#home">← ${t("მთავარი", "Home")}</a><p class="eyebrow">${t("ლორი", "Lore")}</p><h1>${esc(l.title)}</h1><div class="prose">${l.html}</div>`; }
 

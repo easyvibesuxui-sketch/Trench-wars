@@ -281,10 +281,13 @@ def main():
     for key, (title, body) in X["lore_pages"].items():
         W["lore"].append({"id": key, "title": title, "html": md(body)})
     CG = X["cgall"]
+    wr = ROOT / "data/cardgame_winrates.json"   # tools/sim_cardgame.py --all --save
+    WR = json.loads(wr.read_text(encoding="utf-8"))["winrates"] if wr.exists() else {}
     W["cardgame"] = {"title": X["cg_rules"][0], "html": md(X["cg_rules"][1]),
                      "kw": [[k, v["name"], v["rule"]] for k, v in CG["keywords"].items()],
                      "common": [{k: c.get(k) for k in ("id", "kind", "name", "cost", "text", "atk", "hp")} | {"art": cpos.get(c["id"])} for c in CG["common"]],
-                     "starter": {fid: {"units": list(d["units"].items()), "common": list(d["common"].items())} for fid, d in CG["starter"].items()},
+                     "starter": {fid: {"units": list(d["units"].items()), "common": list(d["common"].items()), "win": WR.get(fid)}
+                                 for fid, d in CG["starter"].items()},
                      "n_units": len(CG["units"])}
     W["visual"] = vis["direction"]
     W["en"] = {k: v for k, v in json.loads((ROOT / "data/names_en.json").read_text(encoding="utf-8")).items() if k != "_comment"}
