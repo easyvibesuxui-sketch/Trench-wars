@@ -33,7 +33,8 @@ TIER_NAME = {"I": "ქვეითი", "II": "ელიტა", "III": "ჯა�
 
 def md(text):
     text = re.sub(r"\]\((?!https?:)[^)]*\)", "]()", text)   # რეპოს შიდა ბმულები ვიკიში არ მუშაობს
-    text = re.sub(r"(?m)^  ([-*] )", r"    \1", text)                     # ჩადგმული სია: python-markdown 4 ჰარს ელის
+    text = re.sub(r"(?m)^ {2,3}(?=\S)", "    ", text)                       # ჩადგმული სია/აბზაცი: python-markdown 4 ჰარს ელის
+    text = re.sub(r"(?m)^(> (?![-*] ).+)\n> ([-*] )", r"\1\n>\n> \2", text)   # სია ციტატაში: წინ ცარიელი ხაზი
     text = re.sub(r"(?m)^((?![ \t]*[-*] |[ \t]*\d+\. |\|).+)\n([-*] |\d+\. )", r"\1\n\n\2", text)   # სიის წინ ცარიელი ხაზი
     html = markdown.markdown(text, extensions=["tables", "sane_lists"])
     return html.replace('<a href="">', "<span>").replace("</a>", "</span>") if '<a href="">' in html else html
@@ -76,7 +77,10 @@ def extract():
     roles = {r["id"]: r for r in json.loads((ROOT / "data/roles.json").read_text(encoding="utf-8"))["roles"]}
     econ = json.loads((ROOT / "data/economy.json").read_text(encoding="utf-8")).get("factions", {})
     vis = json.loads((ROOT / "data/visuals.json").read_text(encoding="utf-8"))
-    cg = {c["id"]: c for c in json.loads((ROOT / "data/cardgame.json").read_text(encoding="utf-8"))["units"]}
+    cgall = json.loads((ROOT / "data/cardgame.json").read_text(encoding="utf-8"))
+    cg = {c["id"]: c for c in cgall["units"]}
+    t = (ROOT / "rules/cardgame.md").read_text(encoding="utf-8")
+    cg_rules = (t.split("\n", 1)[0].lstrip("# ").strip(), t.split("\n", 1)[1])
     names = {**data["factions"], **data["allies"]}
     tagname = dict((m.group(2), m.group(1)) for m in re.finditer(r"- \*\*(.+?)\*\* \(`([a-z_]+)`\)", (ROOT / "rules/abilities.md").read_text(encoding="utf-8")))
 
@@ -130,7 +134,7 @@ def extract():
         lore_pages[key] = (t.split("\n", 1)[0].lstrip("# ").strip(), t.split("\n", 1)[1])
     return dict(data=data, costs=costs, abil=abil, roles=roles, econ=econ, vis=vis, cg=cg, names=names, tagname=tagname,
                 fac_md=fac_md, wars=wars, stories={k: "\n\n".join(v) for k, v in stories.items()}, udesc=udesc,
-                camps=camps, lore_pages=lore_pages)
+                camps=camps, lore_pages=lore_pages, cgall=cgall, cg_rules=cg_rules)
 
 
 def attach_en(W):
@@ -180,6 +184,16 @@ def attach_en(W):
             if f"fvis:{fid}:palette" in T:
                 v["palette"] = [[h, n] for (h, _), n in zip(v["palette"], T[f"fvis:{fid}:palette"].split(" | "))]
             f["visual_en"] = v
+    C = W["cardgame"]
+    if "cgrules" in T:
+        C["title_en"], b = two("cgrules")
+        C["html_en"] = md(b)
+    for c in C["common"]:
+        if f"cgc:{c['id']}" in T:
+            c["name_en"], c["text_en"] = two(f"cgc:{c['id']}")
+    for k in C["kw"]:
+        if f"cgkw:{k[0]}" in T:
+            k[3:5] = list(two(f"cgkw:{k[0]}"))
     for l in W["lore"]:
         if f"lore:{l['id']}" in T:
             t, b = two(f"lore:{l['id']}")
@@ -218,8 +232,23 @@ def main():
             for i, uid in enumerate(ids):
                 sheet.paste(Image.open(src[uid]).convert("RGB").resize((TW, TH), Image.LANCZOS), ((i % cols) * TW, (i // cols) * TH))
             sheet.save(dst, quality=80, optimize=True)
+    # ბარათის თამაშის საერთო ბარათები (ნაგებობა, ბრძანება, მარაგი) — ერთ ფურცელზე
+    cgc = [c for c in X["cgall"]["common"] if c.get("art") and (ROOT / "assets/art" / c["art"]).exists()]
+    cpos = {}
+    if cgc:
+        cols = min(len(cgc), 6)
+        rows = -(-len(cgc) // cols)
+        dst = sheet_dir / "cardgame.jpg"
+        for i, c in enumerate(cgc):
+            cpos[c["id"]] = {"s": "sheets/cardgame.jpg", "x": i % cols, "y": i // cols, "c": cols, "r": rows}
+        files = [ROOT / "assets/art" / c["art"] for c in cgc]
+        if not dst.exists() or any(f.stat().st_mtime > dst.stat().st_mtime for f in files):
+            sheet = Image.new("RGB", (cols * TW, rows * TH), "#e9e2cf")
+            for i, f in enumerate(files):
+                sheet.paste(Image.open(f).convert("RGB").resize((TW, TH), Image.LANCZOS), ((i % cols) * TW, (i // cols) * TH))
+            sheet.save(dst, quality=80, optimize=True)
     for p in sheet_dir.glob("*.jpg"):
-        if p.stem not in names:
+        if p.stem not in names and p.stem != "cardgame":
             p.unlink()
 
     side = lambda f: "light" if f in LIGHT_CORE or f in data["allies"] else "dark"
@@ -247,10 +276,16 @@ def main():
             "role": u.get("role"), "weapons": u["weapons"], "tags": [[t, tagname.get(t, t), abil["tags"].get(t, "")] for t in u["tags"]],
             "abil": abil["units"].get(u["id"], []), "desc": md(udesc[u["id"]]) if u["id"] in udesc else "",
             "visual": vis["units"].get(u["id"], ""), "art": pos.get(u["id"]),
-            "card": {"cost": c["cost"], "atk": c["atk"], "hp": c["hp"]} if c else None,
+            "card": {"cost": c["cost"], "atk": c["atk"], "hp": c["hp"], "kw": c["kw"]} if c else None,
         })
     for key, (title, body) in X["lore_pages"].items():
         W["lore"].append({"id": key, "title": title, "html": md(body)})
+    CG = X["cgall"]
+    W["cardgame"] = {"title": X["cg_rules"][0], "html": md(X["cg_rules"][1]),
+                     "kw": [[k, v["name"], v["rule"]] for k, v in CG["keywords"].items()],
+                     "common": [{k: c.get(k) for k in ("id", "kind", "name", "cost", "text", "atk", "hp")} | {"art": cpos.get(c["id"])} for c in CG["common"]],
+                     "starter": {fid: {"units": list(d["units"].items()), "common": list(d["common"].items())} for fid, d in CG["starter"].items()},
+                     "n_units": len(CG["units"])}
     W["visual"] = vis["direction"]
     W["en"] = {k: v for k, v in json.loads((ROOT / "data/names_en.json").read_text(encoding="utf-8")).items() if k != "_comment"}
     attach_en(W)

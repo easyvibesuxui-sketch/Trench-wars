@@ -62,6 +62,11 @@ def sources():
             out[f"camp:{fid}"] = ("campaigns", X["camps"][fid])
     for key, (title, body) in X["lore_pages"].items():
         out[f"lore:{key}"] = ("lore", f"{title}\n{body}")
+    out["cgrules"] = ("rules", f"{X['cg_rules'][0]}\n{X['cg_rules'][1]}")
+    for c in X["cgall"]["common"]:
+        out[f"cgc:{c['id']}"] = ("rules", f"{c['name']}\n{c['text']}")
+    for k, v in X["cgall"]["keywords"].items():
+        out[f"cgkw:{k}"] = ("rules", f"{v['name']}\n{v['rule']}")
     for k in ("medium", "not_tc"):
         out[f"dir:{k}"] = ("visuals", X["vis"]["direction"][k])
     for fid, v in X["vis"]["factions"].items():
