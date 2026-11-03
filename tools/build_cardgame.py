@@ -56,10 +56,10 @@ COMMON = [  # საერთო ბარათები: (id, სახეო�
     ("camo", "ბრძანება", "შენიღბვა", 1, "ერთი იუნიტი შენს მომდევნო სვლამდე სამიზნე ვერ იქნება.", None),
 ]
 STARTER = {   # სასტარტო დასტები (30): იუნიტები × რაოდენობა + საერთო ბარათები × რაოდენობა
-    "colchis": {"units": {"lashkari": 3, "port_brawlers": 3, "dali_hunters": 2, "aznauri": 1, "eristavi": 1, "medea_sisters": 2,
-                          "shavkhan_smiths": 2, "kolkhi_riders": 2, "monaspa": 1, "iron_arm_veterans": 1, "khalkotavri": 1},
-                "common": {"trench": 2, "wire": 1, "nest": 1, "porter": 2, "barrage": 1, "gas": 1, "raid": 1, "hospital": 1, "recon": 1}},
-    "harness": {"units": {"rebels": 3, "deserter_regulars": 2, "heretic_sappers": 2, "yoke_slaves": 1, "rebel_chief": 1, "blood_priests": 1, "devi_spawn": 1,
+    "colchis": {"units": {"lashkari": 2, "port_brawlers": 2, "dali_hunters": 2, "aznauri": 2, "eristavi": 1, "medea_sisters": 2,
+                          "shavkhan_smiths": 2, "kolkhi_riders": 2, "monaspa": 1, "iron_arm_veterans": 2, "khalkotavri": 1},
+                "common": {"trench": 2, "wire": 1, "nest": 1, "porter": 1, "barrage": 1, "gas": 2, "raid": 1, "hospital": 1, "recon": 1}},
+    "harness": {"units": {"rebels": 2, "deserter_regulars": 2, "heretic_sappers": 2, "yoke_slaves": 1, "rebel_chief": 2, "blood_priests": 1, "devi_spawn": 1,
                           "chain_shooters": 2, "kaji_smith": 1, "chained_ones": 2, "kaji_stitched": 1, "gveleshapi": 1},
                 "common": {"trench": 1, "palisade": 2, "nest": 1, "porter": 2, "barrage": 1, "gas": 1, "raid": 1, "train": 1, "volley": 1, "recon": 1}},
 }
@@ -235,6 +235,7 @@ def main():
         units.append(unit_card({**u, "cost": costs.get(u["id"], u.get("cost", 20))}, V.F[u["faction"]]["palette"]))
     common = [{"id": i, "kind": k, "name": n, "cost": c, "text": t, **({"atk": s[0], "hp": s[1]} if s else {}),
                "art": f"card_{i}.jpg" if (ART / f"card_{i}.jpg").exists() else None} for i, k, n, c, t, s in COMMON]
+    byid0 = {c["id"]: c for c in units}
     starter = dict(STARTER)
     for fid in names:
         if fid not in starter:
@@ -242,6 +243,8 @@ def main():
     for fid, d in starter.items():
         n = sum(d["units"].values()) + sum(d["common"].values())
         assert n == 30, (fid, n)
+        assert max(list(d["units"].values()) + list(d["common"].values())) <= 2, (fid, "ერთ ბარათს მაქს. 2 ასლი")
+        assert all(k == 1 for i, k in d["units"].items() if byid0[i]["tier"] in ("IV", "IV+", "V")), (fid, "IV დონე და გოლიათი — 1 ასლი")
     (ROOT / "data" / "cardgame.json").write_text(json.dumps({"keywords": {k: {"name": v[0], "rule": v[1]} for k, v in KW.items()},
         "units": units, "common": common, "starter": starter}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 

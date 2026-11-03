@@ -9054,25 +9054,25 @@
  "starter": {
   "colchis": {
    "units": {
-    "lashkari": 3,
-    "port_brawlers": 3,
+    "lashkari": 2,
+    "port_brawlers": 2,
     "dali_hunters": 2,
-    "aznauri": 1,
+    "aznauri": 2,
     "eristavi": 1,
     "medea_sisters": 2,
     "shavkhan_smiths": 2,
     "kolkhi_riders": 2,
     "monaspa": 1,
-    "iron_arm_veterans": 1,
+    "iron_arm_veterans": 2,
     "khalkotavri": 1
    },
    "common": {
     "trench": 2,
     "wire": 1,
     "nest": 1,
-    "porter": 2,
+    "porter": 1,
     "barrage": 1,
-    "gas": 1,
+    "gas": 2,
     "raid": 1,
     "hospital": 1,
     "recon": 1
@@ -9080,11 +9080,11 @@
   },
   "harness": {
    "units": {
-    "rebels": 3,
+    "rebels": 2,
     "deserter_regulars": 2,
     "heretic_sappers": 2,
     "yoke_slaves": 1,
-    "rebel_chief": 1,
+    "rebel_chief": 2,
     "blood_priests": 1,
     "devi_spawn": 1,
     "chain_shooters": 2,
