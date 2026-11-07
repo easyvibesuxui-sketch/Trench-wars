@@ -1,0 +1,792 @@
+<title>სამი ხაზი</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Serif+Georgian:wght@700;800&display=swap">
+<style>
+/* „სამი ხაზი“ — ბარათის თამაშის ბრაუზერის ვერსია. ზემოთ მოწინააღმდეგის შტაბი, შუაში ველი (3 ხაზი × 5 ადგილი), ქვემოთ შენი შტაბი და ხელი.
+   ფერები — სანგრის ტალახი და ბრინჯაო (იგივე, რაც „სოფლის ფრონტში“); თამაშს მხოლოდ მუქი თემა აქვს. */
+:root {
+  --mud: #241f19; --mud-2: #322a21; --mud-3: #3d3428; --paper: #e9dfc8; --ink: #f1e8d6; --muted: #b3a58b;
+  --bronze: #c8913e; --rust: #c0563d; --moss: #8a9a5b; --line: #54473a; --nml: #4a4030;
+  --me: #c8913e; --foe: #b4462f;
+  --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
+  --tok: clamp(46px, 7.4vw, 78px);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--mud); }
+body { background: var(--mud); color: var(--ink); font-family: var(--body); font-size: 14px; }
+button { font: inherit; color: inherit; }
+.app { max-width: 1280px; margin: 0 auto; padding-block: 8px 16px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "top top" "board side" "hand side"; }
+@media (max-width: 900px) { .app { grid-template-columns: minmax(0, 1fr); grid-template-areas: "top" "board" "hand" "side"; } }
+header { grid-area: top; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; justify-content: space-between; }
+h1 { font-family: var(--display); font-size: 1.15rem; margin: 0; }
+h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-left: 6px; }
+.tools { display: flex; gap: 6px; align-items: center; }
+.btn { background: var(--mud-2); border: 1px solid var(--line); border-radius: 5px; padding: 6px 11px; cursor: pointer; }
+.btn:hover:not(:disabled) { border-color: var(--bronze); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn.primary { border-color: var(--bronze); color: var(--bronze); font-weight: 700; }
+:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+.lang button { border: 0; background: transparent; padding: 5px 9px; cursor: pointer; font-size: .78rem; }
+.lang button[aria-pressed="true"] { background: var(--mud-3); font-weight: 700; color: var(--bronze); }
+
+/* ველი */
+.boardwrap { grid-area: board; display: grid; gap: 6px; }
+.hq { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--mud-2); }
+.hq.foe { border-color: #6b3a2c; } .hq.me { border-color: #6b5530; }
+.hq b.name { font-family: var(--display); }
+.hq .stat { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .82rem; }
+.hq .stat strong { color: var(--ink); font-size: .95rem; }
+.hq .nerve { display: inline-flex; align-items: center; gap: 6px; }
+.hq .bar { width: 90px; height: 8px; background: #1b1713; border-radius: 4px; overflow: hidden; }
+.hq .bar i { display: block; height: 100%; background: var(--moss); }
+.hq.target { outline: 2px dashed var(--rust); cursor: pointer; }
+.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+.cell { position: relative; min-height: calc(var(--tok) * 4 / 3 + 12px); padding: 5px; border-radius: 5px; background: var(--mud-2); border: 1px solid transparent;
+  display: flex; flex-wrap: wrap; gap: 4px; align-content: center; justify-content: center; }
+.cell.trench { background: #2d271f; background-image: repeating-linear-gradient(135deg, transparent 0 8px, rgba(0,0,0,.12) 8px 10px); }
+.cell.nml { background: var(--nml); min-height: calc(var(--tok) * 8 / 3 + 18px); flex-direction: column; flex-wrap: nowrap; justify-content: space-between; }
+.cell.nml .half { display: flex; gap: 4px; justify-content: center; min-height: calc(var(--tok) * 4 / 3); }
+.cell.nml.held-me { box-shadow: inset 0 -3px 0 var(--me); } .cell.nml.held-foe { box-shadow: inset 0 3px 0 var(--foe); }
+.cell .lbl { position: absolute; left: 6px; top: 3px; font-size: .62rem; color: var(--muted); letter-spacing: .04em; pointer-events: none; }
+.cell.hl { border-color: var(--bronze); background-color: #4b3d26; cursor: pointer; }
+.cell.hl::after { content: "+"; position: absolute; right: 6px; top: 1px; color: var(--bronze); font-weight: 700; }
+.fort { position: absolute; right: 4px; bottom: 3px; font-size: .62rem; padding: 1px 5px; border-radius: 3px; background: #1b1713; border: 1px solid var(--line); max-width: 92%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fort.mine { border-color: #6b5530; } .fort.foe { border-color: #6b3a2c; }
+.fort.target { outline: 2px solid var(--rust); cursor: pointer; }
+@media (max-width: 600px) {
+  .cell .lbl { display: none; }
+  .fort { position: static; flex-basis: 100%; text-align: center; order: -1; }
+  .cell.nml .half { min-height: calc(var(--tok) * 4 / 3 - 4px); }
+}
+.lanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; text-align: center; font-size: .66rem; color: var(--muted); }
+
+/* იუნიტის ნიშანი ველზე */
+.tok { position: relative; width: var(--tok); aspect-ratio: 3 / 4; border-radius: 5px; border: 2px solid var(--me); padding: 0; cursor: pointer;
+  background-color: var(--mud-3); background-repeat: no-repeat; overflow: hidden; }
+.tok.foe { border-color: var(--foe); }
+.tok .a, .tok .h { position: absolute; bottom: 2px; min-width: 18px; padding: 0 3px; border-radius: 3px; font-weight: 700; font-size: .72rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
+.tok .a { left: 2px; background: #7a1f1a; } .tok .h { right: 2px; background: #2f5d50; }
+.tok .h.hurt { background: #8a5a1a; }
+.tok .st { position: absolute; top: 2px; left: 2px; right: 2px; display: flex; gap: 2px; flex-wrap: wrap; }
+.tok .st i { font-style: normal; font-size: .58rem; padding: 0 3px; border-radius: 3px; background: rgba(20,16,12,.85); line-height: 1.4; }
+.tok.ready { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px #e7c46b; }
+.tok.spent { filter: saturate(.35) brightness(.75); }
+.tok.sel { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px #fff; }
+.tok.target { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px var(--rust); }
+.tok.pick { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px var(--moss); }
+.tok.camo { opacity: .6; }
+.tok.hit { animation: hit .45s ease-out; }
+@keyframes hit { 0% { transform: translateX(0); filter: brightness(2); } 30% { transform: translateX(-3px); } 60% { transform: translateX(3px); } 100% { transform: none; } }
+.float { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 800; font-size: 1.15rem; color: #ffd9c9; text-shadow: 0 1px 3px #000;
+  pointer-events: none; animation: rise .9s ease-out forwards; }
+@keyframes rise { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-18px); } }
+
+/* ხელი */
+.handwrap { grid-area: hand; display: grid; gap: 6px; }
+.bar2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.supply { display: flex; gap: 4px; align-items: center; }
+.supply i { width: 14px; height: 14px; border-radius: 50%; background: var(--bronze); display: inline-block; }
+.supply i.off { background: transparent; border: 1px solid var(--line); }
+.hint { color: var(--muted); font-size: .8rem; min-height: 1.2em; }
+.hand { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 8px; }
+.card { flex: none; width: 128px; border-radius: 7px; border: 2px solid var(--line); background: var(--paper); color: #1d1a16; padding: 0; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; overflow: hidden; }
+.card .art { height: 92px; background-color: #b9ad9c; background-repeat: no-repeat; position: relative; }
+.card .cost { position: absolute; left: 4px; top: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--bronze); color: #1d1a16; display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
+.card .nm { font-family: var(--display); font-weight: 700; font-size: .78rem; line-height: 1.15; padding: 4px 6px 0; }
+.card .sub { font-size: .64rem; color: #6a6158; padding: 1px 6px; }
+.card .kw { font-size: .64rem; padding: 0 6px; color: #3d362e; }
+.card .ft { margin-top: auto; display: flex; justify-content: space-between; padding: 3px 6px 5px; font-weight: 800; font-size: .85rem; }
+.card .ft .a { color: #7a1f1a; } .card .ft .h { color: #2f5d50; }
+.card.can { border-color: var(--bronze); }
+.card.no { opacity: .55; }
+.card.sel { border-color: #fff; transform: translateY(-4px); }
+
+/* გვერდითი პანელი */
+.side { grid-area: side; display: grid; gap: 8px; align-content: start; }
+.panel { border: 1px solid var(--line); border-radius: 6px; background: var(--mud-2); padding: 10px; }
+.panel h2 { font-family: var(--display); font-size: 1rem; margin: 0 0 6px; }
+.detail .big { width: 100%; aspect-ratio: 2 / 3; max-height: 260px; border-radius: 5px; background-color: var(--mud-3); background-repeat: no-repeat; margin-bottom: 8px; }
+@media (max-width: 900px) { .detail .big { max-height: 180px; width: 120px; float: left; margin-right: 10px; } }
+.detail p { margin: 4px 0; font-size: .85rem; }
+.detail .meta { color: var(--muted); font-size: .78rem; }
+.detail ul { margin: 4px 0 0; padding-left: 18px; font-size: .8rem; }
+.detail .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; clear: both; }
+.log { max-height: 240px; overflow-y: auto; font-size: .78rem; display: grid; gap: 3px; }
+.log div { color: var(--muted); } .log div.me { color: #e6cf9f; } .log div.foe { color: #e2a594; } .log div.sys { color: var(--ink); font-weight: 600; }
+
+/* ეკრანები */
+.overlay { position: fixed; inset: 0; background: rgba(18, 14, 10, .86); display: grid; place-items: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); z-index: 10; overflow-y: auto; }
+.overlay[hidden] { display: none; }
+.overlay[data-kind="pass"] { background: var(--mud); }
+.dialog { width: min(640px, 100%); background: var(--mud-2); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 12px; }
+.dialog h2 { font-family: var(--display); margin: 0; font-size: 1.4rem; color: var(--bronze); }
+.dialog p { margin: 0; line-height: 1.5; }
+.dialog label { display: grid; gap: 4px; font-size: .85rem; color: var(--muted); }
+.dialog select { font: inherit; background: var(--mud); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; padding: 7px; }
+.dialog .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 560px) { .dialog .row { grid-template-columns: 1fr; } }
+.dialog .deck { font-size: .78rem; color: var(--muted); line-height: 1.45; }
+.dialog .acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.rules { font-size: .88rem; line-height: 1.5; } .rules h3 { margin: 10px 0 2px; font-size: .95rem; color: var(--bronze); } .rules ul { margin: 0; padding-left: 18px; }
+@media (prefers-reduced-motion: reduce) { .tok.hit, .float { animation: none; } }
+</style>
+<div class="app">
+  <header>
+    <h1 id="title"></h1>
+    <div class="tools">
+      <button class="btn" id="bRules" type="button"></button>
+      <button class="btn" id="bNew" type="button"></button>
+      <div class="lang" role="group" aria-label="ენა / Language"><button type="button" data-lang="ka">ქარ</button><button type="button" data-lang="en">EN</button></div>
+    </div>
+  </header>
+  <section class="boardwrap">
+    <div class="hq foe" id="hqFoe"></div>
+    <div class="board" id="board"></div>
+    <div class="lanes" id="lanes"></div>
+    <div class="hq me" id="hqMe"></div>
+  </section>
+  <section class="handwrap">
+    <div class="bar2"><div class="hint" id="hint" aria-live="polite"></div><button class="btn primary" id="bEnd" type="button"></button></div>
+    <div class="hand" id="hand"></div>
+  </section>
+  <aside class="side">
+    <div class="panel detail" id="detail"></div>
+    <div class="panel"><h2 id="logH"></h2><div class="log" id="log" aria-live="polite"></div></div>
+  </aside>
+</div>
+<div class="overlay" id="ov" hidden><div class="dialog" id="dlg" role="dialog" aria-modal="true"></div></div>
+<script src="data.js"></script>
+<script>
+"use strict";
+const D = window.CG;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+let LANG = "ka";
+try { LANG = localStorage.getItem("cg-lang") || "ka"; } catch (e) {}
+const t = (ka, en) => LANG === "en" ? en : ka;
+const nm = c => LANG === "en" ? c.en : c.ka;
+const KWN = k => D.kw[k] ? (LANG === "en" ? D.kw[k].en : D.kw[k].ka) : k;
+const KWR = k => D.kw[k] ? (LANG === "en" ? D.kw[k].ren : D.kw[k].rka) : "";
+const BIG = new Set(["IV", "IV+", "V"]);
+const KIND = { "ნაგებობა": "structure", "ბრძანება": "order", "მარაგი": "supply" };
+const KINDN = { structure: ["ნაგებობა", "Structure"], order: ["ბრძანება", "Order"], supply: ["მარაგი", "Supply"], unit: ["იუნიტი", "Unit"] };
+const POSN = { rear: ["ზურგი", "rear"], trench: ["სანგარი", "trench"], nml: ["ნეიტრალური ზოლი", "No Man's Land"] };
+const LANEN = [["მარცხენა ფლანგი", "Left flank"], ["ცენტრი", "Centre"], ["მარჯვენა ფლანგი", "Right flank"]];
+const sprite = a => a ? `background-image:url(${a.s});background-size:${a.c * 100}% ${a.r * 100}%;background-position:${a.c > 1 ? a.x / (a.c - 1) * 100 : 0}% ${a.r > 1 ? a.y / (a.r - 1) * 100 : 0}%` : "";
+const rnd = n => Math.floor(Math.random() * n);
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = rnd(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+function cardOf(id) {
+  if (D.units[id]) return { id, type: "unit", ...D.units[id] };
+  const c = D.common[id];
+  return { id, type: KIND[c.kind] || "order", ...c };
+}
+const cname = c => nm(c);
+const ctext = c => c.type === "unit" ? "" : (LANG === "en" ? c.ten : c.tka);
+const fname = f => nm(D.factions[f]);
+
+// ---------- თამაში ----------
+let G = null, SEL = null, BUSY = false, UID = 0;
+
+function newGame(opt) {
+  const mk = (fid, ai) => {
+    const deck = [];
+    const s = D.starter[fid];
+    for (const [id, n] of Object.entries(s.units)) for (let i = 0; i < n; i++) deck.push(id);
+    for (const [id, n] of Object.entries(s.common)) for (let i = 0; i < n; i++) deck.push(id);
+    return { fid, ai, deck: shuffle(deck), hand: [], hq: 20, bank: 0, porters: 0, avail: 0, fallen: 0 };
+  };
+  G = { p: [mk(opt.me, false), mk(opt.foe, opt.mode === "ai")], mode: opt.mode, units: [], forts: {}, volley: {}, turn: 0, cur: opt.first, over: null, log: [] };
+  for (const P of G.p) for (let i = 0; i < 5; i++) P.hand.push(P.deck.pop());
+  G.p[1 - opt.first].hand.push(G.p[1 - opt.first].deck.pop());
+  G.p[1 - opt.first].bank = 2;   // მეორე მოთამაშის კომპენსაცია: +1 ბარათი და პირველ სვლაზე +2 მარაგი
+  SEL = null;
+  log(() => t(`${fname(opt.me)} ${fname(opt.foe)}-ის წინააღმდეგ. იწყებს: ${fname(G.p[opt.first].fid)}.`, `${fname(opt.me)} against ${fname(opt.foe)}. ${fname(G.p[opt.first].fid)} goes first.`), "sys");
+  startTurn();
+}
+
+const viewer = () => G.mode === "hot" ? G.cur : 0;
+const alive = () => G.units.filter(u => u.hp > 0);
+const at = (lane, o, pos) => G.units.filter(u => u.hp > 0 && u.lane === lane && u.o === o && u.pos === pos);
+const fort = (lane, o) => G.forts[lane + ":" + o];
+const has = (u, k) => u.kw.includes(k);
+const absPos = u => u.o === 0 ? { rear: 0, trench: 1, nml: 2 }[u.pos] : { rear: 4, trench: 3, nml: 2 }[u.pos];
+const fortAbs = f => f.o === 0 ? 1 : 3;
+const nmlCtrl = o => [0, 1, 2].filter(l => at(l, o, "nml").length && !at(l, 1 - o, "nml").length).length;
+const isSup = u => u.supTurn === G.turn;
+const leaderBonus = u => G.units.some(x => x !== u && x.hp > 0 && x.o === u.o && x.lane === u.lane && has(x, "leader")) ? 1 : 0;
+
+function log(msg, cls) { G.log.push([msg, cls || (G.cur === viewer() ? "me" : "foe")]); if (G.log.length > 80) G.log.shift(); }
+
+function startTurn() {
+  const p = G.cur, P = G.p[p];
+  G.turn++;
+  G.volley = {};
+  if (nmlCtrl(p) === 3) return win(p, "break");
+  for (const u of G.units.filter(u => u.o === p && u.hp > 0)) {
+    if (u.burn) { u.hp -= 1; u.burn = false; log(() => t(`${cname(u.c)} იწვის (−1).`, `${cname(u.c)} burns (−1).`)); }
+    if (has(u, "regen") && u.hp > 0 && u.hp < u.max) u.hp = Math.min(u.max, u.hp + 1);
+    Object.assign(u, { moved: false, acted: false, fresh: false, noAtk: false, camo: false, raid: false });
+  }
+  cleanup();
+  if (P.deck.length) P.hand.push(P.deck.pop());
+  else { P.hq -= 2; log(() => t("დასტა ამოიწურა: შტაბი −2 ნებისყოფა.", "Deck is empty: HQ loses 2 nerve.")); if (P.hq <= 0) return win(1 - p, "hq"); }
+  P.avail = 3 + Math.min(P.porters, 3) + nmlCtrl(p) + P.bank;
+  P.bank = 0;
+  const tn = G.turn, av = P.avail;
+  log(() => t(`— სვლა ${tn}: ${fname(P.fid)} (მარაგი ${av})`, `— Turn ${tn}: ${fname(P.fid)} (supply ${av})`), "sys");
+  SEL = null;
+  render();
+  if (P.ai) { BUSY = true; setTimeout(aiStep, 650); }
+  else if (G.mode === "hot") passScreen();
+}
+
+function endTurn() {
+  const p = G.cur, P = G.p[p];
+  for (const f of Object.values(G.forts)) {
+    if (f.o !== p || !f.atk) continue;
+    const pool = f.id === "nest" ? [...at(f.lane, 1 - p, "nml"), ...at(f.lane, 1 - p, "trench")] : alive().filter(u => u.o !== p && u.lane === f.lane);
+    const ts = pool.filter(u => !u.camo);
+    if (!ts.length) continue;
+    const x = ts.reduce((a, b) => b.hp < a.hp ? b : a);
+    const d = dmg({ kw: f.id === "nest" ? ["suppress"] : [], o: p }, x, f.atk);
+    log(() => t(`${cname(cardOf(f.id))} ესვრის: ${cname(x.c)} −${d}.`, `${cname(cardOf(f.id))} fires: ${cname(x.c)} −${d}.`));
+  }
+  for (const h of G.units.filter(u => u.o === p && u.hp > 0 && has(u, "healer"))) {
+    const hurt = G.units.filter(u => u.o === p && u.hp > 0 && u.lane === h.lane && u.hp < u.max);
+    if (hurt.length) { const x = hurt.reduce((a, b) => b.hp < a.hp ? b : a); x.hp = Math.min(x.max, x.hp + 2); }
+  }
+  cleanup();
+  P.bank = Math.min(3, Math.max(0, P.avail));
+  P.avail = 0;
+  if (G.over) return;
+  G.cur = 1 - p;
+  startTurn();
+}
+
+function win(p, how) {
+  G.over = { p, how };
+  log(() => how === "break" ? t(`გარღვევა! ${fname(G.p[p].fid)} სამივე ნეიტრალურ ზოლს აკონტროლებს.`, `Breakthrough! ${fname(G.p[p].fid)} holds No Man's Land on all three lines.`)
+    : t(`${fname(G.p[1 - p].fid)}-ის შტაბი დაეცა.`, `${fname(G.p[1 - p].fid)}: the HQ has fallen.`), "sys");
+  BUSY = false; SEL = null;
+  render();
+  endScreen();
+}
+
+function cleanup() {
+  for (const u of G.units) if (u.hp <= 0 && !u.dead) { u.dead = true; G.p[u.o].fallen++; log(() => t(`${cname(u.c)} დაეცა.`, `${cname(u.c)} has fallen.`), u.o === viewer() ? "foe" : "me"); }
+  G.units = G.units.filter(u => u.hp > 0);
+  for (const [k, f] of Object.entries(G.forts)) if (f.hp !== null && f.hp <= 0) { delete G.forts[k]; log(() => t(`${cname(cardOf(f.id))} დაინგრა.`, `${cname(cardOf(f.id))} was destroyed.`)); }
+}
+
+// ზიანი: შეტევა + მონადირე/საზენიტო; ფარი −1; თხრილი −1 (თუ მტვრევა არ არის); მინ. 1
+function calc(src, x, base) {
+  let a = base + (src.kw.includes("hunter") && BIG.has(x.c.tier) ? 2 : 0) + (src.kw.includes("anti_air") && has(x, "fly") ? 2 : 0);
+  if (has(x, "shield")) a -= 1;
+  const f = fort(x.lane, x.o);
+  if (x.pos === "trench" && f && f.id === "trench" && !src.kw.includes("breaker")) a -= 1;
+  return Math.max(1, a);
+}
+function dmg(src, x, base) {
+  const a = calc(src, x, base);
+  x.hp -= a;
+  if (src.kw.includes("suppress") && !has(x, "fearless") && x.hp > 0) x.supTurn = G.cur !== x.o ? G.turn + 1 : G.turn + 2;
+  if (src.kw.includes("fire") && x.hp > 0) x.burn = true;
+  FX.push([x.id, a]);
+  return a;
+}
+
+function canAttack(u) {
+  if (u.o !== G.cur || u.acted || u.noAtk || isSup(u)) return false;
+  if ((u.fresh || u.moved) && !has(u, "charge") && !u.raid) return false;
+  return true;
+}
+// სამიზნეები: [{k:"u",u}] | [{k:"f",f}] | [{k:"hq"}]
+function targets(u) {
+  const e = 1 - u.o, L = u.lane, out = [];
+  const units = (lane, pos) => at(lane, e, pos).filter(x => !x.camo);
+  const hpFort = lane => { const f = fort(lane, e); return f && f.hp !== null ? f : null; };
+  const melee = x => !has(u, "long") && Math.abs(absPos(u) - absPos(x)) <= 1;
+  if (has(u, "fly")) {
+    alive().filter(x => x.o === e && !x.camo).forEach(x => out.push({ k: "u", u: x }));
+    [0, 1, 2].forEach(l => { const f = hpFort(l); if (f) out.push({ k: "f", f }); });
+  } else if (u.pos === "rear" && !has(u, "long")) {
+    // ზურგიდან მხოლოდ „შორი“ ურტყამს
+  } else if (has(u, "long")) {
+    ["nml", "trench", "rear"].forEach(p => units(L, p).forEach(x => out.push({ k: "u", u: x })));
+    const f = hpFort(L); if (f) out.push({ k: "f", f });
+  } else {
+    for (const p of ["nml", "trench", "rear"]) {
+      let xs = units(L, p).map(x => ({ k: "u", u: x }));
+      const f = p === "trench" ? fort(L, e) : null;
+      if (f && f.id === "palisade" && !has(u, "breaker")) { xs = [{ k: "f", f }]; }
+      else if (f && f.hp !== null) xs.push({ k: "f", f });
+      if (xs.length) { out.push(...xs); break; }
+    }
+  }
+  const res = out.filter(x => !(x.k === "u" && has(x.u, "fly") && melee(x.u) && !has(u, "fly")));
+  if (u.pos === "nml" && !alive().some(x => x.o === e && x.lane === L)) res.push({ k: "hq" });
+  return res;
+}
+
+function attack(u, tg) {
+  const e = 1 - u.o, base = u.atk + leaderBonus(u) + (G.volley[u.o + ":" + u.lane] ? 1 : 0);
+  u.acted = true;
+  if (tg.k === "hq") {
+    G.p[e].hq -= base;
+    log(() => t(`${cname(u.c)} ურტყამს შტაბს: −${base} ნებისყოფა.`, `${cname(u.c)} strikes the HQ: −${base} nerve.`));
+    FXHQ.push([e, base]);
+    if (G.p[e].hq <= 0) return win(u.o, "hq");
+  } else if (tg.k === "f") {
+    const a = Math.max(1, base);
+    tg.f.hp -= a;
+    log(() => t(`${cname(u.c)} ურტყამს: ${cname(cardOf(tg.f.id))} −${a}.`, `${cname(u.c)} hits ${cname(cardOf(tg.f.id))} −${a}.`));
+  } else {
+    const x = tg.u, a = dmg(u, x, base);
+    const melee = !has(u, "long") && !has(u, "fly") && Math.abs(absPos(u) - absPos(x)) <= 1;
+    const b = x.hp > 0 && melee && !has(u, "suppress") && !isSup(x) ? dmg(x, u, x.atk + leaderBonus(x)) : null;
+    log(() => `${cname(u.c)} → ${cname(x.c)} −${a}` + (b !== null ? t(`; პასუხი −${b}`, `; counter −${b}`) : "") + ".");
+  }
+  cleanup();
+}
+
+function moves(u) {
+  if (u.o !== G.cur || u.moved || u.acted || u.fresh) return [];   // ახლა ჩამოსული ამ სვლაზე არ მოძრაობს
+  const i = ["rear", "trench", "nml"].indexOf(u.pos), out = [];
+  for (const j of [i + 1, i - 1]) {
+    const p = ["rear", "trench", "nml"][j];
+    if (p && at(u.lane, u.o, p).length < 2) out.push(p);
+  }
+  return out;
+}
+function move(u, pos) {
+  const fwd = ["rear", "trench", "nml"].indexOf(pos) > ["rear", "trench", "nml"].indexOf(u.pos);
+  u.pos = pos; u.moved = true;
+  if (pos === "nml") { const w = fort(u.lane, 1 - u.o); if (w && w.id === "wire") { u.noAtk = true; } }
+  log(() => t(`${cname(u.c)} ${fwd ? "წინ" : "უკან"}: ${POSN[pos][0]}.`, `${cname(u.c)} moves ${fwd ? "up" : "back"}: ${POSN[pos][1]}.`));
+}
+
+// ხელიდან გათამაშება: რა სამიზნე სჭირდება
+function needs(c) {
+  if (c.type === "unit") return "cell";
+  if (c.type === "structure") return "cell";
+  return { barrage: "lane", gas: "lane", volley: "lane", raid: "own", hospital: "own", camo: "own" }[c.id] || "none";
+}
+function legalCells(p, c) {
+  const out = [];
+  if (c.type === "unit") {
+    if (has(c, "giant") && nmlCtrl(p) < 2) return out;
+    for (const l of [0, 1, 2]) for (const pos of has(c, "scout") ? ["rear", "trench", "nml"] : ["rear", "trench"]) if (at(l, p, pos).length < 2) out.push([l, pos]);
+  } else if (c.type === "structure") {
+    for (const l of [0, 1, 2]) if (!fort(l, p)) out.push([l, "trench"]);
+  }
+  return out;
+}
+function legalOwn(p, c) {
+  const own = G.units.filter(u => u.o === p && u.hp > 0);
+  if (c.id === "raid") return own.filter(u => u.pos === "trench" && at(u.lane, p, "nml").length < 2);
+  if (c.id === "hospital") return own.filter(u => u.hp < u.max);
+  if (c.id === "camo") return own.filter(u => !u.camo);
+  return [];
+}
+function playable(p, c) {
+  if (c.cost > G.p[p].avail) return false;
+  const n = needs(c);
+  if (n === "cell") return legalCells(p, c).length > 0;
+  if (n === "own") return legalOwn(p, c).length > 0;
+  if (c.id === "porter") return G.p[p].porters < 3;
+  return true;
+}
+function play(p, hi, tg) {
+  const P = G.p[p], c = cardOf(P.hand[hi]);
+  if (!playable(p, c)) return false;
+  P.avail -= c.cost;
+  P.hand.splice(hi, 1);
+  if (c.type === "unit") {
+    const [lane, pos] = tg;
+    const u = { id: ++UID, c, o: p, lane, pos, hp: c.hp, max: c.hp, atk: c.atk, kw: c.kw, fresh: true, moved: false, acted: false, supTurn: null, burn: false, camo: false, noAtk: false };
+    if (pos === "nml") { const w = fort(lane, 1 - p); if (w && w.id === "wire") u.noAtk = true; }
+    G.units.push(u);
+    if (has(u, "digger") && !fort(lane, p)) G.forts[lane + ":" + p] = { id: "trench", o: p, lane, hp: null, atk: 0 };
+    log(() => t(`${cname(c)} ჩამოვიდა (${LANEN[lane][0]}, ${POSN[pos][0]}).`, `${cname(c)} deployed (${LANEN[lane][1]}, ${POSN[pos][1]}).`));
+  } else if (c.type === "structure") {
+    const lane = tg[0];
+    G.forts[lane + ":" + p] = { id: c.id, o: p, lane, hp: c.id === "palisade" ? 4 : (c.hp ?? null), atk: c.atk || 0 };
+    log(() => t(`${cname(c)} აშენდა (${LANEN[lane][0]}).`, `${cname(c)} built (${LANEN[lane][1]}).`));
+  } else {
+    const e = 1 - p;
+    switch (c.id) {
+      case "porter": P.porters++; break;
+      case "recon": for (let i = 0; i < 2; i++) if (P.deck.length) P.hand.push(P.deck.pop()); break;
+      case "train": P.avail += 4; break;
+      case "barrage": for (const x of at(tg, e, "trench")) { x.hp -= 2; FX.push([x.id, 2]); } break;
+      case "gas": for (const x of alive().filter(x => x.lane === tg && !has(x, "gas_mask"))) { x.hp -= 1; FX.push([x.id, 1]); } break;
+      case "volley": G.volley[p + ":" + tg] = true; break;
+      case "hospital": tg.hp = Math.min(tg.max, tg.hp + 4); break;
+      case "camo": tg.camo = true; break;
+      case "raid": tg.pos = "nml"; tg.raid = true; tg.moved = true; { const w = fort(tg.lane, e); if (w && w.id === "wire") tg.noAtk = true; } break;
+    }
+    const where = () => typeof tg === "number" ? t(` (${LANEN[tg][0]})`, ` (${LANEN[tg][1]})`) : tg && tg.c ? `: ${cname(tg.c)}` : "";
+    log(() => `${cname(c)}${where()}.`);
+    cleanup();
+  }
+  return true;
+}
+
+// ---------- კომპიუტერი ----------
+function aiStep() {
+  if (!G || G.over) return;
+  const p = G.cur;
+  const act = aiAction(p);
+  if (act) { act(); render(); if (G.over) return; setTimeout(aiStep, 520); }
+  else { BUSY = false; endTurn(); }
+}
+function laneScore(p, l) { return alive().filter(x => x.lane === l && x.o !== p).reduce((a, x) => a + x.atk, 0) - alive().filter(x => x.lane === l && x.o === p).reduce((a, x) => a + x.atk, 0); }
+function pickTarget(u, ts) {
+  if (ts.some(x => x.k === "hq")) return ts.find(x => x.k === "hq");
+  const base = u.atk + leaderBonus(u) + (G.volley[u.o + ":" + u.lane] ? 1 : 0);
+  const us = ts.filter(x => x.k === "u");
+  const kill = us.filter(x => calc(u, x.u, base) >= x.u.hp).sort((a, b) => b.u.c.cost - a.u.c.cost);
+  if (kill.length) return kill[0];
+  if (us.length) return us.sort((a, b) => b.u.atk - a.u.atk || a.u.hp - b.u.hp)[0];
+  return ts[0];
+}
+function aiAction(p) {
+  const P = G.p[p], e = 1 - p;
+  // 1) ბარათები — ძვირიდან იაფისკენ
+  const order = P.hand.map((id, i) => [cardOf(id), i]).sort((a, b) => b[0].cost - a[0].cost);
+  for (const [c, i] of order) {
+    if (!playable(p, c)) continue;
+    if (c.type === "unit") {
+      const cells = legalCells(p, c);
+      const lanes = [0, 1, 2].sort((a, b) => laneScore(p, b) - laneScore(p, a) + (Math.random() - .5) * .6);
+      let pick = null;
+      if (has(c, "scout")) pick = cells.find(([l, ps]) => ps === "nml" && !at(l, e, "nml").length);
+      for (const l of lanes) { if (pick) break; pick = cells.find(([ll, ps]) => ll === l && ps === "trench") || cells.find(([ll, ps]) => ll === l && ps === "rear"); }
+      if (pick) return () => play(p, i, pick);
+    } else if (c.type === "structure") {
+      const cells = legalCells(p, c).sort((a, b) => at(b[0], p, "trench").length - at(a[0], p, "trench").length || laneScore(p, b[0]) - laneScore(p, a[0]));
+      if (cells.length) return () => play(p, i, cells[0]);
+    } else if (c.id === "barrage") {
+      const l = [0, 1, 2].sort((a, b) => at(b, e, "trench").length - at(a, e, "trench").length)[0];
+      if (at(l, e, "trench").length >= 1) return () => play(p, i, l);
+    } else if (c.id === "gas") {
+      const sc = l => alive().filter(x => x.lane === l && !has(x, "gas_mask")).reduce((a, x) => a + (x.o === e ? 1 : -1.2), 0);
+      const l = [0, 1, 2].sort((a, b) => sc(b) - sc(a))[0];
+      if (sc(l) >= 1) return () => play(p, i, l);
+    } else if (c.id === "volley") {
+      const sc = l => G.units.filter(u => u.o === p && u.lane === l && canAttack(u) && targets(u).length).length;
+      const l = [0, 1, 2].sort((a, b) => sc(b) - sc(a))[0];
+      if (sc(l) >= 2) return () => play(p, i, l);
+    } else if (c.id === "raid") {
+      const us = legalOwn(p, c).filter(u => !u.acted).sort((a, b) => b.atk - a.atk);
+      if (us.length && us[0].atk >= 3) return () => play(p, i, us[0]);
+    } else if (c.id === "hospital") {
+      const us = legalOwn(p, c).filter(u => u.max - u.hp >= 3).sort((a, b) => (b.max - b.hp) - (a.max - a.hp));
+      if (us.length) return () => play(p, i, us[0]);
+    } else if (c.id === "camo") {
+      const us = legalOwn(p, c).filter(u => u.pos === "nml" && u.hp <= 3);
+      if (us.length) return () => play(p, i, us[0]);
+    } else if (c.id === "train") {
+      if (P.hand.some(id => { const x = cardOf(id); return x.id !== "train" && x.cost > P.avail && x.cost <= P.avail + 2; })) return () => play(p, i);
+    } else if (c.id === "recon") {
+      if (P.hand.length <= 5) return () => play(p, i);
+    } else if (c.id === "porter") return () => play(p, i);
+  }
+  // 2) შეტევა
+  const mine = G.units.filter(u => u.o === p && u.hp > 0).sort((a, b) => absPos(b) * (p ? -1 : 1) - absPos(a) * (p ? -1 : 1));
+  for (const u of mine) if (canAttack(u)) { const ts = targets(u); if (ts.length) return () => attack(u, pickTarget(u, ts)); }
+  // 3) წინსვლა — ვისაც სამიზნე არ აქვს
+  for (const u of mine) {
+    if (u.moved || u.acted) continue;
+    if (canAttack(u) && targets(u).length) continue;
+    if (u.pos === "rear" && has(u, "long") && targets(u).length) continue;
+    const mv = moves(u);
+    const fwd = u.pos === "rear" ? "trench" : u.pos === "trench" ? "nml" : null;
+    if (fwd && mv.includes(fwd)) {
+      if (fwd === "nml" && u.hp <= 2 && at(u.lane, e, "nml").reduce((a, x) => a + x.atk, 0) >= u.hp + 2) continue;
+      return () => move(u, fwd);
+    }
+  }
+  return null;
+}
+
+// ---------- ხატვა ----------
+let FX = [], FXHQ = [];
+function tokHTML(u) {
+  const v = viewer(), mine = u.o === v;
+  let cls = "tok " + (mine ? "mine" : "foe");
+  const myTurn = !G.over && !BUSY && u.o === G.cur && !G.p[G.cur].ai;
+  if (myTurn && (canAttack(u) && targets(u).length || moves(u).length)) cls += " ready";
+  else if (u.o === G.cur && (u.acted || u.moved) && !(canAttack(u) && targets(u).length)) cls += " spent";
+  if (SEL && SEL.u === u) cls += " sel";
+  if (SEL && SEL.tg && SEL.tg.some(x => x.k === "u" && x.u === u)) cls += " target";
+  if (SEL && SEL.own && SEL.own.includes(u)) cls += " pick";
+  if (u.camo) cls += " camo";
+  const st = [];
+  if (u.burn) st.push(`<i title="${t("იწვის", "Burning")}">🔥</i>`);
+  if (u.supTurn !== null && u.supTurn >= G.turn) st.push(`<i title="${t("დათრგუნულია", "Suppressed")}">⏸</i>`);
+  if (u.camo) st.push(`<i title="${t("შენიღბულია", "Camouflaged")}">◌</i>`);
+  if (u.noAtk) st.push(`<i title="${t("მავთული: ამ სვლაზე ვერ უტევს", "Wire: cannot attack this turn")}">⌇</i>`);
+  const lb = leaderBonus(u);
+  return `<button type="button" class="${cls}" data-u="${u.id}" style="${sprite(u.c.art)}" aria-label="${esc(cname(u.c))}, ⚔ ${u.atk + lb}, ⛨ ${u.hp}/${u.max}">
+    <span class="st">${st.join("")}</span><span class="a">${u.atk + lb}</span><span class="h ${u.hp < u.max ? "hurt" : ""}">${u.hp}</span></button>`;
+}
+function fortHTML(f) {
+  const v = viewer(), c = cardOf(f.id), tg = SEL && SEL.tg && SEL.tg.some(x => x.k === "f" && x.f === f);
+  return `<button type="button" class="fort ${f.o === v ? "mine" : "foe"} ${tg ? "target" : ""}" data-f="${f.lane}:${f.o}" title="${esc(ctext(c))}">${esc(cname(c))}${f.hp !== null ? " · " + f.hp : ""}</button>`;
+}
+function render() {
+  document.documentElement.lang = LANG;
+  document.title = t("სამი ხაზი", "Three Lines");
+  $("title").innerHTML = `${t("სამი ხაზი", "Three Lines")} <small>${t("ქვესკნელის ფრონტი · ბარათის თამაში", "Underfront · card game")}</small>`;
+  $("bRules").textContent = t("წესები", "Rules");
+  $("bNew").textContent = t("ახალი თამაში", "New game");
+  $("logH").textContent = t("ბრძოლის ჟურნალი", "Battle log");
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
+  if (!G) return;
+  const v = viewer(), e = 1 - v, P = G.p[v], E = G.p[e];
+  const hq = (X, o) => {
+    const tg = SEL && SEL.tg && SEL.tg.some(x => x.k === "hq") && o !== v;
+    return `<b class="name">${esc(fname(X.fid))}</b><span class="stat nerve">${t("ნებისყოფა", "Nerve")} <strong>${Math.max(0, X.hq)}</strong><span class="bar"><i style="width:${Math.max(0, X.hq) / 20 * 100}%"></i></span></span>
+      <span class="stat">${t("ხელი", "Hand")} <strong>${X.hand.length}</strong></span><span class="stat">${t("დასტა", "Deck")} <strong>${X.deck.length}</strong></span>
+      <span class="stat">${t("მზიდავები", "Porters")} <strong>${X.porters}</strong></span><span class="stat">${t("დაცემული", "Fallen")} <strong>${X.fallen}</strong></span>
+      ${G.cur === o && !G.over ? `<span class="stat" style="color:var(--bronze)">${t("სვლა", "Turn")}</span>` : ""}`;
+  };
+  $("hqFoe").innerHTML = hq(E, e); $("hqMe").innerHTML = hq(P, v);
+  $("hqFoe").classList.toggle("target", !!(SEL && SEL.tg && SEL.tg.some(x => x.k === "hq")));
+  const rows = [[e, "rear"], [e, "trench"], [null, "nml"], [v, "trench"], [v, "rear"]];
+  let h = "";
+  for (const [o, pos] of rows) for (const l of [0, 1, 2]) {
+    const hl = SEL && SEL.cells && SEL.cells.some(([ll, pp]) => ll === l && pp === pos && (pos === "nml" || o === G.cur)) ? " hl" : "";
+    const lanehl = SEL && SEL.lanes && SEL.lanes.includes(l) ? " hl" : "";
+    if (pos === "nml") {
+      const held = at(l, v, "nml").length && !at(l, e, "nml").length ? " held-me" : at(l, e, "nml").length && !at(l, v, "nml").length ? " held-foe" : "";
+      h += `<div class="cell nml${held}${hl}${lanehl}" data-l="${l}" data-p="nml" data-o="${v}"><span class="lbl">${t("ნეიტრ. ზოლი", "No Man's Land")}</span>
+        <div class="half">${at(l, e, "nml").map(tokHTML).join("")}</div><div class="half">${at(l, v, "nml").map(tokHTML).join("")}</div></div>`;
+    } else {
+      const f = pos === "trench" ? fort(l, o) : null;
+      const lbl = o === v ? (pos === "trench" ? t("შენი სანგარი", "Your trench") : t("შენი ზურგი", "Your rear")) : (pos === "trench" ? t("მტრის სანგარი", "Enemy trench") : t("მტრის ზურგი", "Enemy rear"));
+      h += `<div class="cell ${pos}${hl}${lanehl}" data-l="${l}" data-p="${pos}" data-o="${o}"><span class="lbl">${lbl}</span>${at(l, o, pos).map(tokHTML).join("")}${f ? fortHTML(f) : ""}</div>`;
+    }
+  }
+  $("board").innerHTML = h;
+  $("lanes").innerHTML = LANEN.map(x => `<span>${t(x[0], x[1])}</span>`).join("");
+  // ხელი
+  const human = !G.p[G.cur].ai && G.cur === v && !G.over;
+  $("hand").innerHTML = P.hand.map((id, i) => {
+    const c = cardOf(id), can = human && !BUSY && playable(v, c);
+    const sub = c.type === "unit" ? `${fname(c.f)} · ${c.tier}` : t(KINDN[c.type][0], KINDN[c.type][1]);
+    return `<button type="button" class="card ${can ? "can" : "no"} ${SEL && SEL.hi === i ? "sel" : ""}" data-h="${i}" aria-label="${esc(cname(c))}, ${t("ფასი", "cost")} ${c.cost}">
+      <span class="art" style="${sprite(c.art)}"><span class="cost">${c.cost}</span></span><span class="nm">${esc(cname(c))}</span><span class="sub">${esc(sub)}</span>
+      <span class="kw">${c.type === "unit" ? c.kw.map(k => esc(KWN(k))).join(", ") : esc(ctext(c))}</span>
+      ${c.type === "unit" || c.atk ? `<span class="ft"><span class="a">⚔ ${c.atk ?? 0}</span><span class="h">⛨ ${c.hp ?? (c.id === "palisade" ? 4 : "")}</span></span>` : ""}</button>`;
+  }).join("") || `<span class="hint">${t("ხელი ცარიელია.", "Your hand is empty.")}</span>`;
+  $("bEnd").textContent = t("სვლის დასრულება", "End turn");
+  $("bEnd").disabled = !human || BUSY;
+  $("hint").innerHTML = G.over ? "" : !human ? t(`${fname(G.p[G.cur].fid)} ფიქრობს…`, `${fname(G.p[G.cur].fid)} is thinking…`)
+    : `<span class="supply" title="${t("მარაგი", "Supply")}">${t("მარაგი", "Supply")}: ${"<i></i>".repeat(Math.max(0, P.avail))} <b>${P.avail}</b></span> ${hintText()}`;
+  renderDetail();
+  $("log").innerHTML = G.log.slice(-40).reverse().map(([m, c]) => `<div class="${c}">${esc(typeof m === "function" ? m() : m)}</div>`).join("");
+  // ეფექტები
+  for (const [id, a] of FX) { const el = document.querySelector(`[data-u="${id}"]`); if (el) { el.classList.add("hit"); el.insertAdjacentHTML("beforeend", `<span class="float">−${a}</span>`); } }
+  for (const [o, a] of FXHQ) { const el = o === v ? $("hqMe") : $("hqFoe"); el.animate([{ background: "#5a2a1e" }, { background: "" }], { duration: 600 }); }
+  FX = []; FXHQ = [];
+}
+function hintText() {
+  if (!SEL) return t("აირჩიე ბარათი ხელიდან ან შენი იუნიტი ველზე.", "Pick a card from your hand or one of your units on the board.");
+  if (SEL.hi !== undefined) {
+    const c = cardOf(G.p[G.cur].hand[SEL.hi]), n = needs(c);
+    if (c.cost > G.p[G.cur].avail) return t(`მარაგი არ კმარა: საჭიროა ${c.cost}, გაქვს ${G.p[G.cur].avail}.`, `Not enough supply: needs ${c.cost}, you have ${G.p[G.cur].avail}.`);
+    if (!playable(G.cur, c)) return c.type === "unit" && has(c, "giant") ? t("გოლიათი ჩამოდის მხოლოდ მაშინ, როცა 2 ხაზის ნეიტრალურ ზოლს აკონტროლებ.", "A giant can only be deployed while you hold No Man's Land on 2 lines.")
+      : t("ამ ბარათს ახლა ვერ გაათამაშებ: შესაფერისი ადგილი ან სამიზნე არ არის.", "You can't play this card right now: there is no suitable place or target.");
+    if (n === "cell") return c.type === "unit" ? t("აირჩიე ადგილი: შენი ზურგი ან სანგარი.", "Choose a place: your rear or trench.") : t("აირჩიე სანგარი, სადაც ნაგებობა არ დგას.", "Choose a trench without a structure.");
+    if (n === "lane") return t("აირჩიე ხაზი.", "Choose a line.");
+    if (n === "own") return t("აირჩიე შენი იუნიტი (მწვანე ჩარჩო).", "Choose one of your units (green outline).");
+    return t("დააჭირე „გათამაშებას“.", "Press “Play”.");
+  }
+  if (SEL.u) return SEL.tg.length || SEL.cells.length ? t("წითელი — შეტევა, ოქროსფერი ადგილი — გადაადგილება.", "Red — attack; gold place — move.") : t("ამ იუნიტს ახლა მოქმედება არ შეუძლია.", "This unit cannot act right now.");
+  return "";
+}
+function renderDetail() {
+  const d = $("detail");
+  const insp = SEL && (SEL.u || SEL.insp) ? (SEL.u || SEL.insp) : null;
+  let c = null, u = null;
+  if (insp) { u = insp; c = insp.c; }
+  else if (SEL && SEL.hi !== undefined) c = cardOf(G.p[G.cur].hand[SEL.hi]);
+  else if (SEL && SEL.fort) c = cardOf(SEL.fort.id);
+  if (!c) { d.innerHTML = `<h2>${t("ბარათი", "Card")}</h2><p class="meta">${t("დააჭირე ნებისმიერ ბარათს ან იუნიტს, რომ მისი აღწერა აქ ნახო.", "Tap any card or unit to see its details here.")}</p>`; return; }
+  const kw = c.type === "unit" ? c.kw.map(k => `<li><b>${esc(KWN(k))}</b> — ${esc(KWR(k))}</li>`).join("") : "";
+  const stats = u ? `⚔ ${u.atk + leaderBonus(u)} · ⛨ ${u.hp}/${u.max}` : c.type === "unit" ? `⚔ ${c.atk} · ⛨ ${c.hp}` : c.atk ? `⚔ ${c.atk} · ⛨ ${c.hp}` : "";
+  const where = u ? `${u.o === viewer() ? t("შენი", "yours") : t("მტრის", "enemy")} · ${t(LANEN[u.lane][0], LANEN[u.lane][1])} · ${t(POSN[u.pos][0], POSN[u.pos][1])}` : "";
+  let acts = "";
+  if (SEL && SEL.hi !== undefined && needs(c) === "none" && !G.p[G.cur].ai && playable(G.cur, c)) acts += `<button class="btn primary" type="button" data-act="play">${t("გათამაშება", "Play")}</button>`;
+  if (SEL) acts += `<button class="btn" type="button" data-act="cancel">${t("გაუქმება", "Cancel")}</button>`;
+  d.innerHTML = `<h2>${esc(cname(c))}</h2><div class="big" style="${sprite(c.art)}"></div>
+    <p class="meta">${c.type === "unit" ? `${esc(fname(c.f))} · ${t("დონე", "tier")} ${c.tier}` : t(KINDN[c.type][0], KINDN[c.type][1])} · ${t("ფასი", "cost")} ${c.cost}${stats ? " · " + stats : ""}</p>
+    ${where ? `<p class="meta">${where}</p>` : ""}${ctext(c) ? `<p>${esc(ctext(c))}</p>` : ""}${kw ? `<ul>${kw}</ul>` : ""}
+    ${u && u.supTurn !== null && u.supTurn >= G.turn ? `<p class="meta">⏸ ${t("დათრგუნულია: თავის სვლაზე ვერ უტევს.", "Suppressed: cannot attack on its turn.")}</p>` : ""}
+    ${u && leaderBonus(u) ? `<p class="meta">${t("მეთაური იმავე ხაზზე: +1 შეტევა.", "Leader on this line: +1 attack.")}</p>` : ""}
+    ${acts ? `<div class="acts">${acts}</div>` : ""}`;
+}
+
+// ---------- მართვა ----------
+function humanTurn() { return G && !G.over && !BUSY && !G.p[G.cur].ai; }
+function selectHand(i) {
+  const p = G.cur, c = cardOf(G.p[p].hand[i]);
+  if (!playable(p, c)) { SEL = { hi: i, cells: [], lanes: [], own: [], tg: [] }; return render(); }
+  const n = needs(c);
+  SEL = { hi: i, cells: n === "cell" ? legalCells(p, c) : [], lanes: n === "lane" ? [0, 1, 2] : [], own: n === "own" ? legalOwn(p, c) : [], tg: [] };
+  render();
+}
+function selectUnit(u) {
+  if (humanTurn() && u.o === G.cur) {
+    const tg = canAttack(u) ? targets(u) : [];
+    SEL = { u, tg, cells: moves(u).map(p => [u.lane, p]), lanes: [], own: [] };
+  } else SEL = { insp: u, tg: [], cells: [], lanes: [], own: [] };
+  render();
+}
+function afterAct() { SEL = null; render(); }
+
+document.addEventListener("click", ev => {
+  const lb = ev.target.closest(".lang button");
+  if (lb) { LANG = lb.dataset.lang; try { localStorage.setItem("cg-lang", LANG); } catch (e) {} render(); if (!$("ov").hidden && $("ov").dataset.kind) reopen(); return; }
+  if (ev.target.closest("#bNew")) return setupScreen();
+  if (ev.target.closest("#bRules")) return rulesScreen();
+  if (!G) return;
+  const act = ev.target.closest("[data-act]");
+  if (act && act.closest("#detail")) {
+    if (act.dataset.act === "cancel") return afterAct();
+    if (act.dataset.act === "play" && SEL && SEL.hi !== undefined) { play(G.cur, SEL.hi); return afterAct(); }
+  }
+  if (ev.target.closest("#bEnd")) { if (humanTurn()) { SEL = null; endTurn(); } return; }
+  const hand = ev.target.closest("[data-h]");
+  if (hand) { if (!humanTurn()) return; const i = +hand.dataset.h; if (SEL && SEL.hi === i && needs(cardOf(G.p[G.cur].hand[i])) === "none" && playable(G.cur, cardOf(G.p[G.cur].hand[i]))) { play(G.cur, i); return afterAct(); } return selectHand(i); }
+  const tok = ev.target.closest("[data-u]");
+  if (tok) {
+    const u = G.units.find(x => x.id === +tok.dataset.u);
+    if (!u) return;
+    if (humanTurn() && SEL) {
+      if (SEL.own && SEL.own.includes(u)) { play(G.cur, SEL.hi, u); return afterAct(); }
+      if (SEL.cells && u.o === G.cur && SEL.cells.some(([ll, pp]) => ll === u.lane && pp === u.pos) && u !== SEL.u) {
+        if (SEL.u) move(SEL.u, u.pos); else play(G.cur, SEL.hi, [u.lane, u.pos]);
+        return afterAct();
+      }
+      const tg = SEL.tg && SEL.tg.find(x => x.k === "u" && x.u === u);
+      if (tg) { attack(SEL.u, tg); return afterAct(); }
+      if (SEL.lanes && SEL.lanes.length) { play(G.cur, SEL.hi, u.lane); return afterAct(); }
+    }
+    return selectUnit(u);
+  }
+  const fb = ev.target.closest("[data-f]");
+  if (fb) {
+    const f = G.forts[fb.dataset.f];
+    if (humanTurn() && SEL && SEL.tg) { const tg = SEL.tg.find(x => x.k === "f" && x.f === f); if (tg) { attack(SEL.u, tg); return afterAct(); } }
+    if (humanTurn() && SEL && SEL.lanes && SEL.lanes.length) { play(G.cur, SEL.hi, f.lane); return afterAct(); }
+    SEL = { fort: f, tg: [], cells: [], lanes: [], own: [] }; return render();
+  }
+  if (ev.target.closest("#hqFoe") && humanTurn() && SEL && SEL.tg) { const tg = SEL.tg.find(x => x.k === "hq"); if (tg) { attack(SEL.u, tg); return afterAct(); } }
+  const cell = ev.target.closest(".cell");
+  if (cell && humanTurn() && SEL) {
+    const l = +cell.dataset.l, p = cell.dataset.p;
+    if (SEL.lanes && SEL.lanes.includes(l)) { play(G.cur, SEL.hi, l); return afterAct(); }
+    if (SEL.cells && SEL.cells.some(([ll, pp]) => ll === l && pp === p) && (p === "nml" || +cell.dataset.o === G.cur)) {
+      if (SEL.u) move(SEL.u, p); else play(G.cur, SEL.hi, [l, p]);
+      return afterAct();
+    }
+  }
+  if (ev.target.closest(".board") && SEL) afterAct();
+});
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && SEL) afterAct(); });
+
+// ---------- ეკრანები ----------
+function showDlg(kind, html) { $("dlg").innerHTML = html; $("ov").dataset.kind = kind; $("ov").hidden = false; const f = $("dlg").querySelector("select, button"); if (f) f.focus(); }
+function hideDlg() { $("ov").hidden = true; $("ov").dataset.kind = ""; }
+function reopen() { const k = $("ov").dataset.kind; if (k === "setup") setupScreen(); else if (k === "rules") rulesScreen(); else if (k === "end") endScreen(); else if (k === "pass") passScreen(); }
+function deckOptions(sel, withRandom) {
+  const grp = (label, fn) => { const fs = Object.keys(D.starter).filter(f => fn(D.factions[f])); return `<optgroup label="${esc(label)}">${fs.map(f => `<option value="${f}" ${f === sel ? "selected" : ""}>${esc(fname(f))}${D.win[f] ? ` (${D.win[f]}%)` : ""}</option>`).join("")}</optgroup>`; };
+  return (withRandom ? `<option value="random" ${sel === "random" ? "selected" : ""}>${t("შემთხვევითი", "Random")}</option>` : "")
+    + grp(t("ნათელი მხარე", "The Light Side"), f => f.core && f.side === "light") + grp(t("ბნელი მხარე", "The Dark Side"), f => f.core && f.side === "dark") + grp(t("მოკავშირეები", "Allies"), f => !f.core);
+}
+function deckList(fid) {
+  if (!D.starter[fid]) return "";
+  const s = D.starter[fid];
+  return Object.entries(s.units).map(([id, n]) => `${esc(nm(D.units[id]))} ×${n}`).join(", ") + " · " + Object.entries(s.common).map(([id, n]) => `${esc(nm(D.common[id]))} ×${n}`).join(", ");
+}
+let PREF = { me: "colchis", foe: "harness", mode: "ai", first: "random" };
+try { PREF = { ...PREF, ...JSON.parse(localStorage.getItem("cg-pref") || "{}") }; } catch (e) {}
+function setupScreen() {
+  showDlg("setup", `<h2>${t("ახალი თამაში", "New game")}</h2>
+    <p>${t("ორი დასტა, სამი ხაზი. მოიგებს ის, ვინც მტრის შტაბის ნებისყოფას 20-დან 0-მდე ჩამოიყვანს ან სვლის დასაწყისში სამივე ნეიტრალურ ზოლს დაიჭერს.",
+      "Two decks, three lines. You win by bringing the enemy HQ's nerve from 20 to 0, or by holding No Man's Land on all three lines at the start of your turn.")}</p>
+    <div class="row"><label>${t("შენი დასტა", "Your deck")}<select id="sMe">${deckOptions(PREF.me)}</select></label>
+      <label>${t("მოწინააღმდეგე", "Opponent")}<select id="sFoe">${deckOptions(PREF.foe, true)}</select></label></div>
+    <p class="deck" id="sDeck"></p>
+    <div class="row"><label>${t("რეჟიმი", "Mode")}<select id="sMode"><option value="ai" ${PREF.mode === "ai" ? "selected" : ""}>${t("კომპიუტერის წინააღმდეგ", "Against the computer")}</option>
+      <option value="hot" ${PREF.mode === "hot" ? "selected" : ""}>${t("ორი მოთამაშე ერთ ეკრანზე", "Two players, one screen")}</option></select></label>
+      <label>${t("ვინ იწყებს", "Who goes first")}<select id="sFirst"><option value="random">${t("შემთხვევით", "Random")}</option><option value="0" ${PREF.first === "0" ? "selected" : ""}>${t("შენ", "You")}</option><option value="1" ${PREF.first === "1" ? "selected" : ""}>${t("მოწინააღმდეგე", "Opponent")}</option></select></label></div>
+    <p class="deck">${t("ფრჩხილებში — დასტის მოგების წილი სიმულაციაში ყველა სხვა დასტის წინააღმდეგ.", "In brackets: the deck's simulated win rate against every other deck.")}</p>
+    <div class="acts">${G ? `<button class="btn" type="button" id="sCancel">${t("დაბრუნება", "Back")}</button>` : ""}<button class="btn primary" type="button" id="sGo">${t("დაწყება", "Start")}</button></div>`);
+  const upd = () => { $("sDeck").innerHTML = `<b>${esc(fname($("sMe").value))}:</b> ${deckList($("sMe").value)}`; };
+  $("sMe").onchange = upd; upd();
+  if ($("sCancel")) $("sCancel").onclick = hideDlg;
+  $("sGo").onclick = () => {
+    PREF = { me: $("sMe").value, foe: $("sFoe").value, mode: $("sMode").value, first: $("sFirst").value };
+    try { localStorage.setItem("cg-pref", JSON.stringify(PREF)); } catch (e) {}
+    let foe = PREF.foe;
+    if (foe === "random") { const fs = Object.keys(D.starter).filter(f => f !== PREF.me); foe = fs[rnd(fs.length)]; }
+    hideDlg();
+    newGame({ me: PREF.me, foe, mode: PREF.mode, first: PREF.first === "random" ? rnd(2) : +PREF.first });
+  };
+}
+function rulesScreen() {
+  showDlg("rules", `<h2>${t("წესები მოკლედ", "Rules in brief")}</h2><div class="rules">${t(`
+    <h3>დასაწყისი</h3><ul><li>ორივე იღებს 5 ბარათს. ვინც მეორე იწყებს, +1 ბარათს და პირველ სვლაზე +2 მარაგს იღებს.</li></ul>
+    <h3>მიზანი</h3><ul><li>მტრის შტაბის ნებისყოფა 20-დან 0-მდე ჩამოიყვანე, ან</li><li><b>გარღვევა:</b> შენი სვლის დასაწყისში სამივე ნეიტრალური ზოლი გეჭიროს.</li></ul>
+    <h3>სვლა</h3><ul><li>აიღე 1 ბარათი (დასტა თუ ამოიწურა, შტაბი −2).</li><li><b>მარაგი:</b> 3 + მზიდავები (მაქს. 3) + ნეიტრალური ზოლები, რომლებიც გიჭირავს + გადმოტანილი (მაქს. 3).</li>
+      <li><b>ჩამოიყვანე</b> იუნიტი შენს ზურგში ან სანგარში (ადგილზე მაქს. 2; მზვერავი — ნეიტრალურ ზოლშიც). ნაგებობა — სანგარში, ხაზზე 1.</li>
+      <li><b>გადაადგილება:</b> იუნიტი 1 ნაბიჯით წინ ან უკან. ახლა ჩამოსული ადგილზე რჩება; ვინც გადაადგილდა ან ახლა ჩამოვიდა, ვერ უტევს (გარდა იერიშისა).</li>
+      <li><b>შეტევა:</b> თავისი ხაზის უახლოეს მტერს (ნეიტრალური ზოლი → სანგარი → ზურგი). ზურგიდან მხოლოდ „შორი“ ურტყამს. თუ ხაზზე მტერი არ არის, ნეიტრალურ ზოლში მდგომი შტაბს ურტყამს.</li>
+      <li>სვლის ბოლოს მოქმედებს ნაგებობები და მკურნალები.</li></ul>
+    <h3>ზიანი</h3><ul><li>ზიანი = შეტევა. ხელჩართულში (მეზობელ ადგილზე, არა „შორი“) სამიზნე პასუხს სცემს.</li><li>თხრილი სანგარში მდგომს −1-ით იცავს; მესერი სანგარს ხელჩართულისგან ფარავს, სანამ არ დაინგრევა.</li></ul>
+    <h3>მართვა</h3><ul><li>ბარათი ხელიდან → ოქროსფერი ადგილი ველზე. შენი იუნიტი → ოქროსფერი ადგილი (გადაადგილება) ან წითლად მონიშნული მტერი (შეტევა).</li><li>Esc ან „გაუქმება“ — არჩევანის მოხსნა.</li></ul>`,
+    `<h3>Setup</h3><ul><li>Both players draw 5 cards. Whoever goes second draws 1 extra card and gets +2 supply on their first turn.</li></ul>
+    <h3>Goal</h3><ul><li>Bring the enemy HQ's nerve from 20 to 0, or</li><li><b>Breakthrough:</b> hold No Man's Land on all three lines at the start of your turn.</li></ul>
+    <h3>Your turn</h3><ul><li>Draw 1 card (if your deck is empty, your HQ loses 2).</li><li><b>Supply:</b> 3 + porters (max. 3) + lines where you hold No Man's Land + carried over (max. 3).</li>
+      <li><b>Deploy</b> a unit to your rear or trench (max. 2 per place; scouts may also go to No Man's Land). Structures go in a trench, 1 per line.</li>
+      <li><b>Move:</b> a unit steps 1 place forward or back. A unit deployed this turn stays put; a unit that moved or was just deployed cannot attack (except with charge).</li>
+      <li><b>Attack:</b> the nearest enemy on its line (No Man's Land → trench → rear). Only "long" units attack from the rear. If the line has no enemies, a unit in No Man's Land strikes the HQ.</li>
+      <li>At the end of your turn, structures and healers act.</li></ul>
+    <h3>Damage</h3><ul><li>Damage = attack. In melee (next to the target, not "long") the target strikes back.</li><li>A trench gives −1 damage to units in it; a palisade shields the trench from melee until it is destroyed.</li></ul>
+    <h3>Controls</h3><ul><li>Card from your hand → a gold place on the board. Your unit → a gold place (move) or an enemy outlined in red (attack).</li><li>Esc or "Cancel" clears your choice.</li></ul>`)}</div>
+    <div class="acts"><button class="btn primary" type="button" id="rOk">${t("კარგი", "OK")}</button></div>`);
+  $("rOk").onclick = () => { hideDlg(); if (!G) setupScreen(); };
+}
+function endScreen() {
+  if (!G || !G.over) return;
+  const v = viewer(), w = G.over.p, mine = G.mode === "ai" ? w === 0 : true;
+  const title = G.mode === "ai" ? (mine ? t("გამარჯვება", "Victory") : t("დამარცხება", "Defeat")) : t(`${fname(G.p[w].fid)} იმარჯვებს`, `${fname(G.p[w].fid)} wins`);
+  showDlg("end", `<h2>${title}</h2><p>${G.over.how === "break" ? t("გარღვევა: სამივე ნეიტრალური ზოლი დაკავებულია.", "Breakthrough: all three No Man's Lands are held.") : t("მოწინააღმდეგის შტაბი დაეცა.", "The enemy HQ has fallen.")}</p>
+    <p class="deck">${t(`სვლები: ${G.turn} · დაცემული: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`, `Turns: ${G.turn} · fallen: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`)}</p>
+    <div class="acts"><button class="btn" type="button" id="eLook">${t("ველის ნახვა", "View board")}</button><button class="btn primary" type="button" id="eNew">${t("ახალი თამაში", "New game")}</button></div>`);
+  $("eLook").onclick = hideDlg; $("eNew").onclick = setupScreen;
+}
+function passScreen() {
+  showDlg("pass", `<h2>${t(`${fname(G.p[G.cur].fid)}-ის სვლა`, `${fname(G.p[G.cur].fid)} to play`)}</h2><p>${t("გადაეცი მოწყობილობა მეორე მოთამაშეს. ხელი დამალულია, სანამ ის მზად არ იქნება.", "Pass the device to the other player. The hand stays hidden until they are ready.")}</p>
+    <div class="acts"><button class="btn primary" type="button" id="pGo">${t("მზად ვარ", "Ready")}</button></div>`);
+  $("pGo").onclick = () => { hideDlg(); render(); };
+}
+
+render();
+setupScreen();
+window.__cg = { get G() { return G; }, newGame, endTurn, aiAction, play, attack, move, targets, canAttack, cardOf };
+</script>

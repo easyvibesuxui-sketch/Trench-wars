@@ -200,6 +200,31 @@ def attach_en(W):
             l["title_en"], l["html_en"] = t, md(b)
 
 
+TW, TH = 400, 600   # სპრაიტ-ფურცლის ერთი ილუსტრაცია
+
+
+def sheet_layout(data, names, cg_common):
+    """ილუსტრაციების განლაგება სპრაიტ-ფურცლებზე: ფრაქციის ფურცელი (sheets/<fid>.jpg) და საერთო ბარათებისა (sheets/cardgame.jpg).
+    აბრუნებს: src (id → ფაილი), groups (ფურცელი → [(id, ფაილი)]), pos (იუნიტი → ადგილი), cpos (საერთო ბარათი → ადგილი).
+    იყენებს ვიკიც და ბარათის თამაშის აპიც (tools/build_cardgame.py)."""
+    src = {p.stem: p for p in (ROOT / "assets/art").glob("*.jpg")}
+    groups, pos, cpos = {}, {}, {}
+    def place(sheet, items, out):
+        cols = min(len(items), 6)
+        rows = -(-len(items) // cols)
+        for i, (k, f) in enumerate(items):
+            out[k] = {"s": f"sheets/{sheet}.jpg", "x": i % cols, "y": i // cols, "c": cols, "r": rows}
+        groups[sheet] = (cols, rows, items)
+    for fid in names:
+        items = [(u["id"], src[u["id"]]) for u in data["units"] if u["faction"] == fid and u["id"] in src]
+        if items:
+            place(fid, items, pos)
+    items = [(c["id"], ROOT / "assets/art" / c["art"]) for c in cg_common if c.get("art") and (ROOT / "assets/art" / c["art"]).exists()]
+    if items:
+        place("cardgame", items, cpos)
+    return src, groups, pos, cpos
+
+
 def main():
     X = extract()
     data, costs, abil, roles, econ, vis, cg, names, tagname = (X[k] for k in ("data", "costs", "abil", "roles", "econ", "vis", "cg", "names", "tagname"))
@@ -214,41 +239,17 @@ def main():
     for p in art_dir.glob("*.jpg"):
         if p.name != "card_back.jpg":
             p.unlink()
-    src = {p.stem: p for p in (ROOT / "assets/art").glob("*.jpg")}
-    arts, pos = set(), {}
-    TW, TH = 400, 600
-    for fid in names:
-        ids = [u["id"] for u in data["units"] if u["faction"] == fid and u["id"] in src]
-        if not ids:
-            continue
-        cols = min(len(ids), 6)
-        rows = -(-len(ids) // cols)
-        dst = sheet_dir / f"{fid}.jpg"
-        for i, uid in enumerate(ids):
-            pos[uid] = {"s": f"sheets/{fid}.jpg", "x": i % cols, "y": i // cols, "c": cols, "r": rows}
-            arts.add(uid)
-        if not dst.exists() or any(src[i].stat().st_mtime > dst.stat().st_mtime for i in ids):
+    src, groups, pos, cpos = sheet_layout(data, names, X["cgall"]["common"])
+    arts = set(pos)
+    for name, (cols, rows, items) in groups.items():
+        dst = sheet_dir / f"{name}.jpg"
+        if not dst.exists() or any(f.stat().st_mtime > dst.stat().st_mtime for _, f in items):
             sheet = Image.new("RGB", (cols * TW, rows * TH), "#e9e2cf")
-            for i, uid in enumerate(ids):
-                sheet.paste(Image.open(src[uid]).convert("RGB").resize((TW, TH), Image.LANCZOS), ((i % cols) * TW, (i // cols) * TH))
-            sheet.save(dst, quality=80, optimize=True)
-    # ბარათის თამაშის საერთო ბარათები (ნაგებობა, ბრძანება, მარაგი) — ერთ ფურცელზე
-    cgc = [c for c in X["cgall"]["common"] if c.get("art") and (ROOT / "assets/art" / c["art"]).exists()]
-    cpos = {}
-    if cgc:
-        cols = min(len(cgc), 6)
-        rows = -(-len(cgc) // cols)
-        dst = sheet_dir / "cardgame.jpg"
-        for i, c in enumerate(cgc):
-            cpos[c["id"]] = {"s": "sheets/cardgame.jpg", "x": i % cols, "y": i // cols, "c": cols, "r": rows}
-        files = [ROOT / "assets/art" / c["art"] for c in cgc]
-        if not dst.exists() or any(f.stat().st_mtime > dst.stat().st_mtime for f in files):
-            sheet = Image.new("RGB", (cols * TW, rows * TH), "#e9e2cf")
-            for i, f in enumerate(files):
+            for i, (_, f) in enumerate(items):
                 sheet.paste(Image.open(f).convert("RGB").resize((TW, TH), Image.LANCZOS), ((i % cols) * TW, (i // cols) * TH))
             sheet.save(dst, quality=80, optimize=True)
     for p in sheet_dir.glob("*.jpg"):
-        if p.stem not in names and p.stem != "cardgame":
+        if p.stem not in groups:
             p.unlink()
 
     side = lambda f: "light" if f in LIGHT_CORE or f in data["allies"] else "dark"

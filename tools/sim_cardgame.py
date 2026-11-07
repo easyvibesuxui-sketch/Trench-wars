@@ -37,6 +37,7 @@ class Game:
             rng.shuffle(d)
             self.p.append({"deck": d, "hand": [d.pop() for _ in range(5)], "hq": 20, "bank": 0, "porters": 0})
         self.p[1]["hand"].append(self.p[1]["deck"].pop())
+        self.p[1]["bank"] = 2   # მეორე მოთამაშე: +1 ბარათი და პირველ სვლაზე +2 მარაგი
 
     def at(self, lane, owner, pos):
         return [u for u in self.units if u.lane == lane and u.owner == owner and u.pos == pos and u.hp > 0]

@@ -9058,9 +9058,9 @@
     "port_brawlers": 2,
     "dali_hunters": 2,
     "aznauri": 2,
-    "eristavi": 1,
+    "eristavi": 2,
     "medea_sisters": 2,
-    "shavkhan_smiths": 2,
+    "shavkhan_smiths": 1,
     "kolkhi_riders": 2,
     "monaspa": 1,
     "iron_arm_veterans": 2,
@@ -9080,7 +9080,7 @@
   },
   "harness": {
    "units": {
-    "rebels": 2,
+    "rebels": 1,
     "deserter_regulars": 2,
     "heretic_sappers": 2,
     "yoke_slaves": 1,
@@ -9088,7 +9088,7 @@
     "blood_priests": 1,
     "devi_spawn": 1,
     "chain_shooters": 2,
-    "kaji_smith": 1,
+    "kaji_smith": 2,
     "chained_ones": 2,
     "kaji_stitched": 1,
     "gveleshapi": 1
@@ -9175,11 +9175,10 @@
     "false_sisters": 2
    },
    "common": {
-    "trench": 1,
     "porter": 2,
     "nest": 1,
     "barrage": 1,
-    "raid": 1,
+    "raid": 2,
     "recon": 1,
     "gas": 1,
     "palisade": 1,
@@ -9188,15 +9187,14 @@
   },
   "kajeti": {
    "units": {
-    "walking_furnace": 1,
     "cast_regulars": 2,
     "kaji_hammers": 2,
-    "wind_kaji": 2,
+    "wind_kaji": 1,
     "kajeti_miners": 2,
     "cast_wardens": 1,
-    "stitched_brutes": 1,
+    "stitched_brutes": 2,
     "flask_smiths": 2,
-    "kajeti_leader": 1,
+    "kajeti_leader": 2,
     "forged_riders": 2,
     "silver_shooters": 2,
     "silver_cannoneers": 2
@@ -9269,12 +9267,11 @@
   },
   "northern": {
    "units": {
-    "northern_grotesque": 1,
     "northern_regulars": 2,
     "northern_thugs": 1,
     "ski_scouts": 2,
     "fjord_riflemen": 2,
-    "tyr_onehands": 1,
+    "tyr_onehands": 2,
     "varangians": 1,
     "serpent_harpooners": 2,
     "chain_smiths": 2,
@@ -9296,7 +9293,7 @@
   },
   "celtic": {
    "units": {
-    "celtic_regulars": 2,
+    "celtic_regulars": 1,
     "celtic_thugs": 2,
     "bog_trackers": 2,
     "cliff_riflemen": 2,
@@ -9306,7 +9303,7 @@
     "lugh_marksmen": 2,
     "curragh_raiders": 2,
     "well_keepers": 2,
-    "celtic_leader": 1
+    "celtic_leader": 2
    },
    "common": {
     "trench": 1,
@@ -9322,7 +9319,6 @@
   },
   "finnish": {
    "units": {
-    "finnish_grotesque": 1,
     "finnish_regulars": 2,
     "finnish_thugs": 2,
     "ski_patrol": 2,
@@ -9333,7 +9329,8 @@
     "forge_apprentices": 2,
     "river_wardens": 2,
     "finnish_leader": 1,
-    "hakkapeliitta": 2
+    "hakkapeliitta": 2,
+    "sun_lantern": 1
    },
    "common": {
     "trench": 1,
@@ -9392,11 +9389,10 @@
    "common": {
     "trench": 2,
     "porter": 2,
-    "nest": 1,
+    "nest": 2,
     "barrage": 1,
     "raid": 1,
     "recon": 1,
-    "gas": 1,
     "train": 1
    }
   },
@@ -9429,7 +9425,6 @@
   },
   "polianitsy": {
    "units": {
-    "sun_stove": 1,
     "polianitsy_regulars": 2,
     "polianitsy_thugs": 2,
     "winter_scouts": 2,
@@ -9439,7 +9434,8 @@
     "living_water_bearers": 2,
     "needle_seekers": 2,
     "young_polianitsy": 2,
-    "polianitsy_leader": 2
+    "polianitsy_leader": 2,
+    "polianitsy_grotesque": 1
    },
    "common": {
     "trench": 2,
@@ -9456,7 +9452,7 @@
    "units": {
     "armenian_grotesque": 1,
     "armenian_regulars": 2,
-    "armenian_thugs": 2,
+    "armenian_thugs": 1,
     "lake_watchers": 2,
     "highland_riflemen": 2,
     "tork_shieldbearers": 1,
@@ -9464,7 +9460,7 @@
     "aralez_keepers": 2,
     "vahagn_slayers": 2,
     "stone_carvers": 2,
-    "armenian_leader": 1,
+    "armenian_leader": 2,
     "cloud_gunners": 2
    },
    "common": {
@@ -9487,12 +9483,11 @@
     "well_watchers": 2,
     "steppe_outriders": 2,
     "div_breakers": 1,
-    "korogly_guard": 1,
     "steppe_healers": 2,
     "ozan_bards": 2,
     "koroglu_riders": 2,
     "basat_hunters": 2,
-    "oghuz_leader": 1
+    "oghuz_leader": 2
    },
    "common": {
     "trench": 2,
@@ -9561,11 +9556,11 @@
   "japan_isles": {
    "units": {
     "japan_isles_grotesque": 1,
-    "japan_isles_regulars": 2,
+    "japan_isles_regulars": 1,
     "japan_isles_thugs": 2,
     "island_riflemen": 2,
     "three_companions": 2,
-    "karakuri_soldiers": 1,
+    "karakuri_soldiers": 2,
     "samurai": 1,
     "oni_breakers": 2,
     "karakuri_makers": 2,
@@ -9692,7 +9687,6 @@
   },
   "alps": {
    "units": {
-    "alps_grotesque": 1,
     "alps_regulars": 2,
     "alps_thugs": 2,
     "chamois_trackers": 2,
@@ -9703,7 +9697,7 @@
     "mountain_rescue": 2,
     "tatzelwurm_hunters": 2,
     "ice_climbers": 2,
-    "alps_leader": 1
+    "alps_leader": 2
    },
    "common": {
     "trench": 1,
@@ -9751,10 +9745,9 @@
     "shaft_guard": 2,
     "lindwurm_hunters": 1,
     "wieland_smiths": 2,
-    "blue_dragoons": 1,
     "grenadiers": 2,
     "field_surgeons": 2,
-    "prussia_leader": 1
+    "prussia_leader": 2
    },
    "common": {
     "trench": 1,
@@ -9866,11 +9859,10 @@
    "common": {
     "trench": 1,
     "porter": 2,
-    "nest": 1,
+    "nest": 2,
     "barrage": 1,
     "raid": 1,
     "recon": 1,
-    "gas": 1,
     "palisade": 1,
     "train": 1
    }

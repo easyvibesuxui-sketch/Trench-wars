@@ -56,33 +56,35 @@ COMMON = [  # საერთო ბარათები: (id, სახეო�
     ("camo", "ბრძანება", "შენიღბვა", 1, "ერთი იუნიტი შენს მომდევნო სვლამდე სამიზნე ვერ იქნება.", None),
 ]
 STARTER = {   # სასტარტო დასტები (30): იუნიტები × რაოდენობა + საერთო ბარათები × რაოდენობა
-    "colchis": {"units": {"lashkari": 2, "port_brawlers": 2, "dali_hunters": 2, "aznauri": 2, "eristavi": 1, "medea_sisters": 2,
-                          "shavkhan_smiths": 2, "kolkhi_riders": 2, "monaspa": 1, "iron_arm_veterans": 2, "khalkotavri": 1},
+    "colchis": {"units": {"lashkari": 2, "port_brawlers": 2, "dali_hunters": 2, "aznauri": 2, "eristavi": 2, "medea_sisters": 2, "shavkhan_smiths": 1, "kolkhi_riders": 2, "monaspa": 1, "iron_arm_veterans": 2, "khalkotavri": 1},
                 "common": {"trench": 2, "wire": 1, "nest": 1, "porter": 1, "barrage": 1, "gas": 2, "raid": 1, "hospital": 1, "recon": 1}},
-    "harness": {"units": {"rebels": 2, "deserter_regulars": 2, "heretic_sappers": 2, "yoke_slaves": 1, "rebel_chief": 2, "blood_priests": 1, "devi_spawn": 1,
-                          "chain_shooters": 2, "kaji_smith": 1, "chained_ones": 2, "kaji_stitched": 1, "gveleshapi": 1},
+    "harness": {"units": {"rebels": 1, "deserter_regulars": 2, "heretic_sappers": 2, "yoke_slaves": 1, "rebel_chief": 2, "blood_priests": 1, "devi_spawn": 1, "chain_shooters": 2, "kaji_smith": 2, "chained_ones": 2, "kaji_stitched": 1, "gveleshapi": 1},
                 "common": {"trench": 1, "palisade": 2, "nest": 1, "porter": 2, "barrage": 1, "gas": 1, "raid": 1, "train": 1, "volley": 1, "recon": 1}},
 }
 
 
 DECK_TWEAKS = {   # ფრაქცია → ავტომატური დასტის შესწორება სიმულაციით (sim_cardgame.py --all): id → რაოდენობა, 0 — ამოღება
-    "listeners": {"units": {"listeners_leader": 2, "lock_wagon": 0}},
-    "northern": {"units": {"northern_leader": 2, "northern_thugs": 1}},
-    "celtic": {"units": {"nuada_silverhands": 2, "sling_carriage": 0}},
-    "finnish": {"common": {"gas": 2, "porter": 1}},
-    "gaul": {"units": {"gaul_leader": 2, "gaul_thugs": 1}},
+    "listeners": {"units": {"listeners_leader": 2, "lock_wagon": 0}, "common": {"raid": 2, "trench": 0}},
+    "kajeti": {"units": {"kajeti_leader": 2, "stitched_brutes": 2, "walking_furnace": 0, "wind_kaji": 1}},
+    "northern": {"units": {"northern_grotesque": 0, "northern_leader": 2, "northern_thugs": 1, "tyr_onehands": 2}},
+    "celtic": {"units": {"celtic_leader": 2, "celtic_regulars": 1, "nuada_silverhands": 2, "sling_carriage": 0}},
+    "finnish": {"units": {"finnish_grotesque": 0, "sun_lantern": 1}, "common": {"gas": 2, "porter": 1}},
+    "gaul": {"units": {"gaul_leader": 2, "gaul_thugs": 1}, "common": {"gas": 0, "nest": 2}},
     "italy": {"units": {"praetorians": 2, "vulcan_gunners": 1}},
-    "polianitsy": {"units": {"bogatyr_druzhina": 0, "polianitsy_leader": 2}},
-    "oghuz": {"common": {"gas": 2, "porter": 1}},
+    "polianitsy": {"units": {"bogatyr_druzhina": 0, "polianitsy_grotesque": 1, "polianitsy_leader": 2, "sun_stove": 0}},
+    "armenian": {"units": {"armenian_leader": 2, "armenian_thugs": 1}},
+    "oghuz": {"units": {"korogly_guard": 0, "oghuz_leader": 2}, "common": {"gas": 2, "porter": 1}},
+    "yellow_river": {"units": {"tripod_cannon": 0, "yellow_river_leader": 2}},
+    "japan_isles": {"units": {"japan_isles_regulars": 1, "karakuri_soldiers": 2}},
     "korea": {"common": {"gas": 0, "nest": 2}},
     "mongolia": {"units": {"keshig": 0, "mongolia_leader": 2}},
-    "alps": {"common": {"gas": 0, "train": 2}},
+    "alps": {"units": {"alps_grotesque": 0, "alps_leader": 2}, "common": {"gas": 0, "train": 2}},
     "baltic": {"common": {"gas": 0, "nest": 2}},
-    "prussia": {"units": {"blue_dragoons": 1, "shaft_guard": 2}},
+    "prussia": {"units": {"blue_dragoons": 0, "prussia_leader": 2, "shaft_guard": 2}},
     "batavi": {"common": {"gas": 2, "recon": 0}},
     "lechia": {"units": {"lechia_leader": 2, "uhlans": 1}},
     "byzantium": {"units": {"byzantium_leader": 2, "chain_engineers": 1}},
-    "yellow_river": {"units": {"tripod_cannon": 0, "yellow_river_leader": 2}},
+    "ottoman": {"common": {"gas": 0, "nest": 2}},
 }
 
 
@@ -280,16 +282,43 @@ def main():
             f'<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;700&family=Noto+Serif+Georgian:wght@700&display=swap" rel="stylesheet">'
             f'<style>{CSS}</style></head><body>{"".join(pages)}</body></html>')
     (ROOT / "playtest" / "cardgame.html").write_text(page, encoding="utf-8")
+    write_app(data, names, units, common, starter)
     arts = sum(1 for c in units if c["art"])
     print(f"data/cardgame.json: {len(units)} იუნიტის ბარათი ({arts} ილუსტრაციით) + {len(common)} საერთო · playtest/cardgame.html")
 
 
+def write_app(data, names, units, common, starter):
+    """ბრაუზერის ვერსიის მონაცემები: cardgame/data.js (window.CG). ილუსტრაციები — ვიკის სპრაიტ-ფურცლები (wiki/sheets/)."""
+    from build_wiki import sheet_layout, LIGHT_CORE
+    from i18n_en import en_texts, split2
+    T = en_texts()
+    NE = json.loads((ROOT / "data" / "names_en.json").read_text(encoding="utf-8"))
+    _, _, pos, cpos = sheet_layout(data, names, common)
+    wr = ROOT / "data" / "cardgame_winrates.json"
+    win = json.loads(wr.read_text(encoding="utf-8"))["winrates"] if wr.exists() else {}
+    two = lambda k, a, b: split2(T[k]) if k in T else (a, b)
+    app = {
+        "factions": {f: {"ka": n, "en": NE["factions"].get(f, n), "core": f in data["factions"],
+                         "side": "light" if f in LIGHT_CORE or f in data["allies"] else "dark", "pal": V.F[f]["palette"]} for f, n in names.items()},
+        "units": {c["id"]: {"f": c["faction"], "ka": c["name"], "en": NE["units"].get(c["id"], c["name"]), "tier": c["tier"], "cost": c["cost"],
+                            "atk": c["atk"], "hp": c["hp"], "kw": c["kw"], "art": pos.get(c["id"])} for c in units},
+        "common": {c["id"]: {"kind": c["kind"], "ka": c["name"], "en": two(f"cgc:{c['id']}", c["name"], c["text"])[0], "cost": c["cost"],
+                             "tka": c["text"], "ten": two(f"cgc:{c['id']}", c["name"], c["text"])[1], "atk": c.get("atk"), "hp": c.get("hp"),
+                             "art": cpos.get(c["id"])} for c in common},
+        "kw": {k: dict(zip(("ka", "rka"), v)) | dict(zip(("en", "ren"), two(f"cgkw:{k}", *v))) for k, v in KW.items()},
+        "starter": starter, "win": win,
+    }
+    out = ROOT / "cardgame" / "data.js"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text("window.CG = " + json.dumps(app, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+
+
 RULES_HTML = """<div class="rules">
 <h3>მიზანი</h3><p>მოწინააღმდეგის შტაბის <b>ნებისყოფა 20-დან 0-მდე</b> ჩამოიყვანე, ან შენი სვლის დასაწყისში <b>სამივე ხაზის ნეიტრალური ზოლი</b> გეჭიროს (გარღვევა).</p>
-<h3>მომზადება</h3><p>დასტა 30 ბარათი. აირიე, აიღე 5. ვინც მეორე იწყებს, +1 ბარათს იღებს.</p>
+<h3>მომზადება</h3><p>დასტა 30 ბარათი. აირიე, აიღე 5. ვინც მეორე იწყებს, +1 ბარათს და პირველ სვლაზე +2 მარაგს იღებს.</p>
 <h3>სვლა</h3><ol><li><b>აიღე</b> 1 ბარათი.</li><li><b>მარაგი:</b> 3 + მზიდავები (მაქს. +3) + ნეიტრალური ზოლები, რომლებიც გიჭირავს. გამოუყენებელი ინახება (მაქს. 3).</li>
 <li><b>ჩამოიყვანე</b> იუნიტები შენს ზურგში ან სანგარში (ფასი — მარცხენა ზედა წრე); ნაგებობა — სანგრის ადგილზე; ბრძანება — მაშინვე.</li>
-<li><b>გადაადგილება:</b> ყოველი იუნიტი 1 ნაბიჯით წინ (ზურგი → სანგარი → ნეიტრალური ზოლი) ან უკან. ვინც გადაადგილდა, ამ სვლაზე ვერ უტევს (გარდა <b>იერიშისა</b>).</li>
+<li><b>გადაადგილება:</b> ყოველი იუნიტი 1 ნაბიჯით წინ (ზურგი → სანგარი → ნეიტრალური ზოლი) ან უკან. ახლა ჩამოსული ადგილზე რჩება; ვინც გადაადგილდა ან ახლა ჩამოვიდა, ვერ უტევს (გარდა <b>იერიშისა</b>).</li>
 <li><b>შეტევა:</b> ყოველი იუნიტი ერთხელ. სანგრიდან ან ნეიტრალური ზოლიდან — თავისი ხაზის <b>უახლოეს</b> მტერს (ნეიტრალური ზოლი → სანგარი → ზურგი);
 <b>შორი</b> — ზურგიდანაც, ხაზის ნებისმიერ მტერს. თუ ხაზზე მტერი არ არის, ნეიტრალურ ზოლში მდგომი <b>შტაბს</b> ურტყამს შეტევის ტოლ ზიანს.</li></ol>
 <h3>ზიანი</h3><p>შემტევი სამიზნეს აყენებს <b>შეტევის</b> ტოლ ზიანს; 0 მდგრადობაზე იუნიტი ეცემა. <b>ხელჩართული</b> (მეზობელ ადგილებზე, არა „შორი“) —
