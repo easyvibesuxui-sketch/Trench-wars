@@ -611,7 +611,7 @@ function strongAction(p, depth) {
   if (!list.length) return null;
   let best = list[0][1] > here ? list[0][0] : null, bv = Math.max(here, list[0][1]);
   if (depth > 1) {
-    for (const [a, v1, g1] of list.slice(0, TOPK)) {
+    for (const [a, v1, g1] of list.slice(0, G.p[p].topk || TOPK)) {
       if (g1.over) { if (v1 > bv) { bv = v1; best = a; } continue; }
       G = g1;
       let v2 = v1;
