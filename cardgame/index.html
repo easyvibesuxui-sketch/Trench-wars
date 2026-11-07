@@ -132,7 +132,7 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 .dialog p { margin: 0; line-height: 1.5; }
 .dialog label { display: grid; gap: 4px; font-size: .85rem; color: var(--muted); }
 .dialog select { font: inherit; background: var(--mud); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; padding: 7px; }
-.dialog .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.dialog .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 @media (max-width: 560px) { .dialog .row { grid-template-columns: 1fr; } }
 .dialog .deck { font-size: .78rem; color: var(--muted); line-height: 1.45; }
 .dialog .acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -195,7 +195,7 @@ const ctext = c => c.type === "unit" ? "" : (LANG === "en" ? c.ten : c.tka);
 const fname = f => nm(D.factions[f]);
 
 // ---------- თამაში ----------
-let G = null, SEL = null, BUSY = false, UID = 0;
+let G = null, SEL = null, BUSY = false, UID = 0, SIM = false;   // SIM — კომპიუტერი სვლას ასლზე ცდის: ჟურნალი, ეფექტები და ეკრანები გამორთულია
 
 function newGame(opt) {
   const mk = (fid, ai) => {
@@ -209,6 +209,7 @@ function newGame(opt) {
   for (const P of G.p) for (let i = 0; i < 5; i++) P.hand.push(P.deck.pop());
   G.p[1 - opt.first].hand.push(G.p[1 - opt.first].deck.pop());
   G.p[1 - opt.first].bank = 2;   // მეორე მოთამაშის კომპენსაცია: +1 ბარათი და პირველ სვლაზე +2 მარაგი
+  G.p[1].level = opt.level || "hard";   // კომპიუტერის სიძლიერე: hard — strongAction, easy — aiAction
   SEL = null;
   log(() => t(`${fname(opt.me)} ${fname(opt.foe)}-ის წინააღმდეგ. იწყებს: ${fname(G.p[opt.first].fid)}.`, `${fname(opt.me)} against ${fname(opt.foe)}. ${fname(G.p[opt.first].fid)} goes first.`), "sys");
   startTurn();
@@ -225,7 +226,7 @@ const nmlCtrl = o => [0, 1, 2].filter(l => at(l, o, "nml").length && !at(l, 1 - 
 const isSup = u => u.supTurn === G.turn;
 const leaderBonus = u => G.units.some(x => x !== u && x.hp > 0 && x.o === u.o && x.lane === u.lane && has(x, "leader")) ? 1 : 0;
 
-function log(msg, cls) { G.log.push([msg, cls || (G.cur === viewer() ? "me" : "foe")]); if (G.log.length > 80) G.log.shift(); }
+function log(msg, cls) { if (SIM) return; G.log.push([msg, cls || (G.cur === viewer() ? "me" : "foe")]); if (G.log.length > 80) G.log.shift(); }
 
 function startTurn() {
   const p = G.cur, P = G.p[p];
@@ -275,6 +276,7 @@ function endTurn() {
 
 function win(p, how) {
   G.over = { p, how };
+  if (SIM) return;
   log(() => how === "break" ? t(`გარღვევა! ${fname(G.p[p].fid)} სამივე ნეიტრალურ ზოლს აკონტროლებს.`, `Breakthrough! ${fname(G.p[p].fid)} holds No Man's Land on all three lines.`)
     : t(`${fname(G.p[1 - p].fid)}-ის შტაბი დაეცა.`, `${fname(G.p[1 - p].fid)}: the HQ has fallen.`), "sys");
   BUSY = false; SEL = null;
@@ -301,7 +303,7 @@ function dmg(src, x, base) {
   x.hp -= a;
   if (src.kw.includes("suppress") && !has(x, "fearless") && x.hp > 0) x.supTurn = G.cur !== x.o ? G.turn + 1 : G.turn + 2;
   if (src.kw.includes("fire") && x.hp > 0) x.burn = true;
-  FX.push([x.id, a]);
+  if (!SIM) FX.push([x.id, a]);
   return a;
 }
 
@@ -428,8 +430,8 @@ function play(p, hi, tg) {
       case "porter": P.porters++; break;
       case "recon": for (let i = 0; i < 2; i++) if (P.deck.length) P.hand.push(P.deck.pop()); break;
       case "train": P.avail += 4; break;
-      case "barrage": for (const x of at(tg, e, "trench")) { x.hp -= 2; FX.push([x.id, 2]); } break;
-      case "gas": for (const x of alive().filter(x => x.lane === tg && !has(x, "gas_mask"))) { x.hp -= 1; FX.push([x.id, 1]); } break;
+      case "barrage": for (const x of at(tg, e, "trench")) { x.hp -= 2; if (!SIM) FX.push([x.id, 2]); } break;
+      case "gas": for (const x of alive().filter(x => x.lane === tg && !has(x, "gas_mask"))) { x.hp -= 1; if (!SIM) FX.push([x.id, 1]); } break;
       case "volley": G.volley[p + ":" + tg] = true; break;
       case "hospital": tg.hp = Math.min(tg.max, tg.hp + 4); break;
       case "camo": tg.camo = true; break;
@@ -446,7 +448,7 @@ function play(p, hi, tg) {
 function aiStep() {
   if (!G || G.over) return;
   const p = G.cur;
-  const act = aiAction(p);
+  const act = G.p[p].level === "easy" ? aiAction(p) : strongAction(p);
   if (act) { act(); render(); if (G.over) return; setTimeout(aiStep, 520); }
   else { BUSY = false; endTurn(); }
 }
@@ -518,6 +520,88 @@ function aiAction(p) {
     }
   }
   return null;
+}
+
+// ---------- ძლიერი კომპიუტერი: ყველა დასაშვებ სვლას ასლზე ცდის და საუკეთესოს ირჩევს (ერთი ნაბიჯი წინ, ხარბად) ----------
+const DEFW = { hq: 1.6, hqLow: 0.35, atk: 1.0, hp: 0.75, cost: 0.35, fwd: 0.35, nml: 2.2, brk: 40, lose: 400, threat: 0.9, press: 0.5, risk: 0.45, card: 1.1, porter: 2.2, bank: 0.5, fort: 1.6, kw: 0.6 };
+function cloneG(g) {
+  return { ...g, p: g.p.map(P => ({ ...P, deck: P.deck.slice(), hand: P.hand.slice() })), units: g.units.map(u => ({ ...u })),
+    forts: Object.fromEntries(Object.entries(g.forts).map(([k, f]) => [k, { ...f }])), volley: { ...g.volley }, log: [] };
+}
+function legalActions(p) {
+  const acts = [], P = G.p[p];
+  P.hand.forEach((id, i) => {
+    const c = cardOf(id);
+    if (!playable(p, c)) return;
+    const n = needs(c);
+    if (n === "cell") legalCells(p, c).forEach(tg => acts.push({ t: "play", i, tg }));
+    else if (n === "lane") [0, 1, 2].forEach(l => acts.push({ t: "play", i, tg: l }));
+    else if (n === "own") legalOwn(p, c).forEach(u => acts.push({ t: "play", i, uid: u.id }));
+    else acts.push({ t: "play", i });
+  });
+  for (const u of G.units.filter(u => u.o === p && u.hp > 0)) {
+    if (canAttack(u)) for (const x of targets(u)) acts.push({ t: "atk", uid: u.id, k: x.k, tid: x.k === "u" ? x.u.id : x.k === "f" ? x.f.lane + ":" + x.f.o : null });
+    for (const pos of moves(u)) acts.push({ t: "mv", uid: u.id, pos });
+  }
+  return acts;
+}
+function doAction(a) {
+  const U = id => G.units.find(u => u.id === id);
+  if (a.t === "play") return play(G.cur, a.i, a.uid != null ? U(a.uid) : a.tg);
+  if (a.t === "atk") return attack(U(a.uid), a.k === "hq" ? { k: "hq" } : a.k === "u" ? { k: "u", u: U(a.tid) } : { k: "f", f: G.forts[a.tid] });
+  if (a.t === "mv") return move(U(a.uid), a.pos);
+}
+// რამდენი ზიანი შეიძლება მიიღოს იუნიტმა მტრის მომდევნო სვლაზე (უხეში შეფასება: იმავე ხაზის მტრები, რომლებსაც მასთან მიწვდომა აქვთ)
+function incoming(u) {
+  let d = 0;
+  for (const x of G.units) {
+    if (x.o === u.o || x.hp <= 0) continue;
+    if (has(x, "fly")) { d += x.atk * 0.5; continue; }
+    if (x.lane !== u.lane) continue;
+    if (x.pos === "rear" && !has(x, "long")) { if (u.pos === "nml") d += x.atk * 0.3; continue; }
+    d += x.atk;
+  }
+  return d;
+}
+function unitVal(u, W) {
+  const fwd = u.pos === "nml" ? 2 : u.pos === "trench" ? 1 : 0;
+  return (u.atk * W.atk + u.hp * W.hp + u.c.cost * W.cost * (u.hp / u.max) + u.kw.length * W.kw) + fwd * W.fwd * (has(u, "long") && u.pos !== "rear" ? 0.3 : 1);
+}
+function evaluate(p) {
+  if (G.over) return G.over.p === p ? 1e6 : -1e6;
+  const W = G.p[p].W || DEFW;
+  const e = 1 - p, P = G.p[p], E = G.p[e];
+  let s = (P.hq - E.hq) * W.hq + (Math.max(0, 10 - E.hq) - Math.max(0, 10 - P.hq)) * W.hqLow * 2;
+  for (const u of G.units) {
+    if (u.hp <= 0) continue;
+    const v = unitVal(u, W);
+    if (u.o === p) { s += v; const inc = incoming(u); if (inc >= u.hp) s -= v * W.risk; }
+    else s -= v;
+  }
+  const mine = nmlCtrl(p), theirs = nmlCtrl(e);
+  s += (mine - theirs) * W.nml;
+  if (theirs === 3) s -= W.lose;            // მტერი თავისი სვლის დასაწყისში გაარღვევს
+  if (mine === 3) s += W.brk;
+  for (const l of [0, 1, 2]) {
+    const own = G.units.filter(u => u.lane === l && u.o === p && u.hp > 0), foe = G.units.filter(u => u.lane === l && u.o === e && u.hp > 0);
+    if (!own.length) { const hit = foe.filter(u => u.pos === "nml").reduce((a, u) => a + u.atk, 0); s -= hit * W.threat; if (hit >= P.hq) s -= W.lose; }
+    if (!foe.length) s += own.filter(u => u.pos === "nml").reduce((a, u) => a + u.atk, 0) * W.press;
+    const f = fort(l, p), g = fort(l, e);
+    if (f) s += W.fort * (f.hp !== null ? 1.5 : 1);
+    if (g) s -= W.fort * (g.hp !== null ? 1.5 : 1);
+  }
+  s += (P.hand.length - E.hand.length) * W.card + (Math.min(P.porters, 3) - Math.min(E.porters, 3)) * W.porter + Math.min(3, Math.max(0, P.avail)) * W.bank;
+  return s;
+}
+function strongAction(p) {
+  const g0 = G;
+  let best = null, bv = evaluate(p) + 0.05;
+  for (const a of legalActions(p)) {
+    SIM = true; G = cloneG(g0);
+    try { doAction(a); const v = evaluate(p); if (v > bv) { bv = v; best = a; } }
+    finally { G = g0; SIM = false; }
+  }
+  return best ? () => doAction(best) : null;
 }
 
 // ---------- ხატვა ----------
@@ -722,7 +806,7 @@ function deckList(fid) {
   const s = D.starter[fid];
   return Object.entries(s.units).map(([id, n]) => `${esc(nm(D.units[id]))} ×${n}`).join(", ") + " · " + Object.entries(s.common).map(([id, n]) => `${esc(nm(D.common[id]))} ×${n}`).join(", ");
 }
-let PREF = { me: "colchis", foe: "harness", mode: "ai", first: "random" };
+let PREF = { me: "colchis", foe: "harness", mode: "ai", first: "random", level: "hard" };
 try { PREF = { ...PREF, ...JSON.parse(localStorage.getItem("cg-pref") || "{}") }; } catch (e) {}
 function setupScreen() {
   showDlg("setup", `<h2>${t("ახალი თამაში", "New game")}</h2>
@@ -733,19 +817,22 @@ function setupScreen() {
     <p class="deck" id="sDeck"></p>
     <div class="row"><label>${t("რეჟიმი", "Mode")}<select id="sMode"><option value="ai" ${PREF.mode === "ai" ? "selected" : ""}>${t("კომპიუტერის წინააღმდეგ", "Against the computer")}</option>
       <option value="hot" ${PREF.mode === "hot" ? "selected" : ""}>${t("ორი მოთამაშე ერთ ეკრანზე", "Two players, one screen")}</option></select></label>
+      <label>${t("კომპიუტერი", "Computer")}<select id="sLevel"><option value="hard">${t("ძლიერი", "Strong")}</option><option value="easy" ${PREF.level === "easy" ? "selected" : ""}>${t("მარტივი", "Easy")}</option></select></label>
       <label>${t("ვინ იწყებს", "Who goes first")}<select id="sFirst"><option value="random">${t("შემთხვევით", "Random")}</option><option value="0" ${PREF.first === "0" ? "selected" : ""}>${t("შენ", "You")}</option><option value="1" ${PREF.first === "1" ? "selected" : ""}>${t("მოწინააღმდეგე", "Opponent")}</option></select></label></div>
     <p class="deck">${t("ფრჩხილებში — დასტის მოგების წილი სიმულაციაში ყველა სხვა დასტის წინააღმდეგ.", "In brackets: the deck's simulated win rate against every other deck.")}</p>
     <div class="acts">${G ? `<button class="btn" type="button" id="sCancel">${t("დაბრუნება", "Back")}</button>` : ""}<button class="btn primary" type="button" id="sGo">${t("დაწყება", "Start")}</button></div>`);
   const upd = () => { $("sDeck").innerHTML = `<b>${esc(fname($("sMe").value))}:</b> ${deckList($("sMe").value)}`; };
   $("sMe").onchange = upd; upd();
+  const lv = () => { $("sLevel").disabled = $("sMode").value !== "ai"; };
+  $("sMode").onchange = lv; lv();
   if ($("sCancel")) $("sCancel").onclick = hideDlg;
   $("sGo").onclick = () => {
-    PREF = { me: $("sMe").value, foe: $("sFoe").value, mode: $("sMode").value, first: $("sFirst").value };
+    PREF = { me: $("sMe").value, foe: $("sFoe").value, mode: $("sMode").value, first: $("sFirst").value, level: $("sLevel").value };
     try { localStorage.setItem("cg-pref", JSON.stringify(PREF)); } catch (e) {}
     let foe = PREF.foe;
     if (foe === "random") { const fs = Object.keys(D.starter).filter(f => f !== PREF.me); foe = fs[rnd(fs.length)]; }
     hideDlg();
-    newGame({ me: PREF.me, foe, mode: PREF.mode, first: PREF.first === "random" ? rnd(2) : +PREF.first });
+    newGame({ me: PREF.me, foe, mode: PREF.mode, first: PREF.first === "random" ? rnd(2) : +PREF.first, level: PREF.level });
   };
 }
 function rulesScreen() {
@@ -788,5 +875,5 @@ function passScreen() {
 
 render();
 setupScreen();
-window.__cg = { get G() { return G; }, newGame, endTurn, aiAction, play, attack, move, targets, canAttack, cardOf };
+window.__cg = { get G() { return G; }, newGame, endTurn, aiAction, strongAction, W: DEFW, play, attack, move, targets, canAttack, cardOf };
 </script>
