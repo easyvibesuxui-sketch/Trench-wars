@@ -227,7 +227,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--games", type=int, default=2000)
     ap.add_argument("--all", action="store_true", help="ყველა სასტარტო დასტა ყველას წინააღმდეგ (--games — თითო წყვილზე)")
-    ap.add_argument("--save", action="store_true", help="--all-ის შედეგი data/cardgame_winrates.json-ში (ვიკი აჩვენებს)")
+    ap.add_argument("--save", action="store_true", help="--all-ის შედეგი data/cardgame_winrates_greedy.json-ში (ვიკი/აპი აჩვენებს ძლიერი კომპიუტერის შედეგს — tools/balance_cardgame.js)")
     ap.add_argument("--decks", default="colchis,harness", help="ორი დასტა, მძიმით")
     args = ap.parse_args()
     d = json.loads((ROOT / "data" / "cardgame.json").read_text(encoding="utf-8"))
@@ -250,8 +250,8 @@ def main():
         if args.save:
             out = {"_comment": f"sim_cardgame.py --all --games {args.games}: მოგების % ყველა სხვა სასტარტო დასტის წინააღმდეგ",
                    "winrates": {f: round(score[f][0] / score[f][1] * 100) for f in fs}}
-            (ROOT / "data" / "cardgame_winrates.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-            print("data/cardgame_winrates.json")
+            (ROOT / "data" / "cardgame_winrates_greedy.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            print("data/cardgame_winrates_greedy.json (ძლიერი კომპიუტერის ბალანსი — tools/balance_cardgame.js → data/cardgame_winrates.json)")
         return
     fids = args.decks.split(",")
     wins, turns, how = duel(d, fids, args.games, rng, cards, common)
