@@ -57,35 +57,39 @@ COMMON = [  # საერთო ბარათები: (id, სახეო�
     ("camo", "ბრძანება", "შენიღბვა", 1, "ერთი იუნიტი შენს მომდევნო სვლამდე სამიზნე ვერ იქნება.", None),
 ]
 STARTER = {   # სასტარტო დასტები (30): იუნიტები × რაოდენობა + საერთო ბარათები × რაოდენობა
-    "colchis": {"units": {"lashkari": 2, "port_brawlers": 2, "dali_hunters": 2, "aznauri": 2, "eristavi": 2, "medea_sisters": 2, "shavkhan_smiths": 1, "kolkhi_riders": 2, "monaspa": 1, "iron_arm_veterans": 2, "khalkotavri": 1},
+    "colchis": {"units": {"lashkari": 2, "port_brawlers": 2, "dali_hunters": 1, "aznauri": 2, "eristavi": 2, "medea_sisters": 2, "shavkhan_smiths": 1, "kolkhi_riders": 2, "monaspa": 2, "iron_arm_veterans": 2, "khalkotavri": 1},
                 "common": {"trench": 2, "wire": 1, "nest": 1, "porter": 1, "barrage": 1, "gas": 2, "raid": 1, "hospital": 1, "recon": 1}},
-    "harness": {"units": {"rebels": 1, "deserter_regulars": 2, "heretic_sappers": 2, "yoke_slaves": 1, "rebel_chief": 2, "blood_priests": 1, "devi_spawn": 1, "chain_shooters": 2, "kaji_smith": 2, "chained_ones": 2, "kaji_stitched": 1, "gveleshapi": 1},
+    "harness": {"units": {"rebels": 1, "deserter_regulars": 2, "heretic_sappers": 2, "yoke_slaves": 1, "rebel_chief": 2, "blood_priests": 2, "chain_shooters": 2, "kaji_smith": 2, "chained_ones": 2, "kaji_stitched": 1, "gveleshapi": 1},
                 "common": {"trench": 1, "palisade": 2, "nest": 1, "porter": 2, "barrage": 1, "gas": 1, "raid": 1, "train": 1, "volley": 1, "recon": 1}},
 }
 
 
-DECK_TWEAKS = {   # ფრაქცია → ავტომატური დასტის შესწორება სიმულაციით (sim_cardgame.py --all): id → რაოდენობა, 0 — ამოღება
+DECK_TWEAKS = {   # ფრაქცია → ავტომატური დასტის შესწორება სიმულაციით (ძლიერი კომპიუტერი, cardgame/index.html): id → რაოდენობა, 0 — ამოღება
     "listeners": {"units": {"listeners_leader": 2, "lock_wagon": 0}, "common": {"raid": 2, "trench": 0}},
-    "kajeti": {"units": {"kajeti_leader": 2, "stitched_brutes": 2, "walking_furnace": 0, "wind_kaji": 1}},
-    "northern": {"units": {"northern_grotesque": 0, "northern_leader": 2, "northern_thugs": 1, "tyr_onehands": 2}},
+    "kajeti": {"units": {"cast_wardens": 2, "kajeti_leader": 2, "stitched_brutes": 2, "walking_furnace": 0, "wind_kaji": 0}},
+    "hellenic": {"units": {"hellenic_grotesque": 0, "lens_carriage": 1}},
+    "northern": {"units": {"northern_grotesque": 0, "northern_leader": 2, "northern_thugs": 1, "tyr_onehands": 2}, "common": {"porter": 1, "raid": 2}},
     "celtic": {"units": {"celtic_leader": 2, "celtic_regulars": 1, "nuada_silverhands": 2, "sling_carriage": 0}},
-    "finnish": {"units": {"finnish_grotesque": 0, "sun_lantern": 1}, "common": {"gas": 2, "porter": 1}},
+    "finnish": {"units": {"finnish_grotesque": 0, "sampo_guards": 2, "sun_lantern": 1, "vainamoinen_singers": 1}, "common": {"gas": 2, "porter": 1}},
+    "britain": {"units": {"britain_leader": 2, "britain_thugs": 1, "fen_drainers": 1, "huscarls": 2}, "common": {"barrage": 0, "recon": 2}},
     "gaul": {"units": {"gaul_leader": 2, "gaul_thugs": 1}, "common": {"gas": 0, "nest": 2}},
-    "italy": {"units": {"praetorians": 2, "vulcan_gunners": 1}},
-    "polianitsy": {"units": {"bogatyr_druzhina": 0, "polianitsy_grotesque": 1, "polianitsy_leader": 2, "sun_stove": 0}},
-    "armenian": {"units": {"armenian_leader": 2, "armenian_thugs": 1}},
-    "oghuz": {"units": {"korogly_guard": 0, "oghuz_leader": 2}, "common": {"gas": 2, "porter": 1}},
+    "italy": {"units": {"hercules_hammers": 2, "praetorians": 2, "vulcan_ballista": 0, "vulcan_gunners": 1}},
+    "polianitsy": {"units": {"polianitsy_grotesque": 1, "polianitsy_leader": 2, "sun_stove": 0, "zmei_slayers": 1}},
+    "armenian": {"units": {"armenian_leader": 2, "armenian_thugs": 1}, "common": {"hospital": 1, "trench": 0}},
+    "oghuz": {"units": {"div_breakers": 2, "korogly_guard": 0, "oghuz_leader": 2, "well_watchers": 1}, "common": {"gas": 2, "porter": 1}},
+    "nile": {"units": {"mehen_coil_guard": 2, "nile_thugs": 1}},
     "yellow_river": {"units": {"tripod_cannon": 0, "yellow_river_leader": 2}},
     "japan_isles": {"units": {"japan_isles_regulars": 1, "karakuri_soldiers": 2}},
-    "korea": {"common": {"gas": 0, "nest": 2}},
+    "korea": {"units": {"korea_grotesque": 0, "korea_leader": 2}, "common": {"gas": 0, "nest": 2}},
     "mongolia": {"units": {"keshig": 0, "mongolia_leader": 2}},
+    "pyrenean": {"units": {"cave_shields": 0, "pyrenean_leader": 2}},
     "alps": {"units": {"alps_grotesque": 0, "alps_leader": 2}, "common": {"gas": 0, "train": 2}},
-    "baltic": {"common": {"gas": 0, "nest": 2}},
-    "prussia": {"units": {"blue_dragoons": 0, "prussia_leader": 2, "shaft_guard": 2}},
+    "baltic": {"units": {"amber_alchemists": 1, "amber_lancers": 2}, "common": {"barrage": 2, "gas": 0, "nest": 2, "recon": 0}},
+    "prussia": {"units": {"blue_dragoons": 1, "grenadiers": 1, "prussia_leader": 2, "shaft_guard": 2}},
     "batavi": {"common": {"gas": 2, "recon": 0}},
-    "lechia": {"units": {"lechia_leader": 2, "uhlans": 1}},
+    "lechia": {"units": {"lechia_leader": 2, "uhlans": 1}, "common": {"barrage": 0, "recon": 2}},
     "byzantium": {"units": {"byzantium_leader": 2, "chain_engineers": 1}},
-    "ottoman": {"common": {"gas": 0, "nest": 2}},
+    "ottoman": {"units": {"city_physicians": 1, "lantern_crawler": 1, "ottoman_grotesque": 0, "sipahis": 2}, "common": {"gas": 0, "nest": 2}},
 }
 
 
