@@ -191,6 +191,7 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
   <header>
     <h1 id="title"></h1>
     <div class="tools">
+      <button class="btn" id="bSnd" type="button" aria-pressed="true"></button>
       <button class="btn" id="bLog" type="button"></button>
       <button class="btn" id="bRules" type="button"></button>
       <button class="btn" id="bNew" type="button"></button>
@@ -242,6 +243,57 @@ function cardOf(id) {
 const cname = c => nm(c);
 const ctext = c => c.type === "unit" ? "" : (LANG === "en" ? c.ten : c.tka);
 const fname = f => nm(D.factions[f]);
+
+// ---------- ხმა: WebAudio-თი სინთეზირებული (ფაილების გარეშე); ჩაირთვება პირველი დაჭერის შემდეგ ----------
+let SOUND = true, AC = null;
+try { SOUND = localStorage.getItem("cg-sound") !== "off"; } catch (e) {}
+const REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+function ac() { if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { AC = null; } } if (AC && AC.state === "suspended") AC.resume(); return AC; }
+function tone(f0, f1, dur, type, vol, delay) {
+  const a = ac(); if (!a) return; const t0 = a.currentTime + (delay || 0);
+  const o = a.createOscillator(), g = a.createGain(); o.type = type || "sine";
+  o.frequency.setValueAtTime(f0, t0); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t0 + dur);
+  g.gain.setValueAtTime(vol, t0); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  o.connect(g).connect(a.destination); o.start(t0); o.stop(t0 + dur + .02);
+}
+function noise(dur, vol, filt, freq, delay) {
+  const a = ac(); if (!a) return; const t0 = a.currentTime + (delay || 0);
+  const buf = a.createBuffer(1, Math.ceil(a.sampleRate * dur), a.sampleRate), ch = buf.getChannelData(0);
+  for (let i = 0; i < ch.length; i++) ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / ch.length, 2);
+  const src = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain();
+  src.buffer = buf; f.type = filt; f.frequency.value = freq; g.gain.value = vol;
+  src.connect(f).connect(g).connect(a.destination); src.start(t0);
+}
+function sfx(kind) {
+  if (!SOUND || SIM) return;
+  switch (kind) {
+    case "deploy": tone(150, 60, .18, "sine", .35); noise(.08, .12, "lowpass", 900); break;
+    case "build": noise(.12, .2, "bandpass", 500); noise(.12, .18, "bandpass", 420, .14); break;
+    case "card": tone(660, 520, .07, "triangle", .08); break;
+    case "shot": noise(.09, .35, "highpass", 1500); tone(900, 200, .06, "square", .04); break;
+    case "melee": noise(.06, .3, "bandpass", 1200); noise(.07, .25, "bandpass", 800, .09); tone(110, 70, .12, "sine", .2); break;
+    case "blast": noise(.7, .6, "lowpass", 380); tone(80, 30, .6, "sine", .4); break;
+    case "hq": tone(90, 55, .25, "sine", .5); tone(90, 55, .25, "sine", .45, .18); break;
+    case "fall": tone(320, 90, .35, "triangle", .12); break;
+    case "win": [392, 494, 587, 784].forEach((f, i) => tone(f, f, .22, "triangle", .14, i * .12)); break;
+    case "lose": [392, 330, 262, 196].forEach((f, i) => tone(f, f * .98, .28, "triangle", .13, i * .15)); break;
+  }
+}
+// ანიმაცია: შემტევი სამიზნისკენ იწევს; ახლად ჩამოსული ჩნდება
+let FXA = [], FXN = [];
+function animate() {
+  if (REDUCED) { FXA = []; FXN = []; return; }
+  for (const id of FXN) { const el = document.querySelector(`[data-u="${id}"]`); if (el) el.animate([{ transform: "scale(.5) translateY(14px)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 280, easing: "ease-out" }); }
+  for (const [a, b] of FXA) {
+    const ea = document.querySelector(`[data-u="${a}"]`), eb = b === "hq0" ? $(viewer() === 0 ? "hqMe" : "hqFoe") : b === "hq1" ? $(viewer() === 1 ? "hqMe" : "hqFoe") : document.querySelector(`[data-u="${b}"]`);
+    if (!ea || !eb) continue;
+    const ra = ea.getBoundingClientRect(), rb = eb.getBoundingClientRect();
+    const dx = (rb.left + rb.width / 2 - ra.left - ra.width / 2) * .45, dy = (rb.top + rb.height / 2 - ra.top - ra.height / 2) * .45;
+    ea.animate([{ transform: "none" }, { transform: `translate(${dx}px, ${dy}px) scale(1.08)`, offset: .45 }, { transform: "none" }], { duration: 300, easing: "ease-in-out" });
+    ea.style.zIndex = 3; setTimeout(() => { ea.style.zIndex = ""; }, 320);
+  }
+  FXA = []; FXN = [];
+}
 
 // ---------- თამაში ----------
 let G = null, SEL = null, BUSY = false, UID = 0, SIM = false;   // SIM — კომპიუტერი სვლას ასლზე ცდის: ჟურნალი, ეფექტები და ეკრანები გამორთულია
@@ -312,6 +364,7 @@ function endTurn() {
     if (!ts.length) continue;
     const x = ts.reduce((a, b) => b.hp < a.hp ? b : a);
     const d = dmg({ kw: f.id === "nest" ? ["suppress"] : [], o: p }, x, f.atk);
+    sfx("shot");
     log(() => t(`${cname(cardOf(f.id))} ესვრის: ${cname(x.c)} −${d}.`, `${cname(cardOf(f.id))} fires: ${cname(x.c)} −${d}.`));
   }
   for (const h of G.units.filter(u => u.o === p && u.hp > 0 && has(u, "healer"))) {
@@ -329,6 +382,7 @@ function endTurn() {
 function win(p, how) {
   G.over = { p, how };
   if (SIM) return;
+  sfx(G.mode === "hot" || p === 0 ? "win" : "lose");
   log(() => how === "break" ? t(`გარღვევა! ${fname(G.p[p].fid)} სამივე ნეიტრალურ ზოლს აკონტროლებს.`, `Breakthrough! ${fname(G.p[p].fid)} holds No Man's Land on all three lines.`)
     : t(`${fname(G.p[1 - p].fid)}-ის შტაბი დაეცა.`, `${fname(G.p[1 - p].fid)}: the HQ has fallen.`), "sys");
   BUSY = false; SEL = null;
@@ -338,7 +392,7 @@ function win(p, how) {
 
 function cleanup() {
   for (const u of G.units) if (u.hp <= 0 && !u.dead) {
-    u.dead = true; G.p[u.o].fallen++;
+    u.dead = true; G.p[u.o].fallen++; sfx("fall");
     log(() => t(`${cname(u.c)} დაეცა.`, `${cname(u.c)} has fallen.`), u.o === viewer() ? "foe" : "me");
     if (has(u, "hero")) {   // გმირის დაცემა შტაბის ნებისყოფას −2-ით ამცირებს
       G.p[u.o].hq -= 2; if (!SIM) FXHQ.push([u.o, 2]);
@@ -403,6 +457,7 @@ function targets(u) {
 function attack(u, tg) {
   const e = 1 - u.o, base = u.atk + leaderBonus(u) + (G.volley[u.o + ":" + u.lane] ? 1 : 0);
   u.acted = true;
+  if (!SIM) { FXA.push([u.id, tg.k === "hq" ? "hq" + e : tg.k === "u" ? tg.u.id : null]); sfx(has(u, "long") || has(u, "fly") || tg.k === "hq" ? (tg.k === "hq" ? "hq" : "shot") : "melee"); }
   if (tg.k === "hq") {
     G.p[e].hq -= base;
     log(() => t(`${cname(u.c)} ურტყამს შტაბს: −${base} ნებისყოფა.`, `${cname(u.c)} strikes the HQ: −${base} nerve.`));
@@ -478,14 +533,17 @@ function play(p, hi, tg) {
     const u = { id: ++UID, c, o: p, lane, pos, hp: c.hp, max: c.hp, atk: c.atk, kw: c.kw, fresh: true, moved: false, acted: false, supTurn: null, burn: false, camo: false, noAtk: false };
     if (pos === "nml") { const w = fort(lane, 1 - p); if (w && w.id === "wire") u.noAtk = true; }
     G.units.push(u);
+    if (!SIM) { FXN.push(u.id); sfx("deploy"); }
     if (has(u, "digger") && !fort(lane, p)) G.forts[lane + ":" + p] = { id: "trench", o: p, lane, hp: null, atk: 0 };
     log(() => t(`${cname(c)} ჩამოვიდა (${LANEN[lane][0]}, ${POSN[pos][0]}).`, `${cname(c)} deployed (${LANEN[lane][1]}, ${POSN[pos][1]}).`));
   } else if (c.type === "structure") {
     const lane = tg[0];
     G.forts[lane + ":" + p] = { id: c.id, o: p, lane, hp: c.id === "palisade" ? 4 : (c.hp ?? null), atk: c.atk || 0 };
+    sfx("build");
     log(() => t(`${cname(c)} აშენდა (${LANEN[lane][0]}).`, `${cname(c)} built (${LANEN[lane][1]}).`));
   } else {
     const e = 1 - p;
+    sfx(c.id === "barrage" || c.id === "gas" ? "blast" : "card");
     switch (c.id) {
       case "porter": P.porters++; break;
       case "recon": for (let i = 0; i < 2; i++) if (P.deck.length) P.hand.push(P.deck.pop()); break;
@@ -716,6 +774,8 @@ function render() {
   $("bNew").textContent = t("ახალი თამაში", "New game");
   $("logH").textContent = t("ბრძოლის ჟურნალი", "Battle log");
   $("bLog").textContent = t("ჟურნალი", "Log");
+  $("bSnd").textContent = SOUND ? t("ხმა: ჩართ.", "Sound: on") : t("ხმა: გამორთ.", "Sound: off");
+  $("bSnd").setAttribute("aria-pressed", String(SOUND));
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
   if (!G) return;
   const v = viewer(), e = 1 - v, P = G.p[v], E = G.p[e];
@@ -770,6 +830,7 @@ function render() {
   for (const [id, a] of FX) { const el = document.querySelector(`[data-u="${id}"]`); if (el) { el.classList.add("hit"); el.insertAdjacentHTML("beforeend", `<span class="float">−${a}</span>`); } }
   for (const [o, a] of FXHQ) { const el = o === v ? $("hqMe") : $("hqFoe"); el.animate([{ background: "#5a2a1e" }, { background: "" }], { duration: 600 }); }
   FX = []; FXHQ = [];
+  animate();
 }
 function hintText() {
   if (!SEL) return t("აირჩიე ბარათი ხელიდან ან შენი იუნიტი ველზე.", "Pick a card from your hand or one of your units on the board.");
@@ -845,6 +906,7 @@ document.addEventListener("click", ev => {
   if (ev.target.closest("#bNew")) return setupScreen();
   if (ev.target.closest("#bRules")) return rulesScreen();
   if (ev.target.closest("#bLog")) return logScreen();
+  if (ev.target.closest("#bSnd")) { SOUND = !SOUND; try { localStorage.setItem("cg-sound", SOUND ? "on" : "off"); } catch (e) {} if (SOUND) { ac(); sfx("card"); } return render(); }
   if (!G) return;
   const act = ev.target.closest("[data-act]");
   if (act && (act.closest("#detail") || act.closest("#mini"))) {
