@@ -179,6 +179,11 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 .binfo { display: grid; min-width: 0; } .binfo b { font-size: .8rem; } .binfo small { font-size: .68rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bn { min-width: 1.4em; text-align: center; font-variant-numeric: tabular-nums; color: var(--bronze); font-weight: 700; }
 .brow .btn { padding: 2px 9px; }
+.camp { margin: 0; padding-left: 20px; display: grid; gap: 3px; font-size: .88rem; color: var(--muted); }
+.camp li.done { color: var(--moss); } .camp li.now { color: var(--bronze); font-weight: 700; }
+.dialog .ok { color: var(--moss); } .dialog .bad { color: #e2a594; }
+.dialog h3 { margin: 4px 0 0; font-size: .95rem; color: var(--bronze); }
+.rewards { display: flex; flex-wrap: wrap; gap: 8px; }
 .rules { font-size: .88rem; line-height: 1.5; } .rules h3 { margin: 10px 0 2px; font-size: .95rem; color: var(--bronze); } .rules ul { margin: 0; padding-left: 18px; }
 @media (prefers-reduced-motion: reduce) { .tok.hit, .float { animation: none; } }
 </style>
@@ -250,7 +255,8 @@ function newGame(opt) {
     for (const [id, n] of Object.entries(s.common)) for (let i = 0; i < n; i++) deck.push(id);
     return { fid, ai, deck: shuffle(deck), hand: [], hq: 20, bank: 0, porters: 0, avail: 0, fallen: 0 };
   };
-  G = { p: [mk(opt.me, false), mk(opt.foe, opt.mode === "ai")], mode: opt.mode, units: [], forts: {}, volley: {}, turn: 0, cur: opt.first, over: null, log: [] };
+  G = { p: [mk(opt.me, false), mk(opt.foe, opt.mode === "ai")], mode: opt.mode, units: [], forts: {}, volley: {}, turn: 0, cur: opt.first, over: null, log: [], camp: !!opt.camp };
+  if (opt.foeHq) G.p[1].hq = opt.foeHq;
   for (const P of G.p) for (let i = 0; i < 5; i++) P.hand.push(P.deck.pop());
   G.p[1 - opt.first].hand.push(G.p[1 - opt.first].deck.pop());
   G.p[1 - opt.first].bank = 2;   // მეორე მოთამაშის კომპენსაცია: +1 ბარათი და პირველ სვლაზე +2 მარაგი
@@ -893,7 +899,7 @@ function showDlg(kind, html) {
   if (!again) { const f = $("dlg").querySelector("select, button"); if (f) f.focus(); }
 }
 function hideDlg() { $("ov").hidden = true; $("ov").dataset.kind = ""; }
-function reopen() { const k = $("ov").dataset.kind; if (k === "setup") setupScreen(); else if (k === "rules") rulesScreen(); else if (k === "end") endScreen(); else if (k === "pass") passScreen(); else if (k === "info") infoScreen(); else if (k === "log") logScreen(); else if (k === "builder" && BD) builderScreen(); }
+function reopen() { const k = $("ov").dataset.kind; if (k === "setup") setupScreen(); else if (k === "rules") rulesScreen(); else if (k === "end") endScreen(); else if (k === "pass") passScreen(); else if (k === "info") infoScreen(); else if (k === "log") logScreen(); else if (k === "builder" && BD) builderScreen(); else if (k === "camp") campaignScreen(); }
 function deckOptions(sel, withRandom) {
   const mine = Object.entries(MYDECKS).map(([id, d]) => `<option value="my:${id}" ${"my:" + id === sel ? "selected" : ""}>${esc(d.name)} (${esc(fname(d.f))})</option>`).join("");
   const grp = (label, fn) => { const fs = Object.keys(D.starter).filter(f => fn(D.factions[f])); return `<optgroup label="${esc(label)}">${fs.map(f => `<option value="${f}" ${f === sel ? "selected" : ""}>${esc(fname(f))}${D.win[f] ? ` (${D.win[f]}%)` : ""}</option>`).join("")}</optgroup>`; };
@@ -1005,7 +1011,7 @@ function setupScreen() {
     <div class="row"><label>${t("შენი დასტა", "Your deck")}<select id="sMe">${deckOptions(PREF.me)}</select></label>
       <label>${t("მოწინააღმდეგე", "Opponent")}<select id="sFoe">${deckOptions(PREF.foe, true)}</select></label></div>
     <p class="deck" id="sDeck"></p>
-    <div class="acts left"><button class="btn" type="button" id="sBuild">${t("ახალი დასტის აწყობა", "Build a new deck")}</button><button class="btn" type="button" id="sEdit" hidden>${t("ამ დასტის რედაქტირება", "Edit this deck")}</button></div>
+    <div class="acts left"><button class="btn" type="button" id="sCamp">${t("კამპანია", "Campaign")}${CAMP && !CAMP.done ? t(` (ბრძოლა ${CAMP.battle + 1}/${CAMP_N})`, ` (battle ${CAMP.battle + 1}/${CAMP_N})`) : ""}</button><button class="btn" type="button" id="sBuild">${t("ახალი დასტის აწყობა", "Build a new deck")}</button><button class="btn" type="button" id="sEdit" hidden>${t("ამ დასტის რედაქტირება", "Edit this deck")}</button></div>
     <div class="row"><label>${t("რეჟიმი", "Mode")}<select id="sMode"><option value="ai" ${PREF.mode === "ai" ? "selected" : ""}>${t("კომპიუტერის წინააღმდეგ", "Against the computer")}</option>
       <option value="hot" ${PREF.mode === "hot" ? "selected" : ""}>${t("ორი მოთამაშე ერთ ეკრანზე", "Two players, one screen")}</option></select></label>
       <label>${t("კომპიუტერი", "Computer")}<select id="sLevel"><option value="hard">${t("ძლიერი", "Strong")}</option><option value="easy" ${PREF.level === "easy" ? "selected" : ""}>${t("მარტივი", "Easy")}</option></select></label>
@@ -1014,6 +1020,7 @@ function setupScreen() {
     <div class="acts">${G ? `<button class="btn" type="button" id="sCancel">${t("დაბრუნება", "Back")}</button>` : ""}<button class="btn primary" type="button" id="sGo">${t("დაწყება", "Start")}</button></div>`);
   const upd = () => { const v = $("sMe").value; $("sDeck").innerHTML = `<b>${esc(fname(specF(v)))}:</b> ${deckList(v)}`; $("sEdit").hidden = !v.startsWith("my:"); };
   $("sBuild").onclick = () => builderScreen(null);
+  $("sCamp").onclick = campaignScreen;
   $("sEdit").onclick = () => builderScreen($("sMe").value.slice(3));
   $("sMe").onchange = upd; upd();
   const lv = () => { $("sLevel").disabled = $("sMode").value !== "ai"; };
@@ -1057,9 +1064,89 @@ function endScreen() {
   const title = G.mode === "ai" ? (mine ? t("გამარჯვება", "Victory") : t("დამარცხება", "Defeat")) : t(`${fname(G.p[w].fid)} იმარჯვებს`, `${fname(G.p[w].fid)} wins`);
   showDlg("end", `<h2>${title}</h2><p>${G.over.how === "break" ? t("გარღვევა: სამივე ნეიტრალური ზოლი დაკავებულია.", "Breakthrough: all three No Man's Lands are held.") : t("მოწინააღმდეგის შტაბი დაეცა.", "The enemy HQ has fallen.")}</p>
     <p class="deck">${t(`სვლები: ${G.turn} · დაცემული: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`, `Turns: ${G.turn} · fallen: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`)}</p>
-    <div class="acts"><button class="btn" type="button" id="eLook">${t("ველის ნახვა", "View board")}</button><button class="btn primary" type="button" id="eNew">${t("ახალი თამაში", "New game")}</button></div>`);
-  $("eLook").onclick = hideDlg; $("eNew").onclick = setupScreen;
+    <div class="acts"><button class="btn" type="button" id="eLook">${t("ველის ნახვა", "View board")}</button>${G.camp
+      ? `<button class="btn primary" type="button" id="eCamp">${t("კამპანიაში დაბრუნება", "Back to the campaign")}</button>`
+      : `<button class="btn primary" type="button" id="eNew">${t("ახალი თამაში", "New game")}</button>`}</div>`);
+  $("eLook").onclick = hideDlg;
+  if (G.camp) { if (!G.campDone) { G.campDone = true; campaignResult(mine); } $("eCamp").onclick = campaignScreen; }
+  else $("eNew").onclick = setupScreen;
 }
+
+// ---------- კამპანია: 6 ბრძოლა მოწინააღმდეგე მხარის წინააღმდეგ, ჯილდოები, 3 სიცოცხლე (შენახვა — ბრაუზერში) ----------
+const CAMP_N = 6;
+let CAMP = null;
+try { CAMP = JSON.parse(localStorage.getItem("cg-camp") || "null"); } catch (e) {}
+const saveCamp = () => { try { localStorage.setItem("cg-camp", JSON.stringify(CAMP)); } catch (e) {} };
+function campaignStart(f) {
+  const side = D.factions[f].side, foes = Object.keys(D.starter).filter(x => D.factions[x].side !== side);
+  const enemies = [];
+  for (let i = 0; i < CAMP_N - 1; i++) enemies.push(foes[rnd(foes.length)]);
+  const core = foes.filter(x => D.factions[x].core);
+  enemies.push((core.length ? core : foes).sort((a, b) => (D.win[b] || 50) - (D.win[a] || 50))[0]);   // ფინალი: ყველაზე ძლიერი ძირითადი ფრაქცია
+  CAMP = { f, deck: { f, units: { ...D.starter[f].units }, common: { ...D.starter[f].common } }, battle: 0, lives: 3, enemies, reward: null, done: null, added: [] };
+  saveCamp();
+}
+function campaignBattle() {
+  const i = CAMP.battle, foe = CAMP.enemies[i];
+  hideDlg();
+  newGame({ me: { ...CAMP.deck, name: t("კამპანიის დასტა", "Campaign deck") }, foe, mode: "ai", first: rnd(2), level: i < 2 ? "easy" : "hard", camp: true, foeHq: i === CAMP_N - 1 ? 25 : 0 });
+}
+// ჯილდო: 3 ბარათი, რომლებიც დასტის წესებს არ არღვევს (ასლები, მოკავშირეები ≤ 9, გმირი ≤ 1)
+function rewardOptions() {
+  const d = CAMP.deck, side = D.factions[d.f].side, out = [], seen = new Set();
+  const fits = id => { const t2 = { ...d, units: { ...d.units, [id]: (d.units[id] || 0) + 1 } }; return !deckProblems(t2).some(p => !/30/.test(p)); };
+  const pick = (pool, n) => { for (let k = 0; k < 40 && n > 0 && pool.length; k++) { const id = pool[rnd(pool.length)]; if (!seen.has(id) && fits(id)) { seen.add(id); out.push(["u", id]); n--; } } };
+  const own = Object.keys(D.units).filter(id => D.units[id].f === d.f && D.units[id].tier !== "hero" && D.units[id].tier !== "V");
+  const ally = Object.keys(D.units).filter(id => D.units[id].f !== d.f && D.factions[D.units[id].f].side === side && ["I", "II", "III"].includes(D.units[id].tier));
+  const heroes = Object.keys(D.units).filter(id => D.units[id].tier === "hero" && D.units[id].f === d.f);
+  if (CAMP.battle >= 2 && Math.random() < .5) pick(heroes, 1);
+  pick(own, out.length ? 1 : 2);
+  pick(ally, 3 - out.length);
+  pick(own, 3 - out.length);
+  if (out.length < 3) { const cs = Object.keys(D.common).filter(id => (d.common[id] || 0) < 2); while (out.length < 3 && cs.length) out.push(["c", cs.splice(rnd(cs.length), 1)[0]]); }
+  return out;
+}
+function campaignResult(won) {
+  if (won) { CAMP.battle++; if (CAMP.battle >= CAMP_N) CAMP.done = "won"; else CAMP.reward = rewardOptions(); }
+  else { CAMP.lives--; if (CAMP.lives <= 0) CAMP.done = "lost"; }
+  saveCamp();
+}
+function campaignScreen() {
+  if (!CAMP) {
+    const opts = deckOptions("colchis").replace(/<option value="my:[^"]*"[^>]*>.*?<\/option>/g, "").replace(/<optgroup label="[^"]*"><\/optgroup>/g, "");
+    return showDlg("camp", `<h2>${t("კამპანია", "Campaign")}</h2>
+      <p>${t(`${CAMP_N} ბრძოლა მოწინააღმდეგე მხარის ფრაქციების წინააღმდეგ. იწყებ ფრაქციის სასტარტო დასტით; ყოველი გამარჯვების შემდეგ სამი ბარათიდან ერთს ირჩევ ჯილდოდ (ზოგჯერ — გმირს). პირველ ორ ბრძოლაში კომპიუტერი მარტივია, შემდეგ — ძლიერი; ფინალში მტრის შტაბს 25 ნებისყოფა აქვს. გაქვს 3 სიცოცხლე.`,
+        `${CAMP_N} battles against factions of the other side. You start with your faction's starter deck; after each victory you choose one of three cards as a reward (sometimes a hero). The computer is easy in the first two battles and strong after that; in the final battle the enemy HQ has 25 nerve. You have 3 lives.`)}</p>
+      <label>${t("ფრაქცია", "Faction")}<select id="cF">${opts}</select></label>
+      <div class="acts"><button class="btn" type="button" id="cBack">${t("დაბრუნება", "Back")}</button><button class="btn primary" type="button" id="cGo">${t("კამპანიის დაწყება", "Start the campaign")}</button></div>`),
+      $("cBack").onclick = setupScreen, $("cGo").onclick = () => { campaignStart($("cF").value); campaignScreen(); };
+  }
+  const C2 = CAMP, n = Object.values(C2.deck.units).reduce((a, b) => a + b, 0) + Object.values(C2.deck.common).reduce((a, b) => a + b, 0);
+  const steps = C2.enemies.map((e, i) => `<li class="${i < C2.battle ? "done" : i === C2.battle && !C2.done ? "now" : ""}">${i + 1}. ${esc(fname(e))}${i === CAMP_N - 1 ? t(" — ფინალი", " — final") : ""}${i < C2.battle ? " ✓" : ""}</li>`).join("");
+  let body = "";
+  if (C2.done === "won") body = `<p class="ok">${t("კამპანია მოგებულია! ფრონტი გაიმაგრა.", "Campaign won! The front holds.")}</p>`;
+  else if (C2.done === "lost") body = `<p class="bad">${t("კამპანია წაგებულია: სიცოცხლე ამოიწურა.", "Campaign lost: no lives left.")}</p>`;
+  else if (C2.reward) body = `<h3>${t("ჯილდო: აირჩიე ერთი ბარათი დასტისთვის", "Reward: choose one card for your deck")}</h3><div class="rewards">${C2.reward.map(([k, id], i) => {
+      const c = k === "u" ? D.units[id] : D.common[id];
+      return `<button type="button" class="card can" data-rw="${i}"><span class="art" style="${sprite(c.art)}"><span class="cost">${c.cost}</span></span><span class="nm">${esc(nm(c))}</span>
+        <span class="sub">${k === "u" ? `${esc(fname(c.f))} · ${c.tier === "hero" ? t("გმირი", "hero") : c.tier}` : t(KINDN[KIND[c.kind]][0], KINDN[KIND[c.kind]][1])}</span>
+        <span class="kw">${k === "u" ? c.kw.map(x => esc(KWN(x))).join(", ") : esc(LANG === "en" ? c.ten : c.tka)}</span>${k === "u" ? `<span class="ft"><span class="a">⚔ ${c.atk}</span><span class="h">⛨ ${c.hp}</span></span>` : ""}</button>`; }).join("")}</div>
+      <div class="acts left"><button class="btn" type="button" data-rw="skip">${t("გამოტოვება", "Skip")}</button></div>`;
+  showDlg("camp", `<h2>${t("კამპანია", "Campaign")}: ${esc(fname(C2.f))}</h2>
+    <p class="deck">${t(`სიცოცხლე: ${"♥".repeat(Math.max(0, C2.lives))} · დასტა: ${n} ბარათი${C2.added.length ? " · მოპოვებული: " + C2.added.map(id => esc(nm(D.units[id] || D.common[id]))).join(", ") : ""}`,
+      `Lives: ${"♥".repeat(Math.max(0, C2.lives))} · deck: ${n} cards${C2.added.length ? " · earned: " + C2.added.map(id => esc(nm(D.units[id] || D.common[id]))).join(", ") : ""}`)}</p>
+    <ol class="camp">${steps}</ol>${body}
+    <div class="acts"><button class="btn" type="button" id="cQuit">${C2.done ? t("ახალი კამპანია", "New campaign") : t("კამპანიის მიტოვება", "Abandon campaign")}</button><button class="btn" type="button" id="cBack">${t("მთავარი მენიუ", "Main menu")}</button>
+      ${!C2.done && !C2.reward ? `<button class="btn primary" type="button" id="cFight">${t(`ბრძოლა ${C2.battle + 1}`, `Battle ${C2.battle + 1}`)}</button>` : ""}</div>`);
+  $("cBack").onclick = setupScreen;
+  $("cQuit").onclick = () => { if (C2.done || $("cQuit").dataset.sure) { CAMP = null; saveCamp(); campaignScreen(); } else { $("cQuit").dataset.sure = "1"; $("cQuit").textContent = t("დარწმუნებული ხარ? დააჭირე ისევ", "Are you sure? Press again"); } };
+  if ($("cFight")) $("cFight").onclick = campaignBattle;
+}
+document.addEventListener("click", ev => {
+  const r = ev.target.closest("[data-rw]"); if (!r || !CAMP || !CAMP.reward) return;
+  if (r.dataset.rw !== "skip") { const [k, id] = CAMP.reward[+r.dataset.rw], box = k === "u" ? CAMP.deck.units : CAMP.deck.common; box[id] = (box[id] || 0) + 1; CAMP.added.push(id); }
+  CAMP.reward = null; saveCamp(); campaignScreen();
+});
 function infoScreen() {
   renderDetail();
   showDlg("info", `<div class="detail">${$("detail").innerHTML.replace(/<div class="acts">[\s\S]*?<\/div>/, "")}</div><div class="acts"><button class="btn primary" type="button" id="iOk">${t("დახურვა", "Close")}</button></div>`);
