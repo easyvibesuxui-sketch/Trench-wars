@@ -4,125 +4,151 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Serif+Georgian:wght@700;800&display=swap">
 <style>
-/* „სამი ხაზი“ — ბარათის თამაშის ბრაუზერის ვერსია. ზემოთ მოწინააღმდეგის შტაბი, შუაში ველი (3 ხაზი × 5 ადგილი), ქვემოთ შენი შტაბი და ხელი.
-   ფერები — სანგრის ტალახი და ბრინჯაო (იგივე, რაც „სოფლის ფრონტში“); თამაშს მხოლოდ მუქი თემა აქვს. */
+/* „სამი ხაზი“ — ერთ ეკრანზე დალაგებული საბრძოლო მაგიდა. ზემოთ მტრის შტაბი, შუაში ველი (სანგრის რუკა: 5 ზონა × 3 ხაზი, ზონის
+   სახელი — მწკრივის თავში), ქვემოთ შენი შტაბი და ხელი; ფართო ეკრანზე მარჯვნივ ბარათის აღწერა და ჟურნალი. მხოლოდ მუქი თემა. */
 :root {
-  --mud: #241f19; --mud-2: #322a21; --mud-3: #3d3428; --paper: #e9dfc8; --ink: #f1e8d6; --muted: #b3a58b;
-  --bronze: #c8913e; --rust: #c0563d; --moss: #8a9a5b; --line: #54473a; --nml: #4a4030;
-  --me: #c8913e; --foe: #b4462f;
+  --mud: #221d17; --mud-2: #2f281f; --mud-3: #3b3227; --paper: #e9dfc8; --ink: #f1e8d6; --muted: #b3a58b;
+  --bronze: #c8913e; --rust: #c0563d; --moss: #8a9a5b; --line: #54473a;
+  --rear: #2a231b; --trench: #34291e; --nml: #4a3d2b; --me: #c8913e; --foe: #b4462f;
+  --atk: #7a1f1a; --hp: #2f5d50; --hurt: #8a5a1a;
   --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
   --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
-  --tok: clamp(46px, 7.4vw, 78px);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; background: var(--mud); }
-body { background: var(--mud); color: var(--ink); font-family: var(--body); font-size: 14px; }
+html, body { margin: 0; height: 100%; background: var(--mud); }
+body { color: var(--ink); font-family: var(--body); font-size: 14px; }
 button { font: inherit; color: inherit; }
-.app { max-width: 1280px; margin: 0 auto; padding-block: 8px 16px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 8px;
-  grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "top top" "board side" "hand side"; }
-@media (max-width: 900px) { .app { grid-template-columns: minmax(0, 1fr); grid-template-areas: "top" "board" "hand" "side"; } }
-header { grid-area: top; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; justify-content: space-between; }
-h1 { font-family: var(--display); font-size: 1.15rem; margin: 0; }
-h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-left: 6px; }
+.app { height: 100%; min-height: 540px; max-width: 1400px; margin: 0 auto; display: grid; gap: 6px;
+  padding-block: 6px 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  grid-template-columns: minmax(0, 1fr) 290px; grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "top top" "table side" "hand side"; }
+header { grid-area: top; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; justify-content: space-between; }
+h1 { font-family: var(--display); font-size: 1.1rem; margin: 0; text-wrap: balance; }
+h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .76rem; margin-left: 6px; }
 .tools { display: flex; gap: 6px; align-items: center; }
-.btn { background: var(--mud-2); border: 1px solid var(--line); border-radius: 5px; padding: 6px 11px; cursor: pointer; }
+.btn { background: var(--mud-2); border: 1px solid var(--line); border-radius: 5px; padding: 5px 10px; cursor: pointer; }
 .btn:hover:not(:disabled) { border-color: var(--bronze); }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 .btn.primary { border-color: var(--bronze); color: var(--bronze); font-weight: 700; }
+#bLog { display: none; }
 :focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
 .lang { display: flex; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
 .lang button { border: 0; background: transparent; padding: 5px 9px; cursor: pointer; font-size: .78rem; }
 .lang button[aria-pressed="true"] { background: var(--mud-3); font-weight: 700; color: var(--bronze); }
 
-/* ველი */
-.boardwrap { grid-area: board; display: grid; gap: 6px; }
-.hq { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--mud-2); }
-.hq.foe { border-color: #6b3a2c; } .hq.me { border-color: #6b5530; }
-.hq b.name { font-family: var(--display); }
-.hq .stat { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .82rem; }
-.hq .stat strong { color: var(--ink); font-size: .95rem; }
-.hq .nerve { display: inline-flex; align-items: center; gap: 6px; }
-.hq .bar { width: 90px; height: 8px; background: #1b1713; border-radius: 4px; overflow: hidden; }
+/* მაგიდა */
+.table { grid-area: table; min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 4px; }
+.hq { display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: center; padding: 4px 10px; border-radius: 5px; background: var(--mud-2); border: 1px solid var(--line); font-size: .8rem; }
+.hq.foe { border-left: 4px solid var(--foe); } .hq.me { border-left: 4px solid var(--me); }
+.hq b.name { font-family: var(--display); font-size: .92rem; }
+.hq .stat { font-variant-numeric: tabular-nums; color: var(--muted); }
+.hq .stat strong { color: var(--ink); }
+.hq .nerve { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); }
+.hq .nerve strong { font-size: 1rem; }
+.hq .bar { width: 80px; height: 7px; background: #15110d; border-radius: 4px; overflow: hidden; }
 .hq .bar i { display: block; height: 100%; background: var(--moss); }
+.hq .turn { color: var(--bronze); font-weight: 700; }
 .hq.target { outline: 2px dashed var(--rust); cursor: pointer; }
-.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
-.cell { position: relative; min-height: calc(var(--tok) * 4 / 3 + 12px); padding: 5px; border-radius: 5px; background: var(--mud-2); border: 1px solid transparent;
-  display: flex; flex-wrap: wrap; gap: 4px; align-content: center; justify-content: center; }
-.cell.trench { background: #2d271f; background-image: repeating-linear-gradient(135deg, transparent 0 8px, rgba(0,0,0,.12) 8px 10px); }
-.cell.nml { background: var(--nml); min-height: calc(var(--tok) * 8 / 3 + 18px); flex-direction: column; flex-wrap: nowrap; justify-content: space-between; }
-.cell.nml .half { display: flex; gap: 4px; justify-content: center; min-height: calc(var(--tok) * 4 / 3); }
+.field { min-height: 0; display: grid; grid-template-columns: 88px repeat(3, minmax(0, 1fr)); grid-template-rows: auto .85fr 1fr 1.9fr 1fr .85fr;
+  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--rear); }
+.lh { font-size: .66rem; color: var(--muted); text-align: center; padding: 2px; background: var(--mud-2); border-bottom: 1px solid var(--line); letter-spacing: .03em; }
+.rh { display: flex; align-items: center; padding: 0 6px; font-size: .66rem; line-height: 1.2; color: var(--muted); background: rgba(0,0,0,.18); border-right: 1px solid var(--line); letter-spacing: .02em; }
+.rh.foe { box-shadow: inset 3px 0 0 var(--foe); } .rh.me { box-shadow: inset 3px 0 0 var(--me); }
+.cell { position: relative; min-height: 0; min-width: 0; padding: 4px; display: flex; gap: 4px; align-items: center; justify-content: center; border-left: 1px dashed rgba(255,255,255,.07); }
+.cell.rear { background: var(--rear); }
+.cell.trench { background: var(--trench); background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.16) 0 2px, transparent 2px 22px); box-shadow: inset 0 2px 0 rgba(0,0,0,.35), inset 0 -2px 0 rgba(0,0,0,.35); }
+.cell.nml { background: var(--nml); background-image: radial-gradient(ellipse 34px 16px at 22% 38%, rgba(0,0,0,.2), transparent 70%), radial-gradient(ellipse 46px 20px at 76% 72%, rgba(0,0,0,.18), transparent 70%), radial-gradient(ellipse 22px 10px at 58% 16%, rgba(0,0,0,.14), transparent 70%);
+  flex-direction: column; justify-content: space-between; }
+.cell.nml .half { flex: 1 1 0; min-height: 0; width: 100%; display: flex; gap: 4px; align-items: center; justify-content: center; }
 .cell.nml.held-me { box-shadow: inset 0 -3px 0 var(--me); } .cell.nml.held-foe { box-shadow: inset 0 3px 0 var(--foe); }
-.cell .lbl { position: absolute; left: 6px; top: 3px; font-size: .62rem; color: var(--muted); letter-spacing: .04em; pointer-events: none; }
-.cell.hl { border-color: var(--bronze); background-color: #4b3d26; cursor: pointer; }
-.cell.hl::after { content: "+"; position: absolute; right: 6px; top: 1px; color: var(--bronze); font-weight: 700; }
-.fort { position: absolute; right: 4px; bottom: 3px; font-size: .62rem; padding: 1px 5px; border-radius: 3px; background: #1b1713; border: 1px solid var(--line); max-width: 92%;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.fort.mine { border-color: #6b5530; } .fort.foe { border-color: #6b3a2c; }
-.fort.target { outline: 2px solid var(--rust); cursor: pointer; }
-@media (max-width: 600px) {
-  .cell .lbl { display: none; }
-  .fort { position: static; flex-basis: 100%; text-align: center; order: -1; }
-  .cell.nml .half { min-height: calc(var(--tok) * 4 / 3 - 4px); }
-}
-.lanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; text-align: center; font-size: .66rem; color: var(--muted); }
+.cell.hl { background-color: #5a4524; cursor: pointer; box-shadow: inset 0 0 0 2px var(--bronze); }
+.cell.hl:empty::after, .cell.hl.hasfort:not(:has(.tok))::after, .cell.hl .half:empty::after { content: "+"; color: var(--bronze); font-weight: 700; font-size: 1.2rem; }
+.cell.hasfort { padding-bottom: 19px; }
+.fort { position: absolute; left: 4px; bottom: 2px; font-size: .62rem; padding: 1px 6px; border-radius: 3px; background: rgba(21,17,13,.88); border: 1px solid var(--line); max-width: calc(100% - 8px);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; z-index: 1; }
+.fort.mine { border-color: #7a6234; } .fort.foe { border-color: #7a3a2c; }
+.fort.target { outline: 2px solid var(--rust); }
 
-/* იუნიტის ნიშანი ველზე */
-.tok { position: relative; width: var(--tok); aspect-ratio: 3 / 4; border-radius: 5px; border: 2px solid var(--me); padding: 0; cursor: pointer;
+/* იუნიტი ველზე: ზომა უჯრის სიმაღლეს მიჰყვება */
+.tok { position: relative; height: 100%; max-height: 132px; aspect-ratio: 3 / 4; flex: 0 0 auto; border-radius: 5px; border: 2px solid var(--me); padding: 0; cursor: pointer;
   background-color: var(--mud-3); background-repeat: no-repeat; overflow: hidden; }
 .tok.foe { border-color: var(--foe); }
-.tok .a, .tok .h { position: absolute; bottom: 2px; min-width: 18px; padding: 0 3px; border-radius: 3px; font-weight: 700; font-size: .72rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
-.tok .a { left: 2px; background: #7a1f1a; } .tok .h { right: 2px; background: #2f5d50; }
-.tok .h.hurt { background: #8a5a1a; }
+.tok .a, .tok .h { position: absolute; bottom: 2px; min-width: 16px; padding: 0 3px; border-radius: 3px; font-weight: 700; font-size: .7rem; line-height: 1.35; font-variant-numeric: tabular-nums; text-align: center; }
+.tok .a { left: 2px; background: var(--atk); } .tok .h { right: 2px; background: var(--hp); }
+.tok .h.hurt { background: var(--hurt); }
 .tok .st { position: absolute; top: 2px; left: 2px; right: 2px; display: flex; gap: 2px; flex-wrap: wrap; }
-.tok .st i { font-style: normal; font-size: .58rem; padding: 0 3px; border-radius: 3px; background: rgba(20,16,12,.85); line-height: 1.4; }
+.tok .st i { font-style: normal; font-size: .56rem; padding: 0 3px; border-radius: 3px; background: rgba(20,16,12,.85); line-height: 1.4; }
 .tok.ready { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px #e7c46b; }
-.tok.spent { filter: saturate(.35) brightness(.75); }
+.tok.spent { filter: saturate(.35) brightness(.72); }
 .tok.sel { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px #fff; }
 .tok.target { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px var(--rust); }
 .tok.pick { box-shadow: 0 0 0 2px var(--mud), 0 0 0 4px var(--moss); }
 .tok.camo { opacity: .6; }
 .tok.hit { animation: hit .45s ease-out; }
 @keyframes hit { 0% { transform: translateX(0); filter: brightness(2); } 30% { transform: translateX(-3px); } 60% { transform: translateX(3px); } 100% { transform: none; } }
-.float { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 800; font-size: 1.15rem; color: #ffd9c9; text-shadow: 0 1px 3px #000;
-  pointer-events: none; animation: rise .9s ease-out forwards; }
+.float { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 800; font-size: 1.1rem; color: #ffd9c9; text-shadow: 0 1px 3px #000; pointer-events: none; animation: rise .9s ease-out forwards; }
 @keyframes rise { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-18px); } }
 
 /* ხელი */
-.handwrap { grid-area: hand; display: grid; gap: 6px; }
-.bar2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
-.supply { display: flex; gap: 4px; align-items: center; }
-.supply i { width: 14px; height: 14px; border-radius: 50%; background: var(--bronze); display: inline-block; }
-.supply i.off { background: transparent; border: 1px solid var(--line); }
-.hint { color: var(--muted); font-size: .8rem; min-height: 1.2em; }
-.hand { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 8px; }
-.card { flex: none; width: 128px; border-radius: 7px; border: 2px solid var(--line); background: var(--paper); color: #1d1a16; padding: 0; cursor: pointer; text-align: left;
+.handwrap { grid-area: hand; display: grid; gap: 4px; min-width: 0; }
+.bar2 { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; justify-content: space-between; }
+.supply { display: inline-flex; gap: 3px; align-items: center; margin-right: 8px; }
+.supply i { width: 12px; height: 12px; border-radius: 50%; background: var(--bronze); display: inline-block; }
+.hint { color: var(--muted); font-size: .8rem; min-height: 1.2em; flex: 1 1 260px; }
+.mini { display: none; }
+.hand { display: flex; gap: 6px; overflow-x: auto; padding: 4px 2px 6px; min-height: 120px; }
+.card { flex: none; width: 108px; border-radius: 6px; border: 2px solid var(--line); background: var(--paper); color: #1d1a16; padding: 0; cursor: pointer; text-align: left;
   display: flex; flex-direction: column; overflow: hidden; }
-.card .art { height: 92px; background-color: #b9ad9c; background-repeat: no-repeat; position: relative; }
-.card .cost { position: absolute; left: 4px; top: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--bronze); color: #1d1a16; display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
-.card .nm { font-family: var(--display); font-weight: 700; font-size: .78rem; line-height: 1.15; padding: 4px 6px 0; }
-.card .sub { font-size: .64rem; color: #6a6158; padding: 1px 6px; }
-.card .kw { font-size: .64rem; padding: 0 6px; color: #3d362e; }
-.card .ft { margin-top: auto; display: flex; justify-content: space-between; padding: 3px 6px 5px; font-weight: 800; font-size: .85rem; }
-.card .ft .a { color: #7a1f1a; } .card .ft .h { color: #2f5d50; }
+.card .art { height: 70px; background-color: #b9ad9c; background-repeat: no-repeat; position: relative; }
+.card .cost { position: absolute; left: 3px; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: var(--bronze); color: #1d1a16; display: grid; place-items: center; font-weight: 800; font-size: .8rem; }
+.card .nm { font-family: var(--display); font-weight: 700; font-size: .72rem; line-height: 1.15; padding: 3px 5px 0; }
+.card .sub { font-size: .6rem; color: #6a6158; padding: 1px 5px; }
+.card .kw { font-size: .6rem; padding: 0 5px; color: #3d362e; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.card .ft { margin-top: auto; display: flex; justify-content: space-between; padding: 2px 5px 4px; font-weight: 800; font-size: .8rem; }
+.card .ft .a { color: var(--atk); } .card .ft .h { color: var(--hp); }
 .card.can { border-color: var(--bronze); }
 .card.no { opacity: .55; }
 .card.sel { border-color: #fff; transform: translateY(-4px); }
 
 /* გვერდითი პანელი */
-.side { grid-area: side; display: grid; gap: 8px; align-content: start; }
-.panel { border: 1px solid var(--line); border-radius: 6px; background: var(--mud-2); padding: 10px; }
-.panel h2 { font-family: var(--display); font-size: 1rem; margin: 0 0 6px; }
-.detail .big { width: 100%; aspect-ratio: 2 / 3; max-height: 260px; border-radius: 5px; background-color: var(--mud-3); background-repeat: no-repeat; margin-bottom: 8px; }
-@media (max-width: 900px) { .detail .big { max-height: 180px; width: 120px; float: left; margin-right: 10px; } }
-.detail p { margin: 4px 0; font-size: .85rem; }
-.detail .meta { color: var(--muted); font-size: .78rem; }
+.side { grid-area: side; min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 6px; }
+.panel { border: 1px solid var(--line); border-radius: 6px; background: var(--mud-2); padding: 10px; min-height: 0; }
+.panel h2 { font-family: var(--display); font-size: .98rem; margin: 0 0 6px; }
+.logp { display: flex; flex-direction: column; }
+.detail .big { width: 100%; max-width: 100%; aspect-ratio: 2 / 3; max-height: 30vh; border-radius: 5px; background-color: var(--mud-3); background-repeat: no-repeat; margin: 0 auto 8px; }
+.detail p { margin: 4px 0; font-size: .84rem; }
+.detail .meta { color: var(--muted); font-size: .76rem; }
 .detail ul { margin: 4px 0 0; padding-left: 18px; font-size: .8rem; }
-.detail .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; clear: both; }
-.log { max-height: 240px; overflow-y: auto; font-size: .78rem; display: grid; gap: 3px; }
+.detail .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.log { flex: 1; min-height: 0; overflow-y: auto; font-size: .76rem; display: grid; gap: 3px; align-content: start; }
 .log div { color: var(--muted); } .log div.me { color: #e6cf9f; } .log div.foe { color: #e2a594; } .log div.sys { color: var(--ink); font-weight: 600; }
 
-/* ეკრანები */
+/* ვიწრო ეკრანი: პანელი იმალება, აღწერა — მოკლე ზოლად ხელის თავზე, ჟურნალი — ღილაკით */
+@media (max-width: 900px) {
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-areas: "top" "table" "hand"; min-height: 600px; }
+  .side { display: none; }
+  #bLog { display: inline-block; }
+  h1 small { display: none; }
+  .mini { display: flex; gap: 8px; align-items: center; font-size: .76rem; min-height: 28px; padding: 3px 8px; background: var(--mud-2); border: 1px solid var(--line); border-radius: 5px; }
+  .mini:empty { display: none; }
+  .mini span { flex: 1; min-width: 0; color: var(--muted); }
+  .mini b { color: var(--ink); }
+  .mini .btn { padding: 2px 8px; font-size: .74rem; }
+}
+@media (max-width: 600px) {
+  h1 { font-size: .98rem; }
+  .tools { flex-wrap: wrap; gap: 4px; }
+  .btn, .lang button { font-size: .74rem; padding: 4px 7px; }
+  .field { grid-template-columns: 5px repeat(3, minmax(0, 1fr)); }
+  .rh { font-size: 0; padding: 0; border-right: 0; }
+  .cell[data-z]::before { content: attr(data-z); position: absolute; left: 3px; top: 1px; font-size: .52rem; color: var(--muted); opacity: .8; pointer-events: none; }
+  .cell { padding: 3px; gap: 3px; }
+  .hand { min-height: 112px; }
+  .card { width: 96px; } .card .art { height: 58px; }
+  .hq { font-size: .72rem; gap: 2px 8px; } .hq .bar { width: 50px; }
+  .hq .opt { display: none; }
+}
+@media (max-height: 740px) and (min-width: 901px) { .card .art { height: 56px; } .card .kw { -webkit-line-clamp: 2; } }
 .overlay { position: fixed; inset: 0; background: rgba(18, 14, 10, .86); display: grid; place-items: center;
   padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); z-index: 10; overflow-y: auto; }
 .overlay[hidden] { display: none; }
@@ -143,24 +169,25 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
   <header>
     <h1 id="title"></h1>
     <div class="tools">
+      <button class="btn" id="bLog" type="button"></button>
       <button class="btn" id="bRules" type="button"></button>
       <button class="btn" id="bNew" type="button"></button>
       <div class="lang" role="group" aria-label="ენა / Language"><button type="button" data-lang="ka">ქარ</button><button type="button" data-lang="en">EN</button></div>
     </div>
   </header>
-  <section class="boardwrap">
+  <main class="table">
     <div class="hq foe" id="hqFoe"></div>
-    <div class="board" id="board"></div>
-    <div class="lanes" id="lanes"></div>
+    <div class="field" id="board"></div>
     <div class="hq me" id="hqMe"></div>
-  </section>
+  </main>
   <section class="handwrap">
     <div class="bar2"><div class="hint" id="hint" aria-live="polite"></div><button class="btn primary" id="bEnd" type="button"></button></div>
+    <div class="mini" id="mini"></div>
     <div class="hand" id="hand"></div>
   </section>
   <aside class="side">
     <div class="panel detail" id="detail"></div>
-    <div class="panel"><h2 id="logH"></h2><div class="log" id="log" aria-live="polite"></div></div>
+    <div class="panel logp"><h2 id="logH"></h2><div class="log" id="log" aria-live="polite"></div></div>
   </aside>
 </div>
 <div class="overlay" id="ov" hidden><div class="dialog" id="dlg" role="dialog" aria-modal="true"></div></div>
@@ -655,35 +682,40 @@ function render() {
   $("bRules").textContent = t("წესები", "Rules");
   $("bNew").textContent = t("ახალი თამაში", "New game");
   $("logH").textContent = t("ბრძოლის ჟურნალი", "Battle log");
+  $("bLog").textContent = t("ჟურნალი", "Log");
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
   if (!G) return;
   const v = viewer(), e = 1 - v, P = G.p[v], E = G.p[e];
   const hq = (X, o) => {
     const tg = SEL && SEL.tg && SEL.tg.some(x => x.k === "hq") && o !== v;
-    return `<b class="name">${esc(fname(X.fid))}</b><span class="stat nerve">${t("ნებისყოფა", "Nerve")} <strong>${Math.max(0, X.hq)}</strong><span class="bar"><i style="width:${Math.max(0, X.hq) / 20 * 100}%"></i></span></span>
+    return `<b class="name">${esc(fname(X.fid))}</b><span class="stat nerve" title="${t("შტაბის ნებისყოფა", "HQ nerve")}">${t("ნებისყოფა", "Nerve")} <strong>${Math.max(0, X.hq)}</strong><span class="bar"><i style="width:${Math.max(0, X.hq) / 20 * 100}%"></i></span></span>
       <span class="stat">${t("ხელი", "Hand")} <strong>${X.hand.length}</strong></span><span class="stat">${t("დასტა", "Deck")} <strong>${X.deck.length}</strong></span>
-      <span class="stat">${t("მზიდავები", "Porters")} <strong>${X.porters}</strong></span><span class="stat">${t("დაცემული", "Fallen")} <strong>${X.fallen}</strong></span>
-      ${G.cur === o && !G.over ? `<span class="stat" style="color:var(--bronze)">${t("სვლა", "Turn")}</span>` : ""}`;
+      <span class="stat opt">${t("მზიდავები", "Porters")} <strong>${X.porters}</strong></span><span class="stat opt">${t("დაცემული", "Fallen")} <strong>${X.fallen}</strong></span>
+      ${G.cur === o && !G.over ? `<span class="turn">● ${t("სვლა", "Turn")}</span>` : ""}`;
   };
   $("hqFoe").innerHTML = hq(E, e); $("hqMe").innerHTML = hq(P, v);
   $("hqFoe").classList.toggle("target", !!(SEL && SEL.tg && SEL.tg.some(x => x.k === "hq")));
   const rows = [[e, "rear"], [e, "trench"], [null, "nml"], [v, "trench"], [v, "rear"]];
-  let h = "";
-  for (const [o, pos] of rows) for (const l of [0, 1, 2]) {
+  const RH = { rear: [["მტრის ზურგი", "Enemy rear"], ["შენი ზურგი", "Your rear"]], trench: [["მტრის სანგარი", "Enemy trench"], ["შენი სანგარი", "Your trench"]] };
+  let h = `<div class="lh"></div>` + LANEN.map(x => `<div class="lh">${t(x[0], x[1])}</div>`).join("");
+  for (const [o, pos] of rows) for (const l of [-1, 0, 1, 2]) {
+    if (l < 0) {
+      const lb = pos === "nml" ? t("ნეიტრალური ზოლი", "No Man's Land") : t(...RH[pos][o === v ? 1 : 0]);
+      h += `<div class="rh ${pos === "nml" ? "" : o === v ? "me" : "foe"}">${lb}</div>`;
+      continue;
+    }
     const hl = SEL && SEL.cells && SEL.cells.some(([ll, pp]) => ll === l && pp === pos && (pos === "nml" || o === G.cur)) ? " hl" : "";
     const lanehl = SEL && SEL.lanes && SEL.lanes.includes(l) ? " hl" : "";
     if (pos === "nml") {
       const held = at(l, v, "nml").length && !at(l, e, "nml").length ? " held-me" : at(l, e, "nml").length && !at(l, v, "nml").length ? " held-foe" : "";
-      h += `<div class="cell nml${held}${hl}${lanehl}" data-l="${l}" data-p="nml" data-o="${v}"><span class="lbl">${t("ნეიტრ. ზოლი", "No Man's Land")}</span>
+      h += `<div class="cell nml${held}${hl}${lanehl}" data-l="${l}" data-p="nml" data-o="${v}"${l === 0 ? ` data-z="${t("ნეიტრ. ზოლი", "No Man's Land")}"` : ""}>
         <div class="half">${at(l, e, "nml").map(tokHTML).join("")}</div><div class="half">${at(l, v, "nml").map(tokHTML).join("")}</div></div>`;
     } else {
       const f = pos === "trench" ? fort(l, o) : null;
-      const lbl = o === v ? (pos === "trench" ? t("შენი სანგარი", "Your trench") : t("შენი ზურგი", "Your rear")) : (pos === "trench" ? t("მტრის სანგარი", "Enemy trench") : t("მტრის ზურგი", "Enemy rear"));
-      h += `<div class="cell ${pos}${hl}${lanehl}" data-l="${l}" data-p="${pos}" data-o="${o}"><span class="lbl">${lbl}</span>${at(l, o, pos).map(tokHTML).join("")}${f ? fortHTML(f) : ""}</div>`;
+      h += `<div class="cell ${pos}${f ? " hasfort" : ""}${hl}${lanehl}" data-l="${l}" data-p="${pos}" data-o="${o}"${l === 0 ? ` data-z="${t(...RH[pos][o === v ? 1 : 0])}"` : ""}>${at(l, o, pos).map(tokHTML).join("")}${f ? fortHTML(f) : ""}</div>`;
     }
   }
   $("board").innerHTML = h;
-  $("lanes").innerHTML = LANEN.map(x => `<span>${t(x[0], x[1])}</span>`).join("");
   // ხელი
   const human = !G.p[G.cur].ai && G.cur === v && !G.over;
   $("hand").innerHTML = P.hand.map((id, i) => {
@@ -699,6 +731,7 @@ function render() {
   $("hint").innerHTML = G.over ? "" : !human ? t(`${fname(G.p[G.cur].fid)} ფიქრობს…`, `${fname(G.p[G.cur].fid)} is thinking…`)
     : `<span class="supply" title="${t("მარაგი", "Supply")}">${t("მარაგი", "Supply")}: ${"<i></i>".repeat(Math.max(0, P.avail))} <b>${P.avail}</b></span> ${hintText()}`;
   renderDetail();
+  renderMini();
   $("log").innerHTML = G.log.slice(-40).reverse().map(([m, c]) => `<div class="${c}">${esc(typeof m === "function" ? m() : m)}</div>`).join("");
   // ეფექტები
   for (const [id, a] of FX) { const el = document.querySelector(`[data-u="${id}"]`); if (el) { el.classList.add("hit"); el.insertAdjacentHTML("beforeend", `<span class="float">−${a}</span>`); } }
@@ -742,6 +775,19 @@ function renderDetail() {
     ${acts ? `<div class="acts">${acts}</div>` : ""}`;
 }
 
+// ვიწრო ეკრანზე: არჩეული ბარათის მოკლე აღწერა ხელის თავზე; სრული — „ⓘ“ ღილაკით
+function renderMini() {
+  const m = $("mini");
+  const u = SEL && (SEL.u || SEL.insp);
+  const c = u ? u.c : SEL && SEL.hi !== undefined ? cardOf(G.p[G.cur].hand[SEL.hi]) : SEL && SEL.fort ? cardOf(SEL.fort.id) : null;
+  if (!c) { m.innerHTML = ""; return; }
+  const stats = u ? `⚔ ${u.atk + leaderBonus(u)} · ⛨ ${u.hp}/${u.max}` : c.type === "unit" || c.atk ? `⚔ ${c.atk ?? 0} · ⛨ ${c.hp}` : "";
+  const extra = c.type === "unit" ? c.kw.map(k => KWN(k)).join(", ") : ctext(c);
+  const play = SEL && SEL.hi !== undefined && needs(c) === "none" && humanTurn() && playable(G.cur, c) ? `<button class="btn primary" type="button" data-act="play">${t("გათამაშება", "Play")}</button>` : "";
+  m.innerHTML = `<span><b>${esc(cname(c))}</b> · ${t("ფასი", "cost")} ${c.cost}${stats ? " · " + stats : ""}${extra ? " · " + esc(extra) : ""}</span>${play}
+    <button class="btn" type="button" data-act="info" aria-label="${t("სრული აღწერა", "Full details")}">ⓘ</button><button class="btn" type="button" data-act="cancel" aria-label="${t("გაუქმება", "Cancel")}">✕</button>`;
+}
+
 // ---------- მართვა ----------
 function humanTurn() { return G && !G.over && !BUSY && !G.p[G.cur].ai; }
 function selectHand(i) {
@@ -765,9 +811,11 @@ document.addEventListener("click", ev => {
   if (lb) { LANG = lb.dataset.lang; try { localStorage.setItem("cg-lang", LANG); } catch (e) {} render(); if (!$("ov").hidden && $("ov").dataset.kind) reopen(); return; }
   if (ev.target.closest("#bNew")) return setupScreen();
   if (ev.target.closest("#bRules")) return rulesScreen();
+  if (ev.target.closest("#bLog")) return logScreen();
   if (!G) return;
   const act = ev.target.closest("[data-act]");
-  if (act && act.closest("#detail")) {
+  if (act && (act.closest("#detail") || act.closest("#mini"))) {
+    if (act.dataset.act === "info") return infoScreen();
     if (act.dataset.act === "cancel") return afterAct();
     if (act.dataset.act === "play" && SEL && SEL.hi !== undefined) { play(G.cur, SEL.hi); return afterAct(); }
   }
@@ -814,7 +862,7 @@ document.addEventListener("keydown", ev => { if (ev.key === "Escape" && SEL) aft
 // ---------- ეკრანები ----------
 function showDlg(kind, html) { $("dlg").innerHTML = html; $("ov").dataset.kind = kind; $("ov").hidden = false; const f = $("dlg").querySelector("select, button"); if (f) f.focus(); }
 function hideDlg() { $("ov").hidden = true; $("ov").dataset.kind = ""; }
-function reopen() { const k = $("ov").dataset.kind; if (k === "setup") setupScreen(); else if (k === "rules") rulesScreen(); else if (k === "end") endScreen(); else if (k === "pass") passScreen(); }
+function reopen() { const k = $("ov").dataset.kind; if (k === "setup") setupScreen(); else if (k === "rules") rulesScreen(); else if (k === "end") endScreen(); else if (k === "pass") passScreen(); else if (k === "info") infoScreen(); else if (k === "log") logScreen(); }
 function deckOptions(sel, withRandom) {
   const grp = (label, fn) => { const fs = Object.keys(D.starter).filter(f => fn(D.factions[f])); return `<optgroup label="${esc(label)}">${fs.map(f => `<option value="${f}" ${f === sel ? "selected" : ""}>${esc(fname(f))}${D.win[f] ? ` (${D.win[f]}%)` : ""}</option>`).join("")}</optgroup>`; };
   return (withRandom ? `<option value="random" ${sel === "random" ? "selected" : ""}>${t("შემთხვევითი", "Random")}</option>` : "")
@@ -885,6 +933,16 @@ function endScreen() {
     <p class="deck">${t(`სვლები: ${G.turn} · დაცემული: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`, `Turns: ${G.turn} · fallen: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`)}</p>
     <div class="acts"><button class="btn" type="button" id="eLook">${t("ველის ნახვა", "View board")}</button><button class="btn primary" type="button" id="eNew">${t("ახალი თამაში", "New game")}</button></div>`);
   $("eLook").onclick = hideDlg; $("eNew").onclick = setupScreen;
+}
+function infoScreen() {
+  renderDetail();
+  showDlg("info", `<div class="detail">${$("detail").innerHTML.replace(/<div class="acts">[\s\S]*?<\/div>/, "")}</div><div class="acts"><button class="btn primary" type="button" id="iOk">${t("დახურვა", "Close")}</button></div>`);
+  $("iOk").onclick = hideDlg;
+}
+function logScreen() {
+  if (!G) return;
+  showDlg("log", `<h2>${t("ბრძოლის ჟურნალი", "Battle log")}</h2><div class="log" style="max-height:60vh">${$("log").innerHTML}</div><div class="acts"><button class="btn primary" type="button" id="lOk">${t("დახურვა", "Close")}</button></div>`);
+  $("lOk").onclick = hideDlg;
 }
 function passScreen() {
   showDlg("pass", `<h2>${t(`${fname(G.p[G.cur].fid)}-ის სვლა`, `${fname(G.p[G.cur].fid)} to play`)}</h2><p>${t("გადაეცი მოწყობილობა მეორე მოთამაშეს. ხელი დამალულია, სანამ ის მზად არ იქნება.", "Pass the device to the other player. The hand stays hidden until they are ready.")}</p>
