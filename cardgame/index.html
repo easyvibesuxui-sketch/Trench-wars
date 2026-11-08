@@ -11,6 +11,8 @@
   --bronze: #c8913e; --rust: #c0563d; --moss: #8a9a5b; --line: #54473a;
   --rear: #2a231b; --trench: #34291e; --nml: #4a3d2b; --me: #c8913e; --foe: #b4462f;
   --atk: #7a1f1a; --hp: #2f5d50; --hurt: #8a5a1a;
+  --plate: linear-gradient(rgba(34, 29, 23, .8), rgba(30, 25, 19, .88)), url(ui/iron.jpg) center / 360px;   /* Kling: რკინის ფირფიტა */
+  --paper-tex: url(ui/paper.jpg) center / cover;                                                         /* Kling: საველე რუკის ქაღალდი */
   --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
   --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
   color-scheme: dark;
@@ -38,7 +40,7 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 
 /* მაგიდა */
 .table { grid-area: table; min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 4px; }
-.hq { display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: center; padding: 4px 10px; border-radius: 5px; background: var(--mud-2); border: 1px solid var(--line); font-size: .8rem; }
+.hq { display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: center; padding: 4px 10px; border-radius: 5px; background: var(--plate); border: 1px solid var(--line); font-size: .8rem; }
 .hq.foe { border-left: 4px solid var(--foe); } .hq.me { border-left: 4px solid var(--me); }
 .hq b.name { font-family: var(--display); font-size: .92rem; }
 .hq .stat { font-variant-numeric: tabular-nums; color: var(--muted); }
@@ -50,18 +52,19 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 .hq .turn { color: var(--bronze); font-weight: 700; }
 .hq.target { outline: 2px dashed var(--rust); cursor: pointer; }
 .field { min-height: 0; display: grid; grid-template-columns: 88px repeat(3, minmax(0, 1fr)); grid-template-rows: auto .85fr 1fr 1.9fr 1fr .85fr;
-  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--rear); }
-.lh { font-size: .66rem; color: var(--muted); text-align: center; padding: 2px; background: var(--mud-2); border-bottom: 1px solid var(--line); letter-spacing: .03em; }
-.rh { display: flex; align-items: center; padding: 0 6px; font-size: .66rem; line-height: 1.2; color: var(--muted); background: rgba(0,0,0,.18); border-right: 1px solid var(--line); letter-spacing: .02em; }
+  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--rear) center / cover no-repeat; }
+.lh { font-size: .66rem; color: var(--muted); text-align: center; padding: 2px; background: rgba(26, 21, 16, .88); border-bottom: 1px solid var(--line); letter-spacing: .03em; }
+.rh { display: flex; align-items: center; padding: 0 6px; font-size: .66rem; line-height: 1.2; color: var(--ink); background: rgba(22, 18, 14, .78); border-right: 1px solid var(--line); letter-spacing: .02em; }
 .rh.foe { box-shadow: inset 3px 0 0 var(--foe); } .rh.me { box-shadow: inset 3px 0 0 var(--me); }
 .cell { position: relative; min-height: 0; min-width: 0; padding: 4px; display: flex; gap: 4px; align-items: center; justify-content: center; border-left: 1px dashed rgba(255,255,255,.07); }
-.cell.rear { background: var(--rear); }
-.cell.trench { background: var(--trench); background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.16) 0 2px, transparent 2px 22px); box-shadow: inset 0 2px 0 rgba(0,0,0,.35), inset 0 -2px 0 rgba(0,0,0,.35); }
-.cell.nml { background: var(--nml); background-image: radial-gradient(ellipse 34px 16px at 22% 38%, rgba(0,0,0,.2), transparent 70%), radial-gradient(ellipse 46px 20px at 76% 72%, rgba(0,0,0,.18), transparent 70%), radial-gradient(ellipse 22px 10px at 58% 16%, rgba(0,0,0,.14), transparent 70%);
+/* უჯრები ნახევრად გამჭვირვალეა: ქვეშ Kling-ის მოედანი ჩანს (ui/board_*.jpg) */
+.cell.rear { background: rgba(22, 18, 14, .62); }
+.cell.trench { background: rgba(34, 27, 19, .5); box-shadow: inset 0 2px 0 rgba(0,0,0,.4), inset 0 -2px 0 rgba(0,0,0,.4); }
+.cell.nml { background: rgba(40, 32, 22, .22);
   flex-direction: column; justify-content: space-between; }
 .cell.nml .half { flex: 1 1 0; min-height: 0; width: 100%; display: flex; gap: 4px; align-items: center; justify-content: center; }
 .cell.nml.held-me { box-shadow: inset 0 -3px 0 var(--me); } .cell.nml.held-foe { box-shadow: inset 0 3px 0 var(--foe); }
-.cell.hl { background-color: #5a4524; cursor: pointer; box-shadow: inset 0 0 0 2px var(--bronze); }
+.cell.hl { background-color: rgba(110, 80, 36, .55); cursor: pointer; box-shadow: inset 0 0 0 2px var(--bronze); }
 .cell.hl:empty::after, .cell.hl.hasfort:not(:has(.tok))::after, .cell.hl .half:empty::after { content: "+"; color: var(--bronze); font-weight: 700; font-size: 1.2rem; }
 .cell.hasfort { padding-bottom: 19px; }
 .fort { position: absolute; left: 4px; bottom: 2px; font-size: .62rem; padding: 1px 6px; border-radius: 3px; background: rgba(21,17,13,.88); border: 1px solid var(--line); max-width: calc(100% - 8px);
@@ -97,7 +100,7 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 .hint { color: var(--muted); font-size: .8rem; min-height: 1.2em; flex: 1 1 260px; }
 .mini { display: none; }
 .hand { display: flex; gap: 6px; overflow-x: auto; padding: 4px 2px 6px; min-height: 120px; }
-.card { flex: none; width: 108px; border-radius: 6px; border: 2px solid var(--line); background: var(--paper); color: #1d1a16; padding: 0; cursor: pointer; text-align: left;
+.card { flex: none; width: 108px; border-radius: 6px; border: 2px solid var(--line); background: var(--paper) var(--paper-tex); color: #1d1a16; padding: 0; cursor: pointer; text-align: left;
   display: flex; flex-direction: column; overflow: hidden; }
 .card .art { height: 70px; background-color: #b9ad9c; background-repeat: no-repeat; position: relative; }
 .card .cost { position: absolute; left: 3px; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: var(--bronze); color: #1d1a16; display: grid; place-items: center; font-weight: 800; font-size: .8rem; }
@@ -112,7 +115,7 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 
 /* გვერდითი პანელი */
 .side { grid-area: side; min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 6px; }
-.panel { border: 1px solid var(--line); border-radius: 6px; background: var(--mud-2); padding: 10px; min-height: 0; }
+.panel { border: 1px solid var(--line); border-radius: 6px; background: var(--plate); padding: 10px; min-height: 0; }
 .panel h2 { font-family: var(--display); font-size: .98rem; margin: 0 0 6px; }
 .logp { display: flex; flex-direction: column; }
 .detail .big { width: 100%; max-width: 100%; aspect-ratio: 2 / 3; max-height: 30vh; border-radius: 5px; background-color: var(--mud-3); background-repeat: no-repeat; margin: 0 auto 8px; }
@@ -141,7 +144,7 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
   .btn, .lang button { font-size: .74rem; padding: 4px 7px; }
   .field { grid-template-columns: 5px repeat(3, minmax(0, 1fr)); }
   .rh { font-size: 0; padding: 0; border-right: 0; }
-  .cell[data-z]::before { content: attr(data-z); position: absolute; left: 3px; top: 1px; font-size: .52rem; color: var(--muted); opacity: .8; pointer-events: none; }
+  .cell[data-z]::before { content: attr(data-z); position: absolute; left: 3px; top: 1px; font-size: .52rem; color: var(--ink); text-shadow: 0 1px 2px #000, 0 0 3px #000; pointer-events: none; }
   .cell { padding: 3px; gap: 3px; }
   .hand { min-height: 112px; }
   .card { width: 96px; } .card .art { height: 58px; }
@@ -152,8 +155,17 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 .overlay { position: fixed; inset: 0; background: rgba(18, 14, 10, .86); display: grid; place-items: center;
   padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); z-index: 10; overflow-y: auto; }
 .overlay[hidden] { display: none; }
-.overlay[data-kind="pass"] { background: var(--mud); }
-.dialog { width: min(640px, 100%); background: var(--mud-2); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 12px; }
+.overlay[data-kind="pass"], .overlay[data-kind="setup"], .overlay[data-kind="camp"], .overlay[data-kind="rules"] {
+  background: linear-gradient(rgba(18, 14, 10, .45), rgba(18, 14, 10, .85)), var(--mud) url(ui/title.jpg) center / cover; }   /* Kling: მენიუს ფონი */
+.overlay[data-kind="pass"] { background: linear-gradient(rgba(18, 14, 10, .3), rgba(18, 14, 10, .7)), var(--mud) url(ui/title.jpg) center / cover; }
+.endimg { width: 100%; aspect-ratio: 16 / 9; max-height: 34vh; border-radius: 6px; background: var(--mud-3) center / cover; border: 1px solid var(--line); }
+.cmap { position: relative; width: 100%; aspect-ratio: 1920 / 1084; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--mud-3) url(ui/map_campaign.jpg) center / cover; }
+.cmap .pin { position: absolute; transform: translate(-50%, -50%); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: .82rem;
+  background: rgba(26, 21, 16, .88); border: 2px solid var(--muted); color: var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.6); }
+.cmap .pin.done { border-color: var(--moss); color: var(--moss); } .cmap .pin.now { border-color: var(--bronze); background: var(--bronze); color: #1d1a16; }
+.cmap .pin.final { width: 38px; height: 38px; border-color: var(--rust); }
+.cmap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dialog { width: min(640px, 100%); background: var(--plate); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 12px; }
 .dialog h2 { font-family: var(--display); margin: 0; font-size: 1.4rem; color: var(--bronze); }
 .dialog p { margin: 0; line-height: 1.5; }
 .dialog label { display: grid; gap: 4px; font-size: .85rem; color: var(--muted); }
@@ -295,6 +307,8 @@ function animate() {
   FXA = []; FXN = [];
 }
 
+const TERRAINS = ["board_mud", "board_snow", "board_coast"];
+
 // ---------- თამაში ----------
 let G = null, SEL = null, BUSY = false, UID = 0, SIM = false, HEADLESS = false;   // HEADLESS — ტესტები და ტიუნერი: ხატვის, ხმის და ანიმაციის გარეშე   // SIM — კომპიუტერი სვლას ასლზე ცდის: ჟურნალი, ეფექტები და ეკრანები გამორთულია
 
@@ -309,6 +323,7 @@ function newGame(opt) {
   };
   G = { p: [mk(opt.me, false), mk(opt.foe, opt.mode === "ai")], mode: opt.mode, units: [], forts: {}, volley: {}, turn: 0, cur: opt.first, over: null, log: [], camp: !!opt.camp };
   if (opt.foeHq) G.p[1].hq = opt.foeHq;
+  G.terrain = opt.terrain || TERRAINS[rnd(TERRAINS.length)];   // Kling-ის მოედანი: ტალახი, თოვლი ან სანაპირო
   for (const P of G.p) for (let i = 0; i < 5; i++) P.hand.push(P.deck.pop());
   G.p[1 - opt.first].hand.push(G.p[1 - opt.first].deck.pop());
   G.p[1 - opt.first].bank = 2;   // მეორე მოთამაშის კომპენსაცია: +1 ბარათი და პირველ სვლაზე +2 მარაგი
@@ -811,6 +826,7 @@ function render() {
     }
   }
   $("board").innerHTML = h;
+  $("board").style.backgroundImage = `linear-gradient(rgba(22, 18, 14, .3), rgba(22, 18, 14, .3)), url(ui/${G.terrain || TERRAINS[0]}.jpg)`;
   // ხელი
   const human = !G.p[G.cur].ai && G.cur === v && !G.over;
   $("hand").innerHTML = P.hand.map((id, i) => {
@@ -1126,7 +1142,7 @@ function endScreen() {
   if (!G || !G.over) return;
   const v = viewer(), w = G.over.p, mine = G.mode === "ai" ? w === 0 : true;
   const title = G.mode === "ai" ? (mine ? t("გამარჯვება", "Victory") : t("დამარცხება", "Defeat")) : t(`${fname(G.p[w].fid)} იმარჯვებს`, `${fname(G.p[w].fid)} wins`);
-  showDlg("end", `<h2>${title}</h2><p>${G.over.how === "break" ? t("გარღვევა: სამივე ნეიტრალური ზოლი დაკავებულია.", "Breakthrough: all three No Man's Lands are held.") : t("მოწინააღმდეგის შტაბი დაეცა.", "The enemy HQ has fallen.")}</p>
+  showDlg("end", `<h2>${title}</h2><div class="endimg" role="img" aria-label="${mine ? t("გამარჯვება", "Victory") : t("დამარცხება", "Defeat")}" style="background-image:url(ui/${mine ? "victory" : "defeat"}.jpg)"></div><p>${G.over.how === "break" ? t("გარღვევა: სამივე ნეიტრალური ზოლი დაკავებულია.", "Breakthrough: all three No Man's Lands are held.") : t("მოწინააღმდეგის შტაბი დაეცა.", "The enemy HQ has fallen.")}</p>
     <p class="deck">${t(`სვლები: ${G.turn} · დაცემული: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`, `Turns: ${G.turn} · fallen: ${fname(G.p[0].fid)} ${G.p[0].fallen}, ${fname(G.p[1].fid)} ${G.p[1].fallen}`)}</p>
     <div class="acts"><button class="btn" type="button" id="eLook">${t("ველის ნახვა", "View board")}</button>${G.camp
       ? `<button class="btn primary" type="button" id="eCamp">${t("კამპანიაში დაბრუნება", "Back to the campaign")}</button>`
@@ -1153,7 +1169,8 @@ function campaignStart(f) {
 function campaignBattle() {
   const i = CAMP.battle, foe = CAMP.enemies[i];
   hideDlg();
-  newGame({ me: { ...CAMP.deck, name: t("კამპანიის დასტა", "Campaign deck") }, foe, mode: "ai", first: rnd(2), level: i < 2 ? "easy" : "hard", camp: true, foeHq: i === CAMP_N - 1 ? 25 : 0 });
+  newGame({ me: { ...CAMP.deck, name: t("კამპანიის დასტა", "Campaign deck") }, foe, mode: "ai", first: rnd(2), level: i < 2 ? "easy" : "hard", camp: true, foeHq: i === CAMP_N - 1 ? 25 : 0,
+    terrain: i === CAMP_N - 1 ? "board_mud" : TERRAINS[i % TERRAINS.length] });
 }
 // ჯილდო: 3 ბარათი, რომლებიც დასტის წესებს არ არღვევს (ასლები, მოკავშირეები ≤ 9, გმირი ≤ 1)
 function rewardOptions() {
@@ -1169,6 +1186,14 @@ function rewardOptions() {
   pick(own, 3 - out.length);
   if (out.length < 3) { const cs = Object.keys(D.common).filter(id => (d.common[id] || 0) < 2); while (out.length < 3 && cs.length) out.push(["c", cs.splice(rnd(cs.length), 1)[0]]); }
   return out;
+}
+// კამპანიის რუკა (Kling): ბრძოლების ნიშნულები ხეობის გასწვრივ, ფინალი — ნაპრალთან
+const CAMP_PINS = [[10, 76], [24, 64], [38, 74], [82, 66], [68, 52], [51, 37]];
+function campMap(C2) {
+  const pts = CAMP_PINS.slice(0, CAMP_N);
+  return `<div class="cmap" role="img" aria-label="${t("კამპანიის რუკა", "Campaign map")}"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <polyline points="${pts.map(p => p.join(",")).join(" ")}" fill="none" stroke="#e7c46b" stroke-width=".6" stroke-dasharray="1.6 1.2" vector-effect="non-scaling-stroke" style="stroke-width:2px"/></svg>
+    ${pts.map(([x, y], i) => `<span class="pin ${i < C2.battle ? "done" : i === C2.battle && !C2.done ? "now" : ""} ${i === CAMP_N - 1 ? "final" : ""}" style="left:${x}%;top:${y}%" title="${esc(fname(C2.enemies[i]))}">${i < C2.battle ? "✓" : i + 1}</span>`).join("")}</div>`;
 }
 function campaignResult(won) {
   if (won) { CAMP.battle++; if (CAMP.battle >= CAMP_N) CAMP.done = "won"; else CAMP.reward = rewardOptions(); }
@@ -1186,7 +1211,7 @@ function campaignScreen() {
       $("cBack").onclick = setupScreen, $("cGo").onclick = () => { campaignStart($("cF").value); campaignScreen(); };
   }
   const C2 = CAMP, n = Object.values(C2.deck.units).reduce((a, b) => a + b, 0) + Object.values(C2.deck.common).reduce((a, b) => a + b, 0);
-  const steps = C2.enemies.map((e, i) => `<li class="${i < C2.battle ? "done" : i === C2.battle && !C2.done ? "now" : ""}">${i + 1}. ${esc(fname(e))}${i === CAMP_N - 1 ? t(" — ფინალი", " — final") : ""}${i < C2.battle ? " ✓" : ""}</li>`).join("");
+  const steps = C2.enemies.map((e, i) => `<li class="${i < C2.battle ? "done" : i === C2.battle && !C2.done ? "now" : ""}">${esc(fname(e))}${i === CAMP_N - 1 ? t(" — ფინალი", " — final") : ""}${i < C2.battle ? " ✓" : ""}</li>`).join("");
   let body = "";
   if (C2.done === "won") body = `<p class="ok">${t("კამპანია მოგებულია! ფრონტი გაიმაგრა.", "Campaign won! The front holds.")}</p>`;
   else if (C2.done === "lost") body = `<p class="bad">${t("კამპანია წაგებულია: სიცოცხლე ამოიწურა.", "Campaign lost: no lives left.")}</p>`;
@@ -1199,7 +1224,7 @@ function campaignScreen() {
   showDlg("camp", `<h2>${t("კამპანია", "Campaign")}: ${esc(fname(C2.f))}</h2>
     <p class="deck">${t(`სიცოცხლე: ${"♥".repeat(Math.max(0, C2.lives))} · დასტა: ${n} ბარათი${C2.added.length ? " · მოპოვებული: " + C2.added.map(id => esc(nm(D.units[id] || D.common[id]))).join(", ") : ""}`,
       `Lives: ${"♥".repeat(Math.max(0, C2.lives))} · deck: ${n} cards${C2.added.length ? " · earned: " + C2.added.map(id => esc(nm(D.units[id] || D.common[id]))).join(", ") : ""}`)}</p>
-    <ol class="camp">${steps}</ol>${body}
+    ${campMap(C2)}<ol class="camp">${steps}</ol>${body}
     <div class="acts"><button class="btn" type="button" id="cQuit">${C2.done ? t("ახალი კამპანია", "New campaign") : t("კამპანიის მიტოვება", "Abandon campaign")}</button><button class="btn" type="button" id="cBack">${t("მთავარი მენიუ", "Main menu")}</button>
       ${!C2.done && !C2.reward ? `<button class="btn primary" type="button" id="cFight">${t(`ბრძოლა ${C2.battle + 1}`, `Battle ${C2.battle + 1}`)}</button>` : ""}</div>`);
   $("cBack").onclick = setupScreen;

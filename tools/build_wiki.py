@@ -236,8 +236,11 @@ def main():
     back = ROOT / "assets/art/card_back.jpg"
     if back.exists():
         Image.open(back).convert("RGB").resize((480, 720), Image.LANCZOS).save(art_dir / "card_back.jpg", quality=78, optimize=True)
+    world = ROOT / "assets/ui/map_world.jpg"   # Kling: კარიბჭეების მსოფლიო რუკა (მთავარ გვერდზე)
+    if world.exists():
+        Image.open(world).convert("RGB").resize((1600, 903), Image.LANCZOS).save(art_dir / "map_world.jpg", quality=78, optimize=True)
     for p in art_dir.glob("*.jpg"):
-        if p.name != "card_back.jpg":
+        if p.name not in ("card_back.jpg", "map_world.jpg"):
             p.unlink()
     src, groups, pos, cpos = sheet_layout(data, names, X["cgall"]["common"])
     arts = set(pos)
