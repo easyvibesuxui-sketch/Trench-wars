@@ -10575,7 +10575,7 @@
    "units": {
     "finnish_regulars": 2,
     "finnish_thugs": 2,
-    "ski_patrol": 1,
+    "ski_patrol": 2,
     "forest_riflemen": 2,
     "sampo_guards": 2,
     "ilmarinen_forged": 2,
@@ -10583,7 +10583,7 @@
     "forge_apprentices": 2,
     "river_wardens": 2,
     "finnish_leader": 1,
-    "hakkapeliitta": 2,
+    "hakkapeliitta": 1,
     "sun_lantern": 1
    },
    "common": {
@@ -10837,13 +10837,13 @@
     "korea_thugs": 2,
     "mountain_trackers": 2,
     "village_riflemen": 2,
-    "fortress_wall_guard": 1,
+    "fortress_wall_guard": 2,
     "imugi_hunters": 1,
     "dokkaebi_bargainers": 2,
     "haetae_firewardens": 2,
     "hwarang": 2,
     "korea_leader": 2,
-    "tiger_hunters": 2,
+    "tiger_hunters": 1,
     "haetae_engine": 1
    },
    "common": {
@@ -11039,10 +11039,9 @@
     "lechia_grotesque": 1,
     "lechia_regulars": 2,
     "lechia_thugs": 2,
-    "salt_miners": 1,
+    "salt_miners": 2,
     "shore_scouts": 2,
     "salt_mine_shields": 2,
-    "winged_hussars": 1,
     "skuba_trappers": 2,
     "salt_healers": 2,
     "utopiec_hunters": 2,
