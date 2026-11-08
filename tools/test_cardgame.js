@@ -10,6 +10,7 @@ const path = require('path');
   await p.goto('file://' + path.resolve(__dirname, '..', 'cardgame', 'index.html')); await p.waitForTimeout(300);
   const r = await p.evaluate(() => {
     const C = window.__cg, out = { games: 0, over: 0, stuck: 0, first: 0, turns: 0 };
+    C.headless(true);   // ხატვის, ხმის და ანიმაციის გარეშე — 10-ჯერ სწრაფია
     const pairs = [['colchis', 'harness'], ['iberia', 'hell'], ['kajeti', 'listeners'], ['ring', 'ottoman'], ['hellenic', 'byzantium']];
     for (const [a, z] of pairs) for (let g = 0; g < 40; g++) {
       C.newGame({ me: g % 2 ? a : z, foe: g % 2 ? z : a, mode: 'test', first: (g >> 1) % 2 });

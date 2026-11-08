@@ -265,7 +265,7 @@ function noise(dur, vol, filt, freq, delay) {
   src.connect(f).connect(g).connect(a.destination); src.start(t0);
 }
 function sfx(kind) {
-  if (!SOUND || SIM) return;
+  if (!SOUND || SIM || HEADLESS) return;
   switch (kind) {
     case "deploy": tone(150, 60, .18, "sine", .35); noise(.08, .12, "lowpass", 900); break;
     case "build": noise(.12, .2, "bandpass", 500); noise(.12, .18, "bandpass", 420, .14); break;
@@ -296,7 +296,7 @@ function animate() {
 }
 
 // ---------- თამაში ----------
-let G = null, SEL = null, BUSY = false, UID = 0, SIM = false;   // SIM — კომპიუტერი სვლას ასლზე ცდის: ჟურნალი, ეფექტები და ეკრანები გამორთულია
+let G = null, SEL = null, BUSY = false, UID = 0, SIM = false, HEADLESS = false;   // HEADLESS — ტესტები და ტიუნერი: ხატვის, ხმის და ანიმაციის გარეშე   // SIM — კომპიუტერი სვლას ასლზე ცდის: ჟურნალი, ეფექტები და ეკრანები გამორთულია
 
 function newGame(opt) {
   // დასტა: ფრაქციის id (სასტარტო დასტა) ან {f, units, common, name} (შენი დასტა, კამპანია)
@@ -382,6 +382,7 @@ function endTurn() {
 function win(p, how) {
   G.over = { p, how };
   if (SIM) return;
+  if (HEADLESS) return;
   sfx(G.mode === "hot" || p === 0 ? "win" : "lose");
   log(() => how === "break" ? t(`გარღვევა! ${fname(G.p[p].fid)} სამივე ნეიტრალურ ზოლს აკონტროლებს.`, `Breakthrough! ${fname(G.p[p].fid)} holds No Man's Land on all three lines.`)
     : t(`${fname(G.p[1 - p].fid)}-ის შტაბი დაეცა.`, `${fname(G.p[1 - p].fid)}: the HQ has fallen.`), "sys");
@@ -767,6 +768,7 @@ function fortHTML(f) {
   return `<button type="button" class="fort ${f.o === v ? "mine" : "foe"} ${tg ? "target" : ""}" data-f="${f.lane}:${f.o}" title="${esc(ctext(c))}">${esc(cname(c))}${f.hp !== null ? " · " + f.hp : ""}</button>`;
 }
 function render() {
+  if (HEADLESS) { FX = []; FXHQ = []; FXA = []; FXN = []; return; }
   document.documentElement.lang = LANG;
   document.title = t("სამი ხაზი", "Three Lines");
   $("title").innerHTML = `${t("სამი ხაზი", "Three Lines")} <small>${t("ქვესკნელის ფრონტი · ბარათის თამაში", "Underfront · card game")}</small>`;
@@ -1227,5 +1229,5 @@ function passScreen() {
 
 render();
 setupScreen();
-window.__cg = { get G() { return G; }, newGame, endTurn, aiAction, strongAction, W: DEFW, play, attack, move, targets, canAttack, cardOf };
+window.__cg = { get G() { return G; }, headless(v) { HEADLESS = v !== false; }, newGame, endTurn, aiAction, strongAction, W: DEFW, play, attack, move, targets, canAttack, cardOf };
 </script>
