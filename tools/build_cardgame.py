@@ -36,6 +36,7 @@ KW = {  # ნიშანი → (სახელი, წესი)
     "fire": ("ცეცხლი", "სამიზნე თავისი სვლის დასაწყისში 1 ზიანს იღებს"),
     "gas_mask": ("აირწინაღი", "გაზი მასზე არ მოქმედებს"),
     "giant": ("გოლიათი", "ჩამოსვლა მხოლოდ მაშინ, როცა 2 ხაზის ნეიტრალურ ზოლს აკონტროლებ; დასტაში მაქს. 1"),
+    "hero": ("გმირი", "დასტაში მაქს. 1 გმირი; როცა ეცემა, შენი შტაბი 2 ნებისყოფას კარგავს"),
 }
 STRONG = {"fly", "scout", "long", "charge", "suppress", "shield", "healer"}   # ძლიერი ნიშნები ძალის ბიუჯეტიდან 1-ს აკლებს
 
@@ -178,6 +179,8 @@ def unit_card(u, palette):
     dur = u["wounds"] * (1 + u["armor"] / 3) * (u.get("size") or 1) ** 0.5
     kws = keywords(u)
     budget = 2 * c + 1 - sum(1 for k in kws if k in STRONG)
+    if u["tier"] == "hero":
+        kws = kws + ["hero"]   # გმირის ნიშანი ბიუჯეტს არ აკლებს: მისი ფასი დაცემისას შტაბის −2 ნებისყოფაა
     share = min(0.65, max(0.3, off / (off + dur)))   # შეტევის წილი ძალის ბიუჯეტში
     atk = max(1, min(budget - 1, round(budget * share)))
     return {"id": u["id"], "kind": "იუნიტი", "faction": u["faction"], "name": u["name"], "tier": u["tier"], "cost": c,
@@ -232,8 +235,6 @@ def main():
     names = {**data["factions"], **data["allies"]}
     units = []
     for u in data["units"]:
-        if u["tier"] == "hero":
-            continue
         units.append(unit_card({**u, "cost": costs.get(u["id"], u.get("cost", 20))}, V.F[u["faction"]]["palette"]))
     common = [{"id": i, "kind": k, "name": n, "cost": c, "text": t, **({"atk": s[0], "hp": s[1]} if s else {}),
                "art": f"card_{i}.jpg" if (ART / f"card_{i}.jpg").exists() else None} for i, k, n, c, t, s in COMMON]

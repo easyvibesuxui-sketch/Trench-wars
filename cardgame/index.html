@@ -162,6 +162,23 @@ h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font
 @media (max-width: 560px) { .dialog .row { grid-template-columns: 1fr; } }
 .dialog .deck { font-size: .78rem; color: var(--muted); line-height: 1.45; }
 .dialog .acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.dialog.wide { width: min(1100px, 100%); }
+.dialog .acts.left { justify-content: flex-start; }
+.dialog input { font: inherit; background: var(--mud); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; padding: 7px; min-width: 0; }
+.bhead { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; } .bhead h2 { flex: 1 1 100%; }
+.bhead label { flex: 1 1 200px; }
+.bstat { font-size: .84rem; color: var(--muted); } .bstat .ok { color: var(--moss); } .bstat .bad { color: #e2a594; }
+.bcols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+@media (max-width: 700px) { .bcols { grid-template-columns: minmax(0, 1fr); } }
+.bcol { display: grid; gap: 6px; align-content: start; min-width: 0; } .bcol h3 { margin: 4px 0 0; font-size: .9rem; color: var(--bronze); }
+.btabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.blist { max-height: 46vh; overflow-y: auto; display: grid; gap: 4px; padding-right: 2px; }
+.brow { display: grid; grid-template-columns: 30px 22px minmax(0, 1fr) auto auto auto; gap: 6px; align-items: center; padding: 3px 4px; border: 1px solid var(--line); border-radius: 5px; background: var(--mud); }
+.bart { width: 30px; aspect-ratio: 3 / 4; border-radius: 3px; background-color: var(--mud-3); background-repeat: no-repeat; }
+.bcost { width: 22px; height: 22px; border-radius: 50%; background: var(--bronze); color: #1d1a16; display: grid; place-items: center; font-weight: 800; font-size: .76rem; }
+.binfo { display: grid; min-width: 0; } .binfo b { font-size: .8rem; } .binfo small { font-size: .68rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bn { min-width: 1.4em; text-align: center; font-variant-numeric: tabular-nums; color: var(--bronze); font-weight: 700; }
+.brow .btn { padding: 2px 9px; }
 .rules { font-size: .88rem; line-height: 1.5; } .rules h3 { margin: 10px 0 2px; font-size: .95rem; color: var(--bronze); } .rules ul { margin: 0; padding-left: 18px; }
 @media (prefers-reduced-motion: reduce) { .tok.hit, .float { animation: none; } }
 </style>
@@ -225,9 +242,10 @@ const fname = f => nm(D.factions[f]);
 let G = null, SEL = null, BUSY = false, UID = 0, SIM = false;   // SIM — კომპიუტერი სვლას ასლზე ცდის: ჟურნალი, ეფექტები და ეკრანები გამორთულია
 
 function newGame(opt) {
-  const mk = (fid, ai) => {
+  // დასტა: ფრაქციის id (სასტარტო დასტა) ან {f, units, common, name} (შენი დასტა, კამპანია)
+  const mk = (spec, ai) => {
     const deck = [];
-    const s = D.starter[fid];
+    const s = typeof spec === "string" ? D.starter[spec] : spec, fid = typeof spec === "string" ? spec : spec.f;
     for (const [id, n] of Object.entries(s.units)) for (let i = 0; i < n; i++) deck.push(id);
     for (const [id, n] of Object.entries(s.common)) for (let i = 0; i < n; i++) deck.push(id);
     return { fid, ai, deck: shuffle(deck), hand: [], hq: 20, bank: 0, porters: 0, avail: 0, fallen: 0 };
@@ -238,7 +256,8 @@ function newGame(opt) {
   G.p[1 - opt.first].bank = 2;   // მეორე მოთამაშის კომპენსაცია: +1 ბარათი და პირველ სვლაზე +2 მარაგი
   G.p[1].level = opt.level || "hard";   // კომპიუტერის სიძლიერე: hard — strongAction, easy — aiAction
   SEL = null;
-  log(() => t(`${fname(opt.me)} ${fname(opt.foe)}-ის წინააღმდეგ. იწყებს: ${fname(G.p[opt.first].fid)}.`, `${fname(opt.me)} against ${fname(opt.foe)}. ${fname(G.p[opt.first].fid)} goes first.`), "sys");
+  const a = G.p[0].fid, z = G.p[1].fid;
+  log(() => t(`${fname(a)} ${fname(z)}-ის წინააღმდეგ. იწყებს: ${fname(G.p[opt.first].fid)}.`, `${fname(a)} against ${fname(z)}. ${fname(G.p[opt.first].fid)} goes first.`), "sys");
   startTurn();
 }
 
@@ -312,7 +331,15 @@ function win(p, how) {
 }
 
 function cleanup() {
-  for (const u of G.units) if (u.hp <= 0 && !u.dead) { u.dead = true; G.p[u.o].fallen++; log(() => t(`${cname(u.c)} დაეცა.`, `${cname(u.c)} has fallen.`), u.o === viewer() ? "foe" : "me"); }
+  for (const u of G.units) if (u.hp <= 0 && !u.dead) {
+    u.dead = true; G.p[u.o].fallen++;
+    log(() => t(`${cname(u.c)} დაეცა.`, `${cname(u.c)} has fallen.`), u.o === viewer() ? "foe" : "me");
+    if (has(u, "hero")) {   // გმირის დაცემა შტაბის ნებისყოფას −2-ით ამცირებს
+      G.p[u.o].hq -= 2; if (!SIM) FXHQ.push([u.o, 2]);
+      log(() => t(`გმირი დაეცა: შტაბი −2 ნებისყოფა.`, `A hero has fallen: the HQ loses 2 nerve.`), "sys");
+      if (G.p[u.o].hq <= 0 && !G.over) win(1 - u.o, "hq");
+    }
+  }
   G.units = G.units.filter(u => u.hp > 0);
   for (const [k, f] of Object.entries(G.forts)) if (f.hp !== null && f.hp <= 0) { delete G.forts[k]; log(() => t(`${cname(cardOf(f.id))} დაინგრა.`, `${cname(cardOf(f.id))} was destroyed.`)); }
 }
@@ -592,7 +619,7 @@ function incoming(u) {
 }
 function unitVal(u, W) {
   const fwd = u.pos === "nml" ? 2 : u.pos === "trench" ? 1 : 0;
-  return (u.atk * W.atk + u.hp * W.hp + u.c.cost * W.cost * (u.hp / u.max) + u.kw.length * W.kw) + fwd * W.fwd * (has(u, "long") && u.pos !== "rear" ? 0.3 : 1);
+  return (u.atk * W.atk + u.hp * W.hp + u.c.cost * W.cost * (u.hp / u.max) + u.kw.length * W.kw + (has(u, "hero") ? 2 * W.hq : 0)) + fwd * W.fwd * (has(u, "long") && u.pos !== "rear" ? 0.3 : 1);
 }
 function evaluate(p) {
   if (G.over) return G.over.p === p ? 1e6 : -1e6;
@@ -860,21 +887,117 @@ document.addEventListener("click", ev => {
 document.addEventListener("keydown", ev => { if (ev.key === "Escape" && SEL) afterAct(); });
 
 // ---------- ეკრანები ----------
-function showDlg(kind, html) { $("dlg").innerHTML = html; $("ov").dataset.kind = kind; $("ov").hidden = false; const f = $("dlg").querySelector("select, button"); if (f) f.focus(); }
+function showDlg(kind, html) {
+  const again = $("ov").dataset.kind === kind && !$("ov").hidden;   // იგივე ფანჯრის განახლება: ფოკუსი და გადახვევა რჩება
+  $("dlg").innerHTML = html; $("dlg").classList.toggle("wide", kind === "builder"); $("ov").dataset.kind = kind; $("ov").hidden = false;
+  if (!again) { const f = $("dlg").querySelector("select, button"); if (f) f.focus(); }
+}
 function hideDlg() { $("ov").hidden = true; $("ov").dataset.kind = ""; }
-function reopen() { const k = $("ov").dataset.kind; if (k === "setup") setupScreen(); else if (k === "rules") rulesScreen(); else if (k === "end") endScreen(); else if (k === "pass") passScreen(); else if (k === "info") infoScreen(); else if (k === "log") logScreen(); }
+function reopen() { const k = $("ov").dataset.kind; if (k === "setup") setupScreen(); else if (k === "rules") rulesScreen(); else if (k === "end") endScreen(); else if (k === "pass") passScreen(); else if (k === "info") infoScreen(); else if (k === "log") logScreen(); else if (k === "builder" && BD) builderScreen(); }
 function deckOptions(sel, withRandom) {
+  const mine = Object.entries(MYDECKS).map(([id, d]) => `<option value="my:${id}" ${"my:" + id === sel ? "selected" : ""}>${esc(d.name)} (${esc(fname(d.f))})</option>`).join("");
   const grp = (label, fn) => { const fs = Object.keys(D.starter).filter(f => fn(D.factions[f])); return `<optgroup label="${esc(label)}">${fs.map(f => `<option value="${f}" ${f === sel ? "selected" : ""}>${esc(fname(f))}${D.win[f] ? ` (${D.win[f]}%)` : ""}</option>`).join("")}</optgroup>`; };
   return (withRandom ? `<option value="random" ${sel === "random" ? "selected" : ""}>${t("შემთხვევითი", "Random")}</option>` : "")
+    + (mine ? `<optgroup label="${esc(t("ჩემი დასტები", "My decks"))}">${mine}</optgroup>` : "")
     + grp(t("ნათელი მხარე", "The Light Side"), f => f.core && f.side === "light") + grp(t("ბნელი მხარე", "The Dark Side"), f => f.core && f.side === "dark") + grp(t("მოკავშირეები", "Allies"), f => !f.core);
 }
-function deckList(fid) {
-  if (!D.starter[fid]) return "";
-  const s = D.starter[fid];
+function deckList(v) {
+  const s = typeof specOf(v) === "string" ? D.starter[v] : specOf(v);
+  if (!s) return "";
   return Object.entries(s.units).map(([id, n]) => `${esc(nm(D.units[id]))} ×${n}`).join(", ") + " · " + Object.entries(s.common).map(([id, n]) => `${esc(nm(D.common[id]))} ×${n}`).join(", ");
 }
+// ---------- შენი დასტები ----------
+let MYDECKS = {};
+try { MYDECKS = JSON.parse(localStorage.getItem("cg-decks") || "{}"); } catch (e) {}
+const saveDecks = () => { try { localStorage.setItem("cg-decks", JSON.stringify(MYDECKS)); } catch (e) {} };
+const specOf = v => v.startsWith("my:") ? MYDECKS[v.slice(3)] : v;
+const specF = v => v.startsWith("my:") ? (MYDECKS[v.slice(3)] || {}).f : v;
+// დასტის წესები: 30 ბარათი; ერთ ბარათს მაქს. 2; IV დონე, გოლიათი, გმირი — 1 ასლი; გოლიათი და გმირი — თითო; მოკავშირე (იმავე მხარე) — მაქს. 9
+function deckProblems(d) {
+  const out = [], side = D.factions[d.f].side;
+  const n = Object.values(d.units).reduce((a, b) => a + b, 0) + Object.values(d.common).reduce((a, b) => a + b, 0);
+  if (n !== 30) out.push(t(`დასტაში ${n} ბარათია, საჭიროა 30.`, `The deck has ${n} cards; it needs 30.`));
+  let ally = 0, giants = 0, heroes = 0;
+  for (const [id, k] of Object.entries(d.units)) {
+    const u = D.units[id]; if (!u) continue;
+    if (k > 2) out.push(t(`${u.ka}: მაქს. 2 ასლი.`, `${u.en}: max. 2 copies.`));
+    if (BIG.has(u.tier) || u.tier === "hero") { if (k > 1) out.push(t(`${u.ka}: მხოლოდ 1 ასლი.`, `${u.en}: only 1 copy.`)); }
+    if (u.f !== d.f) { ally += k; if (D.factions[u.f].side !== side) out.push(t(`${u.ka} სხვა მხარისაა.`, `${u.en} is from the other side.`)); }
+    if (u.kw.includes("giant")) giants += k;
+    if (u.tier === "hero") heroes += k;
+  }
+  for (const [id, k] of Object.entries(d.common)) if (k > 2) out.push(t(`${D.common[id].ka}: მაქს. 2 ასლი.`, `${D.common[id].en}: max. 2 copies.`));
+  if (ally > 9) out.push(t(`მოკავშირეების ბარათი: ${ally}, მაქს. 9.`, `Ally cards: ${ally}, max. 9.`));
+  if (giants > 1) out.push(t("გოლიათი მაქს. 1.", "Max. 1 giant."));
+  if (heroes > 1) out.push(t("გმირი მაქს. 1.", "Max. 1 hero."));
+  return out;
+}
+let BD = null;   // ამწყობში ახლა რედაქტირებადი დასტა
+function builderScreen(id) {
+  if (id !== undefined) {
+    const src = id && MYDECKS[id] ? MYDECKS[id] : null;
+    BD = src ? { id, name: src.name, f: src.f, units: { ...src.units }, common: { ...src.common } }
+      : { id: "d" + Date.now().toString(36), name: t("ჩემი დასტა", "My deck"), f: specF(PREF.me) || "colchis", units: { ...D.starter[specF(PREF.me) || "colchis"].units }, common: { ...D.starter[specF(PREF.me) || "colchis"].common } };
+    BD.filter = "f"; BD.q = "";
+  }
+  const keepScroll = [...document.querySelectorAll("#dlg .blist")].map(e => e.scrollTop), keepFilter = BD.lastFilter === BD.filter;
+  BD.lastFilter = BD.filter;
+  const side = D.factions[BD.f].side, total = Object.values(BD.units).reduce((a, b) => a + b, 0) + Object.values(BD.common).reduce((a, b) => a + b, 0);
+  const ally = Object.entries(BD.units).filter(([i]) => D.units[i] && D.units[i].f !== BD.f).reduce((a, [, k]) => a + k, 0);
+  const probs = deckProblems(BD);
+  const facOpts = Object.keys(D.factions).map(f => `<option value="${f}" ${f === BD.f ? "selected" : ""}>${esc(fname(f))}</option>`).join("");
+  const q = BD.q.trim().toLowerCase();
+  let pool = [];
+  if (BD.filter === "c") pool = Object.keys(D.common).map(id => ["c", id]);
+  else pool = Object.entries(D.units).filter(([id, u]) => (BD.filter === "f" ? u.f === BD.f && u.tier !== "hero" : BD.filter === "h" ? u.tier === "hero" && D.factions[u.f].side === side : u.f !== BD.f && D.factions[u.f].side === side && u.tier !== "hero"))
+    .sort((a, b) => a[1].cost - b[1].cost).map(([id]) => ["u", id]);
+  if (q) pool = pool.filter(([k, id]) => { const c = k === "u" ? D.units[id] : D.common[id]; return (c.ka + " " + c.en).toLowerCase().includes(q) || (k === "u" && fname(D.units[id].f).toLowerCase().includes(q)); });
+  const row = ([k, id], inDeck) => {
+    const c = k === "u" ? D.units[id] : D.common[id], n = (k === "u" ? BD.units : BD.common)[id] || 0;
+    const sub = k === "u" ? `${esc(fname(c.f))} · ${c.tier === "hero" ? t("გმირი", "hero") : c.tier} · ⚔ ${c.atk} ⛨ ${c.hp}${c.kw.filter(x => x !== "hero").length ? " · " + c.kw.filter(x => x !== "hero").map(x => esc(KWN(x))).join(", ") : ""}` : esc(LANG === "en" ? c.ten : c.tka);
+    return `<div class="brow"><span class="bart" style="${sprite(c.art)}"></span><span class="bcost">${c.cost}</span><span class="binfo"><b>${esc(nm(c))}</b><small>${sub}</small></span>
+      ${inDeck ? `<button class="btn" type="button" data-bd="-" data-k="${k}" data-id="${id}" aria-label="${t("ამოღება", "Remove")}">−</button><span class="bn">${n}</span>` : ""}
+      <button class="btn" type="button" data-bd="+" data-k="${k}" data-id="${id}" aria-label="${t("დამატება", "Add")}">+</button></div>`;
+  };
+  const deckRows = [...Object.keys(BD.units).sort((a, b) => D.units[a].cost - D.units[b].cost).map(id => ["u", id]), ...Object.keys(BD.common).map(id => ["c", id])];
+  const tabs = [["f", t("ფრაქცია", "Faction")], ["a", t("მოკავშირეები", "Allies")], ["h", t("გმირები", "Heroes")], ["c", t("საერთო", "Common")]];
+  showDlg("builder", `<div class="bhead"><h2>${t("დასტის ამწყობი", "Deck builder")}</h2>
+      <label>${t("სახელი", "Name")}<input id="bName" maxlength="40" value="${esc(BD.name)}"></label>
+      <label>${t("ფრაქცია", "Faction")}<select id="bFac">${facOpts}</select></label></div>
+    <p class="bstat"><b class="${total === 30 ? "ok" : ""}">${total}/30</b> · ${t("მოკავშირეები", "Allies")} ${ally}/9 · ${probs.length ? `<span class="bad">${esc(probs[0])}</span>` : `<span class="ok">${t("დასტა მზადაა.", "The deck is ready.")}</span>`}</p>
+    <div class="bcols">
+      <div class="bcol"><div class="btabs" role="tablist">${tabs.map(([k, l]) => `<button type="button" class="btn ${BD.filter === k ? "primary" : ""}" data-bf="${k}">${l}</button>`).join("")}</div>
+        <input id="bQ" placeholder="${t("ძიება…", "Search…")}" value="${esc(BD.q)}" aria-label="${t("ბარათის ძიება", "Search cards")}">
+        <div class="blist">${pool.map(x => row(x, false)).join("") || `<p class="deck">${t("ბარათი ვერ მოიძებნა.", "No cards found.")}</p>`}</div></div>
+      <div class="bcol"><h3>${t("დასტა", "Deck")}</h3><div class="blist">${deckRows.map(x => row(x, true)).join("")}</div></div>
+    </div>
+    <div class="acts"><button class="btn" type="button" data-bd="starter">${t("სასტარტო დასტით შევსება", "Fill from starter deck")}</button>
+      ${MYDECKS[BD.id] ? `<button class="btn" type="button" data-bd="delete">${t("წაშლა", "Delete")}</button>` : ""}
+      <button class="btn" type="button" data-bd="close">${t("დაბრუნება", "Back")}</button>
+      <button class="btn primary" type="button" data-bd="save" ${probs.length ? "disabled" : ""}>${t("შენახვა", "Save")}</button></div>`);
+  if (keepFilter) document.querySelectorAll("#dlg .blist").forEach((e, i) => { e.scrollTop = keepScroll[i] || 0; });
+  $("bName").oninput = e => { BD.name = e.target.value; };
+  $("bQ").oninput = e => { BD.q = e.target.value; const pos = e.target.selectionStart; builderScreen(); $("bQ").focus(); $("bQ").setSelectionRange(pos, pos); };
+  $("bFac").onchange = e => { BD.f = e.target.value; BD.units = { ...D.starter[BD.f].units }; BD.common = { ...D.starter[BD.f].common }; builderScreen(); };
+}
+document.addEventListener("click", ev => {
+  const bf = ev.target.closest("[data-bf]"); if (bf && BD) { BD.filter = bf.dataset.bf; return builderScreen(); }
+  const b = ev.target.closest("[data-bd]"); if (!b || !BD) return;
+  const a = b.dataset.bd, box = b.dataset.k === "c" ? BD.common : BD.units, id = b.dataset.id;
+  if (a === "+") { box[id] = (box[id] || 0) + 1; return builderScreen(); }
+  if (a === "-") { box[id]--; if (box[id] <= 0) delete box[id]; return builderScreen(); }
+  if (a === "starter") { BD.units = { ...D.starter[BD.f].units }; BD.common = { ...D.starter[BD.f].common }; return builderScreen(); }
+  if (a === "delete") { delete MYDECKS[BD.id]; saveDecks(); BD = null; return setupScreen(); }
+  if (a === "close") { BD = null; return setupScreen(); }
+  if (a === "save" && !deckProblems(BD).length) {
+    MYDECKS[BD.id] = { name: BD.name.trim() || t("ჩემი დასტა", "My deck"), f: BD.f, units: BD.units, common: BD.common };
+    saveDecks(); PREF.me = "my:" + BD.id; BD = null; return setupScreen();
+  }
+});
+
 let PREF = { me: "colchis", foe: "harness", mode: "ai", first: "random", level: "hard" };
 try { PREF = { ...PREF, ...JSON.parse(localStorage.getItem("cg-pref") || "{}") }; } catch (e) {}
+for (const k of ["me", "foe"]) if (String(PREF[k]).startsWith("my:") && !MYDECKS[PREF[k].slice(3)]) PREF[k] = k === "me" ? "colchis" : "harness";
 function setupScreen() {
   showDlg("setup", `<h2>${t("ახალი თამაში", "New game")}</h2>
     <p>${t("ორი დასტა, სამი ხაზი. მოიგებს ის, ვინც მტრის შტაბის ნებისყოფას 20-დან 0-მდე ჩამოიყვანს ან სვლის დასაწყისში სამივე ნეიტრალურ ზოლს დაიჭერს.",
@@ -882,13 +1005,16 @@ function setupScreen() {
     <div class="row"><label>${t("შენი დასტა", "Your deck")}<select id="sMe">${deckOptions(PREF.me)}</select></label>
       <label>${t("მოწინააღმდეგე", "Opponent")}<select id="sFoe">${deckOptions(PREF.foe, true)}</select></label></div>
     <p class="deck" id="sDeck"></p>
+    <div class="acts left"><button class="btn" type="button" id="sBuild">${t("ახალი დასტის აწყობა", "Build a new deck")}</button><button class="btn" type="button" id="sEdit" hidden>${t("ამ დასტის რედაქტირება", "Edit this deck")}</button></div>
     <div class="row"><label>${t("რეჟიმი", "Mode")}<select id="sMode"><option value="ai" ${PREF.mode === "ai" ? "selected" : ""}>${t("კომპიუტერის წინააღმდეგ", "Against the computer")}</option>
       <option value="hot" ${PREF.mode === "hot" ? "selected" : ""}>${t("ორი მოთამაშე ერთ ეკრანზე", "Two players, one screen")}</option></select></label>
       <label>${t("კომპიუტერი", "Computer")}<select id="sLevel"><option value="hard">${t("ძლიერი", "Strong")}</option><option value="easy" ${PREF.level === "easy" ? "selected" : ""}>${t("მარტივი", "Easy")}</option></select></label>
       <label>${t("ვინ იწყებს", "Who goes first")}<select id="sFirst"><option value="random">${t("შემთხვევით", "Random")}</option><option value="0" ${PREF.first === "0" ? "selected" : ""}>${t("შენ", "You")}</option><option value="1" ${PREF.first === "1" ? "selected" : ""}>${t("მოწინააღმდეგე", "Opponent")}</option></select></label></div>
     <p class="deck">${t("ფრჩხილებში — დასტის მოგების წილი სიმულაციაში ყველა სხვა დასტის წინააღმდეგ.", "In brackets: the deck's simulated win rate against every other deck.")}</p>
     <div class="acts">${G ? `<button class="btn" type="button" id="sCancel">${t("დაბრუნება", "Back")}</button>` : ""}<button class="btn primary" type="button" id="sGo">${t("დაწყება", "Start")}</button></div>`);
-  const upd = () => { $("sDeck").innerHTML = `<b>${esc(fname($("sMe").value))}:</b> ${deckList($("sMe").value)}`; };
+  const upd = () => { const v = $("sMe").value; $("sDeck").innerHTML = `<b>${esc(fname(specF(v)))}:</b> ${deckList(v)}`; $("sEdit").hidden = !v.startsWith("my:"); };
+  $("sBuild").onclick = () => builderScreen(null);
+  $("sEdit").onclick = () => builderScreen($("sMe").value.slice(3));
   $("sMe").onchange = upd; upd();
   const lv = () => { $("sLevel").disabled = $("sMode").value !== "ai"; };
   $("sMode").onchange = lv; lv();
@@ -897,9 +1023,9 @@ function setupScreen() {
     PREF = { me: $("sMe").value, foe: $("sFoe").value, mode: $("sMode").value, first: $("sFirst").value, level: $("sLevel").value };
     try { localStorage.setItem("cg-pref", JSON.stringify(PREF)); } catch (e) {}
     let foe = PREF.foe;
-    if (foe === "random") { const fs = Object.keys(D.starter).filter(f => f !== PREF.me); foe = fs[rnd(fs.length)]; }
+    if (foe === "random") { const fs = Object.keys(D.starter).filter(f => f !== specF(PREF.me)); foe = fs[rnd(fs.length)]; }
     hideDlg();
-    newGame({ me: PREF.me, foe, mode: PREF.mode, first: PREF.first === "random" ? rnd(2) : +PREF.first, level: PREF.level });
+    newGame({ me: specOf(PREF.me) || "colchis", foe: specOf(foe) || "harness", mode: PREF.mode, first: PREF.first === "random" ? rnd(2) : +PREF.first, level: PREF.level });
   };
 }
 function rulesScreen() {

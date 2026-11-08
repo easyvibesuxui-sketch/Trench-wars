@@ -67,6 +67,10 @@
   "giant": {
    "name": "გოლიათი",
    "rule": "ჩამოსვლა მხოლოდ მაშინ, როცა 2 ხაზის ნეიტრალურ ზოლს აკონტროლებ; დასტაში მაქს. 1"
+  },
+  "hero": {
+   "name": "გმირი",
+   "rule": "დასტაში მაქს. 1 გმირი; როცა ეცემა, შენი შტაბი 2 ნებისყოფას კარგავს"
   }
  },
  "units": [
@@ -358,6 +362,46 @@
    ]
   },
   {
+   "id": "hero_zurab",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "ერისთავი ზურაბ ბრინჯაოსმკლავა",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 11,
+   "hp": 6,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_zurab.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
+   "id": "hero_eliso",
+   "kind": "იუნიტი",
+   "faction": "colchis",
+   "name": "დედა-მკურნალი ელისო",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 4,
+   "hp": 8,
+   "kw": [
+    "healer",
+    "hero"
+   ],
+   "art": "hero_eliso.jpg",
+   "palette": [
+    "#c8913e",
+    "#2f5d50",
+    "#8a3b2a"
+   ]
+  },
+  {
    "id": "khevsur",
    "kind": "იუნიტი",
    "faction": "iberia",
@@ -634,6 +678,45 @@
     "giant"
    ],
    "art": "armazi_colossus.jpg",
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "hero_amirani",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "ამირანი და ყურშა",
+   "tier": "hero",
+   "cost": 10,
+   "atk": 7,
+   "hp": 14,
+   "kw": [
+    "hero"
+   ],
+   "art": "hero_amirani.jpg",
+   "palette": [
+    "#5b6670",
+    "#d9c27a",
+    "#3c4a2e"
+   ]
+  },
+  {
+   "id": "hero_nino",
+   "kind": "იუნიტი",
+   "faction": "iberia",
+   "name": "სპასალარი ნინო მეხისთვალა",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 6,
+   "hp": 7,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_nino.jpg",
    "palette": [
     "#5b6670",
     "#d9c27a",
@@ -926,6 +1009,47 @@
    ]
   },
   {
+   "id": "hero_sabnock",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "მარკიზი საბნოკი",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 8,
+   "hp": 9,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_sabnock.jpg",
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
+   "id": "hero_marchosias",
+   "kind": "იუნიტი",
+   "faction": "hell",
+   "name": "მარკიზი მარქოსიასი",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 10,
+   "hp": 6,
+   "kw": [
+    "fly",
+    "leader",
+    "hero"
+   ],
+   "art": "hero_marchosias.jpg",
+   "palette": [
+    "#1d1b1e",
+    "#7a1f1f",
+    "#a8a29a"
+   ]
+  },
+  {
    "id": "rebels",
    "kind": "იუნიტი",
    "faction": "harness",
@@ -1197,6 +1321,46 @@
    ]
   },
   {
+   "id": "hero_nameless",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "უღლისმთავარი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 6,
+   "hp": 9,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_nameless.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
+   "id": "hero_rokapi",
+   "kind": "იუნიტი",
+   "faction": "harness",
+   "name": "როკაპი",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_rokapi.jpg",
+   "palette": [
+    "#6e4a36",
+    "#b4462f",
+    "#3a3226"
+   ]
+  },
+  {
    "id": "listeners_leader",
    "kind": "იუნიტი",
    "faction": "listeners",
@@ -1389,6 +1553,26 @@
    ]
   },
   {
+   "id": "hero_kalistrate",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ოსტატი კალისტრატე",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_kalistrate.jpg",
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
    "id": "false_signallers",
    "kind": "იუნიტი",
    "faction": "listeners",
@@ -1480,6 +1664,26 @@
     "long"
    ],
    "art": "gifted_fortress.jpg",
+   "palette": [
+    "#2e3440",
+    "#b8a77a",
+    "#5e5e5e"
+   ]
+  },
+  {
+   "id": "hero_wax_mother",
+   "kind": "იუნიტი",
+   "faction": "listeners",
+   "name": "ცვილის დედა",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_wax_mother.jpg",
    "palette": [
     "#2e3440",
     "#b8a77a",
@@ -1697,6 +1901,28 @@
    ]
   },
   {
+   "id": "hero_zarda",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ქაჯთა დედოფალი ზარდა",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 10,
+   "hp": 6,
+   "kw": [
+    "leader",
+    "healer",
+    "fire",
+    "hero"
+   ],
+   "art": "hero_zarda.jpg",
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
    "id": "kajeti_miners",
    "kind": "იუნიტი",
    "faction": "kajeti",
@@ -1769,6 +1995,27 @@
     "long"
    ],
    "art": "forge_citadel.jpg",
+   "palette": [
+    "#c0c4c8",
+    "#e07a2a",
+    "#2b2b2b"
+   ]
+  },
+  {
+   "id": "hero_chedia",
+   "kind": "იუნიტი",
+   "faction": "kajeti",
+   "name": "ოსტატი ჭედია",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 10,
+   "hp": 6,
+   "kw": [
+    "healer",
+    "fearless",
+    "hero"
+   ],
+   "art": "hero_chedia.jpg",
    "palette": [
     "#c0c4c8",
     "#e07a2a",
@@ -1966,6 +2213,26 @@
    ]
   },
   {
+   "id": "hero_levan",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "პოლკოვნიკი ლევან ოთხენოვანი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 6,
+   "hp": 9,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_levan.jpg",
+   "palette": [
+    "#4a5a6a",
+    "#c8913e",
+    "#a8987a"
+   ]
+  },
+  {
    "id": "tribute_scouts",
    "kind": "იუნიტი",
    "faction": "ring",
@@ -2057,6 +2324,25 @@
     "long"
    ],
    "art": "sea_gate_battery.jpg",
+   "palette": [
+    "#4a5a6a",
+    "#c8913e",
+    "#a8987a"
+   ]
+  },
+  {
+   "id": "hero_tamar",
+   "kind": "იუნიტი",
+   "faction": "ring",
+   "name": "თარჯიმანი თამარ შვიდენოვანი",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "hero"
+   ],
+   "art": "hero_tamar.jpg",
    "palette": [
     "#4a5a6a",
     "#c8913e",
@@ -3282,6 +3568,47 @@
    ]
   },
   {
+   "id": "hero_irini",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ინჟინერი ირინი",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 8,
+   "hp": 4,
+   "kw": [
+    "healer",
+    "digger",
+    "hero"
+   ],
+   "art": "hero_irini.jpg",
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
+   "id": "hero_alexios",
+   "kind": "იუნიტი",
+   "faction": "hellenic",
+   "name": "ნავარქი ალექსიოსი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_alexios.jpg",
+   "palette": [
+    "#e8e2d0",
+    "#2a4f7a",
+    "#b08a3a"
+   ]
+  },
+  {
    "id": "northern_leader",
    "kind": "იუნიტი",
    "faction": "northern",
@@ -3483,6 +3810,47 @@
     "long"
    ],
    "art": "bridge_keep.jpg",
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "hero_astrid",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "ასტრიდი ცალხელა",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 11,
+   "hp": 6,
+   "kw": [
+    "fearless",
+    "hero"
+   ],
+   "art": "hero_astrid.jpg",
+   "palette": [
+    "#3f5a6b",
+    "#c9b48a",
+    "#7b2e2a"
+   ]
+  },
+  {
+   "id": "hero_sigrun",
+   "kind": "იუნიტი",
+   "faction": "northern",
+   "name": "სიგრუნ ჯაჭვისმჭედელი",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 6,
+   "kw": [
+    "healer",
+    "digger",
+    "hero"
+   ],
+   "art": "hero_sigrun.jpg",
    "palette": [
     "#3f5a6b",
     "#c9b48a",
@@ -3692,6 +4060,48 @@
     "long"
    ],
    "art": "ringfort_walker.jpg",
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "hero_rowan",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "როუენი",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 7,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "scout",
+    "long",
+    "hero"
+   ],
+   "art": "hero_rowan.jpg",
+   "palette": [
+    "#2f6b3f",
+    "#9a7b4f",
+    "#c4c0b0"
+   ]
+  },
+  {
+   "id": "hero_niamh",
+   "kind": "იუნიტი",
+   "faction": "celtic",
+   "name": "ბელადი ნივი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_niamh.jpg",
    "palette": [
     "#2f6b3f",
     "#9a7b4f",
@@ -3911,6 +4321,46 @@
    ]
   },
   {
+   "id": "hero_elina",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "მომღერალი ელინა",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "hero"
+   ],
+   "art": "hero_elina.jpg",
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
+   "id": "hero_aarne",
+   "kind": "იუნიტი",
+   "faction": "finnish",
+   "name": "მეთაური აარნე",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 6,
+   "hp": 8,
+   "kw": [
+    "leader",
+    "long",
+    "hero"
+   ],
+   "art": "hero_aarne.jpg",
+   "palette": [
+    "#e9eef0",
+    "#2f4b3a",
+    "#8a5a3a"
+   ]
+  },
+  {
    "id": "britain_leader",
    "kind": "იუნიტი",
    "faction": "britain",
@@ -4115,6 +4565,47 @@
     "long"
    ],
    "art": "heorot_hall.jpg",
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "hero_wilfred",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ვილფრედი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 9,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "scout",
+    "hero"
+   ],
+   "art": "hero_wilfred.jpg",
+   "palette": [
+    "#6b6f4a",
+    "#7a2a2a",
+    "#c2b48a"
+   ]
+  },
+  {
+   "id": "hero_edith",
+   "kind": "იუნიტი",
+   "faction": "britain",
+   "name": "ედიტ ტბისმყვინთავი",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 11,
+   "hp": 6,
+   "kw": [
+    "fearless",
+    "hero"
+   ],
+   "art": "hero_edith.jpg",
    "palette": [
     "#6b6f4a",
     "#7a2a2a",
@@ -4354,6 +4845,45 @@
    ]
   },
   {
+   "id": "hero_eloise",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "ელოიზა",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 7,
+   "hp": 6,
+   "kw": [
+    "hero"
+   ],
+   "art": "hero_eloise.jpg",
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
+   "id": "hero_lucien",
+   "kind": "იუნიტი",
+   "faction": "gaul",
+   "name": "კომენდანტი ლუსიენი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_lucien.jpg",
+   "palette": [
+    "#4a6a9a",
+    "#a33a2a",
+    "#c9b98a"
+   ]
+  },
+  {
    "id": "italy_leader",
    "kind": "იუნიტი",
    "faction": "italy",
@@ -4559,6 +5089,47 @@
     "long"
    ],
    "art": "castrum_walker.jpg",
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "hero_giulia",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "ჯულია",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_giulia.jpg",
+   "palette": [
+    "#8a8a6a",
+    "#b5532a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "hero_marco",
+   "kind": "იუნიტი",
+   "faction": "italy",
+   "name": "მარკო ჩაქუჩოსანი",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 11,
+   "hp": 6,
+   "kw": [
+    "hunter",
+    "fearless",
+    "hero"
+   ],
+   "art": "hero_marco.jpg",
    "palette": [
     "#8a8a6a",
     "#b5532a",
@@ -4779,6 +5350,47 @@
    ]
   },
   {
+   "id": "hero_vasilisa",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "ვასილისა",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 9,
+   "hp": 7,
+   "kw": [
+    "leader",
+    "charge",
+    "hero"
+   ],
+   "art": "hero_vasilisa.jpg",
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
+   "id": "hero_marya",
+   "kind": "იუნიტი",
+   "faction": "polianitsy",
+   "name": "მარია მორევნა",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 11,
+   "hp": 6,
+   "kw": [
+    "fearless",
+    "hero"
+   ],
+   "art": "hero_marya.jpg",
+   "palette": [
+    "#b23a2a",
+    "#e9e2cf",
+    "#4a5a3a"
+   ]
+  },
+  {
    "id": "armenian_leader",
    "kind": "იუნიტი",
    "faction": "armenian",
@@ -4984,6 +5596,46 @@
     "long"
    ],
    "art": "mountain_fortress.jpg",
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "hero_nare",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "ნარე",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 5,
+   "hp": 5,
+   "kw": [
+    "healer",
+    "hero"
+   ],
+   "art": "hero_nare.jpg",
+   "palette": [
+    "#a8452a",
+    "#c9a24a",
+    "#3a4a5a"
+   ]
+  },
+  {
+   "id": "hero_arshak",
+   "kind": "იუნიტი",
+   "faction": "armenian",
+   "name": "კაპიტანი არშაკი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_arshak.jpg",
    "palette": [
     "#a8452a",
     "#c9a24a",
@@ -5204,6 +5856,49 @@
    ]
   },
   {
+   "id": "hero_aydin",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "აიდინი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 9,
+   "hp": 5,
+   "kw": [
+    "hunter",
+    "fire",
+    "long",
+    "hero"
+   ],
+   "art": "hero_aydin.jpg",
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
+   "id": "hero_banu",
+   "kind": "იუნიტი",
+   "faction": "oghuz",
+   "name": "ბანუ-ჩიჩეკი",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 10,
+   "hp": 6,
+   "kw": [
+    "leader",
+    "charge",
+    "hero"
+   ],
+   "art": "hero_banu.jpg",
+   "palette": [
+    "#c9a24a",
+    "#3a6a8a",
+    "#6a4a3a"
+   ]
+  },
+  {
    "id": "nile_leader",
    "kind": "იუნიტი",
    "faction": "nile",
@@ -5390,6 +6085,45 @@
     "long"
    ],
    "art": "sand_barque.jpg",
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "hero_nadia",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "მესაათე ნადია",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "hero"
+   ],
+   "art": "hero_nadia.jpg",
+   "palette": [
+    "#d8b46a",
+    "#2a6a7a",
+    "#b88a3a"
+   ]
+  },
+  {
+   "id": "hero_khaled",
+   "kind": "იუნიტი",
+   "faction": "nile",
+   "name": "ნავის კაპიტანი ხალიდი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_khaled.jpg",
    "palette": [
     "#d8b46a",
     "#2a6a7a",
@@ -5587,6 +6321,46 @@
    ]
   },
   {
+   "id": "hero_lin",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "ინჟინერი ლინი",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "digger",
+    "hero"
+   ],
+   "art": "hero_lin.jpg",
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
+   "id": "hero_wei",
+   "kind": "იუნიტი",
+   "faction": "yellow_river",
+   "name": "კაპიტანი ვეი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 6,
+   "hp": 9,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_wei.jpg",
+   "palette": [
+    "#c9a23a",
+    "#2f5a4a",
+    "#7a2a2a"
+   ]
+  },
+  {
    "id": "japan_isles_leader",
    "kind": "იუნიტი",
    "faction": "japan_isles",
@@ -5771,6 +6545,47 @@
     "long"
    ],
    "art": "oni_island_ship.jpg",
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "hero_hana",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "ჰანა",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 8,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "long",
+    "hero"
+   ],
+   "art": "hero_hana.jpg",
+   "palette": [
+    "#2a2a3a",
+    "#b5332a",
+    "#d9cfb0"
+   ]
+  },
+  {
+   "id": "hero_kentaro",
+   "kind": "იუნიტი",
+   "faction": "japan_isles",
+   "name": "კენტარო ატმის სოფლიდან",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_kentaro.jpg",
    "palette": [
     "#2a2a3a",
     "#b5332a",
@@ -6060,6 +6875,46 @@
    ]
   },
   {
+   "id": "hero_mire",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "მირე",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "digger",
+    "hero"
+   ],
+   "art": "hero_mire.jpg",
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
+   "id": "hero_jiho",
+   "kind": "იუნიტი",
+   "faction": "korea",
+   "name": "კაპიტანი ჯიჰო",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_jiho.jpg",
+   "palette": [
+    "#e9e2cf",
+    "#2a4a7a",
+    "#a83a2a"
+   ]
+  },
+  {
    "id": "mongolia_leader",
    "kind": "იუნიტი",
    "faction": "mongolia",
@@ -6340,6 +7195,48 @@
     "long"
    ],
    "art": "felt_citadel.jpg",
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "hero_saran",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "სარანი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 5,
+   "hp": 9,
+   "kw": [
+    "leader",
+    "charge",
+    "hero"
+   ],
+   "art": "hero_saran.jpg",
+   "palette": [
+    "#3a6a9a",
+    "#c9a26a",
+    "#6a3a2a"
+   ]
+  },
+  {
+   "id": "hero_batbayar",
+   "kind": "იუნიტი",
+   "faction": "mongolia",
+   "name": "ბათბაიარი არწივით",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 6,
+   "hp": 5,
+   "kw": [
+    "scout",
+    "long",
+    "hero"
+   ],
+   "art": "hero_batbayar.jpg",
    "palette": [
     "#3a6a9a",
     "#c9a26a",
@@ -6638,6 +7535,47 @@
    ]
   },
   {
+   "id": "hero_elena",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "დრაკონ-ქალი ელენა",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 10,
+   "hp": 6,
+   "kw": [
+    "fly",
+    "leader",
+    "hero"
+   ],
+   "art": "hero_elena.jpg",
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "hero_stojan",
+   "kind": "იუნიტი",
+   "faction": "balkans",
+   "name": "ქარის მკითხველი სტოიანი",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "scout",
+    "hero"
+   ],
+   "art": "hero_stojan.jpg",
+   "palette": [
+    "#5a6a3a",
+    "#a83a2a",
+    "#e9e2cf"
+   ]
+  },
+  {
    "id": "pyrenean_leader",
    "kind": "იუნიტი",
    "faction": "pyrenean",
@@ -6918,6 +7856,46 @@
     "long"
    ],
    "art": "pass_fortress.jpg",
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "hero_amaia",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "ამაია",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "digger",
+    "hero"
+   ],
+   "art": "hero_amaia.jpg",
+   "palette": [
+    "#a85a2a",
+    "#3a5a3a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "hero_inaki",
+   "kind": "იუნიტი",
+   "faction": "pyrenean",
+   "name": "კაპიტანი ინიაკი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_inaki.jpg",
    "palette": [
     "#a85a2a",
     "#3a5a3a",
@@ -7208,6 +8186,47 @@
    ]
   },
   {
+   "id": "hero_anna",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "ანა",
+   "tier": "hero",
+   "cost": 6,
+   "atk": 8,
+   "hp": 4,
+   "kw": [
+    "hunter",
+    "long",
+    "hero"
+   ],
+   "art": "hero_anna.jpg",
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
+   "id": "hero_reto",
+   "kind": "იუნიტი",
+   "faction": "alps",
+   "name": "მეგზური რეტო",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_reto.jpg",
+   "palette": [
+    "#e9eef0",
+    "#2a4a3a",
+    "#8a2a2a"
+   ]
+  },
+  {
    "id": "baltic_leader",
    "kind": "იუნიტი",
    "faction": "baltic",
@@ -7486,6 +8505,46 @@
     "long"
    ],
    "art": "hillfort_walker.jpg",
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "hero_kaia",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "კაია",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 3,
+   "hp": 7,
+   "kw": [
+    "healer",
+    "hero"
+   ],
+   "art": "hero_kaia.jpg",
+   "palette": [
+    "#c9a23a",
+    "#2a4a5a",
+    "#3a5a3a"
+   ]
+  },
+  {
+   "id": "hero_lauris",
+   "kind": "იუნიტი",
+   "faction": "baltic",
+   "name": "კაპიტანი ლაურისი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_lauris.jpg",
    "palette": [
     "#c9a23a",
     "#2a4a5a",
@@ -7783,6 +8842,46 @@
    ]
   },
   {
+   "id": "hero_grete",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "გრეტე",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "digger",
+    "hero"
+   ],
+   "art": "hero_grete.jpg",
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
+   "id": "hero_konrad",
+   "kind": "იუნიტი",
+   "faction": "prussia",
+   "name": "ლანდვერის კაპიტანი კონრადი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_konrad.jpg",
+   "palette": [
+    "#3a5a8a",
+    "#c0c4c8",
+    "#2a2a2a"
+   ]
+  },
+  {
    "id": "batavi_leader",
    "kind": "იუნიტი",
    "faction": "batavi",
@@ -8061,6 +9160,46 @@
     "long"
    ],
    "art": "polder_fortress.jpg",
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "hero_anneke",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "ანეკე",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "digger",
+    "hero"
+   ],
+   "art": "hero_anneke.jpg",
+   "palette": [
+    "#e07a2a",
+    "#2a4a7a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "hero_pieter",
+   "kind": "იუნიტი",
+   "faction": "batavi",
+   "name": "კაპიტანი პიტერი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_pieter.jpg",
    "palette": [
     "#e07a2a",
     "#2a4a7a",
@@ -8356,6 +9495,47 @@
    ]
   },
   {
+   "id": "hero_zosia",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "ზოსია",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "digger",
+    "hero"
+   ],
+   "art": "hero_zosia.jpg",
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
+   "id": "hero_jan",
+   "kind": "იუნიტი",
+   "faction": "lechia",
+   "name": "ხორუნჟი იანი",
+   "tier": "hero",
+   "cost": 8,
+   "atk": 9,
+   "hp": 7,
+   "kw": [
+    "leader",
+    "charge",
+    "hero"
+   ],
+   "art": "hero_jan.jpg",
+   "palette": [
+    "#a83a2a",
+    "#e9e2cf",
+    "#3a3a3a"
+   ]
+  },
+  {
    "id": "byzantium_leader",
    "kind": "იუნიტი",
    "faction": "byzantium",
@@ -8636,6 +9816,45 @@
     "long"
    ],
    "art": "chain_tower.jpg",
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "hero_marina",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "მარინა",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "hero"
+   ],
+   "art": "hero_marina.jpg",
+   "palette": [
+    "#5a2a6a",
+    "#c9a23a",
+    "#e9e2cf"
+   ]
+  },
+  {
+   "id": "hero_leon",
+   "kind": "იუნიტი",
+   "faction": "byzantium",
+   "name": "კაპიტანი ლეონი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_leon.jpg",
    "palette": [
     "#5a2a6a",
     "#c9a23a",
@@ -8926,6 +10145,45 @@
     "long"
    ],
    "art": "city_wall_walker.jpg",
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "hero_elif",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "ელიფი",
+   "tier": "hero",
+   "cost": 5,
+   "atk": 4,
+   "hp": 7,
+   "kw": [
+    "hero"
+   ],
+   "art": "hero_elif.jpg",
+   "palette": [
+    "#2a6a8a",
+    "#b5332a",
+    "#e9dfc8"
+   ]
+  },
+  {
+   "id": "hero_murat",
+   "kind": "იუნიტი",
+   "faction": "ottoman",
+   "name": "კაპიტანი მურატი",
+   "tier": "hero",
+   "cost": 7,
+   "atk": 10,
+   "hp": 5,
+   "kw": [
+    "leader",
+    "hero"
+   ],
+   "art": "hero_murat.jpg",
    "palette": [
     "#2a6a8a",
     "#b5332a",

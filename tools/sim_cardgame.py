@@ -194,6 +194,9 @@ class Game:
             if hurt:
                 t = min(hurt, key=lambda x: x.hp)
                 t.hp = min(t.c["hp"], t.hp + 2)
+        for u in self.units:          # გმირი დაეცა — მისი შტაბი −2 ნებისყოფა
+            if u.hp <= 0 and "hero" in u.kw:
+                self.p[u.owner]["hq"] -= 2
         self.units = [u for u in self.units if u.hp > 0]
         if self.p[1 - me]["hq"] <= 0:
             return "შტაბი"
