@@ -10393,7 +10393,7 @@
   "hell": {
    "units": {
     "behemoth_spawn": 1,
-    "recruits": 2,
+    "recruits": 1,
     "penal_squad": 2,
     "legion_shooters": 2,
     "legionnaires": 2,
@@ -10402,7 +10402,7 @@
     "halphas_fortifiers": 2,
     "malphas_wreckers": 2,
     "glasya_killers": 2,
-    "marquis": 1
+    "marquis": 2
    },
    "common": {
     "trench": 1,
@@ -10495,11 +10495,10 @@
   },
   "hellenic": {
    "units": {
-    "hellenic_regulars": 1,
     "hellenic_thugs": 2,
     "island_scouts": 2,
     "peltasts": 2,
-    "hoplites": 1,
+    "hoplites": 2,
     "automaton_phalanx": 2,
     "hydra_cutters": 2,
     "hephaestus_mechanics": 2,
@@ -10576,10 +10575,10 @@
    "units": {
     "finnish_regulars": 2,
     "finnish_thugs": 2,
-    "ski_patrol": 2,
+    "ski_patrol": 1,
     "forest_riflemen": 2,
     "sampo_guards": 2,
-    "ilmarinen_forged": 1,
+    "ilmarinen_forged": 2,
     "vainamoinen_singers": 1,
     "forge_apprentices": 2,
     "river_wardens": 2,
@@ -10660,8 +10659,8 @@
     "vulcan_smiths": 2,
     "cacus_hunters": 2,
     "vulcan_gunners": 1,
-    "italy_leader": 1,
-    "bersaglieri": 2
+    "italy_leader": 2,
+    "bersaglieri": 1
    },
    "common": {
     "trench": 1,
@@ -10733,12 +10732,12 @@
     "basat_bow": 1,
     "oghuz_regulars": 2,
     "oghuz_thugs": 2,
-    "well_watchers": 1,
+    "well_watchers": 2,
     "steppe_outriders": 2,
     "div_breakers": 2,
+    "korogly_guard": 1,
     "steppe_healers": 2,
     "ozan_bards": 2,
-    "koroglu_riders": 2,
     "basat_hunters": 2,
     "oghuz_leader": 2
    },
@@ -10814,10 +10813,9 @@
     "island_riflemen": 2,
     "three_companions": 2,
     "karakuri_soldiers": 2,
-    "samurai": 1,
     "oni_breakers": 2,
     "karakuri_makers": 2,
-    "japan_isles_leader": 1,
+    "japan_isles_leader": 2,
     "mountain_herbalists": 2,
     "hidesato_archers": 2
    },
@@ -10835,17 +10833,18 @@
   },
   "korea": {
    "units": {
-    "korea_regulars": 2,
+    "korea_regulars": 1,
     "korea_thugs": 2,
     "mountain_trackers": 2,
     "village_riflemen": 2,
-    "fortress_wall_guard": 2,
+    "fortress_wall_guard": 1,
     "imugi_hunters": 1,
     "dokkaebi_bargainers": 2,
     "haetae_firewardens": 2,
     "hwarang": 2,
     "korea_leader": 2,
-    "tiger_hunters": 1
+    "tiger_hunters": 2,
+    "haetae_engine": 1
    },
    "common": {
     "trench": 2,
@@ -11018,10 +11017,9 @@
     "dike_wardens": 2,
     "skate_riflemen": 2,
     "sluice_guard": 1,
-    "fog_cutters": 1,
+    "fog_cutters": 2,
     "klabauter_crews": 2,
     "batavian_riders": 2,
-    "pump_engineers": 1,
     "polder_nurses": 2,
     "batavi_leader": 2
    },
@@ -11041,13 +11039,13 @@
     "lechia_grotesque": 1,
     "lechia_regulars": 2,
     "lechia_thugs": 2,
-    "salt_miners": 2,
+    "salt_miners": 1,
     "shore_scouts": 2,
     "salt_mine_shields": 2,
     "winged_hussars": 1,
     "skuba_trappers": 2,
     "salt_healers": 2,
-    "utopiec_hunters": 1,
+    "utopiec_hunters": 2,
     "uhlans": 1,
     "lechia_leader": 2
    },
@@ -11099,8 +11097,8 @@
     "bastion_gunners": 2,
     "mehter_drummers": 1,
     "shadow_players": 2,
-    "janissaries": 2,
-    "city_physicians": 1,
+    "janissaries": 1,
+    "city_physicians": 2,
     "ottoman_leader": 1,
     "lantern_crawler": 1
    },
