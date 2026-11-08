@@ -10318,8 +10318,8 @@
     "aznauri": 2,
     "eristavi": 2,
     "medea_sisters": 2,
-    "shavkhan_smiths": 1,
-    "kolkhi_riders": 2,
+    "shavkhan_smiths": 2,
+    "kolkhi_riders": 1,
     "monaspa": 2,
     "iron_arm_veterans": 2,
     "khalkotavri": 1
@@ -10332,8 +10332,7 @@
     "barrage": 1,
     "gas": 2,
     "raid": 1,
-    "hospital": 1,
-    "recon": 1
+    "recon": 2
    }
   },
   "harness": {
@@ -10354,10 +10353,10 @@
     "trench": 1,
     "palisade": 2,
     "nest": 1,
-    "porter": 2,
+    "porter": 1,
     "barrage": 1,
     "gas": 1,
-    "raid": 1,
+    "raid": 2,
     "train": 1,
     "volley": 1,
     "recon": 1
@@ -10411,8 +10410,7 @@
     "nest": 1,
     "barrage": 1,
     "raid": 1,
-    "hospital": 1,
-    "recon": 1,
+    "recon": 2,
     "gas": 1,
     "palisade": 1
    }
@@ -10450,10 +10448,11 @@
     "cast_wardens": 2,
     "stitched_brutes": 2,
     "flask_smiths": 2,
-    "kajeti_leader": 2,
+    "kajeti_leader": 1,
     "forged_riders": 2,
     "silver_shooters": 2,
-    "silver_cannoneers": 2
+    "silver_cannoneers": 2,
+    "silver_sentinel": 1
    },
    "common": {
     "trench": 1,
@@ -10475,10 +10474,10 @@
     "ring_thugs": 2,
     "tribute_scouts": 2,
     "tribute_heavies": 1,
-    "tribute_cuirassiers": 1,
+    "tribute_cuirassiers": 2,
     "furrow_sappers": 2,
     "tribute_veterans": 2,
-    "field_sisters": 2,
+    "field_sisters": 1,
     "forty_hunters": 2,
     "ring_leader": 1
    },
@@ -10496,12 +10495,12 @@
   },
   "hellenic": {
    "units": {
-    "hellenic_regulars": 2,
+    "hellenic_regulars": 1,
     "hellenic_thugs": 2,
     "island_scouts": 2,
     "peltasts": 2,
     "hoplites": 1,
-    "automaton_phalanx": 1,
+    "automaton_phalanx": 2,
     "hydra_cutters": 2,
     "hephaestus_mechanics": 2,
     "hellenic_leader": 1,
@@ -10590,10 +10589,9 @@
    },
    "common": {
     "trench": 1,
-    "porter": 1,
+    "porter": 2,
     "nest": 1,
     "barrage": 1,
-    "raid": 1,
     "recon": 1,
     "gas": 2,
     "palisade": 1,
@@ -10607,12 +10605,12 @@
     "britain_thugs": 1,
     "fen_scouts": 2,
     "fen_drainers": 1,
-    "mere_divers": 1,
+    "mere_divers": 2,
     "huscarls": 2,
     "beowulf_heirs": 2,
     "fen_snipers": 2,
     "fen_herbalists": 2,
-    "fen_riders": 2,
+    "fen_riders": 1,
     "britain_leader": 2
    },
    "common": {
@@ -10684,11 +10682,11 @@
     "winter_scouts": 2,
     "frost_riflemen": 2,
     "bogatyr_druzhina": 1,
-    "polianitsa": 1,
+    "polianitsa": 2,
     "zmei_slayers": 1,
     "living_water_bearers": 2,
     "needle_seekers": 2,
-    "young_polianitsy": 2,
+    "young_polianitsy": 1,
     "polianitsy_leader": 2,
     "polianitsy_grotesque": 1
    },
@@ -10709,8 +10707,8 @@
     "armenian_regulars": 2,
     "armenian_thugs": 1,
     "lake_watchers": 2,
-    "highland_riflemen": 2,
-    "tork_shieldbearers": 1,
+    "highland_riflemen": 1,
+    "tork_shieldbearers": 2,
     "vahagn_guard": 1,
     "aralez_keepers": 2,
     "vahagn_slayers": 2,
@@ -10841,13 +10839,13 @@
     "korea_thugs": 2,
     "mountain_trackers": 2,
     "village_riflemen": 2,
-    "fortress_wall_guard": 1,
+    "fortress_wall_guard": 2,
     "imugi_hunters": 1,
     "dokkaebi_bargainers": 2,
     "haetae_firewardens": 2,
     "hwarang": 2,
     "korea_leader": 2,
-    "tiger_hunters": 2
+    "tiger_hunters": 1
    },
    "common": {
     "trench": 2,
@@ -10930,9 +10928,8 @@
     "trench": 1,
     "porter": 2,
     "nest": 1,
-    "barrage": 1,
+    "barrage": 2,
     "raid": 1,
-    "recon": 1,
     "gas": 1,
     "palisade": 1,
     "train": 1
@@ -10970,9 +10967,8 @@
     "baltic_thugs": 2,
     "marsh_riflemen": 2,
     "dune_riflemen": 2,
-    "gate_wardens": 1,
+    "gate_wardens": 2,
     "amber_lancers": 2,
-    "amber_alchemists": 1,
     "linden_healers": 2,
     "bog_wardens": 2,
     "daina_singers": 2,
@@ -11025,9 +11021,9 @@
     "fog_cutters": 1,
     "klabauter_crews": 2,
     "batavian_riders": 2,
-    "pump_engineers": 2,
+    "pump_engineers": 1,
     "polder_nurses": 2,
-    "batavi_leader": 1
+    "batavi_leader": 2
    },
    "common": {
     "trench": 1,
@@ -11047,11 +11043,11 @@
     "lechia_thugs": 2,
     "salt_miners": 2,
     "shore_scouts": 2,
-    "salt_mine_shields": 1,
+    "salt_mine_shields": 2,
     "winged_hussars": 1,
     "skuba_trappers": 2,
     "salt_healers": 2,
-    "utopiec_hunters": 2,
+    "utopiec_hunters": 1,
     "uhlans": 1,
     "lechia_leader": 2
    },
@@ -11100,8 +11096,8 @@
     "tulumbaci": 2,
     "night_watchmen": 2,
     "sipahis": 2,
-    "bastion_gunners": 1,
-    "mehter_drummers": 2,
+    "bastion_gunners": 2,
+    "mehter_drummers": 1,
     "shadow_players": 2,
     "janissaries": 2,
     "city_physicians": 1,
@@ -11112,9 +11108,8 @@
     "trench": 1,
     "porter": 2,
     "nest": 2,
-    "barrage": 1,
+    "barrage": 2,
     "raid": 1,
-    "recon": 1,
     "palisade": 1,
     "train": 1
    }
