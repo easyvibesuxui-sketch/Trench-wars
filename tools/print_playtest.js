@@ -1,4 +1,4 @@
-// სათამაშო ნაკრების PDF: playtest/kit.html → kit.pdf, playtest/cards-all.html → cards-all.pdf
+// სათამაშო ნაკრების PDF: playtest/<name>.html → <name>.pdf (kit, cards-all, scenarios, cardgame, warbands); არგუმენტით — მხოლოდ ესენი
 // გაშვება (build_playtest.py-ის შემდეგ): NODE_PATH=$(npm root -g) node tools/print_playtest.js
 const { chromium } = require('playwright');
 const path = require('path');
@@ -6,7 +6,8 @@ const fs = require('fs');
 (async () => {
   const b = await chromium.launch();
   const p = await b.newPage();
-  for (const name of ['kit', 'cards-all', 'scenarios', 'cardgame']) {
+  const all = ['kit', 'cards-all', 'scenarios', 'cardgame', 'warbands'], only = process.argv.slice(2);   // არგუმენტით — მხოლოდ ეს ფაილები
+  for (const name of only.length ? all.filter(n => only.includes(n)) : all) {
     await p.goto('file://' + path.resolve(__dirname, '..', 'playtest', name + '.html'), { waitUntil: 'networkidle' });
     await p.emulateMedia({ media: 'print' });
     // CSS ფონის სურათები Chromium-ში მხოლოდ საჭიროებისას იტვირთება — ბეჭდვამდე ყველა წინასწარ ჩავტვირთოთ და გავშიფროთ

@@ -345,6 +345,64 @@ TOKENS = """
 </section>"""
 
 
+def auto_warband(fid, units, costs, budget=BUDGET):
+    """მზა რაზმი (budget მარჩილი): ლიდერი, ძირითადი ქვეითი ×4, მეორე ქვეითი ×2, 2–3 სპეციალისტი (II–III), ნაშთით — მეტი ქვეითი.
+    წესები (rules/core-rules.md, ნაწილი 9): 1 ლიდერი; IV — არა (300-ზე ბიუჯეტს ჭამს); IV+, V და გმირები — მხოლოდ სცენარით."""
+    fu = [u for u in units.values() if u["faction"] == fid and u["id"] in costs]
+    leaders = sorted((u for u in fu if "leader" in u["tags"] and u["tier"] != "hero"), key=lambda u: costs[u["id"]])
+    if not leaders:
+        return None
+    picks, total = {leaders[0]["id"]: 1}, costs[leaders[0]["id"]]
+    def add(uid, n=1):
+        nonlocal total
+        if total + costs[uid] * n > budget:
+            return False
+        picks[uid] = picks.get(uid, 0) + n
+        total += costs[uid] * n
+        return True
+    inf = sorted((u for u in fu if u["tier"] == "I"), key=lambda u: (u.get("role") != "line", costs[u["id"]]))
+    spec = sorted((u for u in fu if u["tier"] in ("II", "III") and "leader" not in u["tags"]), key=lambda u: costs[u["id"]])
+    if inf:
+        add(inf[0]["id"], 4)
+    if len(inf) > 1:
+        add(inf[1]["id"], 2)
+    for u in spec[:3]:
+        add(u["id"])
+    while inf and picks.get(inf[0]["id"], 0) < 8 and add(inf[0]["id"]):
+        pass
+    for u in inf[1:] + spec:   # ნაშთის შევსება იაფი იუნიტებით
+        if budget - total < 15:
+            break
+        if picks.get(u["id"], 0) < (4 if u["tier"] == "I" else 2):
+            add(u["id"])
+    return list(picks.items()), total
+
+
+def warbands_doc(units, costs, names, data):
+    boxes = []
+    for fid in names:
+        if fid in WARBANDS:
+            title, picks = WARBANDS[fid]
+            total = sum(costs[u] * n for u, n in picks)
+        else:
+            r = auto_warband(fid, units, costs)
+            if not r:
+                continue
+            (picks, total), title = r, "მზა რაზმი"
+        rows = "".join(f"<tr><td>{n}×</td><td>{e(units[u]['name'])}</td><td>{units[u]['tier']}</td><td>{costs[u] * n}</td></tr>" for u, n in picks)
+        models = sum(n for _, n in picks)
+        side = "ნათელი" if fid in ("colchis", "iberia", "ring") or fid in data["allies"] else "ბნელი"
+        boxes.append(f"<div class='box wb'><h3>{e(names[fid])}</h3><p class='small muted'>{side} მხარე · „{e(title)}“</p><table class='roster'>"
+                     f"<tr><th></th><th>იუნიტი</th><th>დონე</th><th>ფასი</th></tr>{rows}<tr><th></th><th>{models} მოდელი</th><th></th><th>{total}</th></tr></table></div>")
+    intro = (f"<section class='page'><h1>მზა რაზმები — ყველა ფრაქცია ({BUDGET} მარჩილი)</h1>"
+             f"<p class='lead'>{len(boxes)} რაზმი პირველი თამაშებისთვის: ნებისმიერი ორი ერთმანეთს ეთამაშება სცენარით „ღამე დამწვარ სოფელში“ (kit.pdf) "
+             f"ან სცენარების ნაკრებიდან (scenarios.pdf). წესები: 1 ლიდერი, IV დონე, IV+, გოლიათი და გმირი — არა. ბარათები — cards-all.pdf. "
+             f"კოლხეთი და დიდი უღელი ხელით არის აწყობილი, დანარჩენი — ავტომატურად (tools/build_playtest.py, auto_warband). ფასები — ბალანსერის ბოლო გაშვებიდან.</p>"
+             f"<div class='wbgrid'>{''.join(boxes)}</div></section>")
+    css = "<style>.wbgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}.wb{break-inside:avoid;padding:2mm 3mm}.wb h3{margin:0}.wb p{margin:0 0 1mm}.wb .roster{font-size:7.5pt}</style>"
+    return css + intro
+
+
 def main():
     data, costs, nml, tags, docs = load()
     units = {u["id"]: u for u in data["units"]}
@@ -380,6 +438,7 @@ def main():
     gl = "".join(f"<p><b>{e(tags.get(k, k))}:</b> {e(v)}</p>" for k, v in sorted(ab["tags"].items(), key=lambda kv: tags.get(kv[0], kv[0])))
     secs.append(f'<section class="page small"><h2>ნიშნების ლექსიკონი</h2><div class="cols">{gl}</div></section>')
     (OUT / "cards-all.html").write_text(doc("ქვესკნელის ფრონტის იუნიტების ბარათები", "".join(secs)), encoding="utf-8")
+    (OUT / "warbands.html").write_text(doc("ქვესკნელის ფრონტის მზა რაზმები", warbands_doc(units, costs, names, data)), encoding="utf-8")
     print(f"playtest/kit.html · playtest/cards-all.html ({len(data['units'])} ბარათი, {len(names)} ფრაქცია)")
 
 
