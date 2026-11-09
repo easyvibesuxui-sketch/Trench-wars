@@ -8,6 +8,7 @@
 :root {
   --mud: #2a241d; --mud-2: #362e25; --ink: #f1e8d6; --muted: #b7a98f;
   --bronze: #c8913e; --rust: #b4462f; --moss: #7d8b52; --line: #4d4234;
+  --plate: linear-gradient(rgba(42, 36, 29, .82), rgba(36, 30, 24, .9)), url(ui/iron.jpg) center / 360px;   /* Kling: რკინის ფირფიტა (assets/ui) */
   --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
   --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
   color-scheme: dark;
@@ -23,19 +24,19 @@ header { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; jus
 h1 { font-family: var(--display); font-size: 1.15rem; margin: 0; letter-spacing: .02em; text-wrap: balance; }
 h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-left: 6px; }
 .hud { display: flex; flex-wrap: wrap; gap: 6px; font-variant-numeric: tabular-nums; }
-.hud span { background: var(--mud-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; white-space: nowrap; }
+.hud span { background: var(--plate); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; white-space: nowrap; }
 .hud b { color: var(--bronze); }
 .hud .low b { color: var(--rust); }
 .field { position: relative; min-height: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #3a3226; }
 canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
-.banner { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(20, 16, 12, .8); text-align: center; padding: 16px; overflow: auto; }
+.banner { position: absolute; inset: 0; display: grid; place-items: center; background: linear-gradient(rgba(20, 16, 12, .5), rgba(20, 16, 12, .88)), #2a241d url(ui/td_title.jpg) center / cover; text-align: center; padding: 16px; overflow: auto; }   /* Kling: გადასასვლელი და ნაპრალი */
 .banner[hidden] { display: none; }
-.banner > div { max-width: 52ch; display: grid; gap: 10px; }
+.banner > div { max-width: 52ch; display: grid; gap: 10px; background: var(--plate); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
 .banner h2 { font-family: var(--display); margin: 0; font-size: 1.6rem; color: var(--bronze); }
 .banner p { margin: 0; }
 .opts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 10px; align-items: center; text-align: left; }
 select { font: inherit; background: var(--mud-2); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 4px 6px; min-width: 0; }
-.panel { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; max-height: 34vh; overflow: auto; }
+.panel { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; max-height: 34vh; overflow: auto; background: var(--plate); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
 .panel .group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding-right: 8px; border-right: 1px solid var(--line); }
 .panel .group:last-of-type { border-right: 0; }
 .label { color: var(--muted); font-size: .75rem; letter-spacing: .04em; }
@@ -105,6 +106,7 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
   const byId = Object.fromEntries(D.units.map(u => [u.id, u]));
   const $ = id => document.getElementById(id);
   const cv = $("cv"), ctx = cv.getContext("2d");
+  const GROUND = new Image(); GROUND.src = "ui/td_ground.jpg";   // Kling-ის დაფა; სანამ არ ჩაიტვირთება — ერთფერი
   const GW = 28, GH = 16, C = 32, W = GW * C, H = GH * C, INCH = C / 4;   // დაფა: 28 × 16 უჯრა, უჯრა = 4″
   const d10 = () => 1 + Math.floor(Math.random() * 10);
   const LIGHT = ["colchis", "iberia", "ring", ...Object.keys(D.allies || {})];
@@ -385,8 +387,10 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = "#2a241d"; ctx.fillRect(0, 0, cv.width, cv.height);
     if (!S) return;
     ctx.setTransform(scale, 0, 0, scale, offX, offY);
-    ctx.fillStyle = "#3f3528"; ctx.fillRect(0, 0, W, H);
-    ctx.strokeStyle = "rgba(0,0,0,.18)"; ctx.lineWidth = 1;
+    if (GROUND.complete && GROUND.naturalWidth) {   // Kling: ზეგანი — ბეჭედი მარცხნივ, ნაპრალი მარჯვნივ (ui/td_ground.jpg)
+      ctx.drawImage(GROUND, 0, 0, W, H); ctx.fillStyle = "rgba(30, 24, 18, .42)"; ctx.fillRect(0, 0, W, H);
+    } else { ctx.fillStyle = "#3f3528"; ctx.fillRect(0, 0, W, H); }
+    ctx.strokeStyle = "rgba(0,0,0,.25)"; ctx.lineWidth = 1;
     for (let x = 0; x <= GW; x++) { ctx.beginPath(); ctx.moveTo(x * C, 0); ctx.lineTo(x * C, H); ctx.stroke(); }
     for (let y = 0; y <= GH; y++) { ctx.beginPath(); ctx.moveTo(0, y * C); ctx.lineTo(W, y * C); ctx.stroke(); }
     for (let i = 0; i < GW * GH; i++) drawCell(i);

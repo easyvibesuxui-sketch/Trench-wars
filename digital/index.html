@@ -8,6 +8,7 @@
 :root {
   --mud: #2a241d; --mud-2: #362e25; --paper: #e9dfc8; --ink: #f1e8d6; --muted: #b7a98f;
   --bronze: #c8913e; --rust: #b4462f; --moss: #7d8b52; --line: #4d4234;
+  --plate: linear-gradient(rgba(42, 36, 29, .82), rgba(36, 30, 24, .9)), url(ui/iron.jpg) center / 360px;   /* Kling: რკინის ფირფიტა (assets/ui) */
   --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
   --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
   color-scheme: dark;
@@ -23,15 +24,16 @@ header { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; jus
 h1 { font-family: var(--display); font-size: 1.15rem; margin: 0; letter-spacing: .02em; text-wrap: balance; }
 h1 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-left: 6px; }
 .res { display: flex; flex-wrap: wrap; gap: 6px; font-variant-numeric: tabular-nums; }
-.res span { background: var(--mud-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; white-space: nowrap; }
+.res span { background: var(--plate); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; white-space: nowrap; }
 .res b { color: var(--bronze); }
 .field { position: relative; min-height: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #3a3226; }
 canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
-.banner { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(20, 16, 12, .72); text-align: center; padding: 16px; }
+.banner { position: absolute; inset: 0; display: grid; place-items: center; background: linear-gradient(rgba(20, 16, 12, .5), rgba(20, 16, 12, .86)), #2a241d url(ui/rts_title.jpg) center / cover; text-align: center; padding: 16px; }   /* Kling: სოფელი და ურმების ბანაკი */
+.banner > div { background: var(--plate); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
 .banner[hidden] { display: none; }
 .banner div { max-width: 46ch; display: grid; gap: 10px; }
 .banner h2 { font-family: var(--display); margin: 0; font-size: 1.6rem; color: var(--bronze); }
-.panel { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.panel { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; background: var(--plate); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
 .panel .group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding-right: 8px; border-right: 1px solid var(--line); }
 .panel .group:last-child { border-right: 0; }
 .label { color: var(--muted); font-size: .75rem; letter-spacing: .04em; }
@@ -101,6 +103,7 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     b.addEventListener("click", () => { if (b.dataset.lang === LANG) return; try { localStorage.setItem("tw-lang", b.dataset.lang); } catch (e) {} location.reload(); });
   });
   const byId = Object.fromEntries(D.units.map(u => [u.id, u]));
+  const GROUND = new Image(); GROUND.src = "ui/rts_ground.jpg";   // Kling-ის რუკა; სანამ არ ჩაიტვირთება — ფერადი ზონები
   const W = 1600, H = 900, INCH = 10;              // სამყარო: 160″ × 90″
   const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
   const $ = id => document.getElementById(id);
@@ -451,9 +454,13 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     ctx.setTransform(cam.z, 0, 0, cam.z, cv.width / 2 - cam.x * cam.z, cv.height / 2 - cam.y * cam.z);
     ik = Math.max(1, fitZ * 1.5 / cam.z);
     // მიწა: ორი სოფელი და ნეიტრალური ზოლი
-    ctx.fillStyle = "#4a5236"; ctx.fillRect(0, 0, 420, H); ctx.fillStyle = "#4f3b2c"; ctx.fillRect(W - 420, 0, 420, H);
-    ctx.fillStyle = "#3f3528"; ctx.fillRect(420, 0, W - 840, H);
-    for (let i = 0; i < 70; i++) { const x = 430 + (i * 137) % (W - 860), y = (i * 251) % H; ctx.fillStyle = "rgba(0,0,0,.18)"; ctx.beginPath(); ctx.arc(x, y, 5 + (i % 4) * 3, 0, 7); ctx.fill(); }
+    if (GROUND.complete && GROUND.naturalWidth) {   // Kling: სოფლის, ნეიტრალური ზოლის და ბანაკის მიწა (ui/rts_ground.jpg)
+      ctx.drawImage(GROUND, 0, 0, W, H); ctx.fillStyle = "rgba(30, 24, 18, .28)"; ctx.fillRect(0, 0, W, H);
+    } else {
+      ctx.fillStyle = "#4a5236"; ctx.fillRect(0, 0, 420, H); ctx.fillStyle = "#4f3b2c"; ctx.fillRect(W - 420, 0, 420, H);
+      ctx.fillStyle = "#3f3528"; ctx.fillRect(420, 0, W - 840, H);
+      for (let i = 0; i < 70; i++) { const x = 430 + (i * 137) % (W - 860), y = (i * 251) % H; ctx.fillStyle = "rgba(0,0,0,.18)"; ctx.beginPath(); ctx.arc(x, y, 5 + (i % 4) * 3, 0, 7); ctx.fill(); }
+    }
     ctx.font = "12px Noto Sans Georgian, sans-serif"; ctx.fillStyle = "rgba(241,232,214,.35)"; ctx.textAlign = "center";
     ctx.fillText("ნეიტრალური ზოლი · ამბრის ღარი", W / 2, 22);
     if (S.placing) { ctx.strokeStyle = "rgba(200,145,62,.5)"; ctx.setLineDash([8, 6]); ctx.beginPath(); ctx.moveTo(470, 0); ctx.lineTo(470, H); ctx.stroke(); ctx.setLineDash([]); }
@@ -495,8 +502,9 @@ button.primary { border-color: var(--bronze); color: var(--bronze); }
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.fillStyle = "rgba(20,16,12,.85)"; ctx.fillRect(r.x - 2, r.y - 2, r.w + 4, r.h + 4);
     const k = r.w / W;
-    ctx.fillStyle = "#4a5236"; ctx.fillRect(r.x, r.y, 420 * k, r.h); ctx.fillStyle = "#4f3b2c"; ctx.fillRect(r.x + (W - 420) * k, r.y, 420 * k, r.h);
-    ctx.fillStyle = "#3f3528"; ctx.fillRect(r.x + 420 * k, r.y, (W - 840) * k, r.h);
+    if (GROUND.complete && GROUND.naturalWidth) ctx.drawImage(GROUND, r.x, r.y, r.w, r.h);
+    else { ctx.fillStyle = "#4a5236"; ctx.fillRect(r.x, r.y, 420 * k, r.h); ctx.fillStyle = "#4f3b2c"; ctx.fillRect(r.x + (W - 420) * k, r.y, 420 * k, r.h);
+      ctx.fillStyle = "#3f3528"; ctx.fillRect(r.x + 420 * k, r.y, (W - 840) * k, r.h); }
     for (const e of S.ents) {
       if (e.kind !== "b" && e.kind !== "u") continue;
       ctx.fillStyle = e.side === "p" ? "#e0a84e" : "#d0533a";
