@@ -64,7 +64,7 @@ STARTER = {   # სასტარტო დასტები (30): იუნ�
 }
 
 
-DECK_TWEAKS = {   # ფრაქცია → ავტომატური დასტის შესწორება სიმულაციით (ძლიერი კომპიუტერი, cardgame/index.html): id → რაოდენობა, 0 — ამოღება
+DECK_TWEAKS = {   # ფრაქცია → ავტომატური დასტის შესწორება სიმულაციით (ძლიერი კომპიუტერი, cardgame/classic.html): id → რაოდენობა, 0 — ამოღება
     "hell": {"units": {"marquis": 2, "recruits": 1}, "common": {"hospital": 0, "recon": 2}},
     "listeners": {"units": {"listeners_leader": 2, "lock_wagon": 0}, "common": {"raid": 2, "trench": 0}},
     "kajeti": {"units": {"cast_wardens": 2, "silver_sentinel": 1, "stitched_brutes": 2, "walking_furnace": 0, "wind_kaji": 0}},

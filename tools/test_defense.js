@@ -54,12 +54,31 @@ const path = require("path");
       if (S.phase === "build") { buy(); if (S.wave < LAST) A.startWave(); else break; }
       waveSeen = S.wave;
     }
-    return { wave: S.wave, seal: S.seal, gold: S.gold, kills: S.kills, held, defs: S.defs.length, over: S.over };
+    const carried = S.foes.reduce((n, e) => n + (e.carry || 0), 0), dropped = S.drops.reduce((n, d) => n + d.n, 0);
+    return { wave: S.wave, links: S.links, lost: S.lost, whole: S.links + S.lost + carried + dropped, vets: S.defs.filter(d => d.lvl).length, tokens: S.tokens, gold: S.gold, kills: S.kills, held, defs: S.defs.length, over: S.over };
   });
   console.log("ავტომატური თამაში:", JSON.stringify(res));
   ok(res.kills > 10, "მტრები კვდებიან და ბაუნტი ირიცხება");
   ok(res.held, "ქვეითი მტერს აჩერებს (ჩიხი)");
   ok(res.wave >= 5, "ბოსის (მე-5) ტალღამდე მიაღწია");
+  ok(res.whole === 10, `ჯაჭვის რგოლები არ იკარგება და არ მრავლდება (ბეჭედთან ${res.links}, დაკარგული ${res.lost}, სულ ${res.whole})`);
+  ok(res.vets > 0, `დამცველები გამოცდილებას აგროვებენ (ვეტერანი: ${res.vets})`);
+  // 4) მოტაცება: მტერი ბეჭედთან რგოლს იღებს, უკან გარბის; მოკლული გამტაცებელი რგოლს აგდებს და ის ბეჭედთან ბრუნდება
+  const theft = await page.evaluate(async () => {
+    const S = window.TD_GAME(), A = window.TD_API; if (S.over) return null;
+    const before = { links: S.links, lost: S.lost }; S.speed = 3; S.running = true;
+    const u = S.pool.find(x => x.tier === "I" && !x.tags.includes("fly")); A.spawnAt(u, S.goalI[0] + 2);
+    const e = S.foes[S.foes.length - 1]; let took = false, t0 = performance.now();
+    while (performance.now() - t0 < 20000 && !e.back) await new Promise(r => setTimeout(r, 50));
+    took = e.back && e.carry > 0; const mid = S.links; e.hp = 0;
+    await new Promise(r => setTimeout(r, 300)); const dropped = S.drops.length; S.drops.forEach(d => { d.t = .1; });
+    await new Promise(r => setTimeout(r, 400));
+    return { took, mid, before, dropped, after: S.links };
+  });
+  if (theft) { ok(theft.took && theft.mid === theft.before.links - 1, "მტერი ბეჭედთან რგოლს იტაცებს და უკან ბრუნდება"); ok(theft.dropped >= 1 && theft.after === theft.before.links, "მოკლული გამტაცებლის რგოლი ბეჭედთან ბრუნდება"); }
+  // 5) ზიგზაგის რუკა: გზა ღიაა და გრძელია
+  const zz = await page.evaluate(() => { document.getElementById("selM").value = "zigzag"; document.getElementById("selW").value = "59"; document.getElementById("startBtn").click(); const S = window.TD_GAME(); return { open: window.TD_API.pathOpen(), len: S.F.foot[S.spawnI[0]], W: S.W }; });
+  ok(zz.open && zz.len > 55 && zz.W === 59, `ზიგზაგი: გზა ღიაა, სიგრძე ${zz.len} უჯრა, ${zz.W} ტალღა`);
   ok(!errors.length, "JS შეცდომები არ არის " + errors.join(" | "));
   await page.screenshot({ path: process.argv[2] || "/tmp/defense.png" });
   await browser.close();

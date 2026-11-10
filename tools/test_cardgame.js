@@ -7,7 +7,7 @@ const path = require('path');
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage();
   const errs = []; p.on('pageerror', e => errs.push(e.message));
-  await p.goto('file://' + path.resolve(__dirname, '..', 'cardgame', 'index.html')); await p.waitForTimeout(300);
+  await p.goto('file://' + path.resolve(__dirname, '..', 'cardgame', 'classic.html')); await p.waitForTimeout(300);
   const r = await p.evaluate(() => {
     const C = window.__cg, out = { games: 0, over: 0, stuck: 0, first: 0, turns: 0 };
     C.headless(true);   // ხატვის, ხმის და ანიმაციის გარეშე — 10-ჯერ სწრაფია

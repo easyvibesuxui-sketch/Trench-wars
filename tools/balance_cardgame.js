@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 (async () => {
   const N = +(process.argv[2] || 20), W = +(process.argv[3] || 4);
-  const url = 'file://' + path.resolve(__dirname, '..', 'cardgame', 'index.html');
+  const url = 'file://' + path.resolve(__dirname, '..', 'cardgame', 'classic.html');
   const b = await chromium.launch();
   const pages = await Promise.all(Array.from({ length: W }, async () => { const p = await b.newPage(); await p.goto(url); await p.waitForTimeout(300); return p; }));
   const fids = await pages[0].evaluate(() => Object.keys(window.CG.starter));
