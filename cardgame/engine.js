@@ -8,7 +8,15 @@
 })(typeof self !== 'undefined' ? self : this, function (CG) {
   'use strict';
   const U = CG.units, F = CG.factions;
-  const price = id => { const c = (U[id] || { cost: 2 }).cost; return c <= 3 ? c : Math.min(7, Math.ceil(c / 2) + 1); };   // მობილიზაციის ფასი ბარათის სიძლიერიდან: 1–7
+  // მობილიზაციის ფასი (1–7) ბარათის ნამდვილი ძალიდან ამ თამაშში: შეტევა + მდგრადობა + უნარები
+  const _pr = {};
+  function price(id) {
+    if (_pr[id]) return _pr[id];
+    const d = U[id]; if (!d) return 2;
+    const k = Object.keys(traits(id)).filter(x => x !== 'hero' && x !== 'giant');
+    const v = d.atk + d.hp + k.reduce((a, x) => a + (x === 'vengeance' || x === 'stubborn' || x === 'brother' || x === 'fearless' ? .5 : 1.5), 0);
+    return _pr[id] = v <= 3.5 ? 1 : v <= 5.5 ? 2 : v <= 8 ? 3 : v <= 11 ? 4 : v <= 15 ? 5 : v <= 21 ? 6 : 7;
+  }
   const LARGE = { IV: 1, 'IV+': 1, V: 1 };
   const MULT = [0, 1, 2, 3.5];                       // ვარსკვლავების მამრავლი: ★, ★★, ★★★
   const SLOTS = [0, 3, 4, 5, 6, 6, 6];               // რიგის ადგილები წოდების მიხედვით
@@ -17,6 +25,11 @@
     { I: 100 }, { I: 65, II: 35 }, { I: 40, II: 40, III: 20 }, { I: 25, II: 35, III: 25, IV: 10, hero: 5 },
     { I: 15, II: 30, III: 25, IV: 15, 'IV+': 8, hero: 7 }, { I: 10, II: 22, III: 25, IV: 18, 'IV+': 10, V: 7, hero: 8 }];
   const STEPS = 6, ACTS = 3;
+  // ფრაქციის დოქტრინა (ლოჯისტიკა) — ბალანსის საშუალება: დამატებითი მარაგი ყოველ მობილიზაციაზე, შეიძლება წილადი ან უარყოფითი
+  // (+0.5 = +1 ყოველ მეორე მობილიზაციაზე). ირჩევს tools/tune_factions.js ბოტის გარბენებით, რომ ფრაქციების მოგება ერთ დიაპაზონში იყოს.
+  const DOC = /*DOC*/{"colchis":-1.25,"iberia":2.25,"hell":-0.25,"harness":3.5,"listeners":2.25,"ring":2.75,"hellenic":1.25,"northern":3,"celtic":1.75,"finnish":2.25,"gaul":1.25,"italy":2.75,"armenian":1.75,"oghuz":-1,"nile":0.5,"yellow_river":2.5,"japan_isles":0.75,"korea":1.25,"mongolia":1,"alps":0.5,"baltic":1.25,"prussia":1,"batavi":1.75,"lechia":1.75,"byzantium":1.75,"pyrenean":0.25}/*/DOC*/;
+  const doc = f => DOC[f] || 0;
+  const docGive = run => { const d = doc(run.f), n = run.mus || 1; return Math.floor(n * d + 1e-9) - Math.floor((n - 1) * d + 1e-9); };
 
   // ---- უნარები: ტექსტი და მოქმედება ერთ ადგილას; n — ვარსკვლავების რაოდენობა ----
   const KW = {
@@ -334,11 +347,12 @@
   }
   function income(run) {
     const cap = run.relics.includes('yoke') ? 4 : 2;
-    const o = { base: 6 + 2 * run.act - (run.diff >= 5 ? 1 : 0), porters: run.porters, relic: run.relics.includes('fleece') ? 1 : 0,
+    const o = { base: 6 + 2 * run.act - (run.diff >= 5 ? 1 : 0), doc: docGive(run), porters: run.porters, relic: run.relics.includes('fleece') ? 1 : 0,
       win: run.winBonus, interest: Math.min(cap, Math.floor(run.supply / 5)) };
-    o.total = o.base + o.porters + o.relic + o.win + o.interest; return o;
+    o.total = Math.max(1, o.base + o.doc + o.porters + o.relic + o.win + o.interest); return o;
   }
   function startPrep(run) {
+    run.mus = (run.mus || 0) + 1;
     run.income = income(run); run.supply += run.income.total; run.winBonus = 0;
     if (run.relics.includes('chart')) run.free += 1;
     if (!run.enemy) genEnemy(run);
@@ -551,7 +565,7 @@
   const xpFor = run => Math.round((run.stats.nodes * 6 + run.stats.wins * 4 + run.stats.bosses * 25 + (run.won ? 100 : 0)) * (1 + .25 * run.diff));
   function dailySeed(date) { const h = hash('tl-' + date); const fs = Object.keys(F); return { seed: h, faction: fs[h % fs.length], date }; }
 
-  return { KW, ORD, REL, TER, EMOD, EVT, price, MULT, SLOTS, RES, ODDS, STEPS, ACTS, LARGE, SPECIAL, BYF,
+  return { KW, ORD, REL, TER, EMOD, EVT, price, doc, DOC, MULT, SLOTS, RES, ODDS, STEPS, ACTS, LARGE, SPECIAL, BYF,
     traits, def, stats, power, simulate, newRun, rank, slots, options, enter, income, startPrep, budget, arrange, genEnemy,
     reroll, buy, buyOrder, sell, place, toggleLock, toggleOrder, canAdd, addUnit, gainOrder, refund, mods, fight, retry,
     takeRelic, takePick, chooseEvent, campRest, campTrain, depotTake, advance, xpFor, dailySeed, hash, all, find, rnd };

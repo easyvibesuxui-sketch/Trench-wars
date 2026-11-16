@@ -153,7 +153,10 @@ const fcol = f => f && D.factions[f] ? D.factions[f].pal[0][0] : "#54473a";
 const sprite = a => a ? `background-image:url(${a.s});background-size:${a.c * 100}% ${a.r * 100}%;background-position:${a.c > 1 ? a.x / (a.c - 1) * 100 : 0}% ${a.r > 1 ? a.y / (a.r - 1) * 100 : 0}%` : "";
 const today = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
 const BAL = window.TLBAL || {};
-const hard = f => BAL[f] == null ? "" : BAL[f] >= 62 ? t("ადვილი", "easy") : BAL[f] >= 38 ? t("საშუალო", "medium") : t("რთული", "hard");
+const hard = f => BAL[f] == null ? "" : BAL[f] >= 55 ? t("ადვილი", "easy") : BAL[f] >= 42 ? t("საშუალო", "medium") : t("რთული", "hard");
+const docTxt = f => { const d = TL.doc(f); if (!d) return t("ლოჯისტიკა: ჩვეულებრივი მარაგი.", "Logistics: standard supply.");
+  const n = (d > 0 ? "+" : "−") + String(Math.abs(d)).replace(".", t(",", "."));
+  return t(`ლოჯისტიკა: ${n} მარაგი ყოველ მობილიზაციაზე (საშუალოდ; წილადი ნაწილი რამდენიმე მობილიზაციაზე ნაწილდება).`, `Logistics: ${n} supply per muster (on average; the fraction is spread over several musters).`); };
 const tierName = x => x === "hero" ? t("გმირი", "Hero") : x;
 
 // ---------- წინსვლა (ინახება ბრაუზერში) ----------
@@ -320,6 +323,7 @@ function pick() {
     <div class="flist">${ORDER.map((k, i) => { const un = M.unlocked.includes(k); return `<button class="fbtn" style="--fc:${fcol(k)}" data-act="pickf" data-f="${k}" aria-pressed="${k === f}" ${un ? "" : "disabled"}>
       <b>${esc(fname(k))}</b><small>${un ? (D.factions[k].side === "dark" ? t("ბნელი", "dark") : t("ნათელი", "light")) + (hard(k) ? " · " + hard(k) : "") + (M.wonWith[k] ? " · ✓" + M.wonWith[k] : "") : t("იხსნება დონეზე ", "unlocks at level ") + (i - 2)}</small></button>`; }).join("")}</div></section>
     <section class="panel"><div class="rowhead"><b>${esc(fname(f))}</b><span>${t("მისი ძლიერი ბარათები", "Its strongest cards")}</span></div>
+      <p class="small">${esc(docTxt(f))}${BAL[f] != null ? ` <span class="muted">${t("ბოტი ამ ჯარით გარბენების", "With this army the bot wins")} ${BAL[f]}%${t("-ს იგებს.", " of runs.")}</span>` : ""}</p>
       <div class="row">${heroes.map(id => tile({ id, st: 1 }, { data: `data-act="peek" data-id="${id}"` })).join("")}</div>
       <div class="bar"><span>${t("სიმძიმე", "Severity")}: ${[...Array(md + 1).keys()].map(d => `<button class="btn sm" data-act="diff" data-d="${d}" aria-pressed="${d === V.diff}" style="${d === V.diff ? "border-color:var(--gold);color:var(--gold)" : ""}">${d}</button>`).join(" ")}</span>
         <button class="btn big primary" data-act="start">${t("გარბენის დაწყება", "Start the run")}</button></div>
@@ -382,7 +386,7 @@ function prep() {
       <div class="split"><div><h3>${t("რეზერვი", "Reserve")}</h3><div class="row" style="min-height:0">${res}</div></div>
         <div><h3>${t("ბრძანებები (დააჭირე გამოსაყენებლად)", "Orders (tap to use)")}</h3><div class="row" style="min-height:0">${ords}</div></div></div>
       ${R.relics.length ? `<div class="relics">${R.relics.map(k => `<button class="relic" data-act="relic" data-k="${k}">${esc(L2(TL.REL[k]))}</button>`).join("")}</div>` : ""}</section>
-    <section class="panel"><div class="rowhead"><b>${t("მობილიზაცია", "Muster")}</b><span>+${inc.total} ⛁ (${t("საბაზო", "base")} ${inc.base}${inc.win ? ", " + t("გამარჯვება", "victory") + " +1" : ""}${inc.interest ? ", " + t("სარგებელი", "interest") + " +" + inc.interest : ""}${inc.porters ? ", " + t("მზიდავები", "porters") + " +" + inc.porters : ""}${inc.relic ? ", " + t("რელიქვია", "relic") + " +1" : ""})</span></div>
+    <section class="panel"><div class="rowhead"><b>${t("მობილიზაცია", "Muster")}</b><span>+${inc.total} ⛁ (${t("საბაზო", "base")} ${inc.base}${inc.doc ? ", " + t("ლოჯისტიკა", "logistics") + " " + (inc.doc > 0 ? "+" : "") + inc.doc : ""}${inc.win ? ", " + t("გამარჯვება", "victory") + " +1" : ""}${inc.interest ? ", " + t("სარგებელი", "interest") + " +" + inc.interest : ""}${inc.porters ? ", " + t("მზიდავები", "porters") + " +" + inc.porters : ""}${inc.relic ? ", " + t("რელიქვია", "relic") + " +1" : ""})</span></div>
       <div class="row">${o.offers.map((x, i) => tile({ id: x.id, st: 1 }, { data: `data-act="offer" data-i="${i}"`, cost: x.cost, lock: x.lock, cls: (x.sold ? "sold " : "") + (x.merc ? "merc " : "") + (R.supply < x.cost ? "poor " : "") + (pairs(x.id) ? "pair " : "") + (sel && sel.k === "offer" && sel.i === i ? "sel" : "") })).join("")}
         ${orderTile(o.order.key, { data: `data-act="shopord"`, cost: o.order.cost, cls: (o.order.sold ? "sold " : "") + (R.supply < o.order.cost ? "poor " : "") + (sel && sel.k === "shopord" ? "sel" : "") })}</div>
       <div class="bar"><button class="btn" data-act="reroll" ${R.free < 1 && R.supply < 1 ? "disabled" : ""}>${t("განახლება", "Reroll")} ${R.free > 0 ? t("უფასო", "free") + " ×" + R.free : "⛁1"}</button>
@@ -532,6 +536,7 @@ function rulesHtml() {
       <li>${t("<b>სამი ერთნაირი</b> ბარათი ერთ ★★ იუნიტად ერთიანდება (ორმაგი შეტევა და მდგრადობა, უნარიც ძლიერდება). სამი ★★ — ერთი ★★★.", "<b>Three of a kind</b> merge into one ★★ unit (double attack and resilience, and a stronger ability). Three ★★ make one ★★★.")}</li>
       <li>${t("განახლება 1 მარაგი ღირს. „დაკავება“ ბარათს შემდეგ შეთავაზებამდე ინახავს. დათხოვნა ფასის ნახევარს აბრუნებს.", "A reroll costs 1 supply. “Hold” keeps a card for the next offer. Dismissing returns half the price.")}</li>
       <li>${t("<b>სარგებელი:</b> დაუხარჯავი მარაგის ყოველ 5-ზე +1 (მაქს. +2). მოგებული ბრძოლა +1-ს იძლევა.", "<b>Interest:</b> +1 for every 5 unspent supply (max. +2). A won battle gives +1.")}</li>
+      <li>${t("<b>ლოჯისტიკა:</b> ყოველ ჯარს თავისი დამატებითი მარაგი აქვს (−1,25-დან +3,5-მდე) — ასე სუსტი ბარათების ჯარები ძლიერებს უთანაბრდება. ჩანს ჯარის არჩევისას.", "<b>Logistics:</b> each army has its own extra supply (from −1.25 to +3.5), so armies with weaker cards keep up with strong ones. It is shown when you choose an army.")}</li>
       <li>${t("წოდება გზასთან ერთად იზრდება: ხსნის რიგის ადგილებს (3-დან 6-მდე) და მაღალი დონის ბარათებს.", "Your rank grows along the road: it opens places in the line (from 3 to 6) and higher-tier cards.")}</li></ul>
     <h3>${t("ბრძოლა", "Battle")}</h3><ul>
       <li>${t("ბრძოლა თავისით მიდის და შემთხვევითობა არ აქვს: იგივე რიგი იმავე მტერთან ყოველთვის ერთნაირად მთავრდება.", "The battle runs by itself and has no randomness: the same line against the same enemy always ends the same way.")}</li>
