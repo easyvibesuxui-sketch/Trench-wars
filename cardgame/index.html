@@ -4,138 +4,174 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Serif+Georgian:wght@700;800&display=swap">
 <style>
-/* „სანგრის რიგი“ — ავტომატური ბრძოლის გარბენი. ერთი სვეტი: ზემოთ მტრის რიგი, ქვემოთ შენი რიგი (ორივეს წინა იუნიტი მარცხნივ დგას),
-   შემდეგ რეზერვი, ბრძანებები და მობილიზაცია. ბარათის დეტალი — ქვედა პანელში. მხოლოდ მუქი თემა. წესები — cardgame/engine.js. */
+/* „სანგრის რიგი“ v2 — ტელეფონისთვის, ერთ ეკრანზე. სტილი: „საველე ბლოკნოტი და პლაკატი“ — ბნელი მაგიდა, ქაღალდის პანელები, მელანი,
+   ჟანგისფერი და სპილენძი; ბარათი ქაღალდის ჩარჩოა დიდი ბეჭდებით (შეტევა — წითელი წრე, მდგრადობა — მწვანე ფარი).
+   ზემოთ ინფორმაცია, შუაში ველი (სანგარი + ზურგი), ქვემოთ მობილიზაცია, ბოლოში — ღილაკები ცერის ზონაში. წესები — engine.js. */
 :root {
-  --mud: #221d17; --mud-2: #2f281f; --mud-3: #3b3227; --ink: #f1e8d6; --muted: #b3a58b;
-  --bronze: #c8913e; --rust: #c0563d; --moss: #8a9a5b; --line: #54473a; --me: #c8913e; --foe: #b4462f;
-  --atk: #7a1f1a; --hp: #2f5d50; --gold: #e3b458; --cover: #5b7a99;
-  --plate: linear-gradient(rgba(34, 29, 23, .82), rgba(30, 25, 19, .9)), url(ui/iron.jpg) center / 360px;
+  --desk: #15110c; --paper: #e8dcc0; --paper-2: #d4c29c; --ink: #241b12; --ink-2: #5a4834; --rust: #9c2f22; --moss: #2f5d50;
+  --brass: #b8862f; --gold: #e3b458; --hurt: #8a5a1a; --cover: #4f6f8f; --line: #3d3125;
   --display: "Noto Serif Georgian", "DejaVu Serif", Georgia, serif;
   --body: "Noto Sans Georgian", "DejaVu Sans", system-ui, sans-serif;
-  --tw: clamp(44px, 12.4vw, 92px);
+  --cw: clamp(54px, min(20vw, 10.2dvh), 92px);
+  --sw: clamp(42px, min(14vw, 7.6dvh), 70px);
+  --bw: clamp(40px, min(18vw, 8dvh), 80px);
+  --paper-tex: url(ui/paper.jpg) center / 260px;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; background: var(--mud); }
-body { color: var(--ink); font-family: var(--body); font-size: 14px; line-height: 1.35; }
+html, body { margin: 0; min-height: 100%; }
+body { background: linear-gradient(rgba(16, 12, 8, .86), rgba(16, 12, 8, .93)), url(ui/iron.jpg) center / 420px, var(--desk); color: var(--paper); font-family: var(--body); font-size: 14px; line-height: 1.35; -webkit-tap-highlight-color: transparent; }
 button { font: inherit; color: inherit; }
-.app { max-width: 780px; margin: 0 auto; padding-block: 8px 18px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 8px; }
-header { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; justify-content: space-between; }
-h1 { font-family: var(--display); font-size: 1.05rem; margin: 0; cursor: pointer; }
-h2 { font-family: var(--display); font-size: 1rem; margin: 0; text-wrap: balance; }
-h3 { font-size: .8rem; margin: 0; color: var(--muted); font-weight: 600; letter-spacing: .03em; }
-p { margin: 0; }
-.tools { display: flex; gap: 5px; align-items: center; }
-.btn { background: var(--mud-2); border: 1px solid var(--line); border-radius: 6px; padding: 7px 12px; cursor: pointer; min-height: 36px; }
-.btn:hover:not(:disabled) { border-color: var(--bronze); }
-.btn:disabled { opacity: .45; cursor: not-allowed; }
-.btn.primary { border-color: var(--bronze); color: #1a140d; background: var(--bronze); font-weight: 700; }
-.btn.primary:hover:not(:disabled) { background: var(--gold); }
-.btn.big { padding: 11px 18px; font-size: 1rem; }
-.btn.sm { padding: 4px 8px; min-height: 30px; font-size: .78rem; }
-.btn.danger { border-color: var(--rust); color: #e9b3a4; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.lang { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.lang button { border: 0; background: transparent; padding: 5px 8px; cursor: pointer; font-size: .74rem; min-height: 30px; }
-.lang button[aria-pressed="true"] { background: var(--mud-3); font-weight: 700; color: var(--bronze); }
-.stats { display: flex; flex-wrap: wrap; gap: 5px; }
-.pill { background: var(--plate); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: .8rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.pill b { color: var(--gold); } .pill.nerve b { color: #e58b74; }
-.panel { background: var(--plate); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 6px; min-width: 0; }
-.panel.foe { border-left: 4px solid var(--foe); } .panel.me { border-left: 4px solid var(--me); }
-.rowhead { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; justify-content: space-between; font-size: .78rem; color: var(--muted); }
-.rowhead b { color: var(--ink); font-family: var(--display); font-size: .9rem; }
-.chip { display: inline-block; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; font-size: .72rem; color: var(--ink); background: rgba(0, 0, 0, .25); }
-.chip.bad { border-color: var(--rust); color: #efb9aa; } .chip.good { border-color: var(--moss); color: #cfdcae; }
-.row { display: flex; gap: 5px; align-items: flex-start; min-height: calc(var(--tw) * 1.5 + 20px); }
-.row.center { justify-content: center; flex-wrap: wrap; }
-.frontmark { font-size: .66rem; color: var(--bronze); letter-spacing: .06em; }
+p { margin: 0; } h2, h3 { margin: 0; }
+.app { max-width: 560px; margin: 0 auto; min-height: 100dvh; display: flex; flex-direction: column; gap: 6px;
+  padding: max(6px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+.app.fit { height: 100dvh; min-height: 0; }
+/* ზედა ზოლი */
+.top { display: flex; align-items: center; gap: 5px; }
+.top h1 { font: 800 1rem/1.1 var(--display); margin: 0 auto 0 0; cursor: pointer; letter-spacing: .02em; }
+.pills { display: flex; gap: 4px; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+.pill { border: 1px solid var(--line); background: rgba(0, 0, 0, .35); border-radius: 999px; padding: 2px 9px; font-size: .8rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pill b { color: var(--gold); } .pill.life b { color: #e8907a; }
+.ib { border: 1px solid var(--line); background: rgba(0, 0, 0, .35); border-radius: 8px; min-width: 34px; min-height: 32px; padding: 3px 8px; cursor: pointer; font-size: .8rem; }
+.ib[aria-pressed="true"] { color: var(--gold); border-color: var(--brass); }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.lang button { border: 0; background: rgba(0, 0, 0, .35); padding: 3px 8px; min-height: 32px; cursor: pointer; font-size: .74rem; }
+.lang button[aria-pressed="true"] { color: var(--gold); font-weight: 700; }
+/* მტრის ზოლი */
+.foe { display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-left: 4px solid var(--rust); border-radius: 8px; background: rgba(0, 0, 0, .38); padding: 4px 8px; cursor: pointer; min-height: 44px; text-align: left; width: 100%; }
+.foe .who { display: grid; font-size: .72rem; line-height: 1.2; min-width: 0; flex: 0 1 auto; } .foe .who b { font: 700 .8rem var(--display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.foe .mini { display: flex; gap: 2px; align-items: center; margin-left: auto; flex-wrap: nowrap; }
+.mini i { width: 18px; height: 26px; border-radius: 3px; border: 1px solid var(--paper-2); background-color: #3b3227; background-repeat: no-repeat; display: block; }
+.mini .sep { width: 1px; height: 22px; background: var(--paper-2); margin: 0 3px; opacity: .5; border: 0; }
+.chip { display: inline-block; border: 1px solid currentColor; border-radius: 4px; padding: 0 5px; font-size: .68rem; line-height: 1.5; white-space: nowrap; }
+.chip.bad { color: #f0a898; } .chip.good { color: #bcd59b; } .chip.ter { color: var(--paper-2); }
+/* ველი */
+.board { flex: 1 1 auto; min-height: 0; display: grid; align-content: center; gap: 6px; border-radius: 12px; border: 2px solid var(--line); background: center / cover; padding: 6px; position: relative; }
+.row { position: relative; display: flex; gap: 5px; justify-content: center; align-items: flex-end; padding: 15px 4px 6px; border-radius: 8px; min-height: calc(var(--cw) * 1.5 + 21px); }
+.row::before { content: attr(data-label); position: absolute; top: 2px; left: 8px; font: 700 .62rem/1 var(--display); letter-spacing: .16em; color: var(--paper); opacity: .85; text-shadow: 0 1px 2px #000; }
+.row.t { background: rgba(18, 12, 7, .58); box-shadow: inset 0 0 0 1px rgba(232, 220, 192, .14); }
+.row.r { background: rgba(232, 220, 192, .1); box-shadow: inset 0 0 0 1px rgba(232, 220, 192, .08); }
+.slot { flex: 0 0 auto; width: var(--cw); aspect-ratio: 2 / 3; border: 2px dashed rgba(232, 220, 192, .32); border-radius: 6px; background: rgba(0, 0, 0, .18); cursor: pointer; padding: 0; }
+.slot.hot { border-color: var(--gold); background: rgba(227, 180, 88, .14); }
 /* ბარათი */
-.tile { position: relative; flex: 0 0 var(--tw); width: var(--tw); padding: 0; border: 0; background: none; cursor: pointer; text-align: left; display: grid; gap: 2px; align-content: start; }
-.tile .art { display: block; width: 100%; aspect-ratio: 2 / 3; border-radius: 6px; border: 2px solid var(--fc, var(--line)); background-color: var(--mud-3); background-repeat: no-repeat; box-shadow: 0 2px 6px rgba(0, 0, 0, .5); }
-.tile .nm { font-size: .62rem; line-height: 1.15; color: var(--ink); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 1.45em; }
-.tile .st { position: absolute; top: 2px; left: 4px; font-size: .7rem; color: var(--gold); text-shadow: 0 1px 2px #000, 0 0 3px #000; letter-spacing: -1px; }
-.tile .tr { position: absolute; top: 3px; right: 4px; font-size: .56rem; font-weight: 700; background: rgba(0, 0, 0, .65); border-radius: 3px; padding: 0 3px; }
-.tile .ft { position: absolute; left: 2px; right: 2px; top: calc(var(--tw) * 1.5 - 19px); display: flex; justify-content: space-between; font-size: .74rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-.tile .ft i { font-style: normal; border-radius: 4px; padding: 0 4px; min-width: 20px; text-align: center; box-shadow: 0 1px 2px #000; white-space: nowrap; }
-.tile .a { background: var(--atk); } .tile .h { background: var(--hp); } .tile .h.hurt { background: #8a5a1a; } .tile .a.down { background: #4a3a52; }
-.tile .fx { position: absolute; left: 3px; top: calc(var(--tw) * 1.5 - 39px); display: flex; gap: 2px; font-size: .64rem; font-weight: 700; }
-.tile .fx i { font-style: normal; border-radius: 3px; padding: 0 3px; box-shadow: 0 1px 2px #000; }
-.tile .cv { background: var(--cover); } .tile .bn { background: #b4521c; }
-.tile .cost { position: absolute; right: -3px; top: calc(var(--tw) * .62); background: var(--gold); color: #1a140d; font-weight: 800; font-size: .72rem; border-radius: 999px; padding: 1px 6px; box-shadow: 0 1px 3px #000; }
-.tile .lk { position: absolute; left: -3px; top: calc(var(--tw) * .62); background: var(--mud); border: 1px solid var(--gold); color: var(--gold); font-size: .6rem; border-radius: 999px; padding: 1px 5px; }
-.tile.sel .art { outline: 3px solid var(--gold); outline-offset: 1px; }
-.tile.sold { opacity: .25; pointer-events: none; }
-.tile.poor .cost { background: #8a7a5c; }
-.tile.merc .art { border-style: dashed; }
-.tile.pair .art { box-shadow: 0 0 0 2px var(--moss), 0 2px 6px rgba(0, 0, 0, .5); }
-.tile.on .art { box-shadow: 0 0 10px 2px var(--gold); border-color: var(--gold); }
-.tile.dead { opacity: 0; transition: opacity .25s, transform .25s; transform: translateY(10px) scale(.8); }
-.tile.locked .art { filter: grayscale(1) brightness(.45); }
-.tile:hover .art { filter: brightness(1.12); }
-.slot { flex: 0 0 var(--tw); width: var(--tw); aspect-ratio: 2 / 3; border: 2px dashed var(--line); border-radius: 6px; background: rgba(0, 0, 0, .18); cursor: pointer; padding: 0; color: var(--muted); font-size: .64rem; }
-.slot.off { border-style: dotted; opacity: .45; cursor: default; }
-.split { display: grid; grid-template-columns: auto 1fr; gap: 8px; }
-.float { position: absolute; left: 50%; top: 30%; transform: translateX(-50%); font-weight: 800; font-size: 1.15rem; color: #ffb39c; text-shadow: 0 1px 3px #000, 0 0 6px #000; pointer-events: none; z-index: 5; white-space: nowrap; }
-.float.heal { color: #b6e3a6; } .float.note { color: var(--gold); font-size: .78rem; } .float.block { color: #a9c6e6; }
-.detail { min-height: 96px; align-content: start; }
-.detail .nm { font-family: var(--display); font-size: 1rem; }
-.detail .sub { color: var(--muted); font-size: .78rem; }
-.detail .kw { font-size: .84rem; } .detail .kw b { color: var(--gold); }
-.detail .acts { display: flex; flex-wrap: wrap; gap: 6px; }
-.hint { background: rgba(200, 145, 62, .14); border: 1px solid var(--bronze); border-radius: 8px; padding: 8px 10px; font-size: .86rem; display: flex; gap: 10px; align-items: center; justify-content: space-between; }
-.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
-.muted { color: var(--muted); } .small { font-size: .78rem; } .gold { color: var(--gold); } .bad { color: #e9a08c; } .ok { color: #b9d39b; }
-/* რუკა */
-.map { background: linear-gradient(rgba(26, 21, 16, .55), rgba(26, 21, 16, .82)), url(ui/map_campaign.jpg) center / cover; }
-.track { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
-.step { display: grid; gap: 4px; align-content: start; padding: 4px 2px; border-radius: 6px; min-height: 76px; }
-.step.cur { background: rgba(200, 145, 62, .16); outline: 1px solid var(--bronze); }
-.step.past { opacity: .4; }
-.node { display: grid; justify-items: center; gap: 1px; border: 1px solid var(--line); border-radius: 6px; background: rgba(20, 16, 12, .8); padding: 4px 2px; font-size: .62rem; text-align: center; cursor: default; width: 100%; min-height: 50px; }
-.node .ic { font-size: 1.15rem; line-height: 1.1; }
-.node.elite { border-color: var(--rust); } .node.boss { border-color: var(--gold); background: rgba(70, 40, 20, .85); }
-.step.cur .node { cursor: pointer; border-color: var(--bronze); box-shadow: 0 0 0 1px rgba(200, 145, 62, .35); }
-.step.cur .node:hover { background: var(--mud-3); }
-.relics { display: flex; flex-wrap: wrap; gap: 4px; }
-.relic { border: 1px solid var(--gold); color: var(--gold); border-radius: 999px; background: rgba(0, 0, 0, .3); padding: 2px 9px; font-size: .74rem; cursor: pointer; }
-/* არჩევანის ბარათები */
-.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px; }
-.choice { display: grid; gap: 4px; justify-items: start; text-align: left; border: 1px solid var(--line); border-radius: 8px; background: var(--mud-2); padding: 10px; cursor: pointer; min-height: 64px; }
-.choice:hover:not(:disabled) { border-color: var(--bronze); } .choice:disabled { opacity: .45; cursor: not-allowed; }
-.choice b { font-family: var(--display); } .choice.relicc { border-color: var(--gold); }
-.choice .tile { pointer-events: none; }
-.choice:has(.tile) { grid-template-columns: auto 1fr; align-items: start; gap: 10px; }
-/* მთავარი ეკრანი */
-.hero { border-radius: 10px; border: 1px solid var(--line); min-height: 230px; background: linear-gradient(rgba(26, 21, 16, .15), rgba(26, 21, 16, .92)), url(ui/title.jpg) center / cover; display: grid; align-content: end; padding: 14px; gap: 6px; }
-.hero h2 { font-size: 1.7rem; } .hero p { color: var(--ink); max-width: 46ch; }
-.menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
-.xp { height: 8px; border-radius: 4px; background: #15110d; overflow: hidden; } .xp i { display: block; height: 100%; background: var(--gold); }
-.flist { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
-.fbtn { display: grid; gap: 2px; text-align: left; border: 1px solid var(--line); border-left: 5px solid var(--fc); border-radius: 6px; background: var(--mud-2); padding: 7px 9px; cursor: pointer; min-height: 52px; }
-.fbtn[aria-pressed="true"] { outline: 2px solid var(--gold); } .fbtn:disabled { opacity: .45; cursor: not-allowed; }
-.fbtn small { color: var(--muted); }
-.codex { display: flex; flex-wrap: wrap; gap: 5px; }
-.list { display: grid; gap: 6px; } .li { display: flex; gap: 8px; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--line); padding-bottom: 5px; }
-.li.done { color: var(--muted); } .li.done b::before { content: "✓ "; color: var(--moss); }
-.banner { text-align: center; padding: 16px 10px; border-radius: 10px; border: 1px solid var(--line); background: center / cover; display: grid; gap: 6px; justify-items: center; }
-.banner h2 { font-size: 1.5rem; text-shadow: 0 2px 6px #000; }
-.overlay { position: fixed; inset: 0; background: rgba(10, 8, 6, .78); display: grid; place-items: center; padding: 16px; z-index: 20; }
-.overlay[hidden] { display: none; }
-.dialog { background: var(--mud-2); border: 1px solid var(--line); border-radius: 10px; padding: 16px; max-width: 640px; width: 100%; max-height: 88vh; overflow: auto; display: grid; gap: 10px; }
-.rules { font-size: .88rem; line-height: 1.5; } .rules h3 { margin: 10px 0 2px; font-size: .92rem; color: var(--bronze); } .rules ul { margin: 0; padding-left: 18px; } .rules b { color: var(--gold); }
+.card { --c: var(--cw); position: relative; flex: 0 0 auto; width: var(--c); aspect-ratio: 2 / 3; padding: 0; border: 2px solid var(--ink); border-radius: 6px;
+  background: var(--paper) var(--paper-tex); box-shadow: 0 2px 0 rgba(0, 0, 0, .55), 0 5px 12px rgba(0, 0, 0, .45); cursor: pointer; display: block; color: var(--ink); text-align: left; }
+.card .stripe { position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--fc, var(--ink-2)); border-radius: 3px 3px 0 0; }
+.card.merc .stripe { background: repeating-linear-gradient(90deg, var(--fc, var(--ink-2)) 0 6px, transparent 6px 9px); }
+.card .art { position: absolute; left: 3px; right: 3px; top: 7px; bottom: 20%; border: 1px solid var(--ink); border-radius: 3px; background-color: #3b3227; background-repeat: no-repeat; filter: sepia(.2) contrast(1.06); }
+.card .tier { position: absolute; left: 2px; top: 2px; min-width: calc(var(--c) * .24); height: calc(var(--c) * .2); padding: 0 2px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 700 calc(var(--c) * .12)/calc(var(--c) * .2) var(--display); text-align: center; }
+.card .stars { position: absolute; top: calc(var(--c) * -.1); left: 50%; transform: translateX(-50%); color: var(--gold); font-size: calc(var(--c) * .17); letter-spacing: -1px; text-shadow: 0 1px 0 #000, 0 0 4px #000; white-space: nowrap; }
+.card .kw { position: absolute; right: 2px; top: 9px; display: grid; gap: 2px; }
+.card .kw i { width: calc(var(--c) * .22); height: calc(var(--c) * .22); border-radius: 50%; background: var(--ink); color: var(--paper); font: 700 calc(var(--c) * .13)/calc(var(--c) * .22) var(--body); text-align: center; font-style: normal; box-shadow: 0 0 0 1px var(--paper-2); }
+.card .atk, .card .hp { position: absolute; bottom: calc(var(--c) * -.06); width: calc(var(--c) * .38); height: calc(var(--c) * .38); display: grid; place-items: center; color: #fff;
+  font: 800 calc(var(--c) * .21)/1 var(--display); text-shadow: 0 1px 1px rgba(0, 0, 0, .6); font-variant-numeric: tabular-nums; }
+.card .atk { left: calc(var(--c) * -.06); border-radius: 50%; background: var(--rust); box-shadow: 0 0 0 2px var(--ink); }
+.card .hp { right: calc(var(--c) * -.06); background: var(--ink); clip-path: polygon(50% 0, 100% 14%, 100% 58%, 50% 100%, 0 58%, 0 14%); }
+.card .hp::before { content: ""; position: absolute; inset: 2px; background: var(--moss); clip-path: inherit; z-index: -1; }
+.card .hp { z-index: 0; isolation: isolate; }
+.card .hp.hurt::before { background: var(--hurt); } .card .atk.down { background: #4a3a52; }
+.card .fx { position: absolute; left: 2px; bottom: calc(var(--c) * .36); display: flex; gap: 2px; }
+.card .fx i { font-style: normal; font-size: calc(var(--c) * .13); font-weight: 700; color: #fff; border-radius: 3px; padding: 0 3px; box-shadow: 0 1px 2px #000; }
+.card .cv { background: var(--cover); } .card .bn { background: #b4521c; }
+.card .price { position: absolute; top: calc(var(--c) * -.12); right: calc(var(--c) * -.1); background: var(--brass); color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; font: 800 calc(var(--c) * .18)/1 var(--display); padding: 2px 5px; }
+.card .cnt { position: absolute; left: 50%; bottom: calc(var(--c) * .3); transform: translateX(-50%); background: var(--moss); color: #fff; border: 1px solid var(--ink); border-radius: 999px; font-size: calc(var(--c) * .15); font-weight: 700; padding: 0 5px; white-space: nowrap; }
+.card .hold { position: absolute; left: calc(var(--c) * -.08); top: calc(var(--c) * -.1); background: var(--ink); color: var(--gold); border: 1px solid var(--gold); border-radius: 999px; font-size: calc(var(--c) * .14); padding: 0 4px; }
+.card .lbl { position: absolute; left: 3px; right: 3px; bottom: 2px; font: 700 calc(var(--c) * .14)/1.1 var(--display); text-align: center; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.card.item .art { bottom: 30%; display: grid; place-items: center; font-size: calc(var(--c) * .42); color: var(--paper); background-size: cover; }
+.card.sel { outline: 3px solid var(--gold); outline-offset: 2px; }
+.card.poor .price { background: #8d7d61; }
+.card.sold { visibility: hidden; }
+.card.dead { opacity: 0; transform: translateY(10px) scale(.85); transition: opacity .25s, transform .25s; }
+.card.locked .art { filter: grayscale(1) brightness(.4); }
+.card:hover .art { filter: sepia(.1) brightness(1.1); }
+/* მობილიზაცია */
+.shop { background: var(--paper) var(--paper-tex); color: var(--ink); border: 2px solid var(--ink); border-radius: 12px; padding: 6px 8px 8px; display: grid; gap: 4px; --cw: var(--sw); }
+.shop .lab { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; font: 700 .66rem/1.2 var(--display); letter-spacing: .1em; color: var(--ink-2); }
+.shop .lab b { color: var(--ink); letter-spacing: 0; font-size: .78rem; }
+.srow { display: flex; gap: 6px; align-items: flex-end; padding-top: 12px; min-height: calc(var(--sw) * 1.5 + 8px); }
+.srow .slot { border-color: rgba(36, 27, 18, .35); background: rgba(36, 27, 18, .06); }
+.srow .gap { flex: 1 1 auto; }
+.ords { display: flex; flex-wrap: wrap; gap: 3px; align-self: center; max-width: 40%; }
+.ords .chip { color: var(--ink); background: rgba(36, 27, 18, .08); }
+/* ღილაკები */
+.bar { display: grid; grid-template-columns: auto auto 1fr; gap: 6px; }
+.btn { border: 2px solid var(--line); background: rgba(0, 0, 0, .45); color: var(--paper); border-radius: 10px; min-height: 46px; padding: 6px 12px; cursor: pointer; font-weight: 700; line-height: 1.15; }
+.btn small { display: block; font-weight: 400; font-size: .7rem; opacity: .85; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn.go { background: var(--brass); color: var(--ink); border-color: var(--ink); font: 800 1.05rem var(--display); }
+.btn.go:hover:not(:disabled) { background: var(--gold); }
+.btn.ink { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn.out { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn.sm { min-height: 36px; padding: 4px 10px; font-size: .84rem; }
+/* ქვედა ფურცელი */
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 560px; z-index: 30; background: var(--paper) var(--paper-tex); color: var(--ink);
+  border-top: 3px solid var(--ink); border-radius: 14px 14px 0 0; box-shadow: 0 -10px 30px rgba(0, 0, 0, .6); padding: 12px max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  max-height: 62dvh; overflow: auto; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; align-items: start; }
+.sheet[hidden] { display: none; }
+.sheet .big { --cw: 92px; grid-row: span 3; }
+.sheet .nm { font: 800 1.05rem var(--display); }
+.sheet .sub { font-size: .8rem; color: var(--ink-2); }
+.sheet .abil { display: grid; gap: 3px; font-size: .86rem; }
+.sheet .abil b { color: var(--rust); }
+.sheet .acts { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.sheet .acts .grow { flex: 1 1 auto; }
+.sheet .wide { grid-column: 1 / -1; }
+.sheet .cards { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 10px; }
+.sheet .x { position: absolute; right: 10px; top: 8px; }
+/* ქაღალდის პანელები */
+.paper { background: var(--paper) var(--paper-tex); color: var(--ink); border: 2px solid var(--ink); border-radius: 12px; padding: 12px; display: grid; gap: 8px; }
+.paper h2 { font: 800 1.15rem var(--display); } .paper h3 { font: 700 .74rem var(--display); letter-spacing: .1em; color: var(--ink-2); }
+.paper .muted { color: var(--ink-2); }
+.choices { display: grid; gap: 8px; }
+.choice { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: center; text-align: left; border: 2px solid var(--ink); border-radius: 10px; background: rgba(255, 255, 255, .25); color: var(--ink); padding: 10px 12px; cursor: pointer; min-height: 56px; }
+.choice:hover:not(:disabled) { background: rgba(227, 180, 88, .25); } .choice:disabled { opacity: .45; cursor: not-allowed; }
+.choice .ic { font: 800 1.6rem var(--display); width: 40px; text-align: center; }
+.choice b { font-family: var(--display); } .choice .small { grid-column: 2; }
+.choice .card { --cw: 58px; pointer-events: none; grid-row: span 2; }
+.small { font-size: .8rem; } .gold { color: var(--brass); } .ok { color: var(--moss); } .bad { color: var(--rust); }
+.muted { color: #b5a685; }
+.hint { border: 1px dashed var(--brass); border-radius: 8px; padding: 6px 10px; font-size: .82rem; display: flex; gap: 8px; align-items: center; justify-content: space-between; background: rgba(184, 134, 47, .12); }
+.hint .btn { min-height: 32px; padding: 2px 10px; }
+.toast { position: fixed; left: 50%; top: calc(max(6px, env(safe-area-inset-top)) + 44px); transform: translateX(-50%); z-index: 40; max-width: min(520px, calc(100vw - 32px)); background: var(--ink); color: var(--paper); border: 2px solid var(--brass); border-radius: 10px; padding: 8px 12px; font-size: .86rem; box-shadow: 0 6px 18px rgba(0, 0, 0, .6); }
+/* მთავარი, არჩევა, წინსვლა */
+.hero { border-radius: 12px; border: 2px solid var(--line); min-height: 220px; background: linear-gradient(rgba(21, 17, 12, .1), rgba(21, 17, 12, .92)), url(ui/title.jpg) center / cover; display: grid; align-content: end; padding: 14px; gap: 6px; }
+.hero h2 { font: 800 1.8rem var(--display); } .hero p { max-width: 46ch; }
+.menu { display: grid; gap: 8px; }
+.menu .btn { min-height: 52px; text-align: left; }
+.xp { height: 8px; border-radius: 4px; background: rgba(36, 27, 18, .25); overflow: hidden; } .xp i { display: block; height: 100%; background: var(--brass); }
+.list { display: grid; gap: 6px; } .li { display: flex; gap: 8px; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(36, 27, 18, .35); padding-bottom: 5px; }
+.li.done { color: var(--ink-2); } .li.done b::before { content: "✓ "; color: var(--moss); }
+.flist { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; }
+.fbtn { display: grid; gap: 2px; text-align: left; border: 2px solid var(--ink); border-left: 7px solid var(--fc); border-radius: 8px; background: rgba(255, 255, 255, .22); color: var(--ink); padding: 6px 8px; cursor: pointer; min-height: 50px; }
+.fbtn[aria-pressed="true"] { background: rgba(227, 180, 88, .35); } .fbtn:disabled { opacity: .45; cursor: not-allowed; }
+.fbtn small { color: var(--ink-2); }
+.cards { display: flex; flex-wrap: wrap; gap: 10px 8px; padding-top: 8px; }
+.cards .card { --cw: 62px; }
+/* ბრძოლა */
+.bboard { flex: 1 1 auto; min-height: 0; display: grid; align-content: center; gap: 4px; border-radius: 12px; border: 2px solid var(--line); background: center / cover; padding: 6px; --cw: var(--bw); }
+.bboard .row { min-height: calc(var(--bw) * 1.5 + 21px); }
+.bboard .row.foe-row::before { color: #f2b3a3; }
+.nml { text-align: center; font: 700 .9rem var(--display); color: var(--paper); text-shadow: 0 1px 3px #000; min-height: 1.4em; padding: 2px; border-top: 1px dashed rgba(232, 220, 192, .35); border-bottom: 1px dashed rgba(232, 220, 192, .35); background: rgba(0, 0, 0, .3); }
+.float { position: absolute; left: 50%; top: 25%; transform: translateX(-50%); font: 800 1.15rem var(--display); color: #ffb39c; text-shadow: 0 1px 3px #000, 0 0 6px #000; pointer-events: none; z-index: 5; white-space: nowrap; }
+.float.heal { color: #c4eab0; } .float.note { color: var(--gold); font-size: .8rem; } .float.block { color: #b5d0ec; }
 .shake { animation: shake .35s; }
 @keyframes shake { 0%, 100% { transform: none; } 20% { transform: translate(-5px, 2px); } 40% { transform: translate(5px, -2px); } 60% { transform: translate(-3px, 1px); } 80% { transform: translate(3px, 0); } }
-.bstage { background: center / cover; border-radius: 10px; border: 1px solid var(--line); padding: 8px; display: grid; gap: 6px; }
-.bstage .panel { background: rgba(24, 19, 14, .74); }
-.bmsg { text-align: center; font-family: var(--display); min-height: 1.5em; }
-@media (max-width: 560px) { .tile .ft .g { display: none; } .tile .ft i { padding: 0 3px; } }
-@media (min-width: 700px) { body { font-size: 15px; } .tile .nm { font-size: .7rem; } .node { font-size: .72rem; } }
-@media (prefers-reduced-motion: reduce) { .shake { animation: none; } .tile.dead { transition: none; } }
+.pop { animation: pop .35s ease-out; }
+@keyframes pop { 0% { transform: scale(.6) translateY(12px); opacity: 0; } 70% { transform: scale(1.08); } 100% { transform: none; opacity: 1; } }
+.result { font: 800 1.3rem var(--display); }
+.overlay { position: fixed; inset: 0; background: rgba(10, 8, 6, .8); display: grid; place-items: center; padding: 16px; z-index: 50; }
+.overlay[hidden] { display: none; }
+.dialog { background: var(--paper) var(--paper-tex); color: var(--ink); border: 2px solid var(--ink); border-radius: 12px; padding: 16px; max-width: 600px; width: 100%; max-height: 88vh; overflow: auto; display: grid; gap: 10px; }
+.rules { font-size: .88rem; line-height: 1.5; } .rules h3 { margin: 10px 0 2px; font: 700 .95rem var(--display); color: var(--rust); letter-spacing: 0; } .rules ul { margin: 0; padding-left: 18px; } .rules b { color: var(--ink); }
+.rules .g { display: inline-block; width: 1.4em; height: 1.4em; border-radius: 50%; background: var(--ink); color: var(--paper); text-align: center; line-height: 1.4em; font-size: .8em; margin-right: 4px; }
+@media (min-width: 700px) { body { font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .shake, .pop { animation: none; } .card.dead { transition: none; } }
 </style>
 <div class="app" id="app"></div>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="false"></div>
 <div class="overlay" id="ov" hidden><div class="dialog" id="dlg" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" hidden role="status"></div>
 <script src="data.js"></script>
 <script src="engine.js"></script>
 <script src="balance.js"></script>
@@ -149,37 +185,39 @@ const t = (ka, en) => LANG === "en" ? en : ka;
 const nm = c => c ? (LANG === "en" ? c.en : c.ka) : "";
 const L2 = a => a[LANG === "en" ? 1 : 0];
 const fname = f => f && D.factions[f] ? nm(D.factions[f]) : "";
-const fcol = f => f && D.factions[f] ? D.factions[f].pal[0][0] : "#54473a";
+const fcol = f => f && D.factions[f] ? D.factions[f].pal[0][0] : "#5a4834";
 const sprite = a => a ? `background-image:url(${a.s});background-size:${a.c * 100}% ${a.r * 100}%;background-position:${a.c > 1 ? a.x / (a.c - 1) * 100 : 0}% ${a.r > 1 ? a.y / (a.r - 1) * 100 : 0}%` : "";
 const today = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
-const BAL = window.TLBAL || {};
-const hard = f => BAL[f] == null ? "" : BAL[f] >= 55 ? t("ადვილი", "easy") : BAL[f] >= 42 ? t("საშუალო", "medium") : t("რთული", "hard");
-const docTxt = f => { const d = TL.doc(f); if (!d) return t("ლოჯისტიკა: ჩვეულებრივი მარაგი.", "Logistics: standard supply.");
-  const n = (d > 0 ? "+" : "−") + String(Math.abs(d)).replace(".", t(",", "."));
-  return t(`ლოჯისტიკა: ${n} მარაგი ყოველ მობილიზაციაზე (საშუალოდ; წილადი ნაწილი რამდენიმე მობილიზაციაზე ნაწილდება).`, `Logistics: ${n} supply per muster (on average; the fraction is spread over several musters).`); };
+const ROMAN = ["", "I", "II", "III", "IV", "V", "VI"];
 const tierName = x => x === "hero" ? t("გმირი", "Hero") : x;
+const BAL = window.TLBAL || {};
+const hard = f => BAL[f] == null ? "" : BAL[f] >= 56 ? t("ადვილი", "easy") : BAL[f] >= 44 ? t("საშუალო", "medium") : t("რთული", "hard");
+const docTxt = f => { const d = TL.doc(f); if (!d) return t("ლოჯისტიკა: ჩვეულებრივი მარაგი (10 რაუნდში).", "Logistics: standard supply (10 a round).");
+  const n = (d > 0 ? "+" : "−") + String(Math.abs(d)).replace(".", t(",", "."));
+  return t(`ლოჯისტიკა: ${n} მარაგი ყოველ რაუნდში (საშუალოდ) — ჯარები ასე თანაბრდება.`, `Logistics: ${n} supply every round (on average) — this is how armies are evened out.`); };
 
-// ---------- წინსვლა (ინახება ბრაუზერში) ----------
+// ---------- წინსვლა ----------
 const ORDER = ["colchis", "iberia", "harness", "hell"].concat(Object.keys(D.factions).filter(f => !["colchis", "iberia", "harness", "hell"].includes(f)));
 const MISS = [
   { k: "wins", n: 6, xp: 40, ka: "მოიგე 6 ბრძოლა", en: "Win 6 battles" },
   { k: "merges", n: 3, xp: 40, ka: "შეაერთე 3 სამეული", en: "Merge 3 triples" },
   { k: "elites", n: 1, xp: 50, ka: "დაამარცხე რჩეული რაზმი", en: "Defeat an elite detachment" },
-  { k: "bosses", n: 1, xp: 60, ka: "გატეხე ერთი ფრონტი (მთავარი ბრძოლა)", en: "Break one front (main battle)" },
+  { k: "tier", n: 3, xp: 40, ka: "ამაღლე მაღაზიის დონე 3-ჯერ", en: "Raise your muster level 3 times" },
   { k: "flawless", n: 2, xp: 50, ka: "მოიგე 2 ბრძოლა დანაკარგის გარეშე", en: "Win 2 battles without losing a unit" },
-  { k: "relics", n: 2, xp: 40, ka: "იპოვე 2 რელიქვია", en: "Find 2 relics" },
-  { k: "nodes", n: 10, xp: 40, ka: "გაიარე რუკის 10 კვანძი", en: "Pass 10 map nodes" }
+  { k: "relics", n: 1, xp: 40, ka: "იპოვე რელიქვია", en: "Find a relic" },
+  { k: "nodes", n: 3, xp: 40, ka: "აირჩიე 3 მონაკვეთი რუკაზე", en: "Choose 3 sectors on the map" }
 ];
 const ACH = [
-  { k: "first", xp: 100, ka: "პირველი გარღვევა", en: "First breakthrough", dka: "მოიგე გარბენი", den: "Win a run" },
+  { k: "first", xp: 100, ka: "პირველი გარღვევა", en: "First breakthrough", dka: "მოიგე გარბენი (10 გამარჯვება)", den: "Win a run (10 victories)" },
   { k: "light", xp: 60, ka: "ზედაპირის ფარი", en: "Shield of the surface", dka: "მოიგე ნათელი ფრაქციით", den: "Win with a light faction" },
   { k: "dark", xp: 60, ka: "ქვესკნელის ხელი", en: "Hand of the underworld", dka: "მოიგე ბნელი ფრაქციით", den: "Win with a dark faction" },
   { k: "five", xp: 150, ka: "ხუთი ჯარი", en: "Five armies", dka: "მოიგე 5 სხვადასხვა ფრაქციით", den: "Win with 5 different factions" },
   { k: "d3", xp: 120, ka: "მძიმე ფრონტი", en: "Hard front", dka: "მოიგე მე-3 სიმძიმეზე", den: "Win at severity 3" },
   { k: "d6", xp: 250, ka: "უმძიმესი ფრონტი", en: "Hardest front", dka: "მოიგე მე-6 სიმძიმეზე", den: "Win at severity 6" },
   { k: "star3", xp: 80, ka: "სამი ვარსკვლავი", en: "Three stars", dka: "გააკეთე ★★★ იუნიტი", den: "Make a ★★★ unit" },
-  { k: "relic6", xp: 80, ka: "საგანძური", en: "Treasury", dka: "ერთ გარბენში 6 რელიქვია", den: "Hold 6 relics in one run" },
-  { k: "steel", xp: 200, ka: "უმარცხებელი", en: "Unbeaten", dka: "მოიგე გარბენი ერთი ბრძოლის წაგების გარეშე", den: "Win a run without losing a battle" },
+  { k: "lvl6", xp: 60, ka: "სრული მობილიზაცია", en: "Full muster", dka: "მიაღწიე მაღაზიის მე-6 დონეს", den: "Reach muster level 6" },
+  { k: "relic3", xp: 80, ka: "საგანძური", en: "Treasury", dka: "ერთ გარბენში 3 რელიქვია", den: "Hold 3 relics in one run" },
+  { k: "steel", xp: 200, ka: "უმარცხებელი", en: "Unbeaten", dka: "მოიგე გარბენი ერთი წაგების გარეშე", den: "Win a run without losing a battle" },
   { k: "codex100", xp: 80, ka: "მწიგნობარი", en: "Archivist", dka: "ნახე 100 ბარათი", den: "See 100 cards" },
   { k: "codex300", xp: 200, ka: "მემატიანე", en: "Chronicler", dka: "ნახე 300 ბარათი", den: "See 300 cards" },
   { k: "daily", xp: 100, ka: "დღის გმირი", en: "Hero of the day", dka: "მოიგე დღის გამოწვევა", den: "Win a daily challenge" }
@@ -189,8 +227,9 @@ function loadMeta() {
   const m = store.get("tl-meta", null) || {};
   return Object.assign({ xp: 0, lvl: 1, unlocked: ORDER.slice(0, 4), maxDiff: {}, wonWith: {}, stats: { runs: 0, wins: 0, streak: 0, best: 0 }, seen: {}, ach: {}, miss: null, daily: {}, tut: {}, speed: 1 }, m);
 }
-let M = loadMeta(), R = store.get("tl-run", null), V = { screen: "home", sel: null, pick: "colchis", diff: 0, b: null, note: "", codex: "colchis", up: null };
-if (R && R.v !== 1) R = null;
+let M = loadMeta(), R = store.get("tl-run", null);
+if (R && R.v !== 2) R = null;
+const V = { screen: "home", sel: null, pick: "colchis", diff: 0, b: null, codex: "colchis", up: null, sheet: null };
 const saveMeta = () => store.set("tl-meta", M);
 const saveRun = () => { if (R && R.phase !== "over") store.set("tl-run", R); else store.del("tl-run"); };
 function missions() {
@@ -199,23 +238,20 @@ function missions() {
     M.miss = { date: d, list: idx.map(j => ({ j, p: 0, done: false })) }; saveMeta(); }
   return M.miss.list;
 }
-function addXp(n) {
-  M.xp += n; const ups = [];
+function addXp(n) { M.xp += n; const ups = [];
   while (M.xp >= xpNeed(M.lvl)) { M.xp -= xpNeed(M.lvl); M.lvl++; const f = ORDER.find(x => !M.unlocked.includes(x)); if (f) { M.unlocked.push(f); ups.push(f); } else ups.push(null); }
-  return ups;
-}
-let prevStats = R ? Object.assign({}, R.stats) : null;
-function track() {                                   // გარბენის მრიცხველების ცვლილება → მისიები, ნანახი ბარათები, მიღწევები
+  return ups; }
+let prev = R ? Object.assign({}, R.stats) : null;
+function track() {
   if (!R) return; const got = [];
-  if (prevStats) for (const m of missions()) { const def = MISS[m.j], dv = (R.stats[def.k] || 0) - (prevStats[def.k] || 0);
-    if (dv > 0 && !m.done) { m.p = Math.min(def.n, m.p + dv); if (m.p >= def.n) { m.done = true; got.push({ xp: def.xp, name: t(def.ka, def.en) }); } } }
-  prevStats = Object.assign({}, R.stats);
+  if (prev) for (const m of missions()) { const d = MISS[m.j], dv = (R.stats[d.k] || 0) - (prev[d.k] || 0);
+    if (dv > 0 && !m.done) { m.p = Math.min(d.n, m.p + dv); if (m.p >= d.n) { m.done = true; got.push({ xp: d.xp, name: t(d.ka, d.en) }); } } }
+  prev = Object.assign({}, R.stats);
   for (const id in R.seen) M.seen[id] = Math.max(M.seen[id] || 0, R.seen[id]);
   for (const x of TL.all(R)) M.seen[x.id] = Math.max(M.seen[x.id] || 0, x.st);
-  if (R.enemy) for (const x of R.enemy) if (M.seen[x.id] == null) M.seen[x.id] = 0;
+  if (R.enemy) for (const x of R.enemy.t.concat(R.enemy.r)) if (M.seen[x.id] == null) M.seen[x.id] = 0;
   const seenN = Object.keys(M.seen).length, ach = k => { if (!M.ach[k]) { M.ach[k] = true; const a = ACH.find(x => x.k === k); got.push({ xp: a.xp, name: t(a.ka, a.en) }); } };
-  if (TL.all(R).some(x => x.st >= 3)) ach("star3");
-  if (R.relics.length >= 6) ach("relic6");
+  if (TL.all(R).some(x => x.st >= 3)) ach("star3"); if (R.lvl >= 6) ach("lvl6"); if (R.relics.length >= 3) ach("relic3");
   if (seenN >= 100) ach("codex100"); if (seenN >= 300) ach("codex300");
   if (R.phase === "over" && !R.done) {
     R.done = true; M.stats.runs++;
@@ -224,14 +260,16 @@ function track() {                                   // გარბენის
       ach("first"); ach(D.factions[R.f].side === "dark" ? "dark" : "light"); if (Object.keys(M.wonWith).length >= 5) ach("five");
       if (R.diff >= 3) ach("d3"); if (R.diff >= 6) ach("d6"); if (!R.stats.losses) ach("steel"); if (R.daily) ach("daily");
     } else M.stats.streak = 0;
-    if (R.daily) { const o = M.daily[R.daily] || {}; M.daily[R.daily] = { won: o.won || R.won, best: Math.max(o.best || 0, R.act * 6 + R.step) }; }
-    const xp = TL.xpFor(R); V.up = { xp, got: [], ups: [] }; V.up.ups = addXp(xp);
+    if (R.daily) { const o = M.daily[R.daily] || {}; M.daily[R.daily] = { won: o.won || R.won, best: Math.max(o.best || 0, R.wins) }; }
+    const xp = TL.xpFor(R); V.up = { xp, got: [], ups: addXp(xp) };
   }
-  if (got.length) { let ups = []; for (const g of got) ups = ups.concat(addXp(g.xp)); if (V.up) { V.up.got = V.up.got.concat(got); V.up.ups = V.up.ups.concat(ups); } else toast(got.map(g => "✓ " + g.name + " +" + g.xp + " XP").join(" · ") + ups.filter(Boolean).map(f => " · " + t("ახალი ფრაქცია: ", "New faction: ") + fname(f)).join("")); }
+  if (got.length) { let ups = []; for (const g of got) ups = ups.concat(addXp(g.xp));
+    if (V.up) { V.up.got = V.up.got.concat(got); V.up.ups = V.up.ups.concat(ups); }
+    else toast(got.map(g => "✓ " + g.name + " +" + g.xp + " XP").join(" · ") + ups.filter(Boolean).map(f => " · " + t("ახალი ფრაქცია: ", "New faction: ") + fname(f)).join("")); }
   saveMeta(); saveRun();
 }
 
-// ---------- ხმა (WebAudio, ფაილების გარეშე) ----------
+// ---------- ხმა ----------
 let SOUND = store.get("tl-sound", true), AC = null;
 const REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 function ac() { if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { AC = null; } } if (AC && AC.state === "suspended") AC.resume(); return AC; }
@@ -248,6 +286,7 @@ function sfx(kind) {
     case "buy": tone(150, 60, .16, "sine", .3); noise(.07, .1, "lowpass", 900); break;
     case "sell": tone(520, 780, .09, "triangle", .1); break;
     case "roll": noise(.12, .14, "bandpass", 1400); noise(.1, .1, "bandpass", 1000, .08); break;
+    case "up": [392, 523, 659].forEach((f, i) => tone(f, f, .14, "square", .05, i * .06)); break;
     case "merge": [523, 659, 784, 1047].forEach((f, i) => tone(f, f, .16, "triangle", .13, i * .07)); break;
     case "melee": noise(.06, .28, "bandpass", 1200); tone(110, 70, .12, "sine", .2); break;
     case "shot": noise(.08, .3, "highpass", 1500); tone(900, 200, .05, "square", .035); break;
@@ -257,373 +296,394 @@ function sfx(kind) {
     case "fall": tone(300, 90, .3, "triangle", .11); break;
     case "win": [392, 494, 587, 784].forEach((f, i) => tone(f, f, .22, "triangle", .14, i * .12)); break;
     case "lose": [392, 330, 262, 196].forEach((f, i) => tone(f, f * .98, .28, "triangle", .13, i * .15)); break;
-    case "level": [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, f, .2, "triangle", .13, i * .09)); break;
   }
 }
 let toastT = null;
-function toast(msg) { V.note = msg; clearTimeout(toastT); toastT = setTimeout(() => { V.note = ""; if (V.screen !== "battle") render(); }, 4200); }
+function toast(msg) { const el = $("toast"); el.textContent = msg; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 3600); }
 
-// ---------- ბარათი ----------
-function tile(x, o) {
-  o = o || {}; const d = TL.def(x.id), base = TL.stats({ id: x.id, st: x.st || 1, ba: x.ba, bh: x.bh });
+// ---------- ბარათები ----------
+function card(x, o) {
+  o = o || {}; const d = TL.def(x.id), st = x.st || 1, base = TL.stats({ id: x.id, st, ba: x.ba, bh: x.bh });
   const atk = x.atk != null ? x.atk : base.atk, hp = x.hp != null ? x.hp : base.hp, max = x.max != null ? x.max : hp;
-  const kws = Object.keys(TL.traits(x.id)).map(k => L2([TL.KW[k].ka, TL.KW[k].en])).join(", ");
+  const kws = Object.keys(U(x)).filter(k => !["vengeance", "stubborn", "brother"].includes(k) || Object.keys(U(x)).length < 4).slice(0, 3);
   const tag = o.span ? "span" : "button";
-  return `<${tag} ${o.span ? "" : 'type="button"'} class="tile ${o.cls || ""}" ${o.data || ""} style="--fc:${fcol(d.f)}" title="${esc(nm(d))}${kws ? " — " + esc(kws) : ""}">
-    <span class="art" style="${o.hide ? "" : sprite(d.art)}"></span>
-    ${(x.st || 1) > 1 || o.stars ? `<span class="st">${"★".repeat(x.st || 1)}</span>` : ""}<span class="tr">${esc(tierName(d.tier))}</span>
+  return `<${tag} ${o.span ? "" : 'type="button"'} class="card ${o.cls || ""}" ${o.data || ""} style="--fc:${fcol(d.f)}" aria-label="${esc(nm(d))} ${atk}/${Math.max(0, hp)}">
+    <span class="stripe"></span><span class="art" style="${o.hide ? "" : sprite(d.art)}"></span><span class="tier">${esc(d.tier === "hero" ? "♔" : d.tier)}</span>
+    ${st > 1 ? `<span class="stars">${"★".repeat(st)}</span>` : ""}
+    ${o.hide ? "" : `<span class="kw">${kws.map(k => `<i title="${esc(L2([TL.KW[k].ka, TL.KW[k].en]))}">${TL.KW[k].g}</i>`).join("")}</span>
     ${x.cover || x.burn ? `<span class="fx">${x.cover ? `<i class="cv">◈${x.cover}</i>` : ""}${x.burn ? `<i class="bn">♨${x.burn}</i>` : ""}</span>` : ""}
-    ${o.hide ? "" : `<span class="ft"><i class="a${x.sup ? " down" : ""}"><span class="g">⚔</span>${atk}</i><i class="h${hp < max ? " hurt" : ""}"><span class="g">⛨</span>${Math.max(0, hp)}</i></span>`}
-    ${o.cost != null ? `<span class="cost">⛁${o.cost}</span>` : ""}${o.lock ? `<span class="lk">${t("დაკ.", "held")}</span>` : ""}
-    <span class="nm">${o.hide ? "???" : esc(nm(d))}</span></${tag}>`;
+    <span class="atk${x.sup ? " down" : ""}">${atk}</span><span class="hp${hp < max ? " hurt" : ""}">${Math.max(0, hp)}</span>`}
+    ${o.price != null ? `<span class="price">${o.price}</span>` : ""}${o.hold ? `<span class="hold">${t("დაკ.", "held")}</span>` : ""}${o.cnt ? `<span class="cnt">${o.cnt}/3</span>` : ""}</${tag}>`;
 }
-function orderTile(key, o) {
-  o = o || {}; const c = D.common[key];
-  const tag = o.span ? "span" : "button";
-  return `<${tag} ${o.span ? "" : 'type="button"'} class="tile ${o.cls || ""}" ${o.data || ""} title="${esc(nm(c))} — ${esc(L2(TL.ORD[key].t))}">
-    <span class="art" style="${sprite(c.art)}"></span>${o.cost != null ? `<span class="cost">⛁${o.cost}</span>` : ""}<span class="nm">${esc(nm(c))}</span></${tag}>`;
+const U = x => TL.traitsX(x);
+function itemCard(key, o) {
+  o = o || {}; const it = TL.ITEMS[key], tag = o.span ? "span" : "button";
+  return `<${tag} ${o.span ? "" : 'type="button"'} class="card item ${o.cls || ""}" ${o.data || ""} style="--fc:var(--brass)" aria-label="${esc(nm(it))}">
+    <span class="stripe"></span><span class="art" style="${it.art ? sprite(it.art) : ""}">${it.art ? "" : it.g}</span><span class="tier">${ROMAN[it.lv]}</span>
+    <span class="lbl">${esc(nm(it))}</span>${o.price != null ? `<span class="price">${o.price}</span>` : ""}${o.hold ? `<span class="hold">${t("დაკ.", "held")}</span>` : ""}</${tag}>`;
 }
-function unitDetail(x, extra) {
-  const d = TL.def(x.id), s = TL.stats({ id: x.id, st: x.st || 1, ba: x.ba, bh: x.bh }), st = x.st || 1, b = (x.ba || 0) + (x.bh || 0);
-  return `<div class="nm">${esc(nm(d))} <span class="gold">${"★".repeat(st)}</span></div>
-    <div class="sub">${esc(fname(d.f) || t("გამოძახებული", "Summoned"))} · ${esc(tierName(d.tier))}${TL.LARGE[d.tier] ? " · " + t("დიდი", "large") : ""} · ⚔ ${s.atk} ⛨ ${s.hp}${b ? ` <span class="ok">(${t("გაწვრთნილი", "trained")} +${x.ba || 0}/+${x.bh || 0})</span>` : ""}</div>
-    ${Object.keys(TL.traits(x.id)).map(k => `<div class="kw"><b>${esc(L2([TL.KW[k].ka, TL.KW[k].en]))}:</b> ${esc(L2(TL.KW[k].t(st)))}</div>`).join("")}
+function unitInfo(x, extra) {
+  const d = TL.def(x.id), st = x.st || 1, s = TL.stats({ id: x.id, st, ba: x.ba, bh: x.bh }), b = (x.ba || 0) + (x.bh || 0);
+  return `${card(Object.assign({}, x, { atk: x.atk, hp: x.hp }), { span: 1, cls: "big" })}
+    <div class="nm">${esc(nm(d))} <span class="gold">${"★".repeat(st)}</span></div>
+    <div class="sub">${esc(fname(d.f) || t("გამოძახებული", "Summoned"))} · ${esc(tierName(d.tier))} · ${t("მაღაზიის დონე", "muster level")} ${TL.LVL[d.tier] || 1}${TL.LARGE[d.tier] ? " · " + t("დიდი", "large") : ""}
+      · <b>⚔ ${x.atk != null ? x.atk : s.atk}</b> <b>⛨ ${x.hp != null ? Math.max(0, x.hp) : s.hp}</b>${b ? ` <span class="ok">(${t("გაძლიერებული", "boosted")} +${x.ba || 0}/+${x.bh || 0})</span>` : ""}</div>
+    <div class="abil">${Object.keys(U(x)).map(k => `<div><b>${TL.KW[k].g} ${esc(L2([TL.KW[k].ka, TL.KW[k].en]))}:</b> ${esc(L2(TL.KW[k].t(st)))}</div>`).join("")}</div>
     ${extra || ""}`;
 }
+function itemInfo(key, extra) { const it = TL.ITEMS[key];
+  return `${itemCard(key, { span: 1, cls: "big" })}<div class="nm">${esc(nm(it))}</div>
+    <div class="sub">${it.kind === "order" ? t("ბრძანება — მხოლოდ შემდეგი ბრძოლისთვის", "Order — for the next battle only") : t("მარაგი — სამუდამო გაძლიერება", "Supply — a permanent boost")} · ${t("მაღაზიის დონე", "muster level")} ${it.lv}</div>
+    <div class="abil"><div>${esc(L2(it.t))}</div></div>${extra || ""}`; }
+
+// ---------- ფურცელი ----------
+function openSheet(html) { const s = $("sheet"); s.innerHTML = `<button class="ib x" data-act="close" aria-label="${t("დახურვა", "Close")}">✕</button>` + html; s.hidden = false; }
+function closeSheet() { const sh = $("sheet"); sh.hidden = true; sh.innerHTML = ""; V.sel = null; }
 
 // ---------- ეკრანები ----------
-function header() {
-  const run = R && V.screen !== "home" && V.screen !== "pick" && V.screen !== "meta" && V.screen !== "codex";
-  return `<header><h1 data-act="home" title="${t("მთავარი", "Home")}">${t("სანგრის რიგი", "Trench Line")}</h1>
-    <div class="tools"><button class="btn sm" data-act="sound" aria-pressed="${SOUND}">${SOUND ? "♪" : "♪̸"}</button><button class="btn sm" data-act="rules">${t("წესები", "Rules")}</button>
-    <div class="lang" role="group" aria-label="ენა / Language"><button type="button" data-lang="ka" aria-pressed="${LANG === "ka"}">ქარ</button><button type="button" data-lang="en" aria-pressed="${LANG === "en"}">EN</button></div></div></header>
-    ${run ? `<div class="stats"><span class="pill nerve">${t("ნებისყოფა", "Nerve")} <b>♥ ${R.nerve}/${R.maxNerve}</b></span><span class="pill">${t("მარაგი", "Supply")} <b>⛁ ${R.supply}</b></span>
-      <span class="pill">${t("წოდება", "Rank")} <b>${TL.rank(R)}</b></span><span class="pill">${t("ფრონტი", "Front")} <b>${["I", "II", "III"][Math.min(2, R.act)]}</b> · ${Math.min(6, R.step + 1)}/6</span>${R.diff ? `<span class="pill">${t("სიმძიმე", "Severity")} <b>${R.diff}</b></span>` : ""}${R.daily ? `<span class="pill gold">${t("დღის გამოწვევა", "Daily")}</span>` : ""}</div>` : ""}
-    ${V.note ? `<div class="hint" role="status"><span>${esc(V.note)}</span></div>` : ""}`;
+function topBar() {
+  const run = R && (V.screen === "run" || V.screen === "battle");
+  return `<div class="top">${run ? `<button class="ib" data-act="home" aria-label="${t("მთავარი", "Home")}">⌂</button><div class="pills"><span class="pill life">♥ <b>${R.lives}</b></span><span class="pill">✪ <b>${R.wins}/${TL.GOAL}</b></span><span class="pill">⛁ <b>${R.supply}</b></span><span class="pill">${t("რ.", "R")} <b>${R.round}</b></span></div>`
+      : `<h1 data-act="home" title="${t("მთავარი", "Home")}">${t("სანგრის რიგი", "Trench Line")}</h1>`}
+    <button class="ib" data-act="sound" aria-pressed="${SOUND}" aria-label="${t("ხმა", "Sound")}">♪</button><button class="ib" data-act="rules" aria-label="${t("წესები", "Rules")}">?</button>
+    <button class="ib" data-lang="${LANG === "en" ? "ka" : "en"}" aria-label="ენა / Language">${LANG === "en" ? "ქა" : "EN"}</button></div>`;
 }
-function tip(key, ka, en) { if (M.tut[key]) return ""; return `<div class="hint"><span>${t(ka, en)}</span><button class="btn sm" data-act="tip" data-k="${key}">${t("გასაგებია", "Got it")}</button></div>`; }
-
+function tip(key, ka, en) { if (M.tut[key]) return ""; return `<div class="hint"><span>${t(ka, en)}</span><button class="btn ink" data-act="tip" data-k="${key}">${t("გასაგებია", "Got it")}</button></div>`; }
 function home() {
   const ms = missions(), need = xpNeed(M.lvl), next = ORDER.find(x => !M.unlocked.includes(x)), ds = TL.dailySeed(today()), dd = M.daily[ds.date];
-  return `<section class="hero"><h2>${t("სანგრის რიგი", "Trench Line")}</h2>
-    <p>${t("ააწყვე რიგი, გაუშვი ბრძოლაში და გაარღვიე სამი ფრონტი. ბრძოლა თავისით მიდის — შენ წყვეტ, ვინ სად დგას.", "Build your line, send it into battle and break three fronts. The fight runs itself — you decide who stands where.")}</p></section>
-    <div class="menu">${R && R.phase !== "over" ? `<button class="btn big primary" data-act="resume">${t("გაგრძელება", "Continue")} · ${esc(fname(R.f))}</button>` : ""}
-      <button class="btn big ${R && R.phase !== "over" ? "" : "primary"}" data-act="pick">${t("ახალი გარბენი", "New run")}</button>
-      <button class="btn big" data-act="daily">${t("დღის გამოწვევა", "Daily challenge")} · ${esc(fname(ds.faction))}${dd ? (dd.won ? " ✓" : " · " + dd.best + "/18") : ""}</button>
-      <button class="btn big" data-act="meta">${t("წინსვლა და მისიები", "Progress & missions")}</button>
-      <button class="btn big" data-act="codex">${t("ბარათები", "Cards")} · ${Object.keys(M.seen).length}/${Object.keys(D.units).length}</button></div>
-    <section class="panel"><div class="rowhead"><b>${t("დონე", "Level")} ${M.lvl}</b><span>${M.xp}/${need} XP${next ? " · " + t("შემდეგი: ", "next: ") + esc(fname(next)) : ""}</span></div><div class="xp"><i style="width:${Math.min(100, M.xp / need * 100)}%"></i></div></section>
-    <section class="panel"><h3>${t("დღის მისიები", "Daily missions")}</h3><div class="list">${ms.map(m => { const d = MISS[m.j]; return `<div class="li${m.done ? " done" : ""}"><b>${esc(t(d.ka, d.en))}</b><span class="small">${m.p}/${d.n} · +${d.xp} XP</span></div>`; }).join("")}</div></section>
-    <p class="muted small">${t("ბარათზე წითელი რიცხვი შეტევაა, მწვანე — მდგრადობა.", "On a card the red number is attack, the green one resilience.")}</p>`;
+  return `${topBar()}<section class="hero"><h2>${t("სანგრის რიგი", "Trench Line")}</h2>
+    <p>${t("აიყვანე ჯარი, ჩააყენე სანგარში და ზურგში, ბრძოლა თავისით მიდის. 10 გამარჯვება, სანამ 5 სიცოცხლეს დაკარგავ.", "Recruit an army, place it in the trench and the rear, and the battle runs itself. Ten victories before you lose five lives.")}</p></section>
+    <div class="menu">${R && R.phase !== "over" ? `<button class="btn go" data-act="resume">${t("გაგრძელება", "Continue")} · ${esc(fname(R.f))} · ✪ ${R.wins}/${TL.GOAL}</button>` : ""}
+      <button class="btn ${R && R.phase !== "over" ? "" : "go"}" data-act="pick">${t("ახალი გარბენი", "New run")}</button>
+      <button class="btn" data-act="daily">${t("დღის გამოწვევა", "Daily challenge")}<small>${esc(fname(ds.faction))}${dd ? (dd.won ? " · ✓" : " · ✪ " + dd.best + "/10") : ""}</small></button>
+      <button class="btn" data-act="meta">${t("წინსვლა და მისიები", "Progress & missions")}<small>${t("დონე", "Level")} ${M.lvl} · ${M.xp}/${need} XP${next ? " · " + t("შემდეგი: ", "next: ") + esc(fname(next)) : ""}</small></button>
+      <button class="btn" data-act="codex">${t("ბარათები", "Cards")}<small>${Object.keys(M.seen).length}/${Object.keys(D.units).length}</small></button></div>
+    <section class="paper"><h3>${t("დღის მისიები", "Daily missions")}</h3><div class="list">${ms.map(m => { const d = MISS[m.j]; return `<div class="li${m.done ? " done" : ""}"><b>${esc(t(d.ka, d.en))}</b><span class="small">${m.p}/${d.n} · +${d.xp} XP</span></div>`; }).join("")}</div></section>`;
 }
 function pick() {
   const f = V.pick, md = M.maxDiff[f] || 0; if (V.diff > md) V.diff = md;
-  const heroes = TL.BYF[f].hero.concat(TL.BYF[f].V, TL.BYF[f]["IV+"]);
-  return `<section class="panel"><h2>${t("აირჩიე ჯარი", "Choose your army")}</h2>
+  const best = TL.BYF[f].hero.concat(TL.BYF[f].V, TL.BYF[f]["IV+"]);
+  return `${topBar()}<section class="paper"><h2>${t("აირჩიე ჯარი", "Choose your army")}</h2>
     <div class="flist">${ORDER.map((k, i) => { const un = M.unlocked.includes(k); return `<button class="fbtn" style="--fc:${fcol(k)}" data-act="pickf" data-f="${k}" aria-pressed="${k === f}" ${un ? "" : "disabled"}>
       <b>${esc(fname(k))}</b><small>${un ? (D.factions[k].side === "dark" ? t("ბნელი", "dark") : t("ნათელი", "light")) + (hard(k) ? " · " + hard(k) : "") + (M.wonWith[k] ? " · ✓" + M.wonWith[k] : "") : t("იხსნება დონეზე ", "unlocks at level ") + (i - 2)}</small></button>`; }).join("")}</div></section>
-    <section class="panel"><div class="rowhead"><b>${esc(fname(f))}</b><span>${t("მისი ძლიერი ბარათები", "Its strongest cards")}</span></div>
-      <p class="small">${esc(docTxt(f))}${BAL[f] != null ? ` <span class="muted">${t("ბოტი ამ ჯარით გარბენების", "With this army the bot wins")} ${BAL[f]}%${t("-ს იგებს.", " of runs.")}</span>` : ""}</p>
-      <div class="row">${heroes.map(id => tile({ id, st: 1 }, { data: `data-act="peek" data-id="${id}"` })).join("")}</div>
-      <div class="bar"><span>${t("სიმძიმე", "Severity")}: ${[...Array(md + 1).keys()].map(d => `<button class="btn sm" data-act="diff" data-d="${d}" aria-pressed="${d === V.diff}" style="${d === V.diff ? "border-color:var(--gold);color:var(--gold)" : ""}">${d}</button>`).join(" ")}</span>
-        <button class="btn big primary" data-act="start">${t("გარბენის დაწყება", "Start the run")}</button></div>
-      <p class="muted small">${V.diff ? t(`სიმძიმე ${V.diff}: მტერი ${7 * V.diff}%-ით ძლიერია, ნებისყოფა ${12 - (V.diff >> 1)}${V.diff >= 5 ? ", მარაგი −1" : ""}${V.diff >= 6 ? ", ბოსებს ტყვიამფრქვევი აქვთ" : ""}. გამოცდილება +${25 * V.diff}%.`, `Severity ${V.diff}: enemies are ${7 * V.diff}% stronger, nerve ${12 - (V.diff >> 1)}${V.diff >= 5 ? ", supply −1" : ""}${V.diff >= 6 ? ", bosses bring a machine gun" : ""}. Experience +${25 * V.diff}%.`) : t("გამარჯვება ამ ფრაქციით შემდეგ სიმძიმეს ხსნის.", "Winning with this faction unlocks the next severity.")}</p></section>
-    <div class="panel detail" id="detail">${V.sel && V.sel.k === "peek" ? unitDetail({ id: V.sel.id, st: 1 }) : `<span class="muted">${t("დააჭირე ბარათს — ნახავ, რას აკეთებს.", "Tap a card to see what it does.")}</span>`}</div>`;
+    <section class="paper"><h2>${esc(fname(f))}</h2><p class="small">${esc(docTxt(f))}${BAL[f] != null ? ` <span class="muted">${t("ბოტი ამ ჯარით გარბენების", "With this army the bot wins")} ${BAL[f]}%${t("-ს იგებს.", " of runs.")}</span>` : ""}</p>
+      <div class="cards">${best.map(id => card({ id, st: 1 }, { data: `data-act="peek" data-id="${id}"` })).join("")}</div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span>${t("სიმძიმე", "Severity")}:</span>${[...Array(md + 1).keys()].map(d => `<button class="btn sm ${d === V.diff ? "ink" : "out"}" data-act="diff" data-d="${d}">${d}</button>`).join("")}</div>
+      <p class="small muted">${V.diff ? t(`სიმძიმე ${V.diff}: მტერი მეტ მარაგს იღებს${V.diff >= 3 ? " და რაუნდებით წინ უსწრებს" : ""}${V.diff >= 4 ? ", სიცოცხლე 4" : ""}${V.diff >= 5 ? ", მარაგი 9" : ""}. გამოცდილება +${25 * V.diff}%.`, `Severity ${V.diff}: the enemy gets more supply${V.diff >= 3 ? " and is rounds ahead" : ""}${V.diff >= 4 ? ", 4 lives" : ""}${V.diff >= 5 ? ", supply 9" : ""}. Experience +${25 * V.diff}%.`) : t("გამარჯვება ამ ჯარით შემდეგ სიმძიმეს ხსნის.", "Winning with this army unlocks the next severity.")}</p>
+      <button class="btn go" data-act="start">${t("გარბენის დაწყება", "Start the run")}</button></section>`;
 }
-const NT = { battle: ["⚔", "ბრძოლა", "Battle"], elite: ["☠", "რჩეული რაზმი", "Elite"], boss: ["♜", "მთავარი ბრძოლა", "Main battle"], event: ["?", "ხდომილება", "Event"], camp: ["♨", "ბანაკი", "Camp"], depot: ["▣", "საწყობი", "Depot"] };
-function myLine(tap) {
-  return `<section class="panel me"><div class="rowhead"><b>${t("შენი რიგი", "Your line")}</b><span>${esc(fname(R.f))}</span></div>
-    <div class="row">${R.line.map(x => tile(x, { data: `data-act="${tap || "info"}" data-u="${x.u}"`, cls: V.sel && V.sel.u === x.u ? "sel" : "" })).join("") || `<span class="muted small">${t("ჯერ ცარიელია — პირველ ბრძოლამდე იუნიტებს მობილიზაციაზე აიყვან.", "Empty for now — you will muster units before the first battle.")}</span>`}</div>
-    ${R.res.length ? `<div class="rowhead"><span>${t("რეზერვი", "Reserve")}</span></div><div class="row" style="min-height:0">${R.res.map(x => tile(x, { data: `data-act="${tap || "info"}" data-u="${x.u}"`, cls: V.sel && V.sel.u === x.u ? "sel" : "" })).join("")}</div>` : ""}
-    ${R.relics.length || R.orders.length ? `<div class="relics">${R.relics.map(k => `<button class="relic" data-act="relic" data-k="${k}">${esc(L2(TL.REL[k]))}</button>`).join("")}${R.orders.map(k => `<span class="chip">${esc(nm(D.common[k]))}</span>`).join("")}</div>` : ""}</section>`;
+function foeStrip() {
+  const e = R.enemy, ter = TL.TER[R.ter];
+  const mini = x => `<i style="${sprite(TL.def(x.id).art)}" title="${esc(nm(TL.def(x.id)))}"></i>`;
+  return `<button class="foe" data-act="foe"><span class="who"><b>${e.elite ? "☠ " : ""}${esc(fname(e.f))}</b><span><span class="chip ter">${esc(L2(ter))}</span> ${e.mods.map(k => `<span class="chip bad">${esc(L2(TL.EMOD[k]))}</span>`).join(" ")}${R.intel ? ` <span class="chip good">${t("დაკითხული", "questioned")}</span>` : ""}</span></span>
+    <span class="mini">${e.t.map(mini).join("")}${e.r.length ? '<i class="sep"></i>' + e.r.map(mini).join("") : ""}</span></button>`;
 }
-function detailPanel() {
-  const s = V.sel; let h = "";
-  if (!s) h = `<span class="muted">${t("დააჭირე ბარათს — ნახავ, რას აკეთებს.", "Tap a card to see what it does.")}</span>`;
-  else if (s.k === "unit") { const x = TL.find(R, s.u); if (x) h = unitDetail(x, R.phase === "prep" ? `<div class="acts"><button class="btn sm danger" data-act="sell" data-u="${x.u}">${t("დათხოვნა", "Dismiss")} +⛁${TL.refund(x)}</button><span class="muted small">${t("გადასაადგილებლად დააჭირე სხვა ბარათს ან ცარიელ ადგილს.", "To move it, tap another card or an empty place.")}</span></div>` : ""); }
-  else if (s.k === "offer") { const o = R.shop.offers[s.i]; if (o) { const cp = TL.all(R).filter(x => x.id === o.id && x.st === 1).length;
-    h = unitDetail({ id: o.id, st: 1 }, `<div class="acts"><button class="btn sm primary" data-act="buy" data-i="${s.i}" ${o.sold || R.supply < o.cost || !TL.canAdd(R, o.id) ? "disabled" : ""}>${t("აყვანა", "Recruit")} ⛁${o.cost}</button><button class="btn sm" data-act="lock" data-i="${s.i}">${o.lock ? t("გათავისუფლება", "Release") : t("დაკავება", "Hold")}</button>
-      <span class="muted small">${cp ? t(`გყავს ${cp}. სამი ერთნაირი ერთ ★★ იუნიტად ერთიანდება.`, `You have ${cp}. Three of a kind merge into one ★★ unit.`) : ""}${o.merc ? " " + t("დაქირავებული (სხვა ჯარიდან): +1 მარაგი.", "Mercenary (from another army): +1 supply.") : ""}${!TL.canAdd(R, o.id) ? " " + t("ადგილი არ არის.", "No room.") : ""}</span></div>`); } }
-  else if (s.k === "shopord") { const o = R.shop.order, c = D.common[o.key];
-    h = `<div class="nm">${esc(nm(c))}</div><div class="sub">${t("ბრძანება", "Order")}${TL.ORD[o.key].now ? "" : " · " + t("ერთჯერადი", "single use")}</div><div class="kw">${esc(L2(TL.ORD[o.key].t))}</div>
-      <div class="acts"><button class="btn sm primary" data-act="buyord" ${o.sold || R.supply < o.cost || (!TL.ORD[o.key].now && R.orders.length >= 3) ? "disabled" : ""}>${t("ყიდვა", "Buy")} ⛁${o.cost}</button></div>`; }
-  else if (s.k === "order") { const key = R.orders[s.i]; if (key) { const on = R.active.includes(s.i);
-    h = `<div class="nm">${esc(nm(D.common[key]))}</div><div class="sub">${t("ბრძანება · ერთჯერადი", "Order · single use")}</div><div class="kw">${esc(L2(TL.ORD[key].t))}</div>
-      ${R.phase === "prep" ? `<div class="acts"><button class="btn sm ${on ? "" : "primary"}" data-act="useord" data-i="${s.i}">${on ? t("არ გამოიყენო", "Do not use") : t("გამოიყენე ამ ბრძოლაში", "Use in this battle")}</button></div>` : ""}`; } }
-  else if (s.k === "enemy") { const x = R.enemy && R.enemy[s.i]; if (x) h = unitDetail(x); }
-  else if (s.k === "peek") h = unitDetail({ id: s.id, st: s.st || 1 });
-  else if (s.k === "relic") h = `<div class="nm gold">${esc(L2(TL.REL[s.key]))}</div><div class="sub">${t("რელიქვია", "Relic")}</div><div class="kw">${esc(L2(TL.REL[s.key].slice(2)))}</div>`;
-  else if (s.k === "bunit") { const b = V.b, v = b && b.A.concat(b.B).find(x => x.uid === s.uid); if (v) h = unitDetail({ id: v.id, st: v.st }); }
-  return `<div class="panel detail" id="detail">${h}</div>`;
+const BG = { plain: "board_coast", coast: "board_coast", mud: "board_mud", fog: "board_mud", ruins: "board_mud", snow: "board_snow" };
+function own(x) { const s = V.sel; return card(x, { data: `data-act="own" data-u="${x.u}" draggable="true"`, cls: s && s.k === "own" && s.u === x.u ? "sel" : "" }); }
+function slots(zone, arr, cap) { const hot = V.sel && (V.sel.k === "own" || V.sel.k === "offer") ? " hot" : ""; let h = "";
+  for (let i = 0; i < cap; i++) h += arr[i] ? own(arr[i]) : `<button class="slot${hot}" data-act="slot" data-z="${zone}" data-i="${i}" aria-label="${t("ცარიელი ადგილი", "Empty place")}"></button>`; return h; }
+function prepScreen() {
+  const s = R.shop, sel = V.sel, cnt = id => TL.all(R).filter(x => x.id === id && x.st === 1).length;
+  return `${topBar()}
+    ${tip("p1", "შეეხე ბარათს მობილიზაციაში და აიყვანე (⛁3). სანგარი ებრძვის ხელჩართულად, ზურგი ისვრის და კურნავს. სამი ერთნაირი = ★★.", "Tap a card in the muster to recruit it (⛁3). The trench fights hand to hand, the rear shoots and heals. Three of a kind = ★★.")}
+    ${foeStrip()}
+    <section class="board" style="background-image:linear-gradient(rgba(30,22,14,.3),rgba(30,22,14,.55)),url(ui/${BG[R.ter]}.jpg)">
+      <div class="row t" data-label="${t("სანგარი · ← პირველი", "TRENCH · ← FIRST")}" id="rowT">${slots("t", R.board.t, TL.T_CAP)}</div>
+      <div class="row r" data-label="${t("ზურგი", "REAR")}" id="rowR">${slots("r", R.board.r, TL.R_CAP)}</div></section>
+    <section class="shop"><div class="lab"><span>${t("მობილიზაცია · დონე", "MUSTER · LEVEL")} <b>${ROMAN[R.lvl]}</b></span><span>${t("შემოსავალი", "Income")} <b>+${R.income.total}</b>${R.income.interest ? ` <span class="small">(${t("სარგებელი", "interest")} +${R.income.interest})</span>` : ""}</span></div>
+      <div class="srow">${s.units.map((o, i) => card({ id: o.id, st: 1 }, { data: `data-act="offer" data-i="${i}" draggable="true"`, price: o.cost, hold: o.hold, cnt: cnt(o.id) || null,
+          cls: (o.sold ? "sold " : "") + (o.merc ? "merc " : "") + (R.supply < o.cost ? "poor " : "") + (sel && sel.k === "offer" && sel.i === i ? "sel" : "") })).join("")}</div>
+      <div class="lab"><span>${t("სათადარიგო", "BENCH")}</span><span>${t("მარაგი და ბრძანებები", "SUPPLIES & ORDERS")}</span></div>
+      <div class="srow">${slots("b", R.bench, TL.B_CAP)}<span class="gap"></span>
+        ${R.orders.length ? `<span class="ords">${R.orders.map(k => `<span class="chip" title="${esc(L2(TL.ITEMS[k].t))}">${esc(nm(TL.ITEMS[k]))}</span>`).join("")}</span>` : ""}
+        ${s.items.map((o, i) => itemCard(o.key, { data: `data-act="item" data-i="${i}"`, price: o.cost, hold: o.hold, cls: (o.sold ? "sold " : "") + (R.supply < o.cost ? "poor " : "") + (sel && sel.k === "item" && sel.i === i ? "sel" : "") })).join("")}</div></section>
+    <nav class="bar"><button class="btn" data-act="reroll" ${R.free < 1 && R.supply < 1 ? "disabled" : ""}>⟳ ${R.free > 0 ? t("უფასო", "free") : "⛁1"}<small>${t("განახლება", "reroll")}</small></button>
+      <button class="btn" data-act="levelup" ${R.lvl >= 6 || R.supply < R.upCost ? "disabled" : ""}>${R.lvl >= 6 ? "VI" : `↑ ⛁${R.upCost}`}<small>${R.lvl >= 6 ? t("მაქს. დონე", "max level") : t("დონე ", "level ") + ROMAN[R.lvl + 1]}</small></button>
+      <button class="btn go" data-act="fight" ${TL.field(R).length && !R.pending.length ? "" : "disabled"}>${t("ბრძოლა", "Fight")} ▶</button></nav>`;
 }
 function mapScreen() {
-  const act = R.map[R.act];
-  return `${tip("map", "გარბენი სამი ფრონტია, თითოში ექვსი კვანძი. აირჩიე შემდეგი კვანძი: ბრძოლა მარაგს და ბარათებს იძლევა, ბანაკი ნებისყოფას აღადგენს, ბოლოს მთავარი ბრძოლაა.", "A run is three fronts of six nodes each. Choose the next node: battles give supply and cards, camps restore nerve, and a main battle waits at the end.")}
-    <section class="panel map"><div class="rowhead"><b>${t("ფრონტი", "Front")} ${["I", "II", "III"][R.act]}</b><span>${t("მტერი", "Enemy")}: <b style="color:${fcol(act.foe)};font-family:var(--body);font-size:.84rem">${esc(fname(act.foe))}</b></span></div>
-      <div class="track">${act.steps.map((opts, s) => `<div class="step${s === R.step ? " cur" : s < R.step ? " past" : ""}">${opts.map((n, i) => `<button class="node ${n.t}" ${s === R.step ? `data-act="enter" data-i="${i}"` : "disabled"}>
-        <span class="ic">${NT[n.t][0]}</span><span>${t(NT[n.t][1], NT[n.t][2])}</span>${n.ter && n.ter !== "plain" ? `<span class="muted">${esc(L2(TL.TER[n.ter]))}</span>` : ""}</button>`).join("")}</div>`).join("")}</div>
-      <p class="small muted">${t("მონიშნულ სვეტში აირჩიე, სად წახვალ.", "Choose where to go in the highlighted column.")}</p></section>
-    ${myLine()}${detailPanel()}`;
+  const IC = { elite: ["☠", "რჩეული რაზმი", "Elite detachment", "ძლიერი მტერი დამატებითი წესით. გამარჯვებაზე — რელიქვია.", "A stronger enemy with an extra rule. Win it for a relic."],
+    camp: ["♨", "ბანაკი", "Camp", "+1 სიცოცხლე ან ერთი იუნიტის წვრთნა (+2/+2).", "+1 life, or drill one unit (+2/+2)."],
+    depot: ["▤", "საწყობი", "Depot", "მარაგი, უფასო განახლებები ან იაფი დონის ამაღლება.", "Supply, free rerolls or a cheaper level-up."],
+    event: ["?", "ხდომილება", "Event", "მოკლე ამბავი ორი არჩევანით.", "A short story with two choices."] };
+  return `${topBar()}<section class="paper" style="background-image:linear-gradient(rgba(232,220,192,.82),rgba(232,220,192,.9)),url(ui/map_campaign.jpg);background-size:cover">
+    <h2>${t("ფრონტის რუკა", "Front map")}</h2><p class="small">${t("შემდეგი სამი რაუნდი აირჩიე: რომელ მონაკვეთზე, რომელ მტერთან და რომელ რელიეფზე იბრძვი.", "Choose the next three rounds: which sector, which enemy and which terrain.")}</p>
+    <div class="choices">${R.map.map((n, i) => { const c = IC[n.t]; return `<button class="choice" data-act="node" data-i="${i}"><span class="ic">${c[0]}</span><b>${t(c[1], c[2])} · ${esc(fname(n.foe))}</b>
+      <span class="small">${esc(L2(TL.TER[n.ter]))}: ${esc(L2(TL.TER[n.ter].slice(2)))} ${t(c[3], c[4])}</span></button>`; }).join("")}</div></section>
+    ${armyPanel()}`;
 }
-function enemyPanel(tap) {
-  const n = R.node, ter = TL.TER[n.ter], foe = R.map[R.act].foe;
-  return `<section class="panel foe"><div class="rowhead"><b>${t(NT[n.t][1], NT[n.t][2])}: ${esc(fname(foe))}</b><span>${t("წინა", "front")} ←</span></div>
-    <div class="row">${R.enemy.map((x, i) => tile(x, { data: `data-act="${tap || "einfo"}" data-i="${i}"`, cls: V.sel && V.sel.k === "enemy" && V.sel.i === i ? "sel" : "", stars: true })).join("")}</div>
-    <div><span class="chip">${esc(L2(ter))}: ${esc(L2(ter.slice(2)))}</span> ${R.emods.map(k => `<span class="chip bad">${esc(L2(TL.EMOD[k]))}: ${esc(L2(TL.EMOD[k].slice(2)))}</span>`).join(" ")}${R.intel ? ` <span class="chip good">${t("დაკითხული მზვერავი: მტერს −1 შეტევა", "Questioned scout: enemy −1 attack")}</span>` : ""}</div></section>`;
+function armyPanel(act) {
+  const xs = TL.all(R);
+  return `<section class="paper"><h3>${t("შენი ჯარი", "Your army")}${R.relics.length ? " · " + t("რელიქვიები", "relics") + ": " + R.relics.map(k => esc(L2(TL.REL[k]))).join(", ") : ""}</h3>
+    <div class="cards">${xs.map(x => card(x, { data: `data-act="${act || "info"}" data-u="${x.u}"` })).join("") || `<span class="small muted">${t("ცარიელია", "Empty")}</span>`}</div></section>`;
 }
-function prep() {
-  const n = TL.slots(R), inc = R.income, o = R.shop, sel = V.sel;
-  const pairs = id => TL.all(R).filter(x => x.id === id && x.st === 1).length;
-  const cell = (zone, i, x) => x ? tile(x, { data: `data-act="unit" data-u="${x.u}" draggable="true"`, cls: sel && sel.u === x.u ? "sel" : "" }) : `<button class="slot" data-act="slot" data-z="${zone}" data-i="${i}" aria-label="${t("ცარიელი ადგილი", "empty place")}">${zone === "line" ? i + 1 : ""}</button>`;
-  let line = ""; for (let i = 0; i < 6; i++) line += i < n ? cell("line", i, R.line[i]) : `<span class="slot off" title="${t("იხსნება მაღალ წოდებაზე", "Opens at a higher rank")}"></span>`;
-  let res = ""; for (let i = 0; i < TL.RES; i++) res += cell("res", i, R.res[i]);
-  let ords = ""; for (let i = 0; i < 3; i++) ords += R.orders[i] ? orderTile(R.orders[i], { data: `data-act="order" data-i="${i}"`, cls: (R.active.includes(i) ? "on " : "") + (sel && sel.k === "order" && sel.i === i ? "sel" : "") }) : `<span class="slot off"></span>`;
-  return `${tip("prep1", "ზემოთ მტრის რიგია, ქვემოთ შენი. მარცხენა იუნიტი წინ დგას და პირველი ებრძვის. აიყვანე იუნიტები მობილიზაციიდან და დაალაგე: მტკიცე წინ, მსროლელი („შორი“) მე-2 ან მე-3 ადგილზე.", "The enemy line is above, yours below. The leftmost unit stands in front and fights first. Recruit units from the muster and order them: tough ones in front, shooters (“Long”) in 2nd or 3rd place.")}
-    ${M.tut.prep1 ? tip("prep2", "სამი ერთნაირი ბარათი ერთ ★★ იუნიტად ერთიანდება: ორმაგი ძალა ერთ ადგილზე. დაუხარჯავი მარაგი სარგებელს იძლევა: ყოველ 5-ზე +1.", "Three of the same card merge into one ★★ unit: double strength in one place. Unspent supply earns interest: +1 for every 5.") : ""}
-    ${enemyPanel()}
-    <section class="panel me"><div class="rowhead"><b>${t("შენი რიგი", "Your line")}</b><span>${t("წინა", "front")} ← · ${t("წოდება", "rank")} ${TL.rank(R)}: ${n} ${t("ადგილი", "places")}</span></div>
-      <div class="row" id="line">${line}</div>
-      <div class="split"><div><h3>${t("რეზერვი", "Reserve")}</h3><div class="row" style="min-height:0">${res}</div></div>
-        <div><h3>${t("ბრძანებები (დააჭირე გამოსაყენებლად)", "Orders (tap to use)")}</h3><div class="row" style="min-height:0">${ords}</div></div></div>
-      ${R.relics.length ? `<div class="relics">${R.relics.map(k => `<button class="relic" data-act="relic" data-k="${k}">${esc(L2(TL.REL[k]))}</button>`).join("")}</div>` : ""}</section>
-    <section class="panel"><div class="rowhead"><b>${t("მობილიზაცია", "Muster")}</b><span>+${inc.total} ⛁ (${t("საბაზო", "base")} ${inc.base}${inc.doc ? ", " + t("ლოჯისტიკა", "logistics") + " " + (inc.doc > 0 ? "+" : "") + inc.doc : ""}${inc.win ? ", " + t("გამარჯვება", "victory") + " +1" : ""}${inc.interest ? ", " + t("სარგებელი", "interest") + " +" + inc.interest : ""}${inc.porters ? ", " + t("მზიდავები", "porters") + " +" + inc.porters : ""}${inc.relic ? ", " + t("რელიქვია", "relic") + " +1" : ""})</span></div>
-      <div class="row">${o.offers.map((x, i) => tile({ id: x.id, st: 1 }, { data: `data-act="offer" data-i="${i}"`, cost: x.cost, lock: x.lock, cls: (x.sold ? "sold " : "") + (x.merc ? "merc " : "") + (R.supply < x.cost ? "poor " : "") + (pairs(x.id) ? "pair " : "") + (sel && sel.k === "offer" && sel.i === i ? "sel" : "") })).join("")}
-        ${orderTile(o.order.key, { data: `data-act="shopord"`, cost: o.order.cost, cls: (o.order.sold ? "sold " : "") + (R.supply < o.order.cost ? "poor " : "") + (sel && sel.k === "shopord" ? "sel" : "") })}</div>
-      <div class="bar"><button class="btn" data-act="reroll" ${R.free < 1 && R.supply < 1 ? "disabled" : ""}>${t("განახლება", "Reroll")} ${R.free > 0 ? t("უფასო", "free") + " ×" + R.free : "⛁1"}</button>
-        <button class="btn big primary" data-act="fight" ${R.line.length ? "" : "disabled"}>${t("ბრძოლა", "Fight")} ▶</button></div></section>
-    ${detailPanel()}`;
+function campScreen() {
+  return `${topBar()}<section class="paper"><h2>${t("ბანაკი", "Camp")}</h2><p>${t("ერთი ღამე ზურგში.", "One night behind the lines.")}</p>
+    <div class="choices"><button class="choice" data-act="rest" ${R.lives >= R.maxLives ? "disabled" : ""}><span class="ic">♥</span><b>${t("დასვენება", "Rest")}</b><span class="small">+1 ${t("სიცოცხლე", "life")} (${R.lives}/${R.maxLives})</span></button>
+      <div class="choice" style="cursor:default"><span class="ic">⚔</span><b>${t("წვრთნა", "Drill")}</b><span class="small">${t("შეეხე იუნიტს ქვემოთ: +2/+2 სამუდამოდ.", "Tap a unit below: +2/+2 for good.")}</span></div></div></section>${armyPanel("train")}`;
 }
-function rewardScreen() {
-  const r = R.reward;
-  return `<section class="banner" style="background-image:linear-gradient(rgba(26,21,16,.5),rgba(26,21,16,.85)),url(ui/victory.jpg)"><h2>${t("გამარჯვება", "Victory")}</h2><p>${t("აირჩიე ნადავლი.", "Choose your spoils.")}</p></section>
-    ${!r.relicDone ? `<section class="panel"><h3>${t("რელიქვია — აირჩიე ერთი (მთელი გარბენის განმავლობაში მოქმედებს)", "Relic — choose one (it works for the whole run)")}</h3><div class="choices">${r.relics.map((k, i) => `<button class="choice relicc" data-act="relicpick" data-i="${i}"><b class="gold">${esc(L2(TL.REL[k]))}</b><span>${esc(L2(TL.REL[k].slice(2)))}</span></button>`).join("")}</div></section>` : ""}
-    ${!r.pickDone ? `<section class="panel"><h3>${t("ნადავლი — აირჩიე ერთი", "Spoils — choose one")}</h3><div class="choices">${r.picks.map((p, i) => p.t === "unit"
-      ? `<button class="choice" data-act="rpick" data-i="${i}" ${TL.canAdd(R, p.id) ? "" : "disabled"}>${tile({ id: p.id, st: 1 }, { span: 1 })}<span class="small">${Object.keys(TL.traits(p.id)).map(k => `<b>${esc(L2([TL.KW[k].ka, TL.KW[k].en]))}:</b> ${esc(L2(TL.KW[k].t(1)))}`).join(" ")}${TL.canAdd(R, p.id) ? "" : " — " + t("ადგილი არ არის", "no room")}</span></button>`
-      : `<button class="choice" data-act="rpick" data-i="${i}" ${!TL.ORD[p.key].now && R.orders.length >= 3 ? "disabled" : ""}>${orderTile(p.key, { span: 1 })}<span class="small">${esc(L2(TL.ORD[p.key].t))}</span></button>`).join("")}
-      <button class="choice" data-act="rpick" data-i="-1"><b>+2 ⛁</b><span class="small">${t("არაფერი არ მინდა — მარაგი ავიღო.", "Nothing for me — take supply instead.")}</span></button></div></section>` : ""}
-    ${myLine()}${detailPanel()}`;
+function depotScreen() {
+  return `${topBar()}<section class="paper"><h2>${t("საწყობი", "Depot")}</h2><div class="choices">${TL.DEPOT.map((d, i) => `<button class="choice" data-act="depot" data-i="${i}"><span class="ic">${["⛁", "⟳", "↑"][i]}</span><b>${esc(L2(d))}</b></button>`).join("")}</div></section>${armyPanel()}`;
 }
 function eventScreen() {
   const e = TL.EVT[R.event];
-  const dis = i => (R.event === "wounded" && i === 0 && R.supply < 3) || (R.event === "bargain" && i === 0 && R.nerve <= 2);
-  return `<section class="panel"><h2>${esc(L2(e))}</h2><p>${esc(L2(e.slice(2)))}</p>
-    <div class="choices">${e[4].map((o, i) => `<button class="choice" data-act="event" data-i="${i}" ${dis(i) ? "disabled" : ""}><b>${esc(L2(o))}</b></button>`).join("")}</div></section>${myLine()}${detailPanel()}`;
+  const dis = i => (R.event === "wounded" && i === 0 && (R.supply < 3 || R.lives >= R.maxLives)) || (R.event === "bargain" && i === 0 && R.lives <= 1) || (R.event === "song" && i === 0 && R.lives >= R.maxLives);
+  return `${topBar()}<section class="paper"><h2>${esc(L2(e))}</h2><p>${esc(L2(e.slice(2)))}</p>
+    <div class="choices">${e[4].map((o, i) => `<button class="choice" data-act="event" data-i="${i}" ${dis(i) ? "disabled" : ""}><span class="ic">${i + 1}</span><b>${esc(L2(o))}</b></button>`).join("")}</div></section>${armyPanel()}`;
 }
-function campScreen() {
-  return `<section class="panel"><h2>${t("ბანაკი", "Camp")}</h2><p>${t("ერთი ღამე ზურგში. დაისვენეთ ან ივარჯიშეთ.", "One night behind the lines. Rest, or drill.")}</p>
-    <div class="choices"><button class="choice" data-act="rest"><b>${t("დასვენება", "Rest")}</b><span>+3 ♥ ${t("ნებისყოფა", "nerve")}</span></button>
-      <div class="choice" style="cursor:default"><b>${t("წვრთნა", "Drill")}</b><span>${t("დააჭირე შენს იუნიტს ქვემოთ: სამუდამოდ +2/+2.", "Tap one of your units below: +2/+2 for good.")}</span></div></div></section>${myLine("train")}${detailPanel()}`;
-}
-function depotScreen() {
-  return `<section class="panel"><h2>${t("საწყობი", "Depot")}</h2><p>${t("აიღე ერთი ბრძანება (და +1 მარაგი) ან მხოლოდ მარაგი.", "Take one order (and +1 supply), or supply only.")}</p>
-    <div class="choices">${R.depot.map((k, i) => `<button class="choice" data-act="depot" data-i="${i}" ${!TL.ORD[k].now && R.orders.length >= 3 ? "disabled" : ""}>${orderTile(k, { span: 1 })}<span class="small">${esc(L2(TL.ORD[k].t))}</span></button>`).join("")}
-      <button class="choice" data-act="depot" data-i="-1"><b>+3 ⛁</b></button></div></section>${myLine()}${detailPanel()}`;
+function rewardScreen() {
+  return `${topBar()}<section class="paper" style="background-image:linear-gradient(rgba(232,220,192,.8),rgba(232,220,192,.92)),url(ui/victory.jpg);background-size:cover">
+    <h2>${t("რჩეული რაზმი დამარცხდა", "The elite detachment is beaten")}</h2><p>${t("აირჩიე რელიქვია — მთელი გარბენის განმავლობაში მოქმედებს.", "Choose a relic — it works for the whole run.")}</p>
+    <div class="choices">${R.reward.relics.map((k, i) => `<button class="choice" data-act="relic" data-i="${i}"><span class="ic gold">✶</span><b>${esc(L2(TL.REL[k]))}</b><span class="small">${esc(L2(TL.REL[k].slice(2)))}</span></button>`).join("")}</div></section>${armyPanel()}`;
 }
 function overScreen() {
   const u = V.up || { xp: 0, got: [], ups: [] }, s = R.stats;
-  return `<section class="banner" style="background-image:linear-gradient(rgba(26,21,16,.35),rgba(26,21,16,.88)),url(ui/${R.won ? "victory" : "defeat"}.jpg);min-height:200px;align-content:end">
-      <h2>${R.won ? t("სამივე ფრონტი გარღვეულია", "All three fronts are broken") : t("რიგი გატყდა", "The line has broken")}</h2>
-      <p>${esc(fname(R.f))} · ${t("ფრონტი", "front")} ${["I", "II", "III"][Math.min(2, R.act)]}${R.diff ? " · " + t("სიმძიმე", "severity") + " " + R.diff : ""}</p></section>
-    <section class="panel"><div class="rowhead"><b>+${u.xp} XP</b><span>${t("დონე", "Level")} ${M.lvl} · ${M.xp}/${xpNeed(M.lvl)}</span></div><div class="xp"><i style="width:${Math.min(100, M.xp / xpNeed(M.lvl) * 100)}%"></i></div>
-      ${u.ups.filter(Boolean).map(f => `<p class="gold">★ ${t("ახალი ფრაქცია გაიხსნა:", "New faction unlocked:")} <b>${esc(fname(f))}</b></p>`).join("")}
+  return `${topBar()}<section class="hero" style="background-image:linear-gradient(rgba(21,17,12,.25),rgba(21,17,12,.92)),url(ui/${R.won ? "victory" : "defeat"}.jpg)">
+      <h2>${R.won ? t("ფრონტი გარღვეულია", "The front is broken") : t("რიგი გატყდა", "The line has broken")}</h2>
+      <p>${esc(fname(R.f))} · ✪ ${R.wins}/${TL.GOAL} · ${t("რაუნდი", "round")} ${R.round}${R.diff ? " · " + t("სიმძიმე", "severity") + " " + R.diff : ""}</p></section>
+    <section class="paper"><h2>+${u.xp} XP</h2><div class="xp"><i style="width:${Math.min(100, M.xp / xpNeed(M.lvl) * 100)}%"></i></div>
+      <p class="small">${t("დონე", "Level")} ${M.lvl} · ${M.xp}/${xpNeed(M.lvl)} XP</p>
+      ${u.ups.filter(Boolean).map(f => `<p class="gold"><b>★ ${t("ახალი ფრაქცია გაიხსნა:", "New faction unlocked:")} ${esc(fname(f))}</b></p>`).join("")}
       ${u.got.map(g => `<p class="ok">✓ ${esc(g.name)} +${g.xp} XP</p>`).join("")}
-      ${R.won && R.diff < 8 ? `<p class="gold">${t("გაიხსნა სიმძიმე", "Severity unlocked:")} ${Math.min(8, R.diff + 1)} — ${esc(fname(R.f))}</p>` : ""}
-      <p class="muted small">${t("ბრძოლები", "Battles")}: ${s.wins}/${s.battles} · ${t("რჩეული რაზმები", "elites")}: ${s.elites} · ${t("შერწყმა", "merges")}: ${s.merges} · ${t("რელიქვიები", "relics")}: ${s.relics}</p>
-      <div class="bar"><button class="btn big primary" data-act="pick">${t("ახალი გარბენი", "New run")}</button><button class="btn" data-act="home">${t("მთავარი", "Home")}</button></div></section>${myLine()}${detailPanel()}`;
+      ${R.won && R.diff < 8 ? `<p class="gold">${t("გაიხსნა სიმძიმე", "Severity unlocked:")} ${Math.min(8, R.diff + 1)}</p>` : ""}
+      <p class="small muted">${t("ბრძოლები", "Battles")}: ${s.wins}/${s.battles} · ${t("ფრე", "draws")}: ${s.draws} · ${t("რჩეული", "elites")}: ${s.elites} · ${t("სამეულები", "triples")}: ${s.merges} · ${t("მაღაზიის დონე", "muster level")}: ${R.lvl}</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn go" data-act="pick">${t("ახალი გარბენი", "New run")}</button><button class="btn ink" data-act="home">${t("მთავარი", "Home")}</button></div></section>${armyPanel()}`;
 }
 function metaScreen() {
   const need = xpNeed(M.lvl), next = ORDER.find(x => !M.unlocked.includes(x));
-  return `<section class="panel"><div class="rowhead"><b>${t("დონე", "Level")} ${M.lvl}</b><span>${M.xp}/${need} XP</span></div><div class="xp"><i style="width:${Math.min(100, M.xp / need * 100)}%"></i></div>
-      <p class="small muted">${next ? t("შემდეგ დონეზე გაიხსნება: ", "The next level unlocks: ") + esc(fname(next)) : t("ყველა ფრაქცია გახსნილია.", "All factions are unlocked.")} · ${t("გარბენები", "Runs")}: ${M.stats.runs} · ${t("გამარჯვებები", "wins")}: ${M.stats.wins} · ${t("საუკეთესო სერია", "best streak")}: ${M.stats.best}</p></section>
-    <section class="panel"><h3>${t("დღის მისიები", "Daily missions")}</h3><div class="list">${missions().map(m => { const d = MISS[m.j]; return `<div class="li${m.done ? " done" : ""}"><b>${esc(t(d.ka, d.en))}</b><span class="small">${m.p}/${d.n} · +${d.xp} XP</span></div>`; }).join("")}</div></section>
-    <section class="panel"><h3>${t("მიღწევები", "Achievements")} · ${Object.keys(M.ach).length}/${ACH.length}</h3><div class="list">${ACH.map(a => `<div class="li${M.ach[a.k] ? " done" : ""}"><span><b>${esc(t(a.ka, a.en))}</b><br><span class="small muted">${esc(t(a.dka, a.den))}</span></span><span class="small">+${a.xp} XP</span></div>`).join("")}</div></section>
-    <div class="bar"><button class="btn" data-act="home">← ${t("მთავარი", "Home")}</button><button class="btn sm danger" data-act="wipe">${t("წინსვლის წაშლა", "Erase progress")}</button></div>`;
+  return `${topBar()}<section class="paper"><h2>${t("დონე", "Level")} ${M.lvl}</h2><div class="xp"><i style="width:${Math.min(100, M.xp / need * 100)}%"></i></div>
+      <p class="small">${M.xp}/${need} XP · ${next ? t("შემდეგ დონეზე: ", "Next level: ") + esc(fname(next)) : t("ყველა ფრაქცია გახსნილია.", "All factions are unlocked.")} · ${t("გარბენები", "Runs")}: ${M.stats.runs} · ${t("გამარჯვებები", "wins")}: ${M.stats.wins} · ${t("საუკეთესო სერია", "best streak")}: ${M.stats.best}</p></section>
+    <section class="paper"><h3>${t("დღის მისიები", "Daily missions")}</h3><div class="list">${missions().map(m => { const d = MISS[m.j]; return `<div class="li${m.done ? " done" : ""}"><b>${esc(t(d.ka, d.en))}</b><span class="small">${m.p}/${d.n} · +${d.xp} XP</span></div>`; }).join("")}</div></section>
+    <section class="paper"><h3>${t("მიღწევები", "Achievements")} · ${Object.keys(M.ach).length}/${ACH.length}</h3><div class="list">${ACH.map(a => `<div class="li${M.ach[a.k] ? " done" : ""}"><span><b>${esc(t(a.ka, a.en))}</b><br><span class="small">${esc(t(a.dka, a.den))}</span></span><span class="small">+${a.xp} XP</span></div>`).join("")}</div></section>
+    <div style="display:flex;gap:6px;justify-content:space-between"><button class="btn" data-act="home">← ${t("მთავარი", "Home")}</button><button class="btn sm" data-act="wipe">${t("წინსვლის წაშლა", "Erase progress")}</button></div>`;
 }
 function codexScreen() {
-  const f = V.codex, ids = Object.keys(D.units).filter(id => D.units[id].f === f), seen = ids.filter(id => M.seen[id] != null).length;
-  return `<section class="panel"><h2>${t("ბარათები", "Cards")} · ${Object.keys(M.seen).length}/${Object.keys(D.units).length}</h2>
-      <div class="flist">${ORDER.map(k => { const all = Object.keys(D.units).filter(id => D.units[id].f === k); return `<button class="fbtn" style="--fc:${fcol(k)}" data-act="codexf" data-f="${k}" aria-pressed="${k === f}"><b>${esc(fname(k))}</b><small>${all.filter(id => M.seen[id] != null).length}/${all.length}</small></button>`; }).join("")}</div></section>
-    <section class="panel"><div class="rowhead"><b>${esc(fname(f))}</b><span>${seen}/${ids.length}</span></div>
-      <div class="codex">${ids.map(id => M.seen[id] != null ? tile({ id, st: Math.max(1, M.seen[id]) }, { data: `data-act="peek" data-id="${id}"`, cls: V.sel && V.sel.id === id ? "sel" : "" }) : tile({ id, st: 1 }, { hide: true, cls: "locked" })).join("")}</div></section>
-    ${detailPanel()}<div class="bar"><button class="btn" data-act="home">← ${t("მთავარი", "Home")}</button></div>`;
+  const f = V.codex, ids = Object.keys(D.units).filter(id => D.units[id].f === f);
+  return `${topBar()}<section class="paper"><h2>${t("ბარათები", "Cards")} · ${Object.keys(M.seen).length}/${Object.keys(D.units).length}</h2>
+      <div class="flist">${ORDER.map(k => { const a = Object.keys(D.units).filter(id => D.units[id].f === k); return `<button class="fbtn" style="--fc:${fcol(k)}" data-act="codexf" data-f="${k}" aria-pressed="${k === f}"><b>${esc(fname(k))}</b><small>${a.filter(id => M.seen[id] != null).length}/${a.length}</small></button>`; }).join("")}</div></section>
+    <section class="paper"><h3>${esc(fname(f))}</h3><div class="cards">${ids.map(id => M.seen[id] != null ? card({ id, st: Math.max(1, M.seen[id]) }, { data: `data-act="peek" data-id="${id}"` }) : card({ id, st: 1 }, { hide: true, span: 1, cls: "locked" })).join("")}</div></section>
+    <button class="btn" data-act="home">← ${t("მთავარი", "Home")}</button>`;
 }
-const BG = { plain: "board_coast", coast: "board_coast", mud: "board_mud", fog: "board_mud", ruins: "board_mud", snow: "board_snow" };
 function battleScreen() {
-  const b = V.b, foe = R.map[Math.min(2, b.act)].foe;
-  return `<section class="bstage" id="stage" style="background-image:linear-gradient(rgba(20,16,12,.35),rgba(20,16,12,.6)),url(ui/${BG[b.ter]}.jpg)">
-      <div class="panel foe"><div class="rowhead"><b>${esc(fname(foe))}</b><span>${t("წინა", "front")} ←</span></div><div class="row" id="rowB"></div></div>
-      <div class="bmsg" id="bmsg" aria-live="polite"></div>
-      <div class="panel me"><div class="rowhead"><b>${esc(fname(R.f))}</b><span>${t("წინა", "front")} ←</span></div><div class="row" id="rowA"></div></div></section>
-    <div class="bar" id="bctl"></div>${detailPanel()}`;
+  const b = V.b;
+  return `${topBar()}<section class="bboard" id="stage" style="background-image:linear-gradient(rgba(30,22,14,.3),rgba(30,22,14,.55)),url(ui/${BG[b.ter]}.jpg)">
+      <div class="row r foe-row" data-label="${esc(fname(b.foe))} · ${t("ზურგი", "REAR")}" id="bBr"></div>
+      <div class="row t foe-row" data-label="${t("მტრის სანგარი", "ENEMY TRENCH")}" id="bBt"></div>
+      <div class="nml" id="bmsg" aria-live="polite"></div>
+      <div class="row t" data-label="${t("შენი სანგარი", "YOUR TRENCH")}" id="bAt"></div>
+      <div class="row r" data-label="${t("შენი ზურგი", "YOUR REAR")}" id="bAr"></div></section>
+    <nav class="bar" id="bctl"></nav>`;
 }
 function render() {
-  const s = V.screen, body = s === "home" ? home() : s === "pick" ? pick() : s === "meta" ? metaScreen() : s === "codex" ? codexScreen() : s === "battle" ? battleScreen()
-    : !R ? home() : R.phase === "map" ? mapScreen() : R.phase === "prep" ? prep() : R.phase === "reward" ? rewardScreen() : R.phase === "event" ? eventScreen() : R.phase === "camp" ? campScreen() : R.phase === "depot" ? depotScreen() : R.phase === "over" ? overScreen() : home();
+  const s = V.screen;
+  const run = s === "run" && R;
+  const html = s === "home" ? home() : s === "pick" ? pick() : s === "meta" ? metaScreen() : s === "codex" ? codexScreen() : s === "battle" ? battleScreen()
+    : !run ? home() : R.phase === "prep" ? prepScreen() : R.phase === "map" ? mapScreen() : R.phase === "camp" ? campScreen() : R.phase === "depot" ? depotScreen()
+    : R.phase === "event" ? eventScreen() : R.phase === "reward" ? rewardScreen() : R.phase === "over" ? overScreen() : home();
   document.documentElement.lang = LANG; document.title = t("სანგრის რიგი", "Trench Line");
-  $("app").innerHTML = header() + body;
+  const app = $("app"); app.className = "app" + ((s === "run" && R && R.phase === "prep") || s === "battle" ? " fit" : "");
+  app.innerHTML = html;
   if (s === "battle") drawBattle();
+  if (s === "run" && R && R.phase === "prep" && R.pending.length) discoverSheet();
 }
-function go() { V.screen = "run"; V.sel = null; if (R && R.phase === "retry") { TL.retry(R); toast(t("მთავარი ძალა ჯერ კიდევ დგას. გადაჯგუფდი და კიდევ სცადე.", "The main force still stands. Regroup and try again.")); } track(); render(); window.scrollTo(0, 0); }
+function go() { V.screen = "run"; V.sel = null; closeSheet(); track(); render(); window.scrollTo(0, 0); }
+
+// ---------- ფურცლის შიგთავსი ----------
+function zoneOf(x) { return R.board.t.includes(x) ? "t" : R.board.r.includes(x) ? "r" : "b"; }
+function ownSheet(x) {
+  openSheet(unitInfo(x, `<div class="acts"><span class="grow small">${t("გადასაადგილებლად შეეხე სხვა ადგილს ან ბარათს.", "To move it, tap another place or card.")}</span>
+    <button class="btn ink sm" data-act="sell" data-u="${x.u}">${t("დათხოვნა", "Dismiss")} +⛁${TL.refund(x)}</button></div>`));
+}
+function offerSheet(i) {
+  const o = R.shop.units[i], c = TL.all(R).filter(x => x.id === o.id && x.st === 1).length, can = !o.sold && R.supply >= o.cost && TL.canAdd(R, o.id);
+  openSheet(unitInfo({ id: o.id, st: 1 }, `<div class="acts"><button class="btn go sm" data-act="buy" data-i="${i}" ${can ? "" : "disabled"}>${t("აყვანა", "Recruit")} ⛁${o.cost}</button>
+    <button class="btn out sm" data-act="hold" data-i="${i}">${o.hold ? t("გათავისუფლება", "Release") : t("დაკავება", "Hold")}</button>
+    <span class="grow small">${c ? t(`გყავს ${c}/3 — სამი ერთნაირი ★★ ხდება.`, `You have ${c}/3 — three of a kind become ★★.`) : t("ან შეეხე ცარიელ ადგილს ველზე.", "Or tap an empty place on the field.")}${o.merc ? " " + t("დაქირავებული სხვა ჯარიდან.", "A mercenary from another army.") : ""}${!TL.canAdd(R, o.id) ? " " + t("ადგილი ან ლიმიტი არ არის.", "No room, or over the limit.") : ""}</span></div>`));
+}
+function itemSheet(i) {
+  const o = R.shop.items[i], it = TL.ITEMS[o.key], needs = it.kind === "unit";
+  const can = !o.sold && R.supply >= o.cost && (it.kind !== "order" || !R.orders.includes(o.key)) && (it.kind !== "all" || TL.field(R).length);
+  openSheet(itemInfo(o.key, `<div class="acts">${needs ? `<span class="grow small"><b>${t("შეეხე იუნიტს ველზე ან სათადარიგოში.", "Tap a unit on the field or the bench.")}</b></span>`
+    : `<button class="btn go sm" data-act="useitem" data-i="${i}" ${can ? "" : "disabled"}>${t("ყიდვა", "Buy")} ⛁${o.cost}</button>`}
+    <button class="btn out sm" data-act="holdi" data-i="${i}">${o.hold ? t("გათავისუფლება", "Release") : t("დაკავება", "Hold")}</button></div>`));
+}
+function discoverSheet() {
+  const opts = R.pending[0]; if (!opts) return;
+  openSheet(`<div class="wide"><div class="nm">${t("სამეული! აირჩიე ბარათი შემდეგი დონიდან", "A triple! Choose a card from the next level")}</div>
+    <div class="cards">${opts.map((id, i) => card({ id, st: 1 }, { data: `data-act="disc" data-i="${i}"`, cls: TL.canAdd(R, id) ? "" : "locked" })).join("")}</div>
+    <div class="acts" style="margin-top:6px"><span class="grow small">${t("ბარათზე შეხება — აყვანა უფასოდ.", "Tap a card to take it for free.")}</span><button class="btn out sm" data-act="disc" data-i="-1">${t("არა, +3 ⛁", "No, +3 ⛁")}</button></div></div>`);
+  $("sheet").querySelector(".x").remove();
+}
+function foeSheet() {
+  const e = R.enemy;
+  openSheet(`<div class="wide"><div class="nm">${e.elite ? "☠ " : ""}${esc(fname(e.f))} · ${t("მაღაზიის დონე", "muster level")} ${ROMAN[e.lvl]}</div>
+    <div class="sub">${esc(L2(TL.TER[R.ter]))}: ${esc(L2(TL.TER[R.ter].slice(2)))}</div>${e.mods.map(k => `<div class="small bad"><b>${esc(L2(TL.EMOD[k]))}:</b> ${esc(L2(TL.EMOD[k].slice(2)))}</div>`).join("")}
+    <h3 style="margin-top:6px">${t("სანგარი", "Trench")}</h3><div class="cards">${e.t.map((x, i) => card(x, { data: `data-act="einfo" data-z="t" data-i="${i}"` })).join("")}</div>
+    ${e.r.length ? `<h3>${t("ზურგი", "Rear")}</h3><div class="cards">${e.r.map((x, i) => card(x, { data: `data-act="einfo" data-z="r" data-i="${i}"` })).join("")}</div>` : ""}</div>`);
+}
 
 // ---------- ბრძოლის ჩვენება ----------
 const KIND = { melee: ["melee", 1], charge: ["melee", 1], venge: ["shot", 0], raid: ["melee", 1], air: ["shot", 1], support: ["shot", 0], scout: ["shot", 0], aa: ["shot", 0], barrage: ["blast", 0], coil: ["blast", 0], quake: ["blast", 0], nest: ["shot", 0], tower: ["shot", 0], burn: ["burn", 0], gas: ["burn", 0], frost: ["burn", 0], fatigue: ["burn", 0] };
-const KMSG = { charge: ["იერიში!", "Charge!"], open: ["გახსნის ცეცხლი", "Opening fire"], barrage: ["არტილერია", "Artillery"], quake: ["გოლიათი წინ გადის", "The giant steps forward"], gas: ["გაზი", "Gas"], frost: ["ყინვა", "Frost"], fatigue: ["გამოფიტვა", "Exhaustion"], burn: ["ცეცხლი", "Fire"] };
+const KMSG = { charge: ["იერიში!", "Charge!"], open: ["გახსნის ცეცხლი", "Opening fire"], barrage: ["არტილერია", "Artillery"], quake: ["გოლიათი წინ გადის", "The giant steps forward"], gas: ["გაზი", "Gas"], frost: ["ყინვა", "Frost"], fatigue: ["გამოფიტვა", "Exhaustion"], burn: ["ცეცხლი", "Fire"], support: ["ზურგის ცეცხლი", "Fire from the rear"], air: ["ჰაერიდან", "From the air"] };
 function startBattle() {
-  const act = R.act, ter = R.node.ter, out = TL.fight(R); if (!out) return;
-  V.b = { out, ev: out.sim.ev, i: 0, A: [], B: [], round: 0, speed: M.speed || 1, done: false, skip: false, msg: "", act, ter }; V.screen = "battle"; V.sel = null;
-  track(); render(); window.scrollTo(0, 0); setTimeout(stepBattle, 350);
+  const foe = R.enemy.f, ter = R.ter, wasElite = R.enemy.elite, out = TL.fight(R); if (!out) return;
+  V.b = { out, ev: out.sim.ev, i: 0, st: { a: { t: [], r: [] }, b: { t: [], r: [] } }, round: 0, speed: M.speed || 1, done: false, skip: false, msg: "", foe, ter, elite: wasElite };
+  V.screen = "battle"; V.sel = null; closeSheet(); render(); window.scrollTo(0, 0); setTimeout(stepBattle, 350);
 }
-const bview = x => `data-act="binfo" data-uid="${x.uid}" data-buid="${x.uid}"`;
 function drawBattle() {
-  const b = V.b; if (!$("rowA")) return;
-  $("rowA").innerHTML = b.A.map(x => tile(x, { data: bview(x), stars: true, cls: x.dead ? "dead" : "" })).join("");
-  $("rowB").innerHTML = b.B.map(x => tile(x, { data: bview(x), stars: true, cls: x.dead ? "dead" : "" })).join("");
+  const b = V.b; if (!$("bAt")) return;
+  const row = arr => arr.map(x => card(x, { data: `data-act="binfo" data-buid="${x.uid}"`, cls: x.dead ? "dead" : "" })).join("");
+  $("bAt").innerHTML = row(b.st.a.t); $("bAr").innerHTML = row(b.st.a.r); $("bBt").innerHTML = row(b.st.b.t); $("bBr").innerHTML = row(b.st.b.r);
   $("bmsg").textContent = b.msg;
+  const o = b.out;
   $("bctl").innerHTML = b.done
-    ? `<span class="${b.out.win ? "ok" : "bad"}"><b>${b.out.win ? t("გამარჯვება!", "Victory!") : t("მარცხი", "Defeat")}</b>${b.out.win ? "" : ` · −${b.out.nerve} ♥${b.out.saved ? " · " + t("ცოცხალმა წყალმა გადაგარჩინა", "the Water of Life saved you") : ""}`}</span><button class="btn big primary" data-act="bnext">${t("გაგრძელება", "Continue")}</button>`
-    : `<span class="muted small">${t("რაუნდი", "Round")} ${b.round}</span><span>${[1, 2, 4].map(s => `<button class="btn sm" data-act="speed" data-s="${s}" style="${b.speed === s ? "border-color:var(--gold);color:var(--gold)" : ""}">${s}×</button>`).join(" ")} <button class="btn sm" data-act="skip">${t("გამოტოვება", "Skip")} ⏭</button></span>`;
+    ? `<span class="result ${o.result === "win" ? "ok" : o.result === "lose" ? "bad" : ""}" style="grid-column:1/3;align-self:center;color:${o.result === "win" ? "#bcd59b" : o.result === "lose" ? "#f0a898" : "var(--paper)"}">${o.result === "win" ? t("გამარჯვება! ✪", "Victory! ✪") : o.result === "lose" ? t("მარცხი · −1 ♥", "Defeat · −1 ♥") + (o.saved ? " · " + t("ცოცხალი წყალი", "Water of Life") : "") : t("ფრე", "Draw")}</span>
+       <button class="btn go" data-act="bnext">${t("გაგრძელება", "Continue")}</button>`
+    : `<span style="display:flex;gap:4px">${[1, 2, 4].map(s => `<button class="btn sm ${b.speed === s ? "go" : ""}" data-act="speed" data-s="${s}">${s}×</button>`).join("")}</span><span></span><button class="btn" data-act="skip">${t("გამოტოვება", "Skip")} ⏭</button>`;
 }
 const bel = uid => document.querySelector(`[data-buid="${uid}"]`);
+const bfind = uid => { const s = V.b.st; return s.a.t.concat(s.a.r, s.b.t, s.b.r).find(x => x.uid === uid); };
 function floatOn(uid, text, cls) { if (V.b.skip || REDUCED) return; const el = bel(uid); if (!el) return; const f = document.createElement("span"); f.className = "float " + (cls || ""); f.textContent = text; el.appendChild(f);
   f.animate([{ transform: "translate(-50%,0)", opacity: 1 }, { transform: "translate(-50%,-34px)", opacity: 0 }], { duration: 750, easing: "ease-out" }).onfinish = () => f.remove(); }
-function lunge(src, dst, far) { if (V.b.skip || REDUCED) return; const a = bel(src), d = bel(dst); if (!a || !d) return; const ra = a.getBoundingClientRect(), rd = d.getBoundingClientRect(), k = far ? .55 : .14;
-  a.style.zIndex = 4; a.animate([{ transform: "none" }, { transform: `translate(${(rd.left - ra.left) * k}px,${(rd.top - ra.top) * k}px) scale(1.08)` }, { transform: "none" }], { duration: 300, easing: "ease-in-out" }).onfinish = () => { a.style.zIndex = ""; }; }
-function jolt(uid) { if (V.b.skip || REDUCED) return; const el = bel(uid); if (el) el.animate([{ transform: "none", filter: "brightness(2.2)" }, { transform: "translateX(-5px)" }, { transform: "translateX(5px)" }, { transform: "none", filter: "none" }], { duration: 260 }); }
+function lunge(src, dst, far) { if (V.b.skip || REDUCED) return; const a = bel(src), d = bel(dst); if (!a || !d) return; const ra = a.getBoundingClientRect(), rd = d.getBoundingClientRect(), k = far ? .5 : .12;
+  a.style.zIndex = 4; a.animate([{ transform: "none" }, { transform: `translate(${(rd.left - ra.left) * k}px,${(rd.top - ra.top) * k}px) scale(1.1)` }, { transform: "none" }], { duration: 300, easing: "ease-in-out" }).onfinish = () => { a.style.zIndex = ""; }; }
+function jolt(uid) { if (V.b.skip || REDUCED) return; const el = bel(uid); if (el) el.animate([{ transform: "none", filter: "brightness(2)" }, { transform: "translateX(-5px)" }, { transform: "translateX(5px)" }, { transform: "none", filter: "none" }], { duration: 260 }); }
+function soft() { for (const x of [].concat(V.b.st.a.t, V.b.st.a.r, V.b.st.b.t, V.b.st.b.r)) { const el = bel(x.uid); if (!el) continue; const h = el.querySelector(".hp"); if (h) { h.textContent = Math.max(0, x.hp); h.classList.toggle("hurt", x.hp < x.max); } } }
 function stepBattle() {
   const b = V.b; if (!b || b.done || V.screen !== "battle") return;
-  let wait = 0; const find = uid => b.A.concat(b.B).find(x => x.uid === uid);
-  const e = b.ev[b.i++]; if (!e) { b.done = true; drawBattle(); return; }
-  if (e.t === "init") { b.A = e.a.map(x => Object.assign({ burn: 0, sup: 0 }, x)); b.B = e.b.map(x => Object.assign({ burn: 0, sup: 0 }, x)); b.msg = L2(TL.TER[e.terrain]); drawBattle(); wait = 500; }
-  else if (e.t === "phase") { if (b.ev[b.i] && b.ev[b.i].t === "hit") { b.msg = L2(KMSG[e.k]); drawBattle(); wait = 250; } }
-  else if (e.t === "round") { b.round = e.n; b.msg = t("რაუნდი ", "Round ") + e.n; drawBattle(); wait = 160; }
+  let wait = 0; const e = b.ev[b.i++]; if (!e) { b.done = true; drawBattle(); return; }
+  if (e.t === "init") { b.st = JSON.parse(JSON.stringify({ a: e.a, b: e.b })); b.msg = L2(TL.TER[e.terrain]); drawBattle(); wait = 550; }
+  else if (e.t === "phase") { if (b.ev[b.i] && b.ev[b.i].t === "hit") { b.msg = L2(KMSG[e.k]); $("bmsg").textContent = b.msg; wait = 260; } }
+  else if (e.t === "round") { b.round = e.n; b.msg = t("რაუნდი ", "Round ") + e.n; $("bmsg").textContent = b.msg; wait = 170; }
   else if (e.t === "hit") { const g = [e]; while (b.ev[b.i] && b.ev[b.i].t === "hit" && b.ev[b.i].k === e.k) g.push(b.ev[b.i++]);
     const kd = KIND[e.k] || ["shot", 0]; if (KMSG[e.k]) { b.msg = L2(KMSG[e.k]); $("bmsg").textContent = b.msg; }
-    for (const h of g) { const v = find(h.d); if (v) { v.hp -= h.n; v.cover = Math.max(0, (v.cover || 0) - h.c); }
-      if (h.s && kd[1]) lunge(h.s, h.d, true); else if (h.s) lunge(h.s, h.d, false);
-      jolt(h.d); floatOn(h.d, h.n ? "−" + h.n : "◈", h.n ? "" : "block"); }
-    sfx(kd[0]); if (e.k === "barrage" || e.k === "quake" || e.k === "coil") { const st = $("stage"); if (st && !REDUCED && !b.skip) { st.classList.remove("shake"); void st.offsetWidth; st.classList.add("shake"); } }
-    wait = 430; setTimeout(() => { if (V.b === b && !b.done) softSync(); }, 300 / b.speed); }
+    for (const h of g) { const v = bfind(h.d); if (v) { v.hp -= h.n; v.cover = Math.max(0, (v.cover || 0) - h.c); }
+      if (h.s) lunge(h.s, h.d, !!kd[1]); jolt(h.d); floatOn(h.d, h.n ? "−" + h.n : "◈", h.n ? "" : "block"); }
+    sfx(kd[0]); if ((e.k === "barrage" || e.k === "quake" || e.k === "coil") && !REDUCED && !b.skip) { const st = $("stage"); if (st) { st.classList.remove("shake"); void st.offsetWidth; st.classList.add("shake"); } }
+    wait = 430; setTimeout(() => { if (V.b === b && !b.done) soft(); }, 300 / b.speed); }
   else if (e.t === "die") { const ds = [e]; while (b.ev[b.i] && b.ev[b.i].t === "die") ds.push(b.ev[b.i++]);
-    for (const d of ds) { const v = find(d.d); if (v) v.dead = true; const el = bel(d.d); if (el) el.classList.add("dead"); } sfx("fall"); wait = 300;
-    setTimeout(() => { if (V.b !== b) return; b.A = b.A.filter(x => !x.dead); b.B = b.B.filter(x => !x.dead); if (!b.done) drawBattle(); }, 280 / b.speed); }
-  else if (e.t === "revive") { const src = b.out.sim.ev[0], o = src.a.concat(src.b).find(x => x.uid === e.d); if (o) { const v = Object.assign({}, o, { hp: e.hp, cover: 0, burn: 0, sup: 0 }); (e.d[0] === "a" ? b.A : b.B).push(v); }
-    setTimeout(() => { if (V.b === b && !b.done) { drawBattle(); floatOn(e.d, t("ბრუნდება!", "Returns!"), "note"); } }, 300 / b.speed); sfx("heal"); wait = 650; }
-  else if (e.t === "stub") { const v = find(e.d); if (v) v.hp = 1; softSync(); floatOn(e.d, L2([TL.KW.stubborn.ka, TL.KW.stubborn.en]) + "!", "note"); wait = 380; }
+    for (const d of ds) { const v = bfind(d.d); if (v) v.dead = true; const el = bel(d.d); if (el) el.classList.add("dead"); } sfx("fall"); wait = 320; }
+  else if (e.t === "advance") { b.msg = e.side === "a" ? t("შენი ზურგი სანგარში ჩადის!", "Your rear moves into the trench!") : t("მტრის ზურგი სანგარში ჩადის!", "The enemy rear moves into the trench!"); $("bmsg").textContent = b.msg; wait = 420; }
+  else if (e.t === "revive") { sfx("heal"); wait = 500; setTimeout(() => { if (V.b === b && !b.done) floatOn(e.d, t("ბრუნდება!", "Returns!"), "note"); }, 380 / b.speed); }
+  else if (e.t === "stub") { const v = bfind(e.d); if (v) v.hp = 1; soft(); floatOn(e.d, L2([TL.KW.stubborn.ka, TL.KW.stubborn.en]) + "!", "note"); wait = 380; }
   else if (e.t === "buff") { floatOn(e.d, e.k === "brother" ? "+1/+1" : "+1 ⚔", "note"); wait = 200; }
-  else if (e.t === "heal") { const v = find(e.d); if (v) v.hp += e.n; softSync(); floatOn(e.d, "+" + e.n, "heal"); sfx("heal"); wait = 240; }
+  else if (e.t === "heal") { const v = bfind(e.d); if (v) v.hp += e.n; soft(); floatOn(e.d, "+" + e.n, "heal"); sfx("heal"); wait = 240; }
   else if (e.t === "fx") { floatOn(e.d, "◈ +", "block"); wait = 200; }
-  else if (e.t === "quake") { lunge(e.s, e.s, false); wait = 120; }
-  else if (e.t === "sync") { const ap = (arr, sn) => { const m = {}; arr.forEach(x => m[x.uid] = x); return sn.map(s => Object.assign(m[s.uid] || {}, s)).filter(x => x.id); };
-    const pending = b.A.concat(b.B).some(x => x.dead); const fn = () => { if (V.b !== b) return; b.A = ap(b.A, e.a); b.B = ap(b.B, e.b); if (!b.done) drawBattle(); };
-    if (pending && !b.skip) setTimeout(fn, 290 / b.speed); else fn(); wait = 60; }
-  else if (e.t === "end") { b.done = true; b.msg = b.out.win ? t("მტრის რიგი გატყდა", "The enemy line is broken") : t("შენი რიგი გატყდა", "Your line is broken"); setTimeout(() => { if (V.b === b) { drawBattle(); sfx(b.out.win ? "win" : "lose"); } }, b.skip ? 0 : 320); return; }
+  else if (e.t === "quake") { wait = 120; }
+  else if (e.t === "sync") { const pend = [].concat(b.st.a.t, b.st.a.r, b.st.b.t, b.st.b.r).some(x => x.dead);
+    const fn = () => { if (V.b !== b) return; b.st = JSON.parse(JSON.stringify({ a: e.a, b: e.b })); if (!b.done) drawBattle(); };
+    if (pend && !b.skip) setTimeout(fn, 280 / b.speed); else fn(); wait = 60; }
+  else if (e.t === "end") { b.done = true; const o = b.out; b.msg = o.result === "win" ? t("მტრის რიგი გატყდა", "The enemy line is broken") : o.result === "lose" ? t("შენი რიგი გატყდა", "Your line is broken") : t("ორივე რიგი დაეცა", "Both lines fell");
+    setTimeout(() => { if (V.b === b) { drawBattle(); sfx(o.result === "win" ? "win" : o.result === "lose" ? "lose" : "fall"); } }, b.skip ? 0 : 320); return; }
   if (b.skip) return stepBattle();
   setTimeout(stepBattle, wait / b.speed);
-}
-function softSync() {                                // რიცხვების განახლება ანიმაციის შეუწყვეტლად
-  const b = V.b; for (const x of b.A.concat(b.B)) { const el = bel(x.uid); if (!el) continue; const h = el.querySelector(".h"), fx = el.querySelector(".fx");
-    if (h) { h.innerHTML = '<span class="g">⛨</span>' + Math.max(0, x.hp); h.classList.toggle("hurt", x.hp < x.max); } if (fx && !x.cover && !x.burn) fx.remove(); else if (fx) fx.innerHTML = (x.cover ? `<i class="cv">◈${x.cover}</i>` : "") + (x.burn ? `<i class="bn">♨${x.burn}</i>` : ""); }
 }
 
 // ---------- წესები ----------
 function rulesHtml() {
-  const kw = Object.keys(TL.KW).map(k => `<li><b>${esc(L2([TL.KW[k].ka, TL.KW[k].en]))}:</b> ${esc(L2(TL.KW[k].t(1)))}</li>`).join("");
+  const kw = Object.keys(TL.KW).map(k => `<li><span class="g">${TL.KW[k].g}</span><b>${esc(L2([TL.KW[k].ka, TL.KW[k].en]))}:</b> ${esc(L2(TL.KW[k].t(1)))}</li>`).join("");
   const ter = Object.keys(TL.TER).map(k => `<li><b>${esc(L2(TL.TER[k]))}:</b> ${esc(L2(TL.TER[k].slice(2)))}</li>`).join("");
   return `<h2>${t("წესები", "Rules")}</h2><div class="rules">
-    <h3>${t("მიზანი", "Goal")}</h3><p>${t("გაარღვიე სამი ფრონტი. თითო ფრონტი ექვსი კვანძია და მთავარი ბრძოლით მთავრდება. წაგებული ბრძოლა ნებისყოფას გაკლებს; თუ ნებისყოფა ამოიწურა, გარბენი მთავრდება.", "Break three fronts. Each front is six nodes and ends with a main battle. A lost battle costs nerve; when nerve runs out, the run is over.")}</p>
+    <h3>${t("მიზანი", "Goal")}</h3><p>${t("მოიგე 10 ბრძოლა, სანამ 5 სიცოცხლეს დაკარგავ. ყოველ რაუნდში ჯერ მობილიზაციაა, შემდეგ ბრძოლა ჯართან, რომელიც იმავე წესებით და იმავე მაღაზიით აიწყო. წაგება −1 ♥, ფრე — არაფერი.", "Win 10 battles before you lose 5 lives. Each round you first muster, then fight an army built with the same rules and the same shop. A loss costs 1 ♥, a draw nothing.")}</p>
     <h3>${t("მობილიზაცია", "Muster")}</h3><ul>
-      <li>${t("ყოველი ბრძოლის წინ მარაგს იღებ და იუნიტებს იყვან. ფასი (1–7 მარაგი) ბარათის სიძლიერეზეა დამოკიდებული. დაქირავებული (წყვეტილი ჩარჩო, სხვა ჯარიდან) +1 ღირს.", "Before every battle you receive supply and recruit units. The price (1–7 supply) depends on how strong the card is. A mercenary (dashed frame, from another army) costs +1.")}</li>
-      <li>${t("<b>სამი ერთნაირი</b> ბარათი ერთ ★★ იუნიტად ერთიანდება (ორმაგი შეტევა და მდგრადობა, უნარიც ძლიერდება). სამი ★★ — ერთი ★★★.", "<b>Three of a kind</b> merge into one ★★ unit (double attack and resilience, and a stronger ability). Three ★★ make one ★★★.")}</li>
-      <li>${t("განახლება 1 მარაგი ღირს. „დაკავება“ ბარათს შემდეგ შეთავაზებამდე ინახავს. დათხოვნა ფასის ნახევარს აბრუნებს.", "A reroll costs 1 supply. “Hold” keeps a card for the next offer. Dismissing returns half the price.")}</li>
-      <li>${t("<b>სარგებელი:</b> დაუხარჯავი მარაგის ყოველ 5-ზე +1 (მაქს. +2). მოგებული ბრძოლა +1-ს იძლევა.", "<b>Interest:</b> +1 for every 5 unspent supply (max. +2). A won battle gives +1.")}</li>
-      <li>${t("<b>ლოჯისტიკა:</b> ყოველ ჯარს თავისი დამატებითი მარაგი აქვს (−1,25-დან +3,5-მდე) — ასე სუსტი ბარათების ჯარები ძლიერებს უთანაბრდება. ჩანს ჯარის არჩევისას.", "<b>Logistics:</b> each army has its own extra supply (from −1.25 to +3.5), so armies with weaker cards keep up with strong ones. It is shown when you choose an army.")}</li>
-      <li>${t("წოდება გზასთან ერთად იზრდება: ხსნის რიგის ადგილებს (3-დან 6-მდე) და მაღალი დონის ბარათებს.", "Your rank grows along the road: it opens places in the line (from 3 to 6) and higher-tier cards.")}</li></ul>
-    <h3>${t("ბრძოლა", "Battle")}</h3><ul>
-      <li>${t("ბრძოლა თავისით მიდის და შემთხვევითობა არ აქვს: იგივე რიგი იმავე მტერთან ყოველთვის ერთნაირად მთავრდება.", "The battle runs by itself and has no randomness: the same line against the same enemy always ends the same way.")}</li>
-      <li>${t("ჯერ გახსნის ცეცხლი და იერიში. შემდეგ ყოველ რაუნდში: უკანა რიგის ცეცხლი, მფრინავები, ხელჩართული (წინა წინას ურტყამს), რაუნდის ბოლოს ცეცხლი და მკურნალობა.", "First come opening fire and charges. Then each round: fire from the back ranks, flyers, melee (front strikes front), and at the end of the round burning and healing.")}</li>
-      <li>${t("როცა წინა იუნიტი ეცემა, შემდეგი წინ გადის. ვისაც რიგი დაეცლება, აგებს.", "When a front unit falls, the next one steps up. Whoever runs out of units loses.")}</li>
-      <li>${t("<b>საფარი</b> (◈) ზიანს იღებს მდგრადობის ნაცვლად. მე-12 რაუნდიდან ყველა იუნიტს გამოფიტვა აზიანებს.", "<b>Cover</b> (◈) soaks damage before resilience. From round 12, exhaustion hurts every unit.")}</li></ul>
+      <li>${t("ყოველ რაუნდში <b>10 მარაგი</b> (+ შენი ჯარის ლოჯისტიკა). დაუხარჯავი ინახება და სარგებელს იძლევა: ყოველ 5-ზე +1 (მაქს. +2).", "Every round <b>10 supply</b> (+ your army's logistics). Unspent supply is kept and earns interest: +1 for every 5 (max. +2).")}</li>
+      <li>${t("ყველა იუნიტი <b>3</b> ღირს (დაქირავებული სხვა ჯარიდან — 4). განახლება 1. დათხოვნა აბრუნებს ★-ების რაოდენობას. „დაკავება“ ბარათს შემდეგ შეთავაზებამდე ინახავს.", "Every unit costs <b>3</b> (a mercenary from another army 4). Reroll 1. Dismissing returns one supply per ★. “Hold” keeps a card for the next offer.")}</li>
+      <li>${t("<b>მაღაზიის დონე</b> (I–VI) ხსნის ძლიერ ბარათებს და მეტ შეთავაზებას. ამაღლება ყოველ რაუნდში 1-ით იაფდება.", "The <b>muster level</b> (I–VI) unlocks stronger cards and more offers. Raising it gets 1 cheaper every round.")}</li>
+      <li>${t("<b>სამი ერთნაირი</b> ერთ ★★ იუნიტად ერთიანდება (ორმაგი ძალა) და გაძლევს ერთ ბარათს შემდეგი დონიდან. სამი ★★ — ★★★.", "<b>Three of a kind</b> merge into one ★★ unit (double strength) and give you a card from the next level. Three ★★ make ★★★.")}</li>
+      <li>${t("<b>მარაგის ბარათები</b> იუნიტს სამუდამოდ აძლიერებენ; <b>ბრძანებები</b> მხოლოდ შემდეგ ბრძოლაში მოქმედებს.", "<b>Supply cards</b> boost a unit for good; <b>orders</b> only work in the next battle.")}</li></ul>
+    <h3>${t("ველი", "The field")}</h3><ul>
+      <li>${t("<b>სანგარი</b> (4 ადგილი): პირველი (მარცხნივ) ებრძვის მტრის სანგრის პირველს ხელჩართულად. როცა ეცემა, შემდეგი გადის წინ.", "<b>Trench</b> (4 places): the first (leftmost) fights the first enemy in the trench hand to hand. When it falls, the next steps up.")}</li>
+      <li>${t("<b>ზურგი</b> (3 ადგილი): აქედან ისვრიან „შორი“ და „ფრენა“, კურნავს „მკურნალი“. ზურგს ურტყამენ მხოლოდ მფრინავები, მზვერავები, კოშკი და რეიდი. როცა სანგარი დაიცლება, ზურგი სანგარში ჩადის.", "<b>Rear</b> (3 places): Long and Flying units fire from here, Healers heal. Only flyers, scouts, towers and raids hit the rear. When the trench empties, the rear moves into it.")}</li>
+      <li>${t("<b>სათადარიგო</b> (3): ბრძოლაში არ მონაწილეობს.", "<b>Bench</b> (3): does not fight.")}</li></ul>
+    <h3>${t("ბრძოლა", "Battle")}</h3><p>${t("შემთხვევითობა არ აქვს. რიგი: მომზადება → გახსნის ცეცხლი → იერიში → რაუნდები (ზურგის ცეცხლი, ჰაერი, ხელჩართული, ცეცხლი და მკურნალობა). მე-12 რაუნდიდან ყველას გამოფიტვა აზიანებს.", "No randomness. Order: preparation → opening fire → charge → rounds (fire from the rear, air, melee, burning and healing). From round 12 exhaustion hurts everyone.")}</p>
+    <h3>${t("ფრონტის რუკა", "Front map")}</h3><p>${t("ყოველი მესამე რაუნდის შემდეგ ირჩევ მონაკვეთს: რჩეული რაზმი (რელიქვიისთვის), ბანაკი, საწყობი ან ხდომილება. მონაკვეთი სამი რაუნდით ადგენს მტერს და რელიეფს.", "After every third round you choose a sector: an elite detachment (for a relic), a camp, a depot or an event. The sector sets the enemy and the terrain for three rounds.")}</p>
     <h3>${t("უნარები (★ იუნიტისთვის)", "Abilities (for a ★ unit)")}</h3><ul>${kw}</ul>
-    <h3>${t("რელიეფი", "Terrain")}</h3><ul>${ter}</ul>
-    <h3>${t("წინსვლა", "Progress")}</h3><p>${t("გარბენი გამოცდილებას იძლევა. ახალი დონე ახალ ფრაქციას ხსნის; გამარჯვება ფრაქციით — მის შემდეგ სიმძიმეს. გარბენი ავტომატურად ინახება.", "Runs give experience. A new level unlocks a new faction; winning with a faction unlocks its next severity. The run is saved automatically.")}</p></div>
-    <div class="bar"><span></span><button class="btn primary" data-act="close">${t("დახურვა", "Close")}</button></div>`;
+    <h3>${t("რელიეფი", "Terrain")}</h3><ul>${ter}</ul></div>
+    <button class="btn ink" data-act="closedlg">${t("დახურვა", "Close")}</button>`;
 }
-function openDlg(html) { $("dlg").innerHTML = html; $("ov").hidden = false; }
 
 // ---------- მოქმედებები ----------
-function newRun(o) { R = TL.newRun(o); prevStats = Object.assign({}, R.stats); V.up = null; V.b = null; go(); }
-function selectOwn(u) {
-  const s = V.sel;
-  if (R.phase === "prep" && s && s.k === "unit" && s.u !== u) { const y = TL.find(R, u), z = R.line.includes(y) ? "line" : "res", i = (z === "line" ? R.line : R.res).indexOf(y); swap(s.u, z, i); V.sel = null; sfx("click"); }
-  else V.sel = s && s.u === u ? null : { k: "unit", u };
-}
-function swap(u, zone, idx) {                        // ორი ბარათის ადგილების გაცვლა ან ცარიელ ადგილზე გადასვლა
-  const x = TL.find(R, u); if (!x) return; const arr = zone === "line" ? R.line : R.res, from = R.line.includes(x) ? R.line : R.res, fi = from.indexOf(x), y = arr[idx];
-  if (y && y !== x) { arr[idx] = x; from[fi] = y; } else if (!y) TL.place(R, u, zone, idx);
+function newRun(o) { R = TL.newRun(o); prev = Object.assign({}, R.stats); V.up = null; V.b = null; go(); }
+function after(r, okMsg) { if (r && r.merged) { sfx("merge"); toast(t("სამეული! ★★ — აირჩიე ბარათი შემდეგი დონიდან.", "A triple! ★★ — choose a card from the next level.")); } else sfx("buy");
+  if (r && r.order) toast(t("ბრძანება: ", "Order: ") + nm(TL.ITEMS[r.order])); if (r && r.gifts && r.gifts.length) toast(t("ალქიმია: ორ იუნიტს +1/+1", "Alchemy: two units get +1/+1")); }
+function tapOwn(u) {
+  const s = V.sel, x = TL.find(R, u);
+  if (s && s.k === "own" && s.u !== u) { TL.move(R, s.u, zoneOf(x), (zoneOf(x) === "t" ? R.board.t : zoneOf(x) === "r" ? R.board.r : R.bench).indexOf(x)); sfx("click"); closeSheet(); return; }
+  if (s && s.k === "item" && TL.ITEMS[R.shop.items[s.i].key].kind === "unit") { if (TL.buyItem(R, s.i, u)) { sfx("merge"); toast(nm(TL.ITEMS[R.shop.items[s.i].key]) + " → " + nm(TL.def(x.id))); } closeSheet(); return; }
+  if (s && s.k === "offer" && R.shop.units[s.i].id === x.id) { const r = TL.buy(R, s.i); if (r) after(r); closeSheet(); return; }
+  if (s && s.k === "own" && s.u === u) { closeSheet(); return; }
+  V.sel = { k: "own", u }; ownSheet(x);
 }
 document.addEventListener("click", ev => {
-  const lb = ev.target.closest(".lang button"); if (lb) { LANG = lb.dataset.lang; store.set("tl-lang", LANG); render(); if (!$("ov").hidden) openDlg(rulesHtml()); return; }
+  const lb = ev.target.closest("[data-lang]"); if (lb) { LANG = lb.dataset.lang; store.set("tl-lang", LANG); closeSheet(); V.sel = null; render(); if (!$("ov").hidden) $("dlg").innerHTML = rulesHtml(); return; }
   if (ev.target === $("ov")) { $("ov").hidden = true; return; }
-  const el = ev.target.closest("[data-act]"); if (!el) return; const a = el.dataset.act, i = +el.dataset.i;
-  ac();
+  const el = ev.target.closest("[data-act]");
+  if (!el) { if (!$("sheet").hidden && !ev.target.closest("#sheet") && !(R && R.pending && R.pending.length && V.screen === "run")) { closeSheet(); render(); } return; }
+  const a = el.dataset.act, i = +el.dataset.i; ac();
   switch (a) {
-    case "home": V.screen = "home"; V.sel = null; break;
+    case "home": V.screen = "home"; closeSheet(); break;
     case "sound": SOUND = !SOUND; store.set("tl-sound", SOUND); if (SOUND) sfx("click"); break;
-    case "rules": openDlg(rulesHtml()); return;
-    case "close": $("ov").hidden = true; return;
+    case "rules": $("dlg").innerHTML = rulesHtml(); $("ov").hidden = false; return;
+    case "closedlg": $("ov").hidden = true; return;
+    case "close": closeSheet(); break;
     case "tip": M.tut[el.dataset.k] = 1; saveMeta(); break;
     case "resume": if (V.b && !V.b.done) { V.screen = "battle"; break; } return go();
-    case "pick": V.screen = "pick"; V.sel = null; if (!M.unlocked.includes(V.pick)) V.pick = M.unlocked[0]; break;
-    case "pickf": V.pick = el.dataset.f; V.diff = Math.min(V.diff, M.maxDiff[V.pick] || 0); V.sel = null; break;
+    case "pick": V.screen = "pick"; closeSheet(); if (!M.unlocked.includes(V.pick)) V.pick = M.unlocked[0]; break;
+    case "pickf": V.pick = el.dataset.f; V.diff = Math.min(V.diff, M.maxDiff[V.pick] || 0); break;
     case "diff": V.diff = +el.dataset.d; break;
     case "start": sfx("merge"); return newRun({ faction: V.pick, diff: V.diff });
     case "daily": { const d = TL.dailySeed(today()); sfx("merge"); return newRun({ faction: d.faction, seed: d.seed, daily: d.date, diff: 0 }); }
     case "meta": V.screen = "meta"; break;
-    case "codex": V.screen = "codex"; V.sel = null; break;
-    case "codexf": V.codex = el.dataset.f; V.sel = null; break;
+    case "codex": V.screen = "codex"; break;
+    case "codexf": V.codex = el.dataset.f; break;
     case "wipe": if (confirm(t("წავშალო მთელი წინსვლა?", "Erase all progress?"))) { store.del("tl-meta"); store.del("tl-run"); M = loadMeta(); R = null; V.screen = "home"; } break;
-    case "peek": V.sel = { k: "peek", id: el.dataset.id, st: Math.max(1, M.seen[el.dataset.id] || 1) }; break;
-    case "enter": if (TL.enter(R, i)) { sfx("click"); return go(); } break;
-    case "info": V.sel = V.sel && V.sel.u === +el.dataset.u ? null : { k: "unit", u: +el.dataset.u }; break;
-    case "einfo": V.sel = { k: "enemy", i }; break;
-    case "binfo": V.sel = { k: "bunit", uid: el.dataset.uid }; { const d = $("detail"); if (d) d.outerHTML = detailPanel(); } return;
-    case "relic": V.sel = { k: "relic", key: el.dataset.k }; break;
-    case "unit": selectOwn(+el.dataset.u); break;
-    case "slot": if (V.sel && V.sel.k === "unit") { swap(V.sel.u, el.dataset.z, i); V.sel = null; sfx("click"); } break;
-    case "offer": V.sel = { k: "offer", i }; break;
-    case "shopord": V.sel = { k: "shopord" }; break;
-    case "order": V.sel = { k: "order", i }; TL.toggleOrder(R, i); sfx("click"); break;
-    case "useord": TL.toggleOrder(R, i); sfx("click"); break;
-    case "buy": { const r = TL.buy(R, i); if (r) { sfx(r.merged ? "merge" : "buy"); if (r.merged) toast(t("შერწყმა! სამი ერთნაირი ერთ გაძლიერებულ იუნიტად იქცა.", "Merged! Three of a kind became one stronger unit.")); V.sel = null; } break; }
-    case "lock": TL.toggleLock(R, i); break;
-    case "buyord": if (TL.buyOrder(R)) { sfx("buy"); V.sel = null; } break;
-    case "sell": if (TL.sell(R, +el.dataset.u)) { sfx("sell"); V.sel = null; } break;
-    case "reroll": if (TL.reroll(R)) { sfx("roll"); if (V.sel && (V.sel.k === "offer" || V.sel.k === "shopord")) V.sel = null; } break;
-    case "fight": M.tut.prep1 = M.tut.prep2 = 1; return startBattle();
+    case "peek": openSheet(unitInfo({ id: el.dataset.id, st: Math.max(1, M.seen[el.dataset.id] || 1) })); return;
+    case "info": { const x = TL.find(R, +el.dataset.u); if (x) openSheet(unitInfo(x)); return; }
+    case "foe": foeSheet(); return;
+    case "einfo": { const x = R.enemy[el.dataset.z][i]; if (x) openSheet(unitInfo(x, `<div class="acts"><button class="btn out sm" data-act="foe">← ${t("მტრის ჯარი", "Enemy army")}</button></div>`)); return; }
+    case "binfo": { const x = bfind(el.dataset.buid); if (x) openSheet(unitInfo(x)); return; }
+    case "own": tapOwn(+el.dataset.u); break;
+    case "slot": { const s = V.sel;
+      if (s && s.k === "own") { TL.move(R, s.u, el.dataset.z, i); sfx("click"); closeSheet(); }
+      else if (s && s.k === "offer") { const r = TL.buy(R, s.i, el.dataset.z, i); if (r) after(r); closeSheet(); }
+      break; }
+    case "offer": if (R.shop.units[i].sold) break; V.sel = { k: "offer", i }; render(); offerSheet(i); return;
+    case "item": if (R.shop.items[i].sold) break; V.sel = { k: "item", i }; render(); itemSheet(i); return;
+    case "buy": { const r = TL.buy(R, i); if (r) after(r); closeSheet(); break; }
+    case "useitem": if (TL.buyItem(R, i)) { sfx("merge"); toast(nm(TL.ITEMS[R.shop.items[i].key]) + " ✓"); } closeSheet(); break;
+    case "hold": TL.hold(R, "unit", i); closeSheet(); break;
+    case "holdi": TL.hold(R, "item", i); closeSheet(); break;
+    case "sell": if (TL.sell(R, +el.dataset.u)) sfx("sell"); closeSheet(); break;
+    case "disc": if (TL.takeDiscover(R, i)) { sfx(i >= 0 ? "buy" : "sell"); closeSheet(); } break;
+    case "reroll": if (TL.reroll(R)) { sfx("roll"); closeSheet(); } break;
+    case "levelup": if (TL.levelUp(R)) { sfx("up"); toast(t("მაღაზიის დონე ", "Muster level ") + ROMAN[R.lvl] + t(": ახალი ბარათები.", ": new cards.")); } break;
+    case "fight": M.tut.p1 = 1; return startBattle();
     case "speed": V.b.speed = +el.dataset.s; M.speed = V.b.speed; saveMeta(); drawBattle(); return;
     case "skip": V.b.skip = true; stepBattle(); return;
     case "bnext": V.b = null; return go();
-    case "relicpick": if (TL.takeRelic(R, i)) { sfx("merge"); return go(); } break;
-    case "rpick": { const before = R.stats.merges; if (TL.takePick(R, i)) { sfx(R.stats.merges > before ? "merge" : "buy"); return go(); } break; }
-    case "event": { const r = TL.chooseEvent(R, i); if (r) { sfx("click");
-      if (r.unit) toast(nm(TL.def(r.unit)) + " ✓"); else if (r.order) toast(nm(D.common[r.order]) + " ✓"); else if (r.relic) toast(L2(TL.REL[r.relic]) + ": " + L2(TL.REL[r.relic].slice(2)));
-      else if (r.good === true) toast(t("ურემი შენია: +6 მარაგი.", "The cart is yours: +6 supply.")); else if (r.good === false) toast(t("ნაღმი. −2 ნებისყოფა.", "A mine. −2 nerve."));
-      return go(); } break; }
+    case "node": if (TL.choose(R, i)) { sfx("click"); return go(); } break;
+    case "relic": if (TL.takeRelic(R, i)) { sfx("merge"); return go(); } break;
     case "rest": if (TL.campRest(R)) { sfx("heal"); return go(); } break;
-    case "train": if (R.phase === "camp" && TL.campTrain(R, +el.dataset.u)) { sfx("merge"); toast(t("გაწვრთნილია: +2/+2.", "Drilled: +2/+2.")); return go(); } break;
+    case "train": if (R.phase === "camp" && TL.campTrain(R, +el.dataset.u)) { sfx("merge"); toast(t("გაწვრთნილია: +2/+2.", "Drilled: +2/+2.")); return go(); } { const x = TL.find(R, +el.dataset.u); if (x) openSheet(unitInfo(x)); } return;
     case "depot": if (TL.depotTake(R, i)) { sfx("buy"); return go(); } break;
+    case "event": { const r = TL.chooseEvent(R, i); if (r) { sfx("click");
+      if (r.unit) toast(nm(TL.def(r.unit)) + " ✓"); else if (r.order) toast(t("ბრძანება: ", "Order: ") + nm(TL.ITEMS[r.order])); else if (r.relic) toast(L2(TL.REL[r.relic]) + ": " + L2(TL.REL[r.relic].slice(2)));
+      else if (r.good === true) toast(t("ურემი შენია: +6 მარაგი.", "The cart is yours: +6 supply.")); else if (r.good === false) toast(t("ნაღმი. −1 სიცოცხლე.", "A mine. −1 life."));
+      return go(); } break; }
   }
   if (R && V.screen === "run") track();
-  render();
+  const keep = !$("sheet").hidden; render(); if (keep && V.sel) { if (V.sel.k === "own") { const x = TL.find(R, V.sel.u); if (x) ownSheet(x); } else if (V.sel.k === "offer") offerSheet(V.sel.i); else if (V.sel.k === "item") itemSheet(V.sel.i); }
 });
-// გადათრევა (კომპიუტერზე): შენი ბარათი სხვა ბარათზე ან ცარიელ ადგილზე
-let dragU = null;
-document.addEventListener("dragstart", ev => { const el = ev.target.closest && ev.target.closest('[data-act="unit"]'); if (el) { dragU = +el.dataset.u; ev.dataTransfer.effectAllowed = "move"; try { ev.dataTransfer.setData("text/plain", String(dragU)); } catch (e) {} } });
-document.addEventListener("dragover", ev => { if (dragU != null && ev.target.closest('[data-act="unit"],[data-act="slot"]')) ev.preventDefault(); });
-document.addEventListener("drop", ev => { if (dragU == null) return; const el = ev.target.closest('[data-act="unit"],[data-act="slot"]'); if (!el) { dragU = null; return; } ev.preventDefault();
-  if (el.dataset.act === "slot") swap(dragU, el.dataset.z, +el.dataset.i); else { const y = TL.find(R, +el.dataset.u), z = R.line.includes(y) ? "line" : "res"; swap(dragU, z, (z === "line" ? R.line : R.res).indexOf(y)); }
-  dragU = null; V.sel = null; sfx("click"); track(); render(); });
-document.addEventListener("keydown", ev => { if (ev.key === "Escape") $("ov").hidden = true; });
+// გადათრევა კომპიუტერზე: შენი ბარათი ან მაღაზიის ბარათი → ადგილი ან ბარათი
+let drag = null;
+document.addEventListener("dragstart", ev => { const el = ev.target.closest && ev.target.closest('[data-act="own"],[data-act="offer"]'); if (!el) return;
+  drag = el.dataset.act === "own" ? { k: "own", u: +el.dataset.u } : { k: "offer", i: +el.dataset.i }; ev.dataTransfer.effectAllowed = "move"; try { ev.dataTransfer.setData("text/plain", "x"); } catch (e) {} });
+document.addEventListener("dragover", ev => { if (drag && ev.target.closest('[data-act="own"],[data-act="slot"]')) ev.preventDefault(); });
+document.addEventListener("drop", ev => { if (!drag) return; const el = ev.target.closest('[data-act="own"],[data-act="slot"]'); if (!el) { drag = null; return; } ev.preventDefault();
+  if (el.dataset.act === "slot") { if (drag.k === "own") TL.move(R, drag.u, el.dataset.z, +el.dataset.i); else { const r = TL.buy(R, drag.i, el.dataset.z, +el.dataset.i); if (r) after(r); } }
+  else { V.sel = drag; tapOwn(+el.dataset.u); }
+  drag = null; V.sel = null; closeSheet(); sfx("click"); track(); render(); });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") { $("ov").hidden = true; if (!(R && R.pending && R.pending.length)) { closeSheet(); render(); } } });
 window.__tl = { TL, get R() { return R; }, get M() { return M; }, get V() { return V; }, render, go, newRun };
 render();
 </script>

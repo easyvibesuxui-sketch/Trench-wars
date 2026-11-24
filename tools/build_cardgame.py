@@ -304,11 +304,14 @@ def write_app(data, names, units, common, starter):
     wr = ROOT / "data" / "cardgame_winrates.json"
     win = json.loads(wr.read_text(encoding="utf-8"))["winrates"] if wr.exists() else {}
     two = lambda k, a, b: split2(T[k]) if k in T else (a, b)
+    SHT = ("alchemist", "orders", "song", "repair")   # „სანგრის რიგის“ მობილიზაციის უნარები (cardgame/engine.js)
+    src = {u["id"]: u for u in data["units"]}
     app = {
         "factions": {f: {"ka": n, "en": NE["factions"].get(f, n), "core": f in data["factions"],
                          "side": "light" if f in LIGHT_CORE or f in data["allies"] else "dark", "pal": V.F[f]["palette"]} for f, n in names.items()},
         "units": {c["id"]: {"f": c["faction"], "ka": c["name"], "en": NE["units"].get(c["id"], c["name"]), "tier": c["tier"], "cost": c["cost"],
-                            "atk": c["atk"], "hp": c["hp"], "kw": c["kw"], "art": pos.get(c["id"])} for c in units},
+                            "atk": c["atk"], "hp": c["hp"], "kw": c["kw"], "art": pos.get(c["id"]),
+                            "sh": [t for t in src.get(c["id"], {}).get("tags", []) if t in SHT]} for c in units},
         "common": {c["id"]: {"kind": c["kind"], "ka": c["name"], "en": two(f"cgc:{c['id']}", c["name"], c["text"])[0], "cost": c["cost"],
                              "tka": c["text"], "ten": two(f"cgc:{c['id']}", c["name"], c["text"])[1], "atk": c.get("atk"), "hp": c.get("hp"),
                              "art": cpos.get(c["id"])} for c in common},
