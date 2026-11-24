@@ -16,7 +16,7 @@
   const MULT = [0, 1, 2, 3];                            // ★, ★★, ★★★
   const LARGE = { IV: 1, 'IV+': 1, V: 1 };
   // ფრაქციის ლოჯისტიკა: დამატებითი მარაგი ყოველ რაუნდში (წილადი ნაწილდება რაუნდებზე). ირჩევს tools/tune_factions.js.
-  const DOC = /*DOC*/{"iberia":0.75,"hell":-1.5,"harness":3,"listeners":-0.25,"kajeti":-1.5,"hellenic":-0.25,"finnish":-0.25,"britain":-0.5,"gaul":-0.25,"polianitsy":-0.25,"armenian":0.25,"oghuz":-1.25,"yellow_river":0.75,"japan_isles":-0.75,"korea":-0.5,"balkans":-1.25,"alps":0.75,"baltic":-0.25,"batavi":1.25,"byzantium":0.5,"ottoman":-0.5}/*/DOC*/;
+  const DOC = /*DOC*/{"iberia":0.75,"hell":-1.5,"harness":3,"listeners":-0.5,"kajeti":-1.5,"hellenic":-0.25,"finnish":-0.25,"britain":-0.5,"gaul":-0.25,"polianitsy":-0.25,"armenian":0.25,"oghuz":-1.25,"yellow_river":0.75,"japan_isles":-0.75,"korea":-0.5,"balkans":-1.25,"alps":0.75,"baltic":-0.25,"batavi":1.25,"byzantium":0.5,"ottoman":-0.5}/*/DOC*/;
   // მოჩვენებების ზოგადი სიძლიერე: დამატებითი მარაგი რაუნდში (tools/tune_factions.js).
   const GB = /*GB*/0/*/GB*/;
   const doc = f => DOC[f] || 0;
@@ -439,8 +439,12 @@
     const L = Math.min(6, run.lvl + 1), pool = [run.f].concat(allies(run.f).slice(0, 0));
     let ids = []; for (const f of pool) for (const t in BYF[f]) if (LVL[t] === L) ids = ids.concat(BYF[f][t]);
     ids = ids.filter(id => !(traits(id).hero && owns(run, 'hero')) && !(traits(id).giant && owns(run, 'giant')));
-    if (ids.length < 3) for (const t in BYF[run.f]) if (LVL[t] < L) ids = ids.concat(BYF[run.f][t]);
-    return shuffle(run, [...new Set(ids)]).slice(0, 3);
+    ids = shuffle(run, [...new Set(ids)]);
+    for (let l = L - 1; ids.length < 3 && l >= 1; l--) {      // შემდეგ დონეზე ბარათი ცოტაა: ჯერ უახლოესი ქვედა დონე
+      let more = []; for (const t in BYF[run.f]) if (LVL[t] === l && t !== 'hero') more = more.concat(BYF[run.f][t]);
+      ids = ids.concat(shuffle(run, more.filter(id => !ids.includes(id) && !(traits(id).giant && owns(run, 'giant')))));
+    }
+    return ids.slice(0, 3);
   }
   function takeDiscover(run, i) {                    // i < 0: უარი, +3 მარაგი
     const opts = run.pending[0]; if (!opts) return false;
