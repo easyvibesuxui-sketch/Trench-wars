@@ -16,7 +16,7 @@
   const MULT = [0, 1, 2, 3];                            // ★, ★★, ★★★
   const LARGE = { IV: 1, 'IV+': 1, V: 1 };
   // ფრაქციის ლოჯისტიკა: დამატებითი მარაგი ყოველ რაუნდში (წილადი ნაწილდება რაუნდებზე). ირჩევს tools/tune_factions.js.
-  const DOC = /*DOC*/{"iberia":0.75,"hell":-1.5,"harness":3,"listeners":-0.5,"kajeti":-1.5,"hellenic":-0.25,"finnish":-0.25,"britain":-0.5,"gaul":-0.25,"polianitsy":-0.25,"armenian":0.25,"oghuz":-1.25,"yellow_river":0.75,"japan_isles":-0.75,"korea":-0.5,"balkans":-1.25,"alps":0.75,"baltic":-0.25,"batavi":1.25,"byzantium":0.5,"ottoman":-0.5}/*/DOC*/;
+  const DOC = /*DOC*/{"iberia":0.25,"hell":-1.5,"harness":4.25,"kajeti":-1.75,"hellenic":-0.5,"northern":0.25,"celtic":-0.25,"finnish":-0.25,"britain":-0.5,"gaul":-0.5,"polianitsy":-0.75,"armenian":0.25,"oghuz":-1.25,"nile":-0.25,"yellow_river":0.75,"japan_isles":-0.75,"korea":-0.5,"balkans":-0.75,"pyrenean":-0.5,"alps":0.5,"baltic":-0.25,"batavi":0.5,"lechia":-0.25,"byzantium":0.5,"ottoman":-0.75,"colchis":-0.25,"prussia":0.25}/*/DOC*/;
   // მოჩვენებების ზოგადი სიძლიერე: დამატებითი მარაგი რაუნდში (tools/tune_factions.js).
   const GB = /*GB*/0/*/GB*/;
   const doc = f => DOC[f] || 0;

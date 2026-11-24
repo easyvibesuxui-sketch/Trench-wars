@@ -38,7 +38,7 @@ for (const k in TL.ITEMS) ok(TL.ITEMS[k].ka && TL.ITEMS[k].en && TL.ITEMS[k].t[1
 // 4) გარბენი: მაღაზია, სამეული, ნივთები, თესლი
 { const a = TL.newRun({ faction: 'colchis', seed: 7 }), b = TL.newRun({ faction: 'colchis', seed: 7 }); ok(JSON.stringify(a) === JSON.stringify(b), 'seeded run');
   ok(JSON.stringify(JSON.parse(JSON.stringify(a))) === JSON.stringify(a), 'serialisable');
-  ok(a.supply === 10 && a.shop.units.length === 3 && a.lives === 5, 'round 1 setup');
+  ok(a.supply === 10 + a.income.doc && a.shop.units.length === 3 && a.lives === 5, 'round 1 setup');
   const r = TL.newRun({ faction: 'colchis', seed: 1 }); r.supply = 99;
   for (let i = 0; i < 3; i++) TL.addUnit(r, 'lashkari');
   ok(TL.all(r).filter(x => x.id === 'lashkari').length === 1 && TL.all(r)[0].st === 2 && r.pending.length === 1, 'triple merges and offers a discovery');
